@@ -1,0 +1,99 @@
+# NAME: China常用域名
+# AUTHOR: blackmatrix7精简版
+# REPO: https://gitlab.com/blackmatrix7/ios_rule_script
+# UPDATED: 2025-11-08 02:10:01
+# HOST: 0（本次精简未保留独立HOST条目）
+# HOST-SUFFIX: 76（实际筛选后HOST-SUFFIX条目数）
+# TOTAL: 76（总条目数，与HOST-SUFFIX数量一致）
+
+# 主流平台核心域名
+HOST-SUFFIX,baidu.com
+HOST-SUFFIX,qq.com
+HOST-SUFFIX,aliyun.com
+HOST-SUFFIX,taobao.com
+HOST-SUFFIX,tmall.com
+HOST-SUFFIX,jd.com
+HOST-SUFFIX,douyin.com
+HOST-SUFFIX,kuaishou.com
+HOST-SUFFIX,bilibili.com
+HOST-SUFFIX,weibo.com
+HOST-SUFFIX,zhihu.com
+HOST-SUFFIX,netease.com
+HOST-SUFFIX,sohu.com
+HOST-SUFFIX,sina.com
+HOST-SUFFIX,163.com
+HOST-SUFFIX,360.cn
+HOST-SUFFIX,ifeng.com
+HOST-SUFFIX,toutiao.com
+
+# 影音娱乐类
+HOST-SUFFIX,kuwo.cn
+HOST-SUFFIX,kuwo.com
+HOST-SUFFIX,xiami.com
+HOST-SUFFIX,yy.com
+HOST-SUFFIX,acfun.cn
+HOST-SUFFIX,miaopai.com
+HOST-SUFFIX,huoshan.com
+HOST-SUFFIX,xigua.com
+HOST-SUFFIX,kwai.com
+HOST-SUFFIX,inke.cn
+
+# 内容分发/静态资源
+HOST-SUFFIX,zhihuapp.com
+HOST-SUFFIX,zhihuusercontent.com
+HOST-SUFFIX,zhihuimg.com
+HOST-SUFFIX,baiduimg.com
+HOST-SUFFIX,bdstatic.com
+HOST-SUFFIX,qqimg.com
+HOST-SUFFIX,gtimg.com
+HOST-SUFFIX,sinaimg.cn
+HOST-SUFFIX,weibo.cn
+HOST-SUFFIX,weibocdn.com
+HOST-SUFFIX,bilibiliimg.com
+HOST-SUFFIX,acfunimg.com
+HOST-SUFFIX,neteaseimg.com
+HOST-SUFFIX,163img.cn
+HOST-SUFFIX,toutiaimg.com
+HOST-SUFFIX,toutiaimg.cn
+HOST-SUFFIX,douyinpic.com
+HOST-SUFFIX,douyinimg.com
+HOST-SUFFIX,kuaishoucdn.com
+HOST-SUFFIX,kuaishouimg.com
+HOST-SUFFIX,jdimg.com
+HOST-SUFFIX,taobaocdn.com
+HOST-SUFFIX,tmallimg.com
+HOST-SUFFIX,aliimg.com
+HOST-SUFFIX,alicdn.com
+HOST-SUFFIX,aliyuncs.com
+HOST-SUFFIX,aliyuncdn.com
+
+# 生活服务类
+HOST-SUFFIX,amap.com
+HOST-SUFFIX,autonavi.com
+HOST-SUFFIX,gaode.com
+HOST-SUFFIX,meituan.com
+HOST-SUFFIX,ele.me
+HOST-SUFFIX,didi.com
+HOST-SUFFIX,ctrip.com
+HOST-SUFFIX,qunar.com
+HOST-SUFFIX,12306.com
+
+# 支付/社交类
+HOST-SUFFIX,zhifubao.com
+HOST-SUFFIX,alipay.com
+HOST-SUFFIX,weixin.qq.com
+HOST-SUFFIX,wechat.com
+HOST-SUFFIX,wx.qq.com
+HOST-SUFFIX,wximg.com
+
+# 办公协作类
+HOST-SUFFIX,feishu.cn
+HOST-SUFFIX,feishucdn.com
+HOST-SUFFIX,dingtalk.com
+HOST-SUFFIX,dingtalkimg.com
+
+# 在线教育类
+HOST-SUFFIX,zhihuishu.com
+HOST-SUFFIX,xueersi.com
+HOST-SUFFIX,chaoxing.com
+HOST-SUFFIX,icourse163.org
