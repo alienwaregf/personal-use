@@ -45,12 +45,12 @@ HOST-KEYWORD,xiaohongshucdn.com,Social media
 HOST-KEYWORD,ark.xiaohongshu.com,Social media
 
 # 皮皮搞笑及关联服务
-HOST-SUFFIX,pipix.com,Social media
-HOST-SUFFIX,ippzone.com,Social media
-HOST-SUFFIX,pipigx.com,Social media
-HOST-SUFFIX,ppjoke.com,Social media
-HOST-SUFFIX,ppppzone.com,Social media
-HOST-SUFFIX,h5.ippzone.com,Social media
+HOST-KEYWORD,pipix.com,Social media
+HOST-KEYWORD,ippzone.com,Social media
+HOST-KEYWORD,pipigx.com,Social media
+HOST-KEYWORD,ppjoke.com,Social media
+HOST-KEYWORD,ppppzone.com,Social media
+HOST-KEYWORD,h5.ippzone.com,Social media
 
 # 通用CDN及第三方依赖（非必需，按需保留）
 HOST-KEYWORD,cdn.jsdelivr.net,Social media
