@@ -10,7 +10,7 @@
 #这些ip只会阻止Adobe应用程序的遥测检查
 #不会干扰任何其他网络选项，例如 AI 生成、下载等
 
-# > 域名关键字匹配 (Keyword)
+# > 域名关键字匹配
 HOST-KEYWORD,adobe.de,AdobeActivation
 HOST-KEYWORD,adobe.io,AdobeActivation
 HOST-KEYWORD,adobestats.io,AdobeActivation
