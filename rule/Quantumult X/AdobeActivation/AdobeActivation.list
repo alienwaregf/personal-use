@@ -1,45 +1,59 @@
 # NAME: AdobeActivation
-# AUTHOR: 互联网
-# REPO: https://macwk.cn + https://github.com/blackmatrix7/ios_rule_script/tree/master/rule/QuantumultX/AdobeActivation
-# UPDATED: 不定时
-# HOST: 191
-# IP-CIDR: 41
-# host-keyword：4
+# AUTHOR: AlienWareGF
+# REPO: www.MacWk.cn + Blackmatrix7大佬
+# UPDATED: 2025-11-20
+# HOST: 192
+# IP-CIDR: 40
+# HOST-KEYWORD: 4
 # TOTAL: 236
+# DESC: 包含 Adobe 全家桶、Presonus、Paddle 等相关验证与遥测域名及 IP 拦截规则
+#这些ip只会阻止Adobe应用程序的遥测检查
+#不会干扰任何其他网络选项，例如 AI 生成、下载等
 
-# 一、adobe.com  161条
-HOST,adobeid-na1.services.adobe.com,AdobeActivation
-HOST,auth.services.adobe.com,AdobeActivation
-HOST,activate-sea.adobe.com,AdobeActivation
-HOST,activate-sjc0.adobe.com,AdobeActivation
-HOST,activate.adobe.com,AdobeActivation
+# > 域名关键字匹配 (Keyword)
+HOST-KEYWORD,adobe.de,AdobeActivation
+HOST-KEYWORD,adobe.io,AdobeActivation
+HOST-KEYWORD,adobestats.io,AdobeActivation
+HOST-KEYWORD,hstatic.io,AdobeActivation
+
+# > 域名规则 (Domain)
+# >> Adobe 验证与遥测
+HOST,209-34-83-73.ood.opsource.net,AdobeActivation
 HOST,3dns-1.adobe.com,AdobeActivation
 HOST,3dns-2.adobe.com,AdobeActivation
 HOST,3dns-3.adobe.com,AdobeActivation
 HOST,3dns-4.adobe.com,AdobeActivation
 HOST,3dns-5.adobe.com,AdobeActivation
 HOST,3dns.adobe.com,AdobeActivation
+HOST,activate-sea.adobe.com,AdobeActivation
+HOST,activate-sjc0.adobe.com,AdobeActivation
+HOST,activate.adobe.com,AdobeActivation
 HOST,activate.wip.adobe.com,AdobeActivation
 HOST,activate.wip1.adobe.com,AdobeActivation
 HOST,activate.wip2.adobe.com,AdobeActivation
 HOST,activate.wip3.adobe.com,AdobeActivation
 HOST,activate.wip4.adobe.com,AdobeActivation
-HOST,www.wip.adobe.com,AdobeActivation
-HOST,www.wip1.adobe.com,AdobeActivation
-HOST,www.wip2.adobe.com,AdobeActivation
-HOST,www.wip3.adobe.com,AdobeActivation
-HOST,www.wip4.adobe.com,AdobeActivation
 HOST,adobe-dns-1.adobe.com,AdobeActivation
 HOST,adobe-dns-2.adobe.com,AdobeActivation
 HOST,adobe-dns-3.adobe.com,AdobeActivation
 HOST,adobe-dns-4.adobe.com,AdobeActivation
 HOST,adobe-dns.adobe.com,AdobeActivation
 HOST,adobe.activate.com,AdobeActivation
+HOST,adobe.demdex.net,AdobeActivation
+HOST,adobe.tt.omtrdc.net,AdobeActivation
+HOST,adobedc.demdex.net,AdobeActivation
+HOST,adobeereg.com,AdobeActivation
+HOST,adobeid-na1.services.adobe.com,AdobeActivation
+HOST,assets.adobedtm.com,AdobeActivation
+HOST,auth-cloudfront.prod.ims.adobejanus.com,AdobeActivation
+HOST,auth.services.adobe.com,AdobeActivation
+HOST,bam.nr-data.net,AdobeActivation
 HOST,cc-cdn.adobe.com,AdobeActivation
 HOST,cc-cdn.adobe.com.edgekey.net,AdobeActivation
 HOST,cclibraries-defaults-cdn.adobe.com,AdobeActivation
 HOST,cclibraries-defaults-cdn.adobe.com.edgekey.net,AdobeActivation
 HOST,cmdls.adobe.com,AdobeActivation
+HOST,cn-assets.adobedtm.com.edgekey.net,AdobeActivation
 HOST,crlog-crcn.adobe.com,AdobeActivation
 HOST,crs.cr.adobe.com,AdobeActivation
 HOST,ereg.adobe.com,AdobeActivation
@@ -48,20 +62,30 @@ HOST,ereg.wip1.adobe.com,AdobeActivation
 HOST,ereg.wip2.adobe.com,AdobeActivation
 HOST,ereg.wip3.adobe.com,AdobeActivation
 HOST,ereg.wip4.adobe.com,AdobeActivation
+HOST,ethos.ethos02-prod-irl1.ethos.adobe.net,AdobeActivation
 HOST,genuine.adobe.com,AdobeActivation
 HOST,geo2.adobe.com,AdobeActivation
 HOST,hl2rcv.adobe.com,AdobeActivation
 HOST,hlrcv.stage.adobe.com,AdobeActivation
+HOST,ims-na1-prprod.adobelogin.com,AdobeActivation
+HOST,k.sni.global.fastly.net,AdobeActivation
 HOST,lm.licenses.adobe.com,AdobeActivation
 HOST,lmlicenses.wip4.adobe.com,AdobeActivation
 HOST,na1r.services.adobe.com,AdobeActivation
 HOST,na2m-pr.licenses.adobe.com,AdobeActivation
 HOST,na2m-stg2.licenses.adobe.com,AdobeActivation
 HOST,na4r.services.adobe.com,AdobeActivation
+HOST,ood.opsource.net,AdobeActivation
+HOST,practivate.adobe,AdobeActivation
 HOST,practivate.adobe.com,AdobeActivation
+HOST,practivate.adobe.ipp,AdobeActivation
+HOST,practivate.adobe.newoa,AdobeActivation
+HOST,practivate.adobe.ntp,AdobeActivation
 HOST,prod-rel-ffc-ccm.oobesaas.adobe.com,AdobeActivation
+HOST,prod.adobegenuine.com,AdobeActivation
 HOST,s-2.adobe.com,AdobeActivation
 HOST,s-3.adobe.com,AdobeActivation
+HOST,services.prod.ims.adobejanus.com,AdobeActivation
 HOST,ssl-delivery.adobe.com.edgekey.net,AdobeActivation
 HOST,sstats.adobe.com,AdobeActivation
 HOST,stls.adobe.com-cn.edgesuite.net,AdobeActivation
@@ -73,6 +97,26 @@ HOST,wip1.adobe.com,AdobeActivation
 HOST,wip2.adobe.com,AdobeActivation
 HOST,wip3.adobe.com,AdobeActivation
 HOST,wip4.adobe.com,AdobeActivation
+HOST,workflow-ui-prod.licensingstack.com,AdobeActivation
+HOST,www.adobeereg.com,AdobeActivation
+HOST,www.wip.adobe.com,AdobeActivation
+HOST,www.wip1.adobe.com,AdobeActivation
+HOST,www.wip2.adobe.com,AdobeActivation
+HOST,www.wip3.adobe.com,AdobeActivation
+HOST,www.wip4.adobe.com,AdobeActivation
+
+# >> 第三方验证 (Presonus, Paddle, Verisign)
+HOST,api.presonus.com,AdobeActivation
+HOST,crl.verisign.net,AdobeActivation
+HOST,ocsp.spo1.verisign.com,AdobeActivation
+HOST,paddle.com,AdobeActivation
+HOST,paddle.s3.amazonaws.com,AdobeActivation
+HOST,paddleapi.com,AdobeActivation
+HOST,registration.presonus.com,AdobeActivation
+HOST,tss-geotrust-crl.thawte.com,AdobeActivation
+HOST,updates.presonus.com,AdobeActivation
+
+# >> Adobe VIP 服务域名
 HOST,wwis-dubc1-vip30.adobe.com,AdobeActivation
 HOST,wwis-dubc1-vip31.adobe.com,AdobeActivation
 HOST,wwis-dubc1-vip32.adobe.com,AdobeActivation
@@ -170,39 +214,7 @@ HOST,wwis-dubc1-vip123.adobe.com,AdobeActivation
 HOST,wwis-dubc1-vip124.adobe.com,AdobeActivation
 HOST,wwis-dubc1-vip125.adobe.com,AdobeActivation
 
-# 二、不规则 30条
-HOST,adobe.demdex.net,AdobeActivation
-HOST,adobedc.demdex.net,AdobeActivation
-HOST,adobe.tt.omtrdc.net,AdobeActivation
-HOST,adobeereg.com,AdobeActivation
-HOST,assets.adobedtm.com,AdobeActivation
-HOST,auth-cloudfront.prod.ims.adobejanus.com,AdobeActivation
-HOST,bam.nr-data.net,AdobeActivation
-HOST,crl.verisign.net,AdobeActivation
-HOST,crl.verisign.net.,AdobeActivation
-HOST,cn-assets.adobedtm.com.edgekey.net,AdobeActivation
-HOST,ethos.ethos02-prod-irl1.ethos.adobe.net,AdobeActivation
-HOST,ims-na1-prprod.adobelogin.com,AdobeActivation
-HOST,k.sni.global.fastly.net,AdobeActivation
-HOST,ood.opsource.net,AdobeActivation
-HOST,practivate.adobe,AdobeActivation
-HOST,practivate.adobe.,AdobeActivation
-HOST,practivate.adobe.ipp,AdobeActivation
-HOST,practivate.adobe.newoa,AdobeActivation
-HOST,practivate.adobe.ntp,AdobeActivation
-HOST,prod.adobegenuine.com,AdobeActivation
-HOST,services.prod.ims.adobejanus.com,AdobeActivation
-HOST,tss-geotrust-crl.thawte.com,AdobeActivation
-HOST,workflow-ui-prod.licensingstack.com,AdobeActivation
-HOST,www.adobeereg.com,AdobeActivation
-HOST,paddleapi.com,AdobeActivation
-HOST,paddle.com,AdobeActivation
-HOST,paddle.s3.amazonaws.com,AdobeActivation
-HOST,registration.presonus.com,AdobeActivation
-HOST,updates.presonus.com,AdobeActivation
-HOST,api.presonus.com,AdobeActivation
-
-# 三、IP-CIDR 46条
+# > IP 拦截规则 (IP-CIDR, 已去重)
 IP-CIDR,3.208.248.199/32,AdobeActivation
 IP-CIDR,3.216.32.253/32,AdobeActivation
 IP-CIDR,3.219.243.226/32,AdobeActivation
@@ -243,15 +255,3 @@ IP-CIDR,199.7.54.72/32,AdobeActivation
 IP-CIDR,199.232.114.137/32,AdobeActivation
 IP-CIDR,209.34.83.67/32,AdobeActivation
 IP-CIDR,209.34.83.73/32,AdobeActivation
-IP-CIDR,209.34.83.73/32,AdobeActivation
-IP-CIDR,209.34.83.73/32,AdobeActivation
-IP-CIDR,209.34.83.73/32,AdobeActivation
-IP-CIDR,209.34.83.73/32,AdobeActivation
-IP-CIDR,209.34.83.73/32,AdobeActivation
-IP-CIDR,209.34.83.73/32,AdobeActivation
-
-# 四、统一 4条
-HOST-KEYWORD,adobe.de,AdobeActivation
-HOST-KEYWORD,adobe.io,AdobeActivation
-HOST-KEYWORD,adobestats.io,AdobeActivation
-HOST-KEYWORD,hstatic.io,AdobeActivation
