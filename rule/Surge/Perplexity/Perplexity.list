@@ -1,5 +1,5 @@
 # 一、Perplexity主域名
-DOMAIN-SUFFIX.ai
+DOMAIN-SUFFIX,perplexity.ai
 DOMAIN-SUFFIX,pplx.ai
 
 # 二、API和服务域名
@@ -7,7 +7,7 @@ DOMAIN,api.perplexity.ai
 DOMAIN,www.perplexity.ai
 
 # 三、CDN和静态资源
-DOMAIN-SUFFIXcdn.com
+DOMAIN-SUFFIX,perplexitycdn.com
 
 # 四、Anthropic Claude API（Perplexity后端）
 DOMAIN-SUFFIX,anthropic.com
