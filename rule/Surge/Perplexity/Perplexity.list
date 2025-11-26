@@ -9,18 +9,11 @@ DOMAIN,www.perplexity.ai
 # 三、CDN和静态资源
 DOMAIN-SUFFIXcdn.com
 
-# 四、AWS CloudFront域名 (⚠️注意：此域名极广，可能误伤其他网站)
-DOMAIN-SUFFIX,cloudfront.net
-
-# 五、Anthropic Claude API（Perplexity后端）
+# 四、Anthropic Claude API（Perplexity后端）
 DOMAIN-SUFFIX,anthropic.com
 DOMAIN,api.anthropic.com
 
-# 六、Google AI（Gemini）(⚠️注意：这也包含YouTube等谷歌API)
-DOMAIN-SUFFIX,googleapis.com
-DOMAIN-SUFFIX,generativelanguage.googleapis.com
-
-# 七、OpenAI（GPT模型）
+# 五、OpenAI（GPT模型）
 DOMAIN-SUFFIX,openai.com
 DOMAIN,oaistatic.com
 DOMAIN,api.openai.com
