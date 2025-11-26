@@ -1,26 +1,26 @@
 # 一、Perplexity主域名
-HOST-SUFFIX,perplexity.ai,Perplexity
-HOST-SUFFIX,pplx.ai,Perplexity
+DOMAIN-SUFFIX.ai
+DOMAIN-SUFFIX,pplx.ai
 
 # 二、API和服务域名
-HOST,api.perplexity.ai,Perplexity
-HOST,www.perplexity.ai,Perplexity
+DOMAIN,api.perplexity.ai
+DOMAIN,www.perplexity.ai
 
 # 三、CDN和静态资源
-HOST-SUFFIX,perplexitycdn.com,Perplexity
+DOMAIN-SUFFIXcdn.com
 
-# 四、AWS CloudFront域名
-HOST-SUFFIX,cloudfront.net,Perplexity
+# 四、AWS CloudFront域名 (⚠️注意：此域名极广，可能误伤其他网站)
+DOMAIN-SUFFIX,cloudfront.net
 
 # 五、Anthropic Claude API（Perplexity后端）
-HOST-SUFFIX,anthropic.com,Perplexity
-HOST,api.anthropic.com,Perplexity
+DOMAIN-SUFFIX,anthropic.com
+DOMAIN,api.anthropic.com
 
-# 六、Google AI（Gemini）
-HOST-SUFFIX,googleapis.com,Perplexity
-HOST-SUFFIX,generativelanguage.googleapis.com,Perplexity
+# 六、Google AI（Gemini）(⚠️注意：这也包含YouTube等谷歌API)
+DOMAIN-SUFFIX,googleapis.com
+DOMAIN-SUFFIX,generativelanguage.googleapis.com
 
 # 七、OpenAI（GPT模型）
-HOST-SUFFIX,openai.com,Perplexity
-HOST,oaistatic.com,Perplexity
-HOST,api.openai.com,Perplexity
+DOMAIN-SUFFIX,openai.com
+DOMAIN,oaistatic.com
+DOMAIN,api.openai.com
