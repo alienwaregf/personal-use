@@ -1,48 +1,17 @@
-# 抖音及关联服务
-HOST-KEYWORD,douyin.com,Social media
-HOST-KEYWORD,douyincdn.com,Social media
-HOST-KEYWORD,douyinpic.com,Social media
-HOST-KEYWORD,douyinstatic.com,Social media
-HOST-KEYWORD,douyinvod.com,Social media
-HOST-KEYWORD,iesdouyin.com,Social media
-HOST-KEYWORD,amemv.com,Social media
-HOST-KEYWORD,pstatp.com,Social media
-HOST-KEYWORD,byteimg.com,Social media
-HOST-KEYWORD,toscdn.com,Social media
-HOST-KEYWORD,toutiaocdn.com,Social media
-HOST-KEYWORD,bytecdn.com,Social media
-HOST-KEYWORD,bytecdn.cn,Social media
-HOST-KEYWORD,bytedns.net,Social media
-HOST-KEYWORD,bytedns.com,Social media
-HOST-KEYWORD,zjgslb.com,Social media
-HOST-KEYWORD,bdgslb.com,Social media
-HOST-KEYWORD,oortgslb.com,Social media
-HOST-KEYWORD,jinritemai.com,Social media
-HOST-KEYWORD,huoshan.com,Social media
-HOST-KEYWORD,huoshan.tv,Social media
-HOST-KEYWORD,ixigua.com,Social media
-HOST-KEYWORD,bytedance.com,Social media
-
-# 快手及关联服务
-HOST-KEYWORD,kuaishou.com,Social media
-HOST-KEYWORD,gifshow.com,Social media
-HOST-KEYWORD,ksapisrv.com,Social media
-HOST-KEYWORD,kuaishoupay.com,Social media
-HOST-KEYWORD,ks-cdn.com,Social media
-HOST-KEYWORD,ksyuncdn.com,Social media
-HOST-KEYWORD,kuaishou.cn,Social media
-HOST-KEYWORD,kuaishou.cc,Social media
-HOST-KEYWORD,kwaicdn.com,Social media
-
-# 小红书及关联服务
-HOST-KEYWORD,xiaohongshu.com,Social media
-HOST-KEYWORD,xhslink.com,Social media
-HOST-KEYWORD,xhscdn.com,Social media
-HOST-KEYWORD,xhsdns.com,Social media
-HOST-KEYWORD,xhs.com,Social media
-HOST-KEYWORD,redcdn.cn,Social media
-HOST-KEYWORD,xiaohongshucdn.com,Social media
-HOST-KEYWORD,ark.xiaohongshu.com,Social media
-
-# 通用CDN及第三方依赖（非必需，按需保留）
-HOST-KEYWORD,cdn.jsdelivr.net,Social media
+# > 抖音及关联服务
+HOST-SUFFIX, amemv.com,Social media
+HOST-SUFFIX, douyin.com,Social media
+HOST-SUFFIX, iesdouyin.com,Social media
+HOST-SUFFIX, snssdk.com,Social media
+# > 快手及关联服务
+HOST-SUFFIX, kuaishou.com,Social media
+HOST-SUFFIX, gifshow.com,Social media
+HOST-SUFFIX, ksapisrv.com,Social media
+# > 小红书及关联服务
+HOST-SUFFIX, xiaohongshu.com,Social media
+HOST-SUFFIX, xhslink.com,Social media
+HOST-SUFFIX, fengkongcloud.com,Social media
+HOST-SUFFIX, shumei.ai,Social media
+# > 皮皮及关联服务
+HOST-SUFFIX, ppx.cn,Social media
+HOST-SUFFIX, superlpp.com,Social media
