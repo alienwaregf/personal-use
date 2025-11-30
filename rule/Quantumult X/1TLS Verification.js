@@ -617,14 +617,24 @@ function TagCheck_QX(content) {
           }
             ni = 0
             if (item) {
-                // 强制关闭 TLS 证书验证
-                item = item.replace(/tls-verification\s*=\s*(true|false)/gi, "");
-                item += ", tls-verification=false"; 
+                // --- 修复开始：针对 CF 优选节点 ---
+                // 1. 强制关闭 TLS 证书验证 (解决红叉的关键)
+                if (item.indexOf("tls-verification=") == -1) {
+                    item += ", tls-verification=false";
+                } else {
+                    item = item.replace(/tls-verification\s*=\s*true/gi, "tls-verification=false");
+                }
+
+                // 2. 强制关闭 TCP Fast Open (防止运营商阻断/假死)
+                if (item.indexOf("fast-open=") == -1) {
+                    item += ", fast-open=false";
+                } else {
+                    item = item.replace(/fast-open\s*=\s*true/gi, "fast-open=false");
+                }
+                // --- 修复结束 ---
 
                 Nlist.push(item)
             }
-            Nlist.push(item)
-          }
         }// if "tag="
     } // for
     // 增加 server_check_url 参数
