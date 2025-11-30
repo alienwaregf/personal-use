@@ -618,7 +618,7 @@ function TagCheck_QX(content) {
             ni = 0
             if (item) {
                 // ============================================================
-                // 🛠 Cloudflare 优选节点：全方位修复补丁 (含 Host 同步)
+                // 🛠 Cloudflare 优选节点：全方位修复补丁
                 // ============================================================
                 
                 // 1. 强制关闭 TLS 证书验证 (解决红叉)
@@ -633,9 +633,9 @@ function TagCheck_QX(content) {
                 item = item.replace(/udp-relay\s*=\s*true/gi, "udp-relay=false");
                 if (item.indexOf("udp-relay=") == -1) item += ", udp-relay=false";
 
-                // 4. 强制禁止会话复用 (解决握手失败)
-                if (item.indexOf("tls-no-session-ticket") == -1) item += ", tls-no-session-ticket=true";
-                if (item.indexOf("tls-no-session-reuse") == -1) item += ", tls-no-session-reuse=true";
+                // 4. 【核心】强制禁止会话复用 (解决“刚通一会就超时”的元凶)
+                if (item.indexOf("tls-no-session-ticket=") == -1) item += ", tls-no-session-ticket=true";
+                if (item.indexOf("tls-no-session-reuse=") == -1) item += ", tls-no-session-reuse=true";
 
                 Nlist.push(item)
             }
