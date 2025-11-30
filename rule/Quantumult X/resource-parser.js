@@ -726,34 +726,31 @@ function TagCheck_QX(content) {
           }
             ni = 0
             if (item) {
-                // --- 终极修复：解决 Host 缺失 + 所有连接问题 ---
+                // --- 终极修复：解决所有连接问题 (最稳定版) ---
+                
+                // 1. 强制关闭 TLS 证书验证 (解决红叉)
+                item = item.replace(/tls-verification\s*=\s*true/gi, "tls-verification=false");
+                if (item.indexOf("tls-verification=") == -1) item += ", tls-verification=false";
 
-                // A. 提取 SNI (tls-host) 的值，这是 Cloudflare 认可的域名
-                let SNI = item.match(/tls-host\s*=\s*([^,]+)/);
-                let hostValue = SNI ? SNI[1].trim() : '';
+                // 2. 强制关闭 TCP Fast Open
+                item = item.replace(/fast-open\s*=\s*true/gi, "fast-open=false");
+                if (item.indexOf("fast-open=") == -1) item += ", fast-open=false";
 
-                // B. 清理并设置核心参数 (删除所有可能导致冲突的旧 true/false 值)
-                item = item.replace(/tls-verification\s*=\s*(true|false)/gi, "");
-                item = item.replace(/fast-open\s*=\s*(true|false)/gi, "");
-                item = item.replace(/udp-relay\s*=\s*(true|false)/gi, "");
-                item = item.replace(/tls-no-session-ticket\s*=\s*(true|false)/gi, "");
-                item = item.replace(/tls-no-session-reuse\s*=\s*(true|false)/gi, "");
-                item = item.replace(/tls-alpn\s*=\s*(http\/1.1|h2)/gi, ""); // 清理 ALPN
+                // 3. 强制关闭 UDP (解决假死)
+                item = item.replace(/udp-relay\s*=\s*true/gi, "udp-relay=false");
+                if (item.indexOf("udp-relay=") == -1) item += ", udp-relay=false";
 
-                // C. 统一追加安全值
-                item += ", tls-verification=false"; // 必须关闭验证
-                item += ", fast-open=false"; // 必须关闭 TFO
-                item += ", udp-relay=false"; // 必须关闭 UDP
-                item += ", tls-no-session-ticket=true"; // 必须禁止会话复用
-                item += ", tls-alpn=http/1.1"; // 必须降级协议
+                // 4. 强制禁止会话复用 (解决“短时间断流”的核心)
+                item = item.replace(/tls-no-session-ticket\s*=\s*true/gi, "tls-no-session-ticket=false");
+                item = item.replace(/tls-no-session-reuse\s*=\s*true/gi, "tls-no-session-reuse=false");
+                if (item.indexOf("tls-no-session-ticket=") == -1) item += ", tls-no-session-ticket=true";
+                if (item.indexOf("tls-no-session-reuse=") == -1) item += ", tls-no-session-reuse=true";
 
-                // D. 【核心关键】强制同步 Host (解决 Surge Works / QX Fails)
-                if (hostValue !== '') {
-                    item = item.replace(/obfs-host\s*=\s*([^,]+)/g, ""); // 清理旧的 obfs-host 字段
-                    item += ", obfs-host=" + hostValue; // 强制追加 SNI 值到 Host 字段
-                }
+                // 5. 强制 HTTP/1.1 (防止 H2 假死)
+                item = item.replace(/tls-alpn\s*=\s*([^,]+)/gi, ""); // 清理旧 ALPN
+                item += ", tls-alpn=http/1.1";
 
-                // E. 清理多余空格和逗号
+                // 6. 清理多余空格和逗号 (防止脚本报错)
                 item = item.replace(/(\s*,\s*)+/g, ", ").trim();
 
                 Nlist.push(item)
