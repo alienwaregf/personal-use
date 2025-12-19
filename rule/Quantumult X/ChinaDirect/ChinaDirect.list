@@ -6,3 +6,5 @@ HOST,seed-sequoia.siri.apple.com,ChinaDirect
 HOST,sequoia.apple.com,ChinaDirect
 # Nya Media
 HOST-SUFFIX,bangumi.ca,ChinaDirect
+# 免费域名
+HOST-SUFFIX,de5.net,ChinaDirect
