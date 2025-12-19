@@ -4,7 +4,8 @@
 # Bob
 HOST,seed-sequoia.siri.apple.com,ChinaDirect
 HOST,sequoia.apple.com,ChinaDirect
-# Nya Media
+# Emby
 HOST-SUFFIX,bangumi.ca,ChinaDirect
+HOST-SUFFIX,nijigem.by,ChinaDirect
 # 免费域名
 HOST-SUFFIX,de5.net,ChinaDirect
