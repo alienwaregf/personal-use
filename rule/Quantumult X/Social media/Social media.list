@@ -1,18 +1,26 @@
-# > 抖音及关联服务
-HOST-SUFFIX, amemv.com,Social media
-HOST-SUFFIX, zijieapi.com,Social media
-HOST-SUFFIX, douyin.com,Social media
-HOST-SUFFIX, iesdouyin.com,Social media
-HOST-SUFFIX, snssdk.com,Social media
-# > 快手及关联服务
-HOST-SUFFIX, kuaishou.com,Social media
-HOST-SUFFIX, gifshow.com,Social media
-HOST-SUFFIX, ksapisrv.com,Social media
-# > 小红书及关联服务
-HOST-SUFFIX, xiaohongshu.com,Social media
-HOST-SUFFIX, xhslink.com,Social media
-HOST-SUFFIX, fengkongcloud.com,Social media
-HOST-SUFFIX, shumei.ai,Social media
-# > 皮皮及关联服务
+# > douyin
+HOST, aweme.snssdk.com, Social media
+HOST, api.amemv.com, Social media
+HOST, api.p.pstatp.com, Social media
+HOST, api5-normal-c-hl.amemv.com, Social media
+HOST-KEYWORD, core-c-lq, Social media
+HOST-KEYWORD, core-normal, Social media
+# > kuaishou.com
+HOST-SUFFIX, ksapisrv.com, Social media
+HOST-SUFFIX, gifshow.com, Social media
+HOST-SUFFIX, kuaishouzt.com, Social media
+HOST-KEYWORD, core-api, Social media
+# > xiaohongshu
+HOST-SUFFIX, xiaohongshu.com, Social media
+HOST-SUFFIX, xhslink.com, Social media
+HOST-SUFFIX, qingk.com, Social media
+HOST-SUFFIX, fengkongcloud.com, Social media
+HOST-SUFFIX, shumei.ai, Social media
+# > pipigx
 HOST-SUFFIX, ppx.cn,Social media
 HOST-SUFFIX, superlpp.com,Social media
+# > WeChat
+HOST, short.weixin.qq.com, Social media
+HOST, szshort.weixin.qq.com, Social media
+HOST, mars.jindo.mobi, Social media
+HOST-SUFFIX, wechatos.net, Social media
