@@ -7,5 +7,6 @@ HOST,sequoia.apple.com,ChinaDirect
 # Emby
 HOST-SUFFIX,bangumi.ca,ChinaDirect
 HOST-SUFFIX,nijigem.by,ChinaDirect
-# 免费域名
+# 常用域名
 HOST-SUFFIX,de5.net,ChinaDirect
+HOST-SUFFIX,xyz,ChinaDirect
