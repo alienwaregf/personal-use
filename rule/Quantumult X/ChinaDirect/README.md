@@ -1,4 +1,4 @@
-# 🪄 ChinaDirect
+# 🇨🇳 ChinaDirect
 
 ## 前言
 
