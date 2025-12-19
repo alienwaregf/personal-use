@@ -2,7 +2,7 @@
 # HOST: 2
 
 # Bob
-host,seed-sequoia.siri.apple.com,ChinaDirect
-host,sequoia.apple.com,ChinaDirect
+HOST,seed-sequoia.siri.apple.com,ChinaDirect
+HOST,sequoia.apple.com,ChinaDirect
 # Nya Media
 HOST-SUFFIX,bangumi.ca,
