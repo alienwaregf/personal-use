@@ -1,4 +1,4 @@
-# 🪄 AdobeActivation
+# 🚫 AdobeActivation
 
 ## 前言
 
