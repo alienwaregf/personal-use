@@ -1,3 +1,5 @@
+# name：AdobeActivation
+
 payload:
   # > 域名匹配 (HOST-SUFFIX -> DOMAIN-SUFFIX)
   - DOMAIN-SUFFIX,adobe.de
