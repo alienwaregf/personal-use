@@ -11,10 +11,10 @@
 #不会干扰任何其他网络选项，例如 AI 生成、下载等
 
 # > 域名关键字匹配
-HOST-KEYWORD,adobe.de,AdobeActivation
-HOST-KEYWORD,adobe.io,AdobeActivation
-HOST-KEYWORD,adobestats.io,AdobeActivation
-HOST-KEYWORD,hstatic.io,AdobeActivation
+HOST-SUFFIX,adobe.de,AdobeActivation
+HOST-SUFFIX,adobe.io,AdobeActivation
+HOST-SUFFIX,adobestats.io,AdobeActivation
+HOST-SUFFIX,hstatic.io,AdobeActivation
 
 # > 域名规则 (Domain)
 # >> Adobe 验证与遥测
