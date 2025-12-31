@@ -1,0 +1,14 @@
+# NAME: ChinaDirect
+payload:
+  # > Bob
+  - DOMAIN,seed-sequoia.siri.apple.com
+  - DOMAIN,sequoia.apple.com
+  # > Emby
+  - DOMAIN-SUFFIX,bangumi.ca
+  - DOMAIN-SUFFIX,nijigem.by
+  # > 常用域名
+  - DOMAIN-SUFFIX,de5.net
+  - DOMAIN-SUFFIX,xyz
+  # > 测速
+  - DOMAIN-SUFFIX,speedtest.net
+  - DOMAIN-SUFFIX,ooklaserver.net
