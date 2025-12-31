@@ -1,0 +1,19 @@
+payload:
+  # ==========================================
+  # Perplexity AI 规则集
+  # ==========================================
+
+  # Perplexity 主域名
+  - DOMAIN-SUFFIX,perplexity.ai
+  - DOMAIN-SUFFIX,pplx.ai
+
+  # API 和服务域名
+  - DOMAIN,api.perplexity.ai
+  - DOMAIN,www.perplexity.ai
+
+  # CDN 和静态资源
+  - DOMAIN-SUFFIX,perplexitycdn.com
+
+  # Anthropic Claude API (Perplexity 后端)
+  - DOMAIN-SUFFIX,anthropic.com
+  - DOMAIN,api.anthropic.com
