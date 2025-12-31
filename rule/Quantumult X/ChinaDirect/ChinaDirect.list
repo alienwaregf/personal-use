@@ -1,14 +1,14 @@
 # NAME: ChinaDirect
 
-# Bob
+# > Bob
 HOST,seed-sequoia.siri.apple.com,ChinaDirect
 HOST,sequoia.apple.com,ChinaDirect
-# Emby
+# > Emby
 HOST-SUFFIX,bangumi.ca,ChinaDirect
 HOST-SUFFIX,nijigem.by,ChinaDirect
-# 常用域名
+# > 常用域名
 HOST-SUFFIX,de5.net,ChinaDirect
 HOST-SUFFIX,xyz,ChinaDirect
-# 测速
+# > 测速
 HOST-SUFFIX,speedtest.net,ChinaDirect
 HOST-SUFFIX,ooklaserver.net,ChinaDirect
