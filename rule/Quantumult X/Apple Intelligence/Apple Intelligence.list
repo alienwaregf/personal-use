@@ -3,5 +3,5 @@
 # host-keyword：2
 # 只针对Apple Intelligence，其他OpenAI域名自行设置
 
-host-keyword,apple-relay.apple.com,Apple Intelligence
-host-keyword,apple-relay.cloudflare.com,Apple Intelligence
+HOST,apple-relay.apple.com,Apple Intelligence
+HOST,apple-relay.cloudflare.com,Apple Intelligence
