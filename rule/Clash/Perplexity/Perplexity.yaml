@@ -1,8 +1,5 @@
+ # Perplexity
 payload:
-  # ==========================================
-  # Perplexity AI 规则集
-  # ==========================================
-
   # Perplexity 主域名
   - DOMAIN-SUFFIX,perplexity.ai
   - DOMAIN-SUFFIX,pplx.ai
