@@ -1,6 +1,5 @@
 # NAME: Apple Intelligence
 # 只针对Apple Intelligence，其他OpenAI域名自行设置
-
 payload:
-- DOMAIN,apple-relay.apple.com
-- DOMAIN,apple-relay.cloudflare.com
+  - DOMAIN,apple-relay.apple.com
+  - DOMAIN,apple-relay.cloudflare.com
