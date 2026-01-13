@@ -4,6 +4,8 @@ payload:
   - DOMAIN-SUFFIX,douyin.com
   - DOMAIN-SUFFIX,amemv.com
   - DOMAIN-SUFFIX,snssdk.com
+  - DOMAIN-SUFFIX,bytedance.com
+  - DOMAIN-SUFFIX,,zijieapi.com
   - DOMAIN-KEYWORD,core-c-lq
   - DOMAIN-KEYWORD,normal-c-lq
   
