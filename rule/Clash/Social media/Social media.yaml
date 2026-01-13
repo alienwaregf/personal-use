@@ -5,6 +5,8 @@ payload:
   - DOMAIN-SUFFIX,snssdk.com
   - DOMAIN-SUFFIX,pstatp.com
   - DOMAIN-SUFFIX,iresou.com
+  - DOMAIN-KEYWORD,core-c-lq
+  - DOMAIN-KEYWORD,normal-c-lq
   
   # > Kuaishou
   - DOMAIN-SUFFIX,apissl.ksapisrv.com
