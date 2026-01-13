@@ -2,9 +2,8 @@
 HOST-SUFFIX, douyin.com, Social media
 HOST-SUFFIX, amemv.com, Social media
 HOST-SUFFIX, snssdk.com, Social media
-HOST-SUFFIX, iresou.com, Social media
-HOST-SUFFIX,core-c-lq, Social media
-HOST-SUFFIX,normal-c-lq, Social media
+HOST-KEYWORD,core-c-lq, Social media
+HOST-KEYWORD,normal-c-lq, Social media
 # > Kuaishou
 HOST-SUFFIX, ksapisrv.com, Social media
 HOST-SUFFIX, apissl.ksapisrv.com, Social media
