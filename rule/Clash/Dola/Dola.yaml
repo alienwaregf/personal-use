@@ -2,8 +2,13 @@ payload:
   # --- 字节跳动海外基础设施 (Dola底层依赖) ---
   - DOMAIN-SUFFIX,byteoversea.com
   # 域名规则
-  - DOMAIN-SUFFIX,ciciaicdn.com
+  - DOMAIN-SUFFIX,byteintlapi.com
+  - DOMAIN-SUFFIX,mcs-nontt.byteintlapi.com
+  - DOMAIN-SUFFIX,sgali-mcs.byteoversea.com
+  - DOMAIN-SUFFIX,vcs-s.byteintlapi.com
   - DOMAIN-SUFFIX,static.com
+  - DOMAIN-SUFFIX,If-rc1.yhgfb-static.com
+  - DOMAIN-SUFFIX,yhgfb-static.com
   - DOMAIN-SUFFIX,dola.chat
   - DOMAIN-SUFFIX,dola-api.com
   - DOMAIN-SUFFIX,dola-cdn.com
@@ -11,5 +16,7 @@ payload:
   - DOMAIN-SUFFIX,dola.com
   - DOMAIN-SUFFIX,ciciai.com
   - DOMAIN-SUFFIX,cici.com
-  # IPv6 规则 (已去除端口限制，匹配该 IP 的所有端口)
+  - DOMAIN-SUFFIX,ciciaicdn.com
+  # IP规则
+  - IP-CIDR,34.102.215.99/32,no-resolve
   - IP-CIDR6,2001:4860:4864:5:8000::1/128,no-resolve
