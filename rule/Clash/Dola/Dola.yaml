@@ -1,14 +1,15 @@
 payload:
-  # --- Dola 新版核心域名 (来自您的截图) ---
+  # --- 字节跳动海外基础设施 (Dola底层依赖) ---
+  - DOMAIN-SUFFIX,byteoversea.com
+  # 域名规则
+  - DOMAIN-SUFFIX,ciciaicdn.com
+  - DOMAIN-SUFFIX,static.com
   - DOMAIN-SUFFIX,dola.chat
   - DOMAIN-SUFFIX,dola-api.com
   - DOMAIN-SUFFIX,dola-cdn.com
   - DOMAIN-SUFFIX,dola.global
-  
-  # --- Dola 旧版与兼容域名 (防“所在地区不可用”必填) ---
   - DOMAIN-SUFFIX,dola.com
   - DOMAIN-SUFFIX,ciciai.com
   - DOMAIN-SUFFIX,cici.com
-  
-  # --- 字节跳动海外基础设施 (Dola底层依赖) ---
-  - DOMAIN-SUFFIX,byteoversea.com
+  # IPv6 规则 (已去除端口限制，匹配该 IP 的所有端口)
+  - IP-CIDR6,2001:4860:4864:5:8000::1/128,no-resolve
