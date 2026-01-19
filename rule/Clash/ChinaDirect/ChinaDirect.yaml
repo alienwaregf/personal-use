@@ -6,6 +6,8 @@ payload:
   # > Emby
   - DOMAIN-SUFFIX,bangumi.ca
   - DOMAIN-SUFFIX,nijigem.by
+  # > 腾讯游戏
+  - DOMAIN-SUFFIX,fleetlogd.com
   # > 常用域名
   - DOMAIN-SUFFIX,dnshe.com
   - DOMAIN-SUFFIX,de5.net
