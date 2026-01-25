@@ -1,21 +1,35 @@
-# > 抖音
-DOMAIN-SUFFIX,amemv.com
-DOMAIN-SUFFIX,zijieapi.com
+# > ByteDance
 DOMAIN-SUFFIX,douyin.com
-DOMAIN-SUFFIX,iesdouyin.com
+DOMAIN-SUFFIX,amemv.com
 DOMAIN-SUFFIX,snssdk.com
 DOMAIN-SUFFIX,bytedance.com
-DOMAIN-SUFFIX,huoshan.com
-DOMAIN-SUFFIX,huoshan.tv
-# > 快手
-DOMAIN-SUFFIX,kuaishou.com
-DOMAIN-SUFFIX,gifshow.com
+DOMAIN-SUFFIX,zijieapi.com
+DOMAIN-KEYWORD,core-c-lq
+DOMAIN-KEYWORD,normal-c-lq
+
+# > Kuaishou
+DOMAIN-SUFFIX,apissl.ksapisrv.com
 DOMAIN-SUFFIX,ksapisrv.com
-# > 小红书
+DOMAIN-SUFFIX,gifshow.com
+DOMAIN-SUFFIX,kuaishouzt.com
+DOMAIN-SUFFIX,kuaishou.com
+
+# > Xingyin
 DOMAIN-SUFFIX,xiaohongshu.com
 DOMAIN-SUFFIX,xhslink.com
-DOMAIN-SUFFIX,fengkongcloud.com
-DOMAIN-SUFFIX,shumei.ai
-# > 皮皮
+DOMAIN-SUFFIX,qingk.com
+DOMAIN-SUFFIX,edith.xiaohongshu.com
+
+# > Beijing Xiaochuan
+DOMAIN,ulogs.umeng.com
+DOMAIN,alfile.ippzone.com
+DOMAIN,mercury-gateway.ixiaochuan.cn
+DOMAIN-SUFFIX,izuiyou.com
 DOMAIN-SUFFIX,ppx.cn
 DOMAIN-SUFFIX,superlpp.com
+DOMAIN-SUFFIX,bdtjrc.com
+DOMAIN-KEYWORD,ppx-api
+
+# > Tencent
+DOMAIN,mp.weixin.qq.com
+DOMAIN-KEYWORD,finder
