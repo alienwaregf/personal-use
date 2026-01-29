@@ -1,0 +1,69 @@
+# name: AdobeAPP
+# 作用: 拦截所有 Adobe 2026 全家桶及隐藏后台进程 (Win/Mac)
+
+payload:
+  # --- 你提到的重点补齐 (Win/Mac 混合) ---
+  - PROCESS-NAME,AGSService.exe
+  - PROCESS-NAME,Adobe Genuine Software Monitor Service.exe
+  - PROCESS-NAME,Adobe Genuine Software Integrity Service
+  - PROCESS-NAME,AcroTray
+  - PROCESS-NAME,AcroTray.exe
+  - PROCESS-NAME,AdobeIPCBroker
+  - PROCESS-NAME,AdobeIPCBroker.exe
+  - PROCESS-NAME,AdobeGCClient.exe
+  - PROCESS-NAME,AdobeGCClient
+
+  # --- 核心云服务与弹窗监控 ---
+  - PROCESS-NAME,Creative Cloud
+  - PROCESS-NAME,Creative Cloud Desktop
+  - PROCESS-NAME,Adobe Desktop Service
+  - PROCESS-NAME,Adobe Update Service
+  - PROCESS-NAME,AdobeUpdateService.exe
+  - PROCESS-NAME,CCXProcess
+  - PROCESS-NAME,CCLibrary
+  - PROCESS-NAME,CoreSync
+  - PROCESS-NAME,Adobe CEF Helper
+  - PROCESS-NAME,Adobe CEF Helper.exe
+  - PROCESS-NAME,AdobeNotificationClient
+  - PROCESS-NAME,Adobe Space Agent
+  - PROCESS-NAME,AccuWeather (Adobe)
+
+  # --- 文档与 PDF 组件 (Acrobat 系列) ---
+  - PROCESS-NAME,Acrobat
+  - PROCESS-NAME,Acrobat.exe
+  - PROCESS-NAME,AcrobatDC
+  - PROCESS-NAME,AcrobatDC.exe
+  - PROCESS-NAME,AcroRd32.exe
+  - PROCESS-NAME,AdobeCollabSync
+  - PROCESS-NAME,AcrobatInfo.exe
+
+  # --- 2026 主流创意软件 (最新版) ---
+  - PROCESS-NAME,Photoshop
+  - PROCESS-NAME,Adobe Photoshop 2026
+  - PROCESS-NAME,Illustrator
+  - PROCESS-NAME,Adobe Illustrator 2026
+  - PROCESS-NAME,Premiere
+  - PROCESS-NAME,Adobe Premiere Pro 2026
+  - PROCESS-NAME,After Effects
+  - PROCESS-NAME,Adobe After Effects 2026
+  - PROCESS-NAME,Adobe Media Encoder 2026
+  - PROCESS-NAME,Lightroom Classic
+  - PROCESS-NAME,Adobe Lightroom Classic
+  - PROCESS-NAME,InDesign
+  - PROCESS-NAME,Bridge
+  - PROCESS-NAME,Audition
+
+  # --- 3D、动画与交互 (Substance/Animate) ---
+  - PROCESS-NAME,Adobe Substance 3D Painter
+  - PROCESS-NAME,Adobe Substance 3D Sampler
+  - PROCESS-NAME,Adobe Substance 3D Designer
+  - PROCESS-NAME,Adobe Substance 3D Stager
+  - PROCESS-NAME,Adobe Animate
+  - PROCESS-NAME,Adobe XD
+  - PROCESS-NAME,Adobe Fresco
+
+  # --- 底层环境 (防侧漏) ---
+  - PROCESS-NAME,node.exe
+  - PROCESS-NAME,GPUSniffer.exe
+  - PROCESS-NAME,dynamiclinkmanager.exe
+  - PROCESS-NAME,Adobe Licensor.exe
