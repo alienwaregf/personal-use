@@ -1,8 +1,8 @@
 # name: AdobeAPP
-# 作用: 拦截所有 Adobe 2026 全家桶及隐藏后台进程 (Win/Mac)
+# 作用: 拦截所有 Adobe 全系列软件及其隐藏后台进程 (Win/Mac)
 
 payload:
-  # --- 重点补齐 (Win/Mac 混合) ---
+  # --- 1. 核心服务、授权、反盗版与弹窗 (最关键部分) ---
   - PROCESS-NAME,AGSService.exe
   - PROCESS-NAME,Adobe Genuine Software Monitor Service.exe
   - PROCESS-NAME,Adobe Genuine Software Integrity Service
@@ -12,23 +12,58 @@ payload:
   - PROCESS-NAME,AdobeIPCBroker.exe
   - PROCESS-NAME,AdobeGCClient.exe
   - PROCESS-NAME,AdobeGCClient
-
-  # --- 核心云服务与弹窗监控 ---
   - PROCESS-NAME,Creative Cloud
   - PROCESS-NAME,Creative Cloud Desktop
   - PROCESS-NAME,Adobe Desktop Service
+  - PROCESS-NAME,Adobe Desktop Service.exe
   - PROCESS-NAME,Adobe Update Service
   - PROCESS-NAME,AdobeUpdateService.exe
   - PROCESS-NAME,CCXProcess
+  - PROCESS-NAME,CCXProcess.exe
   - PROCESS-NAME,CCLibrary
+  - PROCESS-NAME,CCLibrary.exe
   - PROCESS-NAME,CoreSync
+  - PROCESS-NAME,CoreSync.exe
   - PROCESS-NAME,Adobe CEF Helper
   - PROCESS-NAME,Adobe CEF Helper.exe
   - PROCESS-NAME,AdobeNotificationClient
   - PROCESS-NAME,Adobe Space Agent
   - PROCESS-NAME,AccuWeather (Adobe)
 
-  # --- 文档与 PDF 组件 (Acrobat 系列) ---
+  # --- 2. 图像与设计 (PS, AI, ID, BR, LR) ---
+  - PROCESS-NAME,Photoshop
+  - PROCESS-NAME,Photoshop.exe
+  - PROCESS-NAME,Adobe Photoshop 2026
+  - PROCESS-NAME,Illustrator
+  - PROCESS-NAME,Illustrator.exe
+  - PROCESS-NAME,Adobe Illustrator 2026
+  - PROCESS-NAME,InDesign
+  - PROCESS-NAME,InDesign.exe
+  - PROCESS-NAME,Bridge
+  - PROCESS-NAME,Bridge.exe
+  - PROCESS-NAME,Lightroom
+  - PROCESS-NAME,Lightroom.exe
+  - PROCESS-NAME,LightroomCC
+  - PROCESS-NAME,Lightroom Classic
+  - PROCESS-NAME,LightroomClassic.exe
+  - PROCESS-NAME,Adobe Lightroom Classic
+
+  # --- 3. 视频与音频 (PR, AE, AU, ME) ---
+  - PROCESS-NAME,Premiere
+  - PROCESS-NAME,Premiere.exe
+  - PROCESS-NAME,Adobe Premiere Pro 2026
+  - PROCESS-NAME,After Effects
+  - PROCESS-NAME,AfterFX.exe
+  - PROCESS-NAME,Adobe After Effects 2026
+  - PROCESS-NAME,Adobe Media Encoder
+  - PROCESS-NAME,Adobe Media Encoder.exe
+  - PROCESS-NAME,Adobe Media Encoder 2026
+  - PROCESS-NAME,Audition
+  - PROCESS-NAME,Audition.exe
+  - PROCESS-NAME,Character Animator
+  - PROCESS-NAME,Character Animator.exe
+
+  # --- 4. 文档与 PDF (Acrobat 系列) ---
   - PROCESS-NAME,Acrobat
   - PROCESS-NAME,Acrobat.exe
   - PROCESS-NAME,AcrobatDC
@@ -37,33 +72,23 @@ payload:
   - PROCESS-NAME,AdobeCollabSync
   - PROCESS-NAME,AcrobatInfo.exe
 
-  # --- 2026 主流创意软件 (最新版) ---
-  - PROCESS-NAME,Photoshop
-  - PROCESS-NAME,Adobe Photoshop 2026
-  - PROCESS-NAME,Illustrator
-  - PROCESS-NAME,Adobe Illustrator 2026
-  - PROCESS-NAME,Premiere
-  - PROCESS-NAME,Adobe Premiere Pro 2026
-  - PROCESS-NAME,After Effects
-  - PROCESS-NAME,Adobe After Effects 2026
-  - PROCESS-NAME,Adobe Media Encoder 2026
-  - PROCESS-NAME,Lightroom Classic
-  - PROCESS-NAME,Adobe Lightroom Classic
-  - PROCESS-NAME,InDesign
-  - PROCESS-NAME,Bridge
-  - PROCESS-NAME,Audition
-
-  # --- 3D、动画与交互 (Substance/Animate) ---
+  # --- 5. 3D、网页、动画 (Substance, XD, DW) ---
   - PROCESS-NAME,Adobe Substance 3D Painter
+  - PROCESS-NAME,Adobe Substance 3D Painter.exe
   - PROCESS-NAME,Adobe Substance 3D Sampler
   - PROCESS-NAME,Adobe Substance 3D Designer
   - PROCESS-NAME,Adobe Substance 3D Stager
   - PROCESS-NAME,Adobe Animate
+  - PROCESS-NAME,Animate.exe
   - PROCESS-NAME,Adobe XD
+  - PROCESS-NAME,Dreamweaver
+  - PROCESS-NAME,Dreamweaver.exe
   - PROCESS-NAME,Adobe Fresco
 
-  # --- 底层环境 (防侧漏) ---
+  # --- 6. 底层环境与关联组件 (防侧漏) ---
   - PROCESS-NAME,node.exe
   - PROCESS-NAME,GPUSniffer.exe
   - PROCESS-NAME,dynamiclinkmanager.exe
   - PROCESS-NAME,Adobe Licensor.exe
+  - PROCESS-NAME,LogTransport2.exe
+  - PROCESS-NAME,CRWindowsClientService.exe
