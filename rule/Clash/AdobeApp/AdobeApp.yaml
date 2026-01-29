@@ -2,7 +2,7 @@
 # 作用: 拦截所有 Adobe 2026 全家桶及隐藏后台进程 (Win/Mac)
 
 payload:
-  # --- 你提到的重点补齐 (Win/Mac 混合) ---
+  # --- 重点补齐 (Win/Mac 混合) ---
   - PROCESS-NAME,AGSService.exe
   - PROCESS-NAME,Adobe Genuine Software Monitor Service.exe
   - PROCESS-NAME,Adobe Genuine Software Integrity Service
