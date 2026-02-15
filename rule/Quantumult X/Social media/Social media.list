@@ -1,11 +1,7 @@
 # > ByteDance
-HOST-SUFFIX, douyin.com, Social media
 HOST-SUFFIX, amemv.com, Social media
 HOST-SUFFIX, snssdk.com, Social media
-HOST-SUFFIX, bytedance.com, Social media
-HOST-SUFFIX, zijieapi.com, Social media
-HOST-KEYWORD, core-c-lq, Social media
-HOST-KEYWORD, normal-c-lq, Social media
+HOST-SUFFIX, byteintlapi.com, Social media
 # > Kuaishou
 HOST-SUFFIX, ksapisrv.com, Social media
 HOST-SUFFIX, apissl.ksapisrv.com, Social media
