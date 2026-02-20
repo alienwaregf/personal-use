@@ -9,6 +9,7 @@ payload:
   - DOMAIN-SUFFIX,cdn.bgp.yt
     # > 123
   - DOMAIN-SUFFIX,123pan.com
+  - DOMAIN-SUFFIX,123pan.cn
   # > 常用域名
   - DOMAIN-SUFFIX,de5.net
   - DOMAIN-SUFFIX,xyz
