@@ -7,6 +7,8 @@ payload:
   - DOMAIN-SUFFIX,bangumi.ca
   - DOMAIN-SUFFIX,nijigem.by
   - DOMAIN-SUFFIX,cdn.bgp.yt
+    # > 123
+  - DOMAIN-SUFFIX,123pan.com
   # > 常用域名
   - DOMAIN-SUFFIX,de5.net
   - DOMAIN-SUFFIX,xyz
