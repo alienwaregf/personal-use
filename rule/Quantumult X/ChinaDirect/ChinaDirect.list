@@ -3,9 +3,6 @@
 # > Bob
 HOST,seed-sequoia.siri.apple.com,ChinaDirect
 HOST,sequoia.apple.com,ChinaDirect
-# > Movie & TV
-HOST-SUFFIX,gying.net,ChinaDirect
-HOST-SUFFIX,pomo.mom,ChinaDirect
 # > Emby
 HOST-SUFFIX,bangumi.ca,ChinaDirect
 HOST-SUFFIX,nijigem.by,ChinaDirect
