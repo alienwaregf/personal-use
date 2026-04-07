@@ -1,0 +1,15 @@
+ # IP
+payload:
+  - DOMAIN-SUFFIX,ip.sb
+  - DOMAIN-SUFFIX,ipinfo.io
+  - DOMAIN-SUFFIX,ifconfig.me
+  - DOMAIN-SUFFIX,ipleak.net
+  - DOMAIN-SUFFIX,ipip.net
+  - DOMAIN-SUFFIX,ip.cn
+  - DOMAIN-SUFFIX,cz88.net
+  - DOMAIN-SUFFIX,iplocation.net
+  - DOMAIN-SUFFIX,ip.gs
+  - DOMAIN-SUFFIX,cip.cc
+  - DOMAIN-SUFFIX,ipapi.co
+  - DOMAIN-SUFFIX,ipdata.co
+  - DOMAIN-SUFFIX,ipgeolocation.io
