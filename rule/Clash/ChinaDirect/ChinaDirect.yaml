@@ -17,4 +17,4 @@ payload:
   - DOMAIN-SUFFIX,speedtest.net
   - DOMAIN-SUFFIX,ooklaserver.net
   # > 远程
-  - PROCESS-NAME,ToDesk,DIRECT
+  - PROCESS-NAME,ToDesk
