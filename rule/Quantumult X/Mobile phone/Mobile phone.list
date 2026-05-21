@@ -1,0 +1,33 @@
+# ==========================================
+# Talkatone 规则集 (App 服务、API 与语音基建)
+# ==========================================
+HOST-SUFFIX,talkatone.com,Mobile phone
+HOST-SUFFIX,tktn.at,Mobile phone
+HOST-SUFFIX,teleapi.net,Mobile phone
+HOST-KEYWORD,talkatone,Mobile phone
+
+# Talkatone 已知核心 IP 段
+IP-CIDR,50.117.27.0/24,Mobile phone
+IP-CIDR,69.46.75.0/24,Mobile phone
+IP-CIDR,205.164.56.0/24,Mobile phone
+
+# ==========================================
+# Tello Mobile & Wi-Fi Calling 规则集
+# ==========================================
+# Tello 官方服务
+HOST-SUFFIX,tello.com,Mobile phone
+HOST-KEYWORD,tello,Mobile phone
+
+# T-Mobile 基础服务
+HOST-SUFFIX,t-mobile.com,Mobile phone
+
+# T-Mobile ePDG (Wi-Fi Calling 核心鉴权与语音网关)
+HOST-SUFFIX,3gppnetwork.org,Mobile phone
+HOST-SUFFIX,epdg.epc.mnc260.mcc310.pub.3gppnetwork.org,Mobile phone
+HOST-SUFFIX,epdg.epc.mnc240.mcc310.pub.3gppnetwork.org,Mobile phone
+HOST-SUFFIX,ss.epdg.epc.mnc260.mcc310.pub.3gppnetwork.org,Mobile phone
+HOST-KEYWORD,epdg,Mobile phone
+
+# T-Mobile US 核心 ASN/IP 段 (涵盖 Wi-Fi Calling 数据通信 IP)
+IP-CIDR,208.54.0.0/16,Mobile phone
+IP-CIDR,66.94.0.0/19,Mobile phone
