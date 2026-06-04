@@ -21,3 +21,4 @@ payload:
   - DOMAIN-SUFFIX,browserscan.net
   - DOMAIN-SUFFIX,antping.com
   - DOMAIN-SUFFIX,whoer.net
+  - DOMAIN-SUFFIX,test-ipv6.com
