@@ -16,5 +16,6 @@ payload:
   # > 测速
   - DOMAIN-SUFFIX,speedtest.net
   - DOMAIN-SUFFIX,ooklaserver.net
+  - DOMAIN-SUFFIX,test-ipv6.com
   # > 远程
   - PROCESS-NAME,ToDesk
