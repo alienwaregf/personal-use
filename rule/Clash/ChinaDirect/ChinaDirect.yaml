@@ -1,5 +1,8 @@
 # NAME: ChinaDirect
 payload:
+  # > ASUS
+  - DOMAIN-SUFFIX,asusrouter.com,DIRECT
+  - DOMAIN-SUFFIX,router.asus.com,DIRECT
   # > Bob
   - DOMAIN,seed-sequoia.siri.apple.com
   - DOMAIN,sequoia.apple.com
