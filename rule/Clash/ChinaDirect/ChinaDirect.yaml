@@ -22,3 +22,4 @@ payload:
   - DOMAIN-SUFFIX,test-ipv6.com
   # > 远程
   - PROCESS-NAME,ToDesk
+  - PROCESS-NAME,RustDesk
