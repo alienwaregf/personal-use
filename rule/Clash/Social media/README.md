@@ -1,11 +1,14 @@
-# 📱 Social media
+> [!TIP]
+> 本目录下的规则已由系统自动转换为 Mihomo Binary MRS 格式并保留了文本配置。
+
+# 🧸 Social media
 
 ## 前言
+这是个人自定义集成的分流规则库。
 
-按除里显规则
+## Clash
 
-Social media规则由《RULE GENERATOR 规则生成器》自动生成。
+### ⬇️ MRS 规则下载链接
 
-分流规则是互联网公共服务的域名和IP地址汇总，所有数据均收集自互联网公共信息，不代表我们支持或使用这些服务。
+- **Domain 规则**: [Social media_Domain.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Social media/Social media_Domain.mrs)
 
-请通过【中华人民共和国 People's Republic of China】合法的互联网出口信道访问规则中的地址，并确保在使用过程中符合相关法律法规。
