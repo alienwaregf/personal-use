@@ -107,10 +107,3 @@ def rewrite_readme(src_path, dst_path, rel_path, category, generated_mrs):
 
 if __name__ == "__main__":
     process_rules()
-
-### 这一版的主要更新：
-1. **`rewrite_readme` 函数**：它使用正则表达式扫描所有 Markdown 链接。它会智能判断原链接是属于 Domain 还是 IP 类型，并将其替换为你仓库中对应的 `.mrs` 原始下载链接（Raw URL）。
-2. **Raw 链接构造**：使用了 `https://raw.githubusercontent.com/...` 格式，这样用户在你的 GitHub 上点击 README 里的链接时，会直接下载二进制文件，而不是跳到网页。
-3. **增加提示栏**：在每个生成的 README 开头增加了一个简单的 TIP 提示，让用户知道这些链接已经过转换。
-
-你的 GitHub Actions 工作流不需要修改。更新这个脚本后手动触发一次，你就能看到一个完美镜像、链接精准的规则库了！
