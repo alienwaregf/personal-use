@@ -24,13 +24,13 @@ def process_rules():
 
         category_name = os.path.basename(root)
 
-        # 如果是根目录，跳过规则提取和复制，只处理大 README 导航表
+        # ==================== 特殊处理：如果是 rule/Clash 根目录 ====================
         if rel_path == ".":
             if "README.md" in files:
                 source_readme_path = os.path.join(root, "README.md")
                 target_readme_path = os.path.join(target_dir, "README.md")
                 rewrite_readme(source_readme_path, target_readme_path, rel_path, category_name, {})
-            continue
+            continue # 跳过根目录的规则提取，直接进入子文件夹
 
         # 1. 自动复制保存原版最全的文本配置 (.yaml 或 _Classical.yaml)
         target_yaml_files = [f"{category_name}.yaml", f"{category_name}_Classical.yaml"]
@@ -55,7 +55,7 @@ def process_rules():
             if compile_ruleset(ips, os.path.join(target_dir, ip_mrs), 'ipcidr'):
                 generated_mrs['ip'] = ip_mrs
 
-        # 4. 智能处理 README.md：重写链接区块
+        # 4. 智能处理每个子目录的小 README.md：重写链接区块
         if "README.md" in files:
             source_readme_path = os.path.join(root, "README.md")
             target_readme_path = os.path.join(target_dir, "README.md")
@@ -94,13 +94,14 @@ def rewrite_readme(src_path, dst_path, rel_path, category, generated_mrs):
     with open(src_path, 'r', encoding='utf-8') as f:
         content = f.read()
 
-    # ==================== 分支一：处理 rule/Clash 根目录的大 README ====================
+    # ==================== 分支一：处理 rule/Clash 根目录的大对齐 README ====================
     if rel_path == ".":
         content = content.replace("https://github.com/blackmatrix7/ios_rule_script/tree/master/rule/Clash", 
                                   f"https://github.com/{GITHUB_USER}/{GITHUB_REPO}/tree/main/rule/Clash")
         content = content.replace("https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash", 
                                   f"https://raw.githubusercontent.com/{GITHUB_USER}/{GITHUB_REPO}/main/rule/Clash")
         
+        # 补全大分类表格底部的相对文件夹跳转链接，全部指向你自己的子文件夹网页
         def root_link_replacer(match):
             text = match.group(1)
             url = match.group(2).strip()
@@ -109,13 +110,13 @@ def rewrite_readme(src_path, dst_path, rel_path, category, generated_mrs):
             return match.group(0)
         
         new_content = re.sub(r'\[([^\]]+)\]\(([^\)]+)\)', root_link_replacer, content)
-        header = f"> [!TIP]\n> 本目录下的各分类规则已自动转换为 Mihomo Binary MRS 格式。点击下方分类文件夹即可直达你自己的对应目录网页查看与下载。\n\n"
+        header = f"> [!TIP]\n> 本目录下的各分类规则已自动转换为 Mihomo Binary MRS 格式与文本 YAML 格式。点击下方分类名称可直达你自己的对应目录网页。\n\n"
         with open(dst_path, 'w', encoding='utf-8') as f:
             f.write(header + new_content)
-        print("已完美重写根目录大 README.md 的直达链接")
+        print("已完美对齐根目录大 README.md 的直达表格链接")
         return
 
-    # ==================== 分支二：处理各个子目录的小 README ====================
+    # ==================== 分支二：处理各个子目录（如 Apple, Google）的小 README ====================
     url_rel_path = rel_path.replace("\\", "/")
     my_links = "### ⬇️ MRS 规则下载链接\n\n"
     if 'domain' in generated_mrs:
@@ -132,7 +133,7 @@ def rewrite_readme(src_path, dst_path, rel_path, category, generated_mrs):
     else:
         new_content = content + "\n\n" + my_links
         
-    header = f"> [!TIP]\n> 本目录下的规则已由上游 classical 格式自动转换为 Mihomo Binary MRS 格式。\n\n"
+    header = f"> [!TIP]\n> 本目录下的规则已由上游 classical 格式自动转换为 Mihomo Binary MRS 格式并保留了文本配置。\n\n"
     
     with open(dst_path, 'w', encoding='utf-8') as f:
         f.write(header + new_content)
