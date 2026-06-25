@@ -38,10 +38,6 @@ jobs:
       - name: 运行转换脚本
         run: python Scripts/convert_rules.py
         
-      - name: 清理上一版遗留在根目录的散落 mrs 文件
-        # 这行代码会在生成完结构后，精准秒杀 root 目录下的 700 多个旧 mrs 残留，腾出空间解除 1000 显示警告
-        run: find rule/Clash -maxdepth 1 -name "*.mrs" -type f -delete
-        
       - name: 清理临时文件
         run: rm -rf source_repo
         
@@ -50,4 +46,4 @@ jobs:
           git config --local user.name "github-actions[bot]"
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git add rule/Clash/
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto update, cleanup and rebuild folder structure with root table mapping" && git push)
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto update and convert mrs rules" && git push)
