@@ -29,6 +29,9 @@ TelegramSG规则由《RULE GENERATOR 规则生成器》自动生成。
 ### ⬇️ MRS 规则下载链接
 
 - **IP 规则**: [TelegramSG_IP.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/TelegramSG/TelegramSG_IP.mrs)
+  ```text
+  https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/TelegramSG/TelegramSG_IP.mrs
+  ```
 
 ## 子规则/排除规则
 

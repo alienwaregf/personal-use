@@ -29,6 +29,9 @@
 ### ⬇️ MRS 规则下载链接
 
 - **Domain 规则**: [DouYin_Domain.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/DouYin/DouYin_Domain.mrs)
+  ```text
+  https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/DouYin/DouYin_Domain.mrs
+  ```
 
 ## 子规则/排除规则
 

@@ -29,6 +29,9 @@
 ### ⬇️ MRS 规则下载链接
 
 - **IP 规则**: [HuaweiCloud_IP.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Cloud/HuaweiCloud/HuaweiCloud_IP.mrs)
+  ```text
+  https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Cloud/HuaweiCloud/HuaweiCloud_IP.mrs
+  ```
 
 ## 子规则/排除规则
 

@@ -11,4 +11,7 @@
 ### ⬇️ MRS 规则下载链接
 
 - **Domain 规则**: [Social media_Domain.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Social media/Social media_Domain.mrs)
+  ```text
+  https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Social media/Social media_Domain.mrs
+  ```
 

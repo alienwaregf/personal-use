@@ -29,6 +29,9 @@
 ### ⬇️ MRS 规则下载链接
 
 - **IP 规则**: [Assassin'sCreed-Odyssey_IP.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Assassin'sCreed/Assassin'sCreed-Odyssey/Assassin'sCreed-Odyssey_IP.mrs)
+  ```text
+  https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Assassin'sCreed/Assassin'sCreed-Odyssey/Assassin'sCreed-Odyssey_IP.mrs
+  ```
 
 ## 子规则/排除规则
 

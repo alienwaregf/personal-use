@@ -29,6 +29,9 @@
 ### ⬇️ MRS 规则下载链接
 
 - **IP 规则**: [360Cloud_IP.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Cloud/360Cloud/360Cloud_IP.mrs)
+  ```text
+  https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Cloud/360Cloud/360Cloud_IP.mrs
+  ```
 
 ## 子规则/排除规则
 

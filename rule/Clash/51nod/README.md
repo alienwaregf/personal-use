@@ -28,6 +28,9 @@
 ### ⬇️ MRS 规则下载链接
 
 - **Domain 规则**: [51nod_Domain.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/51nod/51nod_Domain.mrs)
+  ```text
+  https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/51nod/51nod_Domain.mrs
+  ```
 
 ## 子规则/排除规则
 

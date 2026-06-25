@@ -33,6 +33,9 @@ AdGuard DNS Filter 中的例外规则，现在单独作为Direct文件。
 ### ⬇️ MRS 规则下载链接
 
 - **Domain 规则**: [Direct_Domain.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/AdGuardSDNSFilter/Direct/Direct_Domain.mrs)
+  ```text
+  https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/AdGuardSDNSFilter/Direct/Direct_Domain.mrs
+  ```
 
 ## 子规则/排除规则
 

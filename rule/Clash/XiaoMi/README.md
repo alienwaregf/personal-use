@@ -30,7 +30,13 @@
 ### ⬇️ MRS 规则下载链接
 
 - **Domain 规则 (必须同时使用)**: [XiaoMi_Domain.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/XiaoMi/XiaoMi_Domain.mrs)
+  ```text
+  https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/XiaoMi/XiaoMi_Domain.mrs
+  ```
 - **IP 规则 (必须同时使用)**: [XiaoMi_IP.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/XiaoMi/XiaoMi_IP.mrs)
+  ```text
+  https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/XiaoMi/XiaoMi_IP.mrs
+  ```
 
 ## 子规则/排除规则
 

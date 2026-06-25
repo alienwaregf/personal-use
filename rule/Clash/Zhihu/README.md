@@ -35,7 +35,13 @@
 ### ⬇️ MRS 规则下载链接
 
 - **Domain 规则 (必须同时使用)**: [Zhihu_Domain.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Zhihu/Zhihu_Domain.mrs)
+  ```text
+  https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Zhihu/Zhihu_Domain.mrs
+  ```
 - **IP 规则 (必须同时使用)**: [Zhihu_IP.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Zhihu/Zhihu_IP.mrs)
+  ```text
+  https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Zhihu/Zhihu_IP.mrs
+  ```
 
 ## 子规则/排除规则
 

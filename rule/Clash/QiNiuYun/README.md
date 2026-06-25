@@ -28,6 +28,9 @@
 ### ⬇️ MRS 规则下载链接
 
 - **Domain 规则**: [QiNiuYun_Domain.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/QiNiuYun/QiNiuYun_Domain.mrs)
+  ```text
+  https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/QiNiuYun/QiNiuYun_Domain.mrs
+  ```
 
 ## 子规则/排除规则
 

@@ -28,6 +28,9 @@ TrustWave规则由《RULE GENERATOR 规则生成器》自动生成。
 ### ⬇️ MRS 规则下载链接
 
 - **Domain 规则**: [TrustWave_Domain.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/TrustWave/TrustWave_Domain.mrs)
+  ```text
+  https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/TrustWave/TrustWave_Domain.mrs
+  ```
 
 ## 子规则/排除规则
 

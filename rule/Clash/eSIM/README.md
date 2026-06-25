@@ -11,5 +11,11 @@
 ### ⬇️ MRS 规则下载链接
 
 - **Domain 规则 (必须同时使用)**: [eSIM_Domain.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/eSIM/eSIM_Domain.mrs)
+  ```text
+  https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/eSIM/eSIM_Domain.mrs
+  ```
 - **IP 规则 (必须同时使用)**: [eSIM_IP.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/eSIM/eSIM_IP.mrs)
+  ```text
+  https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/eSIM/eSIM_IP.mrs
+  ```
 

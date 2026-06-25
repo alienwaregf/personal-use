@@ -28,6 +28,9 @@
 ### ⬇️ MRS 规则下载链接
 
 - **Domain 规则**: [DanDanZan_Domain.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/DanDanZan/DanDanZan_Domain.mrs)
+  ```text
+  https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/DanDanZan/DanDanZan_Domain.mrs
+  ```
 
 ## 子规则/排除规则
 

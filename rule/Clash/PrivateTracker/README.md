@@ -31,7 +31,13 @@ PT下载规则由《RULE GENERATOR 规则生成器》自动生成。
 ### ⬇️ MRS 规则下载链接
 
 - **Domain 规则 (必须同时使用)**: [PrivateTracker_Domain.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/PrivateTracker/PrivateTracker_Domain.mrs)
+  ```text
+  https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/PrivateTracker/PrivateTracker_Domain.mrs
+  ```
 - **IP 规则 (必须同时使用)**: [PrivateTracker_IP.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/PrivateTracker/PrivateTracker_IP.mrs)
+  ```text
+  https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/PrivateTracker/PrivateTracker_IP.mrs
+  ```
 
 ## 子规则/排除规则
 

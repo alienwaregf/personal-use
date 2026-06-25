@@ -28,6 +28,9 @@
 ### ⬇️ MRS 规则下载链接
 
 - **Domain 规则**: [DouBan_Domain.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/DouBan/DouBan_Domain.mrs)
+  ```text
+  https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/DouBan/DouBan_Domain.mrs
+  ```
 
 ## 子规则/排除规则
 

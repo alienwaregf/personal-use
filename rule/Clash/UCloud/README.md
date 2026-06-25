@@ -28,6 +28,9 @@
 ### ⬇️ MRS 规则下载链接
 
 - **Domain 规则**: [UCloud_Domain.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/UCloud/UCloud_Domain.mrs)
+  ```text
+  https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/UCloud/UCloud_Domain.mrs
+  ```
 
 ## 子规则/排除规则
 

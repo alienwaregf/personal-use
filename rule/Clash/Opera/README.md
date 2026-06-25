@@ -30,7 +30,13 @@ Opera规则由《RULE GENERATOR 规则生成器》自动生成。
 ### ⬇️ MRS 规则下载链接
 
 - **Domain 规则 (必须同时使用)**: [Opera_Domain.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Opera/Opera_Domain.mrs)
+  ```text
+  https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Opera/Opera_Domain.mrs
+  ```
 - **IP 规则 (必须同时使用)**: [Opera_IP.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Opera/Opera_IP.mrs)
+  ```text
+  https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Opera/Opera_IP.mrs
+  ```
 
 ## 子规则/排除规则
 

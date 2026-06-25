@@ -35,6 +35,9 @@ https://www.zhihu.com/question/307466160
 ### ⬇️ MRS 规则下载链接
 
 - **Domain 规则**: [AdvertisingMiTV_Domain.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/AdvertisingMiTV/AdvertisingMiTV_Domain.mrs)
+  ```text
+  https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/AdvertisingMiTV/AdvertisingMiTV_Domain.mrs
+  ```
 
 ## 子规则/排除规则
 
