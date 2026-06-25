@@ -1,5 +1,5 @@
 > [!TIP]
-> 本目录下的规则已由系统自动转换为 Mihomo Binary MRS 格式并保留了文本配置。
+> 本目录下的规则已由上游 classical 格式自动转换为 Mihomo Binary MRS 格式并保留了最全的源文本配置。
 
 # 🧸 百度云计算
 
@@ -29,13 +29,7 @@
 
 ## Clash 
 
-### ⬇️ MRS 规则下载链接
-
-- **IP 规则**: [BaiduCloud_IP.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Cloud/BaiduCloud/BaiduCloud_IP.mrs)
-  ```text
-  https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Cloud/BaiduCloud/BaiduCloud_IP.mrs
-  ```
-
+#
 ## 子规则/排除规则
 
 当前分流规则，未包含其他子规则。
@@ -59,3 +53,8 @@
 ### 其他
 
 请不要对外宣传本项目。
+
+### ⬇️ MRS 规则下载链接
+
+- **IP 规则**: [BaiduCloud_IP.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Cloud/BaiduCloud/BaiduCloud_IP.mrs)
+

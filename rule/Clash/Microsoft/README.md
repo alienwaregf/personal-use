@@ -1,5 +1,5 @@
 > [!TIP]
-> 本目录下的规则已由系统自动转换为 Mihomo Binary MRS 格式并保留了文本配置。
+> 本目录下的规则已由上游 classical 格式自动转换为 Mihomo Binary MRS 格式并保留了最全的源文本配置。
 
 # 🧸 Microsoft
 
@@ -28,13 +28,7 @@ Microsoft规则由《RULE GENERATOR 规则生成器》自动生成。
 
 ## Clash 
 
-### ⬇️ MRS 规则下载链接
-
-- **Domain 规则**: [Microsoft_Domain.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Microsoft/Microsoft_Domain.mrs)
-  ```text
-  https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Microsoft/Microsoft_Domain.mrs
-  ```
-
+#
 ## 子规则/排除规则
 
 当前分流规则，已包含以下子规则，除非特殊需求否则不建议重复引用：
@@ -74,3 +68,8 @@ Microsoft规则由《RULE GENERATOR 规则生成器》自动生成。
 ### 其他
 
 请不要对外宣传本项目。
+
+### ⬇️ MRS 规则下载链接
+
+- **Domain 规则**: [Microsoft_Domain.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Microsoft/Microsoft_Domain.mrs)
+

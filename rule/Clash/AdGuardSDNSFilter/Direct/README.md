@@ -1,5 +1,5 @@
 > [!TIP]
-> 本目录下的规则已由系统自动转换为 Mihomo Binary MRS 格式并保留了文本配置。
+> 本目录下的规则已由上游 classical 格式自动转换为 Mihomo Binary MRS 格式并保留了最全的源文本配置。
 
 # 🧸 AdGuardS DNS Filter Direct
 
@@ -30,13 +30,7 @@ AdGuard DNS Filter 中的例外规则，现在单独作为Direct文件。
 
 ## Clash 
 
-### ⬇️ MRS 规则下载链接
-
-- **Domain 规则**: [Direct_Domain.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/AdGuardSDNSFilter/Direct/Direct_Domain.mrs)
-  ```text
-  https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/AdGuardSDNSFilter/Direct/Direct_Domain.mrs
-  ```
-
+#
 ## 子规则/排除规则
 
 当前分流规则，未包含其他子规则。
@@ -60,3 +54,8 @@ AdGuard DNS Filter 中的例外规则，现在单独作为Direct文件。
 ### 其他
 
 请不要对外宣传本项目。
+
+### ⬇️ MRS 规则下载链接
+
+- **Domain 规则**: [Direct_Domain.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/AdGuardSDNSFilter/Direct/Direct_Domain.mrs)
+

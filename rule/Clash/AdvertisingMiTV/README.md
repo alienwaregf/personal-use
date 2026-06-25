@@ -1,5 +1,5 @@
 > [!TIP]
-> 本目录下的规则已由系统自动转换为 Mihomo Binary MRS 格式并保留了文本配置。
+> 本目录下的规则已由上游 classical 格式自动转换为 Mihomo Binary MRS 格式并保留了最全的源文本配置。
 
 # 🧸 小米电视去广告
 
@@ -32,13 +32,7 @@ https://www.zhihu.com/question/307466160
 
 ## Clash 
 
-### ⬇️ MRS 规则下载链接
-
-- **Domain 规则**: [AdvertisingMiTV_Domain.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/AdvertisingMiTV/AdvertisingMiTV_Domain.mrs)
-  ```text
-  https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/AdvertisingMiTV/AdvertisingMiTV_Domain.mrs
-  ```
-
+#
 ## 子规则/排除规则
 
 当前分流规则，未包含其他子规则。
@@ -58,3 +52,8 @@ https://www.zhihu.com/question/307466160
 ### 其他
 
 请不要对外宣传本项目。
+
+### ⬇️ MRS 规则下载链接
+
+- **Domain 规则**: [AdvertisingMiTV_Domain.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/AdvertisingMiTV/AdvertisingMiTV_Domain.mrs)
+
