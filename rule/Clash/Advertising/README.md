@@ -1,5 +1,5 @@
 > [!TIP]
-> 本目录下的规则已由上游 classical 格式自动转换为 Mihomo Binary MRS 格式并保留了文本配置。
+> 本目录下的规则已由上游 classical 格式自动转换为 Mihomo Binary MRS 格式并保留了最全的源文本配置。
 
 # 🧸 去广告
 
@@ -30,33 +30,15 @@
 | IP-CIDR6 | 3  | 
 | TOTAL | 258615  | 
 
-
 ## Clash 
 
-#### 使用说明
-- Advertising.yaml，请使用 behavior: "classical"。
-- Advertising_Resolve.yaml，请使用 behavior: "classical"。
-- Advertising_Classical.yaml，请使用 behavior: "classical"。
-- Advertising_Domain.yaml，请使用 behavior: "domain"。
-
-#### 配置建议
-- Advertising_Classical.yaml 单独使用。
-- Advertising.yaml、Advertising_Domain.yaml 共同使用。
-- Advertising_Resolve.yaml、Advertising_Domain.yaml 共同使用。
-
-#### ⬇️ MRS 规则下载链接
-
-- **Domain 规则 (推荐)**: [Advertising_Domain.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Advertising/Advertising_Domain.mrs)
-- **IP 规则**: [Advertising_IP.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Advertising/Advertising_IP.mrs)
-
-
+#
 ## 子规则/排除规则
 
 当前分流规则，已包含以下子规则，除非特殊需求否则不建议重复引用：
 | 子规则  |  |  | 
 | ---- | ---- | ----  |
 | AdvertisingLite | Hijacking | Privacy  | 
-
 
 当前分流规则，已排除以下规则：
 | 排除规则  | 
@@ -88,7 +70,6 @@
 - https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/reject.txt
 - https://raw.githubusercontent.com/zqzess/rule_for_quantumultX/master/QuantumultX/rules/AdBlock.list
 
-
 感谢以上规则作者的辛勤付出（排名不分先后）。
 
 ## 最后
@@ -102,3 +83,9 @@
 ### 其他
 
 请不要对外宣传本项目。
+
+### ⬇️ MRS 规则下载链接
+
+- **Domain 规则 (必须同时使用)**: [Advertising_Domain.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Advertising/Advertising_Domain.mrs)
+- **IP 规则 (必须同时使用)**: [Advertising_IP.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Advertising/Advertising_IP.mrs)
+

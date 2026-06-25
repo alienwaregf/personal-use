@@ -1,5 +1,5 @@
 > [!TIP]
-> 本目录下的规则已由上游 classical 格式自动转换为 Mihomo Binary MRS 格式并保留了文本配置。
+> 本目录下的规则已由上游 classical 格式自动转换为 Mihomo Binary MRS 格式并保留了最全的源文本配置。
 
 # 🧸 ChinaMedia
 
@@ -28,30 +28,15 @@ ChinaMedia规则由《RULE GENERATOR 规则生成器》自动生成。
 | PROCESS-NAME | 6  | 
 | TOTAL | 411  | 
 
-
 ## Clash 
 
-#### 使用说明
-- ChinaMedia.yaml，请使用 behavior: "classical"。
-- ChinaMedia_Resolve.yaml，请使用 behavior: "classical"。
-
-#### 配置建议
-- ChinaMedia.yaml 单独使用。
-- ChinaMedia_Resolve.yaml 单独使用。
-
-#### ⬇️ MRS 规则下载链接
-
-- **Domain 规则 (推荐)**: [ChinaMedia_Domain.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/ChinaMedia/ChinaMedia_Domain.mrs)
-- **IP 规则**: [ChinaMedia_IP.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/ChinaMedia/ChinaMedia_IP.mrs)
-
-
+#
 ## 子规则/排除规则
 
 当前分流规则，已包含以下子规则，除非特殊需求否则不建议重复引用：
 | 子规则  |  | 
 | ---- | ----  |
 | BiliBili | CCTV  | 
-
 
 ## 数据来源
 
@@ -66,7 +51,6 @@ ChinaMedia规则由《RULE GENERATOR 规则生成器》自动生成。
 - https://raw.githubusercontent.com/zqzess/rule_for_quantumultX/master/QuantumultX/rules/CMedia.list
 - https://ruleset.isagood.day/bilibili.conf
 
-
 感谢以上规则作者的辛勤付出（排名不分先后）。
 
 ## 最后
@@ -80,3 +64,9 @@ ChinaMedia规则由《RULE GENERATOR 规则生成器》自动生成。
 ### 其他
 
 请不要对外宣传本项目。
+
+### ⬇️ MRS 规则下载链接
+
+- **Domain 规则 (必须同时使用)**: [ChinaMedia_Domain.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/ChinaMedia/ChinaMedia_Domain.mrs)
+- **IP 规则 (必须同时使用)**: [ChinaMedia_IP.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/ChinaMedia/ChinaMedia_IP.mrs)
+

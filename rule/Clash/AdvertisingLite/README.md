@@ -1,5 +1,5 @@
 > [!TIP]
-> 本目录下的规则已由上游 classical 格式自动转换为 Mihomo Binary MRS 格式并保留了文本配置。
+> 本目录下的规则已由上游 classical 格式自动转换为 Mihomo Binary MRS 格式并保留了最全的源文本配置。
 
 # 🧸 去广告精简版
 
@@ -30,28 +30,10 @@
 | IP-CIDR6 | 1  | 
 | TOTAL | 38066  | 
 
-
 ## Clash 
 
-#### 使用说明
-- AdvertisingLite.yaml，请使用 behavior: "classical"。
-- AdvertisingLite_Resolve.yaml，请使用 behavior: "classical"。
-- AdvertisingLite_Classical.yaml，请使用 behavior: "classical"。
-- AdvertisingLite_Domain.yaml，请使用 behavior: "domain"。
-
-#### 配置建议
-- AdvertisingLite_Classical.yaml 单独使用。
-- AdvertisingLite.yaml、AdvertisingLite_Domain.yaml 共同使用。
-- AdvertisingLite_Resolve.yaml、AdvertisingLite_Domain.yaml 共同使用。
-
-#### ⬇️ MRS 规则下载链接
-
-- **Domain 规则 (推荐)**: [AdvertisingLite_Domain.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/AdvertisingLite/AdvertisingLite_Domain.mrs)
-- **IP 规则**: [AdvertisingLite_IP.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/AdvertisingLite/AdvertisingLite_IP.mrs)
-
-
+#
 ## 子规则/排除规则
-
 
 当前分流规则，未包含其他子规则。
 
@@ -71,7 +53,6 @@
 - https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/source/rule/Advertising/LianXiangJia/LianXiangJia.list
 - https://raw.githubusercontent.com/yjqiang/surge_scripts/main/modules/hupu/hupu.sgmodule
 
-
 感谢以上规则作者的辛勤付出（排名不分先后）。
 
 ## 最后
@@ -85,3 +66,9 @@
 ### 其他
 
 请不要对外宣传本项目。
+
+### ⬇️ MRS 规则下载链接
+
+- **Domain 规则 (必须同时使用)**: [AdvertisingLite_Domain.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/AdvertisingLite/AdvertisingLite_Domain.mrs)
+- **IP 规则 (必须同时使用)**: [AdvertisingLite_IP.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/AdvertisingLite/AdvertisingLite_IP.mrs)
+

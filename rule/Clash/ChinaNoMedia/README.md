@@ -1,5 +1,5 @@
 > [!TIP]
-> 本目录下的规则已由上游 classical 格式自动转换为 Mihomo Binary MRS 格式并保留了文本配置。
+> 本目录下的规则已由上游 classical 格式自动转换为 Mihomo Binary MRS 格式并保留了最全的源文本配置。
 
 # 🧸 ChinaNoMedia
 
@@ -30,33 +30,15 @@ ChinaNoMedia规则由《RULE GENERATOR 规则生成器》自动生成。
 | IP-CIDR6 | 4  | 
 | TOTAL | 3624  | 
 
-
 ## Clash 
 
-#### 使用说明
-- ChinaNoMedia.yaml，请使用 behavior: "classical"。
-- ChinaNoMedia_Resolve.yaml，请使用 behavior: "classical"。
-- ChinaNoMedia_Classical.yaml，请使用 behavior: "classical"。
-- ChinaNoMedia_Domain.yaml，请使用 behavior: "domain"。
-
-#### 配置建议
-- ChinaNoMedia_Classical.yaml 单独使用。
-- ChinaNoMedia.yaml、ChinaNoMedia_Domain.yaml 共同使用。
-- ChinaNoMedia_Resolve.yaml、ChinaNoMedia_Domain.yaml 共同使用。
-
-#### ⬇️ MRS 规则下载链接
-
-- **Domain 规则 (推荐)**: [ChinaNoMedia_Domain.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/ChinaNoMedia/ChinaNoMedia_Domain.mrs)
-- **IP 规则**: [ChinaNoMedia_IP.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/ChinaNoMedia/ChinaNoMedia_IP.mrs)
-
-
+#
 ## 子规则/排除规则
 
 当前分流规则，已包含以下子规则，除非特殊需求否则不建议重复引用：
 | 子规则  | 
 | ----  |
 | China  | 
-
 
 当前分流规则，已排除以下规则：
 | 排除规则  | 
@@ -74,7 +56,6 @@ ChinaNoMedia规则由《RULE GENERATOR 规则生成器》自动生成。
 - https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Domestic.yaml
 - https://raw.githubusercontent.com/zqzess/rule_for_quantumultX/master/QuantumultX/rules/Mainland.list
 
-
 感谢以上规则作者的辛勤付出（排名不分先后）。
 
 ## 最后
@@ -88,3 +69,9 @@ ChinaNoMedia规则由《RULE GENERATOR 规则生成器》自动生成。
 ### 其他
 
 请不要对外宣传本项目。
+
+### ⬇️ MRS 规则下载链接
+
+- **Domain 规则 (必须同时使用)**: [ChinaNoMedia_Domain.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/ChinaNoMedia/ChinaNoMedia_Domain.mrs)
+- **IP 规则 (必须同时使用)**: [ChinaNoMedia_IP.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/ChinaNoMedia/ChinaNoMedia_IP.mrs)
+

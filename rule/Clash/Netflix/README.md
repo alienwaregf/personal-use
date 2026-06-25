@@ -1,5 +1,5 @@
 > [!TIP]
-> 本目录下的规则已由上游 classical 格式自动转换为 Mihomo Binary MRS 格式并保留了文本配置。
+> 本目录下的规则已由上游 classical 格式自动转换为 Mihomo Binary MRS 格式并保留了最全的源文本配置。
 
 # 🧸 Netflix
 
@@ -28,29 +28,10 @@ Netflix规则由《RULE GENERATOR 规则生成器》自动生成。
 | PROCESS-NAME | 1  | 
 | TOTAL | 1157  | 
 
-
 ## Clash 
 
-#### 使用说明
-- Netflix.yaml，请使用 behavior: "classical"。
-- Netflix_Resolve.yaml，请使用 behavior: "classical"。
-- Netflix_Classical.yaml，请使用 behavior: "classical"。
-- Netflix_IP.yaml，请使用 behavior: "ipcidr"。
-- Netflix_IP_No_IPv6.yaml，请使用 behavior: "ipcidr"。
-
-#### 配置建议
-- Netflix_Classical.yaml 单独使用。
-- Netflix.yaml、Netflix_IP.yaml 共同使用。
-- Netflix_Resolve.yaml、Netflix_IP.yaml 共同使用。
-
-#### ⬇️ MRS 规则下载链接
-
-- **Domain 规则 (推荐)**: [Netflix_Domain.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Netflix/Netflix_Domain.mrs)
-- **IP 规则**: [Netflix_IP.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Netflix/Netflix_IP.mrs)
-
-
+#
 ## 子规则/排除规则
-
 
 当前分流规则，未包含其他子规则。
 
@@ -67,7 +48,6 @@ Netflix规则由《RULE GENERATOR 规则生成器》自动生成。
 - https://raw.githubusercontent.com/zqzess/rule_for_quantumultX/master/QuantumultX/rules/Netflix.list
 - https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/NetflixIP.yaml
 
-
 感谢以上规则作者的辛勤付出（排名不分先后）。
 
 ## 最后
@@ -81,3 +61,9 @@ Netflix规则由《RULE GENERATOR 规则生成器》自动生成。
 ### 其他
 
 请不要对外宣传本项目。
+
+### ⬇️ MRS 规则下载链接
+
+- **Domain 规则 (必须同时使用)**: [Netflix_Domain.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Netflix/Netflix_Domain.mrs)
+- **IP 规则 (必须同时使用)**: [Netflix_IP.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Netflix/Netflix_IP.mrs)
+

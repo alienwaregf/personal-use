@@ -1,5 +1,5 @@
 > [!TIP]
-> 本目录下的规则已由上游 classical 格式自动转换为 Mihomo Binary MRS 格式并保留了文本配置。
+> 本目录下的规则已由上游 classical 格式自动转换为 Mihomo Binary MRS 格式并保留了最全的源文本配置。
 
 # 🧸 海南航空
 
@@ -24,24 +24,10 @@
 | DOMAIN-SUFFIX | 5  | 
 | TOTAL | 6  | 
 
-
 ## Clash 
 
-#### 使用说明
-- HaiNanHangKong.yaml，请使用 behavior: "classical"。
-- HaiNanHangKong_Resolve.yaml，请使用 behavior: "classical"。
-
-#### 配置建议
-- HaiNanHangKong.yaml 单独使用。
-- HaiNanHangKong_Resolve.yaml 单独使用。
-
-#### ⬇️ MRS 规则下载链接
-
-- **Domain 规则 (推荐)**: [HaiNanHangKong_Domain.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/HaiNanHangKong/HaiNanHangKong_Domain.mrs)
-
-
+#
 ## 子规则/排除规则
-
 
 当前分流规则，未包含其他子规则。
 
@@ -50,7 +36,6 @@
 《海南航空》的数据来自以下链接，如与本项目的《海南航空》规则混合使用，可能会造成规则大量重复。
 
 - https://raw.githubusercontent.com/LM-Firefly/Rules/master/Domestic-Services/HaiNanHangKong.list
-
 
 感谢以上规则作者的辛勤付出（排名不分先后）。
 
@@ -65,3 +50,8 @@
 ### 其他
 
 请不要对外宣传本项目。
+
+### ⬇️ MRS 规则下载链接
+
+- **Domain 规则**: [HaiNanHangKong_Domain.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/HaiNanHangKong/HaiNanHangKong_Domain.mrs)
+

@@ -1,5 +1,5 @@
 > [!TIP]
-> 本目录下的各分类规则已自动转换为 Mihomo Binary MRS 格式与文本 YAML 格式。点击下方分类名称可直达你自己的对应目录网页。
+> 本目录下的各分类规则已自动转换为 Mihomo Binary MRS 格式与文本 YAML 格式。
 
 ## 分类
 

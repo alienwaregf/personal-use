@@ -1,5 +1,5 @@
 > [!TIP]
-> 本目录下的规则已由上游 classical 格式自动转换为 Mihomo Binary MRS 格式并保留了文本配置。
+> 本目录下的规则已由上游 classical 格式自动转换为 Mihomo Binary MRS 格式并保留了最全的源文本配置。
 
 # 🧸 全球云计算
 
@@ -25,34 +25,15 @@
 | IP-CIDR6 | 859  | 
 | TOTAL | 2861  | 
 
-
 ## Clash 
 
-#### 使用说明
-- CloudGlobal.yaml，请使用 behavior: "classical"。
-- CloudGlobal_Resolve.yaml，请使用 behavior: "classical"。
-- CloudGlobal_Classical.yaml，请使用 behavior: "classical"。
-- CloudGlobal_IP.yaml，请使用 behavior: "ipcidr"。
-- CloudGlobal_IP_No_IPv6.yaml，请使用 behavior: "ipcidr"。
-
-#### 配置建议
-- CloudGlobal_Classical.yaml 单独使用。
-- CloudGlobal.yaml、CloudGlobal_IP.yaml 共同使用。
-- CloudGlobal_Resolve.yaml、CloudGlobal_IP.yaml 共同使用。
-
-#### ⬇️ MRS 规则下载链接
-
-- **Domain 规则 (推荐)**: [CloudGlobal_Domain.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Cloud/CloudGlobal/CloudGlobal_Domain.mrs)
-- **IP 规则**: [CloudGlobal_IP.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Cloud/CloudGlobal/CloudGlobal_IP.mrs)
-
-
+#
 ## 子规则/排除规则
 
 当前分流规则，已包含以下子规则，除非特殊需求否则不建议重复引用：
 | 子规则  |  |  | 
 | ---- | ---- | ----  |
 | AkamaiCloud | AmazonCloud | HiNet  | 
-
 
 ## 数据来源
 
@@ -62,7 +43,6 @@
 - https://raw.githubusercontent.com/LM-Firefly/Rules/master/CCC-Global/Amazon.list
 - https://raw.githubusercontent.com/LM-Firefly/Rules/master/CCC-Global/HiNet.list
 - https://raw.githubusercontent.com/LM-Firefly/Rules/master/CCC-Global.list
-
 
 感谢以上规则作者的辛勤付出（排名不分先后）。
 
@@ -77,3 +57,9 @@
 ### 其他
 
 请不要对外宣传本项目。
+
+### ⬇️ MRS 规则下载链接
+
+- **Domain 规则 (必须同时使用)**: [CloudGlobal_Domain.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Cloud/CloudGlobal/CloudGlobal_Domain.mrs)
+- **IP 规则 (必须同时使用)**: [CloudGlobal_IP.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Cloud/CloudGlobal/CloudGlobal_IP.mrs)
+

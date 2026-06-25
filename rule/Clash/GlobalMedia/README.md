@@ -1,5 +1,5 @@
 > [!TIP]
-> 本目录下的规则已由上游 classical 格式自动转换为 Mihomo Binary MRS 格式并保留了文本配置。
+> 本目录下的规则已由上游 classical 格式自动转换为 Mihomo Binary MRS 格式并保留了最全的源文本配置。
 
 # 🧸 GlobalMedia
 
@@ -28,33 +28,15 @@ GlobalMedia规则由《RULE GENERATOR 规则生成器》自动生成。
 | PROCESS-NAME | 3  | 
 | TOTAL | 2265  | 
 
-
 ## Clash 
 
-#### 使用说明
-- GlobalMedia.yaml，请使用 behavior: "classical"。
-- GlobalMedia_Resolve.yaml，请使用 behavior: "classical"。
-- GlobalMedia_Classical.yaml，请使用 behavior: "classical"。
-- GlobalMedia_Domain.yaml，请使用 behavior: "domain"。
-
-#### 配置建议
-- GlobalMedia_Classical.yaml 单独使用。
-- GlobalMedia.yaml、GlobalMedia_Domain.yaml 共同使用。
-- GlobalMedia_Resolve.yaml、GlobalMedia_Domain.yaml 共同使用。
-
-#### ⬇️ MRS 规则下载链接
-
-- **Domain 规则 (推荐)**: [GlobalMedia_Domain.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/GlobalMedia/GlobalMedia_Domain.mrs)
-- **IP 规则**: [GlobalMedia_IP.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/GlobalMedia/GlobalMedia_IP.mrs)
-
-
+#
 ## 子规则/排除规则
 
 当前分流规则，已包含以下子规则，除非特殊需求否则不建议重复引用：
 | 子规则  |  | 
 | ---- | ----  |
 | YouTube | YouTubeMusic  | 
-
 
 当前分流规则，已排除以下规则：
 | 排除规则  | 
@@ -75,7 +57,6 @@ GlobalMedia规则由《RULE GENERATOR 规则生成器》自动生成。
 - https://raw.githubusercontent.com/zqzess/rule_for_quantumultX/master/QuantumultX/rules/GMedia.list
 - https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/YouTubeMusic.yaml
 
-
 感谢以上规则作者的辛勤付出（排名不分先后）。
 
 ## 最后
@@ -89,3 +70,9 @@ GlobalMedia规则由《RULE GENERATOR 规则生成器》自动生成。
 ### 其他
 
 请不要对外宣传本项目。
+
+### ⬇️ MRS 规则下载链接
+
+- **Domain 规则 (必须同时使用)**: [GlobalMedia_Domain.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/GlobalMedia/GlobalMedia_Domain.mrs)
+- **IP 规则 (必须同时使用)**: [GlobalMedia_IP.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/GlobalMedia/GlobalMedia_IP.mrs)
+

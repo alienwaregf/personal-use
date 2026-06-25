@@ -1,5 +1,5 @@
 > [!TIP]
-> 本目录下的规则已由上游 classical 格式自动转换为 Mihomo Binary MRS 格式并保留了文本配置。
+> 本目录下的规则已由上游 classical 格式自动转换为 Mihomo Binary MRS 格式并保留了最全的源文本配置。
 
 # 🧸 ChinaIPsTest
 
@@ -31,37 +31,15 @@ ChinaIPsTest规则由《RULE GENERATOR 规则生成器》自动生成。
 | IP-CIDR6 | 6597  | 
 | TOTAL | 29507  | 
 
-
 ## Clash 
 
-#### 使用说明
-- ChinaIPsTest_Classical.yaml，请使用 behavior: "classical"。
-- ChinaIPsTest_Classical_No_IPv6.yaml，请使用 behavior: "classical"。
-- ChinaIPsTest_IP.yaml，请使用 behavior: "ipcidr"。
-- ChinaIPsTest_IP_No_IPv6.yaml，请使用 behavior: "ipcidr"。
-
-#### 文件区别
-- ChinaIPsTest_Classical.yaml与ChinaIPsTest_Classical_No_IPv6.yaml的区别在于后者不带IPv6规则，适用纯IPv4网络。
-- ChinaIPsTest_IP.yaml与ChinaIPsTest_IP_No_IPv6.yaml的区别在于后者不带IPv6规则，适用纯IPv4网络。
-
-#### 配置建议
-- ChinaIPsTest_IP.yaml 单独使用。
-- ChinaIPsTest_IP_No_IPv6.yaml 纯IPv4网络，单独使用。
-- ChinaIPsTest_Classical.yaml 单独使用。
-- ChinaIPsTest_Classical_No_IPv6.yaml 纯IPv4网络，单独使用。
-
-#### ⬇️ MRS 规则下载链接
-
-- **IP 规则**: [ChinaIPsTest_IP.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/ChinaIPs/ChinaIPsTest/ChinaIPsTest_IP.mrs)
-
-
+#
 ## 子规则/排除规则
 
 当前分流规则，已包含以下子规则，除非特殊需求否则不建议重复引用：
 | 子规则  |  |  | 
 | ---- | ---- | ----  |
 | ChinaASN | ChinaIPs | ChinaIPsBGP  | 
-
 
 ## 数据来源
 
@@ -89,7 +67,6 @@ ChinaIPsTest规则由《RULE GENERATOR 规则生成器》自动生成。
 - https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Domestic%20IPs.yaml
 - https://raw.githubusercontent.com/missuo/ASN-China/main/IP.China.list
 
-
 感谢以上规则作者的辛勤付出（排名不分先后）。
 
 ## 最后
@@ -103,3 +80,8 @@ ChinaIPsTest规则由《RULE GENERATOR 规则生成器》自动生成。
 ### 其他
 
 请不要对外宣传本项目。
+
+### ⬇️ MRS 规则下载链接
+
+- **IP 规则**: [ChinaIPsTest_IP.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/ChinaIPs/ChinaIPsTest/ChinaIPsTest_IP.mrs)
+

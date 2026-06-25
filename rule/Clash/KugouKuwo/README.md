@@ -1,5 +1,5 @@
 > [!TIP]
-> 本目录下的规则已由上游 classical 格式自动转换为 Mihomo Binary MRS 格式并保留了文本配置。
+> 本目录下的规则已由上游 classical 格式自动转换为 Mihomo Binary MRS 格式并保留了最全的源文本配置。
 
 # 🧸 酷狗/酷我
 
@@ -24,25 +24,10 @@
 | IP-CIDR | 90  | 
 | TOTAL | 109  | 
 
-
 ## Clash 
 
-#### 使用说明
-- KugouKuwo.yaml，请使用 behavior: "classical"。
-- KugouKuwo_Resolve.yaml，请使用 behavior: "classical"。
-
-#### 配置建议
-- KugouKuwo.yaml 单独使用。
-- KugouKuwo_Resolve.yaml 单独使用。
-
-#### ⬇️ MRS 规则下载链接
-
-- **Domain 规则 (推荐)**: [KugouKuwo_Domain.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/KugouKuwo/KugouKuwo_Domain.mrs)
-- **IP 规则**: [KugouKuwo_IP.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/KugouKuwo/KugouKuwo_IP.mrs)
-
-
+#
 ## 子规则/排除规则
-
 
 当前分流规则，未包含其他子规则。
 
@@ -51,7 +36,6 @@
 《酷狗/酷我》的数据来自以下链接，如与本项目的《酷狗/酷我》规则混合使用，可能会造成规则大量重复。
 
 - https://raw.githubusercontent.com/LM-Firefly/Rules/master/Domestic-Services/Kugou%26Kuwo.list
-
 
 感谢以上规则作者的辛勤付出（排名不分先后）。
 
@@ -66,3 +50,9 @@
 ### 其他
 
 请不要对外宣传本项目。
+
+### ⬇️ MRS 规则下载链接
+
+- **Domain 规则 (必须同时使用)**: [KugouKuwo_Domain.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/KugouKuwo/KugouKuwo_Domain.mrs)
+- **IP 规则 (必须同时使用)**: [KugouKuwo_IP.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/KugouKuwo/KugouKuwo_IP.mrs)
+

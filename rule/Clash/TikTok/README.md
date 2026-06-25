@@ -1,5 +1,5 @@
 > [!TIP]
-> 本目录下的规则已由上游 classical 格式自动转换为 Mihomo Binary MRS 格式并保留了文本配置。
+> 本目录下的规则已由上游 classical 格式自动转换为 Mihomo Binary MRS 格式并保留了最全的源文本配置。
 
 # 🧸 TikTok
 
@@ -26,24 +26,10 @@ TikTok规则由《RULE GENERATOR 规则生成器》自动生成。
 | PROCESS-NAME | 1  | 
 | TOTAL | 32  | 
 
-
 ## Clash 
 
-#### 使用说明
-- TikTok.yaml，请使用 behavior: "classical"。
-- TikTok_Resolve.yaml，请使用 behavior: "classical"。
-
-#### 配置建议
-- TikTok.yaml 单独使用。
-- TikTok_Resolve.yaml 单独使用。
-
-#### ⬇️ MRS 规则下载链接
-
-- **Domain 规则 (推荐)**: [TikTok_Domain.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/TikTok/TikTok_Domain.mrs)
-
-
+#
 ## 子规则/排除规则
-
 
 当前分流规则，未包含其他子规则。
 
@@ -55,7 +41,6 @@ TikTok规则由《RULE GENERATOR 规则生成器》自动生成。
 - https://raw.githubusercontent.com/LM-Firefly/Rules/master/Global-Services/TikTok.list
 - https://raw.githubusercontent.com/Semporia/Quantumult-X/master/Filter/TikTok.list
 - https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/TikTok.yaml
-
 
 感谢以上规则作者的辛勤付出（排名不分先后）。
 
@@ -70,3 +55,8 @@ TikTok规则由《RULE GENERATOR 规则生成器》自动生成。
 ### 其他
 
 请不要对外宣传本项目。
+
+### ⬇️ MRS 规则下载链接
+
+- **Domain 规则**: [TikTok_Domain.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/TikTok/TikTok_Domain.mrs)
+

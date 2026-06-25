@@ -1,5 +1,5 @@
 > [!TIP]
-> 本目录下的规则已由上游 classical 格式自动转换为 Mihomo Binary MRS 格式并保留了文本配置。
+> 本目录下的规则已由上游 classical 格式自动转换为 Mihomo Binary MRS 格式并保留了最全的源文本配置。
 
 # 🧸 Proxy
 
@@ -27,28 +27,10 @@ Proxy规则由《RULE GENERATOR 规则生成器》自动生成。
 | IP-CIDR6 | 4  | 
 | TOTAL | 6861  | 
 
-
 ## Clash 
 
-#### 使用说明
-- Proxy.yaml，请使用 behavior: "classical"。
-- Proxy_Resolve.yaml，请使用 behavior: "classical"。
-- Proxy_Classical.yaml，请使用 behavior: "classical"。
-- Proxy_Domain.yaml，请使用 behavior: "domain"。
-
-#### 配置建议
-- Proxy_Classical.yaml 单独使用。
-- Proxy.yaml、Proxy_Domain.yaml 共同使用。
-- Proxy_Resolve.yaml、Proxy_Domain.yaml 共同使用。
-
-#### ⬇️ MRS 规则下载链接
-
-- **Domain 规则 (推荐)**: [Proxy_Domain.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Proxy/Proxy_Domain.mrs)
-- **IP 规则**: [Proxy_IP.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Proxy/Proxy_IP.mrs)
-
-
+#
 ## 子规则/排除规则
-
 
 当前分流规则，未包含其他子规则。
 
@@ -73,7 +55,6 @@ Proxy规则由《RULE GENERATOR 规则生成器》自动生成。
 - https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/greatfire.txt
 - https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Proxy.yaml
 
-
 感谢以上规则作者的辛勤付出（排名不分先后）。
 
 ## 最后
@@ -87,3 +68,9 @@ Proxy规则由《RULE GENERATOR 规则生成器》自动生成。
 ### 其他
 
 请不要对外宣传本项目。
+
+### ⬇️ MRS 规则下载链接
+
+- **Domain 规则 (必须同时使用)**: [Proxy_Domain.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Proxy/Proxy_Domain.mrs)
+- **IP 规则 (必须同时使用)**: [Proxy_IP.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Proxy/Proxy_IP.mrs)
+

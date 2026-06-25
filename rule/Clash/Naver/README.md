@@ -1,5 +1,5 @@
 > [!TIP]
-> 本目录下的规则已由上游 classical 格式自动转换为 Mihomo Binary MRS 格式并保留了文本配置。
+> 本目录下的规则已由上游 classical 格式自动转换为 Mihomo Binary MRS 格式并保留了最全的源文本配置。
 
 # 🧸 Naver
 
@@ -27,25 +27,10 @@ Naver规则由《RULE GENERATOR 规则生成器》自动生成。
 | PROCESS-NAME | 1  | 
 | TOTAL | 60  | 
 
-
 ## Clash 
 
-#### 使用说明
-- Naver.yaml，请使用 behavior: "classical"。
-- Naver_Resolve.yaml，请使用 behavior: "classical"。
-
-#### 配置建议
-- Naver.yaml 单独使用。
-- Naver_Resolve.yaml 单独使用。
-
-#### ⬇️ MRS 规则下载链接
-
-- **Domain 规则 (推荐)**: [Naver_Domain.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Naver/Naver_Domain.mrs)
-- **IP 规则**: [Naver_IP.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Naver/Naver_IP.mrs)
-
-
+#
 ## 子规则/排除规则
-
 
 当前分流规则，未包含其他子规则。
 
@@ -55,7 +40,6 @@ Naver规则由《RULE GENERATOR 规则生成器》自动生成。
 
 - https://raw.githubusercontent.com/LM-Firefly/Rules/master/PROXY/Naver.list
 - https://raw.githubusercontent.com/LM-Firefly/Rules/master/Clash-RuleSet-Classical/PROXY/Naver.yaml
-
 
 感谢以上规则作者的辛勤付出（排名不分先后）。
 
@@ -70,3 +54,9 @@ Naver规则由《RULE GENERATOR 规则生成器》自动生成。
 ### 其他
 
 请不要对外宣传本项目。
+
+### ⬇️ MRS 规则下载链接
+
+- **Domain 规则 (必须同时使用)**: [Naver_Domain.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Naver/Naver_Domain.mrs)
+- **IP 规则 (必须同时使用)**: [Naver_IP.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Naver/Naver_IP.mrs)
+

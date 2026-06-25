@@ -1,5 +1,5 @@
 > [!TIP]
-> 本目录下的规则已由上游 classical 格式自动转换为 Mihomo Binary MRS 格式并保留了文本配置。
+> 本目录下的规则已由上游 classical 格式自动转换为 Mihomo Binary MRS 格式并保留了最全的源文本配置。
 
 # 🧸 IPTV其他
 
@@ -27,28 +27,10 @@ IPTV其他规则由《RULE GENERATOR 规则生成器》自动生成。
 | IP-CIDR | 515  | 
 | TOTAL | 2814  | 
 
-
 ## Clash 
 
-#### 使用说明
-- IPTVOther.yaml，请使用 behavior: "classical"。
-- IPTVOther_Resolve.yaml，请使用 behavior: "classical"。
-- IPTVOther_Classical.yaml，请使用 behavior: "classical"。
-- IPTVOther_Domain.yaml，请使用 behavior: "domain"。
-
-#### 配置建议
-- IPTVOther_Classical.yaml 单独使用。
-- IPTVOther.yaml、IPTVOther_Domain.yaml 共同使用。
-- IPTVOther_Resolve.yaml、IPTVOther_Domain.yaml 共同使用。
-
-#### ⬇️ MRS 规则下载链接
-
-- **Domain 规则 (推荐)**: [IPTVOther_Domain.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/IPTVOther/IPTVOther_Domain.mrs)
-- **IP 规则**: [IPTVOther_IP.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/IPTVOther/IPTVOther_IP.mrs)
-
-
+#
 ## 子规则/排除规则
-
 
 当前分流规则，未包含其他子规则。
 
@@ -58,7 +40,6 @@ IPTV其他规则由《RULE GENERATOR 规则生成器》自动生成。
 
 - https://raw.githubusercontent.com/imDazui/Tvlist-awesome-m3u-m3u8/master/m3u/%E5%8F%B0%E6%B9%BE%E9%A6%99%E6%B8%AF%E6%BE%B3%E9%97%A82023.m3u
 - https://raw.githubusercontent.com/imDazui/Tvlist-awesome-m3u-m3u8/master/m3u/%E5%9B%BD%E5%A4%96%E7%94%B5%E8%A7%86%E5%8F%B02023.m3u8
-
 
 感谢以上规则作者的辛勤付出（排名不分先后）。
 
@@ -73,3 +54,9 @@ IPTV其他规则由《RULE GENERATOR 规则生成器》自动生成。
 ### 其他
 
 请不要对外宣传本项目。
+
+### ⬇️ MRS 规则下载链接
+
+- **Domain 规则 (必须同时使用)**: [IPTVOther_Domain.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/IPTVOther/IPTVOther_Domain.mrs)
+- **IP 规则 (必须同时使用)**: [IPTVOther_IP.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/IPTVOther/IPTVOther_IP.mrs)
+

@@ -1,5 +1,5 @@
 > [!TIP]
-> 本目录下的规则已由上游 classical 格式自动转换为 Mihomo Binary MRS 格式并保留了文本配置。
+> 本目录下的规则已由上游 classical 格式自动转换为 Mihomo Binary MRS 格式并保留了最全的源文本配置。
 
 # 🧸 Linux
 
@@ -23,22 +23,10 @@ Linux规则由《RULE GENERATOR 规则生成器》自动生成。
 | DOMAIN-SUFFIX | 1  | 
 | TOTAL | 1  | 
 
-
 ## Clash 
 
-#### 使用说明
-- Linux.yaml，请使用 behavior: "classical"。
-
-#### 配置建议
-- Linux.yaml 单独使用。
-
-#### ⬇️ MRS 规则下载链接
-
-- **Domain 规则 (推荐)**: [Linux_Domain.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Linux/Linux_Domain.mrs)
-
-
+#
 ## 子规则/排除规则
-
 
 当前分流规则，未包含其他子规则。
 
@@ -57,3 +45,8 @@ Linux规则由《RULE GENERATOR 规则生成器》自动生成。
 ### 其他
 
 请不要对外宣传本项目。
+
+### ⬇️ MRS 规则下载链接
+
+- **Domain 规则**: [Linux_Domain.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Linux/Linux_Domain.mrs)
+

@@ -1,5 +1,5 @@
 > [!TIP]
-> 本目录下的规则已由上游 classical 格式自动转换为 Mihomo Binary MRS 格式并保留了文本配置。
+> 本目录下的规则已由上游 classical 格式自动转换为 Mihomo Binary MRS 格式并保留了最全的源文本配置。
 
 # 🧸 国内域名合集
 
@@ -29,25 +29,9 @@ ChinaMax排除相关IP规则版本
 | PROCESS-NAME | 14  | 
 | TOTAL | 112249  | 
 
-
 ## Clash 
 
-#### 使用说明
-- ChinaMaxNoIP.yaml，请使用 behavior: "classical"。
-- ChinaMaxNoIP_Resolve.yaml，请使用 behavior: "classical"。
-- ChinaMaxNoIP_Classical.yaml，请使用 behavior: "classical"。
-- ChinaMaxNoIP_Domain.yaml，请使用 behavior: "domain"。
-
-#### 配置建议
-- ChinaMaxNoIP_Classical.yaml 单独使用。
-- ChinaMaxNoIP.yaml、ChinaMaxNoIP_Domain.yaml 共同使用。
-- ChinaMaxNoIP_Resolve.yaml、ChinaMaxNoIP_Domain.yaml 共同使用。
-
-#### ⬇️ MRS 规则下载链接
-
-- **Domain 规则 (推荐)**: [ChinaMaxNoIP_Domain.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/ChinaMaxNoIP/ChinaMaxNoIP_Domain.mrs)
-
-
+#
 ## 子规则/排除规则
 
 当前分流规则，已包含以下子规则，除非特殊需求否则不建议重复引用：
@@ -104,7 +88,6 @@ ChinaMax排除相关IP规则版本
 | ZhiYunZhong | Zhihu | ZhongGuoShiHua | ZhongWeiShiJi | ZhongXingTongXun  | 
 | ZhongYuanYiShang | ZhuanZhuan | aiXcoder | iFlytek | iQIYI  | 
 | ifanr | zhanqi  |  |  |  | 
-
 
 ## 数据来源
 
@@ -411,7 +394,6 @@ ChinaMax排除相关IP规则版本
 - https://ruleset.isagood.day/bilibili.conf
 - https://raw.githubusercontent.com/missuo/ASN-China/main/IP.China.list
 
-
 感谢以上规则作者的辛勤付出（排名不分先后）。
 
 ## 最后
@@ -425,3 +407,8 @@ ChinaMax排除相关IP规则版本
 ### 其他
 
 请不要对外宣传本项目。
+
+### ⬇️ MRS 规则下载链接
+
+- **Domain 规则**: [ChinaMaxNoIP_Domain.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/ChinaMaxNoIP/ChinaMaxNoIP_Domain.mrs)
+

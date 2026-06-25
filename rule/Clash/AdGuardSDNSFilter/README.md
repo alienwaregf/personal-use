@@ -1,5 +1,5 @@
 > [!TIP]
-> 本目录下的规则已由上游 classical 格式自动转换为 Mihomo Binary MRS 格式并保留了文本配置。
+> 本目录下的规则已由上游 classical 格式自动转换为 Mihomo Binary MRS 格式并保留了最全的源文本配置。
 
 # 🧸 AdGuardSDNSFilter
 
@@ -33,26 +33,10 @@ AdGuard DNS Filter 规则！！
 | DOMAIN-SUFFIX | 108988  | 
 | TOTAL | 109050  | 
 
-
 ## Clash 
 
-#### 使用说明
-- AdGuardSDNSFilter.yaml，请使用 behavior: "classical"。
-- AdGuardSDNSFilter_Classical.yaml，请使用 behavior: "classical"。
-- AdGuardSDNSFilter_Domain.yaml，请使用 behavior: "domain"。
-
-#### 配置建议
-- AdGuardSDNSFilter_Domain.yaml 单独使用。
-- AdGuardSDNSFilter_Classical.yaml 单独使用。
-- AdGuardSDNSFilter.yaml、AdGuardSDNSFilter_Domain.yaml 共同使用。
-
-#### ⬇️ MRS 规则下载链接
-
-- **Domain 规则 (推荐)**: [AdGuardSDNSFilter_Domain.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/AdGuardSDNSFilter/AdGuardSDNSFilter_Domain.mrs)
-
-
+#
 ## 子规则/排除规则
-
 
 当前分流规则，未包含其他子规则。
 
@@ -61,7 +45,6 @@ AdGuard DNS Filter 规则！！
 《AdGuardSDNSFilter》的数据来自以下链接，如与本项目的《AdGuardSDNSFilter》规则混合使用，可能会造成规则大量重复。
 
 - https://adguardteam.github.io/AdGuardSDNSFilter/Filters/filter.txt
-
 
 感谢以上规则作者的辛勤付出（排名不分先后）。
 
@@ -76,3 +59,8 @@ AdGuard DNS Filter 规则！！
 ### 其他
 
 请不要对外宣传本项目。
+
+### ⬇️ MRS 规则下载链接
+
+- **Domain 规则**: [AdGuardSDNSFilter_Domain.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/AdGuardSDNSFilter/AdGuardSDNSFilter_Domain.mrs)
+
