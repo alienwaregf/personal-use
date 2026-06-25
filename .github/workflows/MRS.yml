@@ -1,26 +1,49 @@
 name: Auto Convert Rules to MRS
+
 on:
   schedule:
-    - cron: '0 * * * *'
-  workflow_dispatch:
+    - cron: '0 * * * *' # 每 1 小时自动运行
+  workflow_dispatch: # 允许手动点击运行
+
 permissions:
   contents: write
+
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - run: git clone --depth 1 https://github.com/blackmatrix7/ios_rule_script.git source_repo
-      - uses: actions/setup-python@v5
-        with: {python-version: '3.10'}
-      - run: pip install pyyaml
-      - run: |
+      - name: 检出当前仓库
+        uses: actions/checkout@v4
+        
+      - name: 拉取 Blackmatrix7 仓库
+        run: |
+          git clone --depth 1 https://github.com/blackmatrix7/ios_rule_script.git source_repo
+          
+      - name: 设置 Python 环境
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+          
+      - name: 安装 Python 依赖
+        run: pip install pyyaml
+        
+      - name: 下载并安装 Mihomo 内核
+        run: |
           MIHOMO_URL=$(curl -s https://api.github.com/repos/MetaCubeX/mihomo/releases/latest | grep "browser_download_url.*linux-amd64-compatible" | cut -d '"' -f 4 | head -n 1)
-          wget -O mihomo.gz $MIHOMO_URL && gunzip mihomo.gz && chmod +x mihomo && sudo mv mihomo /usr/local/bin/mihomo
-      - run: python Scripts/convert_rules.py
-      - run: rm -rf source_repo
-      - run: |
+          wget -O mihomo.gz $MIHOMO_URL
+          gunzip mihomo.gz
+          chmod +x mihomo
+          sudo mv mihomo /usr/local/bin/mihomo
+          
+      - name: 运行转换脚本
+        run: python Scripts/convert_rules.py
+        
+      - name: 清理临时文件
+        run: rm -rf source_repo
+        
+      - name: 提交并推送到 GitHub
+        run: |
           git config --local user.name "github-actions[bot]"
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git add rule/Clash/
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto update and sync rules" && git push)
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto update and convert mrs rules" && git push)
