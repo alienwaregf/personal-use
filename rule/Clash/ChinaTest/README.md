@@ -29,7 +29,11 @@ ChinaTest规则由《RULE GENERATOR 规则生成器》自动生成。
 
 ## Clash 
 
-#
+### ⬇️ MRS 规则下载链接
+
+- **Domain 规则 (必须同时使用)**: [ChinaTest_Domain.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/ChinaTest/ChinaTest_Domain.mrs)
+- **IP 规则 (必须同时使用)**: [ChinaTest_IP.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/ChinaTest/ChinaTest_IP.mrs)
+
 ## 子规则/排除规则
 
 当前分流规则，已包含以下子规则，除非特殊需求否则不建议重复引用：
@@ -67,9 +71,3 @@ ChinaTest规则由《RULE GENERATOR 规则生成器》自动生成。
 ### 其他
 
 请不要对外宣传本项目。
-
-### ⬇️ MRS 规则下载链接
-
-- **Domain 规则 (必须同时使用)**: [ChinaTest_Domain.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/ChinaTest/ChinaTest_Domain.mrs)
-- **IP 规则 (必须同时使用)**: [ChinaTest_IP.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/ChinaTest/ChinaTest_IP.mrs)
-

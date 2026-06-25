@@ -25,7 +25,10 @@
 
 ## Clash 
 
-#
+### ⬇️ MRS 规则下载链接
+
+- **IP 规则**: [Assassin'sCreed-Odyssey_IP.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Game/Assassin'sCreed-Odyssey/Assassin'sCreed-Odyssey_IP.mrs)
+
 ## 子规则/排除规则
 
 当前分流规则，未包含其他子规则。
@@ -49,8 +52,3 @@
 ### 其他
 
 请不要对外宣传本项目。
-
-### ⬇️ MRS 规则下载链接
-
-- **IP 规则**: [Assassin'sCreed-Odyssey_IP.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Game/Assassin'sCreed-Odyssey/Assassin'sCreed-Odyssey_IP.mrs)
-

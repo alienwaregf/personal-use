@@ -29,7 +29,11 @@ Proxy规则由《RULE GENERATOR 规则生成器》自动生成。
 
 ## Clash 
 
-#
+### ⬇️ MRS 规则下载链接
+
+- **Domain 规则 (必须同时使用)**: [Proxy_Domain.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Proxy/Proxy_Domain.mrs)
+- **IP 规则 (必须同时使用)**: [Proxy_IP.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Proxy/Proxy_IP.mrs)
+
 ## 子规则/排除规则
 
 当前分流规则，未包含其他子规则。
@@ -68,9 +72,3 @@ Proxy规则由《RULE GENERATOR 规则生成器》自动生成。
 ### 其他
 
 请不要对外宣传本项目。
-
-### ⬇️ MRS 规则下载链接
-
-- **Domain 规则 (必须同时使用)**: [Proxy_Domain.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Proxy/Proxy_Domain.mrs)
-- **IP 规则 (必须同时使用)**: [Proxy_IP.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Proxy/Proxy_IP.mrs)
-

@@ -31,7 +31,10 @@ ChinaMax排除相关IP规则版本
 
 ## Clash 
 
-#
+### ⬇️ MRS 规则下载链接
+
+- **Domain 规则**: [ChinaMaxNoIP_Domain.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/ChinaMaxNoIP/ChinaMaxNoIP_Domain.mrs)
+
 ## 子规则/排除规则
 
 当前分流规则，已包含以下子规则，除非特殊需求否则不建议重复引用：
@@ -407,8 +410,3 @@ ChinaMax排除相关IP规则版本
 ### 其他
 
 请不要对外宣传本项目。
-
-### ⬇️ MRS 规则下载链接
-
-- **Domain 规则**: [ChinaMaxNoIP_Domain.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/ChinaMaxNoIP/ChinaMaxNoIP_Domain.mrs)
-
