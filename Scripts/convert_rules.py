@@ -16,7 +16,7 @@ def process_rules():
     if not os.path.exists(DEST_ROOT):
         os.makedirs(DEST_ROOT)
 
-    # ==================== 新增：本地自定义规则热引入引擎 ====================
+    # ==================== 本地自定义规则热引入引擎 ====================
     # 如果你在本地 rule/Clash 下建立了自定义文件夹（如 IP）并放置了 yaml/list，将其注入临时工作区统一处理
     if os.path.exists(DEST_ROOT):
         for local_root, local_dirs, local_files in os.walk(DEST_ROOT):
@@ -63,7 +63,6 @@ def process_rules():
             # 兼容处理用户自己命名的 yaml 文件，如 IP.yaml
             matched_yaml = [f for f in files if f.endswith('.yaml') and not f.endswith('.temp.yaml')]
             if matched_yaml:
-                # 优先挑一个跟目录同名的，否则拿第一个
                 chosen_yaml = standard_yaml if standard_yaml in matched_yaml else matched_yaml[0]
                 src_yaml = os.path.join(root, chosen_yaml)
                 dst_yaml = os.path.join(target_dir, chosen_yaml)
@@ -104,7 +103,7 @@ def extract_rules(root, files):
                     if rule_type == 'DOMAIN-SUFFIX': domains.append('+.' + value)
                     elif rule_type == 'DOMAIN': domains.append(value)
                     elif rule_type == 'DOMAIN-WILDCARD': domains.append(value)
-                    elif rule_type in ( 'IP-CIDR', 'IP-CIDR6'): ips.append(value)
+                    elif rule_type in ('IP-CIDR', 'IP-CIDR6'): ips.append(value)
     return list(set(domains)), list(set(ips))
 
 def compile_ruleset(data, output_path, behavior):
@@ -148,12 +147,14 @@ def rewrite_readme(src_path, dst_path, rel_path, category, generated_mrs):
         with open(src_path, 'r', encoding='utf-8') as f:
             content = f.read()
     else:
+        # 如果是你自己创建的文件夹，缺失原版说明文档，这里会自动为你初始化一个干净的基础格式
         content = f"# 🧸 {category}\n\n## 前言\n这是个人自定义集成的分流规则库。\n\n## Clash\n"
 
+    # 1. 干净利落地切除无用的旧使用说明块
     content = re.sub(r'#{2,3}\s*使用说明.*?(?=\n#{2,3}\s|\Z)', '', content, flags=re.DOTALL)
     content = re.sub(r'#{2,3}\s*配置建议.*?(?=\n#{2,3}\s|\Z)', '', content, flags=re.DOTALL)
 
-    # 2. 动态组装下载链接
+    # 2. 动态组装下载链接 (集成 GitHub 原生一键复制功能)
     url_rel_path = rel_path.replace("\\", "/")
     my_links = "### ⬇️ MRS 规则下载链接\n\n"
     has_domain = 'domain' in generated_mrs
@@ -163,11 +164,14 @@ def rewrite_readme(src_path, dst_path, rel_path, category, generated_mrs):
     if has_domain:
         mrs_url = f"{BASE_RAW_URL}/{url_rel_path}/{generated_mrs['domain']}"
         my_links += f"- **Domain 规则{suffix}**: [{generated_mrs['domain']}]({mrs_url})\n"
+        my_links += f"  ```text\n  {mrs_url}\n  ```\n"
     if has_ip:
         mrs_url = f"{BASE_RAW_URL}/{url_rel_path}/{generated_mrs['ip']}"
         my_links += f"- **IP 规则{suffix}**: [{generated_mrs['ip']}]({mrs_url})\n"
+        my_links += f"  ```text\n  {mrs_url}\n  ```\n"
     my_links += "\n"
 
+    # 3. 采用高级区块替换，强行将链接锁定在 ## Clash 标题的正下方
     clash_pattern = r'(##\s*Clash\s*\n).*?(?=\n##\s|\Z)'
     if re.search(clash_pattern, content, re.DOTALL):
         new_content = re.sub(clash_pattern, r'\1\n' + my_links, content, flags=re.DOTALL)
