@@ -1,5 +1,5 @@
 > [!TIP]
-> 本目录下的规则已自动转换为 Mihomo Binary MRS 格式。原始项目: blackmatrix7
+> 本目录下的规则已由上游 classical 格式自动转换为 Mihomo Binary MRS 格式。
 
 # 🧸 小米电视去广告
 
@@ -41,30 +41,10 @@ https://www.zhihu.com/question/307466160
 - AdvertisingMiTV.yaml 单独使用。
 - AdvertisingMiTV_Resolve.yaml 单独使用。
 
-#### 规则链接
-**MASTER分支 (每日更新)**
+#### ⬇️ MRS 规则下载链接
 
-https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AdvertisingMiTV/AdvertisingMiTV.yaml
+- **Domain 规则 (推荐)**: [AdvertisingMiTV_Domain.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/AdvertisingMiTV/AdvertisingMiTV_Domain.mrs)
 
-**MASTER分支 CDN (每日更新)**
-
-https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/AdvertisingMiTV/AdvertisingMiTV.yaml
-
-**MASTER分支 GHProxy (每日更新)**
-
-https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AdvertisingMiTV/AdvertisingMiTV.yaml
-
-**RELEASE分支 (不定时更新)**
-
-https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/Clash/AdvertisingMiTV/AdvertisingMiTV.yaml
-
-**RELEASE分支CDN (不定时更新)**
-
-https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@release/rule/Clash/AdvertisingMiTV/AdvertisingMiTV.yaml
-
-**RELEASE分支 GHProxy (不定时更新)**
-
-https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/Clash/AdvertisingMiTV/AdvertisingMiTV.yaml
 
 ## 子规则/排除规则
 

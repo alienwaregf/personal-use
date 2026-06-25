@@ -1,5 +1,5 @@
 > [!TIP]
-> 本目录下的规则已自动转换为 Mihomo Binary MRS 格式。原始项目: blackmatrix7
+> 本目录下的规则已由上游 classical 格式自动转换为 Mihomo Binary MRS 格式。
 
 # 🧸 华数TV
 
@@ -34,30 +34,10 @@
 - HuaShuTV.yaml 单独使用。
 - HuaShuTV_Resolve.yaml 单独使用。
 
-#### 规则链接
-**MASTER分支 (每日更新)**
+#### ⬇️ MRS 规则下载链接
 
-https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/HuaShuTV/HuaShuTV.yaml
+- **Domain 规则 (推荐)**: [HuaShuTV_Domain.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/HuaShuTV/HuaShuTV_Domain.mrs)
 
-**MASTER分支 CDN (每日更新)**
-
-https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/HuaShuTV/HuaShuTV.yaml
-
-**MASTER分支 GHProxy (每日更新)**
-
-https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/HuaShuTV/HuaShuTV.yaml
-
-**RELEASE分支 (不定时更新)**
-
-https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/Clash/HuaShuTV/HuaShuTV.yaml
-
-**RELEASE分支CDN (不定时更新)**
-
-https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@release/rule/Clash/HuaShuTV/HuaShuTV.yaml
-
-**RELEASE分支 GHProxy (不定时更新)**
-
-https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/Clash/HuaShuTV/HuaShuTV.yaml
 
 ## 子规则/排除规则
 

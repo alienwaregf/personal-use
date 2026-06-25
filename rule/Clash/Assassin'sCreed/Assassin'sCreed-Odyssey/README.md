@@ -1,5 +1,5 @@
 > [!TIP]
-> 本目录下的规则已自动转换为 Mihomo Binary MRS 格式。原始项目: blackmatrix7
+> 本目录下的规则已由上游 classical 格式自动转换为 Mihomo Binary MRS 格式。
 
 # 🧸 刺客教条 奥德赛
 
@@ -33,18 +33,10 @@
 #### 配置建议
 - Assassin'sCreed-Odyssey.yaml 单独使用。
 
-#### 规则链接
-**实时版**
-https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/masterE:\Projects\RuleGenerator\temp\Github\rule/Clash/Assassin'sCreed/Assassin'sCreed-Odyssey/Assassin'sCreed-Odyssey.yaml
+#### ⬇️ MRS 规则下载链接
 
-**实时版CDN**
-https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@masterE:\Projects\RuleGenerator\temp\Github\rule/Clash/Assassin'sCreed/Assassin'sCreed-Odyssey/Assassin'sCreed-Odyssey.yaml
+- **IP 规则**: [Assassin'sCreed-Odyssey_IP.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Assassin'sCreed/Assassin'sCreed-Odyssey/Assassin'sCreed-Odyssey_IP.mrs)
 
-**稳定版**
-https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/releaseE:\Projects\RuleGenerator\temp\Github\rule/Clash/Assassin'sCreed/Assassin'sCreed-Odyssey/Assassin'sCreed-Odyssey.yaml
-
-**稳定版CDN**
-https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@releaseE:\Projects\RuleGenerator\temp\Github\rule/Clash/Assassin'sCreed/Assassin'sCreed-Odyssey/Assassin'sCreed-Odyssey.yaml
 
 ## 子规则/排除规则
 
@@ -64,7 +56,7 @@ https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@releaseE:\Projects\Rule
 
 ### 感谢
 
-[@fiiir](https://github.com/fiiir) [@Tartarus2014](https://github.com/Tartarus2014) [@zjcfynn](https://github.com/zjcfynn) [@chenyiping1995](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Assassin'sCreed/Assassin'sCreed-Odyssey/Assassin'sCreed-Odyssey_IP.mrs) 
+[@fiiir](https://github.com/fiiir) [@Tartarus2014](https://github.com/Tartarus2014) [@zjcfynn](https://github.com/zjcfynn) [@chenyiping1995](https://github.com/chenyiping1995) 
 
 提供规则数据源及改进建议。
 

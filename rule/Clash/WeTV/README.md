@@ -1,5 +1,5 @@
 > [!TIP]
-> 本目录下的规则已自动转换为 Mihomo Binary MRS 格式。原始项目: blackmatrix7
+> 本目录下的规则已由上游 classical 格式自动转换为 Mihomo Binary MRS 格式。
 
 # 🧸 WeTV
 
@@ -37,30 +37,11 @@ WeTV规则由《RULE GENERATOR 规则生成器》自动生成。
 - WeTV.yaml 单独使用。
 - WeTV_Resolve.yaml 单独使用。
 
-#### 规则链接
-**MASTER分支 (每日更新)**
+#### ⬇️ MRS 规则下载链接
 
-https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/WeTV/WeTV.yaml
+- **Domain 规则 (推荐)**: [WeTV_Domain.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/WeTV/WeTV_Domain.mrs)
+- **IP 规则**: [WeTV_IP.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/WeTV/WeTV_IP.mrs)
 
-**MASTER分支 CDN (每日更新)**
-
-https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/WeTV/WeTV.yaml
-
-**MASTER分支 GHProxy (每日更新)**
-
-https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/WeTV/WeTV.yaml
-
-**RELEASE分支 (不定时更新)**
-
-https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/Clash/WeTV/WeTV.yaml
-
-**RELEASE分支CDN (不定时更新)**
-
-https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@release/rule/Clash/WeTV/WeTV.yaml
-
-**RELEASE分支 GHProxy (不定时更新)**
-
-https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/Clash/WeTV/WeTV.yaml
 
 ## 子规则/排除规则
 
@@ -80,7 +61,7 @@ https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_scri
 
 ### 感谢
 
-[@fiiir](https://github.com/fiiir) [@Tartarus2014](https://github.com/Tartarus2014) [@zjcfynn](https://github.com/zjcfynn) [@chenyiping1995](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/WeTV/WeTV_IP.mrs) [@vhdj](https://github.com/vhdj)
+[@fiiir](https://github.com/fiiir) [@Tartarus2014](https://github.com/Tartarus2014) [@zjcfynn](https://github.com/zjcfynn) [@chenyiping1995](https://github.com/chenyiping1995) [@vhdj](https://github.com/vhdj)
 
 提供规则数据源及改进建议。
 

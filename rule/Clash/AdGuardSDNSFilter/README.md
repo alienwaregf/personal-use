@@ -1,5 +1,5 @@
 > [!TIP]
-> 本目录下的规则已自动转换为 Mihomo Binary MRS 格式。原始项目: blackmatrix7
+> 本目录下的规则已由上游 classical 格式自动转换为 Mihomo Binary MRS 格式。
 
 # 🧸 AdGuardSDNSFilter
 
@@ -46,54 +46,10 @@ AdGuard DNS Filter 规则！！
 - AdGuardSDNSFilter_Classical.yaml 单独使用。
 - AdGuardSDNSFilter.yaml、AdGuardSDNSFilter_Domain.yaml 共同使用。
 
-#### 规则链接
-**MASTER分支 (每日更新)**
+#### ⬇️ MRS 规则下载链接
 
-https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AdGuardSDNSFilter/AdGuardSDNSFilter.yaml
+- **Domain 规则 (推荐)**: [AdGuardSDNSFilter_Domain.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/AdGuardSDNSFilter/AdGuardSDNSFilter_Domain.mrs)
 
-https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AdGuardSDNSFilter/AdGuardSDNSFilter_Classical.yaml
-
-https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AdGuardSDNSFilter/AdGuardSDNSFilter_Domain.txt
-
-**MASTER分支 CDN (每日更新)**
-
-https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/AdGuardSDNSFilter/AdGuardSDNSFilter.yaml
-
-https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/AdGuardSDNSFilter/AdGuardSDNSFilter_Classical.yaml
-
-https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/AdGuardSDNSFilter/AdGuardSDNSFilter_Domain.txt
-
-**MASTER分支 GHProxy (每日更新)**
-
-https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AdGuardSDNSFilter/AdGuardSDNSFilter.yaml
-
-https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AdGuardSDNSFilter/AdGuardSDNSFilter_Classical.yaml
-
-https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AdGuardSDNSFilter/AdGuardSDNSFilter_Domain.txt
-
-**RELEASE分支 (不定时更新)**
-
-https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/Clash/AdGuardSDNSFilter/AdGuardSDNSFilter.yaml
-
-https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/Clash/AdGuardSDNSFilter/AdGuardSDNSFilter_Classical.yaml
-
-https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/Clash/AdGuardSDNSFilter/AdGuardSDNSFilter_Domain.txt
-
-**RELEASE分支CDN (不定时更新)**
-
-https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@release/rule/Clash/AdGuardSDNSFilter/AdGuardSDNSFilter.yaml
-
-https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@release/rule/Clash/AdGuardSDNSFilter/AdGuardSDNSFilter_Classical.yaml
-
-https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@release/rule/Clash/AdGuardSDNSFilter/AdGuardSDNSFilter_Domain.txt
-
-**RELEASE分支 GHProxy (不定时更新)**
-
-https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/Clash/AdGuardSDNSFilter/AdGuardSDNSFilter.yaml
-
-https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/Clash/AdGuardSDNSFilter/AdGuardSDNSFilter_Classical.yaml
-
-https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/Clash/AdGuardSDNSFilter/AdGuardSDNSFilter_Domain.txt
 
 ## 子规则/排除规则
 
