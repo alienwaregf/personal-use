@@ -37,7 +37,7 @@ def process_rules():
             if compile_ruleset(ips, os.path.join(target_dir, ip_mrs), 'ipcidr'):
                 generated_mrs['ip'] = ip_mrs
 
-        # 3. 智能处理 README.md：重写链接
+        # 3. 智能处理 README.md：重写链接区块
         if "README.md" in files:
             source_readme_path = os.path.join(root, "README.md")
             target_readme_path = os.path.join(target_dir, "README.md")
@@ -76,23 +76,30 @@ def rewrite_readme(src_path, dst_path, rel_path, category, generated_mrs):
     with open(src_path, 'r', encoding='utf-8') as f:
         content = f.read()
 
-    # 正则替换逻辑：寻找 Markdown 链接 [Text](URL) 并映射到你的 mrs 原始文件地址
-    def link_replacer(match):
-        text = match.group(1)
-        url = match.group(2)
-        url_rel_path = rel_path.replace("\\", "/")
-        
-        if "domain" in url.lower() or ".list" in url.lower() or "clash" in url.lower():
-            if 'domain' in generated_mrs:
-                return f"[{text}]({BASE_RAW_URL}/{url_rel_path}/{generated_mrs['domain']})"
-        if "ip" in url.lower() or "cidr" in url.lower():
-            if 'ip' in generated_mrs:
-                return f"[{text}]({BASE_RAW_URL}/{url_rel_path}/{generated_mrs['ip']})"
-        
-        return match.group(0)
+    url_rel_path = rel_path.replace("\\", "/")
+    
+    # 构建我们自己的专属干净链接区块
+    my_links = "### ⬇️ MRS 规则下载链接\n\n"
+    if 'domain' in generated_mrs:
+        mrs_url = f"{BASE_RAW_URL}/{url_rel_path}/{generated_mrs['domain']}"
+        my_links += f"- **Domain 规则 (推荐)**: [{generated_mrs['domain']}]({mrs_url})\n"
+    if 'ip' in generated_mrs:
+        mrs_url = f"{BASE_RAW_URL}/{url_rel_path}/{generated_mrs['ip']}"
+        my_links += f"- **IP 规则**: [{generated_mrs['ip']}]({mrs_url})\n"
+    my_links += "\n"
 
-    new_content = re.sub(r'\[([^\]]+)\]\(([^\)]+)\)', link_replacer, content)
-    header = f"> [!TIP]\n> 本目录下的规则已自动转换为 Mihomo Binary MRS 格式。原始项目: blackmatrix7\n\n"
+    # 核心修改：使用正则定位原版 "### 规则链接" 及其后面的所有冗余链接，直到遇到下一个 "## " 二级标题
+    # (?s) 即 re.DOTALL，让正则能跨行匹配
+    pattern = r'### 规则链接.*?(?=\n## |\Z)'
+    
+    if re.search(pattern, content, re.DOTALL):
+        # 找到了该区块，将原版的 6 个链接直接切除，替换成我们刚刚生成的 1-2 个清爽链接
+        new_content = re.sub(pattern, my_links, content, flags=re.DOTALL)
+    else:
+        # 如果特殊情况没找到，就把我们的链接塞到文档末尾
+        new_content = content + "\n\n" + my_links
+        
+    header = f"> [!TIP]\n> 本目录下的规则已由上游 classical 格式自动转换为 Mihomo Binary MRS 格式。\n\n"
     
     with open(dst_path, 'w', encoding='utf-8') as f:
         f.write(header + new_content)
