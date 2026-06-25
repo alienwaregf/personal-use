@@ -1,50 +1,116 @@
-name: Auto Convert Rules to MRS
+import os
+import re
+import shutil
+import subprocess
+import yaml
 
-on:
-  schedule:
-    - cron: '0 */6 * * *' # 每 6 小时运行一次 (UTC时间)
-  workflow_dispatch: # 允许你手动点击运行测试
+# 配置信息
+GITHUB_USER = "alienwaregf"
+GITHUB_REPO = "personal-use"
+SOURCE_ROOT = "source_repo/rule/Clash"
+DEST_ROOT = "rule/Clash"
+BASE_RAW_URL = f"https://raw.githubusercontent.com/{GITHUB_USER}/{GITHUB_REPO}/main/rule/Clash"
 
-permissions:
-  contents: write
+def process_rules():
+    if not os.path.exists(DEST_ROOT):
+        os.makedirs(DEST_ROOT)
 
-jobs:
-  build-and-push:
-    runs-on: ubuntu-latest
-    steps:
-      - name: 检出当前仓库
-        uses: actions/checkout@v4
+    for root, dirs, files in os.walk(SOURCE_ROOT):
+        rel_path = os.path.relpath(root, SOURCE_ROOT)
+        target_dir = DEST_ROOT if rel_path == "." else os.path.join(DEST_ROOT, rel_path)
         
-      - name: 拉取 Blackmatrix7 仓库
-        run: |
-          git clone --depth 1 https://github.com/blackmatrix7/ios_rule_script.git source_repo
-          
-      - name: 设置 Python 环境
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.10'
-          
-      - name: 安装 Python 依赖
-        run: pip install pyyaml
+        if not os.path.exists(target_dir):
+            os.makedirs(target_dir)
+
+        # 1. 提取当前目录生成的规则数据
+        category_name = os.path.basename(root)
+        domains, ips = extract_rules(root, files)
+
+        # 2. 编译 MRS 文件并记录生成的文件名
+        generated_mrs = {}
+        if domains:
+            domain_mrs = f"{category_name}_Domain.mrs"
+            if compile_ruleset(domains, os.path.join(target_dir, domain_mrs), 'domain'):
+                generated_mrs['domain'] = domain_mrs
+        if ips:
+            ip_mrs = f"{category_name}_IP.mrs"
+            if compile_ruleset(ips, os.path.join(target_dir, ip_mrs), 'ipcidr'):
+                generated_mrs['ip'] = ip_mrs
+
+        # 3. 智能处理 README.md：重写链接
+        if "README.md" in files:
+            source_readme_path = os.path.join(root, "README.md")
+            target_readme_path = os.path.join(target_dir, "README.md")
+            rewrite_readme(source_readme_path, target_readme_path, rel_path, category_name, generated_mrs)
+
+def extract_rules(root, files):
+    domains, ips = [], []
+    for file in files:
+        if file.endswith(('.yaml', '.list')):
+            with open(os.path.join(root, file), 'r', encoding='utf-8') as f:
+                for line in f:
+                    line = line.strip()
+                    if not line or line.startswith('#'): continue
+                    line = line.replace('- ', '').replace("'", "")
+                    parts = line.split(',')
+                    if len(parts) < 2: continue
+                    rule_type, value = parts[0].upper(), parts[1]
+                    if rule_type == 'DOMAIN-SUFFIX': domains.append('+.' + value)
+                    elif rule_type == 'DOMAIN': domains.append(value)
+                    elif rule_type in ('IP-CIDR', 'IP-CIDR6'): ips.append(value)
+    return list(set(domains)), list(set(ips))
+
+def compile_ruleset(data, output_path, behavior):
+    temp_yaml = output_path + ".temp.yaml"
+    with open(temp_yaml, 'w', encoding='utf-8') as f:
+        yaml.dump({"payload": data}, f)
+    try:
+        subprocess.run(['mihomo', 'convert-ruleset', behavior, 'yaml', temp_yaml, output_path], check=True)
+        return True
+    except:
+        return False
+    finally:
+        if os.path.exists(temp_yaml): os.remove(temp_yaml)
+
+def rewrite_readme(src_path, dst_path, rel_path, category, generated_mrs):
+    with open(src_path, 'r', encoding='utf-8') as f:
+        content = f.read()
+
+    # 正则替换逻辑：寻找 Markdown 链接 [Text](URL)
+    # 我们根据原本链接中包含的内容（如 .list 或 .yaml）以及是否含有 IP 来判断替换目标
+    def link_replacer(match):
+        text = match.group(1)
+        url = match.group(2)
         
-      - name: 下载并安装 Mihomo 内核
-        run: |
-          MIHOMO_URL=$(curl -s https://api.github.com/repos/MetaCubeX/mihomo/releases/latest | grep "browser_download_url.*linux-amd64-compatible" | cut -d '"' -f 4 | head -n 1)
-          wget -O mihomo.gz $MIHOMO_URL
-          gunzip mihomo.gz
-          chmod +x mihomo
-          sudo mv mihomo /usr/local/bin/mihomo
-          
-      - name: 运行转换脚本
-        # 核心修改点：已将路径更正为你仓库实际的大写 Scripts 目录
-        run: python Scripts/convert_rules.py
+        # 构建新 URL 的基础路径
+        # 注意 rel_path 在 Windows/Linux 上的斜杠差异
+        url_rel_path = rel_path.replace("\\", "/")
         
-      - name: 清理临时文件
-        run: rm -rf source_repo
+        # 判断链接类型并重定向到你的 MRS
+        if "domain" in url.lower() or ".list" in url.lower() or "clash" in url.lower():
+            if 'domain' in generated_mrs:
+                return f"[{text}]({BASE_RAW_URL}/{url_rel_path}/{generated_mrs['domain']})"
+        if "ip" in url.lower() or "cidr" in url.lower():
+            if 'ip' in generated_mrs:
+                return f"[{text}]({BASE_RAW_URL}/{url_rel_path}/{generated_mrs['ip']})"
         
-      - name: 提交并推送到 GitHub
-        run: |
-          git config --local user.name "github-actions[bot]"
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git add rule/Clash/
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto update and convert mrs rules" && git push)
+        return match.group(0) # 如果不匹配，保持原样
+
+    new_content = re.sub(r'\[([^\]]+)\]\(([^\)]+)\)', link_replacer, content)
+    
+    # 在文档开头加一个小提示，标明这是自动转换的 MRS 镜像（可选）
+    header = f"> [!TIP]\n> 本目录下的规则已自动转换为 Mihomo Binary MRS 格式。原始项目: blackmatrix7\n\n"
+    
+    with open(dst_path, 'w', encoding='utf-8') as f:
+        f.write(header + new_content)
+    print(f"已重写 README: {rel_path}")
+
+if __name__ == "__main__":
+    process_rules()
+
+### 这一版的主要更新：
+1. **`rewrite_readme` 函数**：它使用正则表达式扫描所有 Markdown 链接。它会智能判断原链接是属于 Domain 还是 IP 类型，并将其替换为你仓库中对应的 `.mrs` 原始下载链接（Raw URL）。
+2. **Raw 链接构造**：使用了 `https://raw.githubusercontent.com/...` 格式，这样用户在你的 GitHub 上点击 README 里的链接时，会直接下载二进制文件，而不是跳到网页。
+3. **增加提示栏**：在每个生成的 README 开头增加了一个简单的 TIP 提示，让用户知道这些链接已经过转换。
+
+你的 GitHub Actions 工作流不需要修改。更新这个脚本后手动触发一次，你就能看到一个完美镜像、链接精准的规则库了！
