@@ -30,16 +30,23 @@ def process_rules():
                 source_readme_path = os.path.join(root, "README.md")
                 target_readme_path = os.path.join(target_dir, "README.md")
                 rewrite_readme(source_readme_path, target_readme_path, rel_path, category_name, {})
-            continue # 跳过根目录的规则提取，直接进入子文件夹
+            continue # 跳过根目录的规则提取
 
-        # 1. 自动复制保存原版最全的文本配置 (.yaml 或 _Classical.yaml)
-        target_yaml_files = [f"{category_name}.yaml", f"{category_name}_Classical.yaml"]
-        for y_file in target_yaml_files:
-            if y_file in files:
-                src_yaml = os.path.join(root, y_file)
-                dst_yaml = os.path.join(target_dir, y_file)
-                shutil.copy2(src_yaml, dst_yaml)
-                print(f"已保留原版文本规则: {rel_path}/{y_file}")
+        # 1. 自动复制保存原版最全的文本配置
+        # 逻辑：优先寻找 _Classical.yaml，如果找到就不再管普通的 .yaml
+        classical_yaml = f"{category_name}_Classical.yaml"
+        standard_yaml = f"{category_name}.yaml"
+
+        if classical_yaml in files:
+            src_yaml = os.path.join(root, classical_yaml)
+            dst_yaml = os.path.join(target_dir, classical_yaml)
+            shutil.copy2(src_yaml, dst_yaml)
+            print(f"已优选保留最全文本规则: {rel_path}/{classical_yaml}")
+        elif standard_yaml in files:
+            src_yaml = os.path.join(root, standard_yaml)
+            dst_yaml = os.path.join(target_dir, standard_yaml)
+            shutil.copy2(src_yaml, dst_yaml)
+            print(f"已保留基础文本规则: {rel_path}/{standard_yaml}")
 
         # 2. 提取当前目录生成的规则数据用于编译二进制 MRS
         domains, ips = extract_rules(root, files)
@@ -55,7 +62,7 @@ def process_rules():
             if compile_ruleset(ips, os.path.join(target_dir, ip_mrs), 'ipcidr'):
                 generated_mrs['ip'] = ip_mrs
 
-        # 4. 智能处理每个子目录的小 README.md：重写链接区块
+        # 4. 智能处理每个子目录的小 README.md：重写链接区块与删减内容
         if "README.md" in files:
             source_readme_path = os.path.join(root, "README.md")
             target_readme_path = os.path.join(target_dir, "README.md")
@@ -101,7 +108,6 @@ def rewrite_readme(src_path, dst_path, rel_path, category, generated_mrs):
         content = content.replace("https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash", 
                                   f"https://raw.githubusercontent.com/{GITHUB_USER}/{GITHUB_REPO}/main/rule/Clash")
         
-        # 补全大分类表格底部的相对文件夹跳转链接，全部指向你自己的子文件夹网页
         def root_link_replacer(match):
             text = match.group(1)
             url = match.group(2).strip()
@@ -110,30 +116,46 @@ def rewrite_readme(src_path, dst_path, rel_path, category, generated_mrs):
             return match.group(0)
         
         new_content = re.sub(r'\[([^\]]+)\]\(([^\)]+)\)', root_link_replacer, content)
-        header = f"> [!TIP]\n> 本目录下的各分类规则已自动转换为 Mihomo Binary MRS 格式与文本 YAML 格式。点击下方分类名称可直达你自己的对应目录网页。\n\n"
+        header = f"> [!TIP]\n> 本目录下的各分类规则已自动转换为 Mihomo Binary MRS 格式与文本 YAML 格式。\n\n"
         with open(dst_path, 'w', encoding='utf-8') as f:
             f.write(header + new_content)
-        print("已完美对齐根目录大 README.md 的直达表格链接")
         return
 
     # ==================== 分支二：处理各个子目录（如 Apple, Google）的小 README ====================
     url_rel_path = rel_path.replace("\\", "/")
+
+    # 1. 精准删除不需要的“使用说明”和“配置建议”区块
+    # 正则逻辑：匹配带有使用说明/配置建议的标题头，并一直删到下一个标题出现之前
+    content = re.sub(r'#{2,3}\s*使用说明.*?(?=\n#{2,3}\s|\Z)', '', content, flags=re.DOTALL)
+    content = re.sub(r'#{2,3}\s*配置建议.*?(?=\n#{2,3}\s|\Z)', '', content, flags=re.DOTALL)
+
+    # 2. 构建专属链接及判断逻辑
     my_links = "### ⬇️ MRS 规则下载链接\n\n"
-    if 'domain' in generated_mrs:
+    has_domain = 'domain' in generated_mrs
+    has_ip = 'ip' in generated_mrs
+    
+    # 核心需求：如果同时生成了两种规则文件，自动加注“(必须同时使用)”
+    suffix = " (必须同时使用)" if (has_domain and has_ip) else ""
+
+    if has_domain:
         mrs_url = f"{BASE_RAW_URL}/{url_rel_path}/{generated_mrs['domain']}"
-        my_links += f"- **Domain 规则 (推荐)**: [{generated_mrs['domain']}]({mrs_url})\n"
-    if 'ip' in generated_mrs:
+        my_links += f"- **Domain 规则{suffix}**: [{generated_mrs['domain']}]({mrs_url})\n"
+    if has_ip:
         mrs_url = f"{BASE_RAW_URL}/{url_rel_path}/{generated_mrs['ip']}"
-        my_links += f"- **IP 规则**: [{generated_mrs['ip']}]({mrs_url})\n"
+        my_links += f"- **IP 规则{suffix}**: [{generated_mrs['ip']}]({mrs_url})\n"
     my_links += "\n"
 
+    # 3. 替换原有的“规则链接”区块
     pattern = r'### 规则链接.*?(?=\n## |\Z)'
     if re.search(pattern, content, re.DOTALL):
         new_content = re.sub(pattern, my_links, content, flags=re.DOTALL)
     else:
         new_content = content + "\n\n" + my_links
         
-    header = f"> [!TIP]\n> 本目录下的规则已由上游 classical 格式自动转换为 Mihomo Binary MRS 格式并保留了文本配置。\n\n"
+    # 清理删除区块后遗留的大量空行，保持排版紧凑美观
+    new_content = re.sub(r'\n{3,}', '\n\n', new_content)
+
+    header = f"> [!TIP]\n> 本目录下的规则已由上游 classical 格式自动转换为 Mihomo Binary MRS 格式并保留了最全的源文本配置。\n\n"
     
     with open(dst_path, 'w', encoding='utf-8') as f:
         f.write(header + new_content)
