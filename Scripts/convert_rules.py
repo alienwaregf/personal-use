@@ -12,9 +12,25 @@ DEST_ROOT = "rule/Clash"
 BASE_RAW_URL = f"https://raw.githubusercontent.com/{GITHUB_USER}/{GITHUB_REPO}/main/rule/Clash"
 
 def process_rules():
+    # 确保目标根目录存在
     if not os.path.exists(DEST_ROOT):
         os.makedirs(DEST_ROOT)
 
+    # ==================== 新增：本地自定义规则热引入引擎 ====================
+    # 如果你在本地 rule/Clash 下建立了自定义文件夹（如 IP）并放置了 yaml/list，将其注入临时工作区统一处理
+    if os.path.exists(DEST_ROOT):
+        for local_root, local_dirs, local_files in os.walk(DEST_ROOT):
+            local_rel_path = os.path.relpath(local_root, DEST_ROOT)
+            if local_rel_path == ".":
+                continue
+            for local_file in local_files:
+                if local_file.endswith(('.yaml', '.list')):
+                    src_f = os.path.join(local_root, local_file)
+                    tgt_d = os.path.join(SOURCE_ROOT, local_rel_path)
+                    os.makedirs(tgt_d, exist_ok=True)
+                    shutil.copy2(src_f, os.path.join(tgt_d, local_file))
+
+    # ==================== 核心循环：递归遍历所有规则目录 ====================
     for root, dirs, files in os.walk(SOURCE_ROOT):
         rel_path = os.path.relpath(root, SOURCE_ROOT)
         target_dir = DEST_ROOT if rel_path == "." else os.path.join(DEST_ROOT, rel_path)
@@ -24,7 +40,7 @@ def process_rules():
 
         category_name = os.path.basename(root)
 
-        # ==================== 特殊处理：如果是 rule/Clash 根目录 ====================
+        # ==================== 分支一：处理 rule/Clash 根目录大导航 ====================
         if rel_path == ".":
             if "README.md" in files:
                 source_readme_path = os.path.join(root, "README.md")
@@ -32,22 +48,29 @@ def process_rules():
                 rewrite_readme(source_readme_path, target_readme_path, rel_path, category_name, {})
             continue
 
-        # 1. 自动复制保存原版最全的文本配置
+        # ==================== 分支二：处理所有子目录（上游 + 个人自定义） ====================
+        # 1. 自动优选并复制保存最全的纯文本配置
         classical_yaml = f"{category_name}_Classical.yaml"
         standard_yaml = f"{category_name}.yaml"
 
+        # 如果存在多个，优先选择 _Classical.yaml
         if classical_yaml in files:
             src_yaml = os.path.join(root, classical_yaml)
             dst_yaml = os.path.join(target_dir, classical_yaml)
             shutil.copy2(src_yaml, dst_yaml)
-            print(f"已优选保留最全文本规则: {rel_path}/{classical_yaml}")
-        elif standard_yaml in files:
-            src_yaml = os.path.join(root, standard_yaml)
-            dst_yaml = os.path.join(target_dir, standard_yaml)
-            shutil.copy2(src_yaml, dst_yaml)
-            print(f"已保留基础文本规则: {rel_path}/{standard_yaml}")
+            print(f"已优选保存纯文本规则: {rel_path}/{classical_yaml}")
+        else:
+            # 兼容处理用户自己命名的 yaml 文件，如 IP.yaml
+            matched_yaml = [f for f in files if f.endswith('.yaml') and not f.endswith('.temp.yaml')]
+            if matched_yaml:
+                # 优先挑一个跟目录同名的，否则拿第一个
+                chosen_yaml = standard_yaml if standard_yaml in matched_yaml else matched_yaml[0]
+                src_yaml = os.path.join(root, chosen_yaml)
+                dst_yaml = os.path.join(target_dir, chosen_yaml)
+                shutil.copy2(src_yaml, dst_yaml)
+                print(f"已保存自定义文本规则: {rel_path}/{chosen_yaml}")
 
-        # 2. 提取当前目录生成的规则数据用于编译二进制 MRS
+        # 2. 提取当前目录规则数据用于编译二进制 MRS
         domains, ips = extract_rules(root, files)
 
         # 3. 编译 MRS 文件并记录生成的文件名
@@ -61,11 +84,10 @@ def process_rules():
             if compile_ruleset(ips, os.path.join(target_dir, ip_mrs), 'ipcidr'):
                 generated_mrs['ip'] = ip_mrs
 
-        # 4. 智能处理每个子目录的小 README.md：重写链接区块与删减内容
-        if "README.md" in files:
-            source_readme_path = os.path.join(root, "README.md")
-            target_readme_path = os.path.join(target_dir, "README.md")
-            rewrite_readme(source_readme_path, target_readme_path, rel_path, category_name, generated_mrs)
+        # 4. 智能处理 README.md（即使自定义目录原本没有 README，也会强制自动完美创建）
+        source_readme_path = os.path.join(root, "README.md")
+        target_readme_path = os.path.join(target_dir, "README.md")
+        rewrite_readme(source_readme_path, target_readme_path, rel_path, category_name, generated_mrs)
 
 def extract_rules(root, files):
     domains, ips = [], []
@@ -81,7 +103,8 @@ def extract_rules(root, files):
                     rule_type, value = parts[0].upper(), parts[1]
                     if rule_type == 'DOMAIN-SUFFIX': domains.append('+.' + value)
                     elif rule_type == 'DOMAIN': domains.append(value)
-                    elif rule_type in ('IP-CIDR', 'IP-CIDR6'): ips.append(value)
+                    elif rule_type == 'DOMAIN-WILDCARD': domains.append(value)
+                    elif rule_type in ( 'IP-CIDR', 'IP-CIDR6'): ips.append(value)
     return list(set(domains)), list(set(ips))
 
 def compile_ruleset(data, output_path, behavior):
@@ -97,11 +120,11 @@ def compile_ruleset(data, output_path, behavior):
         if os.path.exists(temp_yaml): os.remove(temp_yaml)
 
 def rewrite_readme(src_path, dst_path, rel_path, category, generated_mrs):
-    with open(src_path, 'r', encoding='utf-8') as f:
-        content = f.read()
-
-    # ==================== 分支一：处理 rule/Clash 根目录的大对齐 README ====================
+    # ==================== 根目录大 README 重写逻辑 ====================
     if rel_path == ".":
+        if not os.path.exists(src_path): return
+        with open(src_path, 'r', encoding='utf-8') as f:
+            content = f.read()
         content = content.replace("https://github.com/blackmatrix7/ios_rule_script/tree/master/rule/Clash", 
                                   f"https://github.com/{GITHUB_USER}/{GITHUB_REPO}/tree/main/rule/Clash")
         content = content.replace("https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash", 
@@ -120,14 +143,21 @@ def rewrite_readme(src_path, dst_path, rel_path, category, generated_mrs):
             f.write(header + new_content)
         return
 
-    # ==================== 分支二：处理各个子目录（如 Apple, Google）的小 README ====================
-    url_rel_path = rel_path.replace("\\", "/")
+    # ==================== 子目录小 README 重写与创建逻辑 ====================
+    if os.path.exists(src_path):
+        with open(src_path, 'r', encoding='utf-8') as f:
+            content = f.read()
+    else:
+        content = f"# 🧸 {category}\n\n## 前言\n这是个人自定义集成的分流规则库。\n\n## Clash\n"
 
-    # 1. 构建你的专属下载链接
+    content = re.sub(r'#{2,3}\s*使用说明.*?(?=\n#{2,3}\s|\Z)', '', content, flags=re.DOTALL)
+    content = re.sub(r'#{2,3}\s*配置建议.*?(?=\n#{2,3}\s|\Z)', '', content, flags=re.DOTALL)
+
+    # 2. 动态组装下载链接
+    url_rel_path = rel_path.replace("\\", "/")
     my_links = "### ⬇️ MRS 规则下载链接\n\n"
     has_domain = 'domain' in generated_mrs
     has_ip = 'ip' in generated_mrs
-    
     suffix = " (必须同时使用)" if (has_domain and has_ip) else ""
 
     if has_domain:
@@ -138,23 +168,18 @@ def rewrite_readme(src_path, dst_path, rel_path, category, generated_mrs):
         my_links += f"- **IP 规则{suffix}**: [{generated_mrs['ip']}]({mrs_url})\n"
     my_links += "\n"
 
-    # 2. 暴力美学：直接定位 ## Clash 区块，整体替换！
-    # 逻辑：不管里面原来有多少花里胡哨的“使用说明”或“配置建议”，只要是在 ## Clash 和下一个 ## 之间的内容，全部抹除并换成你的专属链接。
     clash_pattern = r'(##\s*Clash\s*\n).*?(?=\n##\s|\Z)'
-    
     if re.search(clash_pattern, content, re.DOTALL):
-        # 替换后将精准插入在 ## Clash 的正下方
         new_content = re.sub(clash_pattern, r'\1\n' + my_links, content, flags=re.DOTALL)
     else:
         new_content = content + "\n\n" + my_links
         
-    # 清理多余空行，保持版面紧凑
     new_content = re.sub(r'\n{3,}', '\n\n', new_content)
-
-    header = f"> [!TIP]\n> 本目录下的规则已由上游 classical 格式自动转换为 Mihomo Binary MRS 格式并保留了最全的源文本配置。\n\n"
+    header = f"> [!TIP]\n> 本目录下的规则已由系统自动转换为 Mihomo Binary MRS 格式并保留了文本配置。\n\n"
     
     with open(dst_path, 'w', encoding='utf-8') as f:
         f.write(header + new_content)
+    print(f"已重写并对齐 README: {rel_path}")
 
 if __name__ == "__main__":
     process_rules()
