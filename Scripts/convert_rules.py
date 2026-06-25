@@ -22,11 +22,29 @@ def process_rules():
         if not os.path.exists(target_dir):
             os.makedirs(target_dir)
 
-        # 1. 提取当前目录生成的规则数据
         category_name = os.path.basename(root)
+
+        # 如果是根目录，跳过规则提取和复制，只处理大 README 导航表
+        if rel_path == ".":
+            if "README.md" in files:
+                source_readme_path = os.path.join(root, "README.md")
+                target_readme_path = os.path.join(target_dir, "README.md")
+                rewrite_readme(source_readme_path, target_readme_path, rel_path, category_name, {})
+            continue
+
+        # 1. 自动复制保存原版最全的文本配置 (.yaml 或 _Classical.yaml)
+        target_yaml_files = [f"{category_name}.yaml", f"{category_name}_Classical.yaml"]
+        for y_file in target_yaml_files:
+            if y_file in files:
+                src_yaml = os.path.join(root, y_file)
+                dst_yaml = os.path.join(target_dir, y_file)
+                shutil.copy2(src_yaml, dst_yaml)
+                print(f"已保留原版文本规则: {rel_path}/{y_file}")
+
+        # 2. 提取当前目录生成的规则数据用于编译二进制 MRS
         domains, ips = extract_rules(root, files)
 
-        # 2. 编译 MRS 文件并记录生成的文件名
+        # 3. 编译 MRS 文件并记录生成的文件名
         generated_mrs = {}
         if domains:
             domain_mrs = f"{category_name}_Domain.mrs"
@@ -37,7 +55,7 @@ def process_rules():
             if compile_ruleset(ips, os.path.join(target_dir, ip_mrs), 'ipcidr'):
                 generated_mrs['ip'] = ip_mrs
 
-        # 3. 智能处理 README.md：分层级重写链接
+        # 4. 智能处理 README.md：重写链接区块
         if "README.md" in files:
             source_readme_path = os.path.join(root, "README.md")
             target_readme_path = os.path.join(target_dir, "README.md")
@@ -78,30 +96,26 @@ def rewrite_readme(src_path, dst_path, rel_path, category, generated_mrs):
 
     # ==================== 分支一：处理 rule/Clash 根目录的大 README ====================
     if rel_path == ".":
-        # 1. 替换原项目中可能硬编码的 blackmatrix7 绝对路径
         content = content.replace("https://github.com/blackmatrix7/ios_rule_script/tree/master/rule/Clash", 
                                   f"https://github.com/{GITHUB_USER}/{GITHUB_REPO}/tree/main/rule/Clash")
         content = content.replace("https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash", 
                                   f"https://raw.githubusercontent.com/{GITHUB_USER}/{GITHUB_REPO}/main/rule/Clash")
         
-        # 2. 拦截并补全表格底部的所有相对文件夹跳转链接，全部强行指向你自己的 GitHub 仓库网页
         def root_link_replacer(match):
             text = match.group(1)
             url = match.group(2).strip()
-            # 如果链接不是绝对网址（不以http开头）且不是锚点，则代表是分类子文件夹
             if not url.startswith("http") and not url.startswith("#"):
                 return f"[{text}](https://github.com/{GITHUB_USER}/{GITHUB_REPO}/tree/main/rule/Clash/{url})"
             return match.group(0)
         
         new_content = re.sub(r'\[([^\]]+)\]\(([^\)]+)\)', root_link_replacer, content)
-        
         header = f"> [!TIP]\n> 本目录下的各分类规则已自动转换为 Mihomo Binary MRS 格式。点击下方分类文件夹即可直达你自己的对应目录网页查看与下载。\n\n"
         with open(dst_path, 'w', encoding='utf-8') as f:
             f.write(header + new_content)
         print("已完美重写根目录大 README.md 的直达链接")
         return
 
-    # ==================== 分支二：处理各个子目录（如 Apple, Google）的小 README ====================
+    # ==================== 分支二：处理各个子目录的小 README ====================
     url_rel_path = rel_path.replace("\\", "/")
     my_links = "### ⬇️ MRS 规则下载链接\n\n"
     if 'domain' in generated_mrs:
