@@ -2,7 +2,7 @@ name: Auto Convert Rules to MRS
 
 on:
   schedule:
-    - cron: '0 * * * *' # 每 1 小时自动运行 (在每个小时的第 0 分钟触发)
+    - cron: '0 * * * *' # 每 1 小时自动运行
   workflow_dispatch: # 允许手动点击运行
 
 permissions:
