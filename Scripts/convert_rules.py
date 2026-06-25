@@ -76,17 +76,12 @@ def rewrite_readme(src_path, dst_path, rel_path, category, generated_mrs):
     with open(src_path, 'r', encoding='utf-8') as f:
         content = f.read()
 
-    # 正则替换逻辑：寻找 Markdown 链接 [Text](URL)
-    # 我们根据原本链接中包含的内容（如 .list 或 .yaml）以及是否含有 IP 来判断替换目标
+    # 正则替换逻辑：寻找 Markdown 链接 [Text](URL) 并映射到你的 mrs 原始文件地址
     def link_replacer(match):
         text = match.group(1)
         url = match.group(2)
-        
-        # 构建新 URL 的基础路径
-        # 注意 rel_path 在 Windows/Linux 上的斜杠差异
         url_rel_path = rel_path.replace("\\", "/")
         
-        # 判断链接类型并重定向到你的 MRS
         if "domain" in url.lower() or ".list" in url.lower() or "clash" in url.lower():
             if 'domain' in generated_mrs:
                 return f"[{text}]({BASE_RAW_URL}/{url_rel_path}/{generated_mrs['domain']})"
@@ -94,11 +89,9 @@ def rewrite_readme(src_path, dst_path, rel_path, category, generated_mrs):
             if 'ip' in generated_mrs:
                 return f"[{text}]({BASE_RAW_URL}/{url_rel_path}/{generated_mrs['ip']})"
         
-        return match.group(0) # 如果不匹配，保持原样
+        return match.group(0)
 
     new_content = re.sub(r'\[([^\]]+)\]\(([^\)]+)\)', link_replacer, content)
-    
-    # 在文档开头加一个小提示，标明这是自动转换的 MRS 镜像（可选）
     header = f"> [!TIP]\n> 本目录下的规则已自动转换为 Mihomo Binary MRS 格式。原始项目: blackmatrix7\n\n"
     
     with open(dst_path, 'w', encoding='utf-8') as f:
