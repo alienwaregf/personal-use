@@ -30,10 +30,9 @@ def process_rules():
                 source_readme_path = os.path.join(root, "README.md")
                 target_readme_path = os.path.join(target_dir, "README.md")
                 rewrite_readme(source_readme_path, target_readme_path, rel_path, category_name, {})
-            continue # 跳过根目录的规则提取
+            continue
 
         # 1. 自动复制保存原版最全的文本配置
-        # 逻辑：优先寻找 _Classical.yaml，如果找到就不再管普通的 .yaml
         classical_yaml = f"{category_name}_Classical.yaml"
         standard_yaml = f"{category_name}.yaml"
 
@@ -124,17 +123,11 @@ def rewrite_readme(src_path, dst_path, rel_path, category, generated_mrs):
     # ==================== 分支二：处理各个子目录（如 Apple, Google）的小 README ====================
     url_rel_path = rel_path.replace("\\", "/")
 
-    # 1. 精准删除不需要的“使用说明”和“配置建议”区块
-    # 正则逻辑：匹配带有使用说明/配置建议的标题头，并一直删到下一个标题出现之前
-    content = re.sub(r'#{2,3}\s*使用说明.*?(?=\n#{2,3}\s|\Z)', '', content, flags=re.DOTALL)
-    content = re.sub(r'#{2,3}\s*配置建议.*?(?=\n#{2,3}\s|\Z)', '', content, flags=re.DOTALL)
-
-    # 2. 构建专属链接及判断逻辑
+    # 1. 构建你的专属下载链接
     my_links = "### ⬇️ MRS 规则下载链接\n\n"
     has_domain = 'domain' in generated_mrs
     has_ip = 'ip' in generated_mrs
     
-    # 核心需求：如果同时生成了两种规则文件，自动加注“(必须同时使用)”
     suffix = " (必须同时使用)" if (has_domain and has_ip) else ""
 
     if has_domain:
@@ -145,21 +138,23 @@ def rewrite_readme(src_path, dst_path, rel_path, category, generated_mrs):
         my_links += f"- **IP 规则{suffix}**: [{generated_mrs['ip']}]({mrs_url})\n"
     my_links += "\n"
 
-    # 3. 替换原有的“规则链接”区块
-    pattern = r'### 规则链接.*?(?=\n## |\Z)'
-    if re.search(pattern, content, re.DOTALL):
-        new_content = re.sub(pattern, my_links, content, flags=re.DOTALL)
+    # 2. 暴力美学：直接定位 ## Clash 区块，整体替换！
+    # 逻辑：不管里面原来有多少花里胡哨的“使用说明”或“配置建议”，只要是在 ## Clash 和下一个 ## 之间的内容，全部抹除并换成你的专属链接。
+    clash_pattern = r'(##\s*Clash\s*\n).*?(?=\n##\s|\Z)'
+    
+    if re.search(clash_pattern, content, re.DOTALL):
+        # 替换后将精准插入在 ## Clash 的正下方
+        new_content = re.sub(clash_pattern, r'\1\n' + my_links, content, flags=re.DOTALL)
     else:
         new_content = content + "\n\n" + my_links
         
-    # 清理删除区块后遗留的大量空行，保持排版紧凑美观
+    # 清理多余空行，保持版面紧凑
     new_content = re.sub(r'\n{3,}', '\n\n', new_content)
 
     header = f"> [!TIP]\n> 本目录下的规则已由上游 classical 格式自动转换为 Mihomo Binary MRS 格式并保留了最全的源文本配置。\n\n"
     
     with open(dst_path, 'w', encoding='utf-8') as f:
         f.write(header + new_content)
-    print(f"已重写子目录 README: {rel_path}")
 
 if __name__ == "__main__":
     process_rules()
