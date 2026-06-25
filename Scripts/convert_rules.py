@@ -12,7 +12,7 @@ DEST_ROOT = "rule/Clash"
 BASE_RAW_URL = f"https://raw.githubusercontent.com/{GITHUB_USER}/{GITHUB_REPO}/main/rule/Clash"
 
 # 在这里填入你手动创建、绝对不能被自动清理的文件夹名称
-PROTECTED_DIRS = ["AdobeApp", "ChinaDirect", "IP", "Perplexity"] 
+PROTECTED_DIRS = ["AdobeApp", "ChinaDirect", "IP", "Perplexity", "Apple Intelligence"] 
 # ===========================================
 
 def process_rules():
