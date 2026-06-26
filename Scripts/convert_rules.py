@@ -300,7 +300,7 @@ def build_child_readme_replacement(folder_name, classical_filename, has_domain_m
 
     if has_ip_mrs:
         parts.append(
-            f"IP 规则（仅包含域名）\n"
+            f"IP 规则（仅包含IP）\n"
             f"{cb}text\n"
             f"{RAW_BASE_URL}/{folder_name}/{folder_name}_IP.mrs\n"
             f"{cb}\n\n"
