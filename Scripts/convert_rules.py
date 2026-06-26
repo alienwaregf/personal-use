@@ -9,7 +9,7 @@ GITHUB_USER = "alienwaregf"
 GITHUB_REPO = "personal-use"
 SOURCE_ROOT = "source_repo/rule/Clash"
 DEST_ROOT = "rule/Clash"
-BASE_RAW_URL = f"[https://raw.githubusercontent.com/](https://raw.githubusercontent.com/){GITHUB_USER}/{GITHUB_REPO}/main/rule/Clash"
+BASE_RAW_URL = f"https://raw.githubusercontent.com/{GITHUB_USER}/{GITHUB_REPO}/main/rule/Clash"
 
 def process_rules():
     if not os.path.exists(DEST_ROOT):
@@ -30,7 +30,7 @@ def process_rules():
                 rewrite_root_readme(os.path.join(root, "README.md"), os.path.join(target_dir, "README.md"))
             continue
 
-        # 1. 拷贝文本规则，并严格按照优先级确定 Classical 的编译源
+        # 1. 拷贝文本规则，按你要求确定 Classical 编译源（_Classical 优先）
         classical_yaml = f"{category_name}_Classical.yaml"
         standard_yaml = f"{category_name}.yaml"
         yaml_for_classical = None
@@ -56,16 +56,19 @@ def process_rules():
             if compile_ruleset(ips, os.path.join(target_dir, ip_mrs), 'ipcidr'):
                 generated_mrs['ip'] = ip_mrs
 
-        # 3. 编译 Classical 规则 (使用刚才确定的源文件)
+        # 3. 编译 Classical 规则 (取消严格报错阻断，只要文件生成了就加链接)
         if yaml_for_classical:
             classical_mrs = f"{category_name}_Classical.mrs"
+            classical_mrs_path = os.path.join(target_dir, classical_mrs)
             try:
-                subprocess.run(['mihomo', 'convert-ruleset', 'classical', 'yaml', yaml_for_classical, os.path.join(target_dir, classical_mrs)], check=True)
-                generated_mrs['classical'] = classical_mrs
+                subprocess.run(['mihomo', 'convert-ruleset', 'classical', 'yaml', yaml_for_classical, classical_mrs_path])
+                # 只要文件确实产出了，就记录到链接里
+                if os.path.exists(classical_mrs_path):
+                    generated_mrs['classical'] = classical_mrs
             except Exception as e:
-                print(f"编译 Classical 失败: {e}")
+                print(f"Classical 编译存在警告: {e}")
 
-        # 4. 重写各子目录的小 README (生成一键复制代码块)
+        # 4. 重写各子目录的小 README (生成一键复制代码块，精准控制位置)
         if "README.md" in files:
             rewrite_sub_readme(os.path.join(root, "README.md"), os.path.join(target_dir, "README.md"), rel_path, generated_mrs)
 
@@ -93,7 +96,7 @@ def compile_ruleset(data, output_path, behavior):
         yaml.dump({"payload": data}, f)
     try:
         subprocess.run(['mihomo', 'convert-ruleset', behavior, 'yaml', temp_yaml, output_path], check=True)
-        return True
+        return os.path.exists(output_path)
     except:
         return False
     finally:
@@ -116,11 +119,13 @@ def rewrite_sub_readme(src_path, dst_path, rel_path, generated_mrs):
     with open(src_path, 'r', encoding='utf-8') as f: content = f.read()
     url_rel_path = rel_path.replace("\\", "/")
     
-    # 暴力清除上游不需要的模块
-    content = re.sub(r'#{2,3}\s*使用说明.*?(?=\n#{2,3}\s|\Z)', '', content, flags=re.DOTALL)
-    content = re.sub(r'#{2,3}\s*配置建议.*?(?=\n#{2,3}\s|\Z)', '', content, flags=re.DOTALL)
-    content = re.sub(r'##\s*Clash.*?(?=\n## |\Z)', '', content, flags=re.DOTALL)
-    content = re.sub(r'###\s*规则链接.*?(?=\n## |\Z)', '', content, flags=re.DOTALL)
+    # 核心逻辑：精准提取到“规则统计”结束的地方，丢弃后面的所有残留废料
+    match = re.search(r'(.*?## 规则统计.*?(?=\n## |\Z))', content, flags=re.DOTALL)
+    if match:
+        clean_content = match.group(1).strip()
+    else:
+        # 兜底：如果原文档没有规则统计，则在第一个不需要的模块处截断
+        clean_content = re.sub(r'\n## (使用说明|配置建议|Clash|Surge|Quantumult X|Loon|Shadowrocket|通用).*', '', content, flags=re.DOTALL).strip()
 
     # ==================== 构建一键复制代码块排版 ====================
     my_links = "## Clash\n\n"
@@ -137,11 +142,12 @@ def rewrite_sub_readme(src_path, dst_path, rel_path, generated_mrs):
         mrs_url = f"{BASE_RAW_URL}/{url_rel_path}/{generated_mrs['classical']}"
         my_links += f"**Classical 规则 (单独使用):**\n\n```text\n{mrs_url}\n```\n\n"
 
-    new_content = content.strip() + "\n\n" + my_links
-    new_content = re.sub(r'\n{3,}', '\n\n', new_content)
+    # 将干净的内容与新的链接区块无缝拼接
+    header = "> [!TIP]\n> 本目录下的规则已由上游格式自动转换为 Mihomo Binary MRS 格式。\n\n"
+    final_content = header + clean_content + "\n\n" + my_links.strip() + "\n"
     
     with open(dst_path, 'w', encoding='utf-8') as f:
-        f.write("> [!TIP]\n> 本目录下的规则已由上游格式自动转换为 Mihomo Binary MRS 格式。\n\n" + new_content)
+        f.write(final_content)
 
 if __name__ == "__main__":
     process_rules()
