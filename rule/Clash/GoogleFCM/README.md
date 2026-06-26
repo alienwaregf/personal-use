@@ -1,10 +1,10 @@
-# 🧸 Claude
+# 🧸 谷歌推送
 
 ## 前言
 
 ![](https://shields.io/badge/-移除重复规则-ff69b4) ![](https://shields.io/badge/-DOMAIN与DOMAIN--SUFFIX合并-green) ![](https://shields.io/badge/-DOMAIN--SUFFIX间合并-critical) ![](https://shields.io/badge/-DOMAIN与DOMAIN--KEYWORD合并-9cf) ![](https://shields.io/badge/-DOMAIN--SUFFIX与DOMAIN--KEYWORD合并-blue) ![](https://shields.io/badge/-IP--CIDR(6)合并-blueviolet) 
 
-Claude规则由《RULE GENERATOR 规则生成器》自动生成。
+谷歌推送规则由《RULE GENERATOR 规则生成器》自动生成。
 
 分流规则是互联网公共服务的域名和IP地址汇总，所有数据均收集自互联网公开信息，不代表我们支持或使用这些服务。
 
@@ -12,26 +12,31 @@ Claude规则由《RULE GENERATOR 规则生成器》自动生成。
 
 ## 规则统计
 
-最后更新时间：2025-06-06 09:20:01
+最后更新时间：2025-06-06 09:18:26
 
 各类型规则统计：
 | 类型 | 数量(条)  | 
 | ---- | ----  |
-| DOMAIN | 1  | 
-| DOMAIN-SUFFIX | 2  | 
-| TOTAL | 3  | 
+| DOMAIN | 15  | 
+| IP-CIDR | 26  | 
+| TOTAL | 41  | 
 
 
 ## Clash
 
 Domain 规则（仅包含域名）
 ```text
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Claude/Claude_Domain.mrs
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/GoogleFCM/GoogleFCM_Domain.mrs
+```
+
+IP 规则（仅包含IP）
+```text
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/GoogleFCM/GoogleFCM_IP.mrs
 ```
 
 Classical 规则（全量规则）
 ```text
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Claude/Claude.yaml
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/GoogleFCM/GoogleFCM.yaml
 ```
 
 ## 子规则/排除规则
@@ -41,7 +46,14 @@ https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Claud
 
 ## 数据来源
 
-当前规则未直接引用数据源。
+《谷歌推送》的数据来自以下链接，如与本项目的《谷歌推送》规则混合使用，可能会造成规则大量重复。
+
+- https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Google%20FCM.yaml
+- https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/GoogleFCM.list
+- https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/GoogleFCM.yaml
+
+
+感谢以上规则作者的辛勤付出（排名不分先后）。
 
 ## 最后
 

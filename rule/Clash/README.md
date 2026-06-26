@@ -21,6 +21,7 @@
 |||||[HBO](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/HBO)|
 |||[AppleProxy](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/AppleProxy)|||
 ||||[Twitch](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Twitch)||
+|||||[谷歌推送](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/GoogleFCM)|
 ||[币安交易所](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Binance)||||
 |||||[Tmdb](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Tmdb)|
 |[OpenAI](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/OpenAI)|||||
@@ -71,7 +72,7 @@
 |📟Google|||||
 | ---- | ---- | ---- | ---- | ---- |
 |[Google](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Google)||||||||
-||||[Gemini](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Gemini)|||
+||[谷歌推送](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/GoogleFCM)||[Gemini](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Gemini)|||
 
 
 |🚫Reject|||||

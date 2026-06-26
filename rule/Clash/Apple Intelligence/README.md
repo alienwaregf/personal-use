@@ -1,11 +1,12 @@
 # Clash
 
-Domain 规则（必须同时使用）
+Domain 规则（仅包含域名）
 ```text
-https://github.com/alienwaregf/personal-use/raw/refs/heads/main/rule/Clash/Apple%20Intelligence/Apple%20Intelligence_Domain.mrs
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Apple Intelligence/Apple Intelligence_Domain.mrs
 ```
 
-Classical 规则（单独使用）
+Classical 规则（全量规则）
 ```text
-https://github.com/alienwaregf/personal-use/raw/refs/heads/main/rule/Clash/Apple%20Intelligence/Apple%20Intelligence.yaml
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Apple Intelligence/Apple Intelligence.yaml
 ```
+
