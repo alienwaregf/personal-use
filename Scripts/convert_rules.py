@@ -343,6 +343,57 @@ def select_best_yaml(folder_path, folder_name):
     return None
 
 
+
+def clean_workspace_garbage():
+    """
+    清理 GitHub Actions 工作区里的临时垃圾，防止被 git add 误提交。
+
+    注意：
+      不删除 rule/Clash，因为这是最终产物。
+      source_repo 是上游临时仓库，脚本处理完后可以删除。
+    """
+    paths_to_remove = [
+        TEMP_DIR,
+        "source_repo",
+        "__pycache__",
+        os.path.join("Scripts", "__pycache__"),
+        "mihomo",
+        "mihomo.gz",
+    ]
+
+    for path in paths_to_remove:
+        if os.path.isdir(path):
+            shutil.rmtree(path, ignore_errors=True)
+            print(f"已清理目录: {path}")
+        elif os.path.isfile(path):
+            try:
+                os.remove(path)
+                print(f"已清理文件: {path}")
+            except FileNotFoundError:
+                pass
+
+    for root, dirs, files in os.walk("."):
+        # 避免进入 .git，防止误操作 Git 内部文件
+        if ".git" in dirs:
+            dirs.remove(".git")
+
+        for filename in files:
+            if filename == ".DS_Store":
+                file_path = os.path.join(root, filename)
+                try:
+                    os.remove(file_path)
+                    print(f"已清理文件: {file_path}")
+                except FileNotFoundError:
+                    pass
+
+        for dirname in list(dirs):
+            if dirname == "__pycache__":
+                dir_path = os.path.join(root, dirname)
+                shutil.rmtree(dir_path, ignore_errors=True)
+                print(f"已清理目录: {dir_path}")
+                dirs.remove(dirname)
+
+
 def main():
     print("开始执行 Clash 规则拆分与 MRS 编译任务...")
 
@@ -453,4 +504,8 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    finally:
+        print("\n清理工作区临时文件...")
+        clean_workspace_garbage()
