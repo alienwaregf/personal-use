@@ -1,5 +1,5 @@
 > [!IMPORTANT]
-> 所有内容均来自 [blackmatrix7/ios_rule_script](https://github.com/blackmatrix7/ios_rule_script) 的二次编译，仅自用，勿传播，谢谢！
+> 所有内容均来自 [blackmatrix7大佬](https://github.com/blackmatrix7/ios_rule_script/tree/master/rule/Clash) 的二次编译，仅自用，勿传播，谢谢！
 
 ## 分类
 
