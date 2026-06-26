@@ -30,8 +30,6 @@ Domain 规则（必须同时使用）
 https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Gemini/Gemini_Domain.mrs
 ```
 
-IP 规则：当前目录没有可转换的 IP CIDR MRS 规则。
-
 Classical 规则（单独使用）
 ```text
 https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Gemini/Gemini.yaml

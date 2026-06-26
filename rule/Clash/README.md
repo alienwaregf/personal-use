@@ -1,3 +1,6 @@
+> [!IMPORTANT]
+> 所有内容均来自 [blackmatrix7/ios_rule_script](https://github.com/blackmatrix7/ios_rule_script) 的二次编译，仅自用，勿传播，谢谢！
+
 ## 分类
 
 
@@ -14,7 +17,7 @@
 ||[Telegram](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Telegram)||||
 |[Netflix](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Netflix)||[TikTok](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/TikTok)||[Twitter](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Twitter)|
 |[Cloudflare](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Cloudflare)||[Spotify](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Spotify)|||
-|[Mail](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Mail)|[PayPal](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/PayPal)||||
+|[Mail](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Mail)|||||
 |||[AppleProxy](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/AppleProxy)|||
 ||||[Twitch](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Twitch)||
 ||[币安交易所](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Binance)||||
@@ -50,7 +53,6 @@
 | ---- | ---- | ---- | ---- | ---- |
 |||[Steam](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Steam)||||||
 |||||[EA](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/EA)|||
-|[Riot](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Riot)|||||
 
 
 |🍎Apple|||||
