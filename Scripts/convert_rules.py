@@ -123,9 +123,14 @@ def rewrite_readme(src_path, dst_path, rel_path, category, generated_mrs):
     # ==================== 分支二：处理各个子目录的小 README ====================
     url_rel_path = rel_path.replace("\\", "/")
     
-    # 1. 采用宽泛正则 (匹配 #+) 删除“使用说明”和“配置建议”区块
-    content = re.sub(r'#+\s*使用说明.*?(?=\n#+ |\Z)', '', content, flags=re.DOTALL)
-    content = re.sub(r'#+\s*配置建议.*?(?=\n#+ |\Z)', '', content, flags=re.DOTALL)
+    # 核心修复点：将停止符设为仅匹配一级或二级标题（`\n## ` 或 `\n# `）
+    # 这样就能连带吞噬掉包裹在内部的三级标题，如 `### 规则链接`
+    stop_pattern = r'(?=\n## |\n# |\Z)'
+    
+    # 1. 删除“使用说明”、“配置建议”，以及保险起见强删独立的“规则链接”区块
+    content = re.sub(r'#+\s*使用说明.*?' + stop_pattern, '', content, flags=re.DOTALL)
+    content = re.sub(r'#+\s*配置建议.*?' + stop_pattern, '', content, flags=re.DOTALL)
+    content = re.sub(r'#+\s*规则链接.*?' + stop_pattern, '', content, flags=re.DOTALL)
 
     # 2. 构建专属代码块链接
     my_links = ""
@@ -142,12 +147,12 @@ def rewrite_readme(src_path, dst_path, rel_path, category, generated_mrs):
         my_links += f"**IP 规则{suffix}**:\n```text\n{mrs_url}\n```\n\n"
 
     # 3. 终极替换逻辑：严格定位到 Clash 标题内部
-    # 匹配 `# Clash` 或 `## Clash` 标题，把该标题下直到下一个标题之间的所有内容（即原有各种分支）清空，换成目标链接
-    pattern = r'(#+\s*Clash\s*\n).*?(?=\n#+ |\Z)'
+    # 清空 Clash 标题下方的所有内容（包括残留的各类分支），直到遇到下一个一级或二级标题为止
+    pattern = r'(#+\s*Clash\s*\n).*?' + stop_pattern
     if re.search(pattern, content, re.IGNORECASE | re.DOTALL):
         new_content = re.sub(pattern, r'\1\n' + my_links, content, flags=re.IGNORECASE | re.DOTALL)
     else:
-        # 备用定位：如果在极个别没有写 Clash 标题的目录里，就强制插在 子规则 前面
+        # 备用定位：如果没有 Clash 标题，插在“子规则”前面
         sub_rule_pattern = r'(#+\s*子规则/排除规则)'
         if re.search(sub_rule_pattern, content):
             new_content = re.sub(sub_rule_pattern, my_links + r'\n\1', content)
@@ -159,7 +164,7 @@ def rewrite_readme(src_path, dst_path, rel_path, category, generated_mrs):
     
     with open(dst_path, 'w', encoding='utf-8') as f:
         f.write(header + new_content)
-    print(f"已重写子目录 README: {rel_path}")
+    print(f"已深度清理并重写子目录 README: {rel_path}")
 
 if __name__ == "__main__":
     process_rules()
