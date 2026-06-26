@@ -1,6 +1,3 @@
-> [!TIP]
-> 本目录规则已自动转换为 Mihomo Binary MRS 格式与文本 YAML 格式。
-
 ## 分类
 
 

@@ -1,6 +1,3 @@
-> [!TIP]
-> 本目录下的规则已由上游格式自动转换为 Mihomo Binary MRS 格式。
-
 # 🧸 Chromecast
 
 ## 前言
@@ -24,6 +21,16 @@ Chromecast规则由《RULE GENERATOR 规则生成器》自动生成。
 | TOTAL | 1  | 
 
 
+## Clash
+
+Domain 规则（必须同时使用）Chromecast_Domain.mrs
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Chromecast/Chromecast_Domain.mrs
+
+IP 规则（必须同时使用）Chromecast_IP.mrs
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Chromecast/Chromecast_IP.mrs
+
+Classical 规则（单独使用）Chromecast.yaml
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Chromecast/Chromecast.yaml
 ## 子规则/排除规则
 
 
@@ -44,11 +51,3 @@ Chromecast规则由《RULE GENERATOR 规则生成器》自动生成。
 ### 其他
 
 请不要对外宣传本项目。
-
-## Clash
-
-**Classical 规则 (单独使用):**
-
-```text
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Chromecast/Chromecast_Classical.mrs
-```

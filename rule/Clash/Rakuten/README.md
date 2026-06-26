@@ -1,6 +1,3 @@
-> [!TIP]
-> 本目录下的规则已由上游格式自动转换为 Mihomo Binary MRS 格式。
-
 # 🧸 Rakuten
 
 ## 前言
@@ -24,6 +21,16 @@ Rakuten规则由《RULE GENERATOR 规则生成器》自动生成。
 | TOTAL | 18  | 
 
 
+## Clash
+
+Domain 规则（必须同时使用）Rakuten_Domain.mrs
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Rakuten/Rakuten_Domain.mrs
+
+IP 规则（必须同时使用）Rakuten_IP.mrs
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Rakuten/Rakuten_IP.mrs
+
+Classical 规则（单独使用）Rakuten.yaml
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Rakuten/Rakuten.yaml
 ## 子规则/排除规则
 
 
@@ -50,17 +57,3 @@ Rakuten规则由《RULE GENERATOR 规则生成器》自动生成。
 ### 其他
 
 请不要对外宣传本项目。
-
-## Clash
-
-**Domain 规则:**
-
-```text
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Rakuten/Rakuten_Domain.mrs
-```
-
-**Classical 规则 (单独使用):**
-
-```text
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Rakuten/Rakuten_Classical.mrs
-```

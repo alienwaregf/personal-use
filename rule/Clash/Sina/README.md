@@ -1,6 +1,3 @@
-> [!TIP]
-> 本目录下的规则已由上游格式自动转换为 Mihomo Binary MRS 格式。
-
 # 🧸 新浪
 
 ## 前言
@@ -25,6 +22,16 @@
 | TOTAL | 108  | 
 
 
+## Clash
+
+Domain 规则（必须同时使用）Sina_Domain.mrs
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Sina/Sina_Domain.mrs
+
+IP 规则（必须同时使用）Sina_IP.mrs
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Sina/Sina_IP.mrs
+
+Classical 规则（单独使用）Sina.yaml
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Sina/Sina.yaml
 ## 子规则/排除规则
 
 当前分流规则，已包含以下子规则，除非特殊需求否则不建议重复引用：
@@ -55,17 +62,3 @@
 ### 其他
 
 请不要对外宣传本项目。
-
-## Clash
-
-**Domain 规则:**
-
-```text
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Sina/Sina_Domain.mrs
-```
-
-**Classical 规则 (单独使用):**
-
-```text
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Sina/Sina_Classical.mrs
-```

@@ -1,6 +1,3 @@
-> [!TIP]
-> 本目录下的规则已由上游格式自动转换为 Mihomo Binary MRS 格式。
-
 # 🧸 极光推送
 
 ## 前言
@@ -24,6 +21,16 @@
 | TOTAL | 18  | 
 
 
+## Clash
+
+Domain 规则（必须同时使用）JiGuangTuiSong_Domain.mrs
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/JiGuangTuiSong/JiGuangTuiSong_Domain.mrs
+
+IP 规则（必须同时使用）JiGuangTuiSong_IP.mrs
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/JiGuangTuiSong/JiGuangTuiSong_IP.mrs
+
+Classical 规则（单独使用）JiGuangTuiSong.yaml
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/JiGuangTuiSong/JiGuangTuiSong.yaml
 ## 子规则/排除规则
 
 
@@ -49,17 +56,3 @@
 ### 其他
 
 请不要对外宣传本项目。
-
-## Clash
-
-**Domain 规则:**
-
-```text
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/JiGuangTuiSong/JiGuangTuiSong_Domain.mrs
-```
-
-**Classical 规则 (单独使用):**
-
-```text
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/JiGuangTuiSong/JiGuangTuiSong_Classical.mrs
-```

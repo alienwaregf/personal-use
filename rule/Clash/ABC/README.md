@@ -1,6 +1,3 @@
-> [!TIP]
-> 本目录下的规则已由上游格式自动转换为 Mihomo Binary MRS 格式。
-
 # 🧸 农业银行
 
 ## 前言
@@ -24,6 +21,16 @@
 | TOTAL | 6  | 
 
 
+## Clash
+
+Domain 规则（必须同时使用）ABC_Domain.mrs
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/ABC/ABC_Domain.mrs
+
+IP 规则（必须同时使用）ABC_IP.mrs
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/ABC/ABC_IP.mrs
+
+Classical 规则（单独使用）ABC.yaml
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/ABC/ABC.yaml
 ## 子规则/排除规则
 
 
@@ -49,17 +56,3 @@
 ### 其他
 
 请不要对外宣传本项目。
-
-## Clash
-
-**Domain 规则:**
-
-```text
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/ABC/ABC_Domain.mrs
-```
-
-**Classical 规则 (单独使用):**
-
-```text
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/ABC/ABC_Classical.mrs
-```

@@ -1,6 +1,3 @@
-> [!TIP]
-> 本目录下的规则已由上游格式自动转换为 Mihomo Binary MRS 格式。
-
 # 🧸 腾讯视频
 
 ## 前言
@@ -27,6 +24,16 @@
 | TOTAL | 51  | 
 
 
+## Clash
+
+Domain 规则（必须同时使用）TencentVideo_Domain.mrs
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/TencentVideo/TencentVideo_Domain.mrs
+
+IP 规则（必须同时使用）TencentVideo_IP.mrs
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/TencentVideo/TencentVideo_IP.mrs
+
+Classical 规则（单独使用）TencentVideo_No_Resolve.yaml
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/TencentVideo/TencentVideo_No_Resolve.yaml
 ## 子规则/排除规则
 
 
@@ -53,23 +60,3 @@
 ### 其他
 
 请不要对外宣传本项目。
-
-## Clash
-
-**Domain 规则 (必须同时使用):**
-
-```text
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/TencentVideo/TencentVideo_Domain.mrs
-```
-
-**IP 规则 (必须同时使用):**
-
-```text
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/TencentVideo/TencentVideo_IP.mrs
-```
-
-**Classical 规则 (单独使用):**
-
-```text
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/TencentVideo/TencentVideo_Classical.mrs
-```

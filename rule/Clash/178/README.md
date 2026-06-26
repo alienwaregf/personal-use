@@ -1,6 +1,3 @@
-> [!TIP]
-> 本目录下的规则已由上游格式自动转换为 Mihomo Binary MRS 格式。
-
 # 🧸 178
 
 ## 前言
@@ -24,6 +21,16 @@
 | TOTAL | 22  | 
 
 
+## Clash
+
+Domain 规则（必须同时使用）178_Domain.mrs
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/178/178_Domain.mrs
+
+IP 规则（必须同时使用）178_IP.mrs
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/178/178_IP.mrs
+
+Classical 规则（单独使用）178.yaml
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/178/178.yaml
 ## 子规则/排除规则
 
 
@@ -49,17 +56,3 @@
 ### 其他
 
 请不要对外宣传本项目。
-
-## Clash
-
-**Domain 规则:**
-
-```text
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/178/178_Domain.mrs
-```
-
-**Classical 规则 (单独使用):**
-
-```text
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/178/178_Classical.mrs
-```

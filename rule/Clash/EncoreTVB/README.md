@@ -1,6 +1,3 @@
-> [!TIP]
-> 本目录下的规则已由上游格式自动转换为 Mihomo Binary MRS 格式。
-
 # 🧸 EncoreTVB
 
 ## 前言
@@ -25,6 +22,16 @@ EncoreTVB规则由《RULE GENERATOR 规则生成器》自动生成。
 | TOTAL | 5  | 
 
 
+## Clash
+
+Domain 规则（必须同时使用）EncoreTVB_Domain.mrs
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/EncoreTVB/EncoreTVB_Domain.mrs
+
+IP 规则（必须同时使用）EncoreTVB_IP.mrs
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/EncoreTVB/EncoreTVB_IP.mrs
+
+Classical 规则（单独使用）EncoreTVB.yaml
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/EncoreTVB/EncoreTVB.yaml
 ## 子规则/排除规则
 
 
@@ -51,17 +58,3 @@ EncoreTVB规则由《RULE GENERATOR 规则生成器》自动生成。
 ### 其他
 
 请不要对外宣传本项目。
-
-## Clash
-
-**Domain 规则:**
-
-```text
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/EncoreTVB/EncoreTVB_Domain.mrs
-```
-
-**Classical 规则 (单独使用):**
-
-```text
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/EncoreTVB/EncoreTVB_Classical.mrs
-```

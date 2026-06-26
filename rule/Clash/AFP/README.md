@@ -1,6 +1,3 @@
-> [!TIP]
-> 本目录下的规则已由上游格式自动转换为 Mihomo Binary MRS 格式。
-
 # 🧸 AFP
 
 ## 前言
@@ -24,6 +21,16 @@ AFP规则由《RULE GENERATOR 规则生成器》自动生成。
 | TOTAL | 2  | 
 
 
+## Clash
+
+Domain 规则（必须同时使用）AFP_Domain.mrs
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/AFP/AFP_Domain.mrs
+
+IP 规则（必须同时使用）AFP_IP.mrs
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/AFP/AFP_IP.mrs
+
+Classical 规则（单独使用）AFP.yaml
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/AFP/AFP.yaml
 ## 子规则/排除规则
 
 
@@ -49,17 +56,3 @@ AFP规则由《RULE GENERATOR 规则生成器》自动生成。
 ### 其他
 
 请不要对外宣传本项目。
-
-## Clash
-
-**Domain 规则:**
-
-```text
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/AFP/AFP_Domain.mrs
-```
-
-**Classical 规则 (单独使用):**
-
-```text
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/AFP/AFP_Classical.mrs
-```

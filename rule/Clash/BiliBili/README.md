@@ -1,6 +1,3 @@
-> [!TIP]
-> 本目录下的规则已由上游格式自动转换为 Mihomo Binary MRS 格式。
-
 # 🧸 BiliBili
 
 ## 前言
@@ -27,6 +24,16 @@ BiliBili规则由《RULE GENERATOR 规则生成器》自动生成。
 | TOTAL | 129  | 
 
 
+## Clash
+
+Domain 规则（必须同时使用）BiliBili_Domain.mrs
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/BiliBili/BiliBili_Domain.mrs
+
+IP 规则（必须同时使用）BiliBili_IP.mrs
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/BiliBili/BiliBili_IP.mrs
+
+Classical 规则（单独使用）BiliBili_No_Resolve.yaml
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/BiliBili/BiliBili_No_Resolve.yaml
 ## 子规则/排除规则
 
 
@@ -55,23 +62,3 @@ BiliBili规则由《RULE GENERATOR 规则生成器》自动生成。
 ### 其他
 
 请不要对外宣传本项目。
-
-## Clash
-
-**Domain 规则 (必须同时使用):**
-
-```text
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/BiliBili/BiliBili_Domain.mrs
-```
-
-**IP 规则 (必须同时使用):**
-
-```text
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/BiliBili/BiliBili_IP.mrs
-```
-
-**Classical 规则 (单独使用):**
-
-```text
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/BiliBili/BiliBili_Classical.mrs
-```

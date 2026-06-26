@@ -1,6 +1,3 @@
-> [!TIP]
-> 本目录下的规则已由上游格式自动转换为 Mihomo Binary MRS 格式。
-
 # 🧸 Supercell
 
 ## 前言
@@ -25,6 +22,16 @@ Supercell规则由《RULE GENERATOR 规则生成器》自动生成。
 | TOTAL | 24  | 
 
 
+## Clash
+
+Domain 规则（必须同时使用）Supercell_Domain.mrs
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Supercell/Supercell_Domain.mrs
+
+IP 规则（必须同时使用）Supercell_IP.mrs
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Supercell/Supercell_IP.mrs
+
+Classical 规则（单独使用）Supercell.yaml
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Supercell/Supercell.yaml
 ## 子规则/排除规则
 
 
@@ -45,23 +52,3 @@ Supercell规则由《RULE GENERATOR 规则生成器》自动生成。
 ### 其他
 
 请不要对外宣传本项目。
-
-## Clash
-
-**Domain 规则 (必须同时使用):**
-
-```text
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Supercell/Supercell_Domain.mrs
-```
-
-**IP 规则 (必须同时使用):**
-
-```text
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Supercell/Supercell_IP.mrs
-```
-
-**Classical 规则 (单独使用):**
-
-```text
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Supercell/Supercell_Classical.mrs
-```
