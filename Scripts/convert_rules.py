@@ -30,6 +30,7 @@ UPSTREAM_INCLUDE_FOLDERS = {
     "Download",
     "EA",
     "Google",
+    "GoogleFCM",
     "Gemini",
     "GitHub",
     "HBO",
