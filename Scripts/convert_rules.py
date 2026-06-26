@@ -116,7 +116,7 @@ def rewrite_sub_readme(src_path, dst_path, rel_path, generated_mrs):
     with open(src_path, 'r', encoding='utf-8') as f: content = f.read()
     url_rel_path = rel_path.replace("\\", "/")
     
-    # 暴力清除上游不需要的模块，包括上游原本的 "## Clash" 和 "规则链接" 块
+    # 暴力清除上游不需要的模块
     content = re.sub(r'#{2,3}\s*使用说明.*?(?=\n#{2,3}\s|\Z)', '', content, flags=re.DOTALL)
     content = re.sub(r'#{2,3}\s*配置建议.*?(?=\n#{2,3}\s|\Z)', '', content, flags=re.DOTALL)
     content = re.sub(r'##\s*Clash.*?(?=\n## |\Z)', '', content, flags=re.DOTALL)
