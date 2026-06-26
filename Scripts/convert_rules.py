@@ -11,38 +11,37 @@ SOURCE_CLASH_DIR = os.path.join(SOURCE_REPO, 'rule', 'Clash')
 DEST_CLASH_DIR = os.path.join('rule', 'Clash')
 
 # Github Raw 与 Tree 链接母地址
-MY_REPO_URL_BASE = 'https://github.com/alienwaregf/personal-use/tree/main/rule/Clash'
-RAW_URL_BASE = 'https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash'
+MY_REPO_URL_BASE = '[https://github.com/alienwaregf/personal-use/tree/main/rule/Clash](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash)'
+RAW_URL_BASE = '[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)'
 
 def replace_clash_section(readme_content, category, domain_mrs_name, ip_mrs_name, yaml_name):
     """
-    定位 README.md 中的 ## Clash 模块并进行替换。
-    严格保留原有的 Surge/Quantumult X 等其他模块不动。
+    精确替换 README.md 中的 ## Clash 模块。
+    使用 Markdown 代码块包裹直链，利用 GitHub 原生特性实现“一键复制”按钮效果，不再作为超链接展示。
     """
-    # 匹配 "## Clash" 到下一个 "## " 之前的所有内容（或者是文件结尾）
+    # 匹配 "## Clash" 开始，一直到下一个 "## " 之前的所有内容（或直接到文件末尾）
     pattern = re.compile(r'(##\s*Clash\s*\n.*?)(?=\n##\s+|\Z)', re.DOTALL | re.IGNORECASE)
     
     replacement = f"""## Clash
 
-Domain 规则（必须同时使用）{domain_mrs_name}
+Domain 规则 (必须同时使用):**
+```text
 {RAW_URL_BASE}/{category}/{domain_mrs_name}
 
 IP 规则（必须同时使用）{ip_mrs_name}
 {RAW_URL_BASE}/{category}/{ip_mrs_name}
 
-Classical 规则（单独使用）{yaml_name}
-{RAW_URL_BASE}/{category}/{yaml_name}"""
+{RAW_URL_BASE}/{category}/{yaml_name}
+```"""
 
-    if pattern.search(readme_content):
-        return pattern.sub(replacement, readme_content)
-    else:
-        # 兜底：如果原 README 中没有 Clash 章节，则追加到尾部
-        return readme_content.rstrip() + "\n\n" + replacement
+    # 直接执行原地替换并返回
+    return pattern.sub(replacement, readme_content)
 
 def convert_rule_file(yaml_path, category, dest_folder):
     """
     解析原目标 YAML，分离出 Domain 和 IP 规则。
     生成适配 Mihomo mrs 编译的临时文件并触发转化，最后清理临时文件。
+    （保持无策略名，且过滤注释的客观准确要求）
     """
     with open(yaml_path, 'r', encoding='utf-8') as f:
         try:
@@ -68,7 +67,7 @@ def convert_rule_file(yaml_path, category, dest_folder):
             continue
             
         rule_type = parts[0].strip()
-        # 获取规则内容，并通过截取 '#' 过滤掉行内注释，通过限制索引抛弃 'no-resolve' 等后缀
+        # 获取规则内容，并通过截取 '#' 过滤掉行内注释
         rule_value = parts[1].split('#')[0].strip()
         
         # 拆分并转换为 Mihomo (Meta) 内核兼容的 Behavior 写法
@@ -81,8 +80,6 @@ def convert_rule_file(yaml_path, category, dest_folder):
             domain_payload.append(rule_value)
         elif rule_type in ['IP-CIDR', 'IP-CIDR6']:
             ip_payload.append(rule_value)
-        # DOMAIN-KEYWORD 不受 mihomo 原生 domain 基数树支持，为客观保证准确性予以抛弃
-        # PROCESS-NAME, USER-AGENT 等由于不属于 Domain 或 IP，也同时丢弃
             
     domain_mrs_name = f"{category}_Domain.mrs"
     ip_mrs_name = f"{category}_IP.mrs"
@@ -123,7 +120,7 @@ def main():
             
         # 替换母 README 内置顶的仓库地址指向你的项目
         root_content = root_content.replace(
-            'https://github.com/blackmatrix7/ios_rule_script/tree/master/rule/Clash', 
+            '[https://github.com/blackmatrix7/ios_rule_script/tree/master/rule/Clash](https://github.com/blackmatrix7/ios_rule_script/tree/master/rule/Clash)', 
             MY_REPO_URL_BASE
         )
         
@@ -153,14 +150,14 @@ def main():
                 target_yaml = yf
                 break
                 
-        # 兜底：若没有 Classical 则随便抓取一个合规的 .yaml
+        # 兜底：若没有 Classical 则选择其他合规的 .yaml
         if not target_yaml:
             target_yaml = yaml_files[0]
             
         yaml_name = os.path.basename(target_yaml)
         dest_yaml_path = os.path.join(dest_cat_folder, yaml_name)
         
-        # 将挑选的最全文件移动到你的对应分类目录里（排除其余无效格式）
+        # 将挑选的最全文件移动到你的对应分类目录里
         shutil.copy(target_yaml, dest_yaml_path)
         
         # --- 3. 剥离并生成对应的 Domain / IP 二进制文件 ---
@@ -177,7 +174,7 @@ def main():
             with open(src_readme, 'r', encoding='utf-8') as f:
                 readme_content = f.read()
                 
-            # 覆写对应 Clash 模块并生成三个一键 URL
+            # 执行纯粹的原地替换
             new_readme_content = replace_clash_section(
                 readme_content, 
                 category, 
