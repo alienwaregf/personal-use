@@ -24,7 +24,40 @@ Facebook规则由《RULE GENERATOR 规则生成器》自动生成。
 | DOMAIN-SUFFIX | 544  | 
 | IP-ASN | 1  | 
 | IP-CIDR | 23  | 
-| TOTAL | 570  |
+| TOTAL | 570  | 
+
+
+## 子规则/排除规则
+
+
+当前分流规则，未包含其他子规则。
+
+## 数据来源
+
+《Facebook》的数据来自以下链接，如与本项目的《Facebook》规则混合使用，可能会造成规则大量重复。
+
+- https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/source/rule/Facebook/Facebook.list
+- https://raw.githubusercontent.com/sve1r/Rules-For-Quantumult-X/develop/Rules/Services/SNS/Facebook.list
+- https://raw.githubusercontent.com/LM-Firefly/Rules/master/PROXY/Facebook.list
+- https://raw.githubusercontent.com/LM-Firefly/Rules/master/Clash-RuleSet-Classical/PROXY/Facebook.yaml
+- https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Facebook.list
+- https://raw.githubusercontent.com/tkzc11/QX-Rules/main/Meta.list
+- https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/Facebook.yaml
+
+
+感谢以上规则作者的辛勤付出（排名不分先后）。
+
+## 最后
+
+### 感谢
+
+[@fiiir](https://github.com/fiiir) [@Tartarus2014](https://github.com/Tartarus2014) [@zjcfynn](https://github.com/zjcfynn) [@chenyiping1995](https://github.com/chenyiping1995) [@vhdj](https://github.com/vhdj)
+
+提供规则数据源及改进建议。
+
+### 其他
+
+请不要对外宣传本项目。
 
 ## Clash
 

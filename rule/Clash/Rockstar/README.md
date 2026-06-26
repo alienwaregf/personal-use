@@ -21,7 +21,35 @@ Rockstar规则由《RULE GENERATOR 规则生成器》自动生成。
 | 类型 | 数量(条)  | 
 | ---- | ----  |
 | DOMAIN-SUFFIX | 5  | 
-| TOTAL | 5  |
+| TOTAL | 5  | 
+
+
+## 子规则/排除规则
+
+
+当前分流规则，未包含其他子规则。
+
+## 数据来源
+
+《Rockstar》的数据来自以下链接，如与本项目的《Rockstar》规则混合使用，可能会造成规则大量重复。
+
+- https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/source/rule/Rockstar/Rockstar.list
+- https://raw.githubusercontent.com/LM-Firefly/Rules/master/Game/Rockstar.list
+
+
+感谢以上规则作者的辛勤付出（排名不分先后）。
+
+## 最后
+
+### 感谢
+
+[@fiiir](https://github.com/fiiir) [@Tartarus2014](https://github.com/Tartarus2014) [@zjcfynn](https://github.com/zjcfynn) [@chenyiping1995](https://github.com/chenyiping1995) [@vhdj](https://github.com/vhdj)
+
+提供规则数据源及改进建议。
+
+### 其他
+
+请不要对外宣传本项目。
 
 ## Clash
 

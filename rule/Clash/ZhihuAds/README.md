@@ -26,7 +26,29 @@
 | DOMAIN | 3  | 
 | IP-CIDR | 1  | 
 | IP-CIDR6 | 1  | 
-| TOTAL | 5  |
+| TOTAL | 5  | 
+
+
+## 子规则/排除规则
+
+
+当前分流规则，未包含其他子规则。
+
+## 数据来源
+
+当前规则未直接引用数据源。
+
+## 最后
+
+### 感谢
+
+[@fiiir](https://github.com/fiiir) [@Tartarus2014](https://github.com/Tartarus2014) [@zjcfynn](https://github.com/zjcfynn) [@chenyiping1995](https://github.com/chenyiping1995) [@vhdj](https://github.com/vhdj)
+
+提供规则数据源及改进建议。
+
+### 其他
+
+请不要对外宣传本项目。
 
 ## Clash
 

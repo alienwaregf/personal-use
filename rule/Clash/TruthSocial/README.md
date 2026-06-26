@@ -21,7 +21,29 @@ TruthSocial规则由《RULE GENERATOR 规则生成器》自动生成。
 | 类型 | 数量(条)  | 
 | ---- | ----  |
 | DOMAIN-SUFFIX | 2  | 
-| TOTAL | 2  |
+| TOTAL | 2  | 
+
+
+## 子规则/排除规则
+
+
+当前分流规则，未包含其他子规则。
+
+## 数据来源
+
+当前规则未直接引用数据源。
+
+## 最后
+
+### 感谢
+
+[@fiiir](https://github.com/fiiir) [@Tartarus2014](https://github.com/Tartarus2014) [@zjcfynn](https://github.com/zjcfynn) [@chenyiping1995](https://github.com/chenyiping1995) [@vhdj](https://github.com/vhdj)
+
+提供规则数据源及改进建议。
+
+### 其他
+
+请不要对外宣传本项目。
 
 ## Clash
 
