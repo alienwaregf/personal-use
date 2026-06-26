@@ -8,42 +8,88 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: auto-convert-rules-to-mrs
+  cancel-in-progress: true
+
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
+
     steps:
       - name: 检出当前仓库
         uses: actions/checkout@v5
-        
+
       - name: 拉取 Blackmatrix7 仓库
         run: |
+          set -euo pipefail
           git clone --depth 1 https://github.com/blackmatrix7/ios_rule_script.git source_repo
-          
+
       - name: 设置 Python 环境
         uses: actions/setup-python@v6
         with:
           python-version: '3.10'
-          
+
       - name: 安装 Python 依赖
-        run: pip install pyyaml
-        
+        run: |
+          set -euo pipefail
+          python -m pip install --upgrade pip
+          pip install pyyaml
+
       - name: 下载并安装 Mihomo 内核
         run: |
-          MIHOMO_URL=$(curl -s https://api.github.com/repos/MetaCubeX/mihomo/releases/latest | grep "browser_download_url.*linux-amd64-compatible" | cut -d '"' -f 4 | head -n 1)
-          wget -O mihomo.gz $MIHOMO_URL
+          set -euo pipefail
+
+          MIHOMO_URL=$(curl -s https://api.github.com/repos/MetaCubeX/mihomo/releases/latest \
+            | grep "browser_download_url.*linux-amd64-compatible" \
+            | cut -d '"' -f 4 \
+            | head -n 1)
+
+          if [ -z "$MIHOMO_URL" ]; then
+            echo "无法获取 Mihomo 下载地址"
+            exit 1
+          fi
+
+          echo "Mihomo 下载地址: $MIHOMO_URL"
+
+          wget -O mihomo.gz "$MIHOMO_URL"
           gunzip mihomo.gz
           chmod +x mihomo
           sudo mv mihomo /usr/local/bin/mihomo
-          
+
+          mihomo -v
+
       - name: 运行转换脚本
-        run: python Scripts/convert_rules.py
-        
+        run: |
+          set -euo pipefail
+          python Scripts/convert_rules.py
+
       - name: 清理临时文件
-        run: rm -rf source_repo
-        
+        run: |
+          set -euo pipefail
+
+          rm -rf source_repo
+          rm -rf temp_compile
+          rm -rf __pycache__
+          rm -rf Scripts/__pycache__
+          rm -f mihomo
+          rm -f mihomo.gz
+
+          find . -name ".DS_Store" -delete
+          find . -name "__pycache__" -type d -prune -exec rm -rf {} +
+
       - name: 提交并推送到 GitHub
         run: |
+          set -euo pipefail
+
           git config --local user.name "github-actions[bot]"
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
+
           git add rule/Clash/
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto update and convert mrs rules" && git push)
+
+          if git diff --cached --quiet; then
+            echo "没有规则变化，无需提交"
+          else
+            git commit -m "Auto update and convert mrs rules"
+            git push
+          fi
