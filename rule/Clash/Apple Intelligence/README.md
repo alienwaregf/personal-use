@@ -1,6 +1,6 @@
 # Clash
 
-## Domain 规则
+## Domain 规则（必须同时使用）
 
 ```text
 https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/AppleIntelligence/AppleIntelligence_Domain.mrs
