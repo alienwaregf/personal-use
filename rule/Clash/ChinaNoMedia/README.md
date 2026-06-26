@@ -28,56 +28,24 @@ ChinaNoMedia规则由《RULE GENERATOR 规则生成器》自动生成。
 | DOMAIN-SUFFIX | 3583  | 
 | IP-CIDR | 11  | 
 | IP-CIDR6 | 4  | 
-| TOTAL | 3624  | 
-
-## 子规则/排除规则
-
-当前分流规则，已包含以下子规则，除非特殊需求否则不建议重复引用：
-| 子规则  | 
-| ----  |
-| China  | 
-
-当前分流规则，已排除以下规则：
-| 排除规则  | 
-| ----  |
-| ChinaMedia  | 
-
-## 数据来源
-
-《ChinaNoMedia》的数据来自以下链接，如与本项目的《ChinaNoMedia》规则混合使用，可能会造成规则大量重复。
-
-- https://raw.githubusercontent.com/Hackl0us/SS-Rule-Snippet/master/Rulesets/Surge/Basic/CN.list
-- https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/source/rule/China/China.list
-- https://raw.githubusercontent.com/GeQ1an/Rules/master/QuantumultX/Filter/Mainland.list
-- https://raw.githubusercontent.com/sve1r/Rules-For-Quantumult-X/develop/Rules/Region/China.list
-- https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Domestic.yaml
-- https://raw.githubusercontent.com/zqzess/rule_for_quantumultX/master/QuantumultX/rules/Mainland.list
-
-感谢以上规则作者的辛勤付出（排名不分先后）。
-
-## 最后
-
-### 感谢
-
-[@fiiir](https://github.com/fiiir) [@Tartarus2014](https://github.com/Tartarus2014) [@zjcfynn](https://github.com/zjcfynn) [@chenyiping1995](https://github.com/chenyiping1995) [@vhdj](https://github.com/vhdj)
-
-提供规则数据源及改进建议。
-
-### 其他
-
-请不要对外宣传本项目。
+| TOTAL | 3624  |
 
 ## Clash
 
 **Domain 规则 (必须同时使用):**
 
 ```text
-[https://raw.githubusercontent.com/](https://raw.githubusercontent.com/)alienwaregf/personal-use/main/rule/Clash/ChinaNoMedia/ChinaNoMedia_Domain.mrs
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/ChinaNoMedia/ChinaNoMedia_Domain.mrs
 ```
 
 **IP 规则 (必须同时使用):**
 
 ```text
-[https://raw.githubusercontent.com/](https://raw.githubusercontent.com/)alienwaregf/personal-use/main/rule/Clash/ChinaNoMedia/ChinaNoMedia_IP.mrs
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/ChinaNoMedia/ChinaNoMedia_IP.mrs
 ```
 
+**Classical 规则 (单独使用):**
+
+```text
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/ChinaNoMedia/ChinaNoMedia_Classical.mrs
+```

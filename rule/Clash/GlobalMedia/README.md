@@ -26,59 +26,24 @@ GlobalMedia规则由《RULE GENERATOR 规则生成器》自动生成。
 | IP-CIDR | 918  | 
 | IP-CIDR6 | 6  | 
 | PROCESS-NAME | 3  | 
-| TOTAL | 2265  | 
-
-## 子规则/排除规则
-
-当前分流规则，已包含以下子规则，除非特殊需求否则不建议重复引用：
-| 子规则  |  | 
-| ---- | ----  |
-| YouTube | YouTubeMusic  | 
-
-当前分流规则，已排除以下规则：
-| 排除规则  | 
-| ----  |
-| OpenAI  | 
-
-## 数据来源
-
-《GlobalMedia》的数据来自以下链接，如与本项目的《GlobalMedia》规则混合使用，可能会造成规则大量重复。
-
-- https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/YouTube.list
-- https://raw.githubusercontent.com/GeQ1an/Rules/master/QuantumultX/Filter/Optional/YouTube.list
-- https://raw.githubusercontent.com/LM-Firefly/Rules/master/Global-Services/YouTube.list
-- https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/YouTubeMusic.list
-- https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ProxyMedia.list
-- https://raw.githubusercontent.com/sve1r/Rules-For-Quantumult-X/develop/Rules/Media/ForeignMedia.list
-- https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/YouTube.yaml
-- https://raw.githubusercontent.com/zqzess/rule_for_quantumultX/master/QuantumultX/rules/GMedia.list
-- https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/YouTubeMusic.yaml
-
-感谢以上规则作者的辛勤付出（排名不分先后）。
-
-## 最后
-
-### 感谢
-
-[@fiiir](https://github.com/fiiir) [@Tartarus2014](https://github.com/Tartarus2014) [@zjcfynn](https://github.com/zjcfynn) [@chenyiping1995](https://github.com/chenyiping1995) [@vhdj](https://github.com/vhdj)
-
-提供规则数据源及改进建议。
-
-### 其他
-
-请不要对外宣传本项目。
+| TOTAL | 2265  |
 
 ## Clash
 
 **Domain 规则 (必须同时使用):**
 
 ```text
-[https://raw.githubusercontent.com/](https://raw.githubusercontent.com/)alienwaregf/personal-use/main/rule/Clash/GlobalMedia/GlobalMedia_Domain.mrs
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/GlobalMedia/GlobalMedia_Domain.mrs
 ```
 
 **IP 规则 (必须同时使用):**
 
 ```text
-[https://raw.githubusercontent.com/](https://raw.githubusercontent.com/)alienwaregf/personal-use/main/rule/Clash/GlobalMedia/GlobalMedia_IP.mrs
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/GlobalMedia/GlobalMedia_IP.mrs
 ```
 
+**Classical 规则 (单独使用):**
+
+```text
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/GlobalMedia/GlobalMedia_Classical.mrs
+```

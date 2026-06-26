@@ -22,37 +22,18 @@
 | ---- | ----  |
 | IP-CIDR | 7  | 
 | IP-CIDR6 | 2  | 
-| TOTAL | 9  | 
-
-## 子规则/排除规则
-
-当前分流规则，未包含其他子规则。
-
-## 数据来源
-
-《360云计算》的数据来自以下链接，如与本项目的《360云计算》规则混合使用，可能会造成规则大量重复。
-
-- https://raw.githubusercontent.com/LM-Firefly/Rules/master/CCC-CN/360CCC.list
-
-感谢以上规则作者的辛勤付出（排名不分先后）。
-
-## 最后
-
-### 感谢
-
-[@fiiir](https://github.com/fiiir) [@Tartarus2014](https://github.com/Tartarus2014) [@zjcfynn](https://github.com/zjcfynn) [@chenyiping1995](https://github.com/chenyiping1995) [@vhdj](https://github.com/vhdj)
-
-提供规则数据源及改进建议。
-
-### 其他
-
-请不要对外宣传本项目。
+| TOTAL | 9  |
 
 ## Clash
 
 **IP 规则:**
 
 ```text
-[https://raw.githubusercontent.com/](https://raw.githubusercontent.com/)alienwaregf/personal-use/main/rule/Clash/Cloud/360Cloud/360Cloud_IP.mrs
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Cloud/360Cloud/360Cloud_IP.mrs
 ```
 
+**Classical 规则 (单独使用):**
+
+```text
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Cloud/360Cloud/360Cloud_Classical.mrs
+```

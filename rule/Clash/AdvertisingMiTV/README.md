@@ -28,33 +28,18 @@ https://www.zhihu.com/question/307466160
 | 类型 | 数量(条)  | 
 | ---- | ----  |
 | DOMAIN | 165  | 
-| TOTAL | 165  | 
-
-## 子规则/排除规则
-
-当前分流规则，未包含其他子规则。
-
-## 数据来源
-
-当前规则未直接引用数据源。
-
-## 最后
-
-### 感谢
-
-[@fiiir](https://github.com/fiiir) [@Tartarus2014](https://github.com/Tartarus2014) [@zjcfynn](https://github.com/zjcfynn) [@chenyiping1995](https://github.com/chenyiping1995) [@vhdj](https://github.com/vhdj)
-
-提供规则数据源及改进建议。
-
-### 其他
-
-请不要对外宣传本项目。
+| TOTAL | 165  |
 
 ## Clash
 
 **Domain 规则:**
 
 ```text
-[https://raw.githubusercontent.com/](https://raw.githubusercontent.com/)alienwaregf/personal-use/main/rule/Clash/AdvertisingMiTV/AdvertisingMiTV_Domain.mrs
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/AdvertisingMiTV/AdvertisingMiTV_Domain.mrs
 ```
 
+**Classical 规则 (单独使用):**
+
+```text
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/AdvertisingMiTV/AdvertisingMiTV_Classical.mrs
+```

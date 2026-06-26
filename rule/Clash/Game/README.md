@@ -27,83 +27,24 @@
 | DOMAIN-KEYWORD | 4  | 
 | DOMAIN-SUFFIX | 539  | 
 | IP-CIDR | 46  | 
-| TOTAL | 597  | 
-
-## 子规则/排除规则
-
-当前分流规则，已包含以下子规则，除非特殊需求否则不建议重复引用：
-| 子规则  |  |  |  |  | 
-| ---- | ---- | ---- | ---- | ----  |
-| Battle | Blizzard | Classic | DiabloIII | EA  | 
-| Epic | Garena | Gog | Hearthstone | HeroesoftheStorm  | 
-| Nintendo | OP | Overwatch | PlayStation | Purikonejp  | 
-| Riot | Rockstar | StarCraftII | Steam | SteamCN  | 
-| Supercell | UBI | WildRift | WorldofWarcraft | Xbox  | 
-
-## 数据来源
-
-《游戏》的数据来自以下链接，如与本项目的《游戏》规则混合使用，可能会造成规则大量重复。
-
-- https://raw.githubusercontent.com/sve1r/Rules-For-Quantumult-X/develop/Rules/Games/GamesAll.list
-- https://raw.githubusercontent.com/LM-Firefly/Rules/master/Game/Blizzard.list
-- https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Steam.list
-- https://raw.githubusercontent.com/LM-Firefly/Rules/master/Game/Steam.list
-- https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/source/rule/Rockstar/Rockstar.list
-- https://raw.githubusercontent.com/LM-Firefly/Rules/master/Game/Rockstar.list
-- https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/source/rule/PlayStation/PlayStation.list
-- https://raw.githubusercontent.com/LM-Firefly/Rules/master/Game/PlayStation.list
-- https://raw.githubusercontent.com/sve1r/Rules-For-Quantumult-X/develop/Rules/Games/Epic.list
-- https://raw.githubusercontent.com/LM-Firefly/Rules/master/Game/Epicgames.list
-- https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/SteamCN.list
-- https://raw.githubusercontent.com/sve1r/Rules-For-Quantumult-X/develop/Rules/Games/WildRift.list
-- https://raw.githubusercontent.com/LM-Firefly/Rules/master/Game/EA.list
-- https://raw.githubusercontent.com/LM-Firefly/Rules/master/Game/Garena.list
-- https://raw.githubusercontent.com/LM-Firefly/Rules/master/Game/Gog.list
-- https://raw.githubusercontent.com/LM-Firefly/Rules/master/Game/Nintendo.list
-- https://raw.githubusercontent.com/LM-Firefly/Rules/master/Game/OP.list
-- https://raw.githubusercontent.com/LM-Firefly/Rules/master/Game/Purikonejp.list
-- https://raw.githubusercontent.com/LM-Firefly/Rules/master/Game/Riot.list
-- https://raw.githubusercontent.com/LM-Firefly/Rules/master/Game/UBI.list
-- https://raw.githubusercontent.com/LM-Firefly/Rules/master/Game/Xbox.list
-- https://raw.githubusercontent.com/LM-Firefly/Rules/master/PROXY/Garena.list
-- https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Steam.yaml
-- https://raw.githubusercontent.com/LM-Firefly/Rules/master/Clash-RuleSet-Classical/PROXY/Garena.yaml
-- https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Blizzard.list
-- https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Epic.list
-- https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Xbox.list
-- https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/Blizzard.yaml
-- https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/Epic.yaml
-- https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/Steam.yaml
-- https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/SteamCN.yaml
-- https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/Xbox.yaml
-- https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/Nintendo.yaml
-- https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Nintendo.list
-
-感谢以上规则作者的辛勤付出（排名不分先后）。
-
-## 最后
-
-### 感谢
-
-[@fiiir](https://github.com/fiiir) [@Tartarus2014](https://github.com/Tartarus2014) [@zjcfynn](https://github.com/zjcfynn) [@chenyiping1995](https://github.com/chenyiping1995) [@vhdj](https://github.com/vhdj)
-
-提供规则数据源及改进建议。
-
-### 其他
-
-请不要对外宣传本项目。
+| TOTAL | 597  |
 
 ## Clash
 
 **Domain 规则 (必须同时使用):**
 
 ```text
-[https://raw.githubusercontent.com/](https://raw.githubusercontent.com/)alienwaregf/personal-use/main/rule/Clash/Game/Game_Domain.mrs
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Game/Game_Domain.mrs
 ```
 
 **IP 规则 (必须同时使用):**
 
 ```text
-[https://raw.githubusercontent.com/](https://raw.githubusercontent.com/)alienwaregf/personal-use/main/rule/Clash/Game/Game_IP.mrs
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Game/Game_IP.mrs
 ```
 
+**Classical 规则 (单独使用):**
+
+```text
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Game/Game_Classical.mrs
+```
