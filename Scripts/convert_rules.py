@@ -37,7 +37,7 @@ UPSTREAM_INCLUDE_FOLDERS = {
     "Mail",
     "Netflix",
     "OpenAI",
-    "PayPal"
+    "PayPal",
     "Riot",
     "Steam",
     "Spotify",
