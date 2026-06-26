@@ -21,8 +21,7 @@
 | TOTAL | 20  | 
 
 
-## Clash 
-
+## Clash
 
 Domain 规则（必须同时使用）
 ```text
@@ -38,35 +37,6 @@ Classical 规则（单独使用）
 ```text
 https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/FeiZhu/FeiZhu.yaml
 ```
-
-#### 配置建议
-- FeiZhu.yaml 单独使用。
-- FeiZhu_Resolve.yaml 单独使用。
-
-#### 规则链接
-**MASTER分支 (每日更新)**
-
-https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/FeiZhu/FeiZhu.yaml
-
-**MASTER分支 CDN (每日更新)**
-
-https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/FeiZhu/FeiZhu.yaml
-
-**MASTER分支 GHProxy (每日更新)**
-
-https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/FeiZhu/FeiZhu.yaml
-
-**RELEASE分支 (不定时更新)**
-
-https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/Clash/FeiZhu/FeiZhu.yaml
-
-**RELEASE分支CDN (不定时更新)**
-
-https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@release/rule/Clash/FeiZhu/FeiZhu.yaml
-
-**RELEASE分支 GHProxy (不定时更新)**
-
-https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/Clash/FeiZhu/FeiZhu.yaml
 
 ## 子规则/排除规则
 
