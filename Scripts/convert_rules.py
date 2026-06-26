@@ -36,6 +36,7 @@ UPSTREAM_INCLUDE_FOLDERS = {
     "Mail",
     "Netflix",
     "OpenAI",
+    "PayPal"
     "Riot",
     "Steam",
     "Spotify",
@@ -45,7 +46,6 @@ UPSTREAM_INCLUDE_FOLDERS = {
     "Tmdb",
     "Telegram",
     "Youtube",
-    "PayPal"
 }
 
 
@@ -296,8 +296,6 @@ def build_child_readme_replacement(folder_name, classical_filename, has_domain_m
             f"{RAW_BASE_URL}/{folder_name}/{folder_name}_Domain.mrs\n"
             f"{cb}\n\n"
         )
-    else:
-        parts.append("Domain 规则：当前目录没有可转换的 Domain MRS 规则。\n\n")
 
     if has_ip_mrs:
         parts.append(
@@ -306,8 +304,6 @@ def build_child_readme_replacement(folder_name, classical_filename, has_domain_m
             f"{RAW_BASE_URL}/{folder_name}/{folder_name}_IP.mrs\n"
             f"{cb}\n\n"
         )
-    else:
-        parts.append("IP 规则：当前目录没有可转换的 IP CIDR MRS 规则。\n\n")
 
     parts.append(
         f"Classical 规则（单独使用）\n"
@@ -827,6 +823,28 @@ def compile_folder(folder_name, folder_path, modify_readme=True):
     }
 
 
+
+def add_root_readme_tip(content):
+    """
+    在 Clash 根目录 README.md 顶部添加自用提示。
+
+    该提示每次重新生成 README 时都会自动写入；
+    如果原内容里已经有同样提示，会先清理旧提示，避免重复。
+    """
+    tip = (
+        "> [!IMPORTANT]\n"
+        "> 所有内容均来自 [blackmatrix7/ios_rule_script](https://github.com/blackmatrix7/ios_rule_script) 的二次编译，仅自用，勿传播，谢谢！\n\n"
+    )
+
+    old_tip_pattern = (
+        "> [!IMPORTANT]\n"
+        "> 所有内容均来自 [blackmatrix7/ios_rule_script](https://github.com/blackmatrix7/ios_rule_script) 的二次编译，仅自用，勿传播，谢谢！\n\n"
+    )
+
+    content = content.replace(old_tip_pattern, "")
+
+    return tip + content.lstrip()
+
 def write_root_readme():
     """
     写入 Clash 根目录 README。
@@ -859,6 +877,8 @@ def write_root_readme():
         root_content += "## 分类\n\n"
         for folder in sorted(existing_folders):
             root_content += f"- [{folder}]({MY_REPO_URL}/{folder})\n"
+
+    root_content = add_root_readme_tip(root_content)
 
     with open(dest_root_readme, "w", encoding="utf-8") as f:
         f.write(root_content)
