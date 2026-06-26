@@ -833,12 +833,12 @@ def add_root_readme_tip(content):
     """
     tip = (
         "> [!IMPORTANT]\n"
-        "> 所有内容均来自 [blackmatrix7/ios_rule_script](https://github.com/blackmatrix7/ios_rule_script) 的二次编译，仅自用，勿传播，谢谢！\n\n"
+        "> 所有内容均来自 [blackmatrix7大佬](https://github.com/blackmatrix7/ios_rule_script/tree/master/rule/Clash) 的二次编译，仅自用，勿传播，谢谢！\n\n"
     )
 
     old_tip_pattern = (
         "> [!IMPORTANT]\n"
-        "> 所有内容均来自 [blackmatrix7/ios_rule_script](https://github.com/blackmatrix7/ios_rule_script) 的二次编译，仅自用，勿传播，谢谢！\n\n"
+        "> 所有内容均来自 [blackmatrix7大佬](https://github.com/blackmatrix7/ios_rule_script/tree/master/rule/Clash) 的二次编译，仅自用，勿传播，谢谢！\n\n"
     )
 
     content = content.replace(old_tip_pattern, "")
