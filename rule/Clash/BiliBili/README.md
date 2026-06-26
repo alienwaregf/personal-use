@@ -28,7 +28,16 @@ BiliBili规则由《RULE GENERATOR 规则生成器》自动生成。
 
 ## Clash 
 
-#
+**Domain 规则 (必须同时使用)**:
+```text
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/BiliBili/BiliBili_Domain.mrs
+```
+
+**IP 规则 (必须同时使用)**:
+```text
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/BiliBili/BiliBili_IP.mrs
+```
+
 ## 子规则/排除规则
 
 当前分流规则，未包含其他子规则。
@@ -55,9 +64,3 @@ BiliBili规则由《RULE GENERATOR 规则生成器》自动生成。
 ### 其他
 
 请不要对外宣传本项目。
-
-### ⬇️ MRS 规则下载链接
-
-- **Domain 规则 (必须同时使用)**: [BiliBili_Domain.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/BiliBili/BiliBili_Domain.mrs)
-- **IP 规则 (必须同时使用)**: [BiliBili_IP.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/BiliBili/BiliBili_IP.mrs)
-
