@@ -33,7 +33,6 @@ def process_rules():
             continue # 跳过根目录的规则提取
 
         # 1. 自动复制保存原版最全的文本配置
-        # 逻辑：优先寻找 _Classical.yaml，如果找到就不再管普通的 .yaml
         classical_yaml = f"{category_name}_Classical.yaml"
         standard_yaml = f"{category_name}.yaml"
 
@@ -121,40 +120,41 @@ def rewrite_readme(src_path, dst_path, rel_path, category, generated_mrs):
             f.write(header + new_content)
         return
 
-    # ==================== 分支二：处理各个子目录（如 Apple, Google）的小 README ====================
+    # ==================== 分支二：处理各个子目录的小 README ====================
     url_rel_path = rel_path.replace("\\", "/")
+    
+    # 1. 采用宽泛正则 (匹配 #+) 删除“使用说明”和“配置建议”区块
+    content = re.sub(r'#+\s*使用说明.*?(?=\n#+ |\Z)', '', content, flags=re.DOTALL)
+    content = re.sub(r'#+\s*配置建议.*?(?=\n#+ |\Z)', '', content, flags=re.DOTALL)
 
-    # 1. 精准删除不需要的“使用说明”和“配置建议”区块
-    # 正则逻辑：匹配带有使用说明/配置建议的标题头，并一直删到下一个标题出现之前
-    content = re.sub(r'#{2,3}\s*使用说明.*?(?=\n#{2,3}\s|\Z)', '', content, flags=re.DOTALL)
-    content = re.sub(r'#{2,3}\s*配置建议.*?(?=\n#{2,3}\s|\Z)', '', content, flags=re.DOTALL)
-
-    # 2. 构建专属链接及判断逻辑
-    my_links = "### ⬇️ MRS 规则下载链接\n\n"
+    # 2. 构建专属代码块链接
+    my_links = ""
     has_domain = 'domain' in generated_mrs
     has_ip = 'ip' in generated_mrs
     
-    # 核心需求：如果同时生成了两种规则文件，自动加注“(必须同时使用)”
     suffix = " (必须同时使用)" if (has_domain and has_ip) else ""
 
     if has_domain:
         mrs_url = f"{BASE_RAW_URL}/{url_rel_path}/{generated_mrs['domain']}"
-        my_links += f"- **Domain 规则{suffix}**: [{generated_mrs['domain']}]({mrs_url})\n"
+        my_links += f"**Domain 规则{suffix}**:\n```text\n{mrs_url}\n```\n\n"
     if has_ip:
         mrs_url = f"{BASE_RAW_URL}/{url_rel_path}/{generated_mrs['ip']}"
-        my_links += f"- **IP 规则{suffix}**: [{generated_mrs['ip']}]({mrs_url})\n"
-    my_links += "\n"
+        my_links += f"**IP 规则{suffix}**:\n```text\n{mrs_url}\n```\n\n"
 
-    # 3. 替换原有的“规则链接”区块
-    pattern = r'### 规则链接.*?(?=\n## |\Z)'
-    if re.search(pattern, content, re.DOTALL):
-        new_content = re.sub(pattern, my_links, content, flags=re.DOTALL)
+    # 3. 终极替换逻辑：严格定位到 Clash 标题内部
+    # 匹配 `# Clash` 或 `## Clash` 标题，把该标题下直到下一个标题之间的所有内容（即原有各种分支）清空，换成目标链接
+    pattern = r'(#+\s*Clash\s*\n).*?(?=\n#+ |\Z)'
+    if re.search(pattern, content, re.IGNORECASE | re.DOTALL):
+        new_content = re.sub(pattern, r'\1\n' + my_links, content, flags=re.IGNORECASE | re.DOTALL)
     else:
-        new_content = content + "\n\n" + my_links
+        # 备用定位：如果在极个别没有写 Clash 标题的目录里，就强制插在 子规则 前面
+        sub_rule_pattern = r'(#+\s*子规则/排除规则)'
+        if re.search(sub_rule_pattern, content):
+            new_content = re.sub(sub_rule_pattern, my_links + r'\n\1', content)
+        else:
+            new_content = content + "\n\n## Clash\n\n" + my_links
         
-    # 清理删除区块后遗留的大量空行，保持排版紧凑美观
     new_content = re.sub(r'\n{3,}', '\n\n', new_content)
-
     header = f"> [!TIP]\n> 本目录下的规则已由上游 classical 格式自动转换为 Mihomo Binary MRS 格式并保留了最全的源文本配置。\n\n"
     
     with open(dst_path, 'w', encoding='utf-8') as f:
