@@ -1,5 +1,5 @@
 > [!TIP]
-> 本目录下的规则已由上游 classical 格式自动转换为 Mihomo Binary MRS 格式并保留了最全的源文本配置。
+> 本目录下的规则已由上游格式自动转换为 Mihomo Binary MRS 格式。
 
 # 🧸 六间房
 
@@ -23,9 +23,6 @@
 | DOMAIN-SUFFIX | 19  | 
 | TOTAL | 19  | 
 
-## Clash 
-
-#
 ## 子规则/排除规则
 
 当前分流规则，未包含其他子规则。
@@ -50,7 +47,11 @@
 
 请不要对外宣传本项目。
 
-### ⬇️ MRS 规则下载链接
+## Clash
 
-- **Domain 规则**: [6JianFang_Domain.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/6JianFang/6JianFang_Domain.mrs)
+**Domain 规则:**
+
+```text
+[https://raw.githubusercontent.com/](https://raw.githubusercontent.com/)alienwaregf/personal-use/main/rule/Clash/6JianFang/6JianFang_Domain.mrs
+```
 

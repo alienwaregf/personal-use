@@ -1,5 +1,5 @@
 > [!TIP]
-> 本目录下的规则已由上游 classical 格式自动转换为 Mihomo Binary MRS 格式并保留了最全的源文本配置。
+> 本目录下的规则已由上游格式自动转换为 Mihomo Binary MRS 格式。
 
 # 🧸 去广告测试版
 
@@ -36,9 +36,6 @@
 | IP-CIDR6 | 3  | 
 | TOTAL | 283497  | 
 
-## Clash 
-
-#
 ## 子规则/排除规则
 
 当前分流规则，已包含以下子规则，除非特殊需求否则不建议重复引用：
@@ -104,8 +101,17 @@
 
 请不要对外宣传本项目。
 
-### ⬇️ MRS 规则下载链接
+## Clash
 
-- **Domain 规则 (必须同时使用)**: [AdvertisingTest_Domain.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/AdvertisingTest/AdvertisingTest_Domain.mrs)
-- **IP 规则 (必须同时使用)**: [AdvertisingTest_IP.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/AdvertisingTest/AdvertisingTest_IP.mrs)
+**Domain 规则 (必须同时使用):**
+
+```text
+[https://raw.githubusercontent.com/](https://raw.githubusercontent.com/)alienwaregf/personal-use/main/rule/Clash/AdvertisingTest/AdvertisingTest_Domain.mrs
+```
+
+**IP 规则 (必须同时使用):**
+
+```text
+[https://raw.githubusercontent.com/](https://raw.githubusercontent.com/)alienwaregf/personal-use/main/rule/Clash/AdvertisingTest/AdvertisingTest_IP.mrs
+```
 

@@ -1,5 +1,5 @@
 > [!TIP]
-> 本目录下的规则已由上游 classical 格式自动转换为 Mihomo Binary MRS 格式并保留了最全的源文本配置。
+> 本目录下的规则已由上游格式自动转换为 Mihomo Binary MRS 格式。
 
 # 🧸 Apple
 
@@ -28,9 +28,6 @@ Apple规则由《RULE GENERATOR 规则生成器》自动生成。
 | PROCESS-NAME | 13  | 
 | TOTAL | 1593  | 
 
-## Clash 
-
-#
 ## 子规则/排除规则
 
 当前分流规则，已包含以下子规则，除非特殊需求否则不建议重复引用：
@@ -80,8 +77,17 @@ Apple规则由《RULE GENERATOR 规则生成器》自动生成。
 
 请不要对外宣传本项目。
 
-### ⬇️ MRS 规则下载链接
+## Clash
 
-- **Domain 规则 (必须同时使用)**: [Apple_Domain.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Apple/Apple_Domain.mrs)
-- **IP 规则 (必须同时使用)**: [Apple_IP.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Apple/Apple_IP.mrs)
+**Domain 规则 (必须同时使用):**
+
+```text
+[https://raw.githubusercontent.com/](https://raw.githubusercontent.com/)alienwaregf/personal-use/main/rule/Clash/Apple/Apple_Domain.mrs
+```
+
+**IP 规则 (必须同时使用):**
+
+```text
+[https://raw.githubusercontent.com/](https://raw.githubusercontent.com/)alienwaregf/personal-use/main/rule/Clash/Apple/Apple_IP.mrs
+```
 
