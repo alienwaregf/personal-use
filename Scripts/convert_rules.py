@@ -9,7 +9,7 @@ GITHUB_USER = "alienwaregf"
 GITHUB_REPO = "personal-use"
 SOURCE_ROOT = "source_repo/rule/Clash"
 DEST_ROOT = "rule/Clash"
-BASE_RAW_URL = f"https://raw.githubusercontent.com/{GITHUB_USER}/{GITHUB_REPO}/main/rule/Clash"
+BASE_RAW_URL = f"[https://raw.githubusercontent.com/](https://raw.githubusercontent.com/){GITHUB_USER}/{GITHUB_REPO}/main/rule/Clash"
 
 def process_rules():
     if not os.path.exists(DEST_ROOT):
@@ -24,56 +24,53 @@ def process_rules():
 
         category_name = os.path.basename(root)
 
-        # ==================== 特殊处理：如果是 rule/Clash 根目录 ====================
+        # ==================== 特殊处理：如果是根目录 ====================
         if rel_path == ".":
             if "README.md" in files:
-                source_readme_path = os.path.join(root, "README.md")
-                target_readme_path = os.path.join(target_dir, "README.md")
-                rewrite_readme(source_readme_path, target_readme_path, rel_path, category_name, {})
-            continue # 跳过根目录的规则提取
+                rewrite_root_readme(os.path.join(root, "README.md"), os.path.join(target_dir, "README.md"))
+            continue
 
-        # 1. 自动复制保存原版最全的文本配置
+        # 1. 拷贝文本规则，并严格按照优先级确定 Classical 的编译源
         classical_yaml = f"{category_name}_Classical.yaml"
         standard_yaml = f"{category_name}.yaml"
+        yaml_for_classical = None
 
         if classical_yaml in files:
-            src_yaml = os.path.join(root, classical_yaml)
-            dst_yaml = os.path.join(target_dir, classical_yaml)
-            shutil.copy2(src_yaml, dst_yaml)
-            print(f"已优选保留最全文本规则: {rel_path}/{classical_yaml}")
+            shutil.copy2(os.path.join(root, classical_yaml), os.path.join(target_dir, classical_yaml))
+            yaml_for_classical = os.path.join(target_dir, classical_yaml)
         elif standard_yaml in files:
-            src_yaml = os.path.join(root, standard_yaml)
-            dst_yaml = os.path.join(target_dir, standard_yaml)
-            shutil.copy2(src_yaml, dst_yaml)
-            print(f"已保留基础文本规则: {rel_path}/{standard_yaml}")
+            shutil.copy2(os.path.join(root, standard_yaml), os.path.join(target_dir, standard_yaml))
+            yaml_for_classical = os.path.join(target_dir, standard_yaml)
 
-        # 2. 提取当前目录生成的规则数据用于编译二进制 MRS
-        domains, ips, classicals = extract_rules(root, files)
-
-        # 3. 编译 MRS 文件并记录生成的文件名
+        # 2. 提取并编译 Domain 和 IP 拆分规则
+        domains, ips = extract_rules(root, files)
         generated_mrs = {}
+
         if domains:
             domain_mrs = f"{category_name}_Domain.mrs"
             if compile_ruleset(domains, os.path.join(target_dir, domain_mrs), 'domain'):
                 generated_mrs['domain'] = domain_mrs
+                
         if ips:
             ip_mrs = f"{category_name}_IP.mrs"
             if compile_ruleset(ips, os.path.join(target_dir, ip_mrs), 'ipcidr'):
                 generated_mrs['ip'] = ip_mrs
-        if classicals:
-            # 编译新增的 Classical 传统全量规则 MRS
-            classical_mrs = f"{category_name}_Classical.mrs"
-            if compile_ruleset(classicals, os.path.join(target_dir, classical_mrs), 'classical'):
-                generated_mrs['classical'] = classical_mrs
 
-        # 4. 智能处理每个子目录的小 README.md：重写链接区块与删减内容
+        # 3. 编译 Classical 规则 (使用刚才确定的源文件)
+        if yaml_for_classical:
+            classical_mrs = f"{category_name}_Classical.mrs"
+            try:
+                subprocess.run(['mihomo', 'convert-ruleset', 'classical', 'yaml', yaml_for_classical, os.path.join(target_dir, classical_mrs)], check=True)
+                generated_mrs['classical'] = classical_mrs
+            except Exception as e:
+                print(f"编译 Classical 失败: {e}")
+
+        # 4. 重写各子目录的小 README (生成一键复制代码块)
         if "README.md" in files:
-            source_readme_path = os.path.join(root, "README.md")
-            target_readme_path = os.path.join(target_dir, "README.md")
-            rewrite_readme(source_readme_path, target_readme_path, rel_path, category_name, generated_mrs)
+            rewrite_sub_readme(os.path.join(root, "README.md"), os.path.join(target_dir, "README.md"), rel_path, generated_mrs)
 
 def extract_rules(root, files):
-    domains, ips, classicals = [], [], []
+    domains, ips = [], []
     for file in files:
         if file.endswith(('.yaml', '.list')):
             with open(os.path.join(root, file), 'r', encoding='utf-8') as f:
@@ -85,13 +82,10 @@ def extract_rules(root, files):
                     if len(parts) < 2: continue
                     rule_type, value = parts[0].upper(), parts[1]
                     
-                    # 保持原始格式，存入全量 classical 列表
-                    classicals.append(f"{rule_type},{value}")
-                    
                     if rule_type == 'DOMAIN-SUFFIX': domains.append('+.' + value)
                     elif rule_type == 'DOMAIN': domains.append(value)
                     elif rule_type in ('IP-CIDR', 'IP-CIDR6'): ips.append(value)
-    return list(set(domains)), list(set(ips)), list(set(classicals))
+    return list(set(domains)), list(set(ips))
 
 def compile_ruleset(data, output_path, behavior):
     temp_yaml = output_path + ".temp.yaml"
@@ -105,70 +99,49 @@ def compile_ruleset(data, output_path, behavior):
     finally:
         if os.path.exists(temp_yaml): os.remove(temp_yaml)
 
-def rewrite_readme(src_path, dst_path, rel_path, category, generated_mrs):
-    with open(src_path, 'r', encoding='utf-8') as f:
-        content = f.read()
+def rewrite_root_readme(src_path, dst_path):
+    with open(src_path, 'r', encoding='utf-8') as f: content = f.read()
+    content = content.replace("https://github.com/blackmatrix7/ios_rule_script/tree/master/rule/Clash", 
+                              f"https://github.com/{GITHUB_USER}/{GITHUB_REPO}/tree/main/rule/Clash")
+    content = content.replace("https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash", 
+                              f"https://raw.githubusercontent.com/{GITHUB_USER}/{GITHUB_REPO}/main/rule/Clash")
+    def root_link_replacer(match):
+        text, url = match.group(1), match.group(2).strip()
+        return f"[{text}](https://github.com/{GITHUB_USER}/{GITHUB_REPO}/tree/main/rule/Clash/{url})" if not url.startswith("http") and not url.startswith("#") else match.group(0)
+    new_content = re.sub(r'\[([^\]]+)\]\(([^\)]+)\)', root_link_replacer, content)
+    with open(dst_path, 'w', encoding='utf-8') as f:
+        f.write("> [!TIP]\n> 本目录规则已自动转换为 Mihomo Binary MRS 格式与文本 YAML 格式。\n\n" + new_content)
 
-    # ==================== 分支一：处理 rule/Clash 根目录的大对齐 README ====================
-    if rel_path == ".":
-        content = content.replace("https://github.com/blackmatrix7/ios_rule_script/tree/master/rule/Clash", 
-                                  f"https://github.com/{GITHUB_USER}/{GITHUB_REPO}/tree/main/rule/Clash")
-        content = content.replace("https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash", 
-                                  f"https://raw.githubusercontent.com/{GITHUB_USER}/{GITHUB_REPO}/main/rule/Clash")
-        
-        def root_link_replacer(match):
-            text = match.group(1)
-            url = match.group(2).strip()
-            if not url.startswith("http") and not url.startswith("#"):
-                return f"[{text}](https://github.com/{GITHUB_USER}/{GITHUB_REPO}/tree/main/rule/Clash/{url})"
-            return match.group(0)
-        
-        new_content = re.sub(r'\[([^\]]+)\]\(([^\)]+)\)', root_link_replacer, content)
-        header = f"> [!TIP]\n> 本目录下的各分类规则已自动转换为 Mihomo Binary MRS 格式与文本 YAML 格式。\n\n"
-        with open(dst_path, 'w', encoding='utf-8') as f:
-            f.write(header + new_content)
-        return
-
-    # ==================== 分支二：处理各个子目录（如 Apple, Google）的小 README ====================
+def rewrite_sub_readme(src_path, dst_path, rel_path, generated_mrs):
+    with open(src_path, 'r', encoding='utf-8') as f: content = f.read()
     url_rel_path = rel_path.replace("\\", "/")
     
-    # 1. 精准删除不需要的“使用说明”和“配置建议”区块
+    # 暴力清除上游不需要的模块，包括上游原本的 "## Clash" 和 "规则链接" 块
     content = re.sub(r'#{2,3}\s*使用说明.*?(?=\n#{2,3}\s|\Z)', '', content, flags=re.DOTALL)
     content = re.sub(r'#{2,3}\s*配置建议.*?(?=\n#{2,3}\s|\Z)', '', content, flags=re.DOTALL)
+    content = re.sub(r'##\s*Clash.*?(?=\n## |\Z)', '', content, flags=re.DOTALL)
+    content = re.sub(r'###\s*规则链接.*?(?=\n## |\Z)', '', content, flags=re.DOTALL)
 
-    # 2. 构建专属链接及判断逻辑
-    my_links = "### ⬇️ MRS 规则下载链接\n\n"
-    has_domain = 'domain' in generated_mrs
-    has_ip = 'ip' in generated_mrs
-    has_classical = 'classical' in generated_mrs
-    
+    # ==================== 构建一键复制代码块排版 ====================
+    my_links = "## Clash\n\n"
+    has_domain, has_ip, has_classical = 'domain' in generated_mrs, 'ip' in generated_mrs, 'classical' in generated_mrs
     suffix = " (必须同时使用)" if (has_domain and has_ip) else ""
 
     if has_domain:
         mrs_url = f"{BASE_RAW_URL}/{url_rel_path}/{generated_mrs['domain']}"
-        my_links += f"- **Domain 规则{suffix}**: [{generated_mrs['domain']}]({mrs_url})\n"
+        my_links += f"**Domain 规则{suffix}:**\n\n```text\n{mrs_url}\n```\n\n"
     if has_ip:
         mrs_url = f"{BASE_RAW_URL}/{url_rel_path}/{generated_mrs['ip']}"
-        my_links += f"- **IP 规则{suffix}**: [{generated_mrs['ip']}]({mrs_url})\n"
+        my_links += f"**IP 规则{suffix}:**\n\n```text\n{mrs_url}\n```\n\n"
     if has_classical:
-        # 将 Classical 规则排在第三位，并加上专属备注
         mrs_url = f"{BASE_RAW_URL}/{url_rel_path}/{generated_mrs['classical']}"
-        my_links += f"- **Classical 规则 (单独使用)**: [{generated_mrs['classical']}]({mrs_url})\n"
-    my_links += "\n"
+        my_links += f"**Classical 规则 (单独使用):**\n\n```text\n{mrs_url}\n```\n\n"
 
-    # 3. 替换原有的“规则链接”区块
-    pattern = r'### 规则链接.*?(?=\n## |\Z)'
-    if re.search(pattern, content, re.DOTALL):
-        new_content = re.sub(pattern, my_links, content, flags=re.DOTALL)
-    else:
-        new_content = content + "\n\n" + my_links
-        
+    new_content = content.strip() + "\n\n" + my_links
     new_content = re.sub(r'\n{3,}', '\n\n', new_content)
-    header = f"> [!TIP]\n> 本目录下的规则已由上游 classical 格式自动转换为 Mihomo Binary MRS 格式并保留了最全的源文本配置。\n\n"
     
     with open(dst_path, 'w', encoding='utf-8') as f:
-        f.write(header + new_content)
-    print(f"已重写子目录 README: {rel_path}")
+        f.write("> [!TIP]\n> 本目录下的规则已由上游格式自动转换为 Mihomo Binary MRS 格式。\n\n" + new_content)
 
 if __name__ == "__main__":
     process_rules()
