@@ -13,14 +13,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 检出当前仓库
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         
       - name: 拉取 Blackmatrix7 仓库
         run: |
           git clone --depth 1 https://github.com/blackmatrix7/ios_rule_script.git source_repo
           
       - name: 设置 Python 环境
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: '3.10'
           
