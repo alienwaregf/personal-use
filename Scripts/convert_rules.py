@@ -374,26 +374,248 @@ def modify_readme_clash_section(readme_path, folder_name, classical_filename, ha
         f.writelines(new_lines)
 
 
-def modify_root_readme_links(content):
+def get_folder_from_root_readme_url(url):
+    """
+    从 Clash 根 README 的链接里识别对应的一级目录名。
+
+    支持：
+      ./Apple
+      Apple
+      https://github.com/blackmatrix7/ios_rule_script/tree/master/rule/Clash/Apple
+      https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Apple
+    """
+    if not url:
+        return None
+
+    url = url.strip()
+
+    if url.startswith("#") or url.startswith("mailto:"):
+        return None
+
+    known_prefixes = (
+        "https://github.com/blackmatrix7/ios_rule_script/tree/master/rule/Clash/",
+        "https://github.com/blackmatrix7/ios_rule_script/blob/master/rule/Clash/",
+        "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/",
+        f"{MY_REPO_URL}/",
+        f"{RAW_BASE_URL}/",
+    )
+
+    normalized = url
+
+    for prefix in known_prefixes:
+        if normalized.startswith(prefix):
+            normalized = normalized[len(prefix):]
+            break
+
+    if normalized.startswith("./"):
+        normalized = normalized[2:]
+
+    normalized = normalized.strip("/")
+
+    if (
+        not normalized
+        or normalized.startswith("../")
+        or normalized == "."
+        or normalized.startswith("http://")
+        or normalized.startswith("https://")
+    ):
+        return None
+
+    # 只把一级目录视为分类目录。文件链接、深层路径不参与根 README 分类过滤。
+    if "/" in normalized:
+        return None
+
+    lower = normalized.lower()
+    if lower.endswith((".md", ".yaml", ".yml", ".list", ".txt", ".mrs", ".json")):
+        return None
+
+    return normalized
+
+
+def rewrite_markdown_links_for_root_readme(line):
+    """
+    把根 README 里的 Clash 目录链接改成个人仓库链接。
+
+    不使用 re.sub，避免正则括号转义问题。
+    """
+    result = []
+    i = 0
+    length = len(line)
+
+    while i < length:
+        if line[i] != "[":
+            result.append(line[i])
+            i += 1
+            continue
+
+        label_start = i
+        label_end = line.find("]", label_start + 1)
+
+        if label_end == -1 or label_end + 1 >= length or line[label_end + 1] != "(":
+            result.append(line[i])
+            i += 1
+            continue
+
+        url_start = label_end + 2
+        url_end = line.find(")", url_start)
+
+        if url_end == -1:
+            result.append(line[i])
+            i += 1
+            continue
+
+        label = line[label_start + 1:label_end]
+        url = line[url_start:url_end].strip()
+        folder = get_folder_from_root_readme_url(url)
+
+        if folder:
+            new_url = f"{MY_REPO_URL}/{folder}"
+            result.append(f"[{label}]({new_url})")
+        else:
+            # 普通链接不动，但上游根地址替换为你的根地址。
+            new_url = url
+            new_url = new_url.replace(
+                "https://github.com/blackmatrix7/ios_rule_script/tree/master/rule/Clash",
+                MY_REPO_URL,
+            )
+            new_url = new_url.replace(
+                "https://github.com/blackmatrix7/ios_rule_script/blob/master/rule/Clash",
+                MY_REPO_URL,
+            )
+            new_url = new_url.replace(
+                "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash",
+                RAW_BASE_URL,
+            )
+            result.append(f"[{label}]({new_url})")
+
+        i = url_end + 1
+
+    return "".join(result)
+
+
+def line_directory_links(line):
+    """提取一行 Markdown 里的 Clash 一级目录链接。"""
+    folders = []
+    i = 0
+    length = len(line)
+
+    while i < length:
+        label_start = line.find("[", i)
+
+        if label_start == -1:
+            break
+
+        label_end = line.find("]", label_start + 1)
+
+        if label_end == -1 or label_end + 1 >= length or line[label_end + 1] != "(":
+            i = label_start + 1
+            continue
+
+        url_start = label_end + 2
+        url_end = line.find(")", url_start)
+
+        if url_end == -1:
+            i = label_start + 1
+            continue
+
+        url = line[url_start:url_end].strip()
+        folder = get_folder_from_root_readme_url(url)
+
+        if folder:
+            folders.append(folder)
+
+        i = url_end + 1
+
+    return folders
+
+
+def remove_current_reserved_section(content):
+    """
+    删除旧脚本追加的“当前保留目录”模块。
+
+    如果之前已经生成过这个模块，这里会在重写根 README 时清掉。
+    """
+    lines = content.splitlines(keepends=True)
+    new_lines = []
+    i = 0
+
+    while i < len(lines):
+        stripped = lines[i].strip()
+        match = re.match(r"^(#{1,6})\s*当前保留目录\s*$", stripped)
+
+        if not match:
+            new_lines.append(lines[i])
+            i += 1
+            continue
+
+        level = len(match.group(1))
+        i += 1
+
+        while i < len(lines):
+            next_stripped = lines[i].strip()
+            next_match = re.match(r"^(#{1,6})\s+", next_stripped)
+
+            if next_match and len(next_match.group(1)) <= level:
+                break
+
+            i += 1
+
+    return "".join(new_lines)
+
+
+def filter_root_readme_by_existing_folders(content, existing_folders):
+    """
+    按实际存留目录过滤根 README 的分类模块。
+
+    规则：
+      - 如果某一行是 Markdown 表格行或列表行，并且包含 Clash 一级目录链接；
+      - 该行里的目录全部都不在 existing_folders 中，则删除这一行；
+      - 如果目录存在，则保留，并把链接改成个人仓库链接。
+    """
+    existing_folders = set(existing_folders)
+    content = remove_current_reserved_section(content)
+
+    filtered_lines = []
+
+    for line in content.splitlines(keepends=True):
+        stripped = line.strip()
+        linked_folders = line_directory_links(line)
+
+        is_table_row = stripped.startswith("|") and stripped.endswith("|")
+        is_list_row = stripped.startswith(("- ", "* ", "+ "))
+
+        if linked_folders and (is_table_row or is_list_row):
+            if not any(folder in existing_folders for folder in linked_folders):
+                continue
+
+        filtered_lines.append(rewrite_markdown_links_for_root_readme(line))
+
+    return "".join(filtered_lines)
+
+
+def modify_root_readme_links(content, existing_folders=None):
     """
     替换 Clash 根 README 里的上游链接为自己的仓库链接。
 
-    兼容：
-      markdown 链接
-      纯文本链接
+    如果传入 existing_folders，则根据实际存留文件夹过滤原版分类模块；
+    同时删除旧版脚本追加的“当前保留目录”模块。
     """
     upstream_tree_url = "https://github.com/blackmatrix7/ios_rule_script/tree/master/rule/Clash"
     upstream_blob_url = "https://github.com/blackmatrix7/ios_rule_script/blob/master/rule/Clash"
-
-    content = content.replace(
-        f"[{upstream_tree_url}]({upstream_tree_url})",
-        f"[{MY_REPO_URL}]({MY_REPO_URL})"
-    )
+    upstream_raw_url = "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash"
 
     content = content.replace(upstream_tree_url, MY_REPO_URL)
     content = content.replace(upstream_blob_url, MY_REPO_URL)
+    content = content.replace(upstream_raw_url, RAW_BASE_URL)
 
-    return content
+    if existing_folders is not None:
+        return filter_root_readme_by_existing_folders(content, existing_folders)
+
+    content = remove_current_reserved_section(content)
+    return "\n".join(
+        rewrite_markdown_links_for_root_readme(line)
+        for line in content.splitlines()
+    ) + ("\n" if content.endswith("\n") else "")
 
 
 def select_best_yaml(folder_path, folder_name):
@@ -591,31 +813,35 @@ def write_root_readme():
     """
     写入 Clash 根目录 README。
 
-    如果上游根 README 存在，优先沿用并替换链接；
-    然后追加当前保留目录列表，避免 README 里只显示上游全集或漏掉自定义目录。
+    逻辑：
+      1. 优先沿用 blackmatrix7 原版根 README；
+      2. 删除旧版脚本追加的“当前保留目录”模块；
+      3. 根据 rule/Clash 实际存留文件夹，过滤原版分类模块；
+      4. 把分类链接改成你的 personal-use/rule/Clash 链接；
+      5. 不再额外追加“当前保留目录”。
     """
     os.makedirs(DEST_CLASH_DIR, exist_ok=True)
 
     src_root_readme = os.path.join(SOURCE_CLASH_DIR, "README.md")
     dest_root_readme = os.path.join(DEST_CLASH_DIR, "README.md")
 
-    if os.path.exists(src_root_readme):
-        with open(src_root_readme, "r", encoding="utf-8") as f:
-            root_content = f.read()
-
-        root_content = modify_root_readme_links(root_content)
-    else:
-        root_content = "# Clash\n\n"
-
     folders = [
         item for item in sorted(os.listdir(DEST_CLASH_DIR))
         if os.path.isdir(os.path.join(DEST_CLASH_DIR, item))
     ]
 
-    root_content += "\n\n## 当前保留目录\n\n"
+    if os.path.exists(src_root_readme):
+        with open(src_root_readme, "r", encoding="utf-8") as f:
+            root_content = f.read()
 
-    for folder in folders:
-        root_content += f"- [{folder}]({MY_REPO_URL}/{folder})\n"
+        root_content = modify_root_readme_links(root_content, existing_folders=folders)
+    else:
+        root_content = "# Clash\n\n"
+        root_content += "| 规则 | 链接 |\n"
+        root_content += "| --- | --- |\n"
+
+        for folder in folders:
+            root_content += f"| {folder} | [{folder}]({MY_REPO_URL}/{folder}) |\n"
 
     with open(dest_root_readme, "w", encoding="utf-8") as f:
         f.write(root_content)
