@@ -2,7 +2,7 @@ name: Yaml to MRS
 
 on:
   schedule:
-    - cron: '0 * * * *' # 每 1 小时自动运行
+    - cron: '17 * * * *' # 每 1 小时自动运行
   workflow_dispatch: # 允许手动点击运行
 
 permissions:
