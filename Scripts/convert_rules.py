@@ -48,7 +48,7 @@ def process_rules():
             print(f"已保留基础文本规则: {rel_path}/{standard_yaml}")
 
         # 2. 提取当前目录生成的规则数据用于编译二进制 MRS
-        domains, ips = extract_rules(root, files)
+        domains, ips, classicals = extract_rules(root, files)
 
         # 3. 编译 MRS 文件并记录生成的文件名
         generated_mrs = {}
@@ -60,6 +60,11 @@ def process_rules():
             ip_mrs = f"{category_name}_IP.mrs"
             if compile_ruleset(ips, os.path.join(target_dir, ip_mrs), 'ipcidr'):
                 generated_mrs['ip'] = ip_mrs
+        if classicals:
+            # 编译新增的 Classical 传统全量规则 MRS
+            classical_mrs = f"{category_name}_Classical.mrs"
+            if compile_ruleset(classicals, os.path.join(target_dir, classical_mrs), 'classical'):
+                generated_mrs['classical'] = classical_mrs
 
         # 4. 智能处理每个子目录的小 README.md：重写链接区块与删减内容
         if "README.md" in files:
@@ -68,21 +73,25 @@ def process_rules():
             rewrite_readme(source_readme_path, target_readme_path, rel_path, category_name, generated_mrs)
 
 def extract_rules(root, files):
-    domains, ips = [], []
+    domains, ips, classicals = [], [], []
     for file in files:
         if file.endswith(('.yaml', '.list')):
             with open(os.path.join(root, file), 'r', encoding='utf-8') as f:
                 for line in f:
                     line = line.strip()
                     if not line or line.startswith('#'): continue
-                    line = line.replace('- ', '').replace("'", "")
+                    line = line.replace('- ', '').replace("'", "").replace('"', '')
                     parts = line.split(',')
                     if len(parts) < 2: continue
                     rule_type, value = parts[0].upper(), parts[1]
+                    
+                    # 保持原始格式，存入全量 classical 列表
+                    classicals.append(f"{rule_type},{value}")
+                    
                     if rule_type == 'DOMAIN-SUFFIX': domains.append('+.' + value)
                     elif rule_type == 'DOMAIN': domains.append(value)
                     elif rule_type in ('IP-CIDR', 'IP-CIDR6'): ips.append(value)
-    return list(set(domains)), list(set(ips))
+    return list(set(domains)), list(set(ips)), list(set(classicals))
 
 def compile_ruleset(data, output_path, behavior):
     temp_yaml = output_path + ".temp.yaml"
@@ -120,51 +129,46 @@ def rewrite_readme(src_path, dst_path, rel_path, category, generated_mrs):
             f.write(header + new_content)
         return
 
-    # ==================== 分支二：处理各个子目录的小 README ====================
+    # ==================== 分支二：处理各个子目录（如 Apple, Google）的小 README ====================
     url_rel_path = rel_path.replace("\\", "/")
     
-    # 核心修复点：将停止符设为仅匹配一级或二级标题（`\n## ` 或 `\n# `）
-    # 这样就能连带吞噬掉包裹在内部的三级标题，如 `### 规则链接`
-    stop_pattern = r'(?=\n## |\n# |\Z)'
-    
-    # 1. 删除“使用说明”、“配置建议”，以及保险起见强删独立的“规则链接”区块
-    content = re.sub(r'#+\s*使用说明.*?' + stop_pattern, '', content, flags=re.DOTALL)
-    content = re.sub(r'#+\s*配置建议.*?' + stop_pattern, '', content, flags=re.DOTALL)
-    content = re.sub(r'#+\s*规则链接.*?' + stop_pattern, '', content, flags=re.DOTALL)
+    # 1. 精准删除不需要的“使用说明”和“配置建议”区块
+    content = re.sub(r'#{2,3}\s*使用说明.*?(?=\n#{2,3}\s|\Z)', '', content, flags=re.DOTALL)
+    content = re.sub(r'#{2,3}\s*配置建议.*?(?=\n#{2,3}\s|\Z)', '', content, flags=re.DOTALL)
 
-    # 2. 构建专属代码块链接
-    my_links = ""
+    # 2. 构建专属链接及判断逻辑
+    my_links = "### ⬇️ MRS 规则下载链接\n\n"
     has_domain = 'domain' in generated_mrs
     has_ip = 'ip' in generated_mrs
+    has_classical = 'classical' in generated_mrs
     
     suffix = " (必须同时使用)" if (has_domain and has_ip) else ""
 
     if has_domain:
         mrs_url = f"{BASE_RAW_URL}/{url_rel_path}/{generated_mrs['domain']}"
-        my_links += f"**Domain 规则{suffix}**:\n```text\n{mrs_url}\n```\n\n"
+        my_links += f"- **Domain 规则{suffix}**: [{generated_mrs['domain']}]({mrs_url})\n"
     if has_ip:
         mrs_url = f"{BASE_RAW_URL}/{url_rel_path}/{generated_mrs['ip']}"
-        my_links += f"**IP 规则{suffix}**:\n```text\n{mrs_url}\n```\n\n"
+        my_links += f"- **IP 规则{suffix}**: [{generated_mrs['ip']}]({mrs_url})\n"
+    if has_classical:
+        # 将 Classical 规则排在第三位，并加上专属备注
+        mrs_url = f"{BASE_RAW_URL}/{url_rel_path}/{generated_mrs['classical']}"
+        my_links += f"- **Classical 规则 (单独使用)**: [{generated_mrs['classical']}]({mrs_url})\n"
+    my_links += "\n"
 
-    # 3. 终极替换逻辑：严格定位到 Clash 标题内部
-    # 清空 Clash 标题下方的所有内容（包括残留的各类分支），直到遇到下一个一级或二级标题为止
-    pattern = r'(#+\s*Clash\s*\n).*?' + stop_pattern
-    if re.search(pattern, content, re.IGNORECASE | re.DOTALL):
-        new_content = re.sub(pattern, r'\1\n' + my_links, content, flags=re.IGNORECASE | re.DOTALL)
+    # 3. 替换原有的“规则链接”区块
+    pattern = r'### 规则链接.*?(?=\n## |\Z)'
+    if re.search(pattern, content, re.DOTALL):
+        new_content = re.sub(pattern, my_links, content, flags=re.DOTALL)
     else:
-        # 备用定位：如果没有 Clash 标题，插在“子规则”前面
-        sub_rule_pattern = r'(#+\s*子规则/排除规则)'
-        if re.search(sub_rule_pattern, content):
-            new_content = re.sub(sub_rule_pattern, my_links + r'\n\1', content)
-        else:
-            new_content = content + "\n\n## Clash\n\n" + my_links
+        new_content = content + "\n\n" + my_links
         
     new_content = re.sub(r'\n{3,}', '\n\n', new_content)
     header = f"> [!TIP]\n> 本目录下的规则已由上游 classical 格式自动转换为 Mihomo Binary MRS 格式并保留了最全的源文本配置。\n\n"
     
     with open(dst_path, 'w', encoding='utf-8') as f:
         f.write(header + new_content)
-    print(f"已深度清理并重写子目录 README: {rel_path}")
+    print(f"已重写子目录 README: {rel_path}")
 
 if __name__ == "__main__":
     process_rules()
