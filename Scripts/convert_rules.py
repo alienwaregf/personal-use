@@ -1,301 +1,193 @@
 import os
-import re
 import shutil
-import subprocess
 import yaml
+import subprocess
+import re
+import glob
 
-# 配置信息
-GITHUB_USER = "alienwaregf"
-GITHUB_REPO = "personal-use"
-SOURCE_ROOT = "source_repo/rule/Clash"
-DEST_ROOT = "rule/Clash"
-BASE_RAW_URL = f"https://raw.githubusercontent.com/{GITHUB_USER}/{GITHUB_REPO}/main/rule/Clash"
+# ================= 路径与基础配置 =================
+SOURCE_REPO = 'source_repo'
+SOURCE_CLASH_DIR = os.path.join(SOURCE_REPO, 'rule', 'Clash')
+DEST_CLASH_DIR = os.path.join('rule', 'Clash')
 
-# ==================== 需要删除的章节标题（精确匹配 ## 后的文字） ====================
-SECTIONS_TO_REMOVE = {
-    "使用说明",
-    "配置建议",
-    "文件区别",
-    "Clash",
-    "Surge",
-    "Quantumult X",
-    "Loon",
-    "Shadowrocket",
-    "通用",
-    "OpenClash",
-    "Stash",
-    "Egern",
-    "sing-box",
-    "AdGuard Home",
-    "AdGuard",
-    "其他",
-}
+# Github Raw 与 Tree 链接母地址
+MY_REPO_URL_BASE = 'https://github.com/alienwaregf/personal-use/tree/main/rule/Clash'
+RAW_URL_BASE = 'https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash'
 
-
-def process_rules():
-    if not os.path.exists(DEST_ROOT):
-        os.makedirs(DEST_ROOT)
-
-    for root, dirs, files in os.walk(SOURCE_ROOT):
-        rel_path = os.path.relpath(root, SOURCE_ROOT)
-        target_dir = DEST_ROOT if rel_path == "." else os.path.join(DEST_ROOT, rel_path)
-
-        if not os.path.exists(target_dir):
-            os.makedirs(target_dir)
-
-        category_name = os.path.basename(root)
-
-        # ==================== 特殊处理：根目录 ====================
-        if rel_path == ".":
-            if "README.md" in files:
-                rewrite_root_readme(
-                    os.path.join(root, "README.md"),
-                    os.path.join(target_dir, "README.md")
-                )
-            continue
-
-        # ==================== 1. 确定要保留的 YAML 文件 ====================
-        # _Classical.yaml 优先（最全），fallback 到普通 .yaml
-        classical_yaml = f"{category_name}_Classical.yaml"
-        standard_yaml  = f"{category_name}.yaml"
-        kept_yaml_dst  = None
-
-        if classical_yaml in files:
-            src = os.path.join(root, classical_yaml)
-            dst = os.path.join(target_dir, classical_yaml)
-            shutil.copy2(src, dst)
-            kept_yaml_dst = dst
-        elif standard_yaml in files:
-            src = os.path.join(root, standard_yaml)
-            dst = os.path.join(target_dir, standard_yaml)
-            shutil.copy2(src, dst)
-            kept_yaml_dst = dst
-
-        # ==================== 2. 提取 Domain / IP，分别编译 MRS ====================
-        domains, ips = extract_rules(root, files)
-        generated_mrs = {}
-
-        if domains:
-            domain_mrs = f"{category_name}_Domain.mrs"
-            if compile_ruleset(domains, os.path.join(target_dir, domain_mrs), "domain"):
-                generated_mrs["domain"] = domain_mrs
-
-        if ips:
-            ip_mrs = f"{category_name}_IP.mrs"
-            if compile_ruleset(ips, os.path.join(target_dir, ip_mrs), "ipcidr"):
-                generated_mrs["ip"] = ip_mrs
-
-        # ==================== 3. 编译 Classical MRS ====================
-        if kept_yaml_dst and os.path.exists(kept_yaml_dst):
-            classical_mrs      = f"{category_name}_Classical.mrs"
-            classical_mrs_path = os.path.join(target_dir, classical_mrs)
-            try:
-                result = subprocess.run(
-                    ["mihomo", "convert-ruleset", "classical", "yaml",
-                     kept_yaml_dst, classical_mrs_path],
-                    capture_output=True, text=True
-                )
-                if result.returncode != 0:
-                    print(f"[WARN] Classical MRS ({category_name}): {result.stderr.strip()}")
-                if os.path.exists(classical_mrs_path):
-                    generated_mrs["classical"] = classical_mrs
-            except Exception as e:
-                print(f"[ERROR] Classical MRS ({category_name}): {e}")
-
-        # ==================== 4. 重写子目录 README ====================
-        if "README.md" in files:
-            rewrite_sub_readme(
-                os.path.join(root, "README.md"),
-                os.path.join(target_dir, "README.md"),
-                rel_path,
-                generated_mrs
-            )
-
-
-# ==================== 工具函数 ====================
-
-def extract_rules(root, files):
+def replace_clash_section(readme_content, category, domain_mrs_name, ip_mrs_name, yaml_name):
     """
-    从目录下所有 .yaml / .list 文件里提取 DOMAIN / IP 条目。
-    支持：
-      - YAML payload 格式：  - DOMAIN-SUFFIX,google.com
-      - 纯文本 list 格式：   DOMAIN-SUFFIX,google.com
+    定位 README.md 中的 ## Clash 模块并进行替换。
+    严格保留原有的 Surge/Quantumult X 等其他模块不动。
     """
-    domains, ips = [], []
-    for file in files:
-        if not file.endswith((".yaml", ".list")):
-            continue
-        filepath = os.path.join(root, file)
+    # 匹配 "## Clash" 到下一个 "## " 之前的所有内容（或者是文件结尾）
+    pattern = re.compile(r'(##\s*Clash\s*\n.*?)(?=\n##\s+|\Z)', re.DOTALL | re.IGNORECASE)
+    
+    replacement = f"""## Clash
+
+Domain 规则（必须同时使用）{domain_mrs_name}
+{RAW_URL_BASE}/{category}/{domain_mrs_name}
+
+IP 规则（必须同时使用）{ip_mrs_name}
+{RAW_URL_BASE}/{category}/{ip_mrs_name}
+
+Classical 规则（单独使用）{yaml_name}
+{RAW_URL_BASE}/{category}/{yaml_name}"""
+
+    if pattern.search(readme_content):
+        return pattern.sub(replacement, readme_content)
+    else:
+        # 兜底：如果原 README 中没有 Clash 章节，则追加到尾部
+        return readme_content.rstrip() + "\n\n" + replacement
+
+def convert_rule_file(yaml_path, category, dest_folder):
+    """
+    解析原目标 YAML，分离出 Domain 和 IP 规则。
+    生成适配 Mihomo mrs 编译的临时文件并触发转化，最后清理临时文件。
+    """
+    with open(yaml_path, 'r', encoding='utf-8') as f:
         try:
-            with open(filepath, "r", encoding="utf-8") as f:
-                for line in f:
-                    line = line.strip()
-                    if not line or line.startswith("#"):
-                        continue
-                    # 去掉 YAML list 前缀 "- " 以及引号
-                    line = re.sub(r"^-\s*", "", line).replace("'", "").replace('"', "")
-                    parts = line.split(",")
-                    if len(parts) < 2:
-                        continue
-                    rule_type = parts[0].strip().upper()
-                    value     = parts[1].strip()
-                    if not value:
-                        continue
-
-                    if rule_type == "DOMAIN-SUFFIX":
-                        domains.append("+." + value)
-                    elif rule_type == "DOMAIN":
-                        domains.append(value)
-                    elif rule_type in ("IP-CIDR", "IP-CIDR6"):
-                        ips.append(value)
+            data = yaml.safe_load(f)
         except Exception as e:
-            print(f"[WARN] 读取 {filepath} 失败: {e}")
-
-    # 去重保序
-    return list(dict.fromkeys(domains)), list(dict.fromkeys(ips))
-
-
-def compile_ruleset(data, output_path, behavior):
-    """把 domain 或 ipcidr 列表写成临时 YAML，用 mihomo 编译为 .mrs"""
-    temp_yaml = output_path + ".tmp.yaml"
-    try:
-        with open(temp_yaml, "w", encoding="utf-8") as f:
-            yaml.dump({"payload": data}, f, allow_unicode=True)
-        result = subprocess.run(
-            ["mihomo", "convert-ruleset", behavior, "yaml", temp_yaml, output_path],
-            capture_output=True, text=True
-        )
-        if result.returncode != 0:
-            print(f"[WARN] compile_ruleset ({behavior}): {result.stderr.strip()}")
-        return os.path.exists(output_path)
-    except Exception as e:
-        print(f"[ERROR] compile_ruleset ({behavior}): {e}")
-        return False
-    finally:
-        if os.path.exists(temp_yaml):
-            os.remove(temp_yaml)
-
-
-# ==================== README 处理 ====================
-
-def rewrite_root_readme(src_path, dst_path):
-    """
-    根目录 README：把 blackmatrix7 的链接全部替换为我的，顶部加 TIP。
-    """
-    with open(src_path, "r", encoding="utf-8") as f:
-        content = f.read()
-
-    content = content.replace(
-        "https://github.com/blackmatrix7/ios_rule_script/tree/master/rule/Clash",
-        f"https://github.com/{GITHUB_USER}/{GITHUB_REPO}/tree/main/rule/Clash"
-    )
-    content = content.replace(
-        "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash",
-        f"https://raw.githubusercontent.com/{GITHUB_USER}/{GITHUB_REPO}/main/rule/Clash"
-    )
-
-    def root_link_replacer(match):
-        text = match.group(1)
-        url  = match.group(2).strip()
-        if url.startswith("http") or url.startswith("#") or url.startswith("mailto"):
-            return match.group(0)
-        return (
-            f"[{text}](https://github.com/{GITHUB_USER}/{GITHUB_REPO}"
-            f"/tree/main/rule/Clash/{url})"
-        )
-
-    content = re.sub(r"\[([^\]]+)\]\(([^)]+)\)", root_link_replacer, content)
-
-    tip = "> [!TIP]\n> 本目录规则已自动转换为 Mihomo Binary MRS 格式与文本 YAML 格式。\n\n"
-    with open(dst_path, "w", encoding="utf-8") as f:
-        f.write(tip + content)
-
-
-def parse_readme_sections(content):
-    """
-    把 README 按 ## 章节拆分，返回有序列表：
-      [{"title": None, "raw": "前言..."}, {"title": "规则统计", "raw": "## 规则统计\n..."}, ...]
-    title=None 表示第一个 ## 之前的前言部分。
-    只切割二级标题（## ），不切割 ### 及更深层。
-    """
-    pattern   = re.compile(r"^(## .+)$", re.MULTILINE)
-    positions = [m.start() for m in pattern.finditer(content)]
-    sections  = []
-
-    if not positions:
-        sections.append({"title": None, "raw": content})
-        return sections
-
-    # 前言
-    preamble = content[: positions[0]]
-    if preamble.strip():
-        sections.append({"title": None, "raw": preamble})
-
-    for i, pos in enumerate(positions):
-        end   = positions[i + 1] if i + 1 < len(positions) else len(content)
-        chunk = content[pos:end]
-        title = chunk.splitlines()[0].lstrip("#").strip()
-        sections.append({"title": title, "raw": chunk})
-
-    return sections
-
-
-def rewrite_sub_readme(src_path, dst_path, rel_path, generated_mrs):
-    """
-    子目录 README 重写：
-    - 删除 SECTIONS_TO_REMOVE 中的章节
-    - 保留其余章节（前言、规则统计、子规则、排除规则、数据来源等）
-    - 末尾追加我们自己的 ## Clash 章节（含三个 MRS 链接）
-    """
-    with open(src_path, "r", encoding="utf-8") as f:
-        content = f.read()
-
-    url_rel_path = rel_path.replace("\\", "/")
-    sections     = parse_readme_sections(content)
-
-    kept_parts = []
-    for sec in sections:
-        title = sec["title"]
-        if title is None:
-            kept_parts.append(sec["raw"])   # 前言始终保留
+            print(f"解析 YAML 失败，已跳过: {yaml_path} | 报错: {e}")
+            return
+            
+    if not data or 'payload' not in data:
+        return
+        
+    payload = data.get('payload', [])
+    
+    domain_payload = []
+    ip_payload = []
+    
+    for line in payload:
+        if not isinstance(line, str):
             continue
-        if title in SECTIONS_TO_REMOVE:
-            continue                         # 删除指定章节
-        kept_parts.append(sec["raw"])        # 其余章节全部保留
+            
+        parts = line.split(',')
+        if len(parts) < 2:
+            continue
+            
+        rule_type = parts[0].strip()
+        # 获取规则内容，并通过截取 '#' 过滤掉行内注释，通过限制索引抛弃 'no-resolve' 等后缀
+        rule_value = parts[1].split('#')[0].strip()
+        
+        # 拆分并转换为 Mihomo (Meta) 内核兼容的 Behavior 写法
+        if rule_type == 'DOMAIN':
+            domain_payload.append(rule_value)
+        elif rule_type == 'DOMAIN-SUFFIX':
+            # Clash 的 Suffix 在 Mihomo 的 domain behavior 中需要加上 +.
+            domain_payload.append(f"+.{rule_value}")
+        elif rule_type == 'DOMAIN-WILDCARD':
+            domain_payload.append(rule_value)
+        elif rule_type in ['IP-CIDR', 'IP-CIDR6']:
+            ip_payload.append(rule_value)
+        # DOMAIN-KEYWORD 不受 mihomo 原生 domain 基数树支持，为客观保证准确性予以抛弃
+        # PROCESS-NAME, USER-AGENT 等由于不属于 Domain 或 IP，也同时丢弃
+            
+    domain_mrs_name = f"{category}_Domain.mrs"
+    ip_mrs_name = f"{category}_IP.mrs"
+    
+    domain_mrs_path = os.path.join(dest_folder, domain_mrs_name)
+    ip_mrs_path = os.path.join(dest_folder, ip_mrs_name)
+    
+    tmp_domain_yaml = os.path.join(dest_folder, "tmp_domain.yaml")
+    tmp_ip_yaml = os.path.join(dest_folder, "tmp_ip.yaml")
+    
+    # 编译 Domain 规则
+    if domain_payload:
+        with open(tmp_domain_yaml, 'w', encoding='utf-8') as f:
+            yaml.dump({'payload': domain_payload}, f, allow_unicode=True, default_flow_style=False, sort_keys=False)
+        subprocess.run(['mihomo', 'convert-ruleset', 'domain', 'yaml', tmp_domain_yaml, domain_mrs_path])
+        if os.path.exists(tmp_domain_yaml):
+            os.remove(tmp_domain_yaml)
+            
+    # 编译 IP 规则
+    if ip_payload:
+        with open(tmp_ip_yaml, 'w', encoding='utf-8') as f:
+            yaml.dump({'payload': ip_payload}, f, allow_unicode=True, default_flow_style=False, sort_keys=False)
+        subprocess.run(['mihomo', 'convert-ruleset', 'ipcidr', 'yaml', tmp_ip_yaml, ip_mrs_path])
+        if os.path.exists(tmp_ip_yaml):
+            os.remove(tmp_ip_yaml)
 
-    clean_content = "".join(kept_parts).rstrip()
+def main():
+    if not os.path.exists(DEST_CLASH_DIR):
+        os.makedirs(DEST_CLASH_DIR)
+        
+    # --- 1. 处理母文件夹的 README.md ---
+    src_root_readme = os.path.join(SOURCE_CLASH_DIR, 'README.md')
+    dest_root_readme = os.path.join(DEST_CLASH_DIR, 'README.md')
+    
+    if os.path.exists(src_root_readme):
+        with open(src_root_readme, 'r', encoding='utf-8') as f:
+            root_content = f.read()
+            
+        # 替换母 README 内置顶的仓库地址指向你的项目
+        root_content = root_content.replace(
+            'https://github.com/blackmatrix7/ios_rule_script/tree/master/rule/Clash', 
+            MY_REPO_URL_BASE
+        )
+        
+        with open(dest_root_readme, 'w', encoding='utf-8') as f:
+            f.write(root_content)
+            
+    # --- 2. 遍历黑矩阵的每一个子分类 ---
+    for category in os.listdir(SOURCE_CLASH_DIR):
+        cat_path = os.path.join(SOURCE_CLASH_DIR, category)
+        
+        # 忽略非目录项（例如上级的 README.md 本身）
+        if not os.path.isdir(cat_path):
+            continue
+            
+        dest_cat_folder = os.path.join(DEST_CLASH_DIR, category)
+        os.makedirs(dest_cat_folder, exist_ok=True)
+        
+        # 定位需要转换的 YAML 文件
+        yaml_files = glob.glob(os.path.join(cat_path, '*.yaml'))
+        if not yaml_files:
+            continue
+            
+        target_yaml = None
+        # 优先保留目标全量文件 **_Classical.yaml
+        for yf in yaml_files:
+            if yf.endswith('_Classical.yaml'):
+                target_yaml = yf
+                break
+                
+        # 兜底：若没有 Classical 则随便抓取一个合规的 .yaml
+        if not target_yaml:
+            target_yaml = yaml_files[0]
+            
+        yaml_name = os.path.basename(target_yaml)
+        dest_yaml_path = os.path.join(dest_cat_folder, yaml_name)
+        
+        # 将挑选的最全文件移动到你的对应分类目录里（排除其余无效格式）
+        shutil.copy(target_yaml, dest_yaml_path)
+        
+        # --- 3. 剥离并生成对应的 Domain / IP 二进制文件 ---
+        convert_rule_file(dest_yaml_path, category, dest_cat_folder)
+        
+        domain_mrs_name = f"{category}_Domain.mrs"
+        ip_mrs_name = f"{category}_IP.mrs"
+        
+        # --- 4. 修改子文件夹的 README.md ---
+        src_readme = os.path.join(cat_path, 'README.md')
+        dest_readme = os.path.join(dest_cat_folder, 'README.md')
+        
+        if os.path.exists(src_readme):
+            with open(src_readme, 'r', encoding='utf-8') as f:
+                readme_content = f.read()
+                
+            # 覆写对应 Clash 模块并生成三个一键 URL
+            new_readme_content = replace_clash_section(
+                readme_content, 
+                category, 
+                domain_mrs_name, 
+                ip_mrs_name, 
+                yaml_name
+            )
+            
+            with open(dest_readme, 'w', encoding='utf-8') as f:
+                f.write(new_readme_content)
 
-    # ==================== 构建 ## Clash 章节 ====================
-    has_domain    = "domain"    in generated_mrs
-    has_ip        = "ip"        in generated_mrs
-    has_classical = "classical" in generated_mrs
-
-    pair_suffix = " (必须同时使用)" if (has_domain and has_ip) else ""
-
-    clash_block = "## Clash\n\n"
-
-    if has_domain:
-        url = f"{BASE_RAW_URL}/{url_rel_path}/{generated_mrs['domain']}"
-        clash_block += f"**Domain 规则{pair_suffix}:**\n\n```text\n{url}\n```\n\n"
-
-    if has_ip:
-        url = f"{BASE_RAW_URL}/{url_rel_path}/{generated_mrs['ip']}"
-        clash_block += f"**IP 规则{pair_suffix}:**\n\n```text\n{url}\n```\n\n"
-
-    if has_classical:
-        url = f"{BASE_RAW_URL}/{url_rel_path}/{generated_mrs['classical']}"
-        clash_block += f"**Classical 规则 (单独使用):**\n\n```text\n{url}\n```\n\n"
-
-    if not (has_domain or has_ip or has_classical):
-        clash_block += "_（本规则集暂无可用 MRS 文件）_\n\n"
-
-    # ==================== 拼接 ====================
-    tip   = "> [!TIP]\n> 本目录下的规则已由上游格式自动转换为 Mihomo Binary MRS 格式。\n\n"
-    final = tip + clean_content + "\n\n" + clash_block.rstrip() + "\n"
-
-    with open(dst_path, "w", encoding="utf-8") as f:
-        f.write(final)
-
-
-if __name__ == "__main__":
-    process_rules()
+if __name__ == '__main__':
+    main()
