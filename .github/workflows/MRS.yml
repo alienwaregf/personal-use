@@ -1,4 +1,4 @@
-name: Auto Convert Rules to MRS
+name: Yaml to MRS
 
 on:
   schedule:
