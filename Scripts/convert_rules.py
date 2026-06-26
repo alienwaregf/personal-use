@@ -49,20 +49,25 @@ def compile_to_mrs(temp_yaml_path, out_mrs_path, rule_type):
         print(f"编译 {out_mrs_path} 失败: {e}")
 
 def modify_readme_clash_section(readme_path, folder_name, classical_filename):
-    """精准定位并替换 README.md 中的 Clash 模块，形成三个独立的复制窗口"""
+    """
+    重写后的精确定位函数：基于 Markdown 标题层级进行判断。
+    只清空 Clash 模块内的所有子级内容（如 ### 文件区别等），
+    遇到下一个同级或更高级别标题（如 ## 子规则/排除规则）时完美停止并保留后续内容。
+    """
     if not os.path.exists(readme_path):
         return
 
     with open(readme_path, 'r', encoding='utf-8') as f:
-        content = f.read()
-
-    pattern = re.compile(r'(#+\s*Clash\s*\n)(.*?)(?=\n#+ |\Z)', re.DOTALL | re.IGNORECASE)
+        lines = f.readlines()
+        
+    new_lines = []
+    in_clash_section = False
+    clash_level = 0
+    clash_processed = False
     
-    # 巧妙避开 Markdown 渲染器断层 Bug：使用变量拼接代码块符号
     cb = "```"
-    replacement = (
-        f"\\1\n"
-        f"Domain 规则（必须同时使用）\n"
+    replacement_text = (
+        f"\nDomain 规则（必须同时使用）\n"
         f"{cb}text\n"
         f"{RAW_BASE_URL}/{folder_name}/{folder_name}_Domain.mrs\n"
         f"{cb}\n\n"
@@ -73,12 +78,37 @@ def modify_readme_clash_section(readme_path, folder_name, classical_filename):
         f"Classical 规则（单独使用）\n"
         f"{cb}text\n"
         f"{RAW_BASE_URL}/{folder_name}/{classical_filename}\n"
-        f"{cb}\n"
+        f"{cb}\n\n"
     )
-    
-    new_content = pattern.sub(replacement, content, count=1)
+
+    for line in lines:
+        # 精确寻找单独的 Clash 标题行（如 "## Clash"）
+        header_match = re.match(r'^(#+)\s*Clash\s*$', line.strip(), re.IGNORECASE)
+        if header_match and not clash_processed:
+            in_clash_section = True
+            clash_level = len(header_match.group(1)) # 记录 Clash 是几级标题 (比如 2)
+            new_lines.append(line.rstrip() + "\n")   # 保留这个 "## Clash" 标题本身
+            new_lines.append(replacement_text)       # 注入我们的 mrs 链接
+            clash_processed = True
+            continue
+            
+        if in_clash_section:
+            # 在 Clash 模块内部，检查是否遇到了新的标题
+            other_header_match = re.match(r'^(#+)\s+(.*)$', line.strip())
+            if other_header_match:
+                current_level = len(other_header_match.group(1))
+                # 如果新标题的层级 <= Clash 的层级（比如也是 ## 或者更高的 #）
+                # 意味着 Clash 模块结束，进入了如 "## 子规则/排除规则" 等下一个大模块
+                if current_level <= clash_level:
+                    in_clash_section = False
+                    new_lines.append(line)
+            # 如果没有触发跳出条件，说明当前行是 Clash 模块内的旧文本或子标题（如 ###），直接丢弃（不 append）
+        else:
+            # 不在 Clash 模块内，或者已经跳出了 Clash 模块，正常保留原文
+            new_lines.append(line)
+            
     with open(readme_path, 'w', encoding='utf-8') as f:
-        f.write(new_content)
+        f.writelines(new_lines)
 
 def main():
     print("开始执行规则拆分与原生 MRS 编译任务...")
