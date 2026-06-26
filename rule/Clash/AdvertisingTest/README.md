@@ -34,17 +34,78 @@
 | TOTAL | 283497  | 
 
 
-## Clash
+## Clash 
 
-Domain 规则 (必须同时使用):**
+
+Domain 规则（必须同时使用）
 ```text
-[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/AdvertisingTest/AdvertisingTest_Domain.mrs
-
-IP 规则（必须同时使用）AdvertisingTest_IP.mrs
-[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/AdvertisingTest/AdvertisingTest_IP.mrs
-
-[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/AdvertisingTest/AdvertisingTest_Classical.yaml
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/AdvertisingTest/AdvertisingTest_Domain.mrs
 ```
+
+IP 规则（必须同时使用）
+```text
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/AdvertisingTest/AdvertisingTest_IP.mrs
+```
+
+Classical 规则（单独使用）
+```text
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/AdvertisingTest/AdvertisingTest_Classical.yaml
+```
+
+#### 配置建议
+- AdvertisingTest_Classical.yaml 单独使用。
+- AdvertisingTest.yaml、AdvertisingTest_Domain.yaml 共同使用。
+- AdvertisingTest_Resolve.yaml、AdvertisingTest_Domain.yaml 共同使用。
+
+#### 规则链接
+**MASTER分支 (每日更新)**
+
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AdvertisingTest/AdvertisingTest.yaml
+
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AdvertisingTest/AdvertisingTest_Classical.yaml
+
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AdvertisingTest/AdvertisingTest_Domain.txt
+
+**MASTER分支 CDN (每日更新)**
+
+https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/AdvertisingTest/AdvertisingTest.yaml
+
+https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/AdvertisingTest/AdvertisingTest_Classical.yaml
+
+https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/AdvertisingTest/AdvertisingTest_Domain.txt
+
+**MASTER分支 GHProxy (每日更新)**
+
+https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AdvertisingTest/AdvertisingTest.yaml
+
+https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AdvertisingTest/AdvertisingTest_Classical.yaml
+
+https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AdvertisingTest/AdvertisingTest_Domain.txt
+
+**RELEASE分支 (不定时更新)**
+
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/Clash/AdvertisingTest/AdvertisingTest.yaml
+
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/Clash/AdvertisingTest/AdvertisingTest_Classical.yaml
+
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/Clash/AdvertisingTest/AdvertisingTest_Domain.txt
+
+**RELEASE分支CDN (不定时更新)**
+
+https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@release/rule/Clash/AdvertisingTest/AdvertisingTest.yaml
+
+https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@release/rule/Clash/AdvertisingTest/AdvertisingTest_Classical.yaml
+
+https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@release/rule/Clash/AdvertisingTest/AdvertisingTest_Domain.txt
+
+**RELEASE分支 GHProxy (不定时更新)**
+
+https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/Clash/AdvertisingTest/AdvertisingTest.yaml
+
+https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/Clash/AdvertisingTest/AdvertisingTest_Classical.yaml
+
+https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/Clash/AdvertisingTest/AdvertisingTest_Domain.txt
+
 ## 子规则/排除规则
 
 当前分流规则，已包含以下子规则，除非特殊需求否则不建议重复引用：

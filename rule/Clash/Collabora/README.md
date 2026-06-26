@@ -21,17 +21,52 @@ Collabora规则由《RULE GENERATOR 规则生成器》自动生成。
 | TOTAL | 4  | 
 
 
-## Clash
+## Clash 
 
-Domain 规则 (必须同时使用):**
+
+Domain 规则（必须同时使用）
 ```text
-[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/Collabora/Collabora_Domain.mrs
-
-IP 规则（必须同时使用）Collabora_IP.mrs
-[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/Collabora/Collabora_IP.mrs
-
-[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/Collabora/Collabora.yaml
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Collabora/Collabora_Domain.mrs
 ```
+
+IP 规则（必须同时使用）
+```text
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Collabora/Collabora_IP.mrs
+```
+
+Classical 规则（单独使用）
+```text
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Collabora/Collabora.yaml
+```
+
+#### 配置建议
+- Collabora.yaml 单独使用。
+
+#### 规则链接
+**MASTER分支 (每日更新)**
+
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Collabora/Collabora.yaml
+
+**MASTER分支 CDN (每日更新)**
+
+https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Collabora/Collabora.yaml
+
+**MASTER分支 GHProxy (每日更新)**
+
+https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Collabora/Collabora.yaml
+
+**RELEASE分支 (不定时更新)**
+
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/Clash/Collabora/Collabora.yaml
+
+**RELEASE分支CDN (不定时更新)**
+
+https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@release/rule/Clash/Collabora/Collabora.yaml
+
+**RELEASE分支 GHProxy (不定时更新)**
+
+https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/Clash/Collabora/Collabora.yaml
+
 ## 子规则/排除规则
 
 

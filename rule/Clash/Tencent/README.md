@@ -22,17 +22,78 @@
 | TOTAL | 2518  | 
 
 
-## Clash
+## Clash 
 
-Domain 规则 (必须同时使用):**
+
+Domain 规则（必须同时使用）
 ```text
-[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/Tencent/Tencent_Domain.mrs
-
-IP 规则（必须同时使用）Tencent_IP.mrs
-[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/Tencent/Tencent_IP.mrs
-
-[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/Tencent/Tencent_Classical.yaml
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Tencent/Tencent_Domain.mrs
 ```
+
+IP 规则（必须同时使用）
+```text
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Tencent/Tencent_IP.mrs
+```
+
+Classical 规则（单独使用）
+```text
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Tencent/Tencent_Classical.yaml
+```
+
+#### 配置建议
+- Tencent_Classical.yaml 单独使用。
+- Tencent.yaml、Tencent_Domain.yaml 共同使用。
+- Tencent_Resolve.yaml、Tencent_Domain.yaml 共同使用。
+
+#### 规则链接
+**MASTER分支 (每日更新)**
+
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Tencent/Tencent.yaml
+
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Tencent/Tencent_Classical.yaml
+
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Tencent/Tencent_Domain.txt
+
+**MASTER分支 CDN (每日更新)**
+
+https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Tencent/Tencent.yaml
+
+https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Tencent/Tencent_Classical.yaml
+
+https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Tencent/Tencent_Domain.txt
+
+**MASTER分支 GHProxy (每日更新)**
+
+https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Tencent/Tencent.yaml
+
+https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Tencent/Tencent_Classical.yaml
+
+https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Tencent/Tencent_Domain.txt
+
+**RELEASE分支 (不定时更新)**
+
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/Clash/Tencent/Tencent.yaml
+
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/Clash/Tencent/Tencent_Classical.yaml
+
+https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/Clash/Tencent/Tencent_Domain.txt
+
+**RELEASE分支CDN (不定时更新)**
+
+https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@release/rule/Clash/Tencent/Tencent.yaml
+
+https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@release/rule/Clash/Tencent/Tencent_Classical.yaml
+
+https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@release/rule/Clash/Tencent/Tencent_Domain.txt
+
+**RELEASE分支 GHProxy (不定时更新)**
+
+https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/Clash/Tencent/Tencent.yaml
+
+https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/Clash/Tencent/Tencent_Classical.yaml
+
+https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/Clash/Tencent/Tencent_Domain.txt
+
 ## 子规则/排除规则
 
 
