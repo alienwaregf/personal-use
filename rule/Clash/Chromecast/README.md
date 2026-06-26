@@ -25,6 +25,7 @@ Chromecast规则由《RULE GENERATOR 规则生成器》自动生成。
 
 ## Clash 
 
+#
 ## 子规则/排除规则
 
 当前分流规则，未包含其他子规则。
@@ -44,3 +45,6 @@ Chromecast规则由《RULE GENERATOR 规则生成器》自动生成。
 ### 其他
 
 请不要对外宣传本项目。
+
+### ⬇️ MRS 规则下载链接
+

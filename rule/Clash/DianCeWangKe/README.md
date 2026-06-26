@@ -25,11 +25,7 @@
 
 ## Clash 
 
-**Domain 规则**:
-```text
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/DianCeWangKe/DianCeWangKe_Domain.mrs
-```
-
+#
 ## 子规则/排除规则
 
 当前分流规则，未包含其他子规则。
@@ -53,3 +49,8 @@ https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/DianC
 ### 其他
 
 请不要对外宣传本项目。
+
+### ⬇️ MRS 规则下载链接
+
+- **Domain 规则**: [DianCeWangKe_Domain.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/DianCeWangKe/DianCeWangKe_Domain.mrs)
+

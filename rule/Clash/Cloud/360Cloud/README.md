@@ -26,11 +26,7 @@
 
 ## Clash 
 
-**IP 规则**:
-```text
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Cloud/360Cloud/360Cloud_IP.mrs
-```
-
+#
 ## 子规则/排除规则
 
 当前分流规则，未包含其他子规则。
@@ -54,3 +50,8 @@ https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Cloud
 ### 其他
 
 请不要对外宣传本项目。
+
+### ⬇️ MRS 规则下载链接
+
+- **IP 规则**: [360Cloud_IP.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Cloud/360Cloud/360Cloud_IP.mrs)
+

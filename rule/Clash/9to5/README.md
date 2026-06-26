@@ -25,11 +25,7 @@
 
 ## Clash 
 
-**Domain 规则**:
-```text
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/9to5/9to5_Domain.mrs
-```
-
+#
 ## 子规则/排除规则
 
 当前分流规则，未包含其他子规则。
@@ -54,3 +50,8 @@ https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/9to5/
 ### 其他
 
 请不要对外宣传本项目。
+
+### ⬇️ MRS 规则下载链接
+
+- **Domain 规则**: [9to5_Domain.mrs](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/9to5/9to5_Domain.mrs)
+
