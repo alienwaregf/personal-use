@@ -1,69 +1,18 @@
 import os
 import re
-import urllib.request
-import zipfile
 import shutil
-import platform
-import stat
 import subprocess
-import gzip
 
 # ================= 核心配置 =================
-REPO_ZIP_URL = "https://github.com/blackmatrix7/ios_rule_script/archive/refs/heads/master.zip"
-TEMP_DIR = "temp_ios_rule"
-EXTRACT_FOLDER = os.path.join(TEMP_DIR, "ios_rule_script-master")
-SOURCE_CLASH_DIR = os.path.join(EXTRACT_FOLDER, "rule", "Clash")
+# 自动读取 Action 通过 git clone 拉取到的源文件夹
+SOURCE_CLASH_DIR = os.path.join("source_repo", "rule", "Clash")
 DEST_CLASH_DIR = os.path.join("rule", "Clash")
+
+# 用于存放交给 Mihomo 内核编译的临时分离 yaml 文件
+TEMP_DIR = "temp_compile" 
 
 MY_REPO_URL = "https://github.com/alienwaregf/personal-use/tree/main/rule/Clash"
 RAW_BASE_URL = "https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash"
-
-def get_mihomo_binary():
-    """根据运行环境 (GitHub Actions / 本地 Mac / Win) 自动下载最新的 Mihomo 编译内核"""
-    system = platform.system().lower()
-    machine = platform.machine().lower()
-    version = "v1.18.3"
-    base_url = f"https://github.com/MetaCubeX/mihomo/releases/download/{version}/"
-    
-    if system == "linux":
-        arch = "arm64" if "aarch64" in machine or "arm64" in machine else "amd64"
-        filename = f"mihomo-linux-{arch}-{version}.gz"
-    elif system == "darwin":
-        arch = "arm64" if "arm64" in machine else "amd64"
-        filename = f"mihomo-darwin-{arch}-{version}.gz"
-    elif system == "windows":
-        arch = "arm64" if "arm64" in machine else "amd64"
-        filename = f"mihomo-windows-{arch}-{version}.zip"
-    else:
-        raise Exception(f"不支持的操作系统: {system}")
-        
-    url = base_url + filename
-    bin_name = "mihomo.exe" if system == "windows" else "mihomo"
-    bin_path = os.path.abspath(os.path.join(TEMP_DIR, bin_name))
-    
-    if not os.path.exists(bin_path):
-        print(f"正在拉取最新 Mihomo 内核进行 MRS 二进制编译: {url}")
-        archive_path = os.path.join(TEMP_DIR, "mihomo_archive")
-        urllib.request.urlretrieve(url, archive_path)
-        
-        if filename.endswith(".gz"):
-            with gzip.open(archive_path, 'rb') as f_in:
-                with open(bin_path, 'wb') as f_out:
-                    shutil.copyfileobj(f_in, f_out)
-        elif filename.endswith(".zip"):
-            with zipfile.ZipFile(archive_path, 'r') as zip_ref:
-                for info in zip_ref.infolist():
-                    if info.filename.endswith(".exe"):
-                        zip_ref.extract(info.filename, TEMP_DIR)
-                        os.rename(os.path.join(TEMP_DIR, info.filename), bin_path)
-                        break
-        
-        if system != "windows":
-            # 赋予内核执行权限
-            st = os.stat(bin_path)
-            os.chmod(bin_path, st.st_mode | stat.S_IEXEC)
-            
-    return bin_path
 
 def split_yaml_payload(filepath):
     """提取原始 YAML，将规则按 Domain 和 IP 进行无损拆分，保持原样字符串"""
@@ -90,9 +39,10 @@ def split_yaml_payload(filepath):
         
     return domain_rules, ip_rules
 
-def compile_to_mrs(mihomo_bin, temp_yaml_path, out_mrs_path, rule_type):
-    """调用 Mihomo 内核，将拆分好的 yaml 原生编译为极致压缩的 mrs 格式"""
-    cmd = [mihomo_bin, "convert-ruleset", rule_type, "yaml", temp_yaml_path, out_mrs_path]
+def compile_to_mrs(temp_yaml_path, out_mrs_path, rule_type):
+    """调用全局环境中的 Mihomo 内核进行编译"""
+    # Action 已将 mihomo 安装到 /usr/local/bin/mihomo
+    cmd = ["mihomo", "convert-ruleset", rule_type, "yaml", temp_yaml_path, out_mrs_path]
     try:
         subprocess.run(cmd, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     except subprocess.CalledProcessError as e:
@@ -131,8 +81,9 @@ def modify_readme_clash_section(readme_path, folder_name, classical_filename):
         f.write(new_content)
 
 def main():
-    print("开始执行规则同步与原生 MRS 编译任务...")
+    print("开始执行规则拆分与原生 MRS 编译任务...")
 
+    # 1. 初始化目标目录与临时编译目录
     if os.path.exists(DEST_CLASH_DIR):
         shutil.rmtree(DEST_CLASH_DIR)
     os.makedirs(DEST_CLASH_DIR, exist_ok=True)
@@ -140,16 +91,11 @@ def main():
     if not os.path.exists(TEMP_DIR):
         os.makedirs(TEMP_DIR)
 
-    zip_path = os.path.join(TEMP_DIR, "master.zip")
-    print("正在下载 blackmatrix7 仓库源码压缩包...")
-    urllib.request.urlretrieve(REPO_ZIP_URL, zip_path)
-    
-    print("正在解压...")
-    with zipfile.ZipFile(zip_path, 'r') as zip_ref:
-        zip_ref.extractall(TEMP_DIR)
-
-    # 1. 自动获取并配置最新版的 Mihomo 编译内核
-    mihomo_bin = get_mihomo_binary()
+    # 验证上游源码仓库是否存在
+    if not os.path.exists(SOURCE_CLASH_DIR):
+        print(f"严重错误: 找不到上游源码目录 {SOURCE_CLASH_DIR}。")
+        print("请检查 Action 的 git clone 步骤是否成功生成了 source_repo 文件夹。")
+        return
 
     # 2. 处理根目录 README.md (替换所有分类链接地址)
     src_root_readme = os.path.join(SOURCE_CLASH_DIR, "README.md")
@@ -166,6 +112,7 @@ def main():
             f.write(root_content)
 
     print("开始无损拆分并编译规则...")
+    
     # 3. 遍历并处理各子文件夹
     for item in os.listdir(SOURCE_CLASH_DIR):
         folder_path = os.path.join(SOURCE_CLASH_DIR, item)
@@ -184,7 +131,7 @@ def main():
         if not target_yaml:
             continue
 
-        print(f"编译目录: {item}")
+        print(f"正在处理与编译目录: {item}")
         dest_folder = os.path.join(DEST_CLASH_DIR, item)
         os.makedirs(dest_folder, exist_ok=True)
 
@@ -211,13 +158,12 @@ def main():
             for r in ip_rules:
                 f.write(f"  {r}\n")
 
-        # 挂载 Mihomo 内核进行底层编译
+        # 调用全局环境中的 Mihomo 内核进行底层编译
         domain_mrs_path = os.path.join(dest_folder, f"{item}_Domain.mrs")
         ip_mrs_path = os.path.join(dest_folder, f"{item}_IP.mrs")
         
-        # Mihomo convert-ruleset 原生支持直接提取 classical payload 的规则并压制成二进制
-        compile_to_mrs(mihomo_bin, temp_domain_yaml, domain_mrs_path, "domain")
-        compile_to_mrs(mihomo_bin, temp_ip_yaml, ip_mrs_path, "ipcidr")
+        compile_to_mrs(temp_domain_yaml, domain_mrs_path, "domain")
+        compile_to_mrs(temp_ip_yaml, ip_mrs_path, "ipcidr")
 
         # 4. 替换子目录 README.md
         src_readme = os.path.join(folder_path, "README.md")
@@ -226,10 +172,10 @@ def main():
             shutil.copy2(src_readme, dest_readme)
             modify_readme_clash_section(dest_readme, item, target_filename)
 
-    # 5. 绝对干净的收尾清理工作
-    print("正在清理缓存垃圾、临时文件包与内核驱动...")
+    # 5. 清理当前脚本产生的临时编译文件 (Action 会负责清理源码目录)
+    print("清理临时编译环境...")
     shutil.rmtree(TEMP_DIR)
-    print("完美转换！真正的内存优化型 MRS 已生成完毕！")
+    print("转换与编译全部完成！")
 
 if __name__ == "__main__":
     main()
