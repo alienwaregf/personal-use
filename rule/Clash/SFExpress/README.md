@@ -23,14 +23,15 @@
 
 ## Clash
 
-Domain 规则（必须同时使用）SFExpress_Domain.mrs
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/SFExpress/SFExpress_Domain.mrs
+Domain 规则 (必须同时使用):**
+```text
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/SFExpress/SFExpress_Domain.mrs
 
 IP 规则（必须同时使用）SFExpress_IP.mrs
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/SFExpress/SFExpress_IP.mrs
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/SFExpress/SFExpress_IP.mrs
 
-Classical 规则（单独使用）SFExpress.yaml
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/SFExpress/SFExpress.yaml
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/SFExpress/SFExpress.yaml
+```
 ## 子规则/排除规则
 
 

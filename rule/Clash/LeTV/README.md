@@ -23,14 +23,15 @@
 
 ## Clash
 
-Domain 规则（必须同时使用）LeTV_Domain.mrs
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/LeTV/LeTV_Domain.mrs
+Domain 规则 (必须同时使用):**
+```text
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/LeTV/LeTV_Domain.mrs
 
 IP 规则（必须同时使用）LeTV_IP.mrs
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/LeTV/LeTV_IP.mrs
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/LeTV/LeTV_IP.mrs
 
-Classical 规则（单独使用）LeTV.yaml
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/LeTV/LeTV.yaml
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/LeTV/LeTV.yaml
+```
 ## 子规则/排除规则
 
 

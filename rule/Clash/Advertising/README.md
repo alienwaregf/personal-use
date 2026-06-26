@@ -30,14 +30,15 @@
 
 ## Clash
 
-Domain 规则（必须同时使用）Advertising_Domain.mrs
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Advertising/Advertising_Domain.mrs
+Domain 规则 (必须同时使用):**
+```text
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/Advertising/Advertising_Domain.mrs
 
 IP 规则（必须同时使用）Advertising_IP.mrs
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Advertising/Advertising_IP.mrs
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/Advertising/Advertising_IP.mrs
 
-Classical 规则（单独使用）Advertising_Classical.yaml
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Advertising/Advertising_Classical.yaml
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/Advertising/Advertising_Classical.yaml
+```
 ## 子规则/排除规则
 
 当前分流规则，已包含以下子规则，除非特殊需求否则不建议重复引用：

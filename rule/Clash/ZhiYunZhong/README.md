@@ -23,14 +23,15 @@
 
 ## Clash
 
-Domain 规则（必须同时使用）ZhiYunZhong_Domain.mrs
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/ZhiYunZhong/ZhiYunZhong_Domain.mrs
+Domain 规则 (必须同时使用):**
+```text
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/ZhiYunZhong/ZhiYunZhong_Domain.mrs
 
 IP 规则（必须同时使用）ZhiYunZhong_IP.mrs
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/ZhiYunZhong/ZhiYunZhong_IP.mrs
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/ZhiYunZhong/ZhiYunZhong_IP.mrs
 
-Classical 规则（单独使用）ZhiYunZhong.yaml
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/ZhiYunZhong/ZhiYunZhong.yaml
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/ZhiYunZhong/ZhiYunZhong.yaml
+```
 ## 子规则/排除规则
 
 

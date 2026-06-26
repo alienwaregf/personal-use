@@ -23,14 +23,15 @@
 
 ## Clash
 
-Domain 规则（必须同时使用）BOCOM_Domain.mrs
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/BOCOM/BOCOM_Domain.mrs
+Domain 规则 (必须同时使用):**
+```text
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/BOCOM/BOCOM_Domain.mrs
 
 IP 规则（必须同时使用）BOCOM_IP.mrs
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/BOCOM/BOCOM_IP.mrs
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/BOCOM/BOCOM_IP.mrs
 
-Classical 规则（单独使用）BOCOM.yaml
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/BOCOM/BOCOM.yaml
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/BOCOM/BOCOM.yaml
+```
 ## 子规则/排除规则
 
 

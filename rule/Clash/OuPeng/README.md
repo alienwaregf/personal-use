@@ -23,14 +23,15 @@
 
 ## Clash
 
-Domain 规则（必须同时使用）OuPeng_Domain.mrs
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/OuPeng/OuPeng_Domain.mrs
+Domain 规则 (必须同时使用):**
+```text
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/OuPeng/OuPeng_Domain.mrs
 
 IP 规则（必须同时使用）OuPeng_IP.mrs
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/OuPeng/OuPeng_IP.mrs
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/OuPeng/OuPeng_IP.mrs
 
-Classical 规则（单独使用）OuPeng.yaml
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/OuPeng/OuPeng.yaml
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/OuPeng/OuPeng.yaml
+```
 ## 子规则/排除规则
 
 

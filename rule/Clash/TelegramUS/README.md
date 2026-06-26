@@ -24,14 +24,15 @@ TelegramUS规则由《RULE GENERATOR 规则生成器》自动生成。
 
 ## Clash
 
-Domain 规则（必须同时使用）TelegramUS_Domain.mrs
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/TelegramUS/TelegramUS_Domain.mrs
+Domain 规则 (必须同时使用):**
+```text
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/TelegramUS/TelegramUS_Domain.mrs
 
 IP 规则（必须同时使用）TelegramUS_IP.mrs
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/TelegramUS/TelegramUS_IP.mrs
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/TelegramUS/TelegramUS_IP.mrs
 
-Classical 规则（单独使用）TelegramUS.yaml
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/TelegramUS/TelegramUS.yaml
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/TelegramUS/TelegramUS.yaml
+```
 ## 子规则/排除规则
 
 

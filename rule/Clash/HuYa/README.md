@@ -23,14 +23,15 @@
 
 ## Clash
 
-Domain 规则（必须同时使用）HuYa_Domain.mrs
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/HuYa/HuYa_Domain.mrs
+Domain 规则 (必须同时使用):**
+```text
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/HuYa/HuYa_Domain.mrs
 
 IP 规则（必须同时使用）HuYa_IP.mrs
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/HuYa/HuYa_IP.mrs
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/HuYa/HuYa_IP.mrs
 
-Classical 规则（单独使用）HuYa.yaml
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/HuYa/HuYa.yaml
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/HuYa/HuYa.yaml
+```
 ## 子规则/排除规则
 
 

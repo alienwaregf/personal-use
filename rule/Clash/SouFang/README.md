@@ -23,14 +23,15 @@
 
 ## Clash
 
-Domain 规则（必须同时使用）SouFang_Domain.mrs
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/SouFang/SouFang_Domain.mrs
+Domain 规则 (必须同时使用):**
+```text
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/SouFang/SouFang_Domain.mrs
 
 IP 规则（必须同时使用）SouFang_IP.mrs
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/SouFang/SouFang_IP.mrs
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/SouFang/SouFang_IP.mrs
 
-Classical 规则（单独使用）SouFang.yaml
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/SouFang/SouFang.yaml
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/SouFang/SouFang.yaml
+```
 ## 子规则/排除规则
 
 

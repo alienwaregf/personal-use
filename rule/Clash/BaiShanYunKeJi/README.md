@@ -23,14 +23,15 @@
 
 ## Clash
 
-Domain 规则（必须同时使用）BaiShanYunKeJi_Domain.mrs
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/BaiShanYunKeJi/BaiShanYunKeJi_Domain.mrs
+Domain 规则 (必须同时使用):**
+```text
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/BaiShanYunKeJi/BaiShanYunKeJi_Domain.mrs
 
 IP 规则（必须同时使用）BaiShanYunKeJi_IP.mrs
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/BaiShanYunKeJi/BaiShanYunKeJi_IP.mrs
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/BaiShanYunKeJi/BaiShanYunKeJi_IP.mrs
 
-Classical 规则（单独使用）BaiShanYunKeJi_No_Resolve.yaml
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/BaiShanYunKeJi/BaiShanYunKeJi_No_Resolve.yaml
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/BaiShanYunKeJi/BaiShanYunKeJi_No_Resolve.yaml
+```
 ## 子规则/排除规则
 
 

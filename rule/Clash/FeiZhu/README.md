@@ -23,14 +23,15 @@
 
 ## Clash
 
-Domain 规则（必须同时使用）FeiZhu_Domain.mrs
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/FeiZhu/FeiZhu_Domain.mrs
+Domain 规则 (必须同时使用):**
+```text
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/FeiZhu/FeiZhu_Domain.mrs
 
 IP 规则（必须同时使用）FeiZhu_IP.mrs
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/FeiZhu/FeiZhu_IP.mrs
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/FeiZhu/FeiZhu_IP.mrs
 
-Classical 规则（单独使用）FeiZhu.yaml
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/FeiZhu/FeiZhu.yaml
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/FeiZhu/FeiZhu.yaml
+```
 ## 子规则/排除规则
 
 

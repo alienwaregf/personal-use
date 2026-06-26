@@ -23,14 +23,15 @@
 
 ## Clash
 
-Domain 规则（必须同时使用）BaiFenDian_Domain.mrs
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/BaiFenDian/BaiFenDian_Domain.mrs
+Domain 规则 (必须同时使用):**
+```text
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/BaiFenDian/BaiFenDian_Domain.mrs
 
 IP 规则（必须同时使用）BaiFenDian_IP.mrs
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/BaiFenDian/BaiFenDian_IP.mrs
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/BaiFenDian/BaiFenDian_IP.mrs
 
-Classical 规则（单独使用）BaiFenDian.yaml
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/BaiFenDian/BaiFenDian.yaml
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/BaiFenDian/BaiFenDian.yaml
+```
 ## 子规则/排除规则
 
 

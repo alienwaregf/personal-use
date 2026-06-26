@@ -23,14 +23,15 @@
 
 ## Clash
 
-Domain 规则（必须同时使用）ChunYou_Domain.mrs
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/ChunYou/ChunYou_Domain.mrs
+Domain 规则 (必须同时使用):**
+```text
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/ChunYou/ChunYou_Domain.mrs
 
 IP 规则（必须同时使用）ChunYou_IP.mrs
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/ChunYou/ChunYou_IP.mrs
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/ChunYou/ChunYou_IP.mrs
 
-Classical 规则（单独使用）ChunYou.yaml
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/ChunYou/ChunYou.yaml
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/ChunYou/ChunYou.yaml
+```
 ## 子规则/排除规则
 
 

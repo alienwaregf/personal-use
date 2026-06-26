@@ -23,14 +23,15 @@
 
 ## Clash
 
-Domain 规则（必须同时使用）Baidu_Domain.mrs
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Baidu/Baidu_Domain.mrs
+Domain 规则 (必须同时使用):**
+```text
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/Baidu/Baidu_Domain.mrs
 
 IP 规则（必须同时使用）Baidu_IP.mrs
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Baidu/Baidu_IP.mrs
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/Baidu/Baidu_IP.mrs
 
-Classical 规则（单独使用）Baidu.yaml
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Baidu/Baidu.yaml
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/Baidu/Baidu.yaml
+```
 ## 子规则/排除规则
 
 

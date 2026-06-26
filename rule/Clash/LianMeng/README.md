@@ -23,14 +23,15 @@
 
 ## Clash
 
-Domain 规则（必须同时使用）LianMeng_Domain.mrs
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/LianMeng/LianMeng_Domain.mrs
+Domain 规则 (必须同时使用):**
+```text
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/LianMeng/LianMeng_Domain.mrs
 
 IP 规则（必须同时使用）LianMeng_IP.mrs
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/LianMeng/LianMeng_IP.mrs
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/LianMeng/LianMeng_IP.mrs
 
-Classical 规则（单独使用）LianMeng.yaml
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/LianMeng/LianMeng.yaml
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/LianMeng/LianMeng.yaml
+```
 ## 子规则/排除规则
 
 

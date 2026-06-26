@@ -23,14 +23,15 @@
 
 ## Clash
 
-Domain 规则（必须同时使用）Kingsoft_Domain.mrs
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Kingsoft/Kingsoft_Domain.mrs
+Domain 规则 (必须同时使用):**
+```text
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/Kingsoft/Kingsoft_Domain.mrs
 
 IP 规则（必须同时使用）Kingsoft_IP.mrs
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Kingsoft/Kingsoft_IP.mrs
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/Kingsoft/Kingsoft_IP.mrs
 
-Classical 规则（单独使用）Kingsoft.yaml
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Kingsoft/Kingsoft.yaml
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/Kingsoft/Kingsoft.yaml
+```
 ## 子规则/排除规则
 
 

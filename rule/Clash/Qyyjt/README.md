@@ -23,14 +23,15 @@ Qyyjt规则由《RULE GENERATOR 规则生成器》自动生成。
 
 ## Clash
 
-Domain 规则（必须同时使用）Qyyjt_Domain.mrs
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Qyyjt/Qyyjt_Domain.mrs
+Domain 规则 (必须同时使用):**
+```text
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/Qyyjt/Qyyjt_Domain.mrs
 
 IP 规则（必须同时使用）Qyyjt_IP.mrs
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Qyyjt/Qyyjt_IP.mrs
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/Qyyjt/Qyyjt_IP.mrs
 
-Classical 规则（单独使用）Qyyjt.yaml
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Qyyjt/Qyyjt.yaml
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/Qyyjt/Qyyjt.yaml
+```
 ## 子规则/排除规则
 
 

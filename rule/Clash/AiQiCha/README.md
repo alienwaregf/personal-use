@@ -23,14 +23,15 @@
 
 ## Clash
 
-Domain 规则（必须同时使用）AiQiCha_Domain.mrs
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/AiQiCha/AiQiCha_Domain.mrs
+Domain 规则 (必须同时使用):**
+```text
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/AiQiCha/AiQiCha_Domain.mrs
 
 IP 规则（必须同时使用）AiQiCha_IP.mrs
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/AiQiCha/AiQiCha_IP.mrs
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/AiQiCha/AiQiCha_IP.mrs
 
-Classical 规则（单独使用）AiQiCha.yaml
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/AiQiCha/AiQiCha.yaml
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/AiQiCha/AiQiCha.yaml
+```
 ## 子规则/排除规则
 
 

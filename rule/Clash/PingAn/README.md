@@ -23,14 +23,15 @@
 
 ## Clash
 
-Domain 规则（必须同时使用）PingAn_Domain.mrs
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/PingAn/PingAn_Domain.mrs
+Domain 规则 (必须同时使用):**
+```text
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/PingAn/PingAn_Domain.mrs
 
 IP 规则（必须同时使用）PingAn_IP.mrs
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/PingAn/PingAn_IP.mrs
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/PingAn/PingAn_IP.mrs
 
-Classical 规则（单独使用）PingAn.yaml
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/PingAn/PingAn.yaml
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/PingAn/PingAn.yaml
+```
 ## 子规则/排除规则
 
 

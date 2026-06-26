@@ -23,14 +23,15 @@ Limelight规则由《RULE GENERATOR 规则生成器》自动生成。
 
 ## Clash
 
-Domain 规则（必须同时使用）Limelight_Domain.mrs
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Limelight/Limelight_Domain.mrs
+Domain 规则 (必须同时使用):**
+```text
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/Limelight/Limelight_Domain.mrs
 
 IP 规则（必须同时使用）Limelight_IP.mrs
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Limelight/Limelight_IP.mrs
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/Limelight/Limelight_IP.mrs
 
-Classical 规则（单独使用）Limelight.yaml
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Limelight/Limelight.yaml
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/Limelight/Limelight.yaml
+```
 ## 子规则/排除规则
 
 

@@ -23,14 +23,15 @@
 
 ## Clash
 
-Domain 规则（必须同时使用）Wikipedia_Domain.mrs
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Wikipedia/Wikipedia_Domain.mrs
+Domain 规则 (必须同时使用):**
+```text
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/Wikipedia/Wikipedia_Domain.mrs
 
 IP 规则（必须同时使用）Wikipedia_IP.mrs
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Wikipedia/Wikipedia_IP.mrs
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/Wikipedia/Wikipedia_IP.mrs
 
-Classical 规则（单独使用）Wikipedia_No_Resolve.yaml
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Wikipedia/Wikipedia_No_Resolve.yaml
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/Wikipedia/Wikipedia_No_Resolve.yaml
+```
 ## 子规则/排除规则
 
 

@@ -23,14 +23,15 @@
 
 ## Clash
 
-Domain 规则（必须同时使用）UCloud_Domain.mrs
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/UCloud/UCloud_Domain.mrs
+Domain 规则 (必须同时使用):**
+```text
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/UCloud/UCloud_Domain.mrs
 
 IP 规则（必须同时使用）UCloud_IP.mrs
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/UCloud/UCloud_IP.mrs
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/UCloud/UCloud_IP.mrs
 
-Classical 规则（单独使用）UCloud.yaml
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/UCloud/UCloud.yaml
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/UCloud/UCloud.yaml
+```
 ## 子规则/排除规则
 
 

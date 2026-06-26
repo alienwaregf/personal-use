@@ -23,14 +23,15 @@ Garena规则由《RULE GENERATOR 规则生成器》自动生成。
 
 ## Clash
 
-Domain 规则（必须同时使用）Garena_Domain.mrs
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Garena/Garena_Domain.mrs
+Domain 规则 (必须同时使用):**
+```text
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/Garena/Garena_Domain.mrs
 
 IP 规则（必须同时使用）Garena_IP.mrs
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Garena/Garena_IP.mrs
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/Garena/Garena_IP.mrs
 
-Classical 规则（单独使用）Garena.yaml
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Garena/Garena.yaml
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/Garena/Garena.yaml
+```
 ## 子规则/排除规则
 
 

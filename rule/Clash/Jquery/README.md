@@ -23,14 +23,15 @@ Jquery规则由《RULE GENERATOR 规则生成器》自动生成。
 
 ## Clash
 
-Domain 规则（必须同时使用）Jquery_Domain.mrs
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Jquery/Jquery_Domain.mrs
+Domain 规则 (必须同时使用):**
+```text
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/Jquery/Jquery_Domain.mrs
 
 IP 规则（必须同时使用）Jquery_IP.mrs
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Jquery/Jquery_IP.mrs
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/Jquery/Jquery_IP.mrs
 
-Classical 规则（单独使用）Jquery.yaml
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Jquery/Jquery.yaml
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/Jquery/Jquery.yaml
+```
 ## 子规则/排除规则
 
 

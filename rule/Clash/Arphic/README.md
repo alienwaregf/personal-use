@@ -23,14 +23,15 @@ Arphic规则由《RULE GENERATOR 规则生成器》自动生成。
 
 ## Clash
 
-Domain 规则（必须同时使用）Arphic_Domain.mrs
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Arphic/Arphic_Domain.mrs
+Domain 规则 (必须同时使用):**
+```text
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/Arphic/Arphic_Domain.mrs
 
 IP 规则（必须同时使用）Arphic_IP.mrs
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Arphic/Arphic_IP.mrs
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/Arphic/Arphic_IP.mrs
 
-Classical 规则（单独使用）Arphic.yaml
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Arphic/Arphic.yaml
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/Arphic/Arphic.yaml
+```
 ## 子规则/排除规则
 
 

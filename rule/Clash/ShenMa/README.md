@@ -23,14 +23,15 @@
 
 ## Clash
 
-Domain 规则（必须同时使用）ShenMa_Domain.mrs
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/ShenMa/ShenMa_Domain.mrs
+Domain 规则 (必须同时使用):**
+```text
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/ShenMa/ShenMa_Domain.mrs
 
 IP 规则（必须同时使用）ShenMa_IP.mrs
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/ShenMa/ShenMa_IP.mrs
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/ShenMa/ShenMa_IP.mrs
 
-Classical 规则（单独使用）ShenMa.yaml
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/ShenMa/ShenMa.yaml
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/ShenMa/ShenMa.yaml
+```
 ## 子规则/排除规则
 
 

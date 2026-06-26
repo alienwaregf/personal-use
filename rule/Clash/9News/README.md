@@ -23,14 +23,15 @@
 
 ## Clash
 
-Domain 规则（必须同时使用）9News_Domain.mrs
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/9News/9News_Domain.mrs
+Domain 规则 (必须同时使用):**
+```text
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/9News/9News_Domain.mrs
 
 IP 规则（必须同时使用）9News_IP.mrs
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/9News/9News_IP.mrs
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/9News/9News_IP.mrs
 
-Classical 规则（单独使用）9News.yaml
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/9News/9News.yaml
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/9News/9News.yaml
+```
 ## 子规则/排除规则
 
 

@@ -23,14 +23,15 @@ Contentful规则由《RULE GENERATOR 规则生成器》自动生成。
 
 ## Clash
 
-Domain 规则（必须同时使用）Contentful_Domain.mrs
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Contentful/Contentful_Domain.mrs
+Domain 规则 (必须同时使用):**
+```text
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/Contentful/Contentful_Domain.mrs
 
 IP 规则（必须同时使用）Contentful_IP.mrs
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Contentful/Contentful_IP.mrs
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/Contentful/Contentful_IP.mrs
 
-Classical 规则（单独使用）Contentful_No_Resolve.yaml
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Contentful/Contentful_No_Resolve.yaml
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/Contentful/Contentful_No_Resolve.yaml
+```
 ## 子规则/排除规则
 
 

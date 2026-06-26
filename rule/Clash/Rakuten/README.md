@@ -23,14 +23,15 @@ Rakuten规则由《RULE GENERATOR 规则生成器》自动生成。
 
 ## Clash
 
-Domain 规则（必须同时使用）Rakuten_Domain.mrs
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Rakuten/Rakuten_Domain.mrs
+Domain 规则 (必须同时使用):**
+```text
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/Rakuten/Rakuten_Domain.mrs
 
 IP 规则（必须同时使用）Rakuten_IP.mrs
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Rakuten/Rakuten_IP.mrs
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/Rakuten/Rakuten_IP.mrs
 
-Classical 规则（单独使用）Rakuten.yaml
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Rakuten/Rakuten.yaml
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/Rakuten/Rakuten.yaml
+```
 ## 子规则/排除规则
 
 

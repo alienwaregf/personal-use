@@ -23,14 +23,15 @@
 
 ## Clash
 
-Domain 规则（必须同时使用）DuoWan_Domain.mrs
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/DuoWan/DuoWan_Domain.mrs
+Domain 规则 (必须同时使用):**
+```text
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/DuoWan/DuoWan_Domain.mrs
 
 IP 规则（必须同时使用）DuoWan_IP.mrs
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/DuoWan/DuoWan_IP.mrs
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/DuoWan/DuoWan_IP.mrs
 
-Classical 规则（单独使用）DuoWan_No_Resolve.yaml
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/DuoWan/DuoWan_No_Resolve.yaml
+[https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash](https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash)/DuoWan/DuoWan_No_Resolve.yaml
+```
 ## 子规则/排除规则
 
 
