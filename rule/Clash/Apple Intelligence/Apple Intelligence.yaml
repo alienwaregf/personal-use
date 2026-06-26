@@ -1,0 +1,12 @@
+payload:
+  # ==============================
+  # Apple Intelligence - Private Cloud Compute
+  # ==============================
+  - DOMAIN,apple-relay.cloudflare.com
+  - DOMAIN,apple-relay.fastly-edge.com
+  - DOMAIN,cp4.cloudflare.com
+
+  # ==============================
+  # Apple Intelligence Extensions
+  # ==============================
+  - DOMAIN,apple-relay.apple.com
