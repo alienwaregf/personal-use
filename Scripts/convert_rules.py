@@ -33,13 +33,7 @@ def strip_yaml_quote(value):
 
 
 def clean_inline_comment(value):
-    """
-    清理简单行内注释。
-
-    注意：
-    - 原始 YAML 经过 PyYAML 读取时一般不需要这个。
-    - 这里只用于兜底手动解析。
-    """
+    """清理简单行内注释。"""
     value = str(value).strip()
 
     if " #" in value:
@@ -52,14 +46,9 @@ def parse_payload_rule(rule):
     """
     把 payload 中的单条规则解析成 parts。
 
-    输入示例：
+    示例：
       DOMAIN-SUFFIX,google.com
       IP-CIDR,1.1.1.0/24,no-resolve
-      'DOMAIN,example.com'
-
-    返回示例：
-      ['DOMAIN-SUFFIX', 'google.com']
-      ['IP-CIDR', '1.1.1.0/24', 'no-resolve']
     """
     if rule is None:
         return None
@@ -124,13 +113,9 @@ def normalize_domain_rule(parts, skipped_counter=None):
       DOMAIN-WILDCARD,*.example.com   -> *.example.com
 
     不强行转换：
-      DOMAIN-KEYWORD                  -> domain behavior 不能等价表达
-      DOMAIN-REGEX                    -> domain behavior 不能等价表达
-      GEOSITE                         -> 不是普通 domain-set 内容
-
-    说明：
-      DOMAIN-SUFFIX 用 +. 而不是 .，因为 +.example.com 可以同时匹配
-      example.com 和多级子域名；.example.com 不匹配根域名。
+      DOMAIN-KEYWORD
+      DOMAIN-REGEX
+      GEOSITE
     """
     rule_type = parts[0].upper()
 
@@ -149,28 +134,36 @@ def normalize_domain_rule(parts, skipped_counter=None):
     if rule_type == "DOMAIN":
         if is_valid_domain_like(value):
             return value
+
         if skipped_counter is not None:
             skipped_counter[f"{rule_type}:非法域名"] += 1
+
         return None
 
     if rule_type == "DOMAIN-SUFFIX":
         value = value.lstrip(".")
+
         if is_valid_domain_like(value):
             return f"+.{value}"
+
         if skipped_counter is not None:
             skipped_counter[f"{rule_type}:非法域名"] += 1
+
         return None
 
     if rule_type == "DOMAIN-WILDCARD":
         if is_valid_domain_like(value):
             return value
+
         if skipped_counter is not None:
             skipped_counter[f"{rule_type}:非法通配"] += 1
+
         return None
 
     if rule_type in ("DOMAIN-KEYWORD", "DOMAIN-REGEX", "GEOSITE"):
         if skipped_counter is not None:
             skipped_counter[f"{rule_type}:不适合domain mrs"] += 1
+
         return None
 
     return None
@@ -210,11 +203,13 @@ def normalize_ipcidr_rule(parts, skipped_counter=None):
         ):
             if skipped_counter is not None:
                 skipped_counter[f"{rule_type}:不适合ipcidr mrs"] += 1
+
         return None
 
     if len(parts) < 2:
         if skipped_counter is not None:
             skipped_counter[f"{rule_type}:缺少CIDR"] += 1
+
         return None
 
     cidr = strip_yaml_quote(parts[1])
@@ -222,6 +217,7 @@ def normalize_ipcidr_rule(parts, skipped_counter=None):
     if not cidr:
         if skipped_counter is not None:
             skipped_counter[f"{rule_type}:空CIDR"] += 1
+
         return None
 
     try:
@@ -229,6 +225,7 @@ def normalize_ipcidr_rule(parts, skipped_counter=None):
     except ValueError:
         if skipped_counter is not None:
             skipped_counter[f"{rule_type}:非法CIDR"] += 1
+
         print(f"跳过非法 CIDR: {','.join(parts)}")
         return None
 
@@ -239,7 +236,8 @@ def load_payload_rules(filepath):
     """
     读取 YAML 文件中的 payload 数组。
 
-    优先使用 PyYAML，失败时用简易手动解析兜底。
+    优先使用 PyYAML。
+    如果 PyYAML 失败，则用简易手动解析兜底。
     """
     if yaml is not None:
         try:
@@ -321,20 +319,25 @@ def split_yaml_payload(filepath):
             continue
 
         domain_value = normalize_domain_rule(parts, skipped_counter)
+
         if domain_value:
             if domain_value not in domain_seen:
                 domain_seen.add(domain_value)
                 domain_rules.append(domain_value)
+
             continue
 
         ip_value = normalize_ipcidr_rule(parts, skipped_counter)
+
         if ip_value:
             if ip_value not in ip_seen:
                 ip_seen.add(ip_value)
                 ip_rules.append(ip_value)
+
             continue
 
         rule_type = parts[0].upper()
+
         if rule_type not in (
             "DOMAIN",
             "DOMAIN-SUFFIX",
@@ -461,11 +464,10 @@ def modify_readme_clash_section(
     """
     精确定位并替换 README.md 中的 Clash 模块。
 
-    逻辑：
-      找到标题为 Clash 的章节；
-      删除该章节内原来的使用说明、文件区别、配置建议等；
-      替换成 Domain / IP / Classical 三段链接；
-      保留 Clash 章节之后的其它内容。
+    找到标题为 Clash 的章节；
+    删除该章节内原来的使用说明、文件区别、配置建议等；
+    替换成 Domain / IP / Classical 三段链接；
+    保留 Clash 章节之后的其它内容。
     """
     if not os.path.exists(readme_path):
         return
@@ -521,9 +523,10 @@ def modify_root_readme_links(content):
     替换 Clash 根 README 里的上游链接为自己的仓库链接。
 
     兼容：
-      1. 上游绝对链接
+      1. 上游 tree 链接
       2. 上游 blob 链接
-      3. 相对目录链接，例如 ./Advertising
+      3. 上游 raw 链接
+      4. README 里的相对目录链接，例如 ./Advertising
     """
     upstream_tree_url = "https://github.com/blackmatrix7/ios_rule_script/tree/master/rule/Clash"
     upstream_blob_url = "https://github.com/blackmatrix7/ios_rule_script/blob/master/rule/Clash"
@@ -533,21 +536,46 @@ def modify_root_readme_links(content):
     content = content.replace(upstream_blob_url, MY_REPO_URL)
     content = content.replace(upstream_raw_url, RAW_BASE_URL)
 
-    # Markdown 相对链接：](./Folder) -> ](你的仓库/tree/main/rule/Clash/Folder)
-    def replace_relative_link(match):
-        label = match.group(1)
-        folder = match.group(2).strip("/")
+    def replace_markdown_link(match):
+        label = match.group("label")
+        url = match.group("url").strip()
 
-        if not folder or folder.startswith("#"):
+        # 不处理锚点、http 链接、mailto 等
+        if (
+            not url
+            or url.startswith("#")
+            or url.startswith("http://")
+            or url.startswith("https://")
+            or url.startswith("mailto:")
+        ):
             return match.group(0)
 
-        return f"[{label}]({MY_REPO_URL}/{folder})"
+        normalized = url
 
-    content = re.sub(
-        r"$begin:math:display$\(\[\^$end:math:display$]+)\]$begin:math:text$\\\.\/\(\[A\-Za\-z0\-9\.\_\%\+\\\-\]\+\/\?\)$end:math:text$",
-        replace_relative_link,
-        content,
-    )
+        if normalized.startswith("./"):
+            normalized = normalized[2:]
+
+        normalized = normalized.strip("/")
+
+        # 跳过父目录、当前目录、文件链接、多级路径
+        if (
+            not normalized
+            or normalized.startswith("../")
+            or normalized == "."
+            or "/" in normalized
+            or normalized.endswith(".md")
+            or normalized.endswith(".yaml")
+            or normalized.endswith(".yml")
+            or normalized.endswith(".list")
+            or normalized.endswith(".txt")
+            or normalized.endswith(".mrs")
+        ):
+            return match.group(0)
+
+        return f"[{label}]({MY_REPO_URL}/{normalized})"
+
+    pattern = r"$begin:math:display$\(\?P\<label\>\[\^$end:math:display$]+)\]$begin:math:text$\(\?P\<url\>\[\^\)\]\+\)$end:math:text$"
+    content = re.sub(pattern, replace_markdown_link, content)
 
     return content
 
@@ -722,6 +750,7 @@ def main():
 
     if total_skipped_counter:
         print("\n全部目录不可转换规则汇总:")
+
         for key, count in sorted(total_skipped_counter.items()):
             print(f"  - {key}: {count}")
 
