@@ -125,18 +125,24 @@ def load_yaml_payload(filepath: str) -> List[str]:
             for item in data["payload"]:
                 if item is None:
                     continue
+
                 item = str(item).strip()
+
                 if item:
                     payload.append(item)
+
             return payload
 
         if isinstance(data, list):
             for item in data:
                 if item is None:
                     continue
+
                 item = str(item).strip()
+
                 if item:
                     payload.append(item)
+
             return payload
 
     except Exception as e:
@@ -161,6 +167,7 @@ def load_yaml_payload(filepath: str) -> List[str]:
                     continue
 
                 parts = parse_payload_rule_line(stripped)
+
                 if not parts:
                     continue
 
@@ -176,11 +183,11 @@ def load_yaml_payload(filepath: str) -> List[str]:
 
 def normalize_domain_rule(parts: List[str]) -> Optional[str]:
     """
-    尽量保持 Clash Classical 上游语义：
-      DOMAIN                -> 原域名
-      DOMAIN-SUFFIX         -> +.example.com
-      DOMAIN-KEYWORD        -> *keyword*
-      DOMAIN-WILDCARD       -> 原样保留
+    Clash Classical -> Mihomo domain MRS:
+      DOMAIN          -> example.com
+      DOMAIN-SUFFIX   -> +.example.com
+      DOMAIN-KEYWORD  -> *keyword*
+      DOMAIN-WILDCARD -> 跳过，保留在 Classical.yaml
     """
     if not parts:
         return None
@@ -203,18 +210,22 @@ def normalize_domain_rule(parts: List[str]) -> Optional[str]:
         value = value.strip()
         value = value.removeprefix("+.")
         value = value.lstrip(".")
+
         if not value:
             return None
+
         return f"+.{value}"
 
     if rule_type == "DOMAIN-KEYWORD":
         value = value.strip("*")
+
         if not value:
             return None
+
         return f"*{value}*"
 
     if rule_type == "DOMAIN-WILDCARD":
-        return value
+        return None
 
     return None
 
@@ -256,21 +267,26 @@ def split_yaml_payload(filepath: str) -> Tuple[List[str], List[str]]:
 
     for raw_rule in raw_payload:
         parts = parse_payload_rule_line(raw_rule)
+
         if not parts:
             continue
 
         domain_value = normalize_domain_rule(parts)
+
         if domain_value:
             if domain_value not in domain_seen:
                 domain_seen.add(domain_value)
                 domain_rules.append(domain_value)
+
             continue
 
         ip_value = normalize_ipcidr_rule(parts)
+
         if ip_value:
             if ip_value not in ip_seen:
                 ip_seen.add(ip_value)
                 ip_rules.append(ip_value)
+
             continue
 
     return domain_rules, ip_rules
@@ -283,6 +299,7 @@ def write_mrs_source_yaml(path: str, rules: List[str]) -> None:
 
     with open(path, "w", encoding="utf-8") as f:
         f.write("payload:\n")
+
         for rule in rules:
             safe_rule = str(rule).replace("'", "''")
             f.write(f"  - '{safe_rule}'\n")
@@ -308,6 +325,7 @@ def compile_to_mrs(temp_yaml_path: str, out_mrs_path: str, behavior: str) -> boo
             stderr=subprocess.PIPE,
             text=True,
         )
+
         print(f"编译成功: {out_mrs_path}")
         return True
 
@@ -454,14 +472,18 @@ def extract_folder_from_url(url: str) -> Optional[str]:
     for prefix in prefixes:
         if url.startswith(prefix):
             rest = url[len(prefix):].strip("/")
+
             if rest:
                 return rest.split("/", 1)[0]
+
             return None
 
     if url.startswith("./"):
         rest = url[2:].strip("/")
+
         if rest:
             return rest.split("/", 1)[0]
+
         return None
 
     if not url.startswith("http://") and not url.startswith("https://"):
