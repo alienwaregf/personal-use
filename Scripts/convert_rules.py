@@ -272,7 +272,7 @@ def normalize_domain_rule(parts: List[str]) -> Optional[str]:
         value = value.lstrip(".")
         if not value:
             return None
-        return f".{value}"
+        return f"+.{value}"
 
     # DOMAIN-KEYWORD：
     # Clash Classical 的 DOMAIN-KEYWORD,google
