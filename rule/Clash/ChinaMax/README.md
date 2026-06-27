@@ -38,17 +38,17 @@
 
 ## Clash
 
-Domain 规则（仅包含域名）
+Domain 规则（必须同时使用）
 ```text
 https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/ChinaMax/ChinaMax_Domain.mrs
 ```
 
-IP 规则（仅包含IP）
+IP 规则（必须同时使用）
 ```text
 https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/ChinaMax/ChinaMax_IP.mrs
 ```
 
-Classical 规则（全量规则）
+Classical 规则（单独使用）
 ```text
 https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/ChinaMax/ChinaMax_Classical.yaml
 ```

@@ -25,12 +25,12 @@ Gemini规则由《RULE GENERATOR 规则生成器》自动生成。
 
 ## Clash
 
-Domain 规则（仅包含域名）
+Domain 规则（必须同时使用）
 ```text
 https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Gemini/Gemini_Domain.mrs
 ```
 
-Classical 规则（全量规则）
+Classical 规则（单独使用）
 ```text
 https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Gemini/Gemini.yaml
 ```
