@@ -28,17 +28,17 @@ Netflix规则由《RULE GENERATOR 规则生成器》自动生成。
 
 ## Clash
 
-Domain 规则（必须同时使用）
+Domain 规则（仅含域名）
 ```text
 https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Netflix/Netflix_Domain.mrs
 ```
 
-IP 规则（必须同时使用）
+IP 规则（仅含IP）
 ```text
 https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Netflix/Netflix_IP.mrs
 ```
 
-Classical 规则（单独使用）
+Classical 规则（全量）
 ```text
 https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Netflix/Netflix_Classical.yaml
 ```
