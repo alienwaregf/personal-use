@@ -1,11 +1,19 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
 import os
 import re
 import shutil
 import subprocess
 import ipaddress
 import sys
+from typing import List, Optional, Tuple, Set
+
+import yaml
+
 
 # ================= 核心配置 =================
+
 SOURCE_CLASH_DIR = os.path.join("source_repo", "rule", "Clash")
 DEST_CLASH_DIR = os.path.join("rule", "Clash")
 TEMP_DIR = "temp_compile"
@@ -17,6 +25,7 @@ RAW_BASE_URL = "https://raw.githubusercontent.com/alienwaregf/personal-use/main/
 # 说明：
 # - 如果上游目录存在：用上游最新 YAML/README 覆盖并重新编译 MRS。
 # - 如果上游目录被删除：你仓库里已有的同名目录不会被删除，会继续保留并尝试用本地 YAML 编译 MRS。
+# - 不在上游当前目录里的本地目录，视为你的自定义目录，会保留。
 UPSTREAM_INCLUDE_FOLDERS = {
     "Advertising",
     "AppleNews",
@@ -53,40 +62,80 @@ UPSTREAM_INCLUDE_FOLDERS = {
 }
 
 
-def strip_yaml_quote(value):
-    """去掉 YAML 字符串首尾引号"""
+# ================= 通用工具 =================
+
+def strip_yaml_quote(value) -> str:
+    """
+    去掉 YAML 字符串首尾引号。
+    只去掉最外层成对的单引号或双引号。
+    """
     value = str(value).strip()
+
     if len(value) >= 2 and value[0] == value[-1] and value[0] in ("'", '"'):
         return value[1:-1].strip()
+
     return value
 
 
-def parse_payload_rule_line(line):
+def remove_inline_comment(value: str) -> str:
     """
-    解析 payload 里的单条规则。
+    保守清理简单行内注释。
 
-    输入示例：
+    只处理这种情况：
+      DOMAIN-SUFFIX,example.com # comment
+
+    不处理没有空格分隔的 #，避免误删极端字符串。
+    """
+    value = str(value).strip()
+
+    if " #" in value:
+        value = value.split(" #", 1)[0].strip()
+
+    return value
+
+
+def ensure_mihomo_available() -> bool:
+    """
+    检查 mihomo 命令是否存在。
+    """
+    if shutil.which("mihomo"):
+        return True
+
+    print("严重错误: 找不到 mihomo 命令。请确认 GitHub Actions 或本地环境已安装 mihomo。")
+    return False
+
+
+# ================= YAML / 规则解析 =================
+
+def parse_payload_rule_line(line) -> Optional[List[str]]:
+    """
+    解析 payload 里的单条 Clash Classical 规则。
+
+    支持输入：
       - DOMAIN-SUFFIX,google.com
       - 'IP-CIDR,1.1.1.0/24,no-resolve'
+      DOMAIN-SUFFIX,google.com
 
     返回：
       ['DOMAIN-SUFFIX', 'google.com']
       ['IP-CIDR', '1.1.1.0/24', 'no-resolve']
     """
-    stripped = line.strip()
-
-    if not stripped.startswith("-"):
+    if line is None:
         return None
 
-    raw = stripped[1:].strip()
+    raw = str(line).strip()
+
+    if not raw:
+        return None
+
+    if raw.startswith("-"):
+        raw = raw[1:].strip()
+
     raw = strip_yaml_quote(raw)
+    raw = remove_inline_comment(raw)
 
     if not raw or raw.startswith("#"):
         return None
-
-    # 清理简单行内注释，例如：DOMAIN-SUFFIX,example.com # comment
-    if " #" in raw:
-        raw = raw.split(" #", 1)[0].strip()
 
     parts = [strip_yaml_quote(p.strip()) for p in raw.split(",")]
     parts = [p for p in parts if p != ""]
@@ -97,18 +146,108 @@ def parse_payload_rule_line(line):
     return parts
 
 
-def normalize_domain_rule(parts):
+def load_yaml_payload(filepath: str) -> List[str]:
     """
-    把 Clash classical 域名规则转换成 Mihomo domain behavior 可用格式。
+    优先用 PyYAML 读取 payload。
+    如果 YAML 解析失败，再退回到按行解析。
 
-    转换策略：
+    blackmatrix7 的 Clash 规则通常是：
+      payload:
+        - DOMAIN-SUFFIX,example.com
+        - IP-CIDR,1.1.1.0/24,no-resolve
+    """
+    payload = []
+
+    try:
+        with open(filepath, "r", encoding="utf-8") as f:
+            data = yaml.safe_load(f)
+
+        if isinstance(data, dict) and isinstance(data.get("payload"), list):
+            for item in data["payload"]:
+                if item is None:
+                    continue
+                item = str(item).strip()
+                if item:
+                    payload.append(item)
+            return payload
+
+        if isinstance(data, list):
+            for item in data:
+                if item is None:
+                    continue
+                item = str(item).strip()
+                if item:
+                    payload.append(item)
+            return payload
+
+    except Exception as e:
+        print(f"PyYAML 读取失败，改用按行解析: {filepath}")
+        print(f"原因: {e}")
+
+    # fallback：按行读取 payload
+    try:
+        with open(filepath, "r", encoding="utf-8") as f:
+            payload_started = False
+
+            for line in f:
+                stripped = line.strip()
+
+                if stripped == "payload:":
+                    payload_started = True
+                    continue
+
+                if not payload_started:
+                    continue
+
+                if not stripped.startswith("-"):
+                    continue
+
+                parts = parse_payload_rule_line(stripped)
+                if not parts:
+                    continue
+
+                payload.append(",".join(parts))
+
+    except Exception as e:
+        print(f"读取 {filepath} 时出错: {e}")
+
+    return payload
+
+
+# ================= Domain / IP 规则规范化 =================
+
+def normalize_domain_rule(parts: List[str]) -> Optional[str]:
+    """
+    把 Clash Classical 域名规则转换成 Mihomo domain behavior 可用格式。
+
+    Mihomo rule-provider 的 behavior: domain 使用 Clash wildcard 格式。
+
+    正确转换：
       DOMAIN,example.com              -> example.com
       DOMAIN-SUFFIX,example.com       -> .example.com
       DOMAIN-KEYWORD,google           -> *google*
       DOMAIN-WILDCARD,*.example.com   -> *.example.com
-      GEOSITE,xxx                     -> 不进入 Domain.mrs
+      DOMAIN-WILDCARD,+.example.com   -> .example.com
+
+    不进入 Domain.mrs：
+      GEOSITE,xxx
+      DOMAIN-REGEX,xxx
+      RULE-SET,xxx
+      PROCESS-NAME,xxx
+      USER-AGENT,xxx
+      URL-REGEX,xxx
+      DST-PORT,xxx
+      SRC-PORT,xxx
+      IP-CIDR,xxx
+      IP-CIDR6,xxx
+      GEOIP,xxx
+      IP-ASN,xxx
+      SRC-IP-CIDR,xxx
     """
-    rule_type = parts[0].upper()
+    if not parts:
+        return None
+
+    rule_type = parts[0].strip().upper()
 
     if len(parts) < 2:
         return None
@@ -119,42 +258,60 @@ def normalize_domain_rule(parts):
     if not value:
         return None
 
+    # DOMAIN：完整域名匹配
     if rule_type == "DOMAIN":
         return value
 
+    # DOMAIN-SUFFIX：
+    # 对 Mihomo behavior: domain / convert-ruleset domain 来说，
+    # 使用 Clash wildcard 格式：.example.com
+    # 不使用 +.example.com
     if rule_type == "DOMAIN-SUFFIX":
+        value = value.strip()
+        value = value.removeprefix("+.")
         value = value.lstrip(".")
+        if not value:
+            return None
         return f".{value}"
 
+    # DOMAIN-KEYWORD：
+    # Clash Classical 的 DOMAIN-KEYWORD,google
+    # 转成 Clash wildcard 包含匹配：*google*
     if rule_type == "DOMAIN-KEYWORD":
+        value = value.strip("*")
+        if not value:
+            return None
         return f"*{value}*"
 
-    # DOMAIN-WILDCARD 本身接近 domain behavior 通配写法，直接保留
+    # DOMAIN-WILDCARD：
+    # 本身接近 Mihomo domain behavior 通配格式，直接保留。
+    # 如果源规则偶然出现 +.example.com，则规范成 .example.com。
     if rule_type == "DOMAIN-WILDCARD":
+        if value.startswith("+."):
+            value = "." + value[2:]
         return value
 
-    # GEOSITE 不是普通 domain-set 内容，不编进 Domain.mrs
     return None
 
 
-def normalize_ipcidr_rule(parts):
+def normalize_ipcidr_rule(parts: List[str]) -> Optional[str]:
     """
-    把 Clash classical IP 规则转换成 Mihomo ipcidr behavior 可用格式。
+    把 Clash Classical IP 规则转换成 Mihomo ipcidr behavior 可用格式。
 
-    只允许：
-      IP-CIDR,1.1.1.0/24,no-resolve
-      IP-CIDR6,2400:3200::/32,no-resolve
+    允许进入 IP.mrs：
+      IP-CIDR,1.1.1.0/24,no-resolve     -> 1.1.1.0/24
+      IP-CIDR6,2400:3200::/32,no-resolve -> 2400:3200::/32
 
-    转换后：
-      1.1.1.0/24
-      2400:3200::/32
-
-    不允许放入：
+    不进入 IP.mrs：
       GEOIP,CN
       IP-ASN,xxx
       SRC-IP-CIDR,xxx
+      SRC-IP-ASN,xxx
     """
-    rule_type = parts[0].upper()
+    if not parts:
+        return None
+
+    rule_type = parts[0].strip().upper()
 
     if rule_type not in ("IP-CIDR", "IP-CIDR6"):
         return None
@@ -177,72 +334,58 @@ def normalize_ipcidr_rule(parts):
     return cidr
 
 
-def split_yaml_payload(filepath):
+def split_yaml_payload(filepath: str) -> Tuple[List[str], List[str]]:
     """
     提取原始 YAML payload，并转换成 MRS 支持的两种 behavior 内容：
 
     Domain.mrs:
       behavior: domain
-      内容为纯 domain / 通配 domain
+      内容为纯 domain / wildcard domain
 
     IP.mrs:
       behavior: ipcidr
       内容为纯 CIDR
 
     注意：
-      GEOIP / GEOSITE / IP-ASN / SRC-IP-CIDR 不会被塞进这两个 MRS。
+      GEOIP / GEOSITE / IP-ASN / SRC-IP-CIDR / 端口 / 进程 / 正则等规则
+      不会被塞进这两个 MRS。
       它们仍保留在原始 Classical YAML 文件里。
     """
     domain_rules = []
     ip_rules = []
-
     domain_seen = set()
     ip_seen = set()
 
-    try:
-        with open(filepath, "r", encoding="utf-8") as f:
-            payload_started = False
+    raw_payload = load_yaml_payload(filepath)
 
-            for line in f:
-                stripped = line.strip()
+    for raw_rule in raw_payload:
+        parts = parse_payload_rule_line(raw_rule)
+        if not parts:
+            continue
 
-                if stripped == "payload:":
-                    payload_started = True
-                    continue
+        domain_value = normalize_domain_rule(parts)
+        if domain_value:
+            if domain_value not in domain_seen:
+                domain_seen.add(domain_value)
+                domain_rules.append(domain_value)
+            continue
 
-                if not payload_started:
-                    continue
-
-                if not stripped.startswith("-"):
-                    continue
-
-                parts = parse_payload_rule_line(stripped)
-
-                if not parts:
-                    continue
-
-                domain_value = normalize_domain_rule(parts)
-                if domain_value:
-                    if domain_value not in domain_seen:
-                        domain_seen.add(domain_value)
-                        domain_rules.append(domain_value)
-                    continue
-
-                ip_value = normalize_ipcidr_rule(parts)
-                if ip_value:
-                    if ip_value not in ip_seen:
-                        ip_seen.add(ip_value)
-                        ip_rules.append(ip_value)
-                    continue
-
-    except Exception as e:
-        print(f"读取 {filepath} 时出错: {e}")
+        ip_value = normalize_ipcidr_rule(parts)
+        if ip_value:
+            if ip_value not in ip_seen:
+                ip_seen.add(ip_value)
+                ip_rules.append(ip_value)
+            continue
 
     return domain_rules, ip_rules
 
 
-def write_mrs_source_yaml(path, rules):
-    """写入给 mihomo convert-ruleset 使用的临时 YAML"""
+# ================= MRS 编译 =================
+
+def write_mrs_source_yaml(path: str, rules: List[str]) -> None:
+    """
+    写入给 mihomo convert-ruleset 使用的临时 YAML。
+    """
     os.makedirs(os.path.dirname(path), exist_ok=True)
 
     with open(path, "w", encoding="utf-8") as f:
@@ -252,7 +395,7 @@ def write_mrs_source_yaml(path, rules):
             f.write(f"  - '{safe_rule}'\n")
 
 
-def compile_to_mrs(temp_yaml_path, out_mrs_path, behavior):
+def compile_to_mrs(temp_yaml_path: str, out_mrs_path: str, behavior: str) -> bool:
     """
     调用 Mihomo 编译 MRS。
 
@@ -262,10 +405,23 @@ def compile_to_mrs(temp_yaml_path, out_mrs_path, behavior):
     """
     os.makedirs(os.path.dirname(out_mrs_path), exist_ok=True)
 
-    cmd = ["mihomo", "convert-ruleset", behavior, "yaml", temp_yaml_path, out_mrs_path]
+    cmd = [
+        "mihomo",
+        "convert-ruleset",
+        behavior,
+        "yaml",
+        temp_yaml_path,
+        out_mrs_path,
+    ]
 
     try:
-        subprocess.run(cmd, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+        subprocess.run(
+            cmd,
+            check=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            text=True,
+        )
         print(f"编译成功: {out_mrs_path}")
         return True
 
@@ -288,14 +444,30 @@ def compile_to_mrs(temp_yaml_path, out_mrs_path, behavior):
         return False
 
 
-def build_child_readme_replacement(folder_name, classical_filename, has_domain_mrs=True, has_ip_mrs=True):
-    """生成子目录 README.md 中 Clash 模块替换内容"""
+# ================= README 处理：子目录 =================
+
+def build_child_readme_replacement(
+    folder_name: str,
+    classical_filename: str,
+    has_domain_mrs: bool = True,
+    has_ip_mrs: bool = True,
+) -> str:
+    """
+    生成子目录 README.md 中 Clash 模块替换内容。
+
+    按你的要求：
+      Domain 规则（必须同时使用）
+      IP 规则（必须同时使用）
+      Classical 规则（单独使用）
+
+    三个都是独立复制窗口。
+    """
     cb = "```"
     parts = ["\n"]
 
     if has_domain_mrs:
         parts.append(
-            f"Domain 规则（仅包含域名）\n"
+            f"Domain 规则（必须同时使用）\n"
             f"{cb}text\n"
             f"{RAW_BASE_URL}/{folder_name}/{folder_name}_Domain.mrs\n"
             f"{cb}\n\n"
@@ -303,14 +475,14 @@ def build_child_readme_replacement(folder_name, classical_filename, has_domain_m
 
     if has_ip_mrs:
         parts.append(
-            f"IP 规则（仅包含IP）\n"
+            f"IP 规则（必须同时使用）\n"
             f"{cb}text\n"
             f"{RAW_BASE_URL}/{folder_name}/{folder_name}_IP.mrs\n"
             f"{cb}\n\n"
         )
 
     parts.append(
-        f"Classical 规则（全量规则）\n"
+        f"Classical 规则（单独使用）\n"
         f"{cb}text\n"
         f"{RAW_BASE_URL}/{folder_name}/{classical_filename}\n"
         f"{cb}\n\n"
@@ -319,8 +491,18 @@ def build_child_readme_replacement(folder_name, classical_filename, has_domain_m
     return "".join(parts)
 
 
-def modify_readme_clash_section(readme_path, folder_name, classical_filename, has_domain_mrs=True, has_ip_mrs=True):
-    """精确定位并替换 README.md 中的 Clash 模块"""
+def modify_readme_clash_section(
+    readme_path: str,
+    folder_name: str,
+    classical_filename: str,
+    has_domain_mrs: bool = True,
+    has_ip_mrs: bool = True,
+) -> None:
+    """
+    精确定位并替换 README.md 中的 Clash 模块。
+    Clash 标题位置不变，其它模块不动。
+    如果 README 里没有 Clash 标题，则在末尾补一个。
+    """
     if not os.path.exists(readme_path):
         return
 
@@ -365,10 +547,10 @@ def modify_readme_clash_section(readme_path, folder_name, classical_filename, ha
 
         new_lines.append(line)
 
-    # 如果 README 里没有 Clash 标题，则在末尾补一个，避免自定义目录 README 没链接
     if not clash_processed:
         if new_lines and not new_lines[-1].endswith("\n"):
             new_lines[-1] += "\n"
+
         new_lines.append("\n## Clash\n")
         new_lines.append(replacement_text)
 
@@ -376,7 +558,9 @@ def modify_readme_clash_section(readme_path, folder_name, classical_filename, ha
         f.writelines(new_lines)
 
 
-def extract_folder_from_url(url):
+# ================= README 处理：根目录链接 =================
+
+def extract_folder_from_url(url: str) -> Optional[str]:
     """
     从 README 链接里识别对应的 Clash 子目录名。
 
@@ -428,21 +612,23 @@ def extract_folder_from_url(url):
             and not rest.startswith("../")
             and rest != "."
             and "/" not in rest
-            and not rest.lower().endswith((".md", ".yaml", ".yml", ".list", ".txt", ".mrs", ".json"))
+            and not rest.lower().endswith(
+                (".md", ".yaml", ".yml", ".list", ".txt", ".mrs", ".json")
+            )
         ):
             return rest
 
     return None
 
 
-def transform_markdown_links_in_text(text, allowed_folders):
+def transform_markdown_links_in_text(text: str, allowed_folders: Set[str]) -> Tuple[str, int, int]:
     """
-    不使用正则，扫描并过滤 Markdown 链接。
+    扫描并过滤 Markdown 链接。
 
     返回：
-      new_text: 替换后的文本
-      kept_folder_link_count: 保留下来的目录链接数量
-      removed_folder_link_count: 删除掉的目录链接数量
+      new_text
+      kept_folder_link_count
+      removed_folder_link_count
     """
     result = []
     i = 0
@@ -479,9 +665,11 @@ def transform_markdown_links_in_text(text, allowed_folders):
         if folder is None:
             # 非 Clash 目录链接，原样保留
             result.append(text[label_start:url_end + 1])
+
         elif folder in allowed_folders:
             result.append(f"[{label}]({MY_REPO_URL}/{folder})")
             kept += 1
+
         else:
             # 是 Clash 目录链接，但实际没有保留这个文件夹，删除该链接
             removed += 1
@@ -491,22 +679,26 @@ def transform_markdown_links_in_text(text, allowed_folders):
     return "".join(result), kept, removed
 
 
-def split_markdown_table_row(line):
-    """简单拆分 Markdown 表格行，保留左右边界。"""
+def split_markdown_table_row(line: str):
+    """
+    简单拆分 Markdown 表格行，保留左右边界。
+    """
     raw = line.rstrip("\n")
+
     if not raw.strip().startswith("|"):
         return None
 
-    cells = raw.split("|")
-    return cells
+    return raw.split("|")
 
 
-def is_table_separator_line(line):
+def is_table_separator_line(line: str) -> bool:
     stripped = line.strip()
+
     if not stripped.startswith("|"):
         return False
 
     body = stripped.strip("|").strip()
+
     if not body:
         return False
 
@@ -517,14 +709,14 @@ def is_table_separator_line(line):
     return "-" in body
 
 
-def process_markdown_table_block(lines, allowed_folders):
+def process_markdown_table_block(lines: List[str], allowed_folders: Set[str]) -> List[str]:
     """
     过滤原版 README 里的分类表格。
 
     逻辑：
       - 表格里的目录链接，只保留实际存在于 rule/Clash 的文件夹；
       - 没有任何保留链接的表格整块删除；
-      - 分类标题行保留，但只有在该分类表格内仍有链接时才保留。
+      - 分类标题行保守保留。
     """
     processed = []
     kept_link_total = 0
@@ -535,6 +727,7 @@ def process_markdown_table_block(lines, allowed_folders):
             continue
 
         cells = split_markdown_table_row(line)
+
         if cells is None:
             continue
 
@@ -542,7 +735,6 @@ def process_markdown_table_block(lines, allowed_folders):
         row_removed_links = 0
         new_cells = []
 
-        # 第一个和最后一个通常是边界空字符串
         for cell in cells:
             new_cell, kept, removed = transform_markdown_links_in_text(cell, allowed_folders)
             row_kept_links += kept
@@ -559,9 +751,9 @@ def process_markdown_table_block(lines, allowed_folders):
 
         new_line = "|".join(new_cells)
 
-        # 确保仍然是表格行
         if not new_line.startswith("|"):
             new_line = "|" + new_line
+
         if not new_line.endswith("|"):
             new_line = new_line + "|"
 
@@ -570,15 +762,13 @@ def process_markdown_table_block(lines, allowed_folders):
     if kept_link_total == 0:
         return []
 
-    # 清理只有标题/分隔线但没有链接的异常行，保守保留分类标题
     return [line + "\n" for line in processed]
 
 
-def filter_root_readme_by_existing_folders(content, allowed_folders):
+def filter_root_readme_by_existing_folders(content: str, allowed_folders: Set[str]) -> str:
     """
     根据 rule/Clash 实际存在的目录过滤根 README。
 
-    这会删除原版分类模块里没有实际目录的链接，避免 README 显示未保留的文件夹。
     不再追加“当前保留目录”模块。
     """
     lines = content.splitlines(keepends=True)
@@ -590,6 +780,7 @@ def filter_root_readme_by_existing_folders(content, allowed_folders):
 
         if line.strip().startswith("|"):
             block = []
+
             while i < len(lines) and lines[i].strip().startswith("|"):
                 block.append(lines[i])
                 i += 1
@@ -610,11 +801,14 @@ def filter_root_readme_by_existing_folders(content, allowed_folders):
     # 压缩过多空行
     cleaned = []
     blank_count = 0
+
     for line in output:
         if line.strip() == "":
             blank_count += 1
+
             if blank_count <= 2:
                 cleaned.append(line)
+
         else:
             blank_count = 0
             cleaned.append(line)
@@ -622,9 +816,10 @@ def filter_root_readme_by_existing_folders(content, allowed_folders):
     return "".join(cleaned).strip() + "\n"
 
 
-def modify_root_readme_links(content):
+def modify_root_readme_links(content: str) -> str:
     """
-    只做基础 URL 替换。实际分类过滤在 filter_root_readme_by_existing_folders() 里完成。
+    只做基础 URL 替换。
+    实际分类过滤在 filter_root_readme_by_existing_folders() 里完成。
     """
     upstream_tree_url = "https://github.com/blackmatrix7/ios_rule_script/tree/master/rule/Clash"
     upstream_blob_url = "https://github.com/blackmatrix7/ios_rule_script/blob/master/rule/Clash"
@@ -636,7 +831,10 @@ def modify_root_readme_links(content):
 
     return content
 
-def select_best_yaml(folder_path, folder_name):
+
+# ================= 文件选择与目录同步 =================
+
+def select_best_yaml(folder_path: str, folder_name: str) -> Optional[str]:
     """
     优先选择最全的 Classical YAML。
     如果没有，则选择普通 YAML。
@@ -652,11 +850,14 @@ def select_best_yaml(folder_path, folder_name):
         return normal_yaml
 
     yaml_files = []
+
     try:
         for filename in os.listdir(folder_path):
             lower = filename.lower()
+
             if lower.endswith((".yaml", ".yml")):
                 yaml_files.append(filename)
+
     except FileNotFoundError:
         return None
 
@@ -667,8 +868,10 @@ def select_best_yaml(folder_path, folder_name):
     return None
 
 
-def list_current_upstream_folders():
-    """列出当前 blackmatrix7 上游 Clash 目录中的所有文件夹名"""
+def list_current_upstream_folders() -> Set[str]:
+    """
+    列出当前 blackmatrix7 上游 Clash 目录中的所有文件夹名。
+    """
     if not os.path.exists(SOURCE_CLASH_DIR):
         return set()
 
@@ -679,7 +882,7 @@ def list_current_upstream_folders():
     }
 
 
-def prepare_dest_clash_dir():
+def prepare_dest_clash_dir() -> None:
     """
     准备目标目录。
 
@@ -712,7 +915,25 @@ def prepare_dest_clash_dir():
         print(f"保留自定义目录: {item}")
 
 
-def copy_upstream_folder_files(folder_name):
+def remove_old_generated_files(dest_folder: str, folder_name: str) -> None:
+    """
+    清理目标目录中旧的生成文件，避免旧 MRS 残留。
+    """
+    old_files = [
+        os.path.join(dest_folder, f"{folder_name}_Domain.mrs"),
+        os.path.join(dest_folder, f"{folder_name}_IP.mrs"),
+    ]
+
+    for path in old_files:
+        if os.path.isfile(path):
+            try:
+                os.remove(path)
+                print(f"已删除旧生成文件: {path}")
+            except FileNotFoundError:
+                pass
+
+
+def copy_upstream_folder_files(folder_name: str) -> bool:
     """
     同步指定上游目录。
 
@@ -720,6 +941,7 @@ def copy_upstream_folder_files(folder_name):
       - 清空目标同名目录；
       - 只复制最优 YAML；
       - 如果有 README.md，也复制并改写 Clash 模块。
+
     如果上游目录不存在：
       - 不删除本地同名目录；
       - 后续会按本地目录继续编译。
@@ -754,8 +976,12 @@ def copy_upstream_folder_files(folder_name):
     return True
 
 
-def compile_folder(folder_name, folder_path, modify_readme=True):
-    """编译某个目录中的 YAML 为 Domain/IP MRS"""
+# ================= 编译目录 =================
+
+def compile_folder(folder_name: str, folder_path: str, modify_readme: bool = True) -> dict:
+    """
+    编译某个目录中的 YAML 为 Domain/IP MRS。
+    """
     target_yaml = select_best_yaml(folder_path, folder_name)
 
     if not target_yaml:
@@ -768,8 +994,10 @@ def compile_folder(folder_name, folder_path, modify_readme=True):
         }
 
     print(f"\n正在处理目录: {folder_name}")
-
     target_filename = os.path.basename(target_yaml)
+
+    remove_old_generated_files(folder_path, folder_name)
+
     domain_rules, ip_rules = split_yaml_payload(target_yaml)
 
     print(f"Domain 规则数量: {len(domain_rules)}")
@@ -791,6 +1019,7 @@ def compile_folder(folder_name, folder_path, modify_readme=True):
             has_domain_mrs = True
         else:
             failures += 1
+
     else:
         print(f"跳过 Domain.mrs：{folder_name} 没有可转换的 Domain 规则")
 
@@ -803,6 +1032,7 @@ def compile_folder(folder_name, folder_path, modify_readme=True):
             has_ip_mrs = True
         else:
             failures += 1
+
     else:
         print(f"跳过 IP.mrs：{folder_name} 没有可转换的 IP-CIDR/IP-CIDR6 规则")
 
@@ -827,8 +1057,9 @@ def compile_folder(folder_name, folder_path, modify_readme=True):
     }
 
 
+# ================= 根 README =================
 
-def add_root_readme_tip(content):
+def add_root_readme_tip(content: str) -> str:
     """
     在 Clash 根目录 README.md 顶部添加自用提示。
 
@@ -840,16 +1071,12 @@ def add_root_readme_tip(content):
         "> 所有内容均来自 [blackmatrix7大佬](https://github.com/blackmatrix7/ios_rule_script/tree/master/rule/Clash) 的二次编译，仅自用，勿传播，谢谢！\n\n"
     )
 
-    old_tip_pattern = (
-        "> [!IMPORTANT]\n"
-        "> 所有内容均来自 [blackmatrix7大佬](https://github.com/blackmatrix7/ios_rule_script/tree/master/rule/Clash) 的二次编译，仅自用，勿传播，谢谢！\n\n"
-    )
-
-    content = content.replace(old_tip_pattern, "")
+    content = content.replace(tip, "")
 
     return tip + content.lstrip()
 
-def write_root_readme():
+
+def write_root_readme() -> None:
     """
     写入 Clash 根目录 README。
 
@@ -876,9 +1103,11 @@ def write_root_readme():
 
         root_content = modify_root_readme_links(root_content)
         root_content = filter_root_readme_by_existing_folders(root_content, existing_folders)
+
     else:
         root_content = "# Clash\n\n"
         root_content += "## 分类\n\n"
+
         for folder in sorted(existing_folders):
             root_content += f"- [{folder}]({MY_REPO_URL}/{folder})\n"
 
@@ -887,7 +1116,10 @@ def write_root_readme():
     with open(dest_root_readme, "w", encoding="utf-8") as f:
         f.write(root_content)
 
-def clean_workspace_garbage():
+
+# ================= 清理 =================
+
+def clean_workspace_garbage() -> None:
     """
     清理 GitHub Actions 工作区里的临时垃圾，防止被 git add 误提交。
 
@@ -908,6 +1140,7 @@ def clean_workspace_garbage():
         if os.path.isdir(path):
             shutil.rmtree(path, ignore_errors=True)
             print(f"已清理目录: {path}")
+
         elif os.path.isfile(path):
             try:
                 os.remove(path)
@@ -923,6 +1156,7 @@ def clean_workspace_garbage():
         for filename in files:
             if filename == ".DS_Store":
                 file_path = os.path.join(root, filename)
+
                 try:
                     os.remove(file_path)
                     print(f"已清理文件: {file_path}")
@@ -937,9 +1171,14 @@ def clean_workspace_garbage():
                 dirs.remove(dirname)
 
 
-def main():
+# ================= 主流程 =================
+
+def main() -> None:
     print("开始执行 Clash 规则拆分与 MRS 编译任务...")
     print("模式：上游白名单同步 + 本地自定义目录保留")
+
+    if not ensure_mihomo_available():
+        sys.exit(1)
 
     if os.path.exists(TEMP_DIR):
         shutil.rmtree(TEMP_DIR)
