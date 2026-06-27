@@ -361,7 +361,7 @@ def build_child_readme_replacement(
 
     if has_domain_mrs:
         parts.append(
-            f"Domain 规则（必须同时使用）\n"
+            f"Domain 规则（仅含域名）\n"
             f"{cb}text\n"
             f"{RAW_BASE_URL}/{folder_name}/{folder_name}_Domain.mrs\n"
             f"{cb}\n\n"
@@ -369,14 +369,14 @@ def build_child_readme_replacement(
 
     if has_ip_mrs:
         parts.append(
-            f"IP 规则（必须同时使用）\n"
+            f"IP 规则（仅含IP）\n"
             f"{cb}text\n"
             f"{RAW_BASE_URL}/{folder_name}/{folder_name}_IP.mrs\n"
             f"{cb}\n\n"
         )
 
     parts.append(
-        f"Classical 规则（单独使用）\n"
+        f"Classical 规则（全量）\n"
         f"{cb}text\n"
         f"{RAW_BASE_URL}/{folder_name}/{classical_filename}\n"
         f"{cb}\n\n"
