@@ -27,6 +27,7 @@ UPSTREAM_INCLUDE_FOLDERS = {
     "Claude",
     "Cloudflare",
     "ChinaMax",
+    "Discord",
     "Download",
     "EA",
     "Google",
