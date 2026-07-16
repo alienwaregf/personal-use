@@ -20,6 +20,7 @@
 |[Mail](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Mail)|[PayPal](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/PayPal)||||
 |||||[HBO](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/HBO)|
 |||[AppleProxy](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/AppleProxy)|||
+||||[Docker](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Docker)||
 ||||[Twitch](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Twitch)||
 |||||[谷歌推送](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/GoogleFCM)|
 ||[币安交易所](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Binance)||||
