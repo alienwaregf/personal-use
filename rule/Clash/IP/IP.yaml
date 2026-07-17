@@ -18,6 +18,7 @@ payload:
   - DOMAIN-SUFFIX,ip4.me
   - DOMAIN-SUFFIX,ip6.me
   - DOMAIN-SUFFIX,test-ipv6.com
+  - DOMAIN-SUFFIX,istatmenus.app
 
   # ==============================
   # IP 地理位置 / ASN / ISP 查询
