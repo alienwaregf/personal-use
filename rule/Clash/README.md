@@ -29,6 +29,7 @@
 |||||[Tmdb](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Tmdb)|
 |[OpenAI](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/OpenAI)|||||
 |||[Claude](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Claude)|||
+|||||[Threads](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Threads)|
 |||[Gemini](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Gemini)|
 
 
