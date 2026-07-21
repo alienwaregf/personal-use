@@ -35,6 +35,7 @@ UPSTREAM_INCLUDE_FOLDERS = {
     "Discord",
     "Download",
     "EA",
+    "Epic",
     "Google",
     "GoogleFCM",
     "Gemini",
