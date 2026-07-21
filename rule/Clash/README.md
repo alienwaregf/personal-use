@@ -15,12 +15,14 @@
 ||[Microsoft](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Microsoft)||||||
 |||[AppleMusic](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/AppleMusic)|[AppleNews](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/AppleNews)|[AppleTV](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/AppleTV)||
 ||[Telegram](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Telegram)||||
-|[Netflix](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Netflix)||[TikTok](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/TikTok)||[Twitter](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Twitter)|
-|[Cloudflare](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Cloudflare)||[Spotify](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Spotify)|[维基](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Wikipedia)|[Discord](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Discord)|
+|[Netflix](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Netflix)||[TikTok](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/TikTok)|[Disney](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Disney)|[Twitter](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Twitter)|
+|[Cloudflare](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Cloudflare)|[Facebook](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Facebook)|[Spotify](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Spotify)|[维基](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Wikipedia)|[Discord](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Discord)|
 |[Mail](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Mail)|[PayPal](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/PayPal)||||
+|||[Instagram](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Instagram)|||
 |||||[HBO](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/HBO)|
 |||[AppleProxy](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/AppleProxy)|||
 ||||[Docker](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Docker)||
+||||[Reddit](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Reddit)||
 ||||[Twitch](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Twitch)||
 |||||[谷歌推送](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/GoogleFCM)|
 ||[币安交易所](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Binance)||||
@@ -33,7 +35,7 @@
 |🌏GlobalMedia|||||
 | ---- | ---- | ---- | ---- | ---- |
 |[YouTube](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/YouTube)||[AppleMusic](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/AppleMusic)|[AppleTV](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/AppleTV)|||||
-|[Netflix](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Netflix)|[TikTok](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/TikTok)||[Spotify](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Spotify)||||
+|[Netflix](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Netflix)|[TikTok](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/TikTok)|[Disney](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Disney)|[Spotify](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Spotify)||||
 
 
 |🇨🇳Mainland|||||
@@ -54,9 +56,9 @@
 
 |🎮Game|||||
 | ---- | ---- | ---- | ---- | ---- |
-|||[Steam](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Steam)||||||
-|||||[EA](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/EA)|||
-|[Riot](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Riot)|||||
+|||[Steam](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Steam)||[PlayStation](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/PlayStation)||||
+|[Epic](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Epic)||||[EA](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/EA)|||
+|[Riot](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Riot)||[Xbox](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Xbox)|||
 
 
 |🍎Apple|||||
