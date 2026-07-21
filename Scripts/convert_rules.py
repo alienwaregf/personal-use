@@ -33,9 +33,11 @@ UPSTREAM_INCLUDE_FOLDERS = {
     "ChinaMax",
     "Docker",
     "Discord",
+    "Disney",
     "Download",
     "EA",
     "Epic",
+    "Facebook",
     "Google",
     "GoogleFCM",
     "Gemini",
@@ -47,6 +49,8 @@ UPSTREAM_INCLUDE_FOLDERS = {
     "Netflix",
     "OpenAI",
     "PayPal",
+    "PlayStation",
+    "Reddit",
     "Riot",
     "Steam",
     "Spotify",
@@ -56,6 +60,7 @@ UPSTREAM_INCLUDE_FOLDERS = {
     "Tmdb",
     "Telegram",
     "Wikipedia",
+    "Xbox",
     "YouTube",
 }
 
