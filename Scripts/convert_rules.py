@@ -61,7 +61,7 @@ UPSTREAM_INCLUDE_FOLDERS = {
     "Tmdb",
     "Telegram",
     "Wikipedia",
-    "WhatsApp",
+    "Whatsapp",
     "Xbox",
     "YouTube",
 }
