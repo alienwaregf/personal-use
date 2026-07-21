@@ -43,6 +43,7 @@ UPSTREAM_INCLUDE_FOLDERS = {
     "HBO",
     "Microsoft",
     "Mail",
+    "Instagram",
     "Netflix",
     "OpenAI",
     "PayPal",
