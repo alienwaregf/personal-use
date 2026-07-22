@@ -196,7 +196,7 @@ def normalize_domain_rule(parts: List[str]) -> Optional[str]:
     Clash Classical -> Mihomo domain MRS:
       DOMAIN          -> example.com
       DOMAIN-SUFFIX   -> +.example.com
-      DOMAIN-KEYWORD  -> *keyword*
+      DOMAIN-KEYWORD  -> 跳过
       DOMAIN-WILDCARD -> 跳过，保留在 Classical.yaml
     """
     if not parts:
@@ -214,7 +214,7 @@ def normalize_domain_rule(parts: List[str]) -> Optional[str]:
         return None
 
     if rule_type == "DOMAIN":
-        return f"full:{value}"
+        return value
 
     if rule_type == "DOMAIN-SUFFIX":
         value = value.strip()
