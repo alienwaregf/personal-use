@@ -19,6 +19,7 @@ payload:
   - DOMAIN-SUFFIX,ip6.me
   - DOMAIN-SUFFIX,test-ipv6.com
   - DOMAIN-SUFFIX,istatmenus.app
+  - DOMAIN,console.upyun.com/toolbox/ip-discover
 
   # ==============================
   # IP 地理位置 / ASN / ISP 查询
