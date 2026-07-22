@@ -214,7 +214,7 @@ def normalize_domain_rule(parts: List[str]) -> Optional[str]:
         return None
 
     if rule_type == "DOMAIN":
-        return value
+        return f"full:{value}"
 
     if rule_type == "DOMAIN-SUFFIX":
         value = value.strip()
@@ -227,12 +227,7 @@ def normalize_domain_rule(parts: List[str]) -> Optional[str]:
         return f"+.{value}"
 
     if rule_type == "DOMAIN-KEYWORD":
-        value = value.strip("*")
-
-        if not value:
-            return None
-
-        return f"*{value}*"
+        return None
 
     if rule_type == "DOMAIN-WILDCARD":
         return None
