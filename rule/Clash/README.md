@@ -71,6 +71,7 @@
 |🗄️Microsoft|||||
 | ---- | ---- | ---- | ---- | ---- |
 |[GitHub](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/GitHub)||[Microsoft](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Microsoft)||||||
+|[必应](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Bing)|[Copilot](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Copilot)|||
 
 
 |📟Google|||||
