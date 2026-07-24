@@ -62,6 +62,7 @@ UPSTREAM_INCLUDE_FOLDERS = {
     "TikTok",
     "Tmdb",
     "Telegram",
+    "Vercel",
     "Wikipedia",
     "Whatsapp",
     "Xbox",
