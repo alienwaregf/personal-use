@@ -24,6 +24,7 @@
 ||||[Docker](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Docker)||
 ||||[Reddit](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Reddit)||
 ||||[Twitch](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Twitch)||
+||[Vercel](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Vercel)||||
 |||||[谷歌推送](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/GoogleFCM)|
 ||[币安交易所](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Binance)||||
 |||||[Tmdb](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Tmdb)|

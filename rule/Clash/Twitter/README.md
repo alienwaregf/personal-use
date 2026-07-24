@@ -25,17 +25,17 @@ Twitter规则由《RULE GENERATOR 规则生成器》自动生成。
 
 ## Clash
 
-Domain 规则（仅含域名）
+domain
 ```text
 https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Twitter/Twitter_Domain.mrs
 ```
 
-IP 规则（仅含IP）
+ipcidr
 ```text
 https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Twitter/Twitter_IP.mrs
 ```
 
-Classical 规则（全量）
+classical
 ```text
 https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Twitter/Twitter.yaml
 ```

@@ -1,11 +1,11 @@
 # Clash
 
-Domain 规则（仅含域名）
+domain
 ```text
 https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/IP/IP_Domain.mrs
 ```
 
-Classical 规则（全量）
+classical
 ```text
 https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/IP/IP.yaml
 ```

@@ -1,10 +1,10 @@
-# 🧸 Cloudflare
+# 🧸 Vercel
 
 ## 前言
 
 ![](https://shields.io/badge/-移除重复规则-ff69b4) ![](https://shields.io/badge/-DOMAIN与DOMAIN--SUFFIX合并-green) ![](https://shields.io/badge/-DOMAIN--SUFFIX间合并-critical) ![](https://shields.io/badge/-DOMAIN--SUFFIX与DOMAIN--KEYWORD合并-blue) ![](https://shields.io/badge/-IP--CIDR(6)合并-blueviolet) 
 
-Cloudflare规则由《RULE GENERATOR 规则生成器》自动生成。
+Vercel规则由《RULE GENERATOR 规则生成器》自动生成。
 
 分流规则是互联网公共服务的域名和IP地址汇总，所有数据均收集自互联网公开信息，不代表我们支持或使用这些服务。
 
@@ -12,32 +12,25 @@ Cloudflare规则由《RULE GENERATOR 规则生成器》自动生成。
 
 ## 规则统计
 
-最后更新时间：2025-07-30 02:08:19
+最后更新时间：2025-06-06 09:17:48
 
 各类型规则统计：
 | 类型 | 数量(条)  | 
 | ---- | ----  |
-| DOMAIN-SUFFIX | 43  | 
-| IP-CIDR | 15  | 
-| IP-CIDR6 | 7  | 
-| TOTAL | 65  | 
+| DOMAIN-SUFFIX | 27  | 
+| TOTAL | 27  | 
 
 
 ## Clash
 
 domain
 ```text
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Cloudflare/Cloudflare_Domain.mrs
-```
-
-ipcidr
-```text
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Cloudflare/Cloudflare_IP.mrs
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Vercel/Vercel_Domain.mrs
 ```
 
 classical
 ```text
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Cloudflare/Cloudflare.yaml
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Vercel/Vercel.yaml
 ```
 
 ## 子规则/排除规则
@@ -47,11 +40,10 @@ https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Cloud
 
 ## 数据来源
 
-《Cloudflare》的数据来自以下链接，如与本项目的《Cloudflare》规则混合使用，可能会造成规则大量重复。
+《Vercel》的数据来自以下链接，如与本项目的《Vercel》规则混合使用，可能会造成规则大量重复。
 
-- https://raw.githubusercontent.com/sve1r/Rules-For-Quantumult-X/develop/Rules/Services/Cloudflare.list
-- https://raw.githubusercontent.com/LM-Firefly/Rules/master/PROXY/Cloudflare.list
-- https://raw.githubusercontent.com/LM-Firefly/Rules/master/Clash-RuleSet-Classical/PROXY/Cloudflare.yaml
+- https://raw.githubusercontent.com/LM-Firefly/Rules/master/PROXY/Vercel.list
+- https://raw.githubusercontent.com/LM-Firefly/Rules/master/Clash-RuleSet-Classical/PROXY/Vercel.yaml
 
 
 感谢以上规则作者的辛勤付出（排名不分先后）。

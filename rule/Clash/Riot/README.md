@@ -23,12 +23,12 @@ Riot规则由《RULE GENERATOR 规则生成器》自动生成。
 
 ## Clash
 
-Domain 规则（仅含域名）
+domain
 ```text
 https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Riot/Riot_Domain.mrs
 ```
 
-Classical 规则（全量）
+classical
 ```text
 https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Riot/Riot.yaml
 ```
