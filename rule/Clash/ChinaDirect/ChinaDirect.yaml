@@ -7,6 +7,16 @@ payload:
   - DOMAIN-SUFFIX,bangumi.ca
   - DOMAIN-SUFFIX,nijigem.by
   - DOMAIN-SUFFIX,cdn.bgp.yt
+  
+  # 红果短剧
+  - DOMAIN-SUFFIX,hongguo.com
+  # 夸克合作官方站点
+  - DOMAIN,hongguo.quark.cn
+  # 视频 CDN 加速域名
+  - DOMAIN-SUFFIX,juancdn.com
+  # 静态资源 CDN（字节跳动通用）
+  - DOMAIN-SUFFIX,bytego.com
+  - DOMAIN-SUFFIX,volccdn.com
 
   # > 常用域名
   - DOMAIN-SUFFIX,de5.net
