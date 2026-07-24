@@ -22,6 +22,7 @@
 |||||[HBO](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/HBO)|
 |||[AppleProxy](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/AppleProxy)|||
 ||||[Docker](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Docker)||
+|||||[Nvidia](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Nvidia)|
 ||||[Reddit](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Reddit)||
 ||||[Twitch](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Twitch)||
 ||[Vercel](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Vercel)||||
