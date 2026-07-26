@@ -14,11 +14,7 @@ payload:
   - DOMAIN-SUFFIX,hongguoshiju.com
   - DOMAIN,hongguo.quark.cn
   - DOMAIN-SUFFIX,juancdn.com
-
-  # 字节跳动通用静态资源CDN（图片/样式/脚本，红果复用字节基础设施）
   - DOMAIN-SUFFIX,bytego.com
-  - DOMAIN-SUFFIX,byteimg.com
-  - DOMAIN-SUFFIX,volccdn.com
 
   # > 常用域名
   - DOMAIN-SUFFIX,de5.net
