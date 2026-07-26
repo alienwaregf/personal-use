@@ -10,12 +10,14 @@ payload:
   
   # 红果短剧
   - DOMAIN-SUFFIX,hongguo.com
-  # 夸克合作官方站点
+  - DOMAIN-SUFFIX,hongguoduanju.com
+  - DOMAIN-SUFFIX,hongguoshiju.com
   - DOMAIN,hongguo.quark.cn
-  # 视频 CDN 加速域名
   - DOMAIN-SUFFIX,juancdn.com
-  # 静态资源 CDN（字节跳动通用）
+
+  # 字节跳动通用静态资源CDN（图片/样式/脚本，红果复用字节基础设施）
   - DOMAIN-SUFFIX,bytego.com
+  - DOMAIN-SUFFIX,byteimg.com
   - DOMAIN-SUFFIX,volccdn.com
 
   # > 常用域名
