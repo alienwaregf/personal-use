@@ -2,103 +2,103 @@ payload:
   # ==============================
   # 常用公网 IP 查询
   # ==============================
-  - DOMAIN-SUFFIX,ip.sb
-  - DOMAIN-SUFFIX,ipinfo.io
-  - DOMAIN-SUFFIX,ifconfig.me
-  - DOMAIN-SUFFIX,ifconfig.co
-  - DOMAIN-SUFFIX,ipify.org
-  - DOMAIN-SUFFIX,icanhazip.com
-  - DOMAIN-SUFFIX,ident.me
-  - DOMAIN-SUFFIX,checkip.amazonaws.com
-  - DOMAIN-SUFFIX,checkip.dyndns.org
-  - DOMAIN-SUFFIX,myexternalip.com
-  - DOMAIN-SUFFIX,myip.com
-  - DOMAIN-SUFFIX,seeip.org
-  - DOMAIN-SUFFIX,wtfismyip.com
-  - DOMAIN-SUFFIX,ip4.me
-  - DOMAIN-SUFFIX,ip6.me
-  - DOMAIN-SUFFIX,test-ipv6.com
-  - DOMAIN-SUFFIX,istatmenus.app
+  - DOMAIN,ip.sb
+  - DOMAIN,ipinfo.io
+  - DOMAIN,ifconfig.me
+  - DOMAIN,ifconfig.co
+  - DOMAIN,ipify.org
+  - DOMAIN,icanhazip.com
+  - DOMAIN,ident.me
+  - DOMAIN,checkip.amazonaws.com
+  - DOMAIN,checkip.dyndns.org
+  - DOMAIN,myexternalip.com
+  - DOMAIN,myip.com
+  - DOMAIN,seeip.org
+  - DOMAIN,wtfismyip.com
+  - DOMAIN,ip4.me
+  - DOMAIN,ip6.me
+  - DOMAIN,test-ipv6.com
+  - DOMAIN,ip.istatmenus.app
   - DOMAIN,console.upyun.com/toolbox/ip-discover
   - DOMAIN,whois.pconline.com.cn
 
   # ==============================
   # IP 地理位置 / ASN / ISP 查询
   # ==============================
-  - DOMAIN-SUFFIX,ip-api.com
-  - DOMAIN-SUFFIX,ipapi.co
-  - DOMAIN-SUFFIX,ipapi.com
-  - DOMAIN-SUFFIX,ipwho.is
-  - DOMAIN-SUFFIX,ipwhois.io
-  - DOMAIN-SUFFIX,ipgeolocation.io
-  - DOMAIN-SUFFIX,ipdata.co
-  - DOMAIN-SUFFIX,ipregistry.co
-  - DOMAIN-SUFFIX,freeipapi.com
-  - DOMAIN-SUFFIX,iplocation.net
-  - DOMAIN-SUFFIX,iplocation.io
-  - DOMAIN-SUFFIX,iplocation.com
-  - DOMAIN-SUFFIX,db-ip.com
-  - DOMAIN-SUFFIX,maxmind.com
-  - DOMAIN-SUFFIX,geoiptool.com
-  - DOMAIN-SUFFIX,bigdatacloud.net
-  - DOMAIN-SUFFIX,ip2location.com
-  - DOMAIN-SUFFIX,ip2location.io
-  - DOMAIN-SUFFIX,ipaddress.com
-  - DOMAIN-SUFFIX,ipaddress.my
-  - DOMAIN-SUFFIX,whatismyip.com
-  - DOMAIN-SUFFIX,whatismyipaddress.com
-  - DOMAIN-SUFFIX,whatismyip.host
-  - DOMAIN-SUFFIX,ipchicken.com
-  - DOMAIN-SUFFIX,ipfingerprints.com
-  - DOMAIN-SUFFIX,whoer.net
-  - DOMAIN-SUFFIX,ip-tracker.org
-  - DOMAIN-SUFFIX,ipaddresslocation.org
-  - DOMAIN-SUFFIX,iplocationtools.com
+  - DOMAIN,ip-api.com
+  - DOMAIN,ipapi.co
+  - DOMAIN,ipapi.com
+  - DOMAIN,ipwho.is
+  - DOMAIN,ipwhois.io
+  - DOMAIN,ipgeolocation.io
+  - DOMAIN,ipdata.co
+  - DOMAIN,ipregistry.co
+  - DOMAIN,freeipapi.com
+  - DOMAIN,iplocation.net
+  - DOMAIN,iplocation.io
+  - DOMAIN,iplocation.com
+  - DOMAIN,db-ip.com
+  - DOMAIN,maxmind.com
+  - DOMAIN,geoiptool.com
+  - DOMAIN,bigdatacloud.net
+  - DOMAIN,ip2location.com
+  - DOMAIN,ip2location.io
+  - DOMAIN,ipaddress.com
+  - DOMAIN,ipaddress.my
+  - DOMAIN,whatismyip.com
+  - DOMAIN,whatismyipaddress.com
+  - DOMAIN,whatismyip.host
+  - DOMAIN,ipchicken.com
+  - DOMAIN,ipfingerprints.com
+  - DOMAIN,whoer.net
+  - DOMAIN,ip-tracker.org
+  - DOMAIN,ipaddresslocation.org
+  - DOMAIN,iplocationtools.com
 
   # ==============================
   # DNS / WebRTC / VPN 泄露检测
   # ==============================
-  - DOMAIN-SUFFIX,ipleak.net
-  - DOMAIN-SUFFIX,ipleak.com
-  - DOMAIN-SUFFIX,browserleaks.com
-  - DOMAIN-SUFFIX,dnsleaktest.com
-  - DOMAIN-SUFFIX,dnsleak.com
-  - DOMAIN-SUFFIX,dnsleaktest.org
-  - DOMAIN-SUFFIX,doileak.com
-  - DOMAIN-SUFFIX,bash.ws
-  - DOMAIN-SUFFIX,perfect-privacy.com
-  - DOMAIN-SUFFIX,vpnmentor.com
+  - DOMAIN,ipleak.net
+  - DOMAIN,ipleak.com
+  - DOMAIN,browserleaks.com
+  - DOMAIN,dnsleaktest.com
+  - DOMAIN,dnsleak.com
+  - DOMAIN,dnsleaktest.org
+  - DOMAIN,doileak.com
+  - DOMAIN,bash.ws
+  - DOMAIN,perfect-privacy.com
+  - DOMAIN,vpnmentor.com
 
   # ==============================
   # IP 风控 / 代理 / 黑名单 / 信誉查询
   # ==============================
-  - DOMAIN-SUFFIX,abuseipdb.com
-  - DOMAIN-SUFFIX,ipqualityscore.com
-  - DOMAIN-SUFFIX,scamalytics.com
-  - DOMAIN-SUFFIX,fraudguard.io
-  - DOMAIN-SUFFIX,ipvoid.com
-  - DOMAIN-SUFFIX,projecthoneypot.org
-  - DOMAIN-SUFFIX,spamhaus.org
-  - DOMAIN-SUFFIX,talosintelligence.com
-  - DOMAIN-SUFFIX,virustotal.com
-  - DOMAIN-SUFFIX,greynoise.io
-  - DOMAIN-SUFFIX,spur.us
-  - DOMAIN-SUFFIX,ipqs.com
-  - DOMAIN-SUFFIX,proxycheck.io
-  - DOMAIN-SUFFIX,getipintel.net
-  - DOMAIN-SUFFIX,iphub.info
-  - DOMAIN-SUFFIX,iphey.com
+  - DOMAIN,abuseipdb.com
+  - DOMAIN,ipqualityscore.com
+  - DOMAIN,scamalytics.com
+  - DOMAIN,fraudguard.io
+  - DOMAIN,ipvoid.com
+  - DOMAIN,projecthoneypot.org
+  - DOMAIN,spamhaus.org
+  - DOMAIN,talosintelligence.com
+  - DOMAIN,virustotal.com
+  - DOMAIN,greynoise.io
+  - DOMAIN,spur.us
+  - DOMAIN,ipqs.com
+  - DOMAIN,proxycheck.io
+  - DOMAIN,getipintel.net
+  - DOMAIN,iphub.info
+  - DOMAIN,iphey.com
 
   # ==============================
   # 中国常用 IP 查询
   # ==============================
-  - DOMAIN-SUFFIX,ip.cn
-  - DOMAIN-SUFFIX,ip138.com
-  - DOMAIN-SUFFIX,ipip.net
-  - DOMAIN-SUFFIX,ipw.cn
-  - DOMAIN-SUFFIX,ip111.cn
-  - DOMAIN-SUFFIX,ip33.com
-  - DOMAIN-SUFFIX,cip.cc
-  - DOMAIN-SUFFIX,chinaz.com
-  - DOMAIN-SUFFIX,tool.lu
-  - DOMAIN-SUFFIX,ipplus360.com
+  - DOMAIN,ip.cn
+  - DOMAIN,ip138.com
+  - DOMAIN,ipip.net
+  - DOMAIN,ipw.cn
+  - DOMAIN,ip111.cn
+  - DOMAIN,ip33.com
+  - DOMAIN,cip.cc
+  - DOMAIN,chinaz.com
+  - DOMAIN,tool.lu
+  - DOMAIN,ipplus360.com
