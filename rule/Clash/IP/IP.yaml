@@ -20,6 +20,7 @@ payload:
   - DOMAIN-SUFFIX,test-ipv6.com
   - DOMAIN-SUFFIX,istatmenus.app
   - DOMAIN,console.upyun.com/toolbox/ip-discover
+  - DOMAIN,whois.pconline.com.cn
 
   # ==============================
   # IP 地理位置 / ASN / ISP 查询
