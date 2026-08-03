@@ -21,6 +21,7 @@ payload:
   - DOMAIN,ip.istatmenus.app
   - DOMAIN,console.upyun.com/toolbox/ip-discover
   - DOMAIN,whois.pconline.com.cn
+  - DOMAIN,api.ipify.org
 
   # ==============================
   # IP 地理位置 / ASN / ISP 查询
