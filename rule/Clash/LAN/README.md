@@ -3,16 +3,16 @@
 
 domain
 ```text
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Local/Local_Domain.mrs
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/LAN/LAN_Domain.mrs
 ```
 
 ipcidr
 ```text
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Local/Local_IP.mrs
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/LAN/LAN_IP.mrs
 ```
 
 classical
 ```text
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Local/Local.yaml
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/LAN/LAN.yaml
 ```
 
