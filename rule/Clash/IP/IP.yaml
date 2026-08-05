@@ -19,9 +19,9 @@ payload:
   - DOMAIN,ip6.me
   - DOMAIN,test-ipv6.com
   - DOMAIN,ip.istatmenus.app
-  - DOMAIN,console.upyun.com/toolbox/ip-discover
   - DOMAIN,whois.pconline.com.cn
   - DOMAIN,api.ipify.org
+  - DOMAIN-SUFFIX,b0.upaiyun.com,DIRECT
 
   # ==============================
   # IP 地理位置 / ASN / ISP 查询
