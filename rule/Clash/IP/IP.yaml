@@ -2,7 +2,7 @@ payload:
   # ==============================
   # 常用公网 IP 查询
   # ==============================
-  - DOMAIN,ip.sb
+  - DOMAIN-SUFFIX,ip.sb
   - DOMAIN,ping0.cc
   - DOMAIN,ipinfo.io
   - DOMAIN,ifconfig.me
