@@ -18,7 +18,7 @@
 |[Netflix](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Netflix)||[TikTok](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/TikTok)|[Disney](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Disney)|[Twitter](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Twitter)|
 |[Cloudflare](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Cloudflare)|[Facebook](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Facebook)|[Spotify](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Spotify)|[维基](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Wikipedia)|[Discord](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Discord)|
 |[Mail](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Mail)|[PayPal](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/PayPal)||||
-||||[Whatsapp](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Whatsapp)||
+|||[Instagram](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Instagram)|[Whatsapp](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Whatsapp)||
 |||||[HBO](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/HBO)|
 |||[AppleProxy](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/AppleProxy)|||
 ||||[Docker](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Docker)||
@@ -89,4 +89,4 @@
 
 |🖥️Other|||||
 | ---- | ---- | ---- | ---- | ---- |
-|||[Download](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Download)||[PT下载](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/PrivateTracker)||||
+|||[Download](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Download)|[本地局域网地址](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Lan)|[PT下载](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/PrivateTracker)||||
