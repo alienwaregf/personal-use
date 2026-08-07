@@ -45,7 +45,7 @@ UPSTREAM_INCLUDE_FOLDERS = {
     "Gemini",
     "GitHub",
     "HBO",
-    "Instagram"
+    "Instagram",
     "Lan",
     "Microsoft",
     "Mail",
