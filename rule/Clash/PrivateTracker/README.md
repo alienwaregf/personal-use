@@ -1,10 +1,10 @@
-# 🧸 Instagram
+# 🧸 PT下载
 
 ## 前言
 
 ![](https://shields.io/badge/-移除重复规则-ff69b4) ![](https://shields.io/badge/-DOMAIN与DOMAIN--SUFFIX合并-green) ![](https://shields.io/badge/-DOMAIN--SUFFIX间合并-critical) ![](https://shields.io/badge/-DOMAIN--SUFFIX与DOMAIN--KEYWORD合并-blue) ![](https://shields.io/badge/-IP--CIDR(6)合并-blueviolet) 
 
-Instagram规则由《RULE GENERATOR 规则生成器》自动生成。
+PT下载规则由《RULE GENERATOR 规则生成器》自动生成。
 
 分流规则是互联网公共服务的域名和IP地址汇总，所有数据均收集自互联网公开信息，不代表我们支持或使用这些服务。
 
@@ -12,26 +12,33 @@ Instagram规则由《RULE GENERATOR 规则生成器》自动生成。
 
 ## 规则统计
 
-最后更新时间：2025-06-06 09:16:56
+最后更新时间：2026-06-04 03:21:05
 
 各类型规则统计：
 | 类型 | 数量(条)  | 
 | ---- | ----  |
-| DOMAIN-KEYWORD | 1  | 
-| DOMAIN-SUFFIX | 3  | 
-| TOTAL | 4  | 
+| DOMAIN | 118  | 
+| DOMAIN-KEYWORD | 4  | 
+| DOMAIN-SUFFIX | 123  | 
+| IP-CIDR | 3  | 
+| TOTAL | 248  | 
 
 
 ## Clash
 
 domain
 ```text
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Instagram/Instagram_Domain.mrs
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/PrivateTracker/PrivateTracker_Domain.mrs
+```
+
+ipcidr
+```text
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/PrivateTracker/PrivateTracker_IP.mrs
 ```
 
 classical
 ```text
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Instagram/Instagram.yaml
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/PrivateTracker/PrivateTracker.yaml
 ```
 
 ## 子规则/排除规则
@@ -41,10 +48,12 @@ https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Insta
 
 ## 数据来源
 
-《Instagram》的数据来自以下链接，如与本项目的《Instagram》规则混合使用，可能会造成规则大量重复。
+《PT下载》的数据来自以下链接，如与本项目的《PT下载》规则混合使用，可能会造成规则大量重复。
 
-- https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Instagram.list
-- https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/Instagram.yaml
+- https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/PrivateTracker.list
+- https://trackerslist.com/all.txt
+- https://raw.githubusercontent.com/ngosang/trackerslist/master/trackers_all.txt
+- https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/PrivateTracker.yaml
 
 
 感谢以上规则作者的辛勤付出（排名不分先后）。
