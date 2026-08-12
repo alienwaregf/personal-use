@@ -12,8 +12,9 @@
 |🌏Global|||||
 | ---- | ---- | ---- | ---- | ---- |
 |[YouTube](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/YouTube)|[Google](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Google)|||[GitHub](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/GitHub)||||
-||[Microsoft](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Microsoft)||||||
-|||[AppleMusic](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/AppleMusic)|[AppleNews](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/AppleNews)|[AppleTV](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/AppleTV)||
+||[Microsoft](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Microsoft)|[AppStore](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/AppStore)|||||
+||[AppleMail](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/AppleMail)|[AppleMusic](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/AppleMusic)|[AppleNews](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/AppleNews)|[AppleTV](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/AppleTV)||
+||[Apple](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Apple)||||
 ||[Telegram](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Telegram)||||
 |[Netflix](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Netflix)||[TikTok](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/TikTok)|[Disney](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Disney)|[Twitter](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Twitter)|
 |[Cloudflare](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Cloudflare)|[Facebook](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Facebook)|[Spotify](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Spotify)|[维基](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Wikipedia)|[Discord](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Discord)|
@@ -66,8 +67,10 @@
 
 |🍎Apple|||||
 | ---- | ---- | ---- | ---- | ---- |
+|[AppStore](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/AppStore)||||[AppleMail](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/AppleMail)||||
 |[AppleMusic](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/AppleMusic)|[AppleNews](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/AppleNews)|[AppleTV](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/AppleTV)|||||
-|||[AppleProxy](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/AppleProxy)||||
+||[Apple](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Apple)|[AppleProxy](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/AppleProxy)||||
+|||[AppleMedia](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/AppleMedia)||[AppleID](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/AppleID)|
 
 
 |🗄️Microsoft|||||
