@@ -23,10 +23,15 @@ RAW_BASE_URL = "https://raw.githubusercontent.com/alienwaregf/personal-use/main/
 
 UPSTREAM_INCLUDE_FOLDERS = {
     "Advertising",
+    "Apple",
+    "AppleID",
+    "AppleMail",
     "AppleNews",
     "AppleProxy",
     "AppleTV",
+    "AppStore",
     "AppleMusic",
+    "AppleMedia",
     "Bing",
     "Binance",
     "Claude",
