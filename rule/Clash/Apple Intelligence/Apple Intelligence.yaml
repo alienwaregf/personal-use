@@ -1,7 +1,15 @@
 payload:
   # ==============================
+  # Apple Intelligence
+  # ==============================
+
+  - DOMAIN,guzzoni.apple.com
+  - DOMAIN-SUFFIX,smoot.apple.com
+
+  # ==============================
   # Apple Intelligence - Private Cloud Compute
   # ==============================
+
   - DOMAIN,apple-relay.cloudflare.com
   - DOMAIN,apple-relay.fastly-edge.com
   - DOMAIN,cp4.cloudflare.com
@@ -9,4 +17,5 @@ payload:
   # ==============================
   # Apple Intelligence Extensions
   # ==============================
+
   - DOMAIN,apple-relay.apple.com
