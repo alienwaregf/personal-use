@@ -60,6 +60,7 @@ UPSTREAM_INCLUDE_FOLDERS = {
     "Microsoft",
     "Netflix",
     "Nvidia",
+    "Oracle",
     "OpenAI",
     "PayPal",
     "PlayStation",
