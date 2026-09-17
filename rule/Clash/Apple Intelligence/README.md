@@ -9,4 +9,3 @@ classical
 ```text
 https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Apple Intelligence/Apple Intelligence.yaml
 ```
-
