@@ -91,8 +91,8 @@ def normalize_domain_line(line: str) -> str | None:
     if not _validate_host(host):
         return None
 
-    # Mihomo's domain rule syntax uses +.example.com for suffix matching.
-    return f"+.{host}"
+    # Preserve the source as a host rule rather than widening it to DOMAIN-SUFFIX.
+    return host
 
 
 def prepare_domain_text(source_path: Path, output_path: Path) -> int:
@@ -113,6 +113,18 @@ def prepare_domain_text(source_path: Path, output_path: Path) -> int:
             output.write(domain + "\n")
 
     return len(domains)
+
+
+def write_readme(readme_path: Path) -> None:
+    readme_path.parent.mkdir(parents=True, exist_ok=True)
+    readme_path.write_text(
+        "# Clash\n\n"
+        "domain\n"
+        "```text\n"
+        "https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Adult/Adult.mrs\n"
+        "```\n",
+        encoding="utf-8",
+    )
 
 
 def compile_to_mrs(source_text_path: Path, output_path: Path) -> None:
@@ -181,8 +193,11 @@ def main() -> None:
 
         compile_to_mrs(text_path, OUTPUT_PATH)
 
+    write_readme(OUTPUT_PATH.parent / "README.md")
+
     size = OUTPUT_PATH.stat().st_size
     print(f"生成完成: {OUTPUT_PATH} ({size:,} bytes)")
+    print(f"README 已生成: {OUTPUT_PATH.parent / 'README.md'}")
 
 
 if __name__ == "__main__":
