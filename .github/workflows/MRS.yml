@@ -64,6 +64,11 @@ jobs:
           set -euo pipefail
           python Scripts/convert_rules.py
 
+      - name: 更新 Bon-Appetit 成人域名规则并转换为 MRS
+        run: |
+          set -euo pipefail
+          python Scripts/porn-domains.py
+
       - name: 清理临时文件
         run: |
           set -euo pipefail
