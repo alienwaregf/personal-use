@@ -34,7 +34,7 @@ jobs:
         run: |
           set -euo pipefail
           python -m pip install --upgrade pip
-          pip install pyyaml
+          pip install pyyaml tldextract
 
       - name: 下载并安装 Mihomo 内核
         run: |
