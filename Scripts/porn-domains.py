@@ -12,14 +12,21 @@ import re
 import shutil
 import subprocess
 import tempfile
+from collections import defaultdict
 from pathlib import Path
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
+
+try:
+    import tldextract
+except ImportError:  # pragma: no cover - exercised only when dependency is absent
+    tldextract = None
 
 META_URL = "https://raw.githubusercontent.com/Bon-Appetit/porn-domains/main/meta.json"
 OUTPUT_PATH = Path("rule/Clash/Adult/Adult.mrs")
 USER_AGENT = "alienwaregf/personal-use porn-domains updater"
 TIMEOUT = 60
+COMPRESSION_THRESHOLD = 3
 
 DOMAIN_LABEL_RE = re.compile(r"^[A-Za-z0-9_\-]+$")
 
@@ -67,48 +74,99 @@ def _validate_host(host: str) -> bool:
     return True
 
 
-def normalize_domain_line(line: str, line_number: int | None = None) -> str | None:
-    """Accept only the upstream's plain Host representation; never reinterpret syntax."""
+def normalize_domain_line(line: str) -> str | None:
+    """Accept only a plain upstream host; never reinterpret other rule syntaxes."""
     line = line.strip().lstrip("\ufeff")
-
     if not line or line.startswith("#"):
         return None
 
-    context = f"第 {line_number} 行" if line_number is not None else "输入行"
+    # Any inline comment or rule syntax is rejected instead of guessed/rewritten.
+    if "#" in line or line.startswith(("||", "+.", ".")):
+        return None
 
-    # Inline comments are not part of a plain Host. Reject instead of guessing.
-    if "#" in line:
-        raise ValueError(f"{context} 含有不支持的行内注释: {line}")
+    host = line.lower()
 
-    # Do not reinterpret any other rule syntax as a Host.
-    if line.startswith(("||", "+.", ".")):
-        raise ValueError(f"{context} 不是纯 Host 规则，拒绝猜测语义: {line}")
+    if not _validate_host(host):
+        return None
 
-    if not _validate_host(line):
-        raise ValueError(f"{context} 不是有效 Host，拒绝猜测语义: {line}")
+    return host
 
-    # Keep the source spelling exactly (apart from surrounding whitespace/BOM).
-    return line
+
+# Use the bundled PSL snapshot from tldextract and explicitly include private suffixes.
+# Network fetching is disabled so the hourly workflow never hammers publicsuffix.org.
+_EXTRACTOR = (
+    tldextract.TLDExtract(
+        suffix_list_urls=(),
+        fallback_to_snapshot=True,
+        include_psl_private_domains=True,
+    )
+    if tldextract is not None
+    else None
+)
+
+
+def registrable_domain(host: str) -> str:
+    if _EXTRACTOR is None:
+        raise RuntimeError(
+            "缺少 tldextract 依赖；GitHub Actions 请先安装 tldextract"
+        )
+
+    result = _EXTRACTOR(host)
+    if not result.suffix or not result.top_domain_under_public_suffix:
+        raise RuntimeError(f"无法根据 Public Suffix List 确定注册域: {host}")
+
+    return result.top_domain_under_public_suffix.lower()
+
+
+def compress_domains(domains: set[str]) -> set[str]:
+    """
+    Compress each registrable domain when it has at least three source hosts.
+
+    The registrable domain itself counts toward the threshold. Once compressed,
+    the parent host and all child hosts are replaced by a single +.base rule.
+    """
+    groups: dict[str, set[str]] = defaultdict(set)
+
+    for domain in domains:
+        groups[registrable_domain(domain)].add(domain)
+
+    output: set[str] = set()
+    compressed = 0
+
+    for base, members in groups.items():
+        if len(members) >= COMPRESSION_THRESHOLD:
+            output.add(f"+.{base}")
+            compressed += 1
+        else:
+            output.update(members)
+
+    print(
+        f"域名压缩: {len(domains):,} → {len(output):,} "
+        f"（合并 {compressed:,} 个注册域）"
+    )
+    return output
 
 
 def prepare_domain_text(source_path: Path, output_path: Path) -> int:
     domains: set[str] = set()
 
     with source_path.open("r", encoding="utf-8-sig") as source:
-        for line_number, line in enumerate(source, start=1):
-            domain = normalize_domain_line(line, line_number)
+        for line in source:
+            domain = normalize_domain_line(line)
             if domain is not None:
                 domains.add(domain)
 
     if not domains:
         raise RuntimeError("上游 blocklist 没有解析出任何有效域名")
 
+    compressed_domains = compress_domains(domains)
+
     output_path.parent.mkdir(parents=True, exist_ok=True)
     with output_path.open("w", encoding="utf-8", newline="\n") as output:
-        for domain in sorted(domains):
+        for domain in sorted(compressed_domains):
             output.write(domain + "\n")
 
-    return len(domains)
+    return len(compressed_domains)
 
 
 def write_readme(readme_path: Path) -> None:
@@ -185,7 +243,7 @@ def main() -> None:
 
         source_path.write_text(fetch_text(blocklist_url), encoding="utf-8")
         domain_count = prepare_domain_text(source_path, text_path)
-        print(f"解析有效域名: {domain_count:,}")
+        print(f"最终 MRS Domain 规则数量: {domain_count:,}")
 
         compile_to_mrs(text_path, OUTPUT_PATH)
 
