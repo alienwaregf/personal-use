@@ -17,11 +17,6 @@ from pathlib import Path
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
-try:
-    import tldextract
-except ImportError:  # pragma: no cover - exercised only when dependency is absent
-    tldextract = None
-
 META_URL = "https://raw.githubusercontent.com/Bon-Appetit/porn-domains/main/meta.json"
 OUTPUT_PATH = Path("rule/Clash/Adult/Adult.mrs")
 USER_AGENT = "alienwaregf/personal-use porn-domains updater"
@@ -80,69 +75,67 @@ def normalize_domain_line(line: str) -> str | None:
     if not line or line.startswith("#"):
         return None
 
-    # Any inline comment or rule syntax is rejected instead of guessed/rewritten.
     if "#" in line or line.startswith(("||", "+.", ".")):
         return None
 
     host = line.lower()
-
     if not _validate_host(host):
         return None
 
     return host
 
 
-# Use the bundled PSL snapshot from tldextract and explicitly include private suffixes.
-# Network fetching is disabled so the hourly workflow never hammers publicsuffix.org.
-_EXTRACTOR = (
-    tldextract.TLDExtract(
-        suffix_list_urls=(),
-        fallback_to_snapshot=True,
-        include_psl_private_domains=True,
-    )
-    if tldextract is not None
-    else None
-)
-
-
-def registrable_domain(host: str) -> str:
-    if _EXTRACTOR is None:
-        raise RuntimeError(
-            "缺少 tldextract 依赖；GitHub Actions 请先安装 tldextract"
-        )
-
-    result = _EXTRACTOR(host)
-    if not result.suffix or not result.top_domain_under_public_suffix:
-        raise RuntimeError(f"无法根据 Public Suffix List 确定注册域: {host}")
-
-    return result.top_domain_under_public_suffix.lower()
+def parent_suffixes(host: str) -> list[str]:
+    """Return all candidate parent suffixes with at least two labels."""
+    labels = host.split(".")
+    if len(labels) < 2:
+        return []
+    return [".".join(labels[i:]) for i in range(0, len(labels) - 1)]
 
 
 def compress_domains(domains: set[str]) -> set[str]:
     """
-    Compress each registrable domain when it has at least three source hosts.
+    Compress a parent suffix when it contains at least three source hosts,
+    counting the parent host itself when present.
 
-    The registrable domain itself counts toward the threshold. Once compressed,
-    the parent host and all child hosts are replaced by a single +.base rule.
+    No PSL/registrable-domain inference is used. Candidates are derived only
+    from the literal domain labels present in the source data.
     """
-    groups: dict[str, set[str]] = defaultdict(set)
+    suffix_members: dict[str, set[str]] = defaultdict(set)
 
     for domain in domains:
-        groups[registrable_domain(domain)].add(domain)
+        for suffix in parent_suffixes(domain):
+            suffix_members[suffix].add(domain)
 
+    candidates = [
+        (suffix, members)
+        for suffix, members in suffix_members.items()
+        if len(members) >= COMPRESSION_THRESHOLD
+    ]
+
+    # Prefer the most specific qualifying suffix first. This prevents a deep
+    # cluster from forcing a broader parent suffix when the narrow suffix is
+    # already sufficient to compress it.
+    candidates.sort(key=lambda item: len(item[0].split(".")), reverse=True)
+
+    remaining = set(domains)
     output: set[str] = set()
     compressed = 0
 
-    for base, members in groups.items():
-        if len(members) >= COMPRESSION_THRESHOLD:
-            output.add(f"+.{base}")
-            compressed += 1
-        else:
-            output.update(members)
+    for suffix, _ in candidates:
+        members = {domain for domain in remaining if domain == suffix or domain.endswith("." + suffix)}
+        if len(members) < COMPRESSION_THRESHOLD:
+            continue
+
+        output.add(f"+.{suffix}")
+        remaining.difference_update(members)
+        compressed += 1
+
+    output.update(remaining)
 
     print(
         f"域名压缩: {len(domains):,} → {len(output):,} "
-        f"（合并 {compressed:,} 个注册域）"
+        f"（合并 {compressed:,} 个父域）"
     )
     return output
 
@@ -202,13 +195,7 @@ def compile_to_mrs(source_text_path: Path, output_path: Path) -> None:
             str(temp_output_path),
         ]
 
-        result = subprocess.run(
-            command,
-            check=False,
-            capture_output=True,
-            text=True,
-        )
-
+        result = subprocess.run(command, check=False, capture_output=True, text=True)
         if result.returncode != 0:
             stdout = result.stdout.strip()
             stderr = result.stderr.strip()
@@ -244,7 +231,6 @@ def main() -> None:
         source_path.write_text(fetch_text(blocklist_url), encoding="utf-8")
         domain_count = prepare_domain_text(source_path, text_path)
         print(f"最终 MRS Domain 规则数量: {domain_count:,}")
-
         compile_to_mrs(text_path, OUTPUT_PATH)
 
     write_readme(OUTPUT_PATH.parent / "README.md")
