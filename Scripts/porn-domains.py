@@ -67,40 +67,36 @@ def _validate_host(host: str) -> bool:
     return True
 
 
-def normalize_domain_line(line: str) -> str | None:
+def normalize_domain_line(line: str, line_number: int | None = None) -> str | None:
+    """Accept only the upstream's plain Host representation; never reinterpret syntax."""
     line = line.strip().lstrip("\ufeff")
+
     if not line or line.startswith("#"):
         return None
 
+    context = f"第 {line_number} 行" if line_number is not None else "输入行"
+
+    # Inline comments are not part of a plain Host. Reject instead of guessing.
     if "#" in line:
-        line = line.split("#", 1)[0].strip()
+        raise ValueError(f"{context} 含有不支持的行内注释: {line}")
 
-    if not line:
-        return None
+    # Do not reinterpret any other rule syntax as a Host.
+    if line.startswith(("||", "+.", ".")):
+        raise ValueError(f"{context} 不是纯 Host 规则，拒绝猜测语义: {line}")
 
-    if line.startswith("||"):
-        line = line[2:]
+    if not _validate_host(line):
+        raise ValueError(f"{context} 不是有效 Host，拒绝猜测语义: {line}")
 
-    if line.startswith("+."):
-        host = line[2:].strip().rstrip(".").lower()
-    elif line.startswith("."):
-        host = line[1:].strip().rstrip(".").lower()
-    else:
-        host = line.strip().rstrip(".").lower()
-
-    if not _validate_host(host):
-        return None
-
-    # Preserve the source as a host rule rather than widening it to DOMAIN-SUFFIX.
-    return host
+    # Keep the source spelling exactly (apart from surrounding whitespace/BOM).
+    return line
 
 
 def prepare_domain_text(source_path: Path, output_path: Path) -> int:
     domains: set[str] = set()
 
     with source_path.open("r", encoding="utf-8-sig") as source:
-        for line in source:
-            domain = normalize_domain_line(line)
+        for line_number, line in enumerate(source, start=1):
+            domain = normalize_domain_line(line, line_number)
             if domain is not None:
                 domains.add(domain)
 
