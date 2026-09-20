@@ -1,0 +1,13 @@
+# NAME: Apple Intelligence
+# AUTHOR: alienwaregf
+# REPO: https://github.com/alienwaregf/personal-use
+# UPDATED: 2026-09-20 18:05:54
+# HOST: 5
+# HOST-SUFFIX: 1
+# TOTAL: 6
+HOST,guzzoni.apple.com,Apple Intelligence
+HOST-SUFFIX,smoot.apple.com,Apple Intelligence
+HOST,apple-relay.cloudflare.com,Apple Intelligence
+HOST,apple-relay.fastly-edge.com,Apple Intelligence
+HOST,cp4.cloudflare.com,Apple Intelligence
+HOST,apple-relay.apple.com,Apple Intelligence

@@ -1,0 +1,23 @@
+# NAME: ChinaDirect
+# AUTHOR: alienwaregf
+# REPO: https://github.com/alienwaregf/personal-use
+# UPDATED: 2026-09-20 18:05:54
+# HOST: 3
+# HOST-SUFFIX: 13
+# TOTAL: 16
+HOST,seed-sequoia.siri.apple.com,ChinaDirect
+HOST,sequoia.apple.com,ChinaDirect
+HOST-SUFFIX,bangumi.ca,ChinaDirect
+HOST-SUFFIX,nijigem.by,ChinaDirect
+HOST-SUFFIX,cdn.bgp.yt,ChinaDirect
+HOST-SUFFIX,hongguo.com,ChinaDirect
+HOST-SUFFIX,hongguoduanju.com,ChinaDirect
+HOST-SUFFIX,hongguoshiju.com,ChinaDirect
+HOST,hongguo.quark.cn,ChinaDirect
+HOST-SUFFIX,juancdn.com,ChinaDirect
+HOST-SUFFIX,bytego.com,ChinaDirect
+HOST-SUFFIX,de5.net,ChinaDirect
+HOST-SUFFIX,xyz,ChinaDirect
+HOST-SUFFIX,speedtest.net,ChinaDirect
+HOST-SUFFIX,ooklaserver.net,ChinaDirect
+HOST-SUFFIX,test-ipv6.com,ChinaDirect

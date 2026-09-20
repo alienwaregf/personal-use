@@ -22,6 +22,7 @@ Gemini规则由《RULE GENERATOR 规则生成器》自动生成。
 | DOMAIN-SUFFIX | 7  | 
 | TOTAL | 13  |
 
+
 # Clash
 
 domain
@@ -61,27 +62,3 @@ subscription
 ```text
 https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Gemini/Gemini.list
 ```
-
-## 子规则/排除规则
-
-当前分流规则，已包含以下子规则，除非特殊需求否则不建议重复引用：
-| 子规则  | 
-| ----  |
-| BardAI  | 
-
-
-## 数据来源
-
-当前规则未直接引用数据源。
-
-## 最后
-
-### 感谢
-
-[@fiiir](https://github.com/fiiir) [@Tartarus2014](https://github.com/Tartarus2014) [@zjcfynn](https://github.com/zjcfynn) [@chenyiping1995](https://github.com/chenyiping1995) [@vhdj](https://github.com/vhdj)
-
-提供规则数据源及改进建议。
-
-### 其他
-
-请不要对外宣传本项目。
