@@ -57,6 +57,8 @@
 | ---- | ---- | ---- | ---- | ---- |
 |[YouTube](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/YouTube)||[AppleMusic](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/AppleMusic)|[AppleTV](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/AppleTV)|||||
 |[Spotify](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Spotify)|||||||
+|||||[IPTV其他](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/IPTVOther)|
+|[IPTV大陆](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/IPTVMainland)|
 
 
 |🎮Game|||||
