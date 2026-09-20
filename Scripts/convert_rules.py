@@ -451,7 +451,7 @@ def client_section_text(
     )
 
     for client in NON_CLASH_CLIENTS:
-        parts.append(f"# {client}\n\nsubscription\n```text\n")
+        parts.append(f"# {client}\n\n```text\n")
         if custom:
             filename = list_filenames.get(client, f"{client}.list")
             parts.append(
@@ -471,48 +471,65 @@ def client_section_text(
 
 
 def replace_client_sections(content: str, replacement: str) -> str:
+    """
+    只替换客户端订阅区域，保留 README 后面的：
+    ## 子规则/排除规则
+    ## 数据来源
+    ## 最后
+    等原始内容。
+    """
     lines = content.splitlines(keepends=True)
-    starts: List[Tuple[int, int]] = []
 
+    # 找到第一个客户端标题。
+    first_client_index: Optional[int] = None
     for idx, line in enumerate(lines):
-        match = CLIENT_HEADER_RE.match(line.strip())
-        if match:
-            starts.append((idx, len(match.group(1))))
+        if CLIENT_HEADER_RE.match(line.strip()):
+            first_client_index = idx
+            break
 
-    if not starts:
+    # 原 README 没有客户端区域，直接追加新客户端区域。
+    if first_client_index is None:
         base = content.rstrip()
         return (base + "\n\n" if base else "") + replacement.rstrip() + "\n"
 
-    first_start = starts[0][0]
-    output = []
-    i = 0
-    inserted = False
+    # 从第一个客户端标题之后寻找需要保留的 README 内容。
+    # 一旦遇到这些固定的二级模块，后面全部原样保留。
+    preserve_patterns = (
+        re.compile(r"^##\s+子规则/排除规则\s*$"),
+        re.compile(r"^##\s+数据来源\s*$"),
+        re.compile(r"^##\s+最后\s*$"),
+    )
 
-    while i < len(lines):
-        match = CLIENT_HEADER_RE.match(lines[i].strip())
-        if not match:
-            output.append(lines[i])
-            i += 1
-            continue
+    preserve_index: Optional[int] = None
 
-        if not inserted:
-            while output and output[-1].strip() == "":
-                output.pop()
-            if output:
-                output.append("\n\n")
-            output.append(replacement.rstrip() + "\n")
-            inserted = True
+    for idx in range(first_client_index, len(lines)):
+        stripped = lines[idx].strip()
+        if any(pattern.match(stripped) for pattern in preserve_patterns):
+            preserve_index = idx
+            break
 
-        level = len(match.group(1))
-        i += 1
-        while i < len(lines):
-            next_match = re.match(r"^(#+)\s+.*$", lines[i].strip())
-            if next_match and len(next_match.group(1)) <= level:
-                break
-            i += 1
+    # 保留客户端区域之前的内容，例如：
+    # # 🧸 Discord
+    # ## 前言
+    # ## 规则统计
+    prefix = "".join(lines[:first_client_index]).rstrip()
 
-    result = "".join(output).rstrip() + "\n"
-    return result
+    # 保留 README 原有的子规则 / 数据来源 / 最后等内容。
+    suffix = ""
+    if preserve_index is not None:
+        suffix = "".join(lines[preserve_index:]).lstrip()
+
+    result_parts: List[str] = []
+
+    if prefix:
+        result_parts.append(prefix)
+
+    result_parts.append(replacement.rstrip())
+
+    if suffix:
+        result_parts.append(suffix.rstrip())
+
+    return "\n\n".join(result_parts) + "\n"
 
 
 def update_readme(
