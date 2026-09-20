@@ -472,52 +472,45 @@ def client_section_text(
 
 def replace_client_sections(content: str, replacement: str) -> str:
     """
-    只替换客户端订阅区域，保留 README 后面的：
-    ## 子规则/排除规则
-    ## 数据来源
-    ## 最后
-    等原始内容。
+    以 Blackmatrix7 上游 README 为完整模板，
+    只替换 # Clash 这一模块，其余内容全部原样保留。
     """
     lines = content.splitlines(keepends=True)
 
-    # 找到第一个客户端标题。
-    first_client_index: Optional[int] = None
+    clash_index: Optional[int] = None
+    clash_level: Optional[int] = None
+
+    # 找到 # Clash
     for idx, line in enumerate(lines):
-        if CLIENT_HEADER_RE.match(line.strip()):
-            first_client_index = idx
+        match = re.match(r"^(#+)\s+Clash\s*$", line.strip(), re.I)
+        if match:
+            clash_index = idx
+            clash_level = len(match.group(1))
             break
 
-    # 原 README 没有客户端区域，直接追加新客户端区域。
-    if first_client_index is None:
+    # 上游 README 没有 Clash 模块时，不做破坏性重构，
+    # 直接在原 README 末尾追加。
+    if clash_index is None or clash_level is None:
         base = content.rstrip()
         return (base + "\n\n" if base else "") + replacement.rstrip() + "\n"
 
-    # 从第一个客户端标题之后寻找需要保留的 README 内容。
-    # 一旦遇到这些固定的二级模块，后面全部原样保留。
-    preserve_patterns = (
-        re.compile(r"^##\s+子规则/排除规则\s*$"),
-        re.compile(r"^##\s+数据来源\s*$"),
-        re.compile(r"^##\s+最后\s*$"),
-    )
+    # 找到 Clash 模块结束位置：
+    # 下一个“同级或更高级”的 Markdown 标题。
+    end_index = len(lines)
 
-    preserve_index: Optional[int] = None
+    for idx in range(clash_index + 1, len(lines)):
+        match = re.match(r"^(#+)\s+.*$", lines[idx].strip())
+        if not match:
+            continue
 
-    for idx in range(first_client_index, len(lines)):
-        stripped = lines[idx].strip()
-        if any(pattern.match(stripped) for pattern in preserve_patterns):
-            preserve_index = idx
+        level = len(match.group(1))
+        if level <= clash_level:
+            end_index = idx
             break
 
-    # 保留客户端区域之前的内容，例如：
-    # # 🧸 Discord
-    # ## 前言
-    # ## 规则统计
-    prefix = "".join(lines[:first_client_index]).rstrip()
-
-    # 保留 README 原有的子规则 / 数据来源 / 最后等内容。
-    suffix = ""
-    if preserve_index is not None:
-        suffix = "".join(lines[preserve_index:]).lstrip()
+    # 仅替换 Clash 模块，其他内容全部保留。
+    prefix = "".join(lines[:clash_index]).rstrip()
+    suffix = "".join(lines[end_index:]).lstrip()
 
     result_parts: List[str] = []
 
