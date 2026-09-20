@@ -23,9 +23,10 @@ Apple规则由《RULE GENERATOR 规则生成器》自动生成。
 | IP-CIDR | 10  | 
 | IP-CIDR6 | 3  | 
 | PROCESS-NAME | 13  | 
-| TOTAL | 1593  |
+| TOTAL | 1593  | 
 
-# Clash
+
+# <img src="https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/Picture/icon/OpenClash.png" width="20" height="20" alt="Clash" /> Clash
 
 domain
 ```text
@@ -41,31 +42,6 @@ classical
 ```text
 https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Apple/Apple_Classical.yaml
 ```
-
-# Loon
-
-```text
-https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Loon/Apple/Apple.list
-```
-
-# QuantumultX
-
-```text
-https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/Apple/Apple.list
-```
-
-# Shadowrocket
-
-```text
-https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Shadowrocket/Apple/Apple.list
-```
-
-# Surge
-
-```text
-https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Apple/Apple.list
-```
-
 ## 子规则/排除规则
 
 当前分流规则，已包含以下子规则，除非特殊需求否则不建议重复引用：

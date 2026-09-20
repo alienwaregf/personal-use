@@ -25,9 +25,10 @@
 | DOMAIN-SUFFIX | 266994  | 
 | IP-CIDR | 486  | 
 | IP-CIDR6 | 3  | 
-| TOTAL | 284202  |
+| TOTAL | 284202  | 
 
-# Clash
+
+# <img src="https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/Picture/icon/OpenClash.png" width="20" height="20" alt="Clash" /> Clash
 
 domain
 ```text
@@ -43,31 +44,6 @@ classical
 ```text
 https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Advertising/Advertising_Classical.yaml
 ```
-
-# Loon
-
-```text
-https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Loon/Advertising/Advertising.list
-```
-
-# QuantumultX
-
-```text
-https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/Advertising/Advertising.list
-```
-
-# Shadowrocket
-
-```text
-https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Shadowrocket/Advertising/Advertising.list
-```
-
-# Surge
-
-```text
-https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Advertising/Advertising.list
-```
-
 ## 子规则/排除规则
 
 当前分流规则，已包含以下子规则，除非特殊需求否则不建议重复引用：

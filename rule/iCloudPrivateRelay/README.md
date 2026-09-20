@@ -19,9 +19,10 @@ iCloudPrivateRelay规则由《RULE GENERATOR 规则生成器》自动生成。
 | ---- | ----  |
 | DOMAIN | 4  | 
 | DOMAIN-SUFFIX | 2  | 
-| TOTAL | 6  |
+| TOTAL | 6  | 
 
-# Clash
+
+# <img src="https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/Picture/icon/OpenClash.png" width="20" height="20" alt="Clash" /> Clash
 
 domain
 ```text
@@ -32,31 +33,6 @@ classical
 ```text
 https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/iCloudPrivateRelay/iCloudPrivateRelay.yaml
 ```
-
-# Loon
-
-```text
-https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Loon/iCloudPrivateRelay/iCloudPrivateRelay.list
-```
-
-# QuantumultX
-
-```text
-https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/iCloudPrivateRelay/iCloudPrivateRelay.list
-```
-
-# Shadowrocket
-
-```text
-https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Shadowrocket/iCloudPrivateRelay/iCloudPrivateRelay.list
-```
-
-# Surge
-
-```text
-https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/iCloudPrivateRelay/iCloudPrivateRelay.list
-```
-
 ## 子规则/排除规则
 
 

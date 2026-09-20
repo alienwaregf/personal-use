@@ -19,9 +19,10 @@
 | ---- | ----  |
 | DOMAIN | 15  | 
 | IP-CIDR | 26  | 
-| TOTAL | 41  |
+| TOTAL | 41  | 
 
-# Clash
+
+# <img src="https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/Picture/icon/OpenClash.png" width="20" height="20" alt="Clash" /> Clash
 
 domain
 ```text
@@ -37,31 +38,6 @@ classical
 ```text
 https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/GoogleFCM/GoogleFCM.yaml
 ```
-
-# Loon
-
-```text
-https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Loon/GoogleFCM/GoogleFCM.list
-```
-
-# QuantumultX
-
-```text
-https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/GoogleFCM/GoogleFCM.list
-```
-
-# Shadowrocket
-
-```text
-https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Shadowrocket/GoogleFCM/GoogleFCM.list
-```
-
-# Surge
-
-```text
-https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/GoogleFCM/GoogleFCM.list
-```
-
 ## 子规则/排除规则
 
 

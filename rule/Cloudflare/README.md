@@ -20,9 +20,10 @@ Cloudflare规则由《RULE GENERATOR 规则生成器》自动生成。
 | DOMAIN-SUFFIX | 43  | 
 | IP-CIDR | 15  | 
 | IP-CIDR6 | 7  | 
-| TOTAL | 65  |
+| TOTAL | 65  | 
 
-# Clash
+
+# <img src="https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/Picture/icon/OpenClash.png" width="20" height="20" alt="Clash" /> Clash
 
 domain
 ```text
@@ -38,31 +39,6 @@ classical
 ```text
 https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Cloudflare/Cloudflare.yaml
 ```
-
-# Loon
-
-```text
-https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Loon/Cloudflare/Cloudflare.list
-```
-
-# QuantumultX
-
-```text
-https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/Cloudflare/Cloudflare.list
-```
-
-# Shadowrocket
-
-```text
-https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Shadowrocket/Cloudflare/Cloudflare.list
-```
-
-# Surge
-
-```text
-https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Cloudflare/Cloudflare.list
-```
-
 ## 子规则/排除规则
 
 

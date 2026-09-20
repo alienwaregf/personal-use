@@ -1,4 +1,4 @@
-# Clash
+# <img src="https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/Picture/icon/OpenClash.png" width="20" height="20" alt="Clash" /> Clash
 
 domain
 ```text
@@ -9,50 +9,42 @@ classical
 ```text
 https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Apple%20Intelligence/Apple%20Intelligence.yaml
 ```
-
-# Loon
+# <img src="https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/02ProxySoftLogo/Loon(1).png" width="20" height="20" alt="Loon" /> Loon
 
 ```text
 https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Apple%20Intelligence/Loon.list
 ```
-
-# QuantumultX
+# <img src="https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/Picture/icon/QX.png" width="20" height="20" alt="QuantumultX" /> QuantumultX
 
 ```text
 https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Apple%20Intelligence/QuantumultX.list
 ```
-
-# Shadowrocket
+# <img src="https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/Picture/icon/shadowrocket.png" width="20" height="20" alt="Shadowrocket" /> Shadowrocket
 
 ```text
 https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Apple%20Intelligence/Shadowrocket.list
 ```
-
-# Surge
+# <img src="https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/02ProxySoftLogo/Surge(8).png" width="20" height="20" alt="Surge" /> Surge
 
 ```text
 https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Apple%20Intelligence/Surge.list
 ```
-
-# Loon
+# <img src="https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/02ProxySoftLogo/Loon(1).png" width="20" height="20" alt="Loon" /> Loon
 
 ```text
 https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Apple%20Intelligence/Loon.list
 ```
-
-# QuantumultX
+# <img src="https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/Picture/icon/QX.png" width="20" height="20" alt="QuantumultX" /> QuantumultX
 
 ```text
 https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Apple%20Intelligence/QuantumultX.list
 ```
-
-# Shadowrocket
+# <img src="https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/Picture/icon/shadowrocket.png" width="20" height="20" alt="Shadowrocket" /> Shadowrocket
 
 ```text
 https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Apple%20Intelligence/Shadowrocket.list
 ```
-
-# Surge
+# <img src="https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/02ProxySoftLogo/Surge(8).png" width="20" height="20" alt="Surge" /> Surge
 
 ```text
 https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Apple%20Intelligence/Surge.list

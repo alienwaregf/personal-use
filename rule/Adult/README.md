@@ -1,4 +1,4 @@
-# Clash
+# <img src="https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/Picture/icon/OpenClash.png" width="20" height="20" alt="Clash" /> Clash
 
 domain
 ```text
@@ -8,28 +8,4 @@ https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Adult/Adult
 classical
 ```text
 https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Adult/Adult.yaml
-```
-
-# Loon
-
-```text
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Adult/Loon.list
-```
-
-# QuantumultX
-
-```text
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Adult/QuantumultX.list
-```
-
-# Shadowrocket
-
-```text
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Adult/Shadowrocket.list
-```
-
-# Surge
-
-```text
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Adult/Surge.list
 ```
