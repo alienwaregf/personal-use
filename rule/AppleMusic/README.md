@@ -22,7 +22,6 @@ AppleMusic规则由《RULE GENERATOR 规则生成器》自动生成。
 | PROCESS-NAME | 1  | 
 | TOTAL | 10  |
 
-
 # Clash
 
 domain
@@ -37,28 +36,24 @@ https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash
 
 # Loon
 
-subscription
 ```text
 https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Loon/AppleMusic/AppleMusic.list
 ```
 
 # QuantumultX
 
-subscription
 ```text
 https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/AppleMusic/AppleMusic.list
 ```
 
 # Shadowrocket
 
-subscription
 ```text
 https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Shadowrocket/AppleMusic/AppleMusic.list
 ```
 
 # Surge
 
-subscription
 ```text
 https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/AppleMusic/AppleMusic.list
 ```

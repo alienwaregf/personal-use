@@ -27,7 +27,6 @@
 | IP-CIDR6 | 3  | 
 | TOTAL | 284202  |
 
-
 # Clash
 
 domain
@@ -47,28 +46,24 @@ https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash
 
 # Loon
 
-subscription
 ```text
 https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Loon/Advertising/Advertising.list
 ```
 
 # QuantumultX
 
-subscription
 ```text
 https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/Advertising/Advertising.list
 ```
 
 # Shadowrocket
 
-subscription
 ```text
 https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Shadowrocket/Advertising/Advertising.list
 ```
 
 # Surge
 
-subscription
 ```text
 https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Advertising/Advertising.list
 ```

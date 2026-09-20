@@ -20,7 +20,6 @@ Epic规则由《RULE GENERATOR 规则生成器》自动生成。
 | DOMAIN-SUFFIX | 15  | 
 | TOTAL | 15  |
 
-
 # Clash
 
 domain
@@ -35,28 +34,24 @@ https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash
 
 # Loon
 
-subscription
 ```text
 https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Loon/Epic/Epic.list
 ```
 
 # QuantumultX
 
-subscription
 ```text
 https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/Epic/Epic.list
 ```
 
 # Shadowrocket
 
-subscription
 ```text
 https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Shadowrocket/Epic/Epic.list
 ```
 
 # Surge
 
-subscription
 ```text
 https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Epic/Epic.list
 ```

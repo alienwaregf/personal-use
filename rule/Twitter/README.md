@@ -22,7 +22,6 @@ Twitter规则由《RULE GENERATOR 规则生成器》自动生成。
 | IP-CIDR | 6  | 
 | TOTAL | 33  |
 
-
 # Clash
 
 domain
@@ -42,28 +41,24 @@ https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash
 
 # Loon
 
-subscription
 ```text
 https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Loon/Twitter/Twitter.list
 ```
 
 # QuantumultX
 
-subscription
 ```text
 https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/Twitter/Twitter.list
 ```
 
 # Shadowrocket
 
-subscription
 ```text
 https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Shadowrocket/Twitter/Twitter.list
 ```
 
 # Surge
 
-subscription
 ```text
 https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Twitter/Twitter.list
 ```

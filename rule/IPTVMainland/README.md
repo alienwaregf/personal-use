@@ -21,7 +21,6 @@ IPTV大陆规则由《RULE GENERATOR 规则生成器》自动生成。
 | IP-CIDR | 1307  | 
 | TOTAL | 2297  |
 
-
 # Clash
 
 domain
@@ -41,28 +40,24 @@ https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash
 
 # Loon
 
-subscription
 ```text
 https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Loon/IPTVMainland/IPTVMainland.list
 ```
 
 # QuantumultX
 
-subscription
 ```text
 https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/IPTVMainland/IPTVMainland.list
 ```
 
 # Shadowrocket
 
-subscription
 ```text
 https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Shadowrocket/IPTVMainland/IPTVMainland.list
 ```
 
 # Surge
 
-subscription
 ```text
 https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/IPTVMainland/IPTVMainland.list
 ```

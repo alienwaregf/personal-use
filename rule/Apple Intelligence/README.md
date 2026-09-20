@@ -12,28 +12,24 @@ https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Apple%20Int
 
 # Loon
 
-subscription
 ```text
 https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Apple%20Intelligence/Loon.list
 ```
 
 # QuantumultX
 
-subscription
 ```text
 https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Apple%20Intelligence/QuantumultX.list
 ```
 
 # Shadowrocket
 
-subscription
 ```text
 https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Apple%20Intelligence/Shadowrocket.list
 ```
 
 # Surge
 
-subscription
 ```text
 https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Apple%20Intelligence/Surge.list
 ```
