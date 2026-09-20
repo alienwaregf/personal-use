@@ -22,7 +22,7 @@ payload:
   - DOMAIN,ip.istatmenus.app
   - DOMAIN,whois.pconline.com.cn
   - DOMAIN,api.ipify.org
-  - DOMAIN-SUFFIX,b0.upaiyun.com,DIRECT
+  - DOMAIN-SUFFIX,b0.upaiyun.com
 
   # ==============================
   # IP 地理位置 / ASN / ISP 查询
