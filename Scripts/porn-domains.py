@@ -23,7 +23,7 @@ ADULT_YAML_PATH = Path("rule/Adult/Adult.yaml")
 ADULT_README_PATH = Path("rule/Adult/README.md")
 USER_AGENT = "alienwaregf/personal-use porn-domains updater"
 TIMEOUT = 60
-COMPRESSION_THRESHOLD = 3
+COMPRESSION_THRESHOLD = 2
 
 DOMAIN_LABEL_RE = re.compile(r"^[A-Za-z0-9_\-]+$")
 
@@ -88,12 +88,18 @@ def normalize_domain_line(line: str) -> str | None:
 
 
 def parent_suffixes(host: str) -> list[str]:
-    """Return all candidate parent suffixes with at least two labels."""
+    """Return candidate parent suffixes with at least three labels."""
     labels = host.split(".")
-    if len(labels) < 2:
-        return []
-    return [".".join(labels[i:]) for i in range(0, len(labels) - 1)]
 
+    # 只允许三级及以上父域，例如 foo.google.com；
+    # 不允许直接压缩到 google.com。
+    if len(labels) < 3:
+        return []
+
+    return [
+        ".".join(labels[i:])
+        for i in range(0, len(labels) - 2)
+    ]
 
 def compress_domains(domains: set[str]) -> set[str]:
     """
