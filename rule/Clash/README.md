@@ -29,7 +29,7 @@
 ||||[Twitch](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Twitch)||
 ||[Vercel](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Vercel)||||
 |||||[谷歌推送](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/GoogleFCM)|
-||[币安交易所](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Binance)||||
+||[币安交易所](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Binance)|[GoogleEarth](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/GoogleEarth)|||
 |||||[Tmdb](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Tmdb)|
 |[OpenAI](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/OpenAI)|||||
 |||[Claude](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Claude)|||
@@ -94,3 +94,4 @@
 |🖥️Other|||||
 | ---- | ---- | ---- | ---- | ---- |
 |||[Download](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Download)|[本地局域网地址](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/Lan)|[PT下载](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/PrivateTracker)||||
+|||[NTPService](https://github.com/alienwaregf/personal-use/tree/main/rule/Clash/NTPService)|||||
