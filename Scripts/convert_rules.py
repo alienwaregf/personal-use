@@ -768,15 +768,13 @@ def write_client_lists(
 
 # ================= README =================
 
-def client_heading(
-    client: str,
-) -> str:
-
+def client_heading(client: str) -> str:
     icon = CLIENT_ICONS[client]
 
     return (
         f'# <img src="{icon}" '
-        f'width="25" height="25" '
+        f'width="20" height="20" '
+        f'align="middle" '
         f'alt="{client}" /> {client}\n\n'
     )
 
