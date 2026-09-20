@@ -15,11 +15,11 @@ import yaml
 # ================= 核心配置 =================
 
 SOURCE_CLASH_DIR = os.path.join("source_repo", "rule", "Clash")
-DEST_CLASH_DIR = os.path.join("rule", "Clash")
+DEST_CLASH_DIR = os.path.join("rule")
 TEMP_DIR = "temp_compile"
 
-MY_REPO_URL = "https://github.com/alienwaregf/personal-use/tree/main/rule/Clash"
-RAW_BASE_URL = "https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash"
+MY_REPO_URL = "https://github.com/alienwaregf/personal-use/tree/main/rule"
+RAW_BASE_URL = "https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule"
 
 UPSTREAM_INCLUDE_FOLDERS = {
     "Advertising",
