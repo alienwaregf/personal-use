@@ -1,4 +1,4 @@
-name: Yaml to MRS
+name: Rule's
 
 on:
   schedule:
@@ -20,11 +20,6 @@ jobs:
       - name: 检出当前仓库
         uses: actions/checkout@v5
 
-      - name: 拉取 Blackmatrix7 仓库
-        run: |
-          set -euo pipefail
-          git clone --depth 1 https://github.com/blackmatrix7/ios_rule_script.git source_repo
-
       - name: 设置 Python 环境
         uses: actions/setup-python@v6
         with:
@@ -34,7 +29,17 @@ jobs:
         run: |
           set -euo pipefail
           python -m pip install --upgrade pip
-          pip install pyyaml
+          pip install pyyaml pytest
+
+      - name: 运行自动化测试
+        run: |
+          set -euo pipefail
+          pytest -q
+
+      - name: 拉取 Blackmatrix7 仓库
+        run: |
+          set -euo pipefail
+          git clone --depth 1 https://github.com/blackmatrix7/ios_rule_script.git source_repo
 
       - name: 下载并安装 Mihomo 内核
         run: |
@@ -77,6 +82,7 @@ jobs:
           rm -rf temp_compile
           rm -rf __pycache__
           rm -rf Scripts/__pycache__
+          rm -rf Tests/__pycache__
           rm -f mihomo
           rm -f mihomo.gz
 
