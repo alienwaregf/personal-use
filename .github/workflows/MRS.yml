@@ -64,15 +64,17 @@ jobs:
 
           mihomo -v
 
-      - name: 运行转换脚本
-        run: |
-          set -euo pipefail
-          python Scripts/convert_rules.py
-
       - name: 更新 Bon-Appetit 成人域名规则并转换为 MRS
         run: |
           set -euo pipefail
           python Scripts/porn-domains.py
+
+      # 必须放在所有规则拉取/生成步骤之后，作为最后的规则处理阶段。
+      # 这样以后新增或拉取其他带 Clash YAML 的规则，也会在这里统一生成其他客户端规则。
+      - name: 最后统一转换所有规则
+        run: |
+          set -euo pipefail
+          python Scripts/convert_rules.py
 
       - name: 清理临时文件
         run: |
