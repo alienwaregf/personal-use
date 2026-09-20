@@ -1103,23 +1103,21 @@ def update_readme(
     template_path: Optional[Path] = None,
 ) -> None:
 
-
-
     if template_path and template_path.is_file():
-    content = template_path.read_text(
-        encoding="utf-8"
-    )
+        content = template_path.read_text(
+            encoding="utf-8"
+        )
 
-elif custom:
-    content = f"# 🧸 {folder_name}\n"
+    elif custom:
+        content = ""
 
-elif readme_path.is_file():
-    content = readme_path.read_text(
-        encoding="utf-8"
-    )
+    elif readme_path.is_file():
+        content = readme_path.read_text(
+            encoding="utf-8"
+        )
 
-else:
-    content = ""
+    else:
+        content = ""
 
     replacement = client_section_text(
         folder_name=folder_name,
