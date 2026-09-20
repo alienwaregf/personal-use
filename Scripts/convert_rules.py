@@ -122,18 +122,6 @@ UPSTREAM_INCLUDE_FOLDERS = {
 }
 
 
-# ============================================================
-# 客户端标题匹配
-#
-# 兼容：
-#   # Clash
-#   # Loon
-#
-# 以及本脚本已经生成过的：
-#   # <img src="..." width="20" height="20" /> Clash
-#
-# ============================================================
-
 CLIENT_HEADER_RE = re.compile(
     r"^(#{1,6})\s*"
     r"(?:<img\b[^>]*>\s*)?"
@@ -788,7 +776,7 @@ def client_heading(
 
     return (
         f'# <img src="{icon}" '
-        f'width="20" height="20" '
+        f'width="25" height="25" '
         f'alt="{client}" /> {client}\n\n'
     )
 
