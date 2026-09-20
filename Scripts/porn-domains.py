@@ -18,7 +18,8 @@ from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
 META_URL = "https://raw.githubusercontent.com/Bon-Appetit/porn-domains/main/meta.json"
-OUTPUT_PATH = Path("rule/Clash/Adult/Adult.mrs")
+OUTPUT_PATH = Path("rule/Adult/Adult.mrs")
+ADULT_README_PATH = Path("rule/Adult/README.md")
 USER_AGENT = "alienwaregf/personal-use porn-domains updater"
 TIMEOUT = 60
 COMPRESSION_THRESHOLD = 3
@@ -182,7 +183,7 @@ def write_readme(readme_path: Path) -> None:
         "domain\n"
         "```text\n"
         "https://raw.githubusercontent.com/alienwaregf/personal-use/main/"
-        "rule/Clash/Adult/Adult.mrs\n"
+        "rule/Adult/Adult.mrs\n"
         "```\n",
         encoding="utf-8",
     )
@@ -271,12 +272,12 @@ def main() -> None:
 
         compile_to_mrs(text_path, OUTPUT_PATH)
 
-    write_readme(OUTPUT_PATH.parent / "README.md")
+    write_readme(ADULT_README_PATH)
 
     size = OUTPUT_PATH.stat().st_size
 
     print(f"生成完成: {OUTPUT_PATH} ({size:,} bytes)")
-    print(f"README 已生成: {OUTPUT_PATH.parent / 'README.md'}")
+    print(f"README 已生成: {ADULT_README_PATH}")
 
 
 if __name__ == "__main__":
