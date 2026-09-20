@@ -7,19 +7,27 @@ import shutil
 import subprocess
 import ipaddress
 import sys
-from typing import List, Optional, Tuple, Set
+from typing import Dict, List, Optional, Set, Tuple
 
 import yaml
 
 
 # ================= 核心配置 =================
 
-SOURCE_CLASH_DIR = os.path.join("source_repo", "rule", "Clash")
-DEST_CLASH_DIR = os.path.join("rule")
+SOURCE_RULE_DIR = os.path.join("source_repo", "rule")
+SOURCE_CLASH_DIR = os.path.join(SOURCE_RULE_DIR, "Clash")
+
+DEST_RULE_DIR = "rule"
+DEST_CLASH_DIR = os.path.join(DEST_RULE_DIR, "Clash")
+
+CLIENTS = ("Clash", "Loon", "QuantumultX", "Shadowrocket", "Surge")
+NON_CLASH_CLIENTS = tuple(client for client in CLIENTS if client != "Clash")
+
 TEMP_DIR = "temp_compile"
 
-MY_REPO_URL = "https://github.com/alienwaregf/personal-use/tree/main/rule"
-RAW_BASE_URL = "https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule"
+MY_REPO_URL = "https://github.com/alienwaregf/personal-use/tree/main/rule/Clash"
+RAW_CLASH_BASE_URL = "https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash"
+UPSTREAM_RAW_RULE_BASE_URL = "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule"
 
 UPSTREAM_INCLUDE_FOLDERS = {
     "Advertising",
@@ -377,102 +385,87 @@ def compile_to_mrs(temp_yaml_path: str, out_mrs_path: str, behavior: str) -> boo
         return False
 
 
-# ================= README 处理：子目录 =================
+# ================= README 处理 =================
 
 def build_child_readme_replacement(
     folder_name: str,
     classical_filename: str,
     has_domain_mrs: bool = True,
     has_ip_mrs: bool = True,
+    client_list_filenames: Optional[Dict[str, str]] = None,
 ) -> str:
-    cb = "```"
-    parts = ["\n"]
+    """
+    生成规则分类 README。
 
-    if has_domain_mrs:
+    只有 MRS 指向个人仓库；其余订阅地址全部指向 Blackmatrix7 原版。
+    """
+    client_list_filenames = client_list_filenames or {}
+
+    def upstream_client_url(client: str, filename: str) -> str:
+        return f"{UPSTREAM_RAW_RULE_BASE_URL}/{client}/{folder_name}/{filename}"
+
+    parts = []
+
+    # 首字母排序：Clash, Loon, QuantumultX, Shadowrocket, Surge
+    for client in sorted(CLIENTS):
+        parts.append(f"# {client}\n\n")
+
+        if client == "Clash":
+            if has_domain_mrs:
+                parts.append(
+                    "domain\n"
+                    "```text\n"
+                    f"{RAW_CLASH_BASE_URL}/{folder_name}/{folder_name}_Domain.mrs\n"
+                    "```\n\n"
+                )
+
+            if has_ip_mrs:
+                parts.append(
+                    "ipcidr\n"
+                    "```text\n"
+                    f"{RAW_CLASH_BASE_URL}/{folder_name}/{folder_name}_IP.mrs\n"
+                    "```\n\n"
+                )
+
+            parts.append(
+                "classical\n"
+                "```text\n"
+                f"{upstream_client_url(client, classical_filename)}\n"
+                "```\n\n"
+            )
+            continue
+
+        filename = client_list_filenames.get(client, f"{folder_name}.list")
         parts.append(
-            f"domain\n"
-            f"{cb}text\n"
-            f"{RAW_BASE_URL}/{folder_name}/{folder_name}_Domain.mrs\n"
-            f"{cb}\n\n"
+            "subscription\n"
+            "```text\n"
+            f"{upstream_client_url(client, filename)}\n"
+            "```\n\n"
         )
-
-    if has_ip_mrs:
-        parts.append(
-            f"ipcidr\n"
-            f"{cb}text\n"
-            f"{RAW_BASE_URL}/{folder_name}/{folder_name}_IP.mrs\n"
-            f"{cb}\n\n"
-        )
-
-    parts.append(
-        f"classical\n"
-        f"{cb}text\n"
-        f"{RAW_BASE_URL}/{folder_name}/{classical_filename}\n"
-        f"{cb}\n\n"
-    )
 
     return "".join(parts)
 
 
-def modify_readme_clash_section(
+def write_child_readme(
     readme_path: str,
     folder_name: str,
     classical_filename: str,
-    has_domain_mrs: bool = True,
-    has_ip_mrs: bool = True,
+    has_domain_mrs: bool,
+    has_ip_mrs: bool,
+    client_list_filenames: Optional[Dict[str, str]] = None,
 ) -> None:
-    if not os.path.exists(readme_path):
-        return
+    os.makedirs(os.path.dirname(readme_path), exist_ok=True)
 
-    with open(readme_path, "r", encoding="utf-8") as f:
-        lines = f.readlines()
-
-    new_lines = []
-    in_clash_section = False
-    clash_level = 0
-    clash_processed = False
-
-    replacement_text = build_child_readme_replacement(
+    content = build_child_readme_replacement(
         folder_name,
         classical_filename,
         has_domain_mrs=has_domain_mrs,
         has_ip_mrs=has_ip_mrs,
+        client_list_filenames=client_list_filenames,
     )
 
-    for line in lines:
-        header_match = re.match(r"^(#+)\s*Clash\s*$", line.strip(), re.IGNORECASE)
-
-        if header_match and not clash_processed:
-            in_clash_section = True
-            clash_level = len(header_match.group(1))
-            new_lines.append(line.rstrip() + "\n")
-            new_lines.append(replacement_text)
-            clash_processed = True
-            continue
-
-        if in_clash_section:
-            other_header_match = re.match(r"^(#+)\s+(.*)$", line.strip())
-
-            if other_header_match:
-                current_level = len(other_header_match.group(1))
-
-                if current_level <= clash_level:
-                    in_clash_section = False
-                    new_lines.append(line)
-
-            continue
-
-        new_lines.append(line)
-
-    if not clash_processed:
-        if new_lines and not new_lines[-1].endswith("\n"):
-            new_lines[-1] += "\n"
-
-        new_lines.append("\n## Clash\n")
-        new_lines.append(replacement_text)
-
     with open(readme_path, "w", encoding="utf-8") as f:
-        f.writelines(new_lines)
+        f.write(content)
 
 
 # ================= README 处理：根目录链接 =================
@@ -481,7 +474,7 @@ def extract_folder_from_url(url: str) -> Optional[str]:
     if not url:
         return None
 
-    url = str(url).strip().strip('"\'')
+    url = str(url).strip().strip("\"'")
 
     if (
         url.startswith("#")
@@ -492,7 +485,7 @@ def extract_folder_from_url(url: str) -> Optional[str]:
 
     prefixes = [
         MY_REPO_URL + "/",
-        RAW_BASE_URL + "/",
+        RAW_CLASH_BASE_URL + "/",
         "https://github.com/blackmatrix7/ios_rule_script/tree/master/rule/Clash/",
         "https://github.com/blackmatrix7/ios_rule_script/blob/master/rule/Clash/",
         "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/",
@@ -532,7 +525,9 @@ def extract_folder_from_url(url: str) -> Optional[str]:
     return None
 
 
-def transform_markdown_links_in_text(text: str, allowed_folders: Set[str]) -> Tuple[str, int, int]:
+def transform_markdown_links_in_text(
+    text: str, allowed_folders: Set[str]
+) -> Tuple[str, int, int]:
     result = []
     i = 0
     kept = 0
@@ -567,11 +562,9 @@ def transform_markdown_links_in_text(text: str, allowed_folders: Set[str]) -> Tu
 
         if folder is None:
             result.append(text[label_start:url_end + 1])
-
         elif folder in allowed_folders:
             result.append(f"[{label}]({MY_REPO_URL}/{folder})")
             kept += 1
-
         else:
             removed += 1
 
@@ -607,7 +600,9 @@ def is_table_separator_line(line: str) -> bool:
     return "-" in body
 
 
-def process_markdown_table_block(lines: List[str], allowed_folders: Set[str]) -> List[str]:
+def process_markdown_table_block(
+    lines: List[str], allowed_folders: Set[str]
+) -> List[str]:
     processed = []
     kept_link_total = 0
 
@@ -626,16 +621,18 @@ def process_markdown_table_block(lines: List[str], allowed_folders: Set[str]) ->
         new_cells = []
 
         for cell in cells:
-            new_cell, kept, removed = transform_markdown_links_in_text(cell, allowed_folders)
+            new_cell, kept, removed = transform_markdown_links_in_text(
+                cell, allowed_folders
+            )
             row_kept_links += kept
             row_removed_links += removed
             new_cells.append(new_cell.strip())
 
         kept_link_total += row_kept_links
 
-        has_any_markdown_link_removed_or_kept = (row_kept_links + row_removed_links) > 0
+        has_any = (row_kept_links + row_removed_links) > 0
 
-        if has_any_markdown_link_removed_or_kept and row_kept_links == 0:
+        if has_any and row_kept_links == 0:
             continue
 
         new_line = "|".join(new_cells)
@@ -644,7 +641,7 @@ def process_markdown_table_block(lines: List[str], allowed_folders: Set[str]) ->
             new_line = "|" + new_line
 
         if not new_line.endswith("|"):
-            new_line = new_line + "|"
+            new_line += "|"
 
         processed.append(new_line)
 
@@ -654,7 +651,9 @@ def process_markdown_table_block(lines: List[str], allowed_folders: Set[str]) ->
     return [line + "\n" for line in processed]
 
 
-def filter_root_readme_by_existing_folders(content: str, allowed_folders: Set[str]) -> str:
+def filter_root_readme_by_existing_folders(
+    content: str, allowed_folders: Set[str]
+) -> str:
     lines = content.splitlines(keepends=True)
     output = []
     i = 0
@@ -673,7 +672,9 @@ def filter_root_readme_by_existing_folders(content: str, allowed_folders: Set[st
             output.extend(filtered_block)
             continue
 
-        new_line, kept, removed = transform_markdown_links_in_text(line, allowed_folders)
+        new_line, kept, removed = transform_markdown_links_in_text(
+            line, allowed_folders
+        )
 
         if removed > 0 and kept == 0 and not new_line.strip():
             i += 1
@@ -688,10 +689,8 @@ def filter_root_readme_by_existing_folders(content: str, allowed_folders: Set[st
     for line in output:
         if line.strip() == "":
             blank_count += 1
-
             if blank_count <= 2:
                 cleaned.append(line)
-
         else:
             blank_count = 0
             cleaned.append(line)
@@ -706,7 +705,7 @@ def modify_root_readme_links(content: str) -> str:
 
     content = content.replace(upstream_tree_url, MY_REPO_URL)
     content = content.replace(upstream_blob_url, MY_REPO_URL)
-    content = content.replace(upstream_raw_url, RAW_BASE_URL)
+    content = content.replace(upstream_raw_url, RAW_CLASH_BASE_URL)
 
     return content
 
@@ -742,38 +741,90 @@ def select_best_yaml(folder_path: str, folder_name: str) -> Optional[str]:
     return None
 
 
-def list_current_upstream_folders() -> Set[str]:
-    if not os.path.exists(SOURCE_CLASH_DIR):
+def select_classical_filename(
+    folder_path: str, folder_name: str, fallback_filename: str
+) -> str:
+    classical_filename = f"{folder_name}_Classical.yaml"
+    classical_path = os.path.join(folder_path, classical_filename)
+
+    if os.path.isfile(classical_path):
+        return classical_filename
+
+    return fallback_filename
+
+
+def find_best_list_file(folder_path: str, folder_name: str) -> Optional[str]:
+    preferred = os.path.join(folder_path, f"{folder_name}.list")
+
+    if os.path.isfile(preferred):
+        return os.path.basename(preferred)
+
+    list_files = []
+
+    try:
+        for filename in os.listdir(folder_path):
+            if filename.lower().endswith(".list"):
+                list_files.append(filename)
+    except FileNotFoundError:
+        return None
+
+    if not list_files:
+        return None
+
+    list_files.sort()
+    return list_files[0]
+
+
+def list_current_upstream_folders(client: str) -> Set[str]:
+    source_client_dir = os.path.join(SOURCE_RULE_DIR, client)
+
+    if not os.path.isdir(source_client_dir):
         return set()
 
     return {
         item
-        for item in os.listdir(SOURCE_CLASH_DIR)
-        if os.path.isdir(os.path.join(SOURCE_CLASH_DIR, item))
+        for item in os.listdir(source_client_dir)
+        if os.path.isdir(os.path.join(source_client_dir, item))
     }
 
 
-def prepare_dest_clash_dir() -> None:
-    os.makedirs(DEST_CLASH_DIR, exist_ok=True)
+def prepare_dest_client_dir(client: str) -> None:
+    dest_client_dir = os.path.join(DEST_RULE_DIR, client)
+    os.makedirs(dest_client_dir, exist_ok=True)
 
-    current_upstream_folders = list_current_upstream_folders()
+    current_upstream_folders = list_current_upstream_folders(client)
 
-    for item in sorted(os.listdir(DEST_CLASH_DIR)):
-        item_path = os.path.join(DEST_CLASH_DIR, item)
+    for item in sorted(os.listdir(dest_client_dir)):
+        item_path = os.path.join(dest_client_dir, item)
 
         if not os.path.isdir(item_path):
             continue
 
         if item in UPSTREAM_INCLUDE_FOLDERS:
-            print(f"保留白名单目录: {item}")
+            print(f"[{client}] 保留白名单目录: {item}")
             continue
 
         if item in current_upstream_folders:
-            print(f"删除非白名单上游目录: {item}")
+            print(f"[{client}] 删除非白名单上游目录: {item}")
             shutil.rmtree(item_path, ignore_errors=True)
             continue
 
-        print(f"保留自定义目录: {item}")
+        print(f"[{client}] 保留自定义目录: {item}")
+
+
+def prepare_dest_rule_dirs() -> None:
+    os.makedirs(DEST_RULE_DIR, exist_ok=True)
+
+    # 删除旧版直接位于 rule/ 根目录的上游规则目录。
+    for item in sorted(UPSTREAM_INCLUDE_FOLDERS):
+        legacy_path = os.path.join(DEST_RULE_DIR, item)
+
+        if os.path.isdir(legacy_path):
+            print(f"删除旧版顶层规则目录: {legacy_path}")
+            shutil.rmtree(legacy_path, ignore_errors=True)
+
+    for client in CLIENTS:
+        prepare_dest_client_dir(client)
 
 
 def remove_old_generated_files(dest_folder: str, folder_name: str) -> None:
@@ -791,18 +842,18 @@ def remove_old_generated_files(dest_folder: str, folder_name: str) -> None:
                 pass
 
 
-def copy_upstream_folder_files(folder_name: str) -> bool:
+def copy_upstream_clash_folder_files(folder_name: str) -> bool:
     source_folder = os.path.join(SOURCE_CLASH_DIR, folder_name)
     dest_folder = os.path.join(DEST_CLASH_DIR, folder_name)
 
     if not os.path.isdir(source_folder):
-        print(f"上游目录不存在，保留本地目录不删除: {folder_name}")
+        print(f"上游 Clash 目录不存在，保留本地目录不删除: {folder_name}")
         return False
 
     target_yaml = select_best_yaml(source_folder, folder_name)
 
     if not target_yaml:
-        print(f"上游目录没有可用 YAML，跳过同步但不删除本地目录: {folder_name}")
+        print(f"上游 Clash 目录没有可用 YAML，跳过同步但不删除本地目录: {folder_name}")
         return False
 
     if os.path.exists(dest_folder):
@@ -813,18 +864,43 @@ def copy_upstream_folder_files(folder_name: str) -> bool:
     target_filename = os.path.basename(target_yaml)
     shutil.copy2(target_yaml, os.path.join(dest_folder, target_filename))
 
-    src_readme = os.path.join(source_folder, "README.md")
-    dest_readme = os.path.join(dest_folder, "README.md")
-
-    if os.path.exists(src_readme):
-        shutil.copy2(src_readme, dest_readme)
-
     return True
+
+
+def copy_upstream_client_list(folder_name: str, client: str) -> Optional[str]:
+    source_folder = os.path.join(SOURCE_RULE_DIR, client, folder_name)
+    dest_folder = os.path.join(DEST_RULE_DIR, client, folder_name)
+
+    if not os.path.isdir(source_folder):
+        print(f"[{client}] 上游目录不存在，保留本地目录不删除: {folder_name}")
+        return None
+
+    list_filename = find_best_list_file(source_folder, folder_name)
+
+    if not list_filename:
+        print(f"[{client}] 上游目录没有可用 .list，跳过同步: {folder_name}")
+        return None
+
+    if os.path.exists(dest_folder):
+        shutil.rmtree(dest_folder)
+
+    os.makedirs(dest_folder, exist_ok=True)
+
+    shutil.copy2(
+        os.path.join(source_folder, list_filename),
+        os.path.join(dest_folder, list_filename),
+    )
+
+    return list_filename
 
 
 # ================= 编译目录 =================
 
-def compile_folder(folder_name: str, folder_path: str, modify_readme: bool = True) -> dict:
+def compile_folder(
+    folder_name: str,
+    folder_path: str,
+    client_list_filenames: Optional[Dict[str, str]] = None,
+) -> dict:
     target_yaml = select_best_yaml(folder_path, folder_name)
 
     if not target_yaml:
@@ -837,7 +913,13 @@ def compile_folder(folder_name: str, folder_path: str, modify_readme: bool = Tru
         }
 
     print(f"\n正在处理目录: {folder_name}")
+
     target_filename = os.path.basename(target_yaml)
+    classical_filename = select_classical_filename(
+        SOURCE_CLASH_DIR if os.path.isdir(SOURCE_CLASH_DIR) else folder_path,
+        folder_name,
+        target_filename,
+    )
 
     remove_old_generated_files(folder_path, folder_name)
 
@@ -854,14 +936,15 @@ def compile_folder(folder_name: str, folder_path: str, modify_readme: bool = Tru
     failures = 0
 
     if domain_rules:
-        temp_domain_yaml = os.path.join(TEMP_DIR, f"{folder_name}_temp_domain.yaml")
+        temp_domain_yaml = os.path.join(
+            TEMP_DIR, f"{folder_name}_temp_domain.yaml"
+        )
         write_mrs_source_yaml(temp_domain_yaml, domain_rules)
 
         if compile_to_mrs(temp_domain_yaml, domain_mrs_path, "domain"):
             has_domain_mrs = True
         else:
             failures += 1
-
     else:
         print(f"跳过 Domain.mrs：{folder_name} 没有可转换的 Domain 规则")
 
@@ -873,21 +956,19 @@ def compile_folder(folder_name: str, folder_path: str, modify_readme: bool = Tru
             has_ip_mrs = True
         else:
             failures += 1
-
     else:
-        print(f"跳过 IP.mrs：{folder_name} 没有可转换的 IP-CIDR/IP-CIDR6 规则")
+        print(
+            f"跳过 IP.mrs：{folder_name} 没有可转换的 IP-CIDR/IP-CIDR6 规则"
+        )
 
-    if modify_readme:
-        readme_path = os.path.join(folder_path, "README.md")
-
-        if os.path.exists(readme_path):
-            modify_readme_clash_section(
-                readme_path,
-                folder_name,
-                target_filename,
-                has_domain_mrs=has_domain_mrs,
-                has_ip_mrs=has_ip_mrs,
-            )
+    write_child_readme(
+        os.path.join(folder_path, "README.md"),
+        folder_name,
+        classical_filename,
+        has_domain_mrs=has_domain_mrs,
+        has_ip_mrs=has_ip_mrs,
+        client_list_filenames=client_list_filenames,
+    )
 
     return {
         "processed": True,
@@ -927,8 +1008,9 @@ def write_root_readme() -> None:
             root_content = f.read()
 
         root_content = modify_root_readme_links(root_content)
-        root_content = filter_root_readme_by_existing_folders(root_content, existing_folders)
-
+        root_content = filter_root_readme_by_existing_folders(
+            root_content, existing_folders
+        )
     else:
         root_content = "# Clash\n\n"
         root_content += "## 分类\n\n"
@@ -991,8 +1073,8 @@ def clean_workspace_garbage() -> None:
 # ================= 主流程 =================
 
 def main() -> None:
-    print("开始执行 Clash 规则拆分与 MRS 编译任务...")
-    print("模式：上游白名单同步 + 本地自定义目录保留")
+    print("开始执行五客户端规则同步与 Clash MRS 编译任务...")
+    print("规则内容：仅 MRS 使用个人仓库，其余订阅链接使用 Blackmatrix7 原版")
 
     if not ensure_mihomo_available():
         sys.exit(1)
@@ -1006,59 +1088,40 @@ def main() -> None:
         print(f"严重错误: 找不到上游源码目录 {SOURCE_CLASH_DIR}")
         sys.exit(1)
 
-    prepare_dest_clash_dir()
+    prepare_dest_rule_dirs()
 
     print("\n开始同步白名单上游目录...")
 
-    for item in sorted(UPSTREAM_INCLUDE_FOLDERS):
-        copy_upstream_folder_files(item)
+    for folder_name in sorted(UPSTREAM_INCLUDE_FOLDERS):
+        copy_upstream_clash_folder_files(folder_name)
 
-    print("\n开始拆分并编译规则...")
+        list_filenames: Dict[str, str] = {}
+        for client in NON_CLASH_CLIENTS:
+            filename = copy_upstream_client_list(folder_name, client)
 
-    total_folders = 0
-    compiled_domain = 0
-    compiled_ip = 0
-    skipped_no_yaml = 0
-    compile_failures = 0
+            if filename:
+                list_filenames[client] = filename
 
-    for item in sorted(os.listdir(DEST_CLASH_DIR)):
-        folder_path = os.path.join(DEST_CLASH_DIR, item)
+        clash_folder_path = os.path.join(DEST_CLASH_DIR, folder_name)
 
-        if not os.path.isdir(folder_path):
+        if not os.path.isdir(clash_folder_path):
             continue
 
-        result = compile_folder(item, folder_path, modify_readme=True)
+        result = compile_folder(
+            folder_name,
+            clash_folder_path,
+            client_list_filenames=list_filenames,
+        )
 
-        if not result["processed"]:
-            skipped_no_yaml += 1
-            continue
-
-        total_folders += 1
-
-        if result["domain"]:
-            compiled_domain += 1
-
-        if result["ip"]:
-            compiled_ip += 1
-
-        compile_failures += result["failures"]
+        if result["failures"] > 0:
+            print(
+                f"严重错误: {folder_name} 有 {result['failures']} 个 MRS 文件编译失败。"
+            )
+            sys.exit(1)
 
     write_root_readme()
 
-    print("\n清理临时编译环境...")
-
-    if os.path.exists(TEMP_DIR):
-        shutil.rmtree(TEMP_DIR)
-
     print("\n转换与编译全部完成！")
-    print(f"处理目录数量: {total_folders}")
-    print(f"成功编译 Domain.mrs 数量: {compiled_domain}")
-    print(f"成功编译 IP.mrs 数量: {compiled_ip}")
-    print(f"跳过无 YAML 目录数量: {skipped_no_yaml}")
-
-    if compile_failures > 0:
-        print(f"严重错误: 有 {compile_failures} 个 MRS 文件编译失败。")
-        sys.exit(1)
 
 
 if __name__ == "__main__":
