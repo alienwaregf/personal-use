@@ -772,10 +772,14 @@ def client_heading(client: str) -> str:
     icon = CLIENT_ICONS[client]
 
     return (
-        f'# <img src="{icon}" '
-        f'width="25" height="25" '
-        f'align="middle" '
-        f'alt="{client}" /> {client}\n\n'
+        '<table>\n'
+        '<tr>\n'
+        f'<td valign="middle" width="28">'
+        f'<img src="{icon}" width="20" height="20" alt="{client}" />'
+        '</td>\n'
+        f'<td valign="middle"><h1>{client}</h1></td>\n'
+        '</tr>\n'
+        '</table>\n\n'
     )
 
 
