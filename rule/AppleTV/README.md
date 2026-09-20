@@ -22,7 +22,12 @@ AppleTV规则由《RULE GENERATOR 规则生成器》自动生成。
 | PROCESS-NAME | 1  | 
 | TOTAL | 8  |
 
-# <img src="https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/Picture/icon/OpenClash.png" width="25" height="25" align="middle" alt="Clash" /> Clash
+<table>
+<tr>
+<td valign="middle" width="28"><img src="https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/Picture/icon/OpenClash.png" width="20" height="20" alt="Clash" /></td>
+<td valign="middle"><h1>Clash</h1></td>
+</tr>
+</table>
 
 domain
 ```text
@@ -34,25 +39,45 @@ classical
 https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AppleTV/AppleTV.yaml
 ```
 
-# <img src="https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/02ProxySoftLogo/Loon(1).png" width="25" height="25" align="middle" alt="Loon" /> Loon
+<table>
+<tr>
+<td valign="middle" width="28"><img src="https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/02ProxySoftLogo/Loon(1).png" width="20" height="20" alt="Loon" /></td>
+<td valign="middle"><h1>Loon</h1></td>
+</tr>
+</table>
 
 ```text
 https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Loon/AppleTV/AppleTV.list
 ```
 
-# <img src="https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/Picture/icon/QX.png" width="25" height="25" align="middle" alt="QuantumultX" /> QuantumultX
+<table>
+<tr>
+<td valign="middle" width="28"><img src="https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/Picture/icon/QX.png" width="20" height="20" alt="QuantumultX" /></td>
+<td valign="middle"><h1>QuantumultX</h1></td>
+</tr>
+</table>
 
 ```text
 https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/AppleTV/AppleTV.list
 ```
 
-# <img src="https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/Picture/icon/shadowrocket.png" width="25" height="25" align="middle" alt="Shadowrocket" /> Shadowrocket
+<table>
+<tr>
+<td valign="middle" width="28"><img src="https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/Picture/icon/shadowrocket.png" width="20" height="20" alt="Shadowrocket" /></td>
+<td valign="middle"><h1>Shadowrocket</h1></td>
+</tr>
+</table>
 
 ```text
 https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Shadowrocket/AppleTV/AppleTV.list
 ```
 
-# <img src="https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/02ProxySoftLogo/Surge(8).png" width="25" height="25" align="middle" alt="Surge" /> Surge
+<table>
+<tr>
+<td valign="middle" width="28"><img src="https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/02ProxySoftLogo/Surge(8).png" width="20" height="20" alt="Surge" /></td>
+<td valign="middle"><h1>Surge</h1></td>
+</tr>
+</table>
 
 ```text
 https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/AppleTV/AppleTV.list
