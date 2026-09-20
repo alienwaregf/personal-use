@@ -934,34 +934,6 @@ def replace_client_sections(
     content: str,
     replacement: str,
 ) -> str:
-    """
-    README 以 Blackmatrix7 上游 README 为母版。
-
-    最终结构：
-
-        上游原始内容
-        ↓
-        # Clash
-        # Loon
-        # QuantumultX
-        # Shadowrocket
-        # Surge
-        ↓
-        上游原始内容：
-        ## 子规则/排除规则
-        ## 数据来源
-        ## 最后
-        ...
-
-    也就是说：
-
-    1. 不删除上游 README 前面的内容。
-    2. 生成完整五个客户端模块。
-    3. 不保留旧的客户端模块。
-    4. 从“子规则/排除规则”开始，
-       后面的上游内容全部原样保留。
-    5. 兼容已经生成过带 Logo 的旧 README。
-    """
 
     lines = content.splitlines(
         keepends=True
@@ -982,17 +954,6 @@ def replace_client_sections(
         if match:
             first_client_index = idx
             break
-
-    # =========================================================
-    # 找到后续上游正文开始的位置
-    #
-    # 一般就是：
-    # ## 子规则/排除规则
-    #
-    # 但同时兼容：
-    # ## 数据来源
-    # ## 最后
-    # =========================================================
 
     preserve_patterns = (
         re.compile(
@@ -1082,29 +1043,12 @@ def replace_client_sections(
             + "\n"
         )
 
-    # =========================================================
-    # 保留客户端模块之前的上游内容
-    #
-    # 例如：
-    # # 🧸 Discord
-    #
-    # ## 前言
-    #
-    # ## 规则统计
-    # =========================================================
 
     prefix = "".join(
         lines[:first_client_index]
     ).rstrip()
 
-    # =========================================================
-    # 保留客户端模块之后的上游内容
-    #
-    # 例如：
-    # ## 子规则/排除规则
-    # ## 数据来源
-    # ## 最后
-    # =========================================================
+ 
 
     suffix = ""
 
@@ -1155,13 +1099,6 @@ def update_readme(
     template_path: Optional[Path] = None,
 ) -> None:
 
-    # =========================================================
-    # 上游规则：
-    # 永远使用 source_repo 中最新上游 README
-    # 作为母版。
-    #
-    # 这样不会在已经修改过的 README 上反复叠加。
-    # =========================================================
 
     if (
         template_path
@@ -1176,8 +1113,6 @@ def update_readme(
 
     elif readme_path.is_file():
 
-        # 自定义规则没有上游模板，
-        # 才使用本地 README。
         content = (
             readme_path.read_text(
                 encoding="utf-8"
