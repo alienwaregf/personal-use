@@ -18,7 +18,7 @@ from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
 META_URL = "https://raw.githubusercontent.com/Bon-Appetit/porn-domains/main/meta.json"
-OUTPUT_PATH = Path("rule/Clash/Adult/Adult.mrs")
+OUTPUT_PATH = Path("rule/Adult/Adult.mrs")
 USER_AGENT = "alienwaregf/personal-use porn-domains updater"
 TIMEOUT = 60
 COMPRESSION_THRESHOLD = 3
@@ -168,7 +168,7 @@ def write_readme(readme_path: Path) -> None:
         "# Clash\n\n"
         "domain\n"
         "```text\n"
-        "https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Adult/Adult.mrs\n"
+        "https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Adult/Adult.mrs\n"
         "```\n",
         encoding="utf-8",
     )
