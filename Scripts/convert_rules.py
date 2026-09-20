@@ -56,6 +56,10 @@ UPSTREAM_INCLUDE_FOLDERS = {
     "GoogleFCM",
     "HBO",
     "Instagram",
+    "iCloud",
+    "iCloudPrivateRelay",
+    "IPTVMainland",
+    "IPTVOther",
     "Lan",
     "Mail",
     "Microsoft",
@@ -84,8 +88,6 @@ UPSTREAM_INCLUDE_FOLDERS = {
     "Wikipedia",
     "Xbox",
     "YouTube",
-    "iCloud",
-    "iCloudPrivateRelay",
 }
 
 
