@@ -52,6 +52,7 @@ UPSTREAM_INCLUDE_FOLDERS = {
     "Gemini",
     "GitHub",
     "Google",
+    "GoogleEarth",
     "GoogleFCM",
     "HBO",
     "Instagram",
