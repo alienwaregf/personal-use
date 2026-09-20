@@ -535,10 +535,11 @@ def update_readme(
     list_filenames: Optional[Dict[str, str]] = None,
     template_path: Optional[Path] = None,
 ) -> None:
-    if readme_path.is_file():
-        content = readme_path.read_text(encoding="utf-8")
-    elif template_path and template_path.is_file():
+    # 上游规则：永远以最新上游 README 为模板。
+    if template_path and template_path.is_file():
         content = template_path.read_text(encoding="utf-8")
+    elif readme_path.is_file():
+        content = readme_path.read_text(encoding="utf-8")
     else:
         content = f"# 🧸 {folder_name}\n"
 
@@ -550,7 +551,12 @@ def update_readme(
         custom,
         list_filenames,
     )
-    readme_path.write_text(replace_client_sections(content, replacement), encoding="utf-8", newline="\n")
+
+    readme_path.write_text(
+        replace_client_sections(content, replacement),
+        encoding="utf-8",
+        newline="\n",
+    )
 
 
 # ================= MRS / 处理单个目录 =================
