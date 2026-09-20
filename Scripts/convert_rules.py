@@ -27,15 +27,29 @@ SOURCE_CLASH_DIR = SOURCE_RULE_DIR / "Clash"
 DEST_RULE_DIR = Path("rule")
 TEMP_DIR = Path("temp_compile")
 
-CLIENTS = ("Clash", "Loon", "QuantumultX", "Shadowrocket", "Surge")
-NON_CLASH_CLIENTS = tuple(c for c in CLIENTS if c != "Clash")
+CLIENTS = (
+    "Clash",
+    "Loon",
+    "QuantumultX",
+    "Shadowrocket",
+    "Surge",
+)
+
+NON_CLASH_CLIENTS = tuple(
+    client for client in CLIENTS
+    if client != "Clash"
+)
+
 RESERVED_DIRS = set(CLIENTS) | {".git"}
 
 UPSTREAM_RAW_RULE_BASE_URL = (
-    "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule"
+    "https://raw.githubusercontent.com/"
+    "blackmatrix7/ios_rule_script/master/rule"
 )
+
 MY_RAW_RULE_BASE_URL = (
-    "https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule"
+    "https://raw.githubusercontent.com/"
+    "alienwaregf/personal-use/main/rule"
 )
 
 UPSTREAM_INCLUDE_FOLDERS = {
@@ -107,12 +121,19 @@ UPSTREAM_INCLUDE_FOLDERS = {
     "YouTube",
 }
 
-# 能匹配：
-# # Clash
-# # Loon
-# ...
-# 以及已经由本脚本生成过的：
-# # <img src="..." width="20" height="20" /> Clash
+
+# ============================================================
+# 客户端标题匹配
+#
+# 兼容：
+#   # Clash
+#   # Loon
+#
+# 以及本脚本已经生成过的：
+#   # <img src="..." width="20" height="20" /> Clash
+#
+# ============================================================
+
 CLIENT_HEADER_RE = re.compile(
     r"^(#{1,6})\s*"
     r"(?:<img\b[^>]*>\s*)?"
@@ -120,31 +141,42 @@ CLIENT_HEADER_RE = re.compile(
     re.I,
 )
 
-# 客户端 Logo
+
+# ================= 客户端 Logo =================
+
 CLIENT_ICONS = {
     "Clash": (
         "https://raw.githubusercontent.com/"
-        "alienwaregf/personal-use/refs/heads/main/Picture/icon/OpenClash.png"
+        "alienwaregf/personal-use/refs/heads/main/"
+        "Picture/icon/OpenClash.png"
     ),
     "Loon": (
         "https://raw.githubusercontent.com/"
-        "lige47/QuanX-icon-rule/main/icon/02ProxySoftLogo/Loon(1).png"
+        "lige47/QuanX-icon-rule/main/"
+        "icon/02ProxySoftLogo/Loon(1).png"
     ),
     "QuantumultX": (
         "https://raw.githubusercontent.com/"
-        "alienwaregf/personal-use/refs/heads/main/Picture/icon/QX.png"
+        "alienwaregf/personal-use/refs/heads/main/"
+        "Picture/icon/QX.png"
     ),
     "Shadowrocket": (
         "https://raw.githubusercontent.com/"
-        "alienwaregf/personal-use/refs/heads/main/Picture/icon/shadowrocket.png"
+        "alienwaregf/personal-use/refs/heads/main/"
+        "Picture/icon/shadowrocket.png"
     ),
     "Surge": (
         "https://raw.githubusercontent.com/"
-        "lige47/QuanX-icon-rule/main/icon/02ProxySoftLogo/Surge(8).png"
+        "lige47/QuanX-icon-rule/main/"
+        "icon/02ProxySoftLogo/Surge(8).png"
     ),
 }
 
-# 目标客户端真正支持、且可以保持语义等价的 Clash rule types。
+
+# ============================================================
+# 目标客户端规则映射
+# ============================================================
+
 CLIENT_TYPE_MAP: Dict[str, Dict[str, str]] = {
     "Loon": {
         "DOMAIN": "DOMAIN",
@@ -155,6 +187,7 @@ CLIENT_TYPE_MAP: Dict[str, Dict[str, str]] = {
         "IP-CIDR": "IP-CIDR",
         "IP-CIDR6": "IP-CIDR6",
     },
+
     "QuantumultX": {
         "DOMAIN": "HOST",
         "DOMAIN-SUFFIX": "HOST-SUFFIX",
@@ -165,6 +198,7 @@ CLIENT_TYPE_MAP: Dict[str, Dict[str, str]] = {
         "IP-CIDR": "IP-CIDR",
         "IP-CIDR6": "IP6-CIDR",
     },
+
     "Shadowrocket": {
         "DOMAIN": "DOMAIN",
         "DOMAIN-SUFFIX": "DOMAIN-SUFFIX",
@@ -175,6 +209,7 @@ CLIENT_TYPE_MAP: Dict[str, Dict[str, str]] = {
         "IP-CIDR": "IP-CIDR",
         "IP-CIDR6": "IP-CIDR",
     },
+
     "Surge": {
         "DOMAIN": "DOMAIN",
         "DOMAIN-SUFFIX": "DOMAIN-SUFFIX",
@@ -197,16 +232,25 @@ def quote_path_part(value: str) -> str:
 
 def strip_yaml_quote(value: object) -> str:
     value = str(value).strip()
-    if len(value) >= 2 and value[0] == value[-1] and value[0] in ("'", '"'):
+
+    if (
+        len(value) >= 2
+        and value[0] == value[-1]
+        and value[0] in ("'", '"')
+    ):
         return value[1:-1].strip()
+
     return value
 
 
-def parse_payload_rule_line(line: object) -> Optional[List[str]]:
+def parse_payload_rule_line(
+    line: object,
+) -> Optional[List[str]]:
     if line is None:
         return None
 
     raw = str(line).strip()
+
     if not raw:
         return None
 
@@ -217,66 +261,114 @@ def parse_payload_rule_line(line: object) -> Optional[List[str]]:
         raw = raw.split(" #", 1)[0].rstrip()
 
     raw = strip_yaml_quote(raw)
+
     if not raw or raw.startswith("#"):
         return None
 
     try:
-        row = next(csv.reader([raw], skipinitialspace=True))
+        row = next(
+            csv.reader(
+                [raw],
+                skipinitialspace=True,
+            )
+        )
     except csv.Error as exc:
-        raise ValueError(f"无法解析 Clash 规则: {raw}") from exc
+        raise ValueError(
+            f"无法解析 Clash 规则: {raw}"
+        ) from exc
 
-    return [strip_yaml_quote(part.strip()) for part in row if part.strip()]
+    return [
+        strip_yaml_quote(part.strip())
+        for part in row
+        if part.strip()
+    ]
 
 
-def load_yaml_payload(filepath: Path) -> List[str]:
+def load_yaml_payload(
+    filepath: Path,
+) -> List[str]:
     try:
-        data = yaml.safe_load(filepath.read_text(encoding="utf-8"))
-        if isinstance(data, dict) and isinstance(data.get("payload"), list):
+        data = yaml.safe_load(
+            filepath.read_text(
+                encoding="utf-8"
+            )
+        )
+
+        if (
+            isinstance(data, dict)
+            and isinstance(data.get("payload"), list)
+        ):
             return [
                 str(item).strip()
                 for item in data["payload"]
-                if item is not None and str(item).strip()
+                if (
+                    item is not None
+                    and str(item).strip()
+                )
             ]
+
         if isinstance(data, list):
             return [
                 str(item).strip()
                 for item in data
-                if item is not None and str(item).strip()
+                if (
+                    item is not None
+                    and str(item).strip()
+                )
             ]
+
     except Exception as exc:
-        print(f"PyYAML 读取失败，改用按行解析: {filepath}")
+        print(
+            f"PyYAML 读取失败，改用按行解析: "
+            f"{filepath}"
+        )
         print(f"原因: {exc}")
 
     payload: List[str] = []
     payload_started = False
 
-    for line in filepath.read_text(encoding="utf-8").splitlines():
+    for line in filepath.read_text(
+        encoding="utf-8"
+    ).splitlines():
+
         stripped = line.strip()
 
         if stripped == "payload:":
             payload_started = True
             continue
 
-        if not payload_started or not stripped.startswith("-"):
+        if (
+            not payload_started
+            or not stripped.startswith("-")
+        ):
             continue
 
-        parsed = parse_payload_rule_line(stripped)
+        parsed = parse_payload_rule_line(
+            stripped
+        )
+
         if parsed:
-            payload.append(",".join(parsed))
+            payload.append(
+                ",".join(parsed)
+            )
 
     return payload
 
 
-def parse_rules(filepath: Path) -> List[List[str]]:
+def parse_rules(
+    filepath: Path,
+) -> List[List[str]]:
     rules: List[List[str]] = []
     seen: Set[Tuple[str, ...]] = set()
 
     for raw in load_yaml_payload(filepath):
         parts = parse_payload_rule_line(raw)
+
         if not parts:
             continue
 
         key = tuple(parts)
+
         if key in seen:
             continue
 
@@ -289,6 +381,7 @@ def parse_rules(filepath: Path) -> List[List[str]]:
 def split_mrs_rules(
     rules: Sequence[Sequence[str]],
 ) -> Tuple[List[str], List[str]]:
+
     domain_rules: List[str] = []
     ip_rules: List[str] = []
 
@@ -309,24 +402,41 @@ def split_mrs_rules(
             result = value
 
         elif rule_type == "DOMAIN-SUFFIX":
-            result = f"+.{value.removeprefix('+.' ).lstrip('.') }"
+            result = (
+                f"+."
+                f"{value.removeprefix('+.').lstrip('.')}"
+            )
 
-        elif rule_type in {"DOMAIN-KEYWORD", "DOMAIN-WILDCARD"}:
+        elif rule_type in {
+            "DOMAIN-KEYWORD",
+            "DOMAIN-WILDCARD",
+        }:
             continue
 
         else:
             result = None
 
-        if result is not None and result not in domain_seen:
+        if (
+            result is not None
+            and result not in domain_seen
+        ):
             domain_seen.add(result)
             domain_rules.append(result)
             continue
 
-        if rule_type in {"IP-CIDR", "IP-CIDR6"}:
+        if rule_type in {
+            "IP-CIDR",
+            "IP-CIDR6",
+        }:
             try:
-                ipaddress.ip_network(value, strict=False)
+                ipaddress.ip_network(
+                    value,
+                    strict=False,
+                )
             except ValueError:
-                raise ValueError(f"非法 CIDR: {','.join(parts)}")
+                raise ValueError(
+                    f"非法 CIDR: {','.join(parts)}"
+                )
 
             if value not in ip_seen:
                 ip_seen.add(value)
@@ -335,20 +445,33 @@ def split_mrs_rules(
     return domain_rules, ip_rules
 
 
-def write_mrs_source_yaml(path: Path, rules: Sequence[str]) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
+def write_mrs_source_yaml(
+    path: Path,
+    rules: Sequence[str],
+) -> None:
 
-    with path.open("w", encoding="utf-8") as fh:
+    path.parent.mkdir(
+        parents=True,
+        exist_ok=True,
+    )
+
+    with path.open(
+        "w",
+        encoding="utf-8",
+    ) as fh:
+
         fh.write("payload:\n")
 
         for rule in rules:
+            dumped = yaml.safe_dump(
+                rule,
+                allow_unicode=True,
+                default_flow_style=True,
+            ).strip()
+
             fh.write(
                 "  - "
-                + yaml.safe_dump(
-                    rule,
-                    allow_unicode=True,
-                    default_flow_style=True,
-                ).strip()
+                + dumped
                 + "\n"
             )
 
@@ -358,12 +481,18 @@ def compile_to_mrs(
     output_path: Path,
     behavior: str,
 ) -> None:
+
     mihomo = shutil.which("mihomo")
 
     if not mihomo:
-        raise RuntimeError("找不到 mihomo 命令")
+        raise RuntimeError(
+            "找不到 mihomo 命令"
+        )
 
-    output_path.parent.mkdir(parents=True, exist_ok=True)
+    output_path.parent.mkdir(
+        parents=True,
+        exist_ok=True,
+    )
 
     command = [
         mihomo,
@@ -384,16 +513,26 @@ def compile_to_mrs(
     if result.returncode != 0:
         details = "\n".join(
             x.strip()
-            for x in (result.stdout, result.stderr)
+            for x in (
+                result.stdout,
+                result.stderr,
+            )
             if x and x.strip()
         )
+
         raise RuntimeError(
-            f"Mihomo 转换失败: {' '.join(command)}\n{details}"
+            f"Mihomo 转换失败: "
+            f"{' '.join(command)}\n"
+            f"{details}"
         )
 
-    if not output_path.exists() or output_path.stat().st_size == 0:
+    if (
+        not output_path.exists()
+        or output_path.stat().st_size == 0
+    ):
         raise RuntimeError(
-            f"Mihomo 未生成有效 MRS: {output_path}"
+            f"Mihomo 未生成有效 MRS: "
+            f"{output_path}"
         )
 
 
@@ -403,9 +542,13 @@ def select_best_yaml(
     folder_path: Path,
     folder_name: str,
 ) -> Optional[Path]:
+
     candidates = [
-        folder_path / f"{folder_name}_Classical.yaml",
-        folder_path / f"{folder_name}.yaml",
+        folder_path
+        / f"{folder_name}_Classical.yaml",
+
+        folder_path
+        / f"{folder_name}.yaml",
     ]
 
     for path in candidates:
@@ -415,20 +558,36 @@ def select_best_yaml(
     yaml_files = sorted(
         path
         for path in folder_path.iterdir()
-        if path.is_file()
-        and path.suffix.lower() in {".yaml", ".yml"}
+        if (
+            path.is_file()
+            and path.suffix.lower()
+            in {".yaml", ".yml"}
+        )
     )
 
-    return yaml_files[0] if yaml_files else None
+    return (
+        yaml_files[0]
+        if yaml_files
+        else None
+    )
 
 
 def find_upstream_list_file(
     client: str,
     folder_name: str,
 ) -> Optional[str]:
-    folder = SOURCE_RULE_DIR / client / folder_name
 
-    preferred = folder / f"{folder_name}.list"
+    folder = (
+        SOURCE_RULE_DIR
+        / client
+        / folder_name
+    )
+
+    preferred = (
+        folder
+        / f"{folder_name}.list"
+    )
+
     if preferred.is_file():
         return preferred.name
 
@@ -438,22 +597,29 @@ def find_upstream_list_file(
     candidates = sorted(
         path
         for path in folder.iterdir()
-        if path.is_file()
-        and path.suffix.lower() == ".list"
+        if (
+            path.is_file()
+            and path.suffix.lower() == ".list"
+        )
     )
 
-    return candidates[0].name if candidates else None
+    if candidates:
+        return candidates[0].name
+
+    return None
 
 
 # ================= 客户端规则转换 =================
 
-def _extra_options(parts: Sequence[str]) -> List[str]:
-    extras = [
+def _extra_options(
+    parts: Sequence[str],
+) -> List[str]:
+
+    return [
         str(x).strip()
         for x in parts[2:]
         if str(x).strip()
     ]
-    return extras
 
 
 def build_client_rule_line(
@@ -461,6 +627,7 @@ def build_client_rule_line(
     client: str,
     policy_name: str,
 ) -> str:
+
     if not parts:
         raise ValueError("空规则")
 
@@ -469,7 +636,8 @@ def build_client_rule_line(
 
     if source_type not in mapping:
         raise ValueError(
-            f"{client} 无法无损表示 Clash 规则类型: {source_type}"
+            f"{client} 无法无损表示 Clash "
+            f"规则类型: {source_type}"
         )
 
     if len(parts) < 2:
@@ -477,7 +645,9 @@ def build_client_rule_line(
             f"规则缺少值: {','.join(parts)}"
         )
 
-    value = strip_yaml_quote(parts[1])
+    value = strip_yaml_quote(
+        parts[1]
+    )
 
     if not value:
         raise ValueError(
@@ -487,20 +657,22 @@ def build_client_rule_line(
     target_type = mapping[source_type]
     extras = _extra_options(parts)
 
-    # Clash rule-set 中只有 no-resolve 这一类附加项
-    # 适合直接继承到这些客户端。
     unsupported_extras = [
-        x for x in extras
+        x
+        for x in extras
         if x != "no-resolve"
     ]
 
     if unsupported_extras:
         raise ValueError(
-            f"{client} 无法确认附加参数的等价语义: "
-            f"{','.join(parts)}"
+            f"{client} 无法确认附加参数的"
+            f"等价语义: {','.join(parts)}"
         )
 
-    fields = [target_type, value]
+    fields = [
+        target_type,
+        value,
+    ]
 
     if client == "QuantumultX":
         fields.append(policy_name)
@@ -526,6 +698,7 @@ def build_client_list(
     rules: Sequence[Sequence[str]],
     client: str,
 ) -> str:
+
     lines: List[str] = []
     mapped_rules: List[str] = []
     counts = Counter()
@@ -537,29 +710,49 @@ def build_client_list(
             folder_name,
         )
 
-        mapped_rules.append(target_line)
+        mapped_rules.append(
+            target_line
+        )
 
         counts[
-            CLIENT_TYPE_MAP[client][parts[0].upper()]
+            CLIENT_TYPE_MAP[client][
+                parts[0].upper()
+            ]
         ] += 1
 
-    lines.extend([
-        f"# NAME: {folder_name}",
-        "# AUTHOR: alienwaregf",
-        "# REPO: https://github.com/alienwaregf/personal-use",
-        (
-            f"# UPDATED: "
-            f"{_dt.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}"
-        ),
-    ])
+    lines.extend(
+        [
+            f"# NAME: {folder_name}",
+            (
+                "# AUTHOR: alienwaregf"
+            ),
+            (
+                "# REPO: "
+                "https://github.com/"
+                "alienwaregf/personal-use"
+            ),
+            (
+                "# UPDATED: "
+                f"{_dt.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}"
+            ),
+        ]
+    )
 
     for key, count in counts.items():
-        lines.append(f"# {key}: {count}")
+        lines.append(
+            f"# {key}: {count}"
+        )
 
-    lines.append(f"# TOTAL: {len(mapped_rules)}")
+    lines.append(
+        f"# TOTAL: {len(mapped_rules)}"
+    )
+
     lines.extend(mapped_rules)
 
-    return "\n".join(lines) + "\n"
+    return (
+        "\n".join(lines)
+        + "\n"
+    )
 
 
 def write_client_lists(
@@ -567,8 +760,12 @@ def write_client_lists(
     folder_name: str,
     rules: Sequence[Sequence[str]],
 ) -> None:
+
     for client in NON_CLASH_CLIENTS:
-        output = folder / f"{client}.list"
+        output = (
+            folder
+            / f"{client}.list"
+        )
 
         output.write_text(
             build_client_list(
@@ -583,12 +780,16 @@ def write_client_lists(
 
 # ================= README =================
 
-def client_heading(client: str) -> str:
+def client_heading(
+    client: str,
+) -> str:
+
     icon = CLIENT_ICONS[client]
 
     return (
         f'# <img src="{icon}" '
-        f'width="20" height="20" alt="{client}" /> {client}\n\n'
+        f'width="20" height="20" '
+        f'alt="{client}" /> {client}\n\n'
     )
 
 
@@ -601,18 +802,30 @@ def build_client_section(
     custom: bool,
     list_filenames: Dict[str, str],
 ) -> str:
-    folder_url = quote_path_part(folder_name)
+
+    folder_url = quote_path_part(
+        folder_name
+    )
 
     parts: List[str] = []
-    parts.append(client_heading(client))
+
+    parts.append(
+        client_heading(client)
+    )
+
+    # =========================================================
+    # Clash
+    # =========================================================
 
     if client == "Clash":
+
         if custom:
             classical_url = (
                 f"{MY_RAW_RULE_BASE_URL}/"
                 f"{folder_url}/"
                 f"{quote_path_part(classical_filename)}"
             )
+
         else:
             classical_url = (
                 f"{UPSTREAM_RAW_RULE_BASE_URL}/"
@@ -648,37 +861,48 @@ def build_client_section(
             "```\n\n"
         )
 
-    else:
-        if custom:
-            filename = list_filenames.get(
-                client,
-                f"{client}.list",
-            )
+        return "".join(parts)
 
-            subscription_url = (
-                f"{MY_RAW_RULE_BASE_URL}/"
-                f"{folder_url}/"
-                f"{quote_path_part(filename)}"
-            )
+    # =========================================================
+    # Loon / QuantumultX / Shadowrocket / Surge
+    # =========================================================
 
-        else:
-            filename = list_filenames.get(client)
+    if custom:
 
-            if not filename:
-                filename = f"{folder_name}.list"
-
-            subscription_url = (
-                f"{UPSTREAM_RAW_RULE_BASE_URL}/"
-                f"{client}/"
-                f"{folder_url}/"
-                f"{quote_path_part(filename)}"
-            )
-
-        parts.append(
-            "```text\n"
-            f"{subscription_url}\n"
-            "```\n\n"
+        filename = list_filenames.get(
+            client,
+            f"{client}.list",
         )
+
+        subscription_url = (
+            f"{MY_RAW_RULE_BASE_URL}/"
+            f"{folder_url}/"
+            f"{quote_path_part(filename)}"
+        )
+
+    else:
+
+        filename = list_filenames.get(
+            client
+        )
+
+        if not filename:
+            filename = (
+                f"{folder_name}.list"
+            )
+
+        subscription_url = (
+            f"{UPSTREAM_RAW_RULE_BASE_URL}/"
+            f"{client}/"
+            f"{folder_url}/"
+            f"{quote_path_part(filename)}"
+        )
+
+    parts.append(
+        "```text\n"
+        f"{subscription_url}\n"
+        "```\n\n"
+    )
 
     return "".join(parts)
 
@@ -689,119 +913,245 @@ def client_section_text(
     has_domain_mrs: bool,
     has_ip_mrs: bool,
     custom: bool,
-    list_filenames: Optional[Dict[str, str]] = None,
-) -> Dict[str, str]:
-    list_filenames = list_filenames or {}
+    list_filenames: Optional[
+        Dict[str, str]
+    ] = None,
+) -> str:
 
-    sections: Dict[str, str] = {}
+    list_filenames = (
+        list_filenames or {}
+    )
+
+    sections: List[str] = []
 
     for client in CLIENTS:
-        sections[client] = build_client_section(
-            client=client,
-            folder_name=folder_name,
-            classical_filename=classical_filename,
-            has_domain_mrs=has_domain_mrs,
-            has_ip_mrs=has_ip_mrs,
-            custom=custom,
-            list_filenames=list_filenames,
+        sections.append(
+            build_client_section(
+                client=client,
+                folder_name=folder_name,
+                classical_filename=classical_filename,
+                has_domain_mrs=has_domain_mrs,
+                has_ip_mrs=has_ip_mrs,
+                custom=custom,
+                list_filenames=list_filenames,
+            ).rstrip()
         )
 
-    return sections
+    return (
+        "\n\n".join(sections)
+    )
 
 
 def replace_client_sections(
     content: str,
-    replacements: Dict[str, str],
+    replacement: str,
 ) -> str:
     """
-    以 Blackmatrix7 上游 README 为完整模板。
+    README 以 Blackmatrix7 上游 README 为母版。
 
-    只替换五个客户端自身的模块：
-      # Clash
-      # Loon
-      # QuantumultX
-      # Shadowrocket
-      # Surge
+    最终结构：
 
-    其余 README 内容全部原样保留，包括：
-      ## 子规则/排除规则
-      ## 数据来源
-      ## 最后
-      以及其他上游正文、统计、说明等。
+        上游原始内容
+        ↓
+        # Clash
+        # Loon
+        # QuantumultX
+        # Shadowrocket
+        # Surge
+        ↓
+        上游原始内容：
+        ## 子规则/排除规则
+        ## 数据来源
+        ## 最后
+        ...
 
-    同时兼容已经由本脚本生成过、标题带 <img> Logo 的 README。
+    也就是说：
+
+    1. 不删除上游 README 前面的内容。
+    2. 生成完整五个客户端模块。
+    3. 不保留旧的客户端模块。
+    4. 从“子规则/排除规则”开始，
+       后面的上游内容全部原样保留。
+    5. 兼容已经生成过带 Logo 的旧 README。
     """
-    lines = content.splitlines(keepends=True)
 
-    starts: List[Tuple[int, int, str]] = []
+    lines = content.splitlines(
+        keepends=True
+    )
+
+    # =========================================================
+    # 找到第一个客户端标题
+    # =========================================================
+
+    first_client_index: Optional[int] = None
 
     for idx, line in enumerate(lines):
-        match = CLIENT_HEADER_RE.match(line.strip())
 
-        if match:
-            level = len(match.group(1))
-            client = match.group(2)
-
-            starts.append(
-                (idx, level, client)
-            )
-
-    if not starts:
-        base = content.rstrip()
-
-        appended_sections = "\n".join(
-            replacements[client].rstrip()
-            for client in CLIENTS
-            if client in replacements
+        match = CLIENT_HEADER_RE.match(
+            line.strip()
         )
 
-        if base:
-            return base + "\n\n" + appended_sections + "\n"
+        if match:
+            first_client_index = idx
+            break
 
-        return appended_sections + "\n"
+    # =========================================================
+    # 找到后续上游正文开始的位置
+    #
+    # 一般就是：
+    # ## 子规则/排除规则
+    #
+    # 但同时兼容：
+    # ## 数据来源
+    # ## 最后
+    # =========================================================
 
-    output: List[str] = []
-    cursor = 0
+    preserve_patterns = (
+        re.compile(
+            r"^##\s+子规则/排除规则\s*$"
+        ),
+        re.compile(
+            r"^##\s+数据来源\s*$"
+        ),
+        re.compile(
+            r"^##\s+最后\s*$"
+        ),
+    )
 
-    for position, (start, level, client) in enumerate(starts):
-        # 保留客户端模块之前的全部原始内容。
-        output.extend(lines[cursor:start])
+    preserve_index: Optional[int] = None
 
-        # 找到当前客户端模块结束位置：
-        # 下一个同级或更高级标题就是边界。
-        end = len(lines)
+    search_start = (
+        first_client_index
+        if first_client_index is not None
+        else 0
+    )
 
-        for idx in range(start + 1, len(lines)):
-            match = re.match(
-                r"^(#+)\s+.*$",
-                lines[idx].strip(),
+    for idx in range(
+        search_start,
+        len(lines),
+    ):
+
+        stripped = lines[idx].strip()
+
+        if any(
+            pattern.match(stripped)
+            for pattern in preserve_patterns
+        ):
+            preserve_index = idx
+            break
+
+    # =========================================================
+    # 如果上游 README 根本没有客户端标题
+    # =========================================================
+
+    if first_client_index is None:
+
+        if preserve_index is not None:
+
+            prefix = "".join(
+                lines[:preserve_index]
+            ).rstrip()
+
+            suffix = "".join(
+                lines[preserve_index:]
+            ).lstrip()
+
+            result_parts: List[str] = []
+
+            if prefix:
+                result_parts.append(
+                    prefix
+                )
+
+            result_parts.append(
+                replacement.rstrip()
             )
 
-            if not match:
-                continue
+            if suffix:
+                result_parts.append(
+                    suffix.rstrip()
+                )
 
-            next_level = len(match.group(1))
+            return (
+                "\n\n".join(
+                    result_parts
+                )
+                + "\n"
+            )
 
-            if next_level <= level:
-                end = idx
-                break
+        base = content.rstrip()
 
-        replacement = replacements.get(client)
+        if base:
+            return (
+                base
+                + "\n\n"
+                + replacement.rstrip()
+                + "\n"
+            )
 
-        if replacement is None:
-            # 理论上不会发生，保留原模块作为安全兜底。
-            output.extend(lines[start:end])
-        else:
-            output.append(replacement.rstrip() + "\n")
+        return (
+            replacement.rstrip()
+            + "\n"
+        )
 
-        cursor = end
+    # =========================================================
+    # 保留客户端模块之前的上游内容
+    #
+    # 例如：
+    # # 🧸 Discord
+    #
+    # ## 前言
+    #
+    # ## 规则统计
+    # =========================================================
 
-    # 保留最后一个客户端模块之后的所有上游内容。
-    output.extend(lines[cursor:])
+    prefix = "".join(
+        lines[:first_client_index]
+    ).rstrip()
 
-    result = "".join(output).rstrip() + "\n"
+    # =========================================================
+    # 保留客户端模块之后的上游内容
+    #
+    # 例如：
+    # ## 子规则/排除规则
+    # ## 数据来源
+    # ## 最后
+    # =========================================================
 
-    return result
+    suffix = ""
+
+    if preserve_index is not None:
+
+        suffix = "".join(
+            lines[preserve_index:]
+        ).lstrip()
+
+    # =========================================================
+    # 最终重新拼接
+    # =========================================================
+
+    result_parts: List[str] = []
+
+    if prefix:
+        result_parts.append(
+            prefix
+        )
+
+    result_parts.append(
+        replacement.rstrip()
+    )
+
+    if suffix:
+        result_parts.append(
+            suffix.rstrip()
+        )
+
+    return (
+        "\n\n".join(
+            result_parts
+        )
+        + "\n"
+    )
 
 
 def update_readme(
@@ -811,31 +1161,48 @@ def update_readme(
     has_domain_mrs: bool,
     has_ip_mrs: bool,
     custom: bool,
-    list_filenames: Optional[Dict[str, str]] = None,
+    list_filenames: Optional[
+        Dict[str, str]
+    ] = None,
     template_path: Optional[Path] = None,
 ) -> None:
+
+    # =========================================================
     # 上游规则：
-    # 永远以最新上游 README 为模板。
+    # 永远使用 source_repo 中最新上游 README
+    # 作为母版。
     #
-    # 这样可以确保：
-    # - 上游新增/修改章节会自动同步
-    # - 本脚本不会以旧版 README 为模板不断叠加修改
-    if template_path and template_path.is_file():
-        content = template_path.read_text(
-            encoding="utf-8"
+    # 这样不会在已经修改过的 README 上反复叠加。
+    # =========================================================
+
+    if (
+        template_path
+        and template_path.is_file()
+    ):
+
+        content = (
+            template_path.read_text(
+                encoding="utf-8"
+            )
         )
 
     elif readme_path.is_file():
-        # 自定义规则没有上游模板时，
-        # 才使用自己已有的 README。
-        content = readme_path.read_text(
-            encoding="utf-8"
+
+        # 自定义规则没有上游模板，
+        # 才使用本地 README。
+        content = (
+            readme_path.read_text(
+                encoding="utf-8"
+            )
         )
 
     else:
-        content = f"# 🧸 {folder_name}\n"
 
-    replacements = client_section_text(
+        content = (
+            f"# 🧸 {folder_name}\n"
+        )
+
+    replacement = client_section_text(
         folder_name=folder_name,
         classical_filename=classical_filename,
         has_domain_mrs=has_domain_mrs,
@@ -846,7 +1213,7 @@ def update_readme(
 
     result = replace_client_sections(
         content,
-        replacements,
+        replacement,
     )
 
     readme_path.write_text(
@@ -862,26 +1229,49 @@ def compile_rule_set(
     folder_name: str,
     source_yaml: Path,
     destination_folder: Path,
-) -> Tuple[bool, bool, List[List[str]]]:
-    rules = parse_rules(source_yaml)
+) -> Tuple[
+    bool,
+    bool,
+    List[List[str]],
+]:
+
+    rules = parse_rules(
+        source_yaml
+    )
 
     if not rules:
         raise RuntimeError(
-            f"未解析出任何有效 Clash 规则: {source_yaml}"
+            "未解析出任何有效 Clash 规则: "
+            f"{source_yaml}"
         )
 
-    domain_rules, ip_rules = split_mrs_rules(rules)
+    domain_rules, ip_rules = (
+        split_mrs_rules(rules)
+    )
 
     destination_folder.mkdir(
         parents=True,
         exist_ok=True,
     )
 
-    has_domain = bool(domain_rules)
-    has_ip = bool(ip_rules)
+    has_domain = bool(
+        domain_rules
+    )
+
+    has_ip = bool(
+        ip_rules
+    )
+
+    # =========================================================
+    # Domain MRS
+    # =========================================================
 
     if has_domain:
-        temp = TEMP_DIR / f"{folder_name}_domain.yaml"
+
+        temp = (
+            TEMP_DIR
+            / f"{folder_name}_domain.yaml"
+        )
 
         write_mrs_source_yaml(
             temp,
@@ -890,19 +1280,33 @@ def compile_rule_set(
 
         compile_to_mrs(
             temp,
-            destination_folder / f"{folder_name}_Domain.mrs",
+            (
+                destination_folder
+                / f"{folder_name}_Domain.mrs"
+            ),
             "domain",
         )
 
     elif (
-        destination_folder / f"{folder_name}_Domain.mrs"
+        destination_folder
+        / f"{folder_name}_Domain.mrs"
     ).exists():
+
         (
-            destination_folder / f"{folder_name}_Domain.mrs"
+            destination_folder
+            / f"{folder_name}_Domain.mrs"
         ).unlink()
 
+    # =========================================================
+    # IP MRS
+    # =========================================================
+
     if has_ip:
-        temp = TEMP_DIR / f"{folder_name}_ip.yaml"
+
+        temp = (
+            TEMP_DIR
+            / f"{folder_name}_ip.yaml"
+        )
 
         write_mrs_source_yaml(
             temp,
@@ -911,27 +1315,46 @@ def compile_rule_set(
 
         compile_to_mrs(
             temp,
-            destination_folder / f"{folder_name}_IP.mrs",
+            (
+                destination_folder
+                / f"{folder_name}_IP.mrs"
+            ),
             "ipcidr",
         )
 
     elif (
-        destination_folder / f"{folder_name}_IP.mrs"
+        destination_folder
+        / f"{folder_name}_IP.mrs"
     ).exists():
+
         (
-            destination_folder / f"{folder_name}_IP.mrs"
+            destination_folder
+            / f"{folder_name}_IP.mrs"
         ).unlink()
 
-    return has_domain, has_ip, rules
+    return (
+        has_domain,
+        has_ip,
+        rules,
+    )
 
 
-def process_upstream_folder(folder_name: str) -> None:
-    source_folder = SOURCE_CLASH_DIR / folder_name
+def process_upstream_folder(
+    folder_name: str,
+) -> None:
+
+    source_folder = (
+        SOURCE_CLASH_DIR
+        / folder_name
+    )
 
     if not source_folder.is_dir():
+
         print(
-            f"跳过上游目录：{source_folder}"
+            f"跳过上游目录："
+            f"{source_folder}"
         )
+
         return
 
     source_yaml = select_best_yaml(
@@ -940,69 +1363,122 @@ def process_upstream_folder(folder_name: str) -> None:
     )
 
     if not source_yaml:
+
         print(
-            f"跳过上游目录，没有 YAML：{folder_name}"
+            "跳过上游目录，没有 YAML："
+            f"{folder_name}"
         )
+
         return
 
-    dest = DEST_RULE_DIR / folder_name
+    dest = (
+        DEST_RULE_DIR
+        / folder_name
+    )
 
     dest.mkdir(
         parents=True,
         exist_ok=True,
     )
 
-    has_domain, has_ip, _rules = compile_rule_set(
-        folder_name,
-        source_yaml,
-        dest,
+    has_domain, has_ip, _rules = (
+        compile_rule_set(
+            folder_name,
+            source_yaml,
+            dest,
+        )
     )
 
-    classical_filename = f"{folder_name}_Classical.yaml"
+    # =========================================================
+    # Clash Classical
+    # =========================================================
+
+    classical_filename = (
+        f"{folder_name}_Classical.yaml"
+    )
 
     if not (
-        source_folder / classical_filename
+        source_folder
+        / classical_filename
     ).is_file():
-        classical_filename = source_yaml.name
+
+        classical_filename = (
+            source_yaml.name
+        )
+
+    # =========================================================
+    # 获取上游客户端规则文件
+    # =========================================================
 
     list_filenames: Dict[str, str] = {}
 
     for client in NON_CLASH_CLIENTS:
-        filename = find_upstream_list_file(
-            client,
-            folder_name,
+
+        filename = (
+            find_upstream_list_file(
+                client,
+                folder_name,
+            )
         )
 
         if filename:
-            list_filenames[client] = filename
+
+            list_filenames[client] = (
+                filename
+            )
 
         else:
+
             raise RuntimeError(
-                f"上游缺少 {client} 规则文件: "
+                "上游缺少 "
+                f"{client} 规则文件: "
                 f"{folder_name}"
             )
 
-    template = source_folder / "README.md"
+    # =========================================================
+    # 使用 Blackmatrix7 README 作为模板
+    # =========================================================
+
+    template = (
+        source_folder
+        / "README.md"
+    )
 
     update_readme(
-        dest / "README.md",
+        DEST_RULE_DIR
+        / folder_name
+        / "README.md",
+
         folder_name,
+
         classical_filename,
+
         has_domain,
+
         has_ip,
+
         custom=False,
+
         list_filenames=list_filenames,
+
         template_path=template,
     )
 
 
-def is_custom_rule_folder(folder: Path) -> bool:
+# ================= 自定义规则 =================
+
+def is_custom_rule_folder(
+    folder: Path,
+) -> bool:
+
     if not folder.is_dir():
         return False
 
     if (
-        folder.name in UPSTREAM_INCLUDE_FOLDERS
-        or folder.name in RESERVED_DIRS
+        folder.name
+        in UPSTREAM_INCLUDE_FOLDERS
+        or folder.name
+        in RESERVED_DIRS
     ):
         return False
 
@@ -1018,25 +1494,34 @@ def is_custom_rule_folder(folder: Path) -> bool:
     )
 
 
-def process_custom_folder(folder: Path) -> None:
+def process_custom_folder(
+    folder: Path,
+) -> None:
+
     folder_name = folder.name
 
-    source_yaml = select_best_yaml(
-        folder,
-        folder_name,
+    source_yaml = (
+        select_best_yaml(
+            folder,
+            folder_name,
+        )
     )
 
     if not source_yaml:
         return
 
-    has_domain, has_ip, rules = compile_rule_set(
-        folder_name,
-        source_yaml,
-        folder,
+    has_domain, has_ip, rules = (
+        compile_rule_set(
+            folder_name,
+            source_yaml,
+            folder,
+        )
     )
 
-    # 四个客户端的规则文件全部直接生成
-    # 在这个自定义规则目录中。
+    # =========================================================
+    # 四个非 Clash 客户端
+    # =========================================================
+
     write_client_lists(
         folder,
         folder_name,
@@ -1059,13 +1544,15 @@ def process_custom_folder(folder: Path) -> None:
     )
 
     print(
-        f"自定义规则完成: {folder_name}"
+        "自定义规则完成: "
+        f"{folder_name}"
     )
 
 
 # ================= 主流程 =================
 
 def ensure_mihomo_available() -> None:
+
     if not shutil.which("mihomo"):
         raise RuntimeError(
             "找不到 mihomo 命令"
@@ -1073,17 +1560,23 @@ def ensure_mihomo_available() -> None:
 
 
 def main() -> None:
-    print("开始执行规则转换...")
 
     print(
-        "上游规则：生成 MRS + README；"
-        "README 以 Blackmatrix7 最新版本为模板，"
-        "只替换客户端模块。"
+        "开始执行规则转换..."
     )
 
     print(
-        "自定义规则：从本地 Clash YAML 生成 "
-        "Loon / QuantumultX / Shadowrocket / Surge 规则文件。"
+        "上游规则：生成 MRS + README；"
+        "README 以 Blackmatrix7 最新版本为母版，"
+        "自动生成 Clash / Loon / QuantumultX / "
+        "Shadowrocket / Surge 五个客户端模块，"
+        "并保留上游其他 README 内容。"
+    )
+
+    print(
+        "自定义规则：从本地 Clash YAML "
+        "生成 Loon / QuantumultX / "
+        "Shadowrocket / Surge 规则文件。"
     )
 
     print(
@@ -1094,9 +1587,13 @@ def main() -> None:
 
     if not SOURCE_CLASH_DIR.is_dir():
         raise RuntimeError(
-            f"找不到上游 Clash 目录: "
+            "找不到上游 Clash 目录: "
             f"{SOURCE_CLASH_DIR}"
         )
+
+    # =========================================================
+    # 临时目录
+    # =========================================================
 
     if TEMP_DIR.exists():
         shutil.rmtree(
@@ -1113,22 +1610,34 @@ def main() -> None:
         exist_ok=True,
     )
 
-    # 先处理固定的 Blackmatrix7 白名单规则。
+    # =========================================================
+    # 处理 Blackmatrix7 上游规则
+    # =========================================================
+
     for folder_name in sorted(
         UPSTREAM_INCLUDE_FOLDERS
     ):
+
         process_upstream_folder(
             folder_name
         )
 
-    # 再扫描 rule/ 下用户自己创建的、
-    # 且确实包含 Clash YAML 的目录。
+    # =========================================================
+    # 处理 rule/ 下用户自己的自定义规则
+    # =========================================================
+
     for folder in sorted(
         DEST_RULE_DIR.iterdir(),
         key=lambda p: p.name.lower(),
     ):
-        if is_custom_rule_folder(folder):
-            process_custom_folder(folder)
+
+        if is_custom_rule_folder(
+            folder
+        ):
+
+            process_custom_folder(
+                folder
+            )
 
     print(
         "\n规则转换完成。"
@@ -1136,9 +1645,12 @@ def main() -> None:
 
 
 if __name__ == "__main__":
+
     try:
         main()
+
     finally:
+
         if TEMP_DIR.exists():
             shutil.rmtree(
                 TEMP_DIR,
