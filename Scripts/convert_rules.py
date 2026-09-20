@@ -1105,32 +1105,21 @@ def update_readme(
 
 
 
-    if (
-        template_path
-        and template_path.is_file()
-    ):
+    if template_path and template_path.is_file():
+    content = template_path.read_text(
+        encoding="utf-8"
+    )
 
-        content = (
-            template_path.read_text(
-                encoding="utf-8"
-            )
-        )
+elif custom:
+    content = f"# 🧸 {folder_name}\n"
 
-    elif readme_path.is_file():
+elif readme_path.is_file():
+    content = readme_path.read_text(
+        encoding="utf-8"
+    )
 
-        # 自定义规则没有上游模板，
-        # 才使用本地 README。
-        content = (
-            readme_path.read_text(
-                encoding="utf-8"
-            )
-        )
-
-    else:
-
-        content = (
-            f"# 🧸 {folder_name}\n"
-        )
+else:
+    content = ""
 
     replacement = client_section_text(
         folder_name=folder_name,
