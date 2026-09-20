@@ -122,6 +122,18 @@ UPSTREAM_INCLUDE_FOLDERS = {
 }
 
 
+# ============================================================
+# 客户端标题匹配
+#
+# 兼容：
+#   # Clash
+#   # Loon
+#
+# 以及本脚本已经生成过的：
+#   # <img src="..." width="20" height="20" /> Clash
+#
+# ============================================================
+
 CLIENT_HEADER_RE = re.compile(
     r"^(#{1,6})\s*"
     r"(?:<img\b[^>]*>\s*)?"
@@ -768,18 +780,16 @@ def write_client_lists(
 
 # ================= README =================
 
-def client_heading(client: str) -> str:
+def client_heading(
+    client: str,
+) -> str:
+
     icon = CLIENT_ICONS[client]
 
     return (
-        '<table>\n'
-        '<tr>\n'
-        f'<td valign="middle" width="28">'
-        f'<img src="{icon}" width="20" height="20" alt="{client}" />'
-        '</td>\n'
-        f'<td valign="middle"><h1>{client}</h1></td>\n'
-        '</tr>\n'
-        '</table>\n\n'
+        f'# <img src="{icon}" '
+        f'width="20" height="20" '
+        f'alt="{client}" /> {client}\n\n'
     )
 
 
@@ -957,6 +967,17 @@ def replace_client_sections(
             first_client_index = idx
             break
 
+    # =========================================================
+    # 找到后续上游正文开始的位置
+    #
+    # 一般就是：
+    # ## 子规则/排除规则
+    #
+    # 但同时兼容：
+    # ## 数据来源
+    # ## 最后
+    # =========================================================
+
     preserve_patterns = (
         re.compile(
             r"^##\s+子规则/排除规则\s*$"
@@ -1045,12 +1066,29 @@ def replace_client_sections(
             + "\n"
         )
 
+    # =========================================================
+    # 保留客户端模块之前的上游内容
+    #
+    # 例如：
+    # # 🧸 Discord
+    #
+    # ## 前言
+    #
+    # ## 规则统计
+    # =========================================================
 
     prefix = "".join(
         lines[:first_client_index]
     ).rstrip()
 
- 
+    # =========================================================
+    # 保留客户端模块之后的上游内容
+    #
+    # 例如：
+    # ## 子规则/排除规则
+    # ## 数据来源
+    # ## 最后
+    # =========================================================
 
     suffix = ""
 
@@ -1101,6 +1139,13 @@ def update_readme(
     template_path: Optional[Path] = None,
 ) -> None:
 
+    # =========================================================
+    # 上游规则：
+    # 永远使用 source_repo 中最新上游 README
+    # 作为母版。
+    #
+    # 这样不会在已经修改过的 README 上反复叠加。
+    # =========================================================
 
     if (
         template_path
@@ -1115,6 +1160,8 @@ def update_readme(
 
     elif readme_path.is_file():
 
+        # 自定义规则没有上游模板，
+        # 才使用本地 README。
         content = (
             readme_path.read_text(
                 encoding="utf-8"
