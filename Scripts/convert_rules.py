@@ -773,7 +773,7 @@ def client_heading(client: str) -> str:
 
     return (
         f'# <img src="{icon}" '
-        f'width="20" height="20" '
+        f'width="25" height="25" '
         f'align="middle" '
         f'alt="{client}" /> {client}\n\n'
     )
