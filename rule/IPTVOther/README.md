@@ -24,12 +24,7 @@ IPTV其他规则由《RULE GENERATOR 规则生成器》自动生成。
 | IP-CIDR | 515  | 
 | TOTAL | 2814  |
 
-<table>
-<tr>
-<td valign="middle" width="28"><img src="https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/Picture/icon/OpenClash.png" width="20" height="20" alt="Clash" /></td>
-<td valign="middle"><h1>Clash</h1></td>
-</tr>
-</table>
+# <img src="https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/Picture/icon/OpenClash.png" width="25" height="25" alt="Clash" /> Clash
 
 domain
 ```text
@@ -46,45 +41,25 @@ classical
 https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/IPTVOther/IPTVOther_Classical.yaml
 ```
 
-<table>
-<tr>
-<td valign="middle" width="28"><img src="https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/02ProxySoftLogo/Loon(1).png" width="20" height="20" alt="Loon" /></td>
-<td valign="middle"><h1>Loon</h1></td>
-</tr>
-</table>
+# <img src="https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/02ProxySoftLogo/Loon(1).png" width="25" height="25" alt="Loon" /> Loon
 
 ```text
 https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Loon/IPTVOther/IPTVOther.list
 ```
 
-<table>
-<tr>
-<td valign="middle" width="28"><img src="https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/Picture/icon/QX.png" width="20" height="20" alt="QuantumultX" /></td>
-<td valign="middle"><h1>QuantumultX</h1></td>
-</tr>
-</table>
+# <img src="https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/Picture/icon/QX.png" width="25" height="25" alt="QuantumultX" /> QuantumultX
 
 ```text
 https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/IPTVOther/IPTVOther.list
 ```
 
-<table>
-<tr>
-<td valign="middle" width="28"><img src="https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/Picture/icon/shadowrocket.png" width="20" height="20" alt="Shadowrocket" /></td>
-<td valign="middle"><h1>Shadowrocket</h1></td>
-</tr>
-</table>
+# <img src="https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/Picture/icon/shadowrocket.png" width="25" height="25" alt="Shadowrocket" /> Shadowrocket
 
 ```text
 https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Shadowrocket/IPTVOther/IPTVOther.list
 ```
 
-<table>
-<tr>
-<td valign="middle" width="28"><img src="https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/02ProxySoftLogo/Surge(8).png" width="20" height="20" alt="Surge" /></td>
-<td valign="middle"><h1>Surge</h1></td>
-</tr>
-</table>
+# <img src="https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/02ProxySoftLogo/Surge(8).png" width="25" height="25" alt="Surge" /> Surge
 
 ```text
 https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/IPTVOther/IPTVOther.list

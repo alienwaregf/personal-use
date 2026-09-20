@@ -22,12 +22,7 @@ Gemini规则由《RULE GENERATOR 规则生成器》自动生成。
 | DOMAIN-SUFFIX | 7  | 
 | TOTAL | 13  |
 
-<table>
-<tr>
-<td valign="middle" width="28"><img src="https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/Picture/icon/OpenClash.png" width="20" height="20" alt="Clash" /></td>
-<td valign="middle"><h1>Clash</h1></td>
-</tr>
-</table>
+# <img src="https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/Picture/icon/OpenClash.png" width="25" height="25" alt="Clash" /> Clash
 
 domain
 ```text
@@ -39,45 +34,25 @@ classical
 https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Gemini/Gemini.yaml
 ```
 
-<table>
-<tr>
-<td valign="middle" width="28"><img src="https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/02ProxySoftLogo/Loon(1).png" width="20" height="20" alt="Loon" /></td>
-<td valign="middle"><h1>Loon</h1></td>
-</tr>
-</table>
+# <img src="https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/02ProxySoftLogo/Loon(1).png" width="25" height="25" alt="Loon" /> Loon
 
 ```text
 https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Loon/Gemini/Gemini.list
 ```
 
-<table>
-<tr>
-<td valign="middle" width="28"><img src="https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/Picture/icon/QX.png" width="20" height="20" alt="QuantumultX" /></td>
-<td valign="middle"><h1>QuantumultX</h1></td>
-</tr>
-</table>
+# <img src="https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/Picture/icon/QX.png" width="25" height="25" alt="QuantumultX" /> QuantumultX
 
 ```text
 https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/Gemini/Gemini.list
 ```
 
-<table>
-<tr>
-<td valign="middle" width="28"><img src="https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/Picture/icon/shadowrocket.png" width="20" height="20" alt="Shadowrocket" /></td>
-<td valign="middle"><h1>Shadowrocket</h1></td>
-</tr>
-</table>
+# <img src="https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/Picture/icon/shadowrocket.png" width="25" height="25" alt="Shadowrocket" /> Shadowrocket
 
 ```text
 https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Shadowrocket/Gemini/Gemini.list
 ```
 
-<table>
-<tr>
-<td valign="middle" width="28"><img src="https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/02ProxySoftLogo/Surge(8).png" width="20" height="20" alt="Surge" /></td>
-<td valign="middle"><h1>Surge</h1></td>
-</tr>
-</table>
+# <img src="https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/02ProxySoftLogo/Surge(8).png" width="25" height="25" alt="Surge" /> Surge
 
 ```text
 https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Gemini/Gemini.list
