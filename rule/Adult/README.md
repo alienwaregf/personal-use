@@ -1,4 +1,4 @@
-# <img src="https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/Picture/icon/OpenClash.png" width="25" height="25" alt="Clash" /> Clash
+# <img src="https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/Picture/icon/OpenClash.png" width="50" height="50" alt="Clash" /> Clash
 
 domain
 ```text
