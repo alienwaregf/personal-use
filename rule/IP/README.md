@@ -33,3 +33,27 @@ https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/IP/Shadowro
 ```text
 https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/IP/Surge.list
 ```
+
+# Loon
+
+```text
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/IP/Loon.list
+```
+
+# QuantumultX
+
+```text
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/IP/QuantumultX.list
+```
+
+# Shadowrocket
+
+```text
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/IP/Shadowrocket.list
+```
+
+# Surge
+
+```text
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/IP/Surge.list
+```

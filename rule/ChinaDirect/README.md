@@ -33,3 +33,27 @@ https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/ChinaDirect
 ```text
 https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/ChinaDirect/Surge.list
 ```
+
+# Loon
+
+```text
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/ChinaDirect/Loon.list
+```
+
+# QuantumultX
+
+```text
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/ChinaDirect/QuantumultX.list
+```
+
+# Shadowrocket
+
+```text
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/ChinaDirect/Shadowrocket.list
+```
+
+# Surge
+
+```text
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/ChinaDirect/Surge.list
+```

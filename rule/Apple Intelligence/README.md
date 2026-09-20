@@ -33,3 +33,27 @@ https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Apple%20Int
 ```text
 https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Apple%20Intelligence/Surge.list
 ```
+
+# Loon
+
+```text
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Apple%20Intelligence/Loon.list
+```
+
+# QuantumultX
+
+```text
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Apple%20Intelligence/QuantumultX.list
+```
+
+# Shadowrocket
+
+```text
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Apple%20Intelligence/Shadowrocket.list
+```
+
+# Surge
+
+```text
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Apple%20Intelligence/Surge.list
+```
