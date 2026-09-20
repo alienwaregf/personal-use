@@ -19,7 +19,7 @@ from urllib.request import Request, urlopen
 
 META_URL = "https://raw.githubusercontent.com/Bon-Appetit/porn-domains/main/meta.json"
 OUTPUT_PATH = Path("rule/Adult/Adult.mrs")
-ADULT_YAML_PATH = Path("Adult.yaml")
+ADULT_YAML_PATH = Path("rule/Adult/Adult.yaml")
 ADULT_README_PATH = Path("rule/Adult/README.md")
 USER_AGENT = "alienwaregf/personal-use porn-domains updater"
 TIMEOUT = 60
