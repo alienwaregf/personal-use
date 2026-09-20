@@ -1,32 +1,42 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+from __future__ import annotations
+
+import csv
+import datetime as _dt
+import ipaddress
 import os
 import re
 import shutil
 import subprocess
-import ipaddress
 import sys
-from typing import Dict, List, Optional, Set, Tuple
+from collections import Counter
+from pathlib import Path
+from io import StringIO
+from typing import Dict, Iterable, List, Optional, Sequence, Set, Tuple
+from urllib.parse import quote
 
 import yaml
 
 
 # ================= 核心配置 =================
 
-SOURCE_RULE_DIR = os.path.join("source_repo", "rule")
-SOURCE_CLASH_DIR = os.path.join(SOURCE_RULE_DIR, "Clash")
-
-DEST_RULE_DIR = "rule"
+SOURCE_RULE_DIR = Path("source_repo/rule")
+SOURCE_CLASH_DIR = SOURCE_RULE_DIR / "Clash"
+DEST_RULE_DIR = Path("rule")
+TEMP_DIR = Path("temp_compile")
 
 CLIENTS = ("Clash", "Loon", "QuantumultX", "Shadowrocket", "Surge")
-NON_CLASH_CLIENTS = tuple(client for client in CLIENTS if client != "Clash")
+NON_CLASH_CLIENTS = tuple(c for c in CLIENTS if c != "Clash")
+RESERVED_DIRS = set(CLIENTS) | {".git"}
 
-TEMP_DIR = "temp_compile"
-
-MY_REPO_URL = "https://github.com/alienwaregf/personal-use/tree/main/rule"
-RAW_MRS_BASE_URL = "https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule"
-UPSTREAM_RAW_RULE_BASE_URL = "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule"
+UPSTREAM_RAW_RULE_BASE_URL = (
+    "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule"
+)
+MY_RAW_RULE_BASE_URL = (
+    "https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule"
+)
 
 UPSTREAM_INCLUDE_FOLDERS = {
     "Advertising",
@@ -97,984 +107,597 @@ UPSTREAM_INCLUDE_FOLDERS = {
     "YouTube",
 }
 
+CLIENT_HEADER_RE = re.compile(r"^(#{1,6})\s*(Clash|Loon|QuantumultX|Shadowrocket|Surge)\s*$", re.I)
+
+# 目标客户端真正支持、且可以保持语义等价的 Clash rule types。
+CLIENT_TYPE_MAP: Dict[str, Dict[str, str]] = {
+    "Loon": {
+        "DOMAIN": "DOMAIN",
+        "DOMAIN-SUFFIX": "DOMAIN-SUFFIX",
+        "DOMAIN-KEYWORD": "DOMAIN-KEYWORD",
+        "USER-AGENT": "USER-AGENT",
+        "URL-REGEX": "URL-REGEX",
+        "IP-CIDR": "IP-CIDR",
+        "IP-CIDR6": "IP-CIDR6",
+    },
+    "QuantumultX": {
+        "DOMAIN": "HOST",
+        "DOMAIN-SUFFIX": "HOST-SUFFIX",
+        "DOMAIN-KEYWORD": "HOST-KEYWORD",
+        "DOMAIN-WILDCARD": "HOST-WILDCARD",
+        "USER-AGENT": "USER-AGENT",
+        "URL-REGEX": "URL-REGEX",
+        "IP-CIDR": "IP-CIDR",
+        "IP-CIDR6": "IP6-CIDR",
+    },
+    "Shadowrocket": {
+        "DOMAIN": "DOMAIN",
+        "DOMAIN-SUFFIX": "DOMAIN-SUFFIX",
+        "DOMAIN-KEYWORD": "DOMAIN-KEYWORD",
+        "DOMAIN-WILDCARD": "DOMAIN-WILDCARD",
+        "USER-AGENT": "USER-AGENT",
+        "URL-REGEX": "URL-REGEX",
+        "IP-CIDR": "IP-CIDR",
+        "IP-CIDR6": "IP-CIDR",
+    },
+    "Surge": {
+        "DOMAIN": "DOMAIN",
+        "DOMAIN-SUFFIX": "DOMAIN-SUFFIX",
+        "DOMAIN-KEYWORD": "DOMAIN-KEYWORD",
+        "DOMAIN-WILDCARD": "DOMAIN-WILDCARD",
+        "USER-AGENT": "USER-AGENT",
+        "URL-REGEX": "URL-REGEX",
+        "IP-CIDR": "IP-CIDR",
+        "IP-CIDR6": "IP-CIDR6",
+        "PROCESS-NAME": "PROCESS-NAME",
+    },
+}
+
 
 # ================= 通用工具 =================
 
-def strip_yaml_quote(value) -> str:
-    value = str(value).strip()
+def quote_path_part(value: str) -> str:
+    return quote(str(value), safe="")
 
+
+def strip_yaml_quote(value: object) -> str:
+    value = str(value).strip()
     if len(value) >= 2 and value[0] == value[-1] and value[0] in ("'", '"'):
         return value[1:-1].strip()
-
     return value
 
 
-def remove_inline_comment(value: str) -> str:
-    value = str(value).strip()
-
-    if " #" in value:
-        value = value.split(" #", 1)[0].strip()
-
-    return value
-
-
-def ensure_mihomo_available() -> bool:
-    if shutil.which("mihomo"):
-        return True
-
-    print("严重错误: 找不到 mihomo 命令。请确认 GitHub Actions 或本地环境已安装 mihomo。")
-    return False
-
-
-# ================= YAML / 规则解析 =================
-
-def parse_payload_rule_line(line) -> Optional[List[str]]:
+def parse_payload_rule_line(line: object) -> Optional[List[str]]:
     if line is None:
         return None
 
     raw = str(line).strip()
-
     if not raw:
         return None
 
     if raw.startswith("-"):
         raw = raw[1:].strip()
 
-    raw = strip_yaml_quote(raw)
-    raw = remove_inline_comment(raw)
+    if " #" in raw:
+        raw = raw.split(" #", 1)[0].rstrip()
 
+    raw = strip_yaml_quote(raw)
     if not raw or raw.startswith("#"):
         return None
 
-    parts = [strip_yaml_quote(p.strip()) for p in raw.split(",")]
-    parts = [p for p in parts if p != ""]
-
-    if not parts:
-        return None
-
-    return parts
-
-
-def load_yaml_payload(filepath: str) -> List[str]:
-    payload = []
-
     try:
-        with open(filepath, "r", encoding="utf-8") as f:
-            data = yaml.safe_load(f)
+        row = next(csv.reader([raw], skipinitialspace=True))
+    except csv.Error as exc:
+        raise ValueError(f"无法解析 Clash 规则: {raw}") from exc
 
+    return [strip_yaml_quote(part.strip()) for part in row if part.strip()]
+
+
+def load_yaml_payload(filepath: Path) -> List[str]:
+    try:
+        data = yaml.safe_load(filepath.read_text(encoding="utf-8"))
         if isinstance(data, dict) and isinstance(data.get("payload"), list):
-            for item in data["payload"]:
-                if item is None:
-                    continue
-
-                item = str(item).strip()
-
-                if item:
-                    payload.append(item)
-
-            return payload
-
+            return [str(item).strip() for item in data["payload"] if item is not None and str(item).strip()]
         if isinstance(data, list):
-            for item in data:
-                if item is None:
-                    continue
-
-                item = str(item).strip()
-
-                if item:
-                    payload.append(item)
-
-            return payload
-
-    except Exception as e:
+            return [str(item).strip() for item in data if item is not None and str(item).strip()]
+    except Exception as exc:
         print(f"PyYAML 读取失败，改用按行解析: {filepath}")
-        print(f"原因: {e}")
+        print(f"原因: {exc}")
 
-    try:
-        with open(filepath, "r", encoding="utf-8") as f:
-            payload_started = False
-
-            for line in f:
-                stripped = line.strip()
-
-                if stripped == "payload:":
-                    payload_started = True
-                    continue
-
-                if not payload_started:
-                    continue
-
-                if not stripped.startswith("-"):
-                    continue
-
-                parts = parse_payload_rule_line(stripped)
-
-                if not parts:
-                    continue
-
-                payload.append(",".join(parts))
-
-    except Exception as e:
-        print(f"读取 {filepath} 时出错: {e}")
-
+    payload: List[str] = []
+    payload_started = False
+    for line in filepath.read_text(encoding="utf-8").splitlines():
+        stripped = line.strip()
+        if stripped == "payload:":
+            payload_started = True
+            continue
+        if not payload_started or not stripped.startswith("-"):
+            continue
+        parsed = parse_payload_rule_line(stripped)
+        if parsed:
+            payload.append(",".join(parsed))
     return payload
 
 
-# ================= Domain / IP 规则规范化 =================
+def parse_rules(filepath: Path) -> List[List[str]]:
+    rules: List[List[str]] = []
+    seen: Set[Tuple[str, ...]] = set()
 
-def normalize_domain_rule(parts: List[str]) -> Optional[str]:
-    """
-    Clash Classical -> Mihomo domain MRS:
-      DOMAIN          -> example.com
-      DOMAIN-SUFFIX   -> +.example.com
-      DOMAIN-KEYWORD  -> 跳过
-      DOMAIN-WILDCARD -> 跳过，保留在 Classical.yaml
-    """
-    if not parts:
-        return None
-
-    rule_type = parts[0].strip().upper()
-
-    if len(parts) < 2:
-        return None
-
-    value = parts[1].strip()
-    value = strip_yaml_quote(value)
-
-    if not value:
-        return None
-
-    if rule_type == "DOMAIN":
-        return value
-
-    if rule_type == "DOMAIN-SUFFIX":
-        value = value.strip()
-        value = value.removeprefix("+.")
-        value = value.lstrip(".")
-
-        if not value:
-            return None
-
-        return f"+.{value}"
-
-    if rule_type == "DOMAIN-KEYWORD":
-        return None
-
-    if rule_type == "DOMAIN-WILDCARD":
-        return None
-
-    return None
-
-
-def normalize_ipcidr_rule(parts: List[str]) -> Optional[str]:
-    if not parts:
-        return None
-
-    rule_type = parts[0].strip().upper()
-
-    if rule_type not in ("IP-CIDR", "IP-CIDR6"):
-        return None
-
-    if len(parts) < 2:
-        return None
-
-    cidr = parts[1].strip()
-    cidr = strip_yaml_quote(cidr)
-
-    if not cidr:
-        return None
-
-    try:
-        ipaddress.ip_network(cidr, strict=False)
-    except ValueError:
-        print(f"跳过非法 CIDR: {','.join(parts)}")
-        return None
-
-    return cidr
-
-
-def split_yaml_payload(filepath: str) -> Tuple[List[str], List[str]]:
-    domain_rules = []
-    ip_rules = []
-    domain_seen = set()
-    ip_seen = set()
-
-    raw_payload = load_yaml_payload(filepath)
-
-    for raw_rule in raw_payload:
-        parts = parse_payload_rule_line(raw_rule)
-
+    for raw in load_yaml_payload(filepath):
+        parts = parse_payload_rule_line(raw)
         if not parts:
             continue
+        key = tuple(parts)
+        if key in seen:
+            continue
+        seen.add(key)
+        rules.append(parts)
 
-        domain_value = normalize_domain_rule(parts)
+    return rules
 
-        if domain_value:
-            if domain_value not in domain_seen:
-                domain_seen.add(domain_value)
-                domain_rules.append(domain_value)
 
+def split_mrs_rules(rules: Sequence[Sequence[str]]) -> Tuple[List[str], List[str]]:
+    domain_rules: List[str] = []
+    ip_rules: List[str] = []
+    domain_seen: Set[str] = set()
+    ip_seen: Set[str] = set()
+
+    for parts in rules:
+        if len(parts) < 2:
+            continue
+        rule_type = parts[0].upper()
+        value = strip_yaml_quote(parts[1])
+        if not value:
             continue
 
-        ip_value = normalize_ipcidr_rule(parts)
-
-        if ip_value:
-            if ip_value not in ip_seen:
-                ip_seen.add(ip_value)
-                ip_rules.append(ip_value)
-
+        if rule_type == "DOMAIN":
+            result = value
+        elif rule_type == "DOMAIN-SUFFIX":
+            result = f"+.{value.removeprefix('+.' ).lstrip('.') }"
+        elif rule_type in {"DOMAIN-KEYWORD", "DOMAIN-WILDCARD"}:
             continue
+        else:
+            result = None
+
+        if result is not None and result not in domain_seen:
+            domain_seen.add(result)
+            domain_rules.append(result)
+            continue
+
+        if rule_type in {"IP-CIDR", "IP-CIDR6"}:
+            try:
+                ipaddress.ip_network(value, strict=False)
+            except ValueError:
+                raise ValueError(f"非法 CIDR: {','.join(parts)}")
+            if value not in ip_seen:
+                ip_seen.add(value)
+                ip_rules.append(value)
 
     return domain_rules, ip_rules
 
 
-# ================= MRS 编译 =================
-
-def write_mrs_source_yaml(path: str, rules: List[str]) -> None:
-    os.makedirs(os.path.dirname(path), exist_ok=True)
-
-    with open(path, "w", encoding="utf-8") as f:
-        f.write("payload:\n")
-
+def write_mrs_source_yaml(path: Path, rules: Sequence[str]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("w", encoding="utf-8") as fh:
+        fh.write("payload:\n")
         for rule in rules:
-            safe_rule = str(rule).replace("'", "''")
-            f.write(f"  - '{safe_rule}'\n")
+            fh.write("  - " + yaml.safe_dump(rule, allow_unicode=True, default_flow_style=True).strip() + "\n")
 
 
-def compile_to_mrs(temp_yaml_path: str, out_mrs_path: str, behavior: str) -> bool:
-    os.makedirs(os.path.dirname(out_mrs_path), exist_ok=True)
+def compile_to_mrs(temp_yaml_path: Path, output_path: Path, behavior: str) -> None:
+    mihomo = shutil.which("mihomo")
+    if not mihomo:
+        raise RuntimeError("找不到 mihomo 命令")
 
-    cmd = [
-        "mihomo",
-        "convert-ruleset",
-        behavior,
-        "yaml",
-        temp_yaml_path,
-        out_mrs_path,
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    command = [mihomo, "convert-ruleset", behavior, "yaml", str(temp_yaml_path), str(output_path)]
+    result = subprocess.run(command, capture_output=True, text=True, check=False)
+    if result.returncode != 0:
+        details = "\n".join(x.strip() for x in (result.stdout, result.stderr) if x and x.strip())
+        raise RuntimeError(f"Mihomo 转换失败: {' '.join(command)}\n{details}")
+    if not output_path.exists() or output_path.stat().st_size == 0:
+        raise RuntimeError(f"Mihomo 未生成有效 MRS: {output_path}")
+
+
+# ================= 文件选择 =================
+
+def select_best_yaml(folder_path: Path, folder_name: str) -> Optional[Path]:
+    candidates = [
+        folder_path / f"{folder_name}_Classical.yaml",
+        folder_path / f"{folder_name}.yaml",
     ]
+    for path in candidates:
+        if path.is_file():
+            return path
 
-    try:
-        subprocess.run(
-            cmd,
-            check=True,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
-            text=True,
+    yaml_files = sorted(
+        path for path in folder_path.iterdir()
+        if path.is_file() and path.suffix.lower() in {".yaml", ".yml"}
+    )
+    return yaml_files[0] if yaml_files else None
+
+
+def find_upstream_list_file(client: str, folder_name: str) -> Optional[str]:
+    folder = SOURCE_RULE_DIR / client / folder_name
+    preferred = folder / f"{folder_name}.list"
+    if preferred.is_file():
+        return preferred.name
+
+    if not folder.is_dir():
+        return None
+
+    candidates = sorted(path for path in folder.iterdir() if path.is_file() and path.suffix.lower() == ".list")
+    return candidates[0].name if candidates else None
+
+
+# ================= 客户端规则转换 =================
+
+def _extra_options(parts: Sequence[str]) -> List[str]:
+    extras = [str(x).strip() for x in parts[2:] if str(x).strip()]
+    return extras
+
+
+def build_client_rule_line(parts: Sequence[str], client: str, policy_name: str) -> str:
+    if not parts:
+        raise ValueError("空规则")
+
+    source_type = parts[0].upper()
+    mapping = CLIENT_TYPE_MAP[client]
+
+    if source_type not in mapping:
+        raise ValueError(f"{client} 无法无损表示 Clash 规则类型: {source_type}")
+
+    if len(parts) < 2:
+        raise ValueError(f"规则缺少值: {','.join(parts)}")
+
+    value = strip_yaml_quote(parts[1])
+    if not value:
+        raise ValueError(f"规则值为空: {','.join(parts)}")
+
+    target_type = mapping[source_type]
+    extras = _extra_options(parts)
+
+    # Clash rule-set 中只有 no-resolve 这一类附加项适合直接继承到这些客户端。
+    unsupported_extras = [x for x in extras if x != "no-resolve"]
+    if unsupported_extras:
+        raise ValueError(
+            f"{client} 无法确认附加参数的等价语义: {','.join(parts)}"
         )
 
-        print(f"编译成功: {out_mrs_path}")
-        return True
+    fields = [target_type, value]
 
-    except FileNotFoundError:
-        print("严重错误: 找不到 mihomo 命令。请确认 GitHub Actions 或本地环境已安装 mihomo。")
-        return False
+    if client == "QuantumultX":
+        fields.append(policy_name)
 
-    except subprocess.CalledProcessError as e:
-        print(f"编译失败: {out_mrs_path}")
-        print(f"命令: {' '.join(cmd)}")
+    if "no-resolve" in extras:
+        fields.append("no-resolve")
 
-        if e.stdout:
-            print("stdout:")
-            print(e.stdout)
-
-        if e.stderr:
-            print("stderr:")
-            print(e.stderr)
-
-        return False
+    buffer = StringIO()
+    writer = csv.writer(buffer, lineterminator="", quoting=csv.QUOTE_MINIMAL)
+    writer.writerow(fields)
+    return buffer.getvalue()
 
 
-# ================= README 处理 =================
+def build_client_list(folder_name: str, rules: Sequence[Sequence[str]], client: str) -> str:
+    lines: List[str] = []
+    mapped_rules: List[str] = []
+    counts = Counter()
 
-def build_child_readme_replacement(
-    folder_name: str,
-    classical_filename: str,
-    has_domain_mrs: bool = True,
-    has_ip_mrs: bool = True,
-) -> str:
-    """
-    生成客户端订阅模块。
+    for parts in rules:
+        target_line = build_client_rule_line(parts, client, folder_name)
+        mapped_rules.append(target_line)
+        counts[CLIENT_TYPE_MAP[client][parts[0].upper()]] += 1
 
-    只有 Clash 的 Domain/IP MRS 使用个人仓库；
-    Clash Classical、Loon、QuantumultX、Shadowrocket、Surge 全部使用
-    Blackmatrix7 原版订阅地址。
-    """
-    parts = []
-
-    parts.append("# Clash\n\n")
-
-    if has_domain_mrs:
-        parts.extend([
-            "domain\n",
-            "```text\n",
-            f"{RAW_MRS_BASE_URL}/{folder_name}/{folder_name}_Domain.mrs\n",
-            "```\n\n",
-        ])
-
-    if has_ip_mrs:
-        parts.extend([
-            "ipcidr\n",
-            "```text\n",
-            f"{RAW_MRS_BASE_URL}/{folder_name}/{folder_name}_IP.mrs\n",
-            "```\n\n",
-        ])
-
-    parts.extend([
-        "classical\n",
-        "```text\n",
-        f"{UPSTREAM_RAW_RULE_BASE_URL}/Clash/{folder_name}/{classical_filename}\n",
-        "```\n\n",
+    lines.extend([
+        f"# NAME: {folder_name}",
+        "# AUTHOR: alienwaregf",
+        "# REPO: https://github.com/alienwaregf/personal-use",
+        f"# UPDATED: {_dt.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}",
     ])
 
-    for client in ("Loon", "QuantumultX", "Shadowrocket", "Surge"):
-        parts.extend([
-            f"# {client}\n\n",
-            "subscription\n",
-            "```text\n",
-            f"{UPSTREAM_RAW_RULE_BASE_URL}/{client}/{folder_name}/{folder_name}.list\n",
-            "```\n\n",
-        ])
+    for key, count in counts.items():
+        lines.append(f"# {key}: {count}")
 
-    return "".join(parts)
+    lines.append(f"# TOTAL: {len(mapped_rules)}")
+    lines.extend(mapped_rules)
+    return "\n".join(lines) + "\n"
 
 
-def replace_clash_section(content: str, replacement: str) -> str:
-    """只替换上游 README 的 Clash 模块，其他正文原样保留。"""
-    match = re.search(r"(?m)^##\s+Clash\s*$", content)
-
-    if not match:
-        suffix = content.rstrip() + "\n\n"
-        return suffix + replacement.rstrip() + "\n"
-
-    next_section = re.search(r"(?m)^##\s+", content[match.end():])
-
-    start = match.start()
-    if next_section:
-        end = match.end() + next_section.start()
-    else:
-        end = len(content)
-
-    prefix = content[:start].rstrip() + "\n\n"
-    suffix = content[end:].lstrip("\n")
-
-    result = prefix + replacement.rstrip() + "\n\n"
-    if suffix:
-        result += suffix
-
-    return result
+def write_client_lists(folder: Path, folder_name: str, rules: Sequence[Sequence[str]]) -> None:
+    for client in NON_CLASH_CLIENTS:
+        output = folder / f"{client}.list"
+        output.write_text(build_client_list(folder_name, rules, client), encoding="utf-8", newline="\n")
 
 
-def write_child_readme(
-    readme_path: str,
-    upstream_readme_path: str,
+# ================= README =================
+
+def client_section_text(
     folder_name: str,
     classical_filename: str,
     has_domain_mrs: bool,
     has_ip_mrs: bool,
-) -> None:
-    os.makedirs(os.path.dirname(readme_path), exist_ok=True)
-
-    if os.path.isfile(upstream_readme_path):
-        with open(upstream_readme_path, "r", encoding="utf-8") as f:
-            upstream_content = f.read()
-    else:
-        upstream_content = f"# {folder_name}\n"
-
-    replacement = build_child_readme_replacement(
-        folder_name,
-        classical_filename,
-        has_domain_mrs=has_domain_mrs,
-        has_ip_mrs=has_ip_mrs,
-    )
-    content = replace_clash_section(upstream_content, replacement)
-
-    with open(readme_path, "w", encoding="utf-8") as f:
-        f.write(content)
-
-
-# ================= README 处理：根目录链接 =================
-
-def extract_folder_from_url(url: str) -> Optional[str]:
-    if not url:
-        return None
-
-    url = str(url).strip().strip("\"'")
-
-    if (
-        url.startswith("#")
-        or url.startswith("mailto:")
-        or url.startswith("javascript:")
-    ):
-        return None
-
-    prefixes = [
-        MY_REPO_URL + "/",
-        RAW_MRS_BASE_URL + "/",
-        "https://github.com/blackmatrix7/ios_rule_script/tree/master/rule/Clash/",
-        "https://github.com/blackmatrix7/ios_rule_script/blob/master/rule/Clash/",
-        "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/",
-    ]
-
-    for prefix in prefixes:
-        if url.startswith(prefix):
-            rest = url[len(prefix):].strip("/")
-
-            if rest:
-                return rest.split("/", 1)[0]
-
-            return None
-
-    if url.startswith("./"):
-        rest = url[2:].strip("/")
-
-        if rest:
-            return rest.split("/", 1)[0]
-
-        return None
-
-    if not url.startswith("http://") and not url.startswith("https://"):
-        rest = url.strip("/")
-
-        if (
-            rest
-            and not rest.startswith("../")
-            and rest != "."
-            and "/" not in rest
-            and not rest.lower().endswith(
-                (".md", ".yaml", ".yml", ".list", ".txt", ".mrs", ".json")
-            )
-        ):
-            return rest
-
-    return None
-
-
-def transform_markdown_links_in_text(
-    text: str, allowed_folders: Set[str]
-) -> Tuple[str, int, int]:
-    result = []
-    i = 0
-    kept = 0
-    removed = 0
-    length = len(text)
-
-    while i < length:
-        if text[i] != "[":
-            result.append(text[i])
-            i += 1
-            continue
-
-        label_start = i
-        label_end = text.find("]", label_start + 1)
-
-        if label_end == -1 or label_end + 1 >= length or text[label_end + 1] != "(":
-            result.append(text[i])
-            i += 1
-            continue
-
-        url_start = label_end + 2
-        url_end = text.find(")", url_start)
-
-        if url_end == -1:
-            result.append(text[i])
-            i += 1
-            continue
-
-        label = text[label_start + 1:label_end]
-        url = text[url_start:url_end].strip()
-        folder = extract_folder_from_url(url)
-
-        if folder is None:
-            result.append(text[label_start:url_end + 1])
-        elif folder in allowed_folders:
-            result.append(f"[{label}]({MY_REPO_URL}/{folder})")
-            kept += 1
-        else:
-            removed += 1
-
-        i = url_end + 1
-
-    return "".join(result), kept, removed
-
-
-def split_markdown_table_row(line: str):
-    raw = line.rstrip("\n")
-
-    if not raw.strip().startswith("|"):
-        return None
-
-    return raw.split("|")
-
-
-def is_table_separator_line(line: str) -> bool:
-    stripped = line.strip()
-
-    if not stripped.startswith("|"):
-        return False
-
-    body = stripped.strip("|").strip()
-
-    if not body:
-        return False
-
-    for ch in body:
-        if ch not in "-:| ":
-            return False
-
-    return "-" in body
-
-
-def process_markdown_table_block(
-    lines: List[str], allowed_folders: Set[str]
-) -> List[str]:
-    processed = []
-    kept_link_total = 0
-
-    for line in lines:
-        if is_table_separator_line(line):
-            processed.append(line.rstrip("\n"))
-            continue
-
-        cells = split_markdown_table_row(line)
-
-        if cells is None:
-            continue
-
-        row_kept_links = 0
-        row_removed_links = 0
-        new_cells = []
-
-        for cell in cells:
-            new_cell, kept, removed = transform_markdown_links_in_text(
-                cell, allowed_folders
-            )
-            row_kept_links += kept
-            row_removed_links += removed
-            new_cells.append(new_cell.strip())
-
-        kept_link_total += row_kept_links
-
-        has_any = (row_kept_links + row_removed_links) > 0
-
-        if has_any and row_kept_links == 0:
-            continue
-
-        new_line = "|".join(new_cells)
-
-        if not new_line.startswith("|"):
-            new_line = "|" + new_line
-
-        if not new_line.endswith("|"):
-            new_line += "|"
-
-        processed.append(new_line)
-
-    if kept_link_total == 0:
-        return []
-
-    return [line + "\n" for line in processed]
-
-
-def filter_root_readme_by_existing_folders(
-    content: str, allowed_folders: Set[str]
+    custom: bool,
+    list_filenames: Optional[Dict[str, str]] = None,
 ) -> str:
+    list_filenames = list_filenames or {}
+    folder_url = quote_path_part(folder_name)
+    classical_url: str
+
+    if custom:
+        classical_url = f"{MY_RAW_RULE_BASE_URL}/{folder_url}/{quote_path_part(classical_filename)}"
+    else:
+        classical_url = (
+            f"{UPSTREAM_RAW_RULE_BASE_URL}/Clash/{folder_url}/{quote_path_part(classical_filename)}"
+        )
+
+    parts: List[str] = []
+    parts.append("# Clash\n\n")
+    if has_domain_mrs:
+        parts.append(
+            "domain\n```text\n"
+            f"{MY_RAW_RULE_BASE_URL}/{folder_url}/{quote_path_part(folder_name + '_Domain.mrs')}\n"
+            "```\n\n"
+        )
+    if has_ip_mrs:
+        parts.append(
+            "ipcidr\n```text\n"
+            f"{MY_RAW_RULE_BASE_URL}/{folder_url}/{quote_path_part(folder_name + '_IP.mrs')}\n"
+            "```\n\n"
+        )
+    parts.append(
+        "classical\n```text\n"
+        f"{classical_url}\n"
+        "```\n\n"
+    )
+
+    for client in NON_CLASH_CLIENTS:
+        parts.append(f"# {client}\n\nsubscription\n```text\n")
+        if custom:
+            filename = list_filenames.get(client, f"{client}.list")
+            parts.append(
+                f"{MY_RAW_RULE_BASE_URL}/{folder_url}/{quote_path_part(filename)}\n"
+            )
+        else:
+            filename = list_filenames.get(client)
+            if not filename:
+                # 由调用方保证；这里保底仍使用标准命名。
+                filename = f"{folder_name}.list"
+            parts.append(
+                f"{UPSTREAM_RAW_RULE_BASE_URL}/{client}/{folder_url}/{quote_path_part(filename)}\n"
+            )
+        parts.append("```\n\n")
+
+    return "".join(parts)
+
+
+def replace_client_sections(content: str, replacement: str) -> str:
     lines = content.splitlines(keepends=True)
+    starts: List[Tuple[int, int]] = []
+
+    for idx, line in enumerate(lines):
+        match = CLIENT_HEADER_RE.match(line.strip())
+        if match:
+            starts.append((idx, len(match.group(1))))
+
+    if not starts:
+        base = content.rstrip()
+        return (base + "\n\n" if base else "") + replacement.rstrip() + "\n"
+
+    first_start = starts[0][0]
     output = []
     i = 0
+    inserted = False
 
     while i < len(lines):
-        line = lines[i]
-
-        if line.strip().startswith("|"):
-            block = []
-
-            while i < len(lines) and lines[i].strip().startswith("|"):
-                block.append(lines[i])
-                i += 1
-
-            filtered_block = process_markdown_table_block(block, allowed_folders)
-            output.extend(filtered_block)
-            continue
-
-        new_line, kept, removed = transform_markdown_links_in_text(
-            line, allowed_folders
-        )
-
-        if removed > 0 and kept == 0 and not new_line.strip():
+        match = CLIENT_HEADER_RE.match(lines[i].strip())
+        if not match:
+            output.append(lines[i])
             i += 1
             continue
 
-        output.append(new_line)
+        if not inserted:
+            while output and output[-1].strip() == "":
+                output.pop()
+            if output:
+                output.append("\n\n")
+            output.append(replacement.rstrip() + "\n")
+            inserted = True
+
+        level = len(match.group(1))
         i += 1
+        while i < len(lines):
+            next_match = re.match(r"^(#+)\s+.*$", lines[i].strip())
+            if next_match and len(next_match.group(1)) <= level:
+                break
+            i += 1
 
-    cleaned = []
-    blank_count = 0
-
-    for line in output:
-        if line.strip() == "":
-            blank_count += 1
-            if blank_count <= 2:
-                cleaned.append(line)
-        else:
-            blank_count = 0
-            cleaned.append(line)
-
-    return "".join(cleaned).strip() + "\n"
+    result = "".join(output).rstrip() + "\n"
+    return result
 
 
-def modify_root_readme_links(content: str) -> str:
-    upstream_tree_url = "https://github.com/blackmatrix7/ios_rule_script/tree/master/rule/Clash"
-    upstream_blob_url = "https://github.com/blackmatrix7/ios_rule_script/blob/master/rule/Clash"
-    upstream_raw_url = "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash"
-
-    content = content.replace(upstream_tree_url, MY_REPO_URL)
-    content = content.replace(upstream_blob_url, MY_REPO_URL)
-    content = content.replace(upstream_raw_url, RAW_MRS_BASE_URL)
-
-    return content
-
-
-# ================= 文件选择与目录同步 =================
-
-def select_best_yaml(folder_path: str, folder_name: str) -> Optional[str]:
-    classical_yaml = os.path.join(folder_path, f"{folder_name}_Classical.yaml")
-    normal_yaml = os.path.join(folder_path, f"{folder_name}.yaml")
-
-    if os.path.exists(classical_yaml):
-        return classical_yaml
-
-    if os.path.exists(normal_yaml):
-        return normal_yaml
-
-    yaml_files = []
-
-    try:
-        for filename in os.listdir(folder_path):
-            lower = filename.lower()
-
-            if lower.endswith((".yaml", ".yml")):
-                yaml_files.append(filename)
-
-    except FileNotFoundError:
-        return None
-
-    if yaml_files:
-        yaml_files.sort()
-        return os.path.join(folder_path, yaml_files[0])
-
-    return None
-
-
-def select_classical_filename(
-    folder_path: str, folder_name: str, fallback_filename: str
-) -> str:
-    classical_filename = f"{folder_name}_Classical.yaml"
-    classical_path = os.path.join(folder_path, classical_filename)
-
-    if os.path.isfile(classical_path):
-        return classical_filename
-
-    return fallback_filename
-
-
-def find_best_list_file(folder_path: str, folder_name: str) -> Optional[str]:
-    preferred = os.path.join(folder_path, f"{folder_name}.list")
-
-    if os.path.isfile(preferred):
-        return os.path.basename(preferred)
-
-    list_files = []
-
-    try:
-        for filename in os.listdir(folder_path):
-            if filename.lower().endswith(".list"):
-                list_files.append(filename)
-    except FileNotFoundError:
-        return None
-
-    if not list_files:
-        return None
-
-    list_files.sort()
-    return list_files[0]
-
-
-def prepare_dest_rule_dirs() -> None:
-    """只确保 rule/ 存在；绝不删除或重命名任何用户现有目录。"""
-    os.makedirs(DEST_RULE_DIR, exist_ok=True)
-
-
-def remove_old_generated_files(dest_folder: str, folder_name: str) -> None:
-    old_files = [
-        os.path.join(dest_folder, f"{folder_name}_Domain.mrs"),
-        os.path.join(dest_folder, f"{folder_name}_IP.mrs"),
-    ]
-
-    for path in old_files:
-        if os.path.isfile(path):
-            try:
-                os.remove(path)
-                print(f"已删除旧生成文件: {path}")
-            except FileNotFoundError:
-                pass
-
-
-# ================= 编译目录 =================
-
-def compile_folder(
+def update_readme(
+    readme_path: Path,
     folder_name: str,
-    source_folder: str,
-    dest_mrs_folder: str,
-    dest_readme_path: str,
-) -> dict:
-    """直接读取上游 Clash YAML，生成本地 MRS，不复制原始规则文件。"""
-    target_yaml = select_best_yaml(source_folder, folder_name)
-
-    if not target_yaml:
-        print(f"跳过目录：{folder_name} 没有可用 YAML")
-        return {
-            "processed": False,
-            "domain": False,
-            "ip": False,
-            "failures": 0,
-        }
-
-    print(f"\n正在处理目录: {folder_name}")
-
-    target_filename = os.path.basename(target_yaml)
-    classical_filename = select_classical_filename(
-        source_folder,
-        folder_name,
-        target_filename,
-    )
-
-    os.makedirs(dest_mrs_folder, exist_ok=True)
-    remove_old_generated_files(dest_mrs_folder, folder_name)
-
-    domain_rules, ip_rules = split_yaml_payload(target_yaml)
-
-    print(f"Domain 规则数量: {len(domain_rules)}")
-    print(f"IP CIDR 规则数量: {len(ip_rules)}")
-
-    domain_mrs_path = os.path.join(
-        dest_mrs_folder, f"{folder_name}_Domain.mrs"
-    )
-    ip_mrs_path = os.path.join(
-        dest_mrs_folder, f"{folder_name}_IP.mrs"
-    )
-
-    has_domain_mrs = False
-    has_ip_mrs = False
-    failures = 0
-
-    if domain_rules:
-        temp_domain_yaml = os.path.join(
-            TEMP_DIR, f"{folder_name}_temp_domain.yaml"
-        )
-        write_mrs_source_yaml(temp_domain_yaml, domain_rules)
-
-        if compile_to_mrs(temp_domain_yaml, domain_mrs_path, "domain"):
-            has_domain_mrs = True
-        else:
-            failures += 1
+    classical_filename: str,
+    has_domain_mrs: bool,
+    has_ip_mrs: bool,
+    custom: bool,
+    list_filenames: Optional[Dict[str, str]] = None,
+    template_path: Optional[Path] = None,
+) -> None:
+    if readme_path.is_file():
+        content = readme_path.read_text(encoding="utf-8")
+    elif template_path and template_path.is_file():
+        content = template_path.read_text(encoding="utf-8")
     else:
-        print(f"跳过 Domain.mrs：{folder_name} 没有可转换的 Domain 规则")
+        content = f"# 🧸 {folder_name}\n"
 
-    if ip_rules:
-        temp_ip_yaml = os.path.join(TEMP_DIR, f"{folder_name}_temp_ip.yaml")
-        write_mrs_source_yaml(temp_ip_yaml, ip_rules)
-
-        if compile_to_mrs(temp_ip_yaml, ip_mrs_path, "ipcidr"):
-            has_ip_mrs = True
-        else:
-            failures += 1
-    else:
-        print(
-            f"跳过 IP.mrs：{folder_name} 没有可转换的 IP-CIDR/IP-CIDR6 规则"
-        )
-
-    upstream_readme_path = os.path.join(source_folder, "README.md")
-    write_child_readme(
-        dest_readme_path,
-        upstream_readme_path,
+    replacement = client_section_text(
         folder_name,
         classical_filename,
-        has_domain_mrs=has_domain_mrs,
-        has_ip_mrs=has_ip_mrs,
+        has_domain_mrs,
+        has_ip_mrs,
+        custom,
+        list_filenames,
     )
-
-    return {
-        "processed": True,
-        "domain": has_domain_mrs,
-        "ip": has_ip_mrs,
-        "failures": failures,
-    }
+    readme_path.write_text(replace_client_sections(content, replacement), encoding="utf-8", newline="\n")
 
 
-# ================= 根 README =================
+# ================= MRS / 处理单个目录 =================
 
-def add_root_readme_tip(content: str) -> str:
-    tip = (
-        "> [!IMPORTANT]\n"
-        "> 所有内容均来自 [blackmatrix7大佬](https://github.com/blackmatrix7/ios_rule_script/tree/master/rule/Clash) 的二次编译，仅自用，勿传播，谢谢！\n\n"
-    )
+def compile_rule_set(
+    folder_name: str,
+    source_yaml: Path,
+    destination_folder: Path,
+) -> Tuple[bool, bool, List[List[str]]]:
+    rules = parse_rules(source_yaml)
+    if not rules:
+        raise RuntimeError(f"未解析出任何有效 Clash 规则: {source_yaml}")
 
-    content = content.replace(tip, "")
+    domain_rules, ip_rules = split_mrs_rules(rules)
+    destination_folder.mkdir(parents=True, exist_ok=True)
 
-    return tip + content.lstrip()
+    has_domain = bool(domain_rules)
+    has_ip = bool(ip_rules)
 
-
-def write_root_readme() -> None:
-    os.makedirs(DEST_RULE_DIR, exist_ok=True)
-
-    src_root_readme = os.path.join(SOURCE_CLASH_DIR, "README.md")
-    dest_root_readme = os.path.join(DEST_RULE_DIR, "README.md")
-
-    existing_folders = {
-        item
-        for item in UPSTREAM_INCLUDE_FOLDERS
-        if os.path.isdir(os.path.join(DEST_RULE_DIR, item))
-    }
-
-    if os.path.exists(src_root_readme):
-        with open(src_root_readme, "r", encoding="utf-8") as f:
-            root_content = f.read()
-
-        root_content = modify_root_readme_links(root_content)
-        root_content = filter_root_readme_by_existing_folders(
-            root_content, existing_folders
+    if has_domain:
+        temp = TEMP_DIR / f"{folder_name}_domain.yaml"
+        write_mrs_source_yaml(temp, domain_rules)
+        compile_to_mrs(
+            temp,
+            destination_folder / f"{folder_name}_Domain.mrs",
+            "domain",
         )
-    else:
-        root_content = "# Clash\n\n## 分类\n\n"
-        for folder in sorted(existing_folders):
-            root_content += f"- [{folder}]({MY_REPO_URL}/{folder})\n"
+    elif (destination_folder / f"{folder_name}_Domain.mrs").exists():
+        (destination_folder / f"{folder_name}_Domain.mrs").unlink()
 
-    root_content = add_root_readme_tip(root_content)
+    if has_ip:
+        temp = TEMP_DIR / f"{folder_name}_ip.yaml"
+        write_mrs_source_yaml(temp, ip_rules)
+        compile_to_mrs(
+            temp,
+            destination_folder / f"{folder_name}_IP.mrs",
+            "ipcidr",
+        )
+    elif (destination_folder / f"{folder_name}_IP.mrs").exists():
+        (destination_folder / f"{folder_name}_IP.mrs").unlink()
 
-    with open(dest_root_readme, "w", encoding="utf-8") as f:
-        f.write(root_content)
+    return has_domain, has_ip, rules
 
 
-# ================= 清理 =================
+def process_upstream_folder(folder_name: str) -> None:
+    source_folder = SOURCE_CLASH_DIR / folder_name
+    if not source_folder.is_dir():
+        print(f"跳过上游目录：{source_folder}")
+        return
 
-def clean_workspace_garbage() -> None:
-    paths_to_remove = [
-        TEMP_DIR,
-        "source_repo",
-        "__pycache__",
-        os.path.join("Scripts", "__pycache__"),
-        "mihomo",
-        "mihomo.gz",
-    ]
+    source_yaml = select_best_yaml(source_folder, folder_name)
+    if not source_yaml:
+        print(f"跳过上游目录，没有 YAML：{folder_name}")
+        return
 
-    for path in paths_to_remove:
-        if os.path.isdir(path):
-            shutil.rmtree(path, ignore_errors=True)
-            print(f"已清理目录: {path}")
+    dest = DEST_RULE_DIR / folder_name
+    dest.mkdir(parents=True, exist_ok=True)
 
-        elif os.path.isfile(path):
-            try:
-                os.remove(path)
-                print(f"已清理文件: {path}")
-            except FileNotFoundError:
-                pass
+    has_domain, has_ip, _rules = compile_rule_set(folder_name, source_yaml, dest)
 
-    for root, dirs, files in os.walk("."):
-        if ".git" in dirs:
-            dirs.remove(".git")
+    classical_filename = f"{folder_name}_Classical.yaml"
+    if not (source_folder / classical_filename).is_file():
+        classical_filename = source_yaml.name
 
-        for filename in files:
-            if filename == ".DS_Store":
-                file_path = os.path.join(root, filename)
+    list_filenames: Dict[str, str] = {}
+    for client in NON_CLASH_CLIENTS:
+        filename = find_upstream_list_file(client, folder_name)
+        if filename:
+            list_filenames[client] = filename
+        else:
+            raise RuntimeError(f"上游缺少 {client} 规则文件: {folder_name}")
 
-                try:
-                    os.remove(file_path)
-                    print(f"已清理文件: {file_path}")
-                except FileNotFoundError:
-                    pass
+    template = source_folder / "README.md"
+    update_readme(
+        dest / "README.md",
+        folder_name,
+        classical_filename,
+        has_domain,
+        has_ip,
+        custom=False,
+        list_filenames=list_filenames,
+        template_path=template,
+    )
 
-        for dirname in list(dirs):
-            if dirname == "__pycache__":
-                dir_path = os.path.join(root, dirname)
-                shutil.rmtree(dir_path, ignore_errors=True)
-                print(f"已清理目录: {dir_path}")
-                dirs.remove(dirname)
+
+def is_custom_rule_folder(folder: Path) -> bool:
+    if not folder.is_dir():
+        return False
+    if folder.name in UPSTREAM_INCLUDE_FOLDERS or folder.name in RESERVED_DIRS:
+        return False
+    if folder.name.startswith("."):
+        return False
+    return select_best_yaml(folder, folder.name) is not None
+
+
+def process_custom_folder(folder: Path) -> None:
+    folder_name = folder.name
+    source_yaml = select_best_yaml(folder, folder_name)
+    if not source_yaml:
+        return
+
+    has_domain, has_ip, rules = compile_rule_set(folder_name, source_yaml, folder)
+
+    # 四个客户端的规则文件全部直接生成在这个自定义规则目录中。
+    write_client_lists(folder, folder_name, rules)
+
+    list_filenames = {client: f"{client}.list" for client in NON_CLASH_CLIENTS}
+    update_readme(
+        folder / "README.md",
+        folder_name,
+        source_yaml.name,
+        has_domain,
+        has_ip,
+        custom=True,
+        list_filenames=list_filenames,
+    )
+
+    print(f"自定义规则完成: {folder_name}")
 
 
 # ================= 主流程 =================
 
+def ensure_mihomo_available() -> None:
+    if not shutil.which("mihomo"):
+        raise RuntimeError("找不到 mihomo 命令")
+
+
 def main() -> None:
-    print("开始执行五客户端订阅链接生成与 Clash MRS 编译任务...")
-    print("规则内容：只有 MRS 存入个人仓库，其余订阅链接直接使用 Blackmatrix7 原版")
+    print("开始执行规则转换...")
+    print("上游规则：只生成 MRS + README；其他客户端链接继续指向 Blackmatrix7 原版。")
+    print("自定义规则：从本地 Clash YAML 生成 Loon / QuantumultX / Shadowrocket / Surge 规则文件。")
+    print("清理策略：不删除任何用户目录。")
 
-    if not ensure_mihomo_available():
-        sys.exit(1)
+    ensure_mihomo_available()
+    if not SOURCE_CLASH_DIR.is_dir():
+        raise RuntimeError(f"找不到上游 Clash 目录: {SOURCE_CLASH_DIR}")
 
-    if os.path.exists(TEMP_DIR):
+    if TEMP_DIR.exists():
         shutil.rmtree(TEMP_DIR)
+    TEMP_DIR.mkdir(parents=True, exist_ok=True)
+    DEST_RULE_DIR.mkdir(parents=True, exist_ok=True)
 
-    os.makedirs(TEMP_DIR, exist_ok=True)
-
-    if not os.path.exists(SOURCE_CLASH_DIR):
-        print(f"严重错误: 找不到上游源码目录 {SOURCE_CLASH_DIR}")
-        sys.exit(1)
-
-    prepare_dest_rule_dirs()
-
-    print("\n开始生成 MRS 与分类 README...")
-
-    total_folders = 0
-    compiled_domain = 0
-    compiled_ip = 0
-    skipped_no_yaml = 0
-    compile_failures = 0
-
+    # 先处理固定的 Blackmatrix7 白名单规则。
     for folder_name in sorted(UPSTREAM_INCLUDE_FOLDERS):
-        source_folder = os.path.join(SOURCE_CLASH_DIR, folder_name)
-        dest_mrs_folder = os.path.join(DEST_RULE_DIR, folder_name)
-        dest_readme_path = os.path.join(DEST_RULE_DIR, folder_name, "README.md")
+        process_upstream_folder(folder_name)
 
-        if not os.path.isdir(source_folder):
-            print(f"上游目录不存在，跳过: {folder_name}")
-            continue
+    # 再扫描 rule/ 下用户自己创建的、且确实包含 Clash YAML 的目录。
+    for folder in sorted(DEST_RULE_DIR.iterdir(), key=lambda p: p.name.lower()):
+        if is_custom_rule_folder(folder):
+            process_custom_folder(folder)
 
-        result = compile_folder(
-            folder_name,
-            source_folder,
-            dest_mrs_folder,
-            dest_readme_path,
-        )
-
-        if not result["processed"]:
-            skipped_no_yaml += 1
-            continue
-
-        total_folders += 1
-
-        if result["domain"]:
-            compiled_domain += 1
-
-        if result["ip"]:
-            compiled_ip += 1
-
-        compile_failures += result["failures"]
-
-    write_root_readme()
-
-    print("\n转换与编译全部完成！")
-    print(f"处理目录数量: {total_folders}")
-    print(f"成功编译 Domain.mrs 数量: {compiled_domain}")
-    print(f"成功编译 IP.mrs 数量: {compiled_ip}")
-    print(f"跳过无 YAML 目录数量: {skipped_no_yaml}")
-
-    if compile_failures > 0:
-        print(f"严重错误: 有 {compile_failures} 个 MRS 文件编译失败。")
-        sys.exit(1)
+    print("\n规则转换完成。")
 
 
 if __name__ == "__main__":
     try:
         main()
     finally:
-        print("\n清理工作区临时文件...")
-        clean_workspace_garbage()
+        if TEMP_DIR.exists():
+            shutil.rmtree(TEMP_DIR, ignore_errors=True)
