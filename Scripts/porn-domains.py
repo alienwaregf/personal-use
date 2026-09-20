@@ -165,14 +165,21 @@ def prepare_domain_text(source_path: Path, output_path: Path) -> int:
 
 
 def write_adult_yaml(output_path: Path, domains: set[str]) -> int:
-    """Write the exact domain set used for MRS compilation as a Mihomo YAML ruleset."""
+    """Write the domain set as standard Clash/Mihomo rule syntax for human use."""
     output_path.parent.mkdir(parents=True, exist_ok=True)
 
     with output_path.open("w", encoding="utf-8", newline="\n") as output:
         output.write("payload:\n")
+
         for domain in sorted(domains):
-            safe_domain = str(domain).replace("'", "''")
-            output.write(f"  - '{safe_domain}'\n")
+            if domain.startswith("+."):
+                rule_type = "DOMAIN-SUFFIX"
+                value = domain[2:].lstrip(".")
+            else:
+                rule_type = "DOMAIN"
+                value = domain
+
+            output.write(f"  - {rule_type},{value}\n")
 
     return len(domains)
 
@@ -255,7 +262,7 @@ def main() -> None:
         yaml_count = write_adult_yaml(ADULT_YAML_PATH, domains)
         print(f"Adult.yaml 已保存: {ADULT_YAML_PATH} ({yaml_count:,} 条规则)")
 
-        compile_to_mrs(ADULT_YAML_PATH, OUTPUT_PATH, source_format="yaml")
+        compile_to_mrs(text_path, OUTPUT_PATH, source_format="text")
 
     write_readme(ADULT_README_PATH)
 
