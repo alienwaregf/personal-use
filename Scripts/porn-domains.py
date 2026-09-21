@@ -20,6 +20,27 @@ USER_AGENT = "alienwaregf/personal-use porn-domains updater"
 TIMEOUT = 60
 COMPRESSION_THRESHOLD = 2
 
+MAJOR_DOMAINS = {
+    "pornhub.com",
+    "xvideos.com",
+    "xhamster.com",
+    "xnxx.com",
+    "youporn.com",
+    "redtube.com",
+    "tube8.com",
+    "spankbang.com",
+    "beeg.com",
+    "chaturbate.com",
+    "redgifs.com",
+    "thisvid.com",
+    "eporner.com",
+    "hqporner.com",
+    "xhamsterlive.com",
+    "xvideos.es",
+    "xnxx.tv",
+    "dmm.com",
+}
+
 DOMAIN_LABEL_RE = re.compile(r"^[A-Za-z0-9_\-]+$")
 
 
@@ -85,6 +106,39 @@ def normalize_domain_line(line: str) -> str | None:
         return None
 
     return host
+
+
+def extract_major_domains(
+    domains: set[str],
+) -> tuple[set[str], set[str]]:
+    remaining = set(domains)
+    major_rules = {
+        f"+.{domain}"
+        for domain in MAJOR_DOMAINS
+    }
+
+    filtered = 0
+
+    for major in MAJOR_DOMAINS:
+        matched = {
+            domain
+            for domain in remaining
+            if (
+                domain == major
+                or domain.endswith("." + major)
+            )
+        }
+
+        filtered += len(matched)
+        remaining.difference_update(matched)
+
+    print(
+        f"大型平台固定: {len(MAJOR_DOMAINS):,} 个 "
+        f"DOMAIN-SUFFIX；"
+        f"过滤原始域名: {filtered:,} 个"
+    )
+
+    return remaining, major_rules
 
 
 def parent_suffixes(host: str) -> list[str]:
@@ -158,23 +212,40 @@ def prepare_domain_text(source_path: Path, output_path: Path) -> int:
     if not domains:
         raise RuntimeError("上游 blocklist 没有解析出任何有效域名")
 
-    compressed_domains = compress_domains(domains)
+    remaining_domains, major_rules = extract_major_domains(
+        domains
+    )
 
-    output_path.parent.mkdir(parents=True, exist_ok=True)
+    compressed_domains = compress_domains(
+        remaining_domains
+    )
+
+    final_domains = major_rules | compressed_domains
+
+    output_path.parent.mkdir(
+        parents=True,
+        exist_ok=True,
+    )
 
     with output_path.open(
         "w",
         encoding="utf-8",
         newline="\n",
     ) as output:
-        for domain in sorted(compressed_domains):
+        for domain in sorted(final_domains):
             output.write(domain + "\n")
 
-    return len(compressed_domains)
+    return len(final_domains)
 
 
-def write_adult_yaml(output_path: Path, domains: set[str]) -> int:
-    output_path.parent.mkdir(parents=True, exist_ok=True)
+def write_adult_yaml(
+    output_path: Path,
+    domains: set[str],
+) -> int:
+    output_path.parent.mkdir(
+        parents=True,
+        exist_ok=True,
+    )
 
     with output_path.open(
         "w",
@@ -191,18 +262,30 @@ def write_adult_yaml(output_path: Path, domains: set[str]) -> int:
                 rule_type = "DOMAIN"
                 value = domain
 
-            output.write(f"  - {rule_type},{value}\n")
+            output.write(
+                f"  - {rule_type},{value}\n"
+            )
 
     return len(domains)
 
 
 def main() -> None:
-    print(f"读取 Bon-Appetit 元数据: {META_URL}")
+    print(
+        f"读取 Bon-Appetit 元数据: {META_URL}"
+    )
 
-    meta = json.loads(fetch_text(META_URL))
-    blocklist_url = extract_blocklist_url(meta)
+    meta = json.loads(
+        fetch_text(META_URL)
+    )
 
-    blocklist_meta = meta.get("blocklist", {})
+    blocklist_url = extract_blocklist_url(
+        meta
+    )
+
+    blocklist_meta = meta.get(
+        "blocklist",
+        {},
+    )
 
     print(
         f"当前 blocklist: "
@@ -214,13 +297,26 @@ def main() -> None:
         f"{blocklist_meta.get('updated', 'unknown')}"
     )
 
-    print(f"下载地址: {blocklist_url}")
+    print(
+        f"下载地址: {blocklist_url}"
+    )
 
-    with tempfile.TemporaryDirectory(prefix="Adult-") as temp_dir:
-        temp_dir_path = Path(temp_dir)
+    with tempfile.TemporaryDirectory(
+        prefix="Adult-"
+    ) as temp_dir:
+        temp_dir_path = Path(
+            temp_dir
+        )
 
-        source_path = temp_dir_path / "blocklist.txt"
-        text_path = temp_dir_path / "adult-domain.txt"
+        source_path = (
+            temp_dir_path
+            / "blocklist.txt"
+        )
+
+        text_path = (
+            temp_dir_path
+            / "adult-domain.txt"
+        )
 
         source_path.write_text(
             fetch_text(blocklist_url),
@@ -258,7 +354,8 @@ def main() -> None:
 
     print(
         "Adult 源规则准备完成；"
-        "README、MRS及客户端规则将由 convert_rules.py 统一生成。"
+        "README、MRS及客户端规则将由 "
+        "convert_rules.py 统一生成。"
     )
 
 
