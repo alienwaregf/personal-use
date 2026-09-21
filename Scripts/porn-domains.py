@@ -38,7 +38,6 @@ MAJOR_DOMAINS = {
     "xhamsterlive.com",
     "xvideos.es",
     "xnxx.tv",
-    "dmm.com",
 }
 
 DOMAIN_LABEL_RE = re.compile(r"^[A-Za-z0-9_\-]+$")
