@@ -6,15 +6,13 @@ from __future__ import annotations
 import csv
 import datetime as _dt
 import ipaddress
-import os
 import re
 import shutil
 import subprocess
-import sys
 from collections import Counter
 from pathlib import Path
 from io import StringIO
-from typing import Dict, Iterable, List, Optional, Sequence, Set, Tuple
+from typing import Dict, List, Optional, Sequence, Set, Tuple
 from urllib.parse import quote
 
 import yaml
@@ -1479,27 +1477,7 @@ def ensure_mihomo_available() -> None:
 
 def main() -> None:
 
-    print(
-        "开始执行规则转换..."
-    )
-
-    print(
-        "上游规则：生成 MRS + README；"
-        "README 以 Blackmatrix7 最新版本为母版，"
-        "自动生成 Clash / Loon / QuantumultX / "
-        "Shadowrocket / Surge 五个客户端模块，"
-        "并保留上游其他 README 内容。"
-    )
-
-    print(
-        "自定义规则：从本地 Clash YAML "
-        "生成 Loon / QuantumultX / "
-        "Shadowrocket / Surge 规则文件。"
-    )
-
-    print(
-        "清理策略：不删除任何用户目录。"
-    )
+    print("开始统一转换规则...")
 
     ensure_mihomo_available()
 
