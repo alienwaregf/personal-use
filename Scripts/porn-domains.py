@@ -1,16 +1,14 @@
+````python
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-"""Fetch Bon-Appetit/porn-domains and compile it into a stable Mihomo MRS file."""
+"""Fetch Bon-Appetit/porn-domains and prepare the Adult source rules."""
 
 from __future__ import annotations
 
 import ipaddress
 import json
-import os
 import re
-import shutil
-import subprocess
 import tempfile
 from collections import defaultdict
 from pathlib import Path
@@ -29,6 +27,7 @@ DOMAIN_LABEL_RE = re.compile(r"^[A-Za-z0-9_\-]+$")
 
 def fetch_text(url: str) -> str:
     request = Request(url, headers={"User-Agent": USER_AGENT})
+
     try:
         with urlopen(request, timeout=TIMEOUT) as response:
             return response.read().decode("utf-8-sig")
@@ -59,11 +58,14 @@ def _validate_host(host: str) -> bool:
         pass
 
     labels = host.split(".")
+
     for label in labels:
         if not label or len(label) > 63:
             return False
+
         if not DOMAIN_LABEL_RE.fullmatch(label):
             return False
+
         if label.startswith("-") or label.endswith("-"):
             return False
 
@@ -71,8 +73,8 @@ def _validate_host(host: str) -> bool:
 
 
 def normalize_domain_line(line: str) -> str | None:
-    """Accept only a plain upstream host; never reinterpret other rule syntaxes."""
     line = line.strip().lstrip("\ufeff")
+
     if not line or line.startswith("#"):
         return None
 
@@ -80,6 +82,7 @@ def normalize_domain_line(line: str) -> str | None:
         return None
 
     host = line.lower()
+
     if not _validate_host(host):
         return None
 
@@ -87,11 +90,8 @@ def normalize_domain_line(line: str) -> str | None:
 
 
 def parent_suffixes(host: str) -> list[str]:
-    """Return candidate parent suffixes with at least three labels."""
     labels = host.split(".")
 
-    # 只允许三级及以上父域，例如 foo.google.com；
-    # 不允许直接压缩到 google.com。
     if len(labels) < 3:
         return []
 
@@ -100,14 +100,8 @@ def parent_suffixes(host: str) -> list[str]:
         for i in range(0, len(labels) - 2)
     ]
 
-def compress_domains(domains: set[str]) -> set[str]:
-    """
-    Compress a parent suffix when it contains at least three source hosts,
-    counting the parent host itself when present.
 
-    No PSL/registrable-domain inference is used. Candidates are derived only
-    from the literal domain labels present in the source data.
-    """
+def compress_domains(domains: set[str]) -> set[str]:
     suffix_members: dict[str, set[str]] = defaultdict(set)
 
     for domain in domains:
@@ -120,17 +114,22 @@ def compress_domains(domains: set[str]) -> set[str]:
         if len(members) >= COMPRESSION_THRESHOLD
     ]
 
-    # Prefer the most specific qualifying suffix first. This prevents a deep
-    # cluster from forcing a broader parent suffix when the narrow suffix is
-    # already sufficient to compress it.
-    candidates.sort(key=lambda item: len(item[0].split(".")), reverse=True)
+    candidates.sort(
+        key=lambda item: len(item[0].split(".")),
+        reverse=True,
+    )
 
     remaining = set(domains)
     output: set[str] = set()
     compressed = 0
 
     for suffix, _ in candidates:
-        members = {domain for domain in remaining if domain == suffix or domain.endswith("." + suffix)}
+        members = {
+            domain
+            for domain in remaining
+            if domain == suffix or domain.endswith("." + suffix)
+        }
+
         if len(members) < COMPRESSION_THRESHOLD:
             continue
 
@@ -144,6 +143,7 @@ def compress_domains(domains: set[str]) -> set[str]:
         f"域名压缩: {len(domains):,} → {len(output):,} "
         f"（合并 {compressed:,} 个父域）"
     )
+
     return output
 
 
@@ -153,6 +153,7 @@ def prepare_domain_text(source_path: Path, output_path: Path) -> int:
     with source_path.open("r", encoding="utf-8-sig") as source:
         for line in source:
             domain = normalize_domain_line(line)
+
             if domain is not None:
                 domains.add(domain)
 
@@ -162,7 +163,12 @@ def prepare_domain_text(source_path: Path, output_path: Path) -> int:
     compressed_domains = compress_domains(domains)
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    with output_path.open("w", encoding="utf-8", newline="\n") as output:
+
+    with output_path.open(
+        "w",
+        encoding="utf-8",
+        newline="\n",
+    ) as output:
         for domain in sorted(compressed_domains):
             output.write(domain + "\n")
 
@@ -170,10 +176,13 @@ def prepare_domain_text(source_path: Path, output_path: Path) -> int:
 
 
 def write_adult_yaml(output_path: Path, domains: set[str]) -> int:
-    """Write the domain set as standard Clash/Mihomo rule syntax for human use."""
     output_path.parent.mkdir(parents=True, exist_ok=True)
 
-    with output_path.open("w", encoding="utf-8", newline="\n") as output:
+    with output_path.open(
+        "w",
+        encoding="utf-8",
+        newline="\n",
+    ) as output:
         output.write("payload:\n")
 
         for domain in sorted(domains):
@@ -191,59 +200,33 @@ def write_adult_yaml(output_path: Path, domains: set[str]) -> int:
 
 def write_readme(readme_path: Path) -> None:
     readme_path.parent.mkdir(parents=True, exist_ok=True)
+
     readme_path.write_text(
         "# Clash\n\n"
         "domain\n"
         "```text\n"
-        "https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Clash/Adult/Adult.mrs\n"
+        "https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Adult/Adult_Domain.mrs\n"
         "```\n",
         encoding="utf-8",
     )
 
 
-
-    output_path.parent.mkdir(parents=True, exist_ok=True)
-    with tempfile.NamedTemporaryFile(
-        prefix="Adult-", suffix=".mrs", dir=output_path.parent, delete=False
-    ) as temp_output:
-        temp_output_path = Path(temp_output.name)
-
-    try:
-        command = [
-            mihomo,
-            "convert-ruleset",
-            "domain",
-            source_format,
-            str(source_path),
-            str(temp_output_path),
-        ]
-
-        result = subprocess.run(command, check=False, capture_output=True, text=True)
-        if result.returncode != 0:
-            stdout = result.stdout.strip()
-            stderr = result.stderr.strip()
-            details = "\n".join(part for part in (stdout, stderr) if part)
-            raise RuntimeError(
-                f"Mihomo 转换失败，退出码 {result.returncode}"
-                + (f"\n{details}" if details else "")
-            )
-
-        if not temp_output_path.exists() or temp_output_path.stat().st_size == 0:
-            raise RuntimeError("Mihomo 转换完成，但没有生成有效的 MRS 文件")
-
-        os.replace(temp_output_path, output_path)
-    finally:
-        temp_output_path.unlink(missing_ok=True)
-
-
 def main() -> None:
     print(f"读取 Bon-Appetit 元数据: {META_URL}")
+
     meta = json.loads(fetch_text(META_URL))
     blocklist_url = extract_blocklist_url(meta)
 
     blocklist_meta = meta.get("blocklist", {})
-    print(f"当前 blocklist: {blocklist_meta.get('name', blocklist_url)}")
-    print(f"更新时间: {blocklist_meta.get('updated', 'unknown')}")
+
+    print(
+        f"当前 blocklist: "
+        f"{blocklist_meta.get('name', blocklist_url)}"
+    )
+    print(
+        f"更新时间: "
+        f"{blocklist_meta.get('updated', 'unknown')}"
+    )
     print(f"下载地址: {blocklist_url}")
 
     with tempfile.TemporaryDirectory(prefix="Adult-") as temp_dir:
@@ -251,25 +234,56 @@ def main() -> None:
         source_path = temp_dir_path / "blocklist.txt"
         text_path = temp_dir_path / "adult-domain.txt"
 
-        source_path.write_text(fetch_text(blocklist_url), encoding="utf-8")
-        domain_count = prepare_domain_text(source_path, text_path)
-        print(f"最终 MRS Domain 规则数量: {domain_count:,}")
+        source_path.write_text(
+            fetch_text(blocklist_url),
+            encoding="utf-8",
+        )
+
+        domain_count = prepare_domain_text(
+            source_path,
+            text_path,
+        )
+
+        print(
+            f"最终 Domain 规则数量: "
+            f"{domain_count:,}"
+        )
 
         domains = {
             line.strip()
-            for line in text_path.read_text(encoding="utf-8").splitlines()
+            for line in text_path.read_text(
+                encoding="utf-8"
+            ).splitlines()
             if line.strip()
         }
-        yaml_count = write_adult_yaml(ADULT_YAML_PATH, domains)
-        print(f"Adult.yaml 已保存: {ADULT_YAML_PATH} ({yaml_count:,} 条规则)")
 
+        yaml_count = write_adult_yaml(
+            ADULT_YAML_PATH,
+            domains,
+        )
+
+        print(
+            f"Adult.yaml 已保存: "
+            f"{ADULT_YAML_PATH} "
+            f"({yaml_count:,} 条规则)"
+        )
 
     write_readme(ADULT_README_PATH)
 
-    print("Adult 源规则准备完成；MRS 将由 convert_rules.py 统一生成。")
-    print(f"Adult.yaml 已保存: {ADULT_YAML_PATH}")
-    print(f"README 已生成: {ADULT_README_PATH}")
+    print(
+        "Adult 源规则准备完成；"
+        "MRS 将由 convert_rules.py 统一生成。"
+    )
+    print(
+        f"Adult.yaml 已保存: "
+        f"{ADULT_YAML_PATH}"
+    )
+    print(
+        f"README 已生成: "
+        f"{ADULT_README_PATH}"
+    )
 
 
 if __name__ == "__main__":
     main()
+````
