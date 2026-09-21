@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-"""Fetch Bon-Appetit/porn-domains and prepare the Adult source rules."""
 
 from __future__ import annotations
 
