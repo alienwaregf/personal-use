@@ -75,6 +75,7 @@ UPSTREAM_INCLUDE_FOLDERS = {
     "Disney",
     "Docker",
     "Download",
+    "DMM",
     "EA",
     "Epic",
     "Facebook",
