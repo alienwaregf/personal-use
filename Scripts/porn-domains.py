@@ -18,7 +18,6 @@ from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
 META_URL = "https://raw.githubusercontent.com/Bon-Appetit/porn-domains/main/meta.json"
-OUTPUT_PATH = Path("rule/Adult/Adult.mrs")
 ADULT_YAML_PATH = Path("rule/Adult/Adult.yaml")
 ADULT_README_PATH = Path("rule/Adult/README.md")
 USER_AGENT = "alienwaregf/personal-use porn-domains updater"
@@ -202,10 +201,6 @@ def write_readme(readme_path: Path) -> None:
     )
 
 
-def compile_to_mrs(source_path: Path, output_path: Path, source_format: str = "text") -> None:
-    mihomo = shutil.which("mihomo")
-    if not mihomo:
-        raise RuntimeError("找不到 mihomo 命令；请先由 GitHub Actions 安装 Mihomo")
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
     with tempfile.NamedTemporaryFile(
@@ -268,14 +263,12 @@ def main() -> None:
         yaml_count = write_adult_yaml(ADULT_YAML_PATH, domains)
         print(f"Adult.yaml 已保存: {ADULT_YAML_PATH} ({yaml_count:,} 条规则)")
 
-        compile_to_mrs(text_path, OUTPUT_PATH, source_format="text")
 
     write_readme(ADULT_README_PATH)
 
-    size = OUTPUT_PATH.stat().st_size
-    print(f"生成完成: {OUTPUT_PATH} ({size:,} bytes)")
+    print("Adult 源规则准备完成；MRS 将由 convert_rules.py 统一生成。")
     print(f"Adult.yaml 已保存: {ADULT_YAML_PATH}")
-    print(f"README 已生成: {OUTPUT_PATH.parent / 'README.md'}")
+    print(f"README 已生成: {ADULT_README_PATH}")
 
 
 if __name__ == "__main__":
