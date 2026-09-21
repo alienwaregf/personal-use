@@ -64,7 +64,7 @@ jobs:
 
           mihomo -v
 
-      - name: 更新 Bon-Appetit 成人域名规则并转换为 MRS
+      - name: 更新 Bon-Appetit 成人域名规则
         run: |
           set -euo pipefail
           python Scripts/porn-domains.py
