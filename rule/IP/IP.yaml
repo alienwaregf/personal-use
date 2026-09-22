@@ -2,7 +2,7 @@ payload:
   # ==============================
   # 常用公网 IP 查询
   # ==============================
-  - DOMAIN-SUFFIX,ip.sb
+  - DOMAIN,ip.sb
   - DOMAIN,ping0.cc
   - DOMAIN,ipinfo.io
   - DOMAIN,ifconfig.me
@@ -22,6 +22,7 @@ payload:
   - DOMAIN,ip.istatmenus.app
   - DOMAIN,whois.pconline.com.cn
   - DOMAIN,api.ipify.org
+  - DOMAIN,ip.skk.moe
   - DOMAIN-SUFFIX,b0.upaiyun.com
 
   # ==============================
