@@ -27,7 +27,6 @@ MAJOR_DOMAINS = {
     "91porna.com",
     "beeg.com",
     "chaturbate.com",
-    "dmm.com",
     "eporner.com",
     "heiliao.com",
     "hqporner.com",
