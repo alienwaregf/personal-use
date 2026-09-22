@@ -24,6 +24,7 @@ MAJOR_DOMAINS = {
     "51cg1.com",
     "91cg.com",
     "91cg1.com",
+    "91porn.com",
     "91porna.com",
     "beeg.com",
     "chaturbate.com",
