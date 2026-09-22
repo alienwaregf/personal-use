@@ -31,6 +31,7 @@ MAJOR_DOMAINS = {
     "camsoda.ai",
     "candy.ai",
     "chaturbate.com",
+    "chigua.com",
     "eporner.com",
     "heiliao.com",
     "hqporner.com",
