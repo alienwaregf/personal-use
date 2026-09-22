@@ -22,6 +22,7 @@ COMPRESSION_THRESHOLD = 2
 
 MAJOR_DOMAINS = {
     "51cg1.com",
+    "8se.me",
     "91cg.com",
     "91cg1.com",
     "91porn.com",
