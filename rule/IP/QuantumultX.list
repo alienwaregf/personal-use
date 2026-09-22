@@ -1,11 +1,11 @@
 # NAME: IP
 # AUTHOR: alienwaregf
 # REPO: https://github.com/alienwaregf/personal-use
-# UPDATED: 2026-09-21 23:40:25
-# HOST-SUFFIX: 2
-# HOST: 84
-# TOTAL: 86
-HOST-SUFFIX,ip.sb,IP
+# UPDATED: 2026-09-22 00:57:01
+# HOST: 86
+# HOST-SUFFIX: 1
+# TOTAL: 87
+HOST,ip.sb,IP
 HOST,ping0.cc,IP
 HOST,ipinfo.io,IP
 HOST,ifconfig.me,IP
@@ -25,6 +25,7 @@ HOST,test-ipv6.com,IP
 HOST,ip.istatmenus.app,IP
 HOST,whois.pconline.com.cn,IP
 HOST,api.ipify.org,IP
+HOST,ip.skk.moe,IP
 HOST-SUFFIX,b0.upaiyun.com,IP
 HOST,ip-api.com,IP
 HOST,ipapi.co,IP
