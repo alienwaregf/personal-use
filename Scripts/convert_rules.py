@@ -688,6 +688,18 @@ def build_client_list(
     mapped_rules: List[str] = []
 
     for parts in rules:
+        if not parts:
+            continue
+
+        source_type = parts[0].upper()
+
+        if source_type not in CLIENT_TYPE_MAP[client]:
+            print(
+                f"跳过 {client} 不支持的规则类型: "
+                f"{source_type}"
+            )
+            continue
+
         target_line = build_client_rule_line(
             parts,
             client,
@@ -702,7 +714,6 @@ def build_client_list(
         "\n".join(mapped_rules)
         + "\n"
     )
-
 
 def write_client_lists(
     folder: Path,
