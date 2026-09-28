@@ -4,12 +4,10 @@
 from __future__ import annotations
 
 import csv
-import datetime as _dt
 import ipaddress
 import re
 import shutil
 import subprocess
-from collections import Counter
 from pathlib import Path
 from io import StringIO
 from typing import Dict, List, Optional, Sequence, Set, Tuple
@@ -687,9 +685,7 @@ def build_client_list(
     client: str,
 ) -> str:
 
-    lines: List[str] = []
     mapped_rules: List[str] = []
-    counts = Counter()
 
     for parts in rules:
         target_line = build_client_rule_line(
@@ -702,43 +698,8 @@ def build_client_list(
             target_line
         )
 
-        counts[
-            CLIENT_TYPE_MAP[client][
-                parts[0].upper()
-            ]
-        ] += 1
-
-    lines.extend(
-        [
-            f"# NAME: {folder_name}",
-            (
-                "# AUTHOR: alienwaregf"
-            ),
-            (
-                "# REPO: "
-                "https://github.com/"
-                "alienwaregf/personal-use"
-            ),
-            (
-                "# UPDATED: "
-                f"{_dt.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}"
-            ),
-        ]
-    )
-
-    for key, count in counts.items():
-        lines.append(
-            f"# {key}: {count}"
-        )
-
-    lines.append(
-        f"# TOTAL: {len(mapped_rules)}"
-    )
-
-    lines.extend(mapped_rules)
-
     return (
-        "\n".join(lines)
+        "\n".join(mapped_rules)
         + "\n"
     )
 
