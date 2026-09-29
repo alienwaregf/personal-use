@@ -89,6 +89,7 @@ UPSTREAM_INCLUDE_FOLDERS = {
     "IPTVMainland",
     "IPTVOther",
     "Lan",
+    "Line",
     "Mail",
     "Microsoft",
     "Netflix",
