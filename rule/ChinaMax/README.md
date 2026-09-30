@@ -21,7 +21,7 @@
 
 ## 规则统计
 
-最后更新时间：2026-09-28 04:44:02
+最后更新时间：2026-09-30 05:47:23
 
 各类型规则统计：
 | 类型 | 数量(条)  | 
@@ -30,10 +30,10 @@
 | DOMAIN-KEYWORD | 13  | 
 | DOMAIN-SUFFIX | 111254  | 
 | IP-ASN | 1  | 
-| IP-CIDR | 8244  | 
+| IP-CIDR | 8243  | 
 | IP-CIDR6 | 4212  | 
 | PROCESS-NAME | 14  | 
-| TOTAL | 124006  |
+| TOTAL | 124005  |
 
 # <img src="https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/Picture/icon/OpenClash.png" width="25" height="25" alt="Clash" /> Clash
 
