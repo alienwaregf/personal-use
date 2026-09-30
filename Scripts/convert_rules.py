@@ -98,6 +98,7 @@ UPSTREAM_INCLUDE_FOLDERS = {
     "Oracle",
     "OpenAI",
     "PayPal",
+    "PikPak",
     "PlayStation",
     "PrivateTracker",
     "Reddit",
