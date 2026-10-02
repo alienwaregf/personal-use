@@ -45,8 +45,6 @@ MY_RAW_RULE_BASE_URL = (
     "alienwaregf/personal-use/main/rule"
 )
 
-# 已有专属脚本负责的目录（custom_rule.py 不碰）：
-# 黑矩阵目录归 blackmatrix7_rule.py，AD 归 AD_rule.py，Adult 归 porn-domains_rule.py
 SCRIPT_OWNED_FOLDERS = {
     "AD",
     "Adult",
@@ -523,44 +521,12 @@ def compile_to_mrs(
         )
 
 
-def compile_rule_set(
-    folder_name: str,
-    source_yaml: Path,
-    destination_folder: Path,
-) -> Tuple[
-    bool,
-    bool,
-    List[List[str]],
-]:
-
-    rules = parse_rules(
-        source_yaml
-    )
-
-    has_domain, has_ip = (
-        compile_parsed_rules(
-            folder_name,
-            rules,
-            destination_folder,
-        )
-    )
-
-    return (
-        has_domain,
-        has_ip,
-        rules,
-    )
-
 
 def compile_parsed_rules(
     folder_name: str,
     rules: Sequence[Sequence[str]],
     destination_folder: Path,
 ) -> Tuple[bool, bool]:
-    """
-    把已解析的规则编译为 mrs（domain / ipcidr 两种 behavior）。
-    规则为空直接抛错，不静默产出空集。
-    """
 
     if not rules:
         raise RuntimeError(
@@ -1257,6 +1223,7 @@ class CompileCache:
                     ).encode()
                 )
             except Exception:
+                # 源文件读不到也算变化，走重编
                 digest.update(b"\x00unreadable\x00")
                 digest.update(
                     str(path).encode()
@@ -1338,6 +1305,8 @@ class CompileCache:
                 newline="\n",
             )
         except Exception as exc:
+            # 缓存写失败不影响主流程，
+            # 下次全量重做即可
             print(
                 f"警告：编译缓存写入失败"
                 f"（下次将全量重做）：{exc}"
@@ -1345,6 +1314,10 @@ class CompileCache:
 
 
 def make_cache() -> Optional[CompileCache]:
+    """
+    初始化自定义侧编译缓存。
+    fail-open：任何异常返回 None，调用方全量重编。
+    """
     try:
         return CompileCache(
             CUSTOM_CACHE_PATH,
