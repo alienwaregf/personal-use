@@ -23,8 +23,6 @@ import yaml
 DEST_RULE_DIR = Path("rule")
 TEMP_DIR = Path("temp_compile")
 
-# 自定义侧编译缓存（与 blackmatrix7 的 .compile_cache.json 分开，
-# 由 AD / Adult / 自定义目录共用一个记录文件，各脚本只更新自己负责的条目）
 CUSTOM_CACHE_PATH = DEST_RULE_DIR / ".compile_cache_custom.json"
 
 CLIENTS = (
