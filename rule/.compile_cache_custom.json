@@ -1,0 +1,13 @@
+{
+  "converter_sha256": "987c0bde1d941db18fae6801a43b1411a5835ba92d8c84fb2b384fa75608c71d",
+  "folders": {
+    "AD": "8fbfc44d042e79a4b56596151ff4dbce0efac3d42bda9d98c0189584d1b05fae",
+    "Adult": "d2094714ae64dbdd71c4d3128b354aeeb8ab0e57d72395aa5258026b8fc614f2",
+    "Apple Intelligence": "5f705d754e64a4ff2eef2d4b6e6e0acced9e47a3e500343145f96169c4ffae7f",
+    "ChinaDirect": "7e34511037da7284efb4dc577aa7025ae972734bb8f96b2fdacd6eed428c9af7",
+    "IP": "16f2879c3247abbcb0bb2461ba4f4e51be29f0da6639e2309d95c227a2b945cd",
+    "MuseAI": "93bf5354e0640421fcd1085f12aa80aa68b6e84cdfa880ff721b7bc1abb0c507"
+  },
+  "mihomo_version": "Mihomo Meta v1.19.32 linux amd64 with go1.26.8 Wed Sep 30 16:55:19 UTC 2026",
+  "version": 1
+}

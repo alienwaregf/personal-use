@@ -1,14 +1,14 @@
 # AD 聚合广告域名规则
-# 由 Scripts/AD.py 自动生成，请勿手动修改
-# 生成时间（UTC）：2026-10-02T07:03:58Z
+# 由 Scripts/AD_rule.py 自动生成，请勿手动修改
+# 生成时间（UTC）：2026-10-02T08:14:04Z
 # 数据来源：
 #   - easylist: https://easylist-downloads.adblockplus.org/easylist.txt
-#     原始 78704 行，提取 44632 个域名
+#     原始 78712 行，提取 44640 个域名
 #   - easyprivacy: https://easylist-downloads.adblockplus.org/easyprivacy.txt
 #     原始 54252 行，提取 40580 个域名
 #   - easylistchina: https://easylist-downloads.adblockplus.org/easylistchina.txt
-#     原始 19207 行，提取 5764 个域名
-# 合并去重后域名总数：90958
+#     原始 19208 行，提取 5765 个域名
+# 合并去重后域名总数：90967
 payload:
   - DOMAIN-SUFFIX,0.myikas.com
   - DOMAIN-SUFFIX,0.net.easyjet.com
@@ -36166,6 +36166,7 @@ payload:
   - DOMAIN-SUFFIX,icunvveszpzxa.online
   - DOMAIN-SUFFIX,icuvzogomwarh.site
   - DOMAIN-SUFFIX,icxddwjkp.com
+  - DOMAIN-SUFFIX,icxjabgvbmszv.site
   - DOMAIN-SUFFIX,icxyqoonmogdn.online
   - DOMAIN-SUFFIX,icyassimilateparchment.com
   - DOMAIN-SUFFIX,icyporno.com
@@ -36233,6 +36234,7 @@ payload:
   - DOMAIN-SUFFIX,idsequoia.ai
   - DOMAIN-SUFFIX,idstatus.sky.com
   - DOMAIN-SUFFIX,iduk.barcodesgroup.com
+  - DOMAIN-SUFFIX,idunkukfjuoyt.online
   - DOMAIN-SUFFIX,idvlixheiccfd.space
   - DOMAIN-SUFFIX,idwtsbewkufhr.space
   - DOMAIN-SUFFIX,idx.lat
@@ -37356,6 +37358,7 @@ payload:
   - DOMAIN-SUFFIX,inchedcuppers.shop
   - DOMAIN-SUFFIX,inchedriviera.cfd
   - DOMAIN-SUFFIX,inchesray.com
+  - DOMAIN-SUFFIX,inchestgashed.com
   - DOMAIN-SUFFIX,inchinghilda.cfd
   - DOMAIN-SUFFIX,incidentallyhorace.com
   - DOMAIN-SUFFIX,incisedelhi.cfd
@@ -39889,6 +39892,7 @@ payload:
   - DOMAIN-SUFFIX,jiwire.com
   - DOMAIN-SUFFIX,jiwvjdsiyr.com
   - DOMAIN-SUFFIX,jixdwtlveqhrl.online
+  - DOMAIN-SUFFIX,jixjkorwlxfoc.site
   - DOMAIN-SUFFIX,jiyrljjteuhoe.space
   - DOMAIN-SUFFIX,jiz4pa4hu.com
   - DOMAIN-SUFFIX,jizzarchives.com
@@ -44610,6 +44614,7 @@ payload:
   - DOMAIN-SUFFIX,loen21.net
   - DOMAIN-SUFFIX,loeqrqqeeemj.top
   - DOMAIN-SUFFIX,loessfraised.com
+  - DOMAIN-SUFFIX,loetbbmhwkjcf.space
   - DOMAIN-SUFFIX,lofcdljzqswbs.online
   - DOMAIN-SUFFIX,lofo3l15c674.platform.replai.io
   - DOMAIN-SUFFIX,loftmenturnoff.shop
@@ -55599,6 +55604,7 @@ payload:
   - DOMAIN-SUFFIX,oypineyedestan.cfd
   - DOMAIN-SUFFIX,oyqxdtshsivhl.online
   - DOMAIN-SUFFIX,oyrsdqzzdfmjy.website
+  - DOMAIN-SUFFIX,oysdzwzivk.com
   - DOMAIN-SUFFIX,oyshsqsoyrexh.site
   - DOMAIN-SUFFIX,oyssqe.easyvoyage.com
   - DOMAIN-SUFFIX,oysterspottery.com
@@ -60220,6 +60226,7 @@ payload:
   - DOMAIN-SUFFIX,quiltrearm.qpon
   - DOMAIN-SUFFIX,quince22.top
   - DOMAIN-SUFFIX,quinceimaging.actonservice.com
+  - DOMAIN-SUFFIX,quinicmaltedcohosh.cyou
   - DOMAIN-SUFFIX,quininedolose.shop
   - DOMAIN-SUFFIX,quinsmustees.cfd
   - DOMAIN-SUFFIX,quintessentialcash.com
@@ -70994,6 +71001,7 @@ payload:
   - DOMAIN-SUFFIX,srmdvb.ekohealth.com
   - DOMAIN-SUFFIX,srmqcsnhhujpjmr.com
   - DOMAIN-SUFFIX,srmy.srglobal.com
+  - DOMAIN-SUFFIX,sroanqfbykbpejt.com
   - DOMAIN-SUFFIX,sroork.mrmarvis.nl
   - DOMAIN-SUFFIX,srpsnvtisuznr.site
   - DOMAIN-SUFFIX,srqponmd.carte-gr.total.fr
@@ -89640,6 +89648,7 @@ payload:
   - DOMAIN-SUFFIX,yyhijp.g123.jp
   - DOMAIN-SUFFIX,yyhjwjkzgfucr.website
   - DOMAIN-SUFFIX,yyi7.consobaby.de
+  - DOMAIN-SUFFIX,yyiwlbznficas.online
   - DOMAIN-SUFFIX,yyjvimo.com
   - DOMAIN-SUFFIX,yykpfjpwrbllg.space
   - DOMAIN-SUFFIX,yylady.cn
