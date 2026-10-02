@@ -18,6 +18,7 @@ from urllib.parse import quote
 import yaml
 
 
+
 SOURCE_REPO_DIR = Path("source_repo")
 SOURCE_RULE_DIR = SOURCE_REPO_DIR / "rule"
 SOURCE_CLASH_DIR = SOURCE_RULE_DIR / "Clash"
@@ -928,6 +929,7 @@ def update_readme(
 def _normalized_file_hash(
     path: Path,
 ) -> str:
+
     digest = hashlib.sha256()
 
     for raw_line in path.read_bytes().splitlines():
@@ -980,6 +982,7 @@ def get_mihomo_version() -> str:
 
 class CompileCache:
 
+
     def __init__(
         self,
         path: Path,
@@ -1029,6 +1032,7 @@ class CompileCache:
                     ).encode()
                 )
             except Exception:
+                
                 digest.update(b"\x00unreadable\x00")
                 digest.update(
                     str(path).encode()
@@ -1110,12 +1114,12 @@ class CompileCache:
                 newline="\n",
             )
         except Exception as exc:
-            # 缓存写失败不影响主流程，
-            # 下次全量重做即可
+
             print(
                 f"警告：编译缓存写入失败"
                 f"（下次将全量重做）：{exc}"
             )
+
 
 
 def compile_rule_set(
@@ -1230,10 +1234,6 @@ def process_upstream_folder(
     folder_name: str,
     cache: Optional[CompileCache],
 ) -> Optional[str]:
-    """
-    返回 folder_name 表示该目录已处理（编译或命中缓存跳过），
-    返回 None 表示源缺失，本次未处理。
-    """
 
     source_folder = (
         SOURCE_CLASH_DIR
@@ -1244,7 +1244,8 @@ def process_upstream_folder(
 
         print(
             f"跳过上游目录："
-            f"{source_folder}"
+            f"{source_folder}",
+            flush=True,
         )
 
         return None
@@ -1258,11 +1259,11 @@ def process_upstream_folder(
 
         print(
             "跳过上游目录，没有 YAML："
-            f"{folder_name}"
+            f"{folder_name}",
+            flush=True,
         )
 
         return None
-
 
     cache_key: Optional[str] = None
 
@@ -1285,7 +1286,8 @@ def process_upstream_folder(
         ):
             print(
                 f"跳过未变化的上游目录："
-                f"{folder_name}"
+                f"{folder_name}",
+                flush=True,
             )
 
             return folder_name
@@ -1381,6 +1383,12 @@ def process_upstream_folder(
             folder_name,
             cache_key,
         )
+
+    print(
+        f"已更新上游目录："
+        f"{folder_name}",
+        flush=True,
+    )
 
     return folder_name
 
