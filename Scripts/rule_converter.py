@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-
 from __future__ import annotations
 
 import csv
@@ -49,7 +48,7 @@ MY_RAW_RULE_BASE_URL = (
 )
 
 # 已有专属脚本负责的目录（custom_rule.py 不碰）：
-# 黑矩阵目录归 blackmatrix7_rule.py，AD 归 AD.py，Adult 归 porn-domains.py
+# 黑矩阵目录归 blackmatrix7_rule.py，AD 归 AD_rule.py，Adult 归 porn-domains_rule.py
 SCRIPT_OWNED_FOLDERS = {
     "AD",
     "Adult",
@@ -540,10 +539,35 @@ def compile_rule_set(
         source_yaml
     )
 
+    has_domain, has_ip = (
+        compile_parsed_rules(
+            folder_name,
+            rules,
+            destination_folder,
+        )
+    )
+
+    return (
+        has_domain,
+        has_ip,
+        rules,
+    )
+
+
+def compile_parsed_rules(
+    folder_name: str,
+    rules: Sequence[Sequence[str]],
+    destination_folder: Path,
+) -> Tuple[bool, bool]:
+    """
+    把已解析的规则编译为 mrs（domain / ipcidr 两种 behavior）。
+    规则为空直接抛错，不静默产出空集。
+    """
+
     if not rules:
         raise RuntimeError(
             "未解析出任何有效 Clash 规则: "
-            f"{source_yaml}"
+            f"{folder_name}"
         )
 
     domain_rules, ip_rules = (
@@ -636,7 +660,6 @@ def compile_rule_set(
     return (
         has_domain,
         has_ip,
-        rules,
     )
 
 
@@ -961,9 +984,6 @@ def replace_client_sections(
         keepends=True
     )
 
-    # =========================================================
-    # 找到第一个客户端标题
-    # =========================================================
 
     first_client_index: Optional[int] = None
 
@@ -1013,9 +1033,6 @@ def replace_client_sections(
             preserve_index = idx
             break
 
-    # =========================================================
-    # 如果上游 README 根本没有客户端标题
-    # =========================================================
 
     if first_client_index is None:
 
@@ -1083,9 +1100,6 @@ def replace_client_sections(
             lines[preserve_index:]
         ).lstrip()
 
-    # =========================================================
-    # 最终重新拼接
-    # =========================================================
 
     result_parts: List[str] = []
 
@@ -1122,8 +1136,6 @@ def update_readme(
     ] = None,
 ) -> None:
 
-    # 自有目录的 README 没有上游模板，
-    # 每次由客户端订阅区块从零生成
     content = ""
 
     replacement = client_section_text(
@@ -1151,11 +1163,6 @@ def update_readme(
 def _normalized_file_hash(
     path: Path,
 ) -> str:
-    """
-    源文件的规范哈希：去掉注释行与空行后计算。
-    注释不影响编译结果（例如 AD.py 写入的时间戳注释），
-    去掉可避免无谓的重编。
-    """
     digest = hashlib.sha256()
 
     for raw_line in path.read_bytes().splitlines():
@@ -1207,13 +1214,6 @@ def get_mihomo_version() -> str:
 
 
 class CompileCache:
-    """
-    按目录缓存编译指纹，源文件、转换脚本、mihomo 版本
-    任一变化即重编。
-
-    fail-open：缓存缺失、读取失败、任何异常一律视为未命中，
-    走全量编译。缓存只是加速，绝不单独决定跳过。
-    """
 
     def __init__(
         self,
@@ -1249,11 +1249,6 @@ class CompileCache:
         source_paths: Sequence[Path],
         raw_paths: Sequence[Path] = (),
     ) -> str:
-        """
-        source_paths 用规范哈希（忽略 YAML 注释与空行）；
-        raw_paths 用原始哈希（例如 Markdown 模板，
-        # 开头是标题不是注释，必须原样计入）。
-        """
         digest = hashlib.sha256()
 
         for path in source_paths:
@@ -1264,7 +1259,6 @@ class CompileCache:
                     ).encode()
                 )
             except Exception:
-                # 源文件读不到也算变化，走重编
                 digest.update(b"\x00unreadable\x00")
                 digest.update(
                     str(path).encode()
@@ -1346,8 +1340,6 @@ class CompileCache:
                 newline="\n",
             )
         except Exception as exc:
-            # 缓存写失败不影响主流程，
-            # 下次全量重做即可
             print(
                 f"警告：编译缓存写入失败"
                 f"（下次将全量重做）：{exc}"
@@ -1355,10 +1347,6 @@ class CompileCache:
 
 
 def make_cache() -> Optional[CompileCache]:
-    """
-    初始化自定义侧编译缓存。
-    fail-open：任何异常返回 None，调用方全量重编。
-    """
     try:
         return CompileCache(
             CUSTOM_CACHE_PATH,
@@ -1442,55 +1430,19 @@ def is_custom_rule_folder(
     )
 
 
-def convert_custom_folder(
+def emit_folder_outputs(
     folder: Path,
+    classical_filename: str,
+    rules: Sequence[Sequence[str]],
     cache: Optional[CompileCache],
-) -> Optional[str]:
-    """
-    把一个自有/自定义目录的源 YAML 转成 mrs + 四客户端 list + README。
-    返回 folder_name 表示已处理（编译或命中缓存跳过），
-    返回 None 表示源缺失，本次未处理。
-    """
-
+    cache_key: Optional[str],
+) -> None:
     folder_name = folder.name
 
-    source_yaml = (
-        select_best_yaml(
-            folder,
+    has_domain, has_ip = (
+        compile_parsed_rules(
             folder_name,
-        )
-    )
-
-    if not source_yaml:
-        return None
-
-    # =========================================================
-    # 缓存检查：源 YAML + 转换脚本 + mihomo 版本
-    # 命中则整个目录跳过（解析、mihomo 转换、客户端文件全免）
-    # =========================================================
-
-    cache_key: Optional[str] = None
-
-    if cache is not None:
-        cache_key = cache.key_for(
-            [source_yaml]
-        )
-
-        if cache.is_unchanged(
-            folder_name,
-            cache_key,
-        ):
-            print(
-                f"跳过未变化的自定义目录："
-                f"{folder_name}"
-            )
-
-            return folder_name
-
-    has_domain, has_ip, rules = (
-        compile_rule_set(
-            folder_name,
-            source_yaml,
+            rules,
             folder,
         )
     )
@@ -1513,7 +1465,7 @@ def convert_custom_folder(
     update_readme(
         folder / "README.md",
         folder_name,
-        source_yaml.name,
+        classical_filename,
         has_domain,
         has_ip,
         list_filenames=list_filenames,
@@ -1527,6 +1479,95 @@ def convert_custom_folder(
             folder_name,
             cache_key,
         )
+
+
+def convert_prepared_folder(
+    folder: Path,
+    classical_filename: str,
+    rules: Sequence[Sequence[str]],
+    cache: Optional[CompileCache],
+    cache_key: Optional[str],
+) -> str:
+    folder_name = folder.name
+
+    if (
+        cache is not None
+        and cache_key is not None
+        and cache.is_unchanged(
+            folder_name,
+            cache_key,
+        )
+    ):
+        print(
+            f"跳过未变化的目录："
+            f"{folder_name}"
+        )
+
+        return folder_name
+
+    emit_folder_outputs(
+        folder,
+        classical_filename,
+        rules,
+        cache,
+        cache_key,
+    )
+
+    print(
+        "规则转换完成: "
+        f"{folder_name}"
+    )
+
+    return folder_name
+
+
+def convert_custom_folder(
+    folder: Path,
+    cache: Optional[CompileCache],
+) -> Optional[str]:
+
+    folder_name = folder.name
+
+    source_yaml = (
+        select_best_yaml(
+            folder,
+            folder_name,
+        )
+    )
+
+    if not source_yaml:
+        return None
+
+
+    cache_key: Optional[str] = None
+
+    if cache is not None:
+        cache_key = cache.key_for(
+            [source_yaml]
+        )
+
+        if cache.is_unchanged(
+            folder_name,
+            cache_key,
+        ):
+            print(
+                f"跳过未变化的自定义目录："
+                f"{folder_name}"
+            )
+
+            return folder_name
+
+    rules = parse_rules(
+        source_yaml
+    )
+
+    emit_folder_outputs(
+        folder,
+        source_yaml.name,
+        rules,
+        cache,
+        cache_key,
+    )
 
     print(
         "自定义规则完成: "
