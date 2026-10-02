@@ -1,20 +1,20 @@
 # AD 聚合广告域名规则
 # 由 Scripts/AD_rule.py 自动生成，请勿手动修改
-# 上游最后更新时间（UTC）：2026-10-02T11:42:14Z
+# 上游最后更新时间（UTC）：2026-10-02T12:22:11Z
 # 数据来源：
 #   - easylist: https://easylist-downloads.adblockplus.org/easylist.txt
-#     原始 78764 行，提取 44796 条规则
+#     原始 78774 行，提取 44806 条规则
 #   - easyprivacy: https://easylist-downloads.adblockplus.org/easyprivacy.txt
 #     原始 54252 行，提取 40589 条规则
 #   - easylistchina: https://easylist-downloads.adblockplus.org/easylistchina.txt
-#     原始 19209 行，提取 5771 条规则
+#     原始 19210 行，提取 5772 条规则
 #   - hagezi-ultimate: https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/ultimate.txt
 #     原始 284039 行，提取 283986 条规则
 #   - stevenblack: https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
 #     原始 81583 行，提取 74757 条规则
 #   - anti-ad: https://raw.githubusercontent.com/privacy-protection-tools/anti-AD/master/anti-ad-domains.txt
 #     原始 107697 行，提取 107693 条规则
-# 合并去重后：域名 393790 个，IP 规则 118 条
+# 合并去重后：域名 393801 个，IP 规则 118 条
 payload:
   - DOMAIN-SUFFIX,0--4.com
   - DOMAIN-SUFFIX,0--d.com
@@ -12075,6 +12075,7 @@ payload:
   - DOMAIN-SUFFIX,9nwplq7y2o.com
   - DOMAIN-SUFFIX,9nzrfglryy.com
   - DOMAIN-SUFFIX,9obmf866d.com
+  - DOMAIN-SUFFIX,9ojmoy453qqpoz6x83ve7.rest
   - DOMAIN-SUFFIX,9oki8r.pics
   - DOMAIN-SUFFIX,9orao5br.com
   - DOMAIN-SUFFIX,9oxhstb2m2.com
@@ -36804,6 +36805,7 @@ payload:
   - DOMAIN-SUFFIX,altivexcapital64.net
   - DOMAIN-SUFFIX,altivexelite70.com
   - DOMAIN-SUFFIX,altivexneural40.net
+  - DOMAIN-SUFFIX,altkamamhab.in
   - DOMAIN-SUFFIX,altkraft.com
   - DOMAIN-SUFFIX,altmedguide.com
   - DOMAIN-SUFFIX,altmedia101.com
@@ -66254,6 +66256,7 @@ payload:
   - DOMAIN-SUFFIX,bob.dmpxs.com
   - DOMAIN-SUFFIX,bob.gitclear.com
   - DOMAIN-SUFFIX,bob.tinyns.me
+  - DOMAIN-SUFFIX,bob6zwkgzv4tr7xciof.cfd
   - DOMAIN-SUFFIX,bobabillydirect.org
   - DOMAIN-SUFFIX,bobafidges.com
   - DOMAIN-SUFFIX,bobaidu8.com
@@ -120753,6 +120756,7 @@ payload:
   - DOMAIN-SUFFIX,ew.caixa.gov.br
   - DOMAIN-SUFFIX,ew.colimaunmoral.cyou
   - DOMAIN-SUFFIX,ew.mittwald.de
+  - DOMAIN-SUFFIX,ew0ctzt3vd.com
   - DOMAIN-SUFFIX,ew16d.package12.com
   - DOMAIN-SUFFIX,ew3.io
   - DOMAIN-SUFFIX,ew3gkqujz7.cfd
@@ -137796,6 +137800,7 @@ payload:
   - DOMAIN-SUFFIX,gllyiehduouct.site
   - DOMAIN-SUFFIX,glmeilgroi.com
   - DOMAIN-SUFFIX,glmjfejgdoox.pw
+  - DOMAIN-SUFFIX,glmkvgkuuayau.online
   - DOMAIN-SUFFIX,glnvdc.cn
   - DOMAIN-SUFFIX,gloachaptu.net
   - DOMAIN-SUFFIX,gload.adhood.com
@@ -148800,6 +148805,7 @@ payload:
   - DOMAIN-SUFFIX,hhmrsmghtbdln.site
   - DOMAIN-SUFFIX,hhn.cxslcc.cn
   - DOMAIN-SUFFIX,hhoaglat.com
+  - DOMAIN-SUFFIX,hhoiaeqnqppsh.site
   - DOMAIN-SUFFIX,hhoneyann96.beautydates.cn
   - DOMAIN-SUFFIX,hhoofflkari.in
   - DOMAIN-SUFFIX,hhooyivpxq.com
@@ -208063,6 +208069,7 @@ payload:
   - DOMAIN-SUFFIX,mornopizza.com
   - DOMAIN-SUFFIX,moro-douga.link
   - DOMAIN-SUFFIX,moro-fahrraeder.de
+  - DOMAIN-SUFFIX,moronescompsgropple.cfd
   - DOMAIN-SUFFIX,moronscorn.com
   - DOMAIN-SUFFIX,morordermal.com
   - DOMAIN-SUFFIX,morospin-officiel.fr
@@ -228231,6 +228238,7 @@ payload:
   - DOMAIN-SUFFIX,pakok.net
   - DOMAIN-SUFFIX,pakpolice.com
   - DOMAIN-SUFFIX,pakrac.telesrbija.rs
+  - DOMAIN-SUFFIX,paktongforfex.qpon
   - DOMAIN-SUFFIX,pakwjjwor.com
   - DOMAIN-SUFFIX,pal-item.us.intellitxt.com
   - DOMAIN-SUFFIX,pal-v.actonservice.com
@@ -246671,6 +246679,7 @@ payload:
   - DOMAIN-SUFFIX,qmds-dev-samsung.com
   - DOMAIN-SUFFIX,qmeqraen.com
   - DOMAIN-SUFFIX,qmfdurlewpnvz.online
+  - DOMAIN-SUFFIX,qmfvewoxvmdld.com
   - DOMAIN-SUFFIX,qmgrsutqghdxx.online
   - DOMAIN-SUFFIX,qmgwny.autobarn.com.au
   - DOMAIN-SUFFIX,qmgzkb.dedoles.sk
@@ -322749,6 +322758,7 @@ payload:
   - DOMAIN-SUFFIX,tqnogxuqgwlmj.space
   - DOMAIN-SUFFIX,tqnqcwcbxacdw.com
   - DOMAIN-SUFFIX,tqoktissnsrqqf.com
+  - DOMAIN-SUFFIX,tqopwjuklgerb.online
   - DOMAIN-SUFFIX,tqqixldkdkcvi.site
   - DOMAIN-SUFFIX,tqqjk.top
   - DOMAIN-SUFFIX,tqqxdstq.shop
@@ -392269,6 +392279,7 @@ payload:
   - DOMAIN-SUFFIX,zmiarjiioqzvm.site
   - DOMAIN-SUFFIX,zminer.zaloapp.com
   - DOMAIN-SUFFIX,zmiqg.eccouncil.org
+  - DOMAIN-SUFFIX,zmiqtnsxzbthu.online
   - DOMAIN-SUFFIX,zmizy.com
   - DOMAIN-SUFFIX,zmj.guanqinjie.cn
   - DOMAIN-SUFFIX,zmjt3xi8k.com
