@@ -5,6 +5,11 @@ domain
 https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/AD/AD_Domain.mrs
 ```
 
+ipcidr
+```text
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/AD/AD_IP.mrs
+```
+
 classical
 ```text
 https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/AD/AD.yaml
