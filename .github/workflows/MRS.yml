@@ -34,7 +34,7 @@ jobs:
       - name: 检查 Python 脚本语法
         run: |
           set -euo pipefail
-          python -m py_compile Scripts/convert_rules.py Scripts/porn-domains.py AD.py
+          python -m py_compile Scripts/convert_rules.py Scripts/porn-domains.py Scripts/AD.py
 
       - name: 拉取 Blackmatrix7 仓库
         run: |
