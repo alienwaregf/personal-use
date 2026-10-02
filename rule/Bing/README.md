@@ -24,7 +24,7 @@
 
 domain
 ```text
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Bing/Bing_Domain.mrs
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Bing/Bing.mrs
 ```
 
 classical

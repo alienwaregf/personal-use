@@ -31,7 +31,7 @@
 
 domain
 ```text
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Advertising/Advertising_Domain.mrs
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Advertising/Advertising.mrs
 ```
 
 ipcidr

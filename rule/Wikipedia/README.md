@@ -24,7 +24,7 @@
 
 domain
 ```text
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Wikipedia/Wikipedia_Domain.mrs
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Wikipedia/Wikipedia.mrs
 ```
 
 classical

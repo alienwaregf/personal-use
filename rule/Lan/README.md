@@ -27,7 +27,7 @@
 
 domain
 ```text
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Lan/Lan_Domain.mrs
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Lan/Lan.mrs
 ```
 
 ipcidr

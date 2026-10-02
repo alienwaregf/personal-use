@@ -24,7 +24,7 @@ Vercel规则由《RULE GENERATOR 规则生成器》自动生成。
 
 domain
 ```text
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Vercel/Vercel_Domain.mrs
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Vercel/Vercel.mrs
 ```
 
 classical

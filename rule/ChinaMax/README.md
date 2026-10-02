@@ -39,7 +39,7 @@
 
 domain
 ```text
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/ChinaMax/ChinaMax_Domain.mrs
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/ChinaMax/ChinaMax.mrs
 ```
 
 ipcidr

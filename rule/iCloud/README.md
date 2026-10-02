@@ -25,7 +25,7 @@ iCloud规则由《RULE GENERATOR 规则生成器》自动生成。
 
 domain
 ```text
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/iCloud/iCloud_Domain.mrs
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/iCloud/iCloud.mrs
 ```
 
 classical

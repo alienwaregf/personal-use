@@ -24,7 +24,7 @@
 
 domain
 ```text
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/FindMy/FindMy_Domain.mrs
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/FindMy/FindMy.mrs
 ```
 
 classical

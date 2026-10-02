@@ -25,7 +25,7 @@
 
 domain
 ```text
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/GoogleFCM/GoogleFCM_Domain.mrs
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/GoogleFCM/GoogleFCM.mrs
 ```
 
 ipcidr

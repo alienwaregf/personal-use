@@ -24,7 +24,7 @@
 
 domain
 ```text
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Binance/Binance_Domain.mrs
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Binance/Binance.mrs
 ```
 
 classical

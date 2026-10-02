@@ -27,7 +27,7 @@ DOMAIN,gspe1-ssl.ls.apple.com  必要，但会导致「地图」使用「TOMTOM�
 
 domain
 ```text
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/AppleNews/AppleNews_Domain.mrs
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/AppleNews/AppleNews.mrs
 ```
 
 classical
