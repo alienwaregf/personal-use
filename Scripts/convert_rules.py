@@ -4,7 +4,9 @@
 from __future__ import annotations
 
 import csv
+import hashlib
 import ipaddress
+import json
 import re
 import shutil
 import subprocess
@@ -22,6 +24,9 @@ SOURCE_RULE_DIR = Path("source_repo/rule")
 SOURCE_CLASH_DIR = SOURCE_RULE_DIR / "Clash"
 DEST_RULE_DIR = Path("rule")
 TEMP_DIR = Path("temp_compile")
+
+# 编译缓存记录文件（随 rule/ 一起提交，跨 hourly 运行持久化）
+CACHE_PATH = DEST_RULE_DIR / ".compile_cache.json"
 
 CLIENTS = (
     "Clash",
@@ -1113,6 +1118,214 @@ def update_readme(
     )
 
 
+# ================= 编译缓存 =================
+
+def _normalized_file_hash(
+    path: Path,
+) -> str:
+    """
+    源文件的规范哈希：去掉注释行与空行后计算。
+    注释不影响编译结果（例如 AD.py 写入的时间戳注释），
+    去掉可避免无谓的重编。
+    """
+    digest = hashlib.sha256()
+
+    for raw_line in path.read_bytes().splitlines():
+        line = raw_line.strip()
+
+        if not line or line.startswith(b"#"):
+            continue
+
+        digest.update(line)
+        digest.update(b"\n")
+
+    return digest.hexdigest()
+
+
+def _file_sha256(
+    path: Path,
+) -> str:
+    return hashlib.sha256(
+        path.read_bytes()
+    ).hexdigest()
+
+
+def get_mihomo_version() -> str:
+    mihomo = shutil.which("mihomo")
+
+    if not mihomo:
+        raise RuntimeError(
+            "找不到 mihomo 命令"
+        )
+
+    result = subprocess.run(
+        [mihomo, "-v"],
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+
+    output = (
+        result.stdout
+        + result.stderr
+    ).strip().splitlines()
+
+    if not output:
+        raise RuntimeError(
+            "无法获取 mihomo 版本"
+        )
+
+    return output[0].strip()
+
+
+class CompileCache:
+    """
+    按目录缓存编译指纹，源文件、转换脚本、mihomo 版本
+    任一变化即重编。
+
+    fail-open：缓存缺失、读取失败、任何异常一律视为未命中，
+    走全量编译。缓存只是加速，绝不单独决定跳过。
+    """
+
+    def __init__(
+        self,
+        path: Path,
+        converter_hash: str,
+        mihomo_version: str,
+    ) -> None:
+        self.path = path
+        self.converter_hash = converter_hash
+        self.mihomo_version = mihomo_version
+        self.data: Dict[str, str] = {}
+
+        try:
+            raw = json.loads(
+                path.read_text(
+                    encoding="utf-8"
+                )
+            )
+
+            if isinstance(raw, dict):
+                folders = raw.get("folders")
+
+                if isinstance(folders, dict):
+                    self.data = {
+                        str(name): str(key)
+                        for name, key in folders.items()
+                    }
+        except Exception:
+            self.data = {}
+
+    def key_for(
+        self,
+        source_paths: Sequence[Path],
+        raw_paths: Sequence[Path] = (),
+    ) -> str:
+        """
+        source_paths 用规范哈希（忽略 YAML 注释与空行）；
+        raw_paths 用原始哈希（例如 Markdown 模板，
+        # 开头是标题不是注释，必须原样计入）。
+        """
+        digest = hashlib.sha256()
+
+        for path in source_paths:
+            try:
+                digest.update(
+                    _normalized_file_hash(
+                        path
+                    ).encode()
+                )
+            except Exception:
+                # 源文件读不到也算变化，走重编
+                digest.update(b"\x00unreadable\x00")
+                digest.update(
+                    str(path).encode()
+                )
+
+        for path in raw_paths:
+            try:
+                digest.update(
+                    _file_sha256(
+                        path
+                    ).encode()
+                )
+            except Exception:
+                digest.update(b"\x00unreadable\x00")
+                digest.update(
+                    str(path).encode()
+                )
+
+        digest.update(
+            self.converter_hash.encode()
+        )
+        digest.update(
+            self.mihomo_version.encode()
+        )
+
+        return digest.hexdigest()
+
+    def is_unchanged(
+        self,
+        folder_name: str,
+        key: str,
+    ) -> bool:
+        return (
+            self.data.get(folder_name)
+            == key
+        )
+
+    def mark_done(
+        self,
+        folder_name: str,
+        key: str,
+    ) -> None:
+        self.data[folder_name] = key
+
+    def prune(
+        self,
+        keep: Set[str],
+    ) -> None:
+        for name in list(self.data):
+            if name not in keep:
+                del self.data[name]
+
+    def save(self) -> None:
+        try:
+            self.path.parent.mkdir(
+                parents=True,
+                exist_ok=True,
+            )
+
+            payload = {
+                "version": 1,
+                "converter_sha256": (
+                    self.converter_hash
+                ),
+                "mihomo_version": (
+                    self.mihomo_version
+                ),
+                "folders": self.data,
+            }
+
+            self.path.write_text(
+                json.dumps(
+                    payload,
+                    indent=2,
+                    sort_keys=True,
+                )
+                + "\n",
+                encoding="utf-8",
+                newline="\n",
+            )
+        except Exception as exc:
+            # 缓存写失败不影响主流程，
+            # 下次全量重做即可
+            print(
+                f"警告：编译缓存写入失败"
+                f"（下次将全量重做）：{exc}"
+            )
+
+
 # ================= MRS / 处理单个目录 =================
 
 def compile_rule_set(
@@ -1231,7 +1444,12 @@ def compile_rule_set(
 
 def process_upstream_folder(
     folder_name: str,
-) -> None:
+    cache: Optional[CompileCache],
+) -> Optional[str]:
+    """
+    返回 folder_name 表示该目录已处理（编译或命中缓存跳过），
+    返回 None 表示源缺失，本次未处理。
+    """
 
     source_folder = (
         SOURCE_CLASH_DIR
@@ -1245,7 +1463,7 @@ def process_upstream_folder(
             f"{source_folder}"
         )
 
-        return
+        return None
 
     source_yaml = select_best_yaml(
         source_folder,
@@ -1259,7 +1477,38 @@ def process_upstream_folder(
             f"{folder_name}"
         )
 
-        return
+        return None
+
+    # =========================================================
+    # 缓存检查：源 YAML + 上游 README 模板 + 转换脚本 + mihomo 版本
+    # 命中则整个目录跳过（解析、mihomo 转换、README 重写全免）
+    # =========================================================
+
+    cache_key: Optional[str] = None
+
+    if cache is not None:
+        template = (
+            source_folder
+            / "README.md"
+        )
+
+        cache_key = cache.key_for(
+            [source_yaml],
+            [template]
+            if template.is_file()
+            else [],
+        )
+
+        if cache.is_unchanged(
+            folder_name,
+            cache_key,
+        ):
+            print(
+                f"跳过未变化的上游目录："
+                f"{folder_name}"
+            )
+
+            return folder_name
 
     dest = (
         DEST_RULE_DIR
@@ -1354,6 +1603,17 @@ def process_upstream_folder(
         template_path=template,
     )
 
+    if (
+        cache is not None
+        and cache_key is not None
+    ):
+        cache.mark_done(
+            folder_name,
+            cache_key,
+        )
+
+    return folder_name
+
 
 # ================= 自定义规则 =================
 
@@ -1386,7 +1646,12 @@ def is_custom_rule_folder(
 
 def process_custom_folder(
     folder: Path,
-) -> None:
+    cache: Optional[CompileCache],
+) -> Optional[str]:
+    """
+    返回 folder_name 表示该目录已处理（编译或命中缓存跳过），
+    返回 None 表示源缺失，本次未处理。
+    """
 
     folder_name = folder.name
 
@@ -1398,7 +1663,30 @@ def process_custom_folder(
     )
 
     if not source_yaml:
-        return
+        return None
+
+    # =========================================================
+    # 缓存检查：源 YAML + 转换脚本 + mihomo 版本
+    # 命中则整个目录跳过（解析、mihomo 转换、客户端文件全免）
+    # =========================================================
+
+    cache_key: Optional[str] = None
+
+    if cache is not None:
+        cache_key = cache.key_for(
+            [source_yaml]
+        )
+
+        if cache.is_unchanged(
+            folder_name,
+            cache_key,
+        ):
+            print(
+                f"跳过未变化的自定义目录："
+                f"{folder_name}"
+            )
+
+            return folder_name
 
     has_domain, has_ip, rules = (
         compile_rule_set(
@@ -1433,10 +1721,21 @@ def process_custom_folder(
         list_filenames=list_filenames,
     )
 
+    if (
+        cache is not None
+        and cache_key is not None
+    ):
+        cache.mark_done(
+            folder_name,
+            cache_key,
+        )
+
     print(
         "自定义规则完成: "
         f"{folder_name}"
     )
+
+    return folder_name
 
 
 # ================= 主流程 =================
@@ -1462,6 +1761,29 @@ def main() -> None:
         )
 
     # =========================================================
+    # 编译缓存：源文件、转换脚本、mihomo 版本任一变化即重编。
+    # 初始化失败则本次全量重做（fail-open，绝不静默跳过）。
+    # =========================================================
+
+    cache: Optional[CompileCache] = None
+
+    try:
+        cache = CompileCache(
+            CACHE_PATH,
+            _file_sha256(
+                Path(__file__)
+            ),
+            get_mihomo_version(),
+        )
+    except Exception as exc:
+        print(
+            f"警告：编译缓存初始化失败"
+            f"（本次全量重做）：{exc}"
+        )
+
+        cache = None
+
+    # =========================================================
     # 临时目录
     # =========================================================
 
@@ -1480,6 +1802,8 @@ def main() -> None:
         exist_ok=True,
     )
 
+    handled: Set[str] = set()
+
     # =========================================================
     # 处理 Blackmatrix7 上游规则
     # =========================================================
@@ -1488,9 +1812,13 @@ def main() -> None:
         UPSTREAM_INCLUDE_FOLDERS
     ):
 
-        process_upstream_folder(
-            folder_name
+        done = process_upstream_folder(
+            folder_name,
+            cache,
         )
+
+        if done:
+            handled.add(done)
 
     # =========================================================
     # 处理 rule/ 下用户自己的自定义规则
@@ -1505,9 +1833,17 @@ def main() -> None:
             folder
         ):
 
-            process_custom_folder(
-                folder
+            done = process_custom_folder(
+                folder,
+                cache,
             )
+
+            if done:
+                handled.add(done)
+
+    if cache is not None:
+        cache.prune(handled)
+        cache.save()
 
     print(
         "\n规则转换完成。"
