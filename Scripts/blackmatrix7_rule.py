@@ -598,7 +598,6 @@ def find_upstream_list_file(
     return None
 
 
-
 def client_heading(
     client: str,
 ) -> str:
@@ -929,7 +928,6 @@ def update_readme(
 def _normalized_file_hash(
     path: Path,
 ) -> str:
-
     digest = hashlib.sha256()
 
     for raw_line in path.read_bytes().splitlines():
@@ -982,7 +980,6 @@ def get_mihomo_version() -> str:
 
 class CompileCache:
 
-
     def __init__(
         self,
         path: Path,
@@ -1032,7 +1029,6 @@ class CompileCache:
                     ).encode()
                 )
             except Exception:
-                
                 digest.update(b"\x00unreadable\x00")
                 digest.update(
                     str(path).encode()
@@ -1265,6 +1261,7 @@ def process_upstream_folder(
 
         return None
 
+
     cache_key: Optional[str] = None
 
     if cache is not None:
@@ -1385,7 +1382,7 @@ def process_upstream_folder(
         )
 
     print(
-        f"已更新上游目录："
+        "上游规则转换完成: "
         f"{folder_name}",
         flush=True,
     )
