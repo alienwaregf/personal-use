@@ -1,9 +1,9 @@
 # AD 聚合广告域名规则
 # 由 Scripts/AD_rule.py 自动生成，请勿手动修改
-# 上游最后更新时间（UTC）：2026-10-02T12:22:11Z
+# 上游最后更新时间（UTC）：2026-10-02T12:32:45Z
 # 数据来源：
 #   - easylist: https://easylist-downloads.adblockplus.org/easylist.txt
-#     原始 78774 行，提取 44806 条规则
+#     原始 78781 行，提取 44813 条规则
 #   - easyprivacy: https://easylist-downloads.adblockplus.org/easyprivacy.txt
 #     原始 54252 行，提取 40589 条规则
 #   - easylistchina: https://easylist-downloads.adblockplus.org/easylistchina.txt
@@ -14,7 +14,7 @@
 #     原始 81583 行，提取 74757 条规则
 #   - anti-ad: https://raw.githubusercontent.com/privacy-protection-tools/anti-AD/master/anti-ad-domains.txt
 #     原始 107697 行，提取 107693 条规则
-# 合并去重后：域名 393801 个，IP 规则 118 条
+# 合并去重后：域名 393808 个，IP 规则 118 条
 payload:
   - DOMAIN-SUFFIX,0--4.com
   - DOMAIN-SUFFIX,0--d.com
@@ -61601,6 +61601,7 @@ payload:
   - DOMAIN-SUFFIX,bepolite.eu
   - DOMAIN-SUFFIX,bepqyvmaqlib.com
   - DOMAIN-SUFFIX,beprayhots.com
+  - DOMAIN-SUFFIX,bepresshoaxed.com
   - DOMAIN-SUFFIX,beprnlbqbqwcb.online
   - DOMAIN-SUFFIX,bepseekersy.com
   - DOMAIN-SUFFIX,beqbox.com
@@ -75194,6 +75195,7 @@ payload:
   - DOMAIN-SUFFIX,cdhzzqqmnmpqf.website
   - DOMAIN-SUFFIX,cdiabetes.com
   - DOMAIN-SUFFIX,cdiealter.store
+  - DOMAIN-SUFFIX,cdiipxzghaoln.online
   - DOMAIN-SUFFIX,cdinstagram.com
   - DOMAIN-SUFFIX,cdj-dap.s3-ap-northeast-1.amazonaws.com
   - DOMAIN-SUFFIX,cdjbf8trk.com
@@ -130369,6 +130371,7 @@ payload:
   - DOMAIN-SUFFIX,fraildepartment.com
   - DOMAIN-SUFFIX,frailfruit.com
   - DOMAIN-SUFFIX,frailplatform.com
+  - DOMAIN-SUFFIX,fraiseduntone.com
   - DOMAIN-SUFFIX,fraiymmrjeiwf.site
   - DOMAIN-SUFFIX,fralo.info
   - DOMAIN-SUFFIX,fralstamp-genglyric.icu
@@ -139295,6 +139298,7 @@ payload:
   - DOMAIN-SUFFIX,goalbo.de
   - DOMAIN-SUFFIX,goalhanger-tracking.onrender.com
   - DOMAIN-SUFFIX,goalhat.com
+  - DOMAIN-SUFFIX,goalieshortly.com
   - DOMAIN-SUFFIX,goalkertech.com
   - DOMAIN-SUFFIX,goallanding.com
   - DOMAIN-SUFFIX,goallbest.com
@@ -150902,6 +150906,7 @@ payload:
   - DOMAIN-SUFFIX,hoovers.us.intellitxt.com
   - DOMAIN-SUFFIX,hoovuworipe.com
   - DOMAIN-SUFFIX,hoowuliz.com
+  - DOMAIN-SUFFIX,hooyeacrider.com
   - DOMAIN-SUFFIX,hop.boutique
   - DOMAIN-SUFFIX,hop.clickbank.net
   - DOMAIN-SUFFIX,hop.dttd.app
@@ -233045,6 +233050,7 @@ payload:
   - DOMAIN-SUFFIX,pipet.me
   - DOMAIN-SUFFIX,pipetmosette.com
   - DOMAIN-SUFFIX,pipette22.top
+  - DOMAIN-SUFFIX,pipeycashibo.com
   - DOMAIN-SUFFIX,pipezero.com
   - DOMAIN-SUFFIX,pipidroods.com
   - DOMAIN-SUFFIX,pipingdesigninfo.com
@@ -353203,6 +353209,7 @@ payload:
   - DOMAIN-SUFFIX,weepylack.com
   - DOMAIN-SUFFIX,weepypapreg.com
   - DOMAIN-SUFFIX,weepyprogram.pro
+  - DOMAIN-SUFFIX,weevilypiquet.com
   - DOMAIN-SUFFIX,weewmoyhcnvaq.website
   - DOMAIN-SUFFIX,weewoogloogru.net
   - DOMAIN-SUFFIX,weezoptez.net
