@@ -70,7 +70,7 @@ jobs:
           python Scripts/porn-domains.py
 
       - name: 拉取并转换聚合广告域名规则
-       run: |
+        run: |
           set -euo pipefail
           python Scripts/AD.py
 
