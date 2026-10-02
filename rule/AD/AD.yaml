@@ -1,9 +1,9 @@
 # AD 聚合广告域名规则
 # 由 Scripts/AD_rule.py 自动生成，请勿手动修改
-# 上游最后更新时间（UTC）：2026-10-02T10:52:13Z
+# 上游最后更新时间（UTC）：2026-10-02T11:32:36Z
 # 数据来源：
 #   - easylist: https://easylist-downloads.adblockplus.org/easylist.txt
-#     原始 78755 行，提取 44787 条规则
+#     原始 78763 行，提取 44795 条规则
 #   - easyprivacy: https://easylist-downloads.adblockplus.org/easyprivacy.txt
 #     原始 54252 行，提取 40589 条规则
 #   - easylistchina: https://easylist-downloads.adblockplus.org/easylistchina.txt
@@ -14,7 +14,7 @@
 #     原始 81583 行，提取 74757 条规则
 #   - anti-ad: https://raw.githubusercontent.com/privacy-protection-tools/anti-AD/master/anti-ad-domains.txt
 #     原始 107697 行，提取 107693 条规则
-# 合并去重后：域名 393782 个，IP 规则 118 条
+# 合并去重后：域名 393789 个，IP 规则 118 条
 payload:
   - DOMAIN-SUFFIX,0--4.com
   - DOMAIN-SUFFIX,0--d.com
@@ -72857,6 +72857,7 @@ payload:
   - DOMAIN-SUFFIX,camperschuh.com
   - DOMAIN-SUFFIX,camperschuhe.at
   - DOMAIN-SUFFIX,campfirecroutondecorator.com
+  - DOMAIN-SUFFIX,camph.org
   - DOMAIN-SUFFIX,campierpoplins.cyou
   - DOMAIN-SUFFIX,campiimpie.store
   - DOMAIN-SUFFIX,camping-bewegung.com
@@ -79057,6 +79058,7 @@ payload:
   - DOMAIN-SUFFIX,ci38iu1ch.com
   - DOMAIN-SUFFIX,ci3plv.cfd
   - DOMAIN-SUFFIX,ci42.rgp.com
+  - DOMAIN-SUFFIX,ciacervidperoxyl.cyou
   - DOMAIN-SUFFIX,ciads3.sbs
   - DOMAIN-SUFFIX,ciagorilla.com
   - DOMAIN-SUFFIX,ciajifmfsp.com
@@ -109631,6 +109633,7 @@ payload:
   - DOMAIN-SUFFIX,dzelamokru.digital
   - DOMAIN-SUFFIX,dzerkalo.casino
   - DOMAIN-SUFFIX,dzforp.buscape.com.br
+  - DOMAIN-SUFFIX,dzfwhsexzfjgu.site
   - DOMAIN-SUFFIX,dzgblqdbbjehb.website
   - DOMAIN-SUFFIX,dzgenrsxwnebu.website
   - DOMAIN-SUFFIX,dzgg.com
@@ -180333,6 +180336,7 @@ payload:
   - DOMAIN-SUFFIX,lkkgomhhgpbjz.website
   - DOMAIN-SUFFIX,lkkjatrpjtmei.site
   - DOMAIN-SUFFIX,lkkjvgfulkfrh.site
+  - DOMAIN-SUFFIX,lklcqjkeextxs.site
   - DOMAIN-SUFFIX,lklkxqconwqpt.online
   - DOMAIN-SUFFIX,lklrcysmzvscks.com
   - DOMAIN-SUFFIX,lkluoz.saraceniwines.com
@@ -208902,6 +208906,7 @@ payload:
   - DOMAIN-SUFFIX,mrface.com
   - DOMAIN-SUFFIX,mrfiiquzrmxrhi.com
   - DOMAIN-SUFFIX,mrfoe.com
+  - DOMAIN-SUFFIX,mrfthffxrtyuw.site
   - DOMAIN-SUFFIX,mrgbeq.efectivedate.com
   - DOMAIN-SUFFIX,mrgeekchris.com
   - DOMAIN-SUFFIX,mrgr.me
@@ -217620,6 +217625,7 @@ payload:
   - DOMAIN-SUFFIX,nqoxurf.icu
   - DOMAIN-SUFFIX,nqozavopkqjci.website
   - DOMAIN-SUFFIX,nqozgp.botland.com.pl
+  - DOMAIN-SUFFIX,nqphgpdinyiv.com
   - DOMAIN-SUFFIX,nqpiposgn.com
   - DOMAIN-SUFFIX,nqpkvyaaa.com
   - DOMAIN-SUFFIX,nqqqnyyceaypa.online
@@ -386217,6 +386223,7 @@ payload:
   - DOMAIN-SUFFIX,xwafyzovqu.icu
   - DOMAIN-SUFFIX,xwbigjdyqa.com
   - DOMAIN-SUFFIX,xwctiiqickiaylo.com
+  - DOMAIN-SUFFIX,xwcweeevmjpot.site
   - DOMAIN-SUFFIX,xwddvfoasvtxjo.com
   - DOMAIN-SUFFIX,xwdn9hnc5k.cfd
   - DOMAIN-SUFFIX,xwdoxgilvdbj.com
