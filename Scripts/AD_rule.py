@@ -3,11 +3,12 @@
 
 from __future__ import annotations
 
+import ipaddress
 import re
 import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Dict, List, Optional, Tuple
+from typing import Dict, List, Optional, Set, Tuple
 
 # 同目录的规则格式转换工具箱（Scripts/rule_converter.py）
 import rule_converter
@@ -15,6 +16,16 @@ import rule_converter
 
 # ================= 配置 =================
 
+# 上游规则地址：name -> (url, 格式)。
+# 格式有三种：
+# - abp：ABP 语法（EasyList 系、hagezi 的 adblock 版），严格模式解析，
+#   只有 ||domain^ 且零 option 的规则会被接受；
+# - hosts：hosts 文件格式（StevenBlack），取 0.0.0.0 行的域名；
+# - domains：纯域名文件（anti-AD），一行一个域名。
+# hosts / 纯域名条目统一转为 DOMAIN-SUFFIX：与上游自家
+# Mihomo / AdGuard 产物的后缀语义保持一致，不算扩大。
+# 注意：easylist 仓库里只有源码碎片，编译好的完整规则发布在
+# easylist-downloads.adblockplus.org（这也是 AdGuard/uBO 拉取的地址）。
 SOURCES: Dict[str, Tuple[str, str]] = {
     "easylist": (
         "https://easylist-downloads.adblockplus.org/"
@@ -92,8 +103,7 @@ def fetch_text(url: str) -> str:
 
 def parse_abp_line(
     line: str,
-) -> Tuple[Optional[str], str]:
-
+) -> Tuple[Optional[Tuple[str, str]], str]:
     text = line.strip()
 
     if (
@@ -103,6 +113,7 @@ def parse_abp_line(
     ):
         return None, "comment"
 
+    # 元素隐藏 / 扩展 CSS 等装饰类规则，与域名拦截无关
     if (
         "##" in text
         or "#@#" in text
@@ -115,7 +126,6 @@ def parse_abp_line(
 
     if is_exception:
         text = text[2:]
-
 
     if not text.startswith("||"):
         return None, "non-domain-rule"
@@ -134,18 +144,35 @@ def parse_abp_line(
 
     domain = pattern[:-1].lower().rstrip(".")
 
-    if not DOMAIN_RE.match(domain):
+    if DOMAIN_RE.match(domain):
+
+        # 白名单例外规则无法表达为拦截规则，单独计数
+        if is_exception:
+            return None, "exception"
+
+        return ("DOMAIN-SUFFIX", domain), "ok"
+
+    # 域名形态不成立时回退判断 IP 字面量（||1.2.3.4^）：
+    # ABP 语意是拦截发往该 IP 的请求，与 IP-CIDR 定长掩码
+    # 严格等价，可以无损转换
+    try:
+        ip = ipaddress.ip_address(
+            domain
+        )
+    except ValueError:
         return None, "bad-domain"
 
     if is_exception:
         return None, "exception"
 
-    return domain, "ok"
+    mask = 32 if ip.version == 4 else 128
+
+    return ("IP-CIDR", f"{domain}/{mask}"), "ok"
 
 
 def parse_hosts_line(
     line: str,
-) -> Tuple[Optional[str], str]:
+) -> Tuple[Optional[Tuple[str, str]], str]:
     """
     解析 hosts 格式单行：0.0.0.0 domain。
 
@@ -167,12 +194,12 @@ def parse_hosts_line(
     if not DOMAIN_RE.match(domain):
         return None, "bad-domain"
 
-    return domain, "ok"
+    return ("DOMAIN-SUFFIX", domain), "ok"
 
 
 def parse_domains_line(
     line: str,
-) -> Tuple[Optional[str], str]:
+) -> Tuple[Optional[Tuple[str, str]], str]:
     """
     解析纯域名文件单行：一行一个域名（anti-AD domains）。
 
@@ -192,7 +219,7 @@ def parse_domains_line(
     if not DOMAIN_RE.match(domain):
         return None, "bad-domain"
 
-    return domain, "ok"
+    return ("DOMAIN-SUFFIX", domain), "ok"
 
 
 # 格式 -> 解析器
@@ -206,9 +233,21 @@ PARSERS = {
 # ================= 输出 =================
 
 def build_yaml(
-    domains: List[str],
+    rules: List[Tuple[str, str]],
     stats: Dict[str, Dict[str, int]],
 ) -> str:
+
+    domains = [
+        value
+        for kind, value in rules
+        if kind == "DOMAIN-SUFFIX"
+    ]
+
+    ips = [
+        value
+        for kind, value in rules
+        if kind == "IP-CIDR"
+    ]
     now = datetime.now(timezone.utc).strftime(
         "%Y-%m-%dT%H:%M:%SZ"
     )
@@ -226,11 +265,12 @@ def build_yaml(
         lines.append(f"#   - {name}: {url}")
         lines.append(
             f"#     原始 {source_stats['lines']} 行，"
-            f"提取 {source_stats['ok']} 个域名"
+            f"提取 {source_stats['ok']} 条规则"
         )
 
     lines.append(
-        f"# 合并去重后域名总数：{len(domains)}"
+        f"# 合并去重后：域名 {len(domains)} 个，"
+        f"IP 规则 {len(ips)} 条"
     )
     lines.append("payload:")
 
@@ -239,13 +279,18 @@ def build_yaml(
         for domain in domains
     )
 
+    lines.extend(
+        f"  - IP-CIDR,{cidr}"
+        for cidr in ips
+    )
+
     return "\n".join(lines) + "\n"
 
 
 def main() -> None:
     print("开始拉取聚合广告域名规则...")
 
-    merged: Dict[str, None] = {}
+    merged: Set[Tuple[str, str]] = set()
     stats: Dict[str, Dict[str, int]] = {}
 
     for name, (url, kind) in SOURCES.items():
@@ -263,13 +308,13 @@ def main() -> None:
         for raw_line in text.splitlines():
             source_stats["lines"] += 1
 
-            domain, reason = parser(
+            rule, reason = parser(
                 raw_line
             )
 
-            if domain:
+            if rule:
                 source_stats["ok"] += 1
-                merged.setdefault(domain, None)
+                merged.add(rule)
             else:
                 source_stats[reason] = (
                     source_stats.get(reason, 0) + 1
@@ -277,7 +322,7 @@ def main() -> None:
 
         if source_stats["ok"] == 0:
             raise RuntimeError(
-                f"{name} 未提取到任何域名，"
+                f"{name} 未提取到任何规则，"
                 f"上游可能已变更格式: {url}"
             )
 
@@ -294,15 +339,15 @@ def main() -> None:
 
         print(
             f"  {name}: {source_stats['lines']} 行 -> "
-            f"{source_stats['ok']} 个域名 "
+            f"{source_stats['ok']} 条规则 "
             f"({skip_detail})"
         )
 
-    domains = sorted(merged)
+    rules = sorted(merged)
 
-    if not domains:
+    if not rules:
         raise RuntimeError(
-            "所有上游均未解析出任何域名，拒绝写入空规则"
+            "所有上游均未解析出任何规则，拒绝写入空规则"
         )
 
     OUTPUT_DIR.mkdir(
@@ -311,14 +356,14 @@ def main() -> None:
     )
 
     OUTPUT_FILE.write_text(
-        build_yaml(domains, stats),
+        build_yaml(rules, stats),
         encoding="utf-8",
         newline="\n",
     )
 
     print(
         f"\n已写入 {OUTPUT_FILE}，"
-        f"共 {len(domains)} 个去重域名"
+        f"共 {len(rules)} 条去重规则"
     )
 
 
@@ -329,10 +374,19 @@ def main() -> None:
 
     cache = rule_converter.make_cache()
 
+    cache_key = (
+        cache.key_for([OUTPUT_FILE])
+        if cache is not None
+        else None
+    )
+
     try:
-        rule_converter.convert_custom_folder(
+        rule_converter.convert_prepared_folder(
             OUTPUT_DIR,
+            OUTPUT_FILE.name,
+            rules,
             cache,
+            cache_key,
         )
     finally:
         rule_converter.cleanup_temp_dir()
