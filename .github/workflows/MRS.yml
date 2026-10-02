@@ -69,6 +69,11 @@ jobs:
           set -euo pipefail
           python Scripts/porn-domains.py
 
+      - name: 拉取并转换广告域名规则
+       run: |
+          set -euo pipefail
+          python Scripts/AD.py
+
       # 必须放在所有规则拉取/生成步骤之后，作为最后的规则处理阶段。
       # 这样以后新增或拉取其他带 Clash YAML 的规则，也会在这里统一生成其他客户端规则。
       - name: 最后统一转换所有规则
@@ -77,7 +82,7 @@ jobs:
           python Scripts/convert_rules.py
 
       - name: 清理临时文件
-        run: |
+        run: | 
           set -euo pipefail
 
           rm -rf source_repo
