@@ -14,6 +14,9 @@ from pathlib import Path
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
+# 同目录的规则格式转换工具箱（Scripts/rule_converter.py）
+import rule_converter
+
 META_URL = "https://raw.githubusercontent.com/Bon-Appetit/porn-domains/main/meta.json"
 ADULT_YAML_PATH = Path("rule/Adult/Adult.yaml")
 USER_AGENT = "alienwaregf/personal-use porn-domains updater"
@@ -376,11 +379,23 @@ def main() -> None:
             f"({yaml_count:,} 条规则)"
         )
 
-    print(
-        "Adult 源规则准备完成；"
-        "README、MRS及客户端规则将由 "
-        "convert_rules.py 统一生成。"
-    )
+
+    print("\n开始转换 Adult 规则...")
+
+    rule_converter.ensure_mihomo_available()
+    rule_converter.prepare_temp_dir()
+
+    cache = rule_converter.make_cache()
+
+    try:
+        rule_converter.convert_custom_folder(
+            ADULT_YAML_PATH.parent,
+            cache,
+        )
+    finally:
+        rule_converter.cleanup_temp_dir()
+
+    rule_converter.save_cache(cache)
 
 
 if __name__ == "__main__":
