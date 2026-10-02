@@ -9,6 +9,9 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 
+# 同目录的规则格式转换工具箱（Scripts/rule_converter.py）
+import rule_converter
+
 
 # ================= 配置 =================
 
@@ -75,18 +78,7 @@ def fetch_text(url: str) -> str:
 def parse_abp_line(
     line: str,
 ) -> Tuple[Optional[str], str]:
-    """
-    解析单行 ABP 规则（严格模式）。
 
-    返回 (domain, reason)：domain 非空表示提取到可用广告域名；
-    否则 reason 说明跳过原因（comment / cosmetic / exception /
-    non-domain-rule / site-scoped / has-options /
-    not-caret-terminated / bad-domain）。
-
-    只有 ||domain^ 且零 option 的规则会被接受，该形态与
-    Mihomo DOMAIN-SUFFIX 在域名匹配维度严格等价。
-    任何带 option、带路径、非 ^ 结尾的规则一律丢弃，不硬转。
-    """
     text = line.strip()
 
     if (
@@ -252,6 +244,24 @@ def main() -> None:
         f"\n已写入 {OUTPUT_FILE}，"
         f"共 {len(domains)} 个去重域名"
     )
+
+
+    print("\n开始转换 AD 规则...")
+
+    rule_converter.ensure_mihomo_available()
+    rule_converter.prepare_temp_dir()
+
+    cache = rule_converter.make_cache()
+
+    try:
+        rule_converter.convert_custom_folder(
+            OUTPUT_DIR,
+            cache,
+        )
+    finally:
+        rule_converter.cleanup_temp_dir()
+
+    rule_converter.save_cache(cache)
 
 
 if __name__ == "__main__":
