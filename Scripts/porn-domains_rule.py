@@ -19,7 +19,7 @@ import rule_converter
 
 META_URL = "https://raw.githubusercontent.com/Bon-Appetit/porn-domains/main/meta.json"
 ADULT_YAML_PATH = Path("rule/Adult/Adult.yaml")
-USER_AGENT = "alienwaregf/personal-use porn-domains updater"
+USER_AGENT = "alienwaregf/personal-use porn-domains_rule updater"
 TIMEOUT = 60
 COMPRESSION_THRESHOLD = 2
 
@@ -378,6 +378,7 @@ def main() -> None:
             f"{ADULT_YAML_PATH} "
             f"({yaml_count:,} 条规则)"
         )
+
 
 
     print("\n开始转换 Adult 规则...")
