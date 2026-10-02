@@ -31,8 +31,8 @@ SOURCES: Dict[str, str] = {
     ),
 }
 
-OUTPUT_DIR = Path("rule") / "EasyList"
-OUTPUT_FILE = OUTPUT_DIR / "EasyList.yaml"
+OUTPUT_DIR = Path("rule") / "AD"
+OUTPUT_FILE = OUTPUT_DIR / "AD.yaml"
 
 FETCH_TIMEOUT = 60
 
