@@ -41,8 +41,6 @@ NON_CLASH_CLIENTS = tuple(
     if client != "Clash"
 )
 
-RESERVED_DIRS = set(CLIENTS) | {".git"}
-
 UPSTREAM_RAW_RULE_BASE_URL = (
     "https://raw.githubusercontent.com/"
     "blackmatrix7/ios_rule_script/master/rule"
@@ -602,149 +600,6 @@ def find_upstream_list_file(
     return None
 
 
-# ================= 客户端规则转换 =================
-
-def _extra_options(
-    parts: Sequence[str],
-) -> List[str]:
-
-    return [
-        str(x).strip()
-        for x in parts[2:]
-        if str(x).strip()
-    ]
-
-
-def build_client_rule_line(
-    parts: Sequence[str],
-    client: str,
-    policy_name: str,
-) -> str:
-
-    if not parts:
-        raise ValueError("空规则")
-
-    source_type = parts[0].upper()
-    mapping = CLIENT_TYPE_MAP[client]
-
-    if source_type not in mapping:
-        raise ValueError(
-            f"{client} 无法无损表示 Clash "
-            f"规则类型: {source_type}"
-        )
-
-    if len(parts) < 2:
-        raise ValueError(
-            f"规则缺少值: {','.join(parts)}"
-        )
-
-    value = strip_yaml_quote(
-        parts[1]
-    )
-
-    if not value:
-        raise ValueError(
-            f"规则值为空: {','.join(parts)}"
-        )
-
-    target_type = mapping[source_type]
-    extras = _extra_options(parts)
-
-    unsupported_extras = [
-        x
-        for x in extras
-        if x != "no-resolve"
-    ]
-
-    if unsupported_extras:
-        raise ValueError(
-            f"{client} 无法确认附加参数的"
-            f"等价语义: {','.join(parts)}"
-        )
-
-    fields = [
-        target_type,
-        value,
-    ]
-
-    if client == "QuantumultX":
-        fields.append(policy_name)
-
-    if "no-resolve" in extras:
-        fields.append("no-resolve")
-
-    buffer = StringIO()
-
-    writer = csv.writer(
-        buffer,
-        lineterminator="",
-        quoting=csv.QUOTE_MINIMAL,
-    )
-
-    writer.writerow(fields)
-
-    return buffer.getvalue()
-
-
-def build_client_list(
-    folder_name: str,
-    rules: Sequence[Sequence[str]],
-    client: str,
-) -> str:
-
-    mapped_rules: List[str] = []
-
-    for parts in rules:
-        if not parts:
-            continue
-
-        source_type = parts[0].upper()
-
-        if source_type not in CLIENT_TYPE_MAP[client]:
-            print(
-                f"跳过 {client} 不支持的规则类型: "
-                f"{source_type}"
-            )
-            continue
-
-        target_line = build_client_rule_line(
-            parts,
-            client,
-            folder_name,
-        )
-
-        mapped_rules.append(
-            target_line
-        )
-
-    return (
-        "\n".join(mapped_rules)
-        + "\n"
-    )
-
-def write_client_lists(
-    folder: Path,
-    folder_name: str,
-    rules: Sequence[Sequence[str]],
-) -> None:
-
-    for client in NON_CLASH_CLIENTS:
-        output = (
-            folder
-            / f"{client}.list"
-        )
-
-        output.write_text(
-            build_client_list(
-                folder_name,
-                rules,
-                client,
-            ),
-            encoding="utf-8",
-            newline="\n",
-        )
-
-
 # ================= README =================
 
 def client_heading(
@@ -766,7 +621,6 @@ def build_client_section(
     classical_filename: str,
     has_domain_mrs: bool,
     has_ip_mrs: bool,
-    custom: bool,
     list_filenames: Dict[str, str],
 ) -> str:
 
@@ -786,20 +640,12 @@ def build_client_section(
 
     if client == "Clash":
 
-        if custom:
-            classical_url = (
-                f"{MY_RAW_RULE_BASE_URL}/"
-                f"{folder_url}/"
-                f"{quote_path_part(classical_filename)}"
-            )
-
-        else:
-            classical_url = (
-                f"{UPSTREAM_RAW_RULE_BASE_URL}/"
-                f"Clash/"
-                f"{folder_url}/"
-                f"{quote_path_part(classical_filename)}"
-            )
+        classical_url = (
+            f"{UPSTREAM_RAW_RULE_BASE_URL}/"
+            f"Clash/"
+            f"{folder_url}/"
+            f"{quote_path_part(classical_filename)}"
+        )
 
         if has_domain_mrs:
             parts.append(
@@ -830,40 +676,23 @@ def build_client_section(
 
         return "".join(parts)
 
-    # =========================================================
-    # Loon / QuantumultX / Shadowrocket / Surge
-    # =========================================================
 
-    if custom:
 
-        filename = list_filenames.get(
-            client,
-            f"{client}.list",
+    filename = list_filenames.get(
+        client
+    )
+
+    if not filename:
+        filename = (
+            f"{folder_name}.list"
         )
 
-        subscription_url = (
-            f"{MY_RAW_RULE_BASE_URL}/"
-            f"{folder_url}/"
-            f"{quote_path_part(filename)}"
-        )
-
-    else:
-
-        filename = list_filenames.get(
-            client
-        )
-
-        if not filename:
-            filename = (
-                f"{folder_name}.list"
-            )
-
-        subscription_url = (
-            f"{UPSTREAM_RAW_RULE_BASE_URL}/"
-            f"{client}/"
-            f"{folder_url}/"
-            f"{quote_path_part(filename)}"
-        )
+    subscription_url = (
+        f"{UPSTREAM_RAW_RULE_BASE_URL}/"
+        f"{client}/"
+        f"{folder_url}/"
+        f"{quote_path_part(filename)}"
+    )
 
     parts.append(
         "```text\n"
@@ -879,7 +708,6 @@ def client_section_text(
     classical_filename: str,
     has_domain_mrs: bool,
     has_ip_mrs: bool,
-    custom: bool,
     list_filenames: Optional[
         Dict[str, str]
     ] = None,
@@ -899,8 +727,7 @@ def client_section_text(
                 classical_filename=classical_filename,
                 has_domain_mrs=has_domain_mrs,
                 has_ip_mrs=has_ip_mrs,
-                custom=custom,
-                list_filenames=list_filenames,
+                        list_filenames=list_filenames,
             ).rstrip()
         )
 
@@ -918,9 +745,6 @@ def replace_client_sections(
         keepends=True
     )
 
-    # =========================================================
-    # 找到第一个客户端标题
-    # =========================================================
 
     first_client_index: Optional[int] = None
 
@@ -970,9 +794,6 @@ def replace_client_sections(
             preserve_index = idx
             break
 
-    # =========================================================
-    # 如果上游 README 根本没有客户端标题
-    # =========================================================
 
     if first_client_index is None:
 
@@ -1040,9 +861,6 @@ def replace_client_sections(
             lines[preserve_index:]
         ).lstrip()
 
-    # =========================================================
-    # 最终重新拼接
-    # =========================================================
 
     result_parts: List[str] = []
 
@@ -1074,7 +892,6 @@ def update_readme(
     classical_filename: str,
     has_domain_mrs: bool,
     has_ip_mrs: bool,
-    custom: bool,
     list_filenames: Optional[
         Dict[str, str]
     ] = None,
@@ -1085,9 +902,6 @@ def update_readme(
         content = template_path.read_text(
             encoding="utf-8"
         )
-
-    elif custom:
-        content = ""
 
     elif readme_path.is_file():
         content = readme_path.read_text(
@@ -1102,7 +916,6 @@ def update_readme(
         classical_filename=classical_filename,
         has_domain_mrs=has_domain_mrs,
         has_ip_mrs=has_ip_mrs,
-        custom=custom,
         list_filenames=list_filenames,
     )
 
@@ -1125,7 +938,7 @@ def _normalized_file_hash(
 ) -> str:
     """
     源文件的规范哈希：去掉注释行与空行后计算。
-    注释不影响编译结果（例如 AD.py 写入的时间戳注释），
+    注释不影响编译结果（例如 上游 YAML 头部的 UPDATED 时间戳），
     去掉可避免无谓的重编。
     """
     digest = hashlib.sha256()
@@ -1479,10 +1292,6 @@ def process_upstream_folder(
 
         return None
 
-    # =========================================================
-    # 缓存检查：源 YAML + 上游 README 模板 + 转换脚本 + mihomo 版本
-    # 命中则整个目录跳过（解析、mihomo 转换、README 重写全免）
-    # =========================================================
 
     cache_key: Optional[str] = None
 
@@ -1528,9 +1337,6 @@ def process_upstream_folder(
         )
     )
 
-    # =========================================================
-    # Clash Classical
-    # =========================================================
 
     classical_filename = (
         f"{folder_name}_Classical.yaml"
@@ -1545,9 +1351,6 @@ def process_upstream_folder(
             source_yaml.name
         )
 
-    # =========================================================
-    # 获取上游客户端规则文件
-    # =========================================================
 
     list_filenames: Dict[str, str] = {}
 
@@ -1574,9 +1377,6 @@ def process_upstream_folder(
                 f"{folder_name}"
             )
 
-    # =========================================================
-    # 使用 Blackmatrix7 README 作为模板
-    # =========================================================
 
     template = (
         source_folder
@@ -1596,7 +1396,6 @@ def process_upstream_folder(
 
         has_ip,
 
-        custom=False,
 
         list_filenames=list_filenames,
 
@@ -1615,129 +1414,6 @@ def process_upstream_folder(
     return folder_name
 
 
-# ================= 自定义规则 =================
-
-def is_custom_rule_folder(
-    folder: Path,
-) -> bool:
-
-    if not folder.is_dir():
-        return False
-
-    if (
-        folder.name
-        in UPSTREAM_INCLUDE_FOLDERS
-        or folder.name
-        in RESERVED_DIRS
-    ):
-        return False
-
-    if folder.name.startswith("."):
-        return False
-
-    return (
-        select_best_yaml(
-            folder,
-            folder.name,
-        )
-        is not None
-    )
-
-
-def process_custom_folder(
-    folder: Path,
-    cache: Optional[CompileCache],
-) -> Optional[str]:
-    """
-    返回 folder_name 表示该目录已处理（编译或命中缓存跳过），
-    返回 None 表示源缺失，本次未处理。
-    """
-
-    folder_name = folder.name
-
-    source_yaml = (
-        select_best_yaml(
-            folder,
-            folder_name,
-        )
-    )
-
-    if not source_yaml:
-        return None
-
-    # =========================================================
-    # 缓存检查：源 YAML + 转换脚本 + mihomo 版本
-    # 命中则整个目录跳过（解析、mihomo 转换、客户端文件全免）
-    # =========================================================
-
-    cache_key: Optional[str] = None
-
-    if cache is not None:
-        cache_key = cache.key_for(
-            [source_yaml]
-        )
-
-        if cache.is_unchanged(
-            folder_name,
-            cache_key,
-        ):
-            print(
-                f"跳过未变化的自定义目录："
-                f"{folder_name}"
-            )
-
-            return folder_name
-
-    has_domain, has_ip, rules = (
-        compile_rule_set(
-            folder_name,
-            source_yaml,
-            folder,
-        )
-    )
-
-    # =========================================================
-    # 四个非 Clash 客户端
-    # =========================================================
-
-    write_client_lists(
-        folder,
-        folder_name,
-        rules,
-    )
-
-    list_filenames = {
-        client: f"{client}.list"
-        for client in NON_CLASH_CLIENTS
-    }
-
-    update_readme(
-        folder / "README.md",
-        folder_name,
-        source_yaml.name,
-        has_domain,
-        has_ip,
-        custom=True,
-        list_filenames=list_filenames,
-    )
-
-    if (
-        cache is not None
-        and cache_key is not None
-    ):
-        cache.mark_done(
-            folder_name,
-            cache_key,
-        )
-
-    print(
-        "自定义规则完成: "
-        f"{folder_name}"
-    )
-
-    return folder_name
-
-
 # ================= 主流程 =================
 
 def ensure_mihomo_available() -> None:
@@ -1750,7 +1426,7 @@ def ensure_mihomo_available() -> None:
 
 def main() -> None:
 
-    print("开始统一转换规则...")
+    print("开始转换 Blackmatrix7 规则...")
 
     ensure_mihomo_available()
 
@@ -1760,10 +1436,6 @@ def main() -> None:
             f"{SOURCE_CLASH_DIR}"
         )
 
-    # =========================================================
-    # 编译缓存：源文件、转换脚本、mihomo 版本任一变化即重编。
-    # 初始化失败则本次全量重做（fail-open，绝不静默跳过）。
-    # =========================================================
 
     cache: Optional[CompileCache] = None
 
@@ -1783,9 +1455,6 @@ def main() -> None:
 
         cache = None
 
-    # =========================================================
-    # 临时目录
-    # =========================================================
 
     if TEMP_DIR.exists():
         shutil.rmtree(
@@ -1804,9 +1473,6 @@ def main() -> None:
 
     handled: Set[str] = set()
 
-    # =========================================================
-    # 处理 Blackmatrix7 上游规则
-    # =========================================================
 
     for folder_name in sorted(
         UPSTREAM_INCLUDE_FOLDERS
@@ -1819,27 +1485,6 @@ def main() -> None:
 
         if done:
             handled.add(done)
-
-    # =========================================================
-    # 处理 rule/ 下用户自己的自定义规则
-    # =========================================================
-
-    for folder in sorted(
-        DEST_RULE_DIR.iterdir(),
-        key=lambda p: p.name.lower(),
-    ):
-
-        if is_custom_rule_folder(
-            folder
-        ):
-
-            done = process_custom_folder(
-                folder,
-                cache,
-            )
-
-            if done:
-                handled.add(done)
 
     if cache is not None:
         cache.prune(handled)
