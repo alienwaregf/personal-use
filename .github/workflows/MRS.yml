@@ -69,7 +69,7 @@ jobs:
           set -euo pipefail
           python Scripts/porn-domains.py
 
-      - name: 拉取并转换广告域名规则
+      - name: 拉取并转换聚合广告域名规则
        run: |
           set -euo pipefail
           python Scripts/AD.py
