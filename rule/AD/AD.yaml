@@ -1,9 +1,9 @@
 # AD 聚合广告域名规则
 # 由 Scripts/AD_rule.py 自动生成，请勿手动修改
-# 生成时间（UTC）：2026-10-02T10:28:50Z
+# 上游最后更新时间（UTC）：2026-10-02T10:32:40Z
 # 数据来源：
 #   - easylist: https://easylist-downloads.adblockplus.org/easylist.txt
-#     原始 78750 行，提取 44782 条规则
+#     原始 78753 行，提取 44785 条规则
 #   - easyprivacy: https://easylist-downloads.adblockplus.org/easyprivacy.txt
 #     原始 54252 行，提取 40589 条规则
 #   - easylistchina: https://easylist-downloads.adblockplus.org/easylistchina.txt
@@ -14,7 +14,7 @@
 #     原始 81583 行，提取 74757 条规则
 #   - anti-ad: https://raw.githubusercontent.com/privacy-protection-tools/anti-AD/master/anti-ad-domains.txt
 #     原始 107697 行，提取 107693 条规则
-# 合并去重后：域名 393777 个，IP 规则 118 条
+# 合并去重后：域名 393780 个，IP 规则 118 条
 payload:
   - DOMAIN-SUFFIX,0--4.com
   - DOMAIN-SUFFIX,0--d.com
@@ -127960,6 +127960,7 @@ payload:
   - DOMAIN-SUFFIX,flhqfdjmltoue.site
   - DOMAIN-SUFFIX,flhsmv.gov-fliw.help
   - DOMAIN-SUFFIX,flhtfxbakyelu.space
+  - DOMAIN-SUFFIX,flhvpswfkgjj.com
   - DOMAIN-SUFFIX,fli.so
   - DOMAIN-SUFFIX,flibao.com
   - DOMAIN-SUFFIX,flibzee.com
@@ -149585,6 +149586,7 @@ payload:
   - DOMAIN-SUFFIX,hj217.com
   - DOMAIN-SUFFIX,hj3z.com
   - DOMAIN-SUFFIX,hj67fadszx.appspot.com
+  - DOMAIN-SUFFIX,hjahpkrsatbqz.site
   - DOMAIN-SUFFIX,hjarbxlyvqrlq.website
   - DOMAIN-SUFFIX,hjbgdc.fracora.com
   - DOMAIN-SUFFIX,hjbkcvowmhi.com
@@ -278276,6 +278278,7 @@ payload:
   - DOMAIN-SUFFIX,slummsovra.store
   - DOMAIN-SUFFIX,slumpcute.com
   - DOMAIN-SUFFIX,slumpreback.qpon
+  - DOMAIN-SUFFIX,slumpsish.cfd
   - DOMAIN-SUFFIX,slumwhoeverelevated.com
   - DOMAIN-SUFFIX,slunceinvestava.com
   - DOMAIN-SUFFIX,slupgetaway.cyou
