@@ -7,6 +7,7 @@ from __future__ import annotations
 
 import ipaddress
 import json
+from datetime import datetime
 import re
 import tempfile
 from collections import defaultdict
@@ -80,16 +81,39 @@ def fetch_text(url: str) -> str:
         raise RuntimeError(f"下载失败: {url}\n{exc}") from exc
 
 
-def extract_blocklist_url(meta: dict) -> str:
+def extract_blocklist(
+    meta: dict,
+) -> tuple[str, str]:
+    """
+    从 meta.json 取 blocklist 的 raw_url 与上游更新时间。
+    updated 是上游自带的数据新鲜度标记，缺失或格式不对
+    视为上游改版，直接报错，不静默丢弃。
+    """
     try:
-        url = str(meta["blocklist"]["raw_url"]).strip()
+        blocklist = meta["blocklist"]
+        url = str(blocklist["raw_url"]).strip()
+        updated_raw = str(blocklist["updated"]).strip()
     except (KeyError, TypeError) as exc:
-        raise ValueError("meta.json 缺少 blocklist.raw_url") from exc
+        raise ValueError(
+            "meta.json 缺少 blocklist.raw_url 或 blocklist.updated"
+        ) from exc
 
     if not url.startswith("https://"):
         raise ValueError(f"blocklist.raw_url 不是 HTTPS 地址: {url}")
 
-    return url
+    try:
+        updated = datetime.strptime(
+            updated_raw,
+            "%Y-%m-%dT%H:%M:%SZ",
+        )
+    except ValueError as exc:
+        raise ValueError(
+            f"blocklist.updated 格式异常: {updated_raw}"
+        ) from exc
+
+    return url, updated.strftime(
+        "%Y-%m-%dT%H:%M:%SZ"
+    )
 
 
 def _validate_host(host: str) -> bool:
@@ -252,6 +276,10 @@ def prepare_domains(source_path: Path) -> set[str]:
 def domains_to_rules(
     domains: set[str],
 ) -> list[tuple[str, str]]:
+    """
+    域名集合 → 类型化规则（全脚本唯一的推导处）：
+    +. 前缀 → DOMAIN-SUFFIX，其余 → DOMAIN。
+    """
     rules: list[tuple[str, str]] = []
 
     for domain in sorted(domains):
@@ -273,6 +301,7 @@ def domains_to_rules(
 def write_adult_yaml(
     output_path: Path,
     rules: list[tuple[str, str]],
+    updated: str,
 ) -> int:
     output_path.parent.mkdir(
         parents=True,
@@ -284,6 +313,12 @@ def write_adult_yaml(
         encoding="utf-8",
         newline="\n",
     ) as output:
+        output.write(
+            "# Adult 域名规则\n"
+            "# 由 Scripts/porn-domains_rule.py 自动生成，请勿手动修改\n"
+            f"# 上游最后更新时间（UTC）：{updated}\n"
+            "# 数据来源：https://github.com/Bon-Appetit/porn-domains\n"
+        )
         output.write("payload:\n")
 
         for rule_type, value in rules:
@@ -303,8 +338,8 @@ def main() -> None:
         fetch_text(META_URL)
     )
 
-    blocklist_url = extract_blocklist_url(
-        meta
+    blocklist_url, upstream_updated = (
+        extract_blocklist(meta)
     )
 
     blocklist_meta = meta.get(
@@ -359,6 +394,7 @@ def main() -> None:
         yaml_count = write_adult_yaml(
             ADULT_YAML_PATH,
             adult_rules,
+            upstream_updated,
         )
 
         print(
