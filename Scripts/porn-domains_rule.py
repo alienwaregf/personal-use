@@ -225,7 +225,7 @@ def compress_domains(domains: set[str]) -> set[str]:
     return output
 
 
-def prepare_domain_text(source_path: Path, output_path: Path) -> int:
+def prepare_domains(source_path: Path) -> set[str]:
     domains: set[str] = set()
 
     with source_path.open("r", encoding="utf-8-sig") as source:
@@ -246,27 +246,33 @@ def prepare_domain_text(source_path: Path, output_path: Path) -> int:
         remaining_domains
     )
 
-    final_domains = major_rules | compressed_domains
+    return major_rules | compressed_domains
 
-    output_path.parent.mkdir(
-        parents=True,
-        exist_ok=True,
-    )
 
-    with output_path.open(
-        "w",
-        encoding="utf-8",
-        newline="\n",
-    ) as output:
-        for domain in sorted(final_domains):
-            output.write(domain + "\n")
+def domains_to_rules(
+    domains: set[str],
+) -> list[tuple[str, str]]:
+    rules: list[tuple[str, str]] = []
 
-    return len(final_domains)
+    for domain in sorted(domains):
+        if domain.startswith("+."):
+            rules.append(
+                (
+                    "DOMAIN-SUFFIX",
+                    domain[2:].lstrip("."),
+                )
+            )
+        else:
+            rules.append(
+                ("DOMAIN", domain)
+            )
+
+    return rules
 
 
 def write_adult_yaml(
     output_path: Path,
-    domains: set[str],
+    rules: list[tuple[str, str]],
 ) -> int:
     output_path.parent.mkdir(
         parents=True,
@@ -280,19 +286,12 @@ def write_adult_yaml(
     ) as output:
         output.write("payload:\n")
 
-        for domain in sorted(domains):
-            if domain.startswith("+."):
-                rule_type = "DOMAIN-SUFFIX"
-                value = domain[2:].lstrip(".")
-            else:
-                rule_type = "DOMAIN"
-                value = domain
-
+        for rule_type, value in rules:
             output.write(
                 f"  - {rule_type},{value}\n"
             )
 
-    return len(domains)
+    return len(rules)
 
 
 def main() -> None:
@@ -339,37 +338,27 @@ def main() -> None:
             / "blocklist.txt"
         )
 
-        text_path = (
-            temp_dir_path
-            / "adult-domain.txt"
-        )
-
         source_path.write_text(
             fetch_text(blocklist_url),
             encoding="utf-8",
         )
 
-        domain_count = prepare_domain_text(
-            source_path,
-            text_path,
+        domains = prepare_domains(
+            source_path
         )
 
         print(
             f"最终 Domain 规则数量: "
-            f"{domain_count:,}"
+            f"{len(domains):,}"
         )
 
-        domains = {
-            line.strip()
-            for line in text_path.read_text(
-                encoding="utf-8"
-            ).splitlines()
-            if line.strip()
-        }
+        adult_rules = domains_to_rules(
+            domains
+        )
 
         yaml_count = write_adult_yaml(
             ADULT_YAML_PATH,
-            domains,
+            adult_rules,
         )
 
         print(
