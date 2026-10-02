@@ -48,7 +48,7 @@ def fetch_text(url: str) -> str:
     request = urllib.request.Request(
         url,
         headers={
-            "User-Agent": "personal-use-easylist-sync/1.0",
+            "User-Agent": "personal-use-ad-sync/1.0",
         },
     )
 
@@ -154,8 +154,8 @@ def build_yaml(
     )
 
     lines = [
-        "# EasyList 系广告域名规则（Mihomo 古典格式）",
-        "# 由 Scripts/EasyList.py 自动生成，请勿手动修改",
+        "# AD 聚合广告域名规则",
+        "# 由 Scripts/AD.py 自动生成，请勿手动修改",
         f"# 生成时间（UTC）：{now}",
         "# 数据来源：",
     ]
@@ -183,7 +183,7 @@ def build_yaml(
 
 
 def main() -> None:
-    print("开始拉取 EasyList 系规则...")
+    开始拉取聚合广告域名规则...")
 
     merged: Dict[str, None] = {}
     stats: Dict[str, Dict[str, int]] = {}
