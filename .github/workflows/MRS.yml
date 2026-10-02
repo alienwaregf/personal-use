@@ -34,7 +34,7 @@ jobs:
       - name: 检查 Python 脚本语法
         run: |
           set -euo pipefail
-          python -m py_compile Scripts/blackmatrix7_rule.py Scripts/porn-domains.py Scripts/AD.py Scripts/rule_converter.py Scripts/custom_rule.py
+          python -m py_compile Scripts/blackmatrix7_rule.py Scripts/porn-domains_rule.py Scripts/AD_rule.py Scripts/rule_converter.py Scripts/custom_rule.py
 
       - name: 拉取 Blackmatrix7 仓库
         run: |
@@ -67,13 +67,15 @@ jobs:
       - name: 拉取并转换 Bon-Appetit 成人域名规则
         run: |
           set -euo pipefail
-          python Scripts/porn-domains.py
+          python Scripts/porn-domains_rule.py
 
       - name: 拉取并转换聚合广告域名规则
         run: |
           set -euo pipefail
-          python Scripts/AD.py
+          python Scripts/AD_rule.py
 
+      # 各脚本各司其职：blackmatrix7_rule 只转黑矩阵上游，
+      # custom_rule 只处理无专属脚本的自定义目录。
       - name: 转换 Blackmatrix7 上游规则
         run: |
           set -euo pipefail
