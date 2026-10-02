@@ -15,22 +15,37 @@ import rule_converter
 
 # ================= 配置 =================
 
-# 上游规则地址：key 同时用作日志统计标签。
-# 注意：easylist 仓库里只有源码碎片，编译好的完整规则发布在
-# easylist-downloads.adblockplus.org（这也是 AdGuard/uBO 拉取的地址）。
-# 想加更多源（例如 fanboy、adguard），在这里加一行即可。
-SOURCES: Dict[str, str] = {
+SOURCES: Dict[str, Tuple[str, str]] = {
     "easylist": (
         "https://easylist-downloads.adblockplus.org/"
-        "easylist.txt"
+        "easylist.txt",
+        "abp",
     ),
     "easyprivacy": (
         "https://easylist-downloads.adblockplus.org/"
-        "easyprivacy.txt"
+        "easyprivacy.txt",
+        "abp",
     ),
     "easylistchina": (
         "https://easylist-downloads.adblockplus.org/"
-        "easylistchina.txt"
+        "easylistchina.txt",
+        "abp",
+    ),
+    "hagezi-ultimate": (
+        "https://raw.githubusercontent.com/"
+        "hagezi/dns-blocklists/main/adblock/ultimate.txt",
+        "abp",
+    ),
+    "stevenblack": (
+        "https://raw.githubusercontent.com/"
+        "StevenBlack/hosts/master/hosts",
+        "hosts",
+    ),
+    "anti-ad": (
+        "https://raw.githubusercontent.com/"
+        "privacy-protection-tools/anti-AD/master/"
+        "anti-ad-domains.txt",
+        "domains",
     ),
 }
 
@@ -88,7 +103,6 @@ def parse_abp_line(
     ):
         return None, "comment"
 
-    # 元素隐藏 / 扩展 CSS 等装饰类规则，与域名拦截无关
     if (
         "##" in text
         or "#@#" in text
@@ -102,8 +116,7 @@ def parse_abp_line(
     if is_exception:
         text = text[2:]
 
-    # 只处理 || 开头的域名锚定规则；
-    # |http:// 前缀锚定、正则、纯路径等无法可靠映射为域名
+
     if not text.startswith("||"):
         return None, "non-domain-rule"
 
@@ -113,13 +126,9 @@ def parse_abp_line(
     if "domain=" in options:
         return None, "site-scoped"
 
-    # 任何 option 都会改变拦截语意（第三方限定、资源类型限定等），
-    # Mihomo 域名规则无法表达，一律丢弃不硬转
     if options:
         return None, "has-options"
 
-    # 严格形态：必须以 ^ 结尾（分隔符语意），不接受路径、
-    # 通配符、尾锚定等变体；非法字符由 DOMAIN_RE 统一拦截
     if not pattern.endswith("^"):
         return None, "not-caret-terminated"
 
@@ -128,11 +137,70 @@ def parse_abp_line(
     if not DOMAIN_RE.match(domain):
         return None, "bad-domain"
 
-    # 白名单例外规则无法表达为 Mihomo 拦截规则，单独计数
     if is_exception:
         return None, "exception"
 
     return domain, "ok"
+
+
+def parse_hosts_line(
+    line: str,
+) -> Tuple[Optional[str], str]:
+    """
+    解析 hosts 格式单行：0.0.0.0 domain。
+
+    StevenBlack 的拦截条目均为 0.0.0.0 前缀，一行一个域名。
+    返回 (domain, reason)，reason 同 parse_abp_line 的约定。
+    """
+    text = line.strip()
+
+    if not text or text.startswith("#"):
+        return None, "comment"
+
+    parts = text.split()
+
+    if len(parts) < 2 or parts[0] != "0.0.0.0":
+        return None, "non-hosts-line"
+
+    domain = parts[1].lower().rstrip(".")
+
+    if not DOMAIN_RE.match(domain):
+        return None, "bad-domain"
+
+    return domain, "ok"
+
+
+def parse_domains_line(
+    line: str,
+) -> Tuple[Optional[str], str]:
+    """
+    解析纯域名文件单行：一行一个域名（anti-AD domains）。
+
+    返回 (domain, reason)，reason 同 parse_abp_line 的约定。
+    """
+    text = line.strip()
+
+    if (
+        not text
+        or text.startswith("#")
+        or text.startswith("!")
+    ):
+        return None, "comment"
+
+    domain = text.lower().rstrip(".")
+
+    if not DOMAIN_RE.match(domain):
+        return None, "bad-domain"
+
+    return domain, "ok"
+
+
+# 格式 -> 解析器
+PARSERS = {
+    "abp": parse_abp_line,
+    "hosts": parse_hosts_line,
+    "domains": parse_domains_line,
+}
 
 
 # ================= 输出 =================
@@ -152,7 +220,7 @@ def build_yaml(
         "# 数据来源：",
     ]
 
-    for name, url in SOURCES.items():
+    for name, (url, _kind) in SOURCES.items():
         source_stats = stats[name]
 
         lines.append(f"#   - {name}: {url}")
@@ -180,10 +248,12 @@ def main() -> None:
     merged: Dict[str, None] = {}
     stats: Dict[str, Dict[str, int]] = {}
 
-    for name, url in SOURCES.items():
+    for name, (url, kind) in SOURCES.items():
         print(f"拉取 {name}: {url}")
 
         text = fetch_text(url)
+
+        parser = PARSERS[kind]
 
         source_stats: Dict[str, int] = {
             "lines": 0,
@@ -193,7 +263,7 @@ def main() -> None:
         for raw_line in text.splitlines():
             source_stats["lines"] += 1
 
-            domain, reason = parse_abp_line(
+            domain, reason = parser(
                 raw_line
             )
 
@@ -204,6 +274,12 @@ def main() -> None:
                 source_stats[reason] = (
                     source_stats.get(reason, 0) + 1
                 )
+
+        if source_stats["ok"] == 0:
+            raise RuntimeError(
+                f"{name} 未提取到任何域名，"
+                f"上游可能已变更格式: {url}"
+            )
 
         stats[name] = source_stats
 
