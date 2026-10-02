@@ -14,7 +14,6 @@ from pathlib import Path
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
-# 同目录的规则格式转换工具箱（Scripts/rule_converter.py）
 import rule_converter
 
 META_URL = "https://raw.githubusercontent.com/Bon-Appetit/porn-domains/main/meta.json"
@@ -379,6 +378,20 @@ def main() -> None:
             f"({yaml_count:,} 条规则)"
         )
 
+        adult_rules: list[tuple[str, str]] = []
+
+        for domain in sorted(domains):
+            if domain.startswith("+."):
+                adult_rules.append(
+                    (
+                        "DOMAIN-SUFFIX",
+                        domain[2:].lstrip("."),
+                    )
+                )
+            else:
+                adult_rules.append(
+                    ("DOMAIN", domain)
+                )
 
 
     print("\n开始转换 Adult 规则...")
@@ -388,10 +401,19 @@ def main() -> None:
 
     cache = rule_converter.make_cache()
 
+    cache_key = (
+        cache.key_for([ADULT_YAML_PATH])
+        if cache is not None
+        else None
+    )
+
     try:
-        rule_converter.convert_custom_folder(
+        rule_converter.convert_prepared_folder(
             ADULT_YAML_PATH.parent,
+            ADULT_YAML_PATH.name,
+            adult_rules,
             cache,
+            cache_key,
         )
     finally:
         rule_converter.cleanup_temp_dir()
