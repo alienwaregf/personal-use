@@ -147,7 +147,7 @@ def build_yaml(
 
     lines = [
         "# AD 聚合广告域名规则",
-        "# 由 Scripts/AD.py 自动生成，请勿手动修改",
+        "# 由 Scripts/AD_rule.py 自动生成，请勿手动修改",
         f"# 生成时间（UTC）：{now}",
         "# 数据来源：",
     ]
