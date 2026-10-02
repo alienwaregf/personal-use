@@ -20,19 +20,10 @@ import yaml
 
 # ================= 核心配置 =================
 
-SOURCE_REPO_DIR = Path("source_repo")
-SOURCE_RULE_DIR = SOURCE_REPO_DIR / "rule"
-SOURCE_CLASH_DIR = SOURCE_RULE_DIR / "Clash"
-
-UPSTREAM_REPO_URL = (
-    "https://github.com/"
-    "blackmatrix7/ios_rule_script.git"
-)
 DEST_RULE_DIR = Path("rule")
 TEMP_DIR = Path("temp_compile")
 
-# 编译缓存记录文件（随 rule/ 一起提交，跨 hourly 运行持久化）
-CACHE_PATH = DEST_RULE_DIR / ".compile_cache.json"
+CUSTOM_CACHE_PATH = DEST_RULE_DIR / ".compile_cache_custom.json"
 
 CLIENTS = (
     "Clash",
@@ -47,17 +38,27 @@ NON_CLASH_CLIENTS = tuple(
     if client != "Clash"
 )
 
-UPSTREAM_RAW_RULE_BASE_URL = (
-    "https://raw.githubusercontent.com/"
-    "blackmatrix7/ios_rule_script/master/rule"
-)
+RESERVED_DIRS = set(CLIENTS) | {".git"}
 
 MY_RAW_RULE_BASE_URL = (
     "https://raw.githubusercontent.com/"
     "alienwaregf/personal-use/main/rule"
 )
 
-UPSTREAM_INCLUDE_FOLDERS = {
+SCRIPT_OWNED_FOLDERS = {
+    "AD",
+    "Adult",
+}
+
+CLIENT_HEADER_RE = re.compile(
+    r"^(#{1,6})\s*"
+    r"(?:<img\b[^>]*>\s*)?"
+    r"(Clash|Loon|QuantumultX|Shadowrocket|Surge)\s*$",
+    re.I,
+)
+
+
+UPSTREAM_FOLDERS = {
     "Advertising",
     "AppStore",
     "Apple",
@@ -130,17 +131,6 @@ UPSTREAM_INCLUDE_FOLDERS = {
 }
 
 
-
-CLIENT_HEADER_RE = re.compile(
-    r"^(#{1,6})\s*"
-    r"(?:<img\b[^>]*>\s*)?"
-    r"(Clash|Loon|QuantumultX|Shadowrocket|Surge)\s*$",
-    re.I,
-)
-
-
-# ================= 客户端 Logo =================
-
 CLIENT_ICONS = {
     "Clash": (
         "https://raw.githubusercontent.com/"
@@ -169,10 +159,6 @@ CLIENT_ICONS = {
     ),
 }
 
-
-# ============================================================
-# 目标客户端规则映射
-# ============================================================
 
 CLIENT_TYPE_MAP: Dict[str, Dict[str, str]] = {
     "Loon": {
@@ -375,6 +361,8 @@ def parse_rules(
     return rules
 
 
+# ================= MRS 编译 =================
+
 def split_mrs_rules(
     rules: Sequence[Sequence[str]],
 ) -> Tuple[List[str], List[str]]:
@@ -533,7 +521,116 @@ def compile_to_mrs(
         )
 
 
-# ================= 文件选择 =================
+
+def compile_parsed_rules(
+    folder_name: str,
+    rules: Sequence[Sequence[str]],
+    destination_folder: Path,
+) -> Tuple[bool, bool]:
+    """
+    把已解析的规则编译为 mrs（domain / ipcidr 两种 behavior）。
+    规则为空直接抛错，不静默产出空集。
+    """
+
+    if not rules:
+        raise RuntimeError(
+            "未解析出任何有效 Clash 规则: "
+            f"{folder_name}"
+        )
+
+    domain_rules, ip_rules = (
+        split_mrs_rules(rules)
+    )
+
+    destination_folder.mkdir(
+        parents=True,
+        exist_ok=True,
+    )
+
+    has_domain = bool(
+        domain_rules
+    )
+
+    has_ip = bool(
+        ip_rules
+    )
+
+    # =========================================================
+    # Domain MRS
+    # =========================================================
+
+    if has_domain:
+
+        temp = (
+            TEMP_DIR
+            / f"{folder_name}_domain.yaml"
+        )
+
+        write_mrs_source_yaml(
+            temp,
+            domain_rules,
+        )
+
+        compile_to_mrs(
+            temp,
+            (
+                destination_folder
+                / f"{folder_name}.mrs"
+            ),
+            "domain",
+        )
+
+    elif (
+        destination_folder
+        / f"{folder_name}.mrs"
+    ).exists():
+
+        (
+            destination_folder
+            / f"{folder_name}.mrs"
+        ).unlink()
+
+    # =========================================================
+    # IP MRS
+    # =========================================================
+
+    if has_ip:
+
+        temp = (
+            TEMP_DIR
+            / f"{folder_name}_ip.yaml"
+        )
+
+        write_mrs_source_yaml(
+            temp,
+            ip_rules,
+        )
+
+        compile_to_mrs(
+            temp,
+            (
+                destination_folder
+                / f"{folder_name}_IP.mrs"
+            ),
+            "ipcidr",
+        )
+
+    elif (
+        destination_folder
+        / f"{folder_name}_IP.mrs"
+    ).exists():
+
+        (
+            destination_folder
+            / f"{folder_name}_IP.mrs"
+        ).unlink()
+
+    return (
+        has_domain,
+        has_ip,
+    )
+
+
 
 def select_best_yaml(
     folder_path: Path,
@@ -569,44 +666,149 @@ def select_best_yaml(
     )
 
 
-def find_upstream_list_file(
+
+def _extra_options(
+    parts: Sequence[str],
+) -> List[str]:
+
+    return [
+        str(x).strip()
+        for x in parts[2:]
+        if str(x).strip()
+    ]
+
+
+def build_client_rule_line(
+    parts: Sequence[str],
     client: str,
-    folder_name: str,
-) -> Optional[str]:
+    policy_name: str,
+) -> str:
 
-    folder = (
-        SOURCE_RULE_DIR
-        / client
-        / folder_name
-    )
+    if not parts:
+        raise ValueError("空规则")
 
-    preferred = (
-        folder
-        / f"{folder_name}.list"
-    )
+    source_type = parts[0].upper()
+    mapping = CLIENT_TYPE_MAP[client]
 
-    if preferred.is_file():
-        return preferred.name
-
-    if not folder.is_dir():
-        return None
-
-    candidates = sorted(
-        path
-        for path in folder.iterdir()
-        if (
-            path.is_file()
-            and path.suffix.lower() == ".list"
+    if source_type not in mapping:
+        raise ValueError(
+            f"{client} 无法无损表示 Clash "
+            f"规则类型: {source_type}"
         )
+
+    if len(parts) < 2:
+        raise ValueError(
+            f"规则缺少值: {','.join(parts)}"
+        )
+
+    value = strip_yaml_quote(
+        parts[1]
     )
 
-    if candidates:
-        return candidates[0].name
+    if not value:
+        raise ValueError(
+            f"规则值为空: {','.join(parts)}"
+        )
 
-    return None
+    target_type = mapping[source_type]
+    extras = _extra_options(parts)
+
+    unsupported_extras = [
+        x
+        for x in extras
+        if x != "no-resolve"
+    ]
+
+    if unsupported_extras:
+        raise ValueError(
+            f"{client} 无法确认附加参数的"
+            f"等价语义: {','.join(parts)}"
+        )
+
+    fields = [
+        target_type,
+        value,
+    ]
+
+    if client == "QuantumultX":
+        fields.append(policy_name)
+
+    if "no-resolve" in extras:
+        fields.append("no-resolve")
+
+    buffer = StringIO()
+
+    writer = csv.writer(
+        buffer,
+        lineterminator="",
+        quoting=csv.QUOTE_MINIMAL,
+    )
+
+    writer.writerow(fields)
+
+    return buffer.getvalue()
 
 
-# ================= README =================
+def build_client_list(
+    folder_name: str,
+    rules: Sequence[Sequence[str]],
+    client: str,
+) -> str:
+
+    mapped_rules: List[str] = []
+
+    for parts in rules:
+        if not parts:
+            continue
+
+        source_type = parts[0].upper()
+
+        if source_type not in CLIENT_TYPE_MAP[client]:
+            print(
+                f"跳过 {client} 不支持的规则类型: "
+                f"{source_type}"
+            )
+            continue
+
+        target_line = build_client_rule_line(
+            parts,
+            client,
+            folder_name,
+        )
+
+        mapped_rules.append(
+            target_line
+        )
+
+    return (
+        "\n".join(mapped_rules)
+        + "\n"
+    )
+
+
+def write_client_lists(
+    folder: Path,
+    folder_name: str,
+    rules: Sequence[Sequence[str]],
+) -> None:
+
+    for client in NON_CLASH_CLIENTS:
+        output = (
+            folder
+            / f"{client}.list"
+        )
+
+        output.write_text(
+            build_client_list(
+                folder_name,
+                rules,
+                client,
+            ),
+            encoding="utf-8",
+            newline="\n",
+        )
+
+
 
 def client_heading(
     client: str,
@@ -640,15 +842,11 @@ def build_client_section(
         client_heading(client)
     )
 
-    # =========================================================
-    # Clash
-    # =========================================================
 
     if client == "Clash":
 
         classical_url = (
-            f"{UPSTREAM_RAW_RULE_BASE_URL}/"
-            f"Clash/"
+            f"{MY_RAW_RULE_BASE_URL}/"
             f"{folder_url}/"
             f"{quote_path_part(classical_filename)}"
         )
@@ -659,7 +857,7 @@ def build_client_section(
                 "```text\n"
                 f"{MY_RAW_RULE_BASE_URL}/"
                 f"{folder_url}/"
-                f"{quote_path_part(folder_name + '_Domain.mrs')}\n"
+                f"{quote_path_part(folder_name + '.mrs')}\n"
                 "```\n\n"
             )
 
@@ -682,22 +880,14 @@ def build_client_section(
 
         return "".join(parts)
 
-    # =========================================================
-    # Loon / QuantumultX / Shadowrocket / Surge
-    # =========================================================
 
     filename = list_filenames.get(
-        client
+        client,
+        f"{client}.list",
     )
 
-    if not filename:
-        filename = (
-            f"{folder_name}.list"
-        )
-
     subscription_url = (
-        f"{UPSTREAM_RAW_RULE_BASE_URL}/"
-        f"{client}/"
+        f"{MY_RAW_RULE_BASE_URL}/"
         f"{folder_url}/"
         f"{quote_path_part(filename)}"
     )
@@ -735,7 +925,7 @@ def client_section_text(
                 classical_filename=classical_filename,
                 has_domain_mrs=has_domain_mrs,
                 has_ip_mrs=has_ip_mrs,
-                        list_filenames=list_filenames,
+                list_filenames=list_filenames,
             ).rstrip()
         )
 
@@ -752,6 +942,7 @@ def replace_client_sections(
     lines = content.splitlines(
         keepends=True
     )
+
 
     first_client_index: Optional[int] = None
 
@@ -902,21 +1093,9 @@ def update_readme(
     list_filenames: Optional[
         Dict[str, str]
     ] = None,
-    template_path: Optional[Path] = None,
 ) -> None:
 
-    if template_path and template_path.is_file():
-        content = template_path.read_text(
-            encoding="utf-8"
-        )
-
-    elif readme_path.is_file():
-        content = readme_path.read_text(
-            encoding="utf-8"
-        )
-
-    else:
-        content = ""
+    content = ""
 
     replacement = client_section_text(
         folder_name=folder_name,
@@ -943,7 +1122,6 @@ def update_readme(
 def _normalized_file_hash(
     path: Path,
 ) -> str:
-    
     digest = hashlib.sha256()
 
     for raw_line in path.read_bytes().splitlines():
@@ -1030,11 +1208,6 @@ class CompileCache:
         source_paths: Sequence[Path],
         raw_paths: Sequence[Path] = (),
     ) -> str:
-        """
-        source_paths 用规范哈希（忽略 YAML 注释与空行）；
-        raw_paths 用原始哈希（例如 Markdown 模板，
-        # 开头是标题不是注释，必须原样计入）。
-        """
         digest = hashlib.sha256()
 
         for path in source_paths:
@@ -1135,266 +1308,134 @@ class CompileCache:
             )
 
 
-# ================= MRS / 处理单个目录 =================
-
-def compile_rule_set(
-    folder_name: str,
-    source_yaml: Path,
-    destination_folder: Path,
-) -> Tuple[
-    bool,
-    bool,
-    List[List[str]],
-]:
-
-    rules = parse_rules(
-        source_yaml
-    )
-
-    if not rules:
-        raise RuntimeError(
-            "未解析出任何有效 Clash 规则: "
-            f"{source_yaml}"
+def make_cache() -> Optional[CompileCache]:
+    """
+    初始化自定义侧编译缓存。
+    fail-open：任何异常返回 None，调用方全量重编。
+    """
+    try:
+        return CompileCache(
+            CUSTOM_CACHE_PATH,
+            _file_sha256(
+                Path(__file__)
+            ),
+            get_mihomo_version(),
+        )
+    except Exception as exc:
+        print(
+            f"警告：编译缓存初始化失败"
+            f"（本次全量重编）：{exc}"
         )
 
-    domain_rules, ip_rules = (
-        split_mrs_rules(rules)
-    )
+        return None
 
-    destination_folder.mkdir(
+
+def save_cache(
+    cache: Optional[CompileCache],
+) -> None:
+    if cache is not None:
+        cache.save()
+
+
+def prepare_temp_dir() -> None:
+    if TEMP_DIR.exists():
+        shutil.rmtree(
+            TEMP_DIR
+        )
+
+    TEMP_DIR.mkdir(
         parents=True,
         exist_ok=True,
     )
 
-    has_domain = bool(
-        domain_rules
-    )
 
-    has_ip = bool(
-        ip_rules
-    )
-
-    # =========================================================
-    # Domain MRS
-    # =========================================================
-
-    if has_domain:
-
-        temp = (
-            TEMP_DIR
-            / f"{folder_name}_domain.yaml"
+def cleanup_temp_dir() -> None:
+    if TEMP_DIR.exists():
+        shutil.rmtree(
+            TEMP_DIR,
+            ignore_errors=True,
         )
 
-        write_mrs_source_yaml(
-            temp,
-            domain_rules,
+
+def ensure_mihomo_available() -> None:
+
+    if not shutil.which("mihomo"):
+        raise RuntimeError(
+            "找不到 mihomo 命令"
         )
 
-        compile_to_mrs(
-            temp,
-            (
-                destination_folder
-                / f"{folder_name}_Domain.mrs"
-            ),
-            "domain",
-        )
 
-    elif (
-        destination_folder
-        / f"{folder_name}_Domain.mrs"
-    ).exists():
 
-        (
-            destination_folder
-            / f"{folder_name}_Domain.mrs"
-        ).unlink()
+def is_custom_rule_folder(
+    folder: Path,
+) -> bool:
 
-    # =========================================================
-    # IP MRS
-    # =========================================================
+    if not folder.is_dir():
+        return False
 
-    if has_ip:
+    if (
+        folder.name
+        in UPSTREAM_FOLDERS
+        or folder.name
+        in SCRIPT_OWNED_FOLDERS
+        or folder.name
+        in RESERVED_DIRS
+    ):
+        return False
 
-        temp = (
-            TEMP_DIR
-            / f"{folder_name}_ip.yaml"
-        )
-
-        write_mrs_source_yaml(
-            temp,
-            ip_rules,
-        )
-
-        compile_to_mrs(
-            temp,
-            (
-                destination_folder
-                / f"{folder_name}_IP.mrs"
-            ),
-            "ipcidr",
-        )
-
-    elif (
-        destination_folder
-        / f"{folder_name}_IP.mrs"
-    ).exists():
-
-        (
-            destination_folder
-            / f"{folder_name}_IP.mrs"
-        ).unlink()
+    if folder.name.startswith("."):
+        return False
 
     return (
-        has_domain,
-        has_ip,
+        select_best_yaml(
+            folder,
+            folder.name,
+        )
+        is not None
+    )
+
+
+def emit_folder_outputs(
+    folder: Path,
+    classical_filename: str,
+    rules: Sequence[Sequence[str]],
+    cache: Optional[CompileCache],
+    cache_key: Optional[str],
+) -> None:
+    """
+    由已解析的规则生成一个目录的全部产物：
+    mrs、四客户端 list、README，并登记编译缓存。
+    调用方负责源准备与缓存命中检查。
+    """
+    folder_name = folder.name
+
+    has_domain, has_ip = (
+        compile_parsed_rules(
+            folder_name,
+            rules,
+            folder,
+        )
+    )
+
+
+    write_client_lists(
+        folder,
+        folder_name,
         rules,
     )
 
-
-def process_upstream_folder(
-    folder_name: str,
-    cache: Optional[CompileCache],
-) -> Optional[str]:
-    """
-    返回 folder_name 表示该目录已处理（编译或命中缓存跳过），
-    返回 None 表示源缺失，本次未处理。
-    """
-
-    source_folder = (
-        SOURCE_CLASH_DIR
-        / folder_name
-    )
-
-    if not source_folder.is_dir():
-
-        print(
-            f"跳过上游目录："
-            f"{source_folder}"
-        )
-
-        return None
-
-    source_yaml = select_best_yaml(
-        source_folder,
-        folder_name,
-    )
-
-    if not source_yaml:
-
-        print(
-            "跳过上游目录，没有 YAML："
-            f"{folder_name}"
-        )
-
-        return None
-
-    cache_key: Optional[str] = None
-
-    if cache is not None:
-        template = (
-            source_folder
-            / "README.md"
-        )
-
-        cache_key = cache.key_for(
-            [source_yaml],
-            [template]
-            if template.is_file()
-            else [],
-        )
-
-        if cache.is_unchanged(
-            folder_name,
-            cache_key,
-        ):
-            print(
-                f"跳过未变化的上游目录："
-                f"{folder_name}"
-            )
-
-            return folder_name
-
-    dest = (
-        DEST_RULE_DIR
-        / folder_name
-    )
-
-    dest.mkdir(
-        parents=True,
-        exist_ok=True,
-    )
-
-    has_domain, has_ip, _rules = (
-        compile_rule_set(
-            folder_name,
-            source_yaml,
-            dest,
-        )
-    )
-
-
-    classical_filename = (
-        f"{folder_name}_Classical.yaml"
-    )
-
-    if not (
-        source_folder
-        / classical_filename
-    ).is_file():
-
-        classical_filename = (
-            source_yaml.name
-        )
-
-
-    list_filenames: Dict[str, str] = {}
-
-    for client in NON_CLASH_CLIENTS:
-
-        filename = (
-            find_upstream_list_file(
-                client,
-                folder_name,
-            )
-        )
-
-        if filename:
-
-            list_filenames[client] = (
-                filename
-            )
-
-        else:
-
-            raise RuntimeError(
-                "上游缺少 "
-                f"{client} 规则文件: "
-                f"{folder_name}"
-            )
-
-
-    template = (
-        source_folder
-        / "README.md"
-    )
+    list_filenames = {
+        client: f"{client}.list"
+        for client in NON_CLASH_CLIENTS
+    }
 
     update_readme(
-        DEST_RULE_DIR
-        / folder_name
-        / "README.md",
-
+        folder / "README.md",
         folder_name,
-
         classical_filename,
-
         has_domain,
-
         has_ip,
-
-
         list_filenames=list_filenames,
-
-        template_path=template,
     )
 
     if (
@@ -1406,141 +1447,99 @@ def process_upstream_folder(
             cache_key,
         )
 
+
+def convert_prepared_folder(
+    folder: Path,
+    classical_filename: str,
+    rules: Sequence[Sequence[str]],
+    cache: Optional[CompileCache],
+    cache_key: Optional[str],
+) -> str:
+    folder_name = folder.name
+
+    if (
+        cache is not None
+        and cache_key is not None
+        and cache.is_unchanged(
+            folder_name,
+            cache_key,
+        )
+    ):
+        print(
+            f"跳过未变化的目录："
+            f"{folder_name}"
+        )
+
+        return folder_name
+
+    emit_folder_outputs(
+        folder,
+        classical_filename,
+        rules,
+        cache,
+        cache_key,
+    )
+
+    print(
+        "规则转换完成: "
+        f"{folder_name}"
+    )
+
     return folder_name
 
 
-# ================= 主流程 =================
+def convert_custom_folder(
+    folder: Path,
+    cache: Optional[CompileCache],
+) -> Optional[str]:
 
-def ensure_mihomo_available() -> None:
+    folder_name = folder.name
 
-    if not shutil.which("mihomo"):
-        raise RuntimeError(
-            "找不到 mihomo 命令"
-        )
-
-
-def clone_upstream() -> None:
-    """
-    拉取 Blackmatrix7 仓库（浅克隆）。
-    失败直接抛错，不静默跳过。
-    """
-
-    print(
-        f"拉取 Blackmatrix7 仓库: "
-        f"{UPSTREAM_REPO_URL}"
-    )
-
-    if SOURCE_REPO_DIR.exists():
-        shutil.rmtree(
-            SOURCE_REPO_DIR
-        )
-
-    result = subprocess.run(
-        [
-            "git",
-            "clone",
-            "--depth",
-            "1",
-            UPSTREAM_REPO_URL,
-            str(SOURCE_REPO_DIR),
-        ],
-        check=False,
-    )
-
-    if result.returncode != 0:
-        raise RuntimeError(
-            "拉取 Blackmatrix7 仓库失败"
-        )
-
-
-def main() -> None:
-
-    print("开始转换 Blackmatrix7 规则...")
-
-    ensure_mihomo_available()
-
-    clone_upstream()
-
-    if not SOURCE_CLASH_DIR.is_dir():
-        raise RuntimeError(
-            "找不到上游 Clash 目录: "
-            f"{SOURCE_CLASH_DIR}"
-        )
-
-
-    cache: Optional[CompileCache] = None
-
-    try:
-        cache = CompileCache(
-            CACHE_PATH,
-            _file_sha256(
-                Path(__file__)
-            ),
-            get_mihomo_version(),
-        )
-    except Exception as exc:
-        print(
-            f"警告：编译缓存初始化失败"
-            f"（本次全量重做）：{exc}"
-        )
-
-        cache = None
-
-
-    if TEMP_DIR.exists():
-        shutil.rmtree(
-            TEMP_DIR
-        )
-
-    TEMP_DIR.mkdir(
-        parents=True,
-        exist_ok=True,
-    )
-
-    DEST_RULE_DIR.mkdir(
-        parents=True,
-        exist_ok=True,
-    )
-
-    handled: Set[str] = set()
-
-
-    for folder_name in sorted(
-        UPSTREAM_INCLUDE_FOLDERS
-    ):
-
-        done = process_upstream_folder(
+    source_yaml = (
+        select_best_yaml(
+            folder,
             folder_name,
-            cache,
         )
+    )
 
-        if done:
-            handled.add(done)
+    if not source_yaml:
+        return None
+
+
+    cache_key: Optional[str] = None
 
     if cache is not None:
-        cache.prune(handled)
-        cache.save()
+        cache_key = cache.key_for(
+            [source_yaml]
+        )
 
-    print(
-        "\n规则转换完成。"
+        if cache.is_unchanged(
+            folder_name,
+            cache_key,
+        ):
+            print(
+                f"跳过未变化的自定义目录："
+                f"{folder_name}"
+            )
+
+            return folder_name
+
+    rules = parse_rules(
+        source_yaml
     )
 
+    emit_folder_outputs(
+        folder,
+        source_yaml.name,
+        rules,
+        cache,
+        cache_key,
+    )
 
-if __name__ == "__main__":
+    print(
+        "自定义规则完成: "
+        f"{folder_name}"
+    )
 
-    try:
-        main()
+    return folder_name
 
-    finally:
-
-        if TEMP_DIR.exists():
-            shutil.rmtree(
-                TEMP_DIR,
-                ignore_errors=True,
-            )
-
-        if SOURCE_REPO_DIR.exists():
-            shutil.rmtree(
-                SOURCE_REPO_DIR,
-                ignore_errors=True,
-            )
