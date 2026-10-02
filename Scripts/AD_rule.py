@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import email.utils
 import ipaddress
 import re
 import urllib.request
@@ -10,22 +11,9 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Dict, List, Optional, Set, Tuple
 
-# 同目录的规则格式转换工具箱（Scripts/rule_converter.py）
 import rule_converter
 
 
-# ================= 配置 =================
-
-# 上游规则地址：name -> (url, 格式)。
-# 格式有三种：
-# - abp：ABP 语法（EasyList 系、hagezi 的 adblock 版），严格模式解析，
-#   只有 ||domain^ 且零 option 的规则会被接受；
-# - hosts：hosts 文件格式（StevenBlack），取 0.0.0.0 行的域名；
-# - domains：纯域名文件（anti-AD），一行一个域名。
-# hosts / 纯域名条目统一转为 DOMAIN-SUFFIX：与上游自家
-# Mihomo / AdGuard 产物的后缀语义保持一致，不算扩大。
-# 注意：easylist 仓库里只有源码碎片，编译好的完整规则发布在
-# easylist-downloads.adblockplus.org（这也是 AdGuard/uBO 拉取的地址）。
 SOURCES: Dict[str, Tuple[str, str]] = {
     "easylist": (
         "https://easylist-downloads.adblockplus.org/"
@@ -65,15 +53,14 @@ OUTPUT_FILE = OUTPUT_DIR / "AD.yaml"
 
 FETCH_TIMEOUT = 60
 
-# 合法域名校验（含 punycode 的 xn-- 形式）
 DOMAIN_RE = re.compile(
     r"^(?!-)(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z]{2,}$"
 )
 
 
-# ================= 拉取 =================
-
-def fetch_text(url: str) -> str:
+def fetch_text(
+    url: str,
+) -> Tuple[str, Optional[datetime]]:
     request = urllib.request.Request(
         url,
         headers={
@@ -96,10 +83,34 @@ def fetch_text(url: str) -> str:
             f"拉取上游规则失败: {url}"
         ) from exc
 
-    return raw.decode("utf-8", errors="replace")
+    last_modified: Optional[datetime] = None
 
+    header_value = resp.headers.get(
+        "Last-Modified"
+    )
 
-# ================= 解析 =================
+    if header_value:
+        try:
+            parsed = email.utils.parsedate_to_datetime(
+                header_value
+            )
+
+            if parsed.tzinfo is None:
+                parsed = parsed.replace(
+                    tzinfo=timezone.utc
+                )
+
+            last_modified = parsed.astimezone(
+                timezone.utc
+            )
+        except (TypeError, ValueError):
+            last_modified = None
+
+    return (
+        raw.decode("utf-8", errors="replace"),
+        last_modified,
+    )
+
 
 def parse_abp_line(
     line: str,
@@ -113,7 +124,6 @@ def parse_abp_line(
     ):
         return None, "comment"
 
-    # 元素隐藏 / 扩展 CSS 等装饰类规则，与域名拦截无关
     if (
         "##" in text
         or "#@#" in text
@@ -146,15 +156,11 @@ def parse_abp_line(
 
     if DOMAIN_RE.match(domain):
 
-        # 白名单例外规则无法表达为拦截规则，单独计数
         if is_exception:
             return None, "exception"
 
         return ("DOMAIN-SUFFIX", domain), "ok"
 
-    # 域名形态不成立时回退判断 IP 字面量（||1.2.3.4^）：
-    # ABP 语意是拦截发往该 IP 的请求，与 IP-CIDR 定长掩码
-    # 严格等价，可以无损转换
     try:
         ip = ipaddress.ip_address(
             domain
@@ -235,6 +241,7 @@ PARSERS = {
 def build_yaml(
     rules: List[Tuple[str, str]],
     stats: Dict[str, Dict[str, int]],
+    updated_times: Dict[str, Optional[datetime]],
 ) -> str:
 
     domains = [
@@ -252,10 +259,26 @@ def build_yaml(
         "%Y-%m-%dT%H:%M:%SZ"
     )
 
+    known_updates = [
+        stamp
+        for stamp in updated_times.values()
+        if stamp is not None
+    ]
+
+    if known_updates:
+        stamp_line = (
+            "# 上游最后更新时间（UTC）："
+            + max(known_updates).strftime(
+                "%Y-%m-%dT%H:%M:%SZ"
+            )
+        )
+    else:
+        stamp_line = f"# 生成时间（UTC）：{now}"
+
     lines = [
         "# AD 聚合广告域名规则",
         "# 由 Scripts/AD_rule.py 自动生成，请勿手动修改",
-        f"# 生成时间（UTC）：{now}",
+        stamp_line,
         "# 数据来源：",
     ]
 
@@ -292,11 +315,14 @@ def main() -> None:
 
     merged: Set[Tuple[str, str]] = set()
     stats: Dict[str, Dict[str, int]] = {}
+    updated_times: Dict[
+        str, Optional[datetime]
+    ] = {}
 
     for name, (url, kind) in SOURCES.items():
         print(f"拉取 {name}: {url}")
 
-        text = fetch_text(url)
+        text, last_modified = fetch_text(url)
 
         parser = PARSERS[kind]
 
@@ -327,6 +353,7 @@ def main() -> None:
             )
 
         stats[name] = source_stats
+        updated_times[name] = last_modified
 
         skip_detail = ", ".join(
             f"{key}={source_stats[key]}"
@@ -356,7 +383,7 @@ def main() -> None:
     )
 
     OUTPUT_FILE.write_text(
-        build_yaml(rules, stats),
+        build_yaml(rules, stats, updated_times),
         encoding="utf-8",
         newline="\n",
     )
