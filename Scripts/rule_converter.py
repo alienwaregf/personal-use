@@ -527,6 +527,10 @@ def compile_parsed_rules(
     rules: Sequence[Sequence[str]],
     destination_folder: Path,
 ) -> Tuple[bool, bool]:
+    """
+    把已解析的规则编译为 mrs（domain / ipcidr 两种 behavior）。
+    规则为空直接抛错，不静默产出空集。
+    """
 
     if not rules:
         raise RuntimeError(
@@ -571,19 +575,19 @@ def compile_parsed_rules(
             temp,
             (
                 destination_folder
-                / f"{folder_name}_Domain.mrs"
+                / f"{folder_name}.mrs"
             ),
             "domain",
         )
 
     elif (
         destination_folder
-        / f"{folder_name}_Domain.mrs"
+        / f"{folder_name}.mrs"
     ).exists():
 
         (
             destination_folder
-            / f"{folder_name}_Domain.mrs"
+            / f"{folder_name}.mrs"
         ).unlink()
 
     # =========================================================
@@ -859,7 +863,7 @@ def build_client_section(
                 "```text\n"
                 f"{MY_RAW_RULE_BASE_URL}/"
                 f"{folder_url}/"
-                f"{quote_path_part(folder_name + '_Domain.mrs')}\n"
+                f"{quote_path_part(folder_name + '.mrs')}\n"
                 "```\n\n"
             )
 
@@ -947,7 +951,6 @@ def replace_client_sections(
     lines = content.splitlines(
         keepends=True
     )
-
 
     first_client_index: Optional[int] = None
 
@@ -1370,7 +1373,6 @@ def ensure_mihomo_available() -> None:
         )
 
 
-# ================= 目录判定 / 转换入口 =================
 
 def is_custom_rule_folder(
     folder: Path,
@@ -1418,9 +1420,6 @@ def emit_folder_outputs(
         )
     )
 
-    # =========================================================
-    # 四个非 Clash 客户端
-    # =========================================================
 
     write_client_lists(
         folder,
