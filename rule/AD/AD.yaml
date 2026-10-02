@@ -1,14 +1,14 @@
 # AD 聚合广告域名规则
 # 由 Scripts/AD_rule.py 自动生成，请勿手动修改
-# 生成时间（UTC）：2026-10-02T08:14:04Z
+# 生成时间（UTC）：2026-10-02T08:20:44Z
 # 数据来源：
 #   - easylist: https://easylist-downloads.adblockplus.org/easylist.txt
-#     原始 78712 行，提取 44640 个域名
+#     原始 78713 行，提取 44641 个域名
 #   - easyprivacy: https://easylist-downloads.adblockplus.org/easyprivacy.txt
 #     原始 54252 行，提取 40580 个域名
 #   - easylistchina: https://easylist-downloads.adblockplus.org/easylistchina.txt
 #     原始 19208 行，提取 5765 个域名
-# 合并去重后域名总数：90967
+# 合并去重后域名总数：90968
 payload:
   - DOMAIN-SUFFIX,0.myikas.com
   - DOMAIN-SUFFIX,0.net.easyjet.com
@@ -44549,6 +44549,7 @@ payload:
   - DOMAIN-SUFFIX,lnxjhesfdmuyq.online
   - DOMAIN-SUFFIX,lnzitobjnmskk.space
   - DOMAIN-SUFFIX,lnzsinagpafgv.website
+  - DOMAIN-SUFFIX,lnzylzgvxxlhg.website
   - DOMAIN-SUFFIX,lo2xxp73v7.com
   - DOMAIN-SUFFIX,lo42y56tmy.com
   - DOMAIN-SUFFIX,load-res-static.lol
