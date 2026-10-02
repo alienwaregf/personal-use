@@ -2,7 +2,7 @@
 
 domain
 ```text
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Adult/Adult_Domain.mrs
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Adult/Adult.mrs
 ```
 
 classical

@@ -2,7 +2,7 @@
 
 domain
 ```text
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Apple%20Intelligence/Apple%20Intelligence_Domain.mrs
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Apple%20Intelligence/Apple%20Intelligence.mrs
 ```
 
 classical
