@@ -20,8 +20,14 @@ import yaml
 
 # ================= 核心配置 =================
 
-SOURCE_RULE_DIR = Path("source_repo/rule")
+SOURCE_REPO_DIR = Path("source_repo")
+SOURCE_RULE_DIR = SOURCE_REPO_DIR / "rule"
 SOURCE_CLASH_DIR = SOURCE_RULE_DIR / "Clash"
+
+UPSTREAM_REPO_URL = (
+    "https://github.com/"
+    "blackmatrix7/ios_rule_script.git"
+)
 DEST_RULE_DIR = Path("rule")
 TEMP_DIR = Path("temp_compile")
 
@@ -676,7 +682,9 @@ def build_client_section(
 
         return "".join(parts)
 
-
+    # =========================================================
+    # Loon / QuantumultX / Shadowrocket / Surge
+    # =========================================================
 
     filename = list_filenames.get(
         client
@@ -744,7 +752,6 @@ def replace_client_sections(
     lines = content.splitlines(
         keepends=True
     )
-
 
     first_client_index: Optional[int] = None
 
@@ -936,11 +943,7 @@ def update_readme(
 def _normalized_file_hash(
     path: Path,
 ) -> str:
-    """
-    源文件的规范哈希：去掉注释行与空行后计算。
-    注释不影响编译结果（例如 上游 YAML 头部的 UPDATED 时间戳），
-    去掉可避免无谓的重编。
-    """
+    
     digest = hashlib.sha256()
 
     for raw_line in path.read_bytes().splitlines():
@@ -992,13 +995,6 @@ def get_mihomo_version() -> str:
 
 
 class CompileCache:
-    """
-    按目录缓存编译指纹，源文件、转换脚本、mihomo 版本
-    任一变化即重编。
-
-    fail-open：缓存缺失、读取失败、任何异常一律视为未命中，
-    走全量编译。缓存只是加速，绝不单独决定跳过。
-    """
 
     def __init__(
         self,
@@ -1292,7 +1288,6 @@ def process_upstream_folder(
 
         return None
 
-
     cache_key: Optional[str] = None
 
     if cache is not None:
@@ -1424,11 +1419,47 @@ def ensure_mihomo_available() -> None:
         )
 
 
+def clone_upstream() -> None:
+    """
+    拉取 Blackmatrix7 仓库（浅克隆）。
+    失败直接抛错，不静默跳过。
+    """
+
+    print(
+        f"拉取 Blackmatrix7 仓库: "
+        f"{UPSTREAM_REPO_URL}"
+    )
+
+    if SOURCE_REPO_DIR.exists():
+        shutil.rmtree(
+            SOURCE_REPO_DIR
+        )
+
+    result = subprocess.run(
+        [
+            "git",
+            "clone",
+            "--depth",
+            "1",
+            UPSTREAM_REPO_URL,
+            str(SOURCE_REPO_DIR),
+        ],
+        check=False,
+    )
+
+    if result.returncode != 0:
+        raise RuntimeError(
+            "拉取 Blackmatrix7 仓库失败"
+        )
+
+
 def main() -> None:
 
     print("开始转换 Blackmatrix7 规则...")
 
     ensure_mihomo_available()
+
+    clone_upstream()
 
     if not SOURCE_CLASH_DIR.is_dir():
         raise RuntimeError(
@@ -1505,5 +1536,11 @@ if __name__ == "__main__":
         if TEMP_DIR.exists():
             shutil.rmtree(
                 TEMP_DIR,
+                ignore_errors=True,
+            )
+
+        if SOURCE_REPO_DIR.exists():
+            shutil.rmtree(
+                SOURCE_REPO_DIR,
                 ignore_errors=True,
             )
