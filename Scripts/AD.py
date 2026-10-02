@@ -183,7 +183,7 @@ def build_yaml(
 
 
 def main() -> None:
-    开始拉取聚合广告域名规则...")
+    print("开始拉取聚合广告域名规则...")
 
     merged: Dict[str, None] = {}
     stats: Dict[str, Dict[str, int]] = {}
