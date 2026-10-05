@@ -4,21 +4,22 @@
 from __future__ import annotations
 
 import csv
+import email.utils
+import urllib.request
+from datetime import datetime, timezone
 import hashlib
 import ipaddress
 import json
 import re
 import shutil
 import subprocess
+from collections import defaultdict
 from pathlib import Path
 from io import StringIO
 from typing import Dict, List, Optional, Sequence, Set, Tuple
 from urllib.parse import quote
 
 import yaml
-
-
-# ================= 核心配置 =================
 
 DEST_RULE_DIR = Path("rule")
 TEMP_DIR = Path("temp_compile")
@@ -56,7 +57,6 @@ CLIENT_HEADER_RE = re.compile(
     r"(Clash|Loon|QuantumultX|Shadowrocket|Surge)\s*$",
     re.I,
 )
-
 
 UPSTREAM_FOLDERS = {
     "Advertising",
@@ -130,7 +130,6 @@ UPSTREAM_FOLDERS = {
     "YouTube",
 }
 
-
 CLIENT_ICONS = {
     "Clash": (
         "https://raw.githubusercontent.com/"
@@ -158,7 +157,6 @@ CLIENT_ICONS = {
         "icon/02ProxySoftLogo/Surge(8).png"
     ),
 }
-
 
 CLIENT_TYPE_MAP: Dict[str, Dict[str, str]] = {
     "Loon": {
@@ -206,12 +204,8 @@ CLIENT_TYPE_MAP: Dict[str, Dict[str, str]] = {
     },
 }
 
-
-# ================= 通用工具 =================
-
 def quote_path_part(value: str) -> str:
     return quote(str(value), safe="")
-
 
 def strip_yaml_quote(value: object) -> str:
     value = str(value).strip()
@@ -224,7 +218,6 @@ def strip_yaml_quote(value: object) -> str:
         return value[1:-1].strip()
 
     return value
-
 
 def parse_payload_rule_line(
     line: object,
@@ -265,7 +258,6 @@ def parse_payload_rule_line(
         for part in row
         if part.strip()
     ]
-
 
 def load_yaml_payload(
     filepath: Path,
@@ -337,7 +329,6 @@ def load_yaml_payload(
 
     return payload
 
-
 def parse_rules(
     filepath: Path,
 ) -> List[List[str]]:
@@ -360,8 +351,344 @@ def parse_rules(
 
     return rules
 
+DOMAIN_COMPRESSION_THRESHOLD = 2
 
-# ================= MRS 编译 =================
+def fetch_text(
+    url: str,
+    user_agent: str,
+    timeout: int = 60,
+    encoding: str = "utf-8",
+    errors: str = "strict",
+) -> Tuple[str, Optional[datetime]]:
+    request = urllib.request.Request(
+        url,
+        headers={"User-Agent": user_agent},
+    )
+
+    try:
+        with urllib.request.urlopen(
+            request,
+            timeout=timeout,
+        ) as resp:
+            status = resp.status
+            raw = resp.read()
+            headers = resp.headers
+    except Exception as exc:
+        raise RuntimeError(
+            f"拉取上游规则失败: {url}"
+        ) from exc
+
+    if status != 200:
+        raise RuntimeError(
+            f"上游返回 HTTP {status}: {url}"
+        )
+
+    last_modified: Optional[datetime] = None
+
+    header_value = headers.get("Last-Modified")
+
+    if header_value:
+        try:
+            parsed = email.utils.parsedate_to_datetime(
+                header_value
+            )
+
+            if parsed.tzinfo is None:
+                parsed = parsed.replace(
+                    tzinfo=timezone.utc
+                )
+
+            last_modified = parsed.astimezone(
+                timezone.utc
+            )
+        except (TypeError, ValueError):
+            last_modified = None
+
+    return (
+        raw.decode(encoding, errors=errors),
+        last_modified,
+    )
+
+
+SOURCE_DOMAIN_RE = re.compile(
+    r"^(?!-)(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z]{2,}$"
+)
+
+
+def parse_abp_line(
+    line: str,
+) -> Tuple[Optional[Tuple[str, str]], str]:
+    text = line.strip()
+
+    if (
+        not text
+        or text.startswith("!")
+        or text.startswith("[")
+    ):
+        return None, "comment"
+
+    if (
+        "##" in text
+        or "#@#" in text
+        or "#?#" in text
+        or "#$#" in text
+    ):
+        return None, "cosmetic"
+
+    is_exception = text.startswith("@@")
+
+    if is_exception:
+        text = text[2:]
+
+    if not text.startswith("||"):
+        return None, "non-domain-rule"
+
+    body = text[2:]
+    pattern, _, options = body.partition("$")
+
+    if "domain=" in options:
+        return None, "site-scoped"
+
+    if options:
+        return None, "has-options"
+
+    if not pattern.endswith("^"):
+        return None, "not-caret-terminated"
+
+    domain = pattern[:-1].lower().rstrip(".")
+
+    if SOURCE_DOMAIN_RE.match(domain):
+
+        if is_exception:
+            return None, "exception"
+
+        return ("DOMAIN-SUFFIX", domain), "ok"
+
+    try:
+        ip = ipaddress.ip_address(
+            domain
+        )
+    except ValueError:
+        return None, "bad-domain"
+
+    if is_exception:
+        return None, "exception"
+
+    mask = 32 if ip.version == 4 else 128
+
+    return ("IP-CIDR", f"{domain}/{mask}"), "ok"
+
+
+def parse_hosts_line(
+    line: str,
+) -> Tuple[Optional[Tuple[str, str]], str]:
+    text = line.strip()
+
+    if not text or text.startswith("#"):
+        return None, "comment"
+
+    parts = text.split()
+
+    if len(parts) < 2 or parts[0] != "0.0.0.0":
+        return None, "non-hosts-line"
+
+    domain = parts[1].lower().rstrip(".")
+
+    if not SOURCE_DOMAIN_RE.match(domain):
+        return None, "bad-domain"
+
+    return ("DOMAIN", domain), "ok"
+
+
+def parse_domains_line(
+    line: str,
+) -> Tuple[Optional[Tuple[str, str]], str]:
+    text = line.strip()
+
+    if (
+        not text
+        or text.startswith("#")
+        or text.startswith("!")
+    ):
+        return None, "comment"
+
+    domain = text.lower().rstrip(".")
+
+    if not SOURCE_DOMAIN_RE.match(domain):
+        return None, "bad-domain"
+
+    return ("DOMAIN-SUFFIX", domain), "ok"
+
+
+SOURCE_PARSERS = {
+    "abp": parse_abp_line,
+    "hosts": parse_hosts_line,
+    "domains": parse_domains_line,
+}
+
+
+def gather_source_rules(
+    sources: Dict[str, Tuple[str, str]],
+    user_agent: str,
+    timeout: int = 60,
+) -> Tuple[
+    List[Tuple[str, str]],
+    Dict[str, Dict[str, int]],
+    Dict[str, Optional[datetime]],
+]:
+    merged: Set[Tuple[str, str]] = set()
+    stats: Dict[str, Dict[str, int]] = {}
+    updated_times: Dict[str, Optional[datetime]] = {}
+
+    for name, (url, kind) in sources.items():
+        print(f"拉取 {name}: {url}")
+
+        text, last_modified = fetch_text(
+            url,
+            user_agent,
+            timeout=timeout,
+            errors="replace",
+        )
+
+        parser = SOURCE_PARSERS[kind]
+
+        hosts_domains: Set[str] = set()
+
+        source_stats: Dict[str, int] = {
+            "lines": 0,
+            "ok": 0,
+        }
+
+        for raw_line in text.splitlines():
+            source_stats["lines"] += 1
+
+            rule, reason = parser(
+                raw_line
+            )
+
+            if rule:
+                source_stats["ok"] += 1
+
+                if kind == "hosts":
+                    hosts_domains.add(rule[1])
+                else:
+                    merged.add(rule)
+            else:
+                source_stats[reason] = (
+                    source_stats.get(reason, 0) + 1
+                )
+
+        if source_stats["ok"] == 0:
+            raise RuntimeError(
+                f"{name} 未提取到任何规则，"
+                f"上游可能已变更格式: {url}"
+            )
+
+        if kind == "hosts":
+            marked = compress_domains(
+                hosts_domains
+            )
+
+            merged.update(
+                domains_to_rules(marked)
+            )
+
+        stats[name] = source_stats
+        updated_times[name] = last_modified
+
+        skip_detail = ", ".join(
+            f"{key}={source_stats[key]}"
+            for key in sorted(source_stats)
+            if (
+                key not in ("lines", "ok")
+                and source_stats[key]
+            )
+        )
+
+        print(
+            f"  {name}: {source_stats['lines']} 行 -> "
+            f"{source_stats['ok']} 条规则 "
+            f"({skip_detail})"
+        )
+
+    return sorted(merged), stats, updated_times
+
+
+def parent_suffixes(host: str) -> List[str]:
+    labels = host.split(".")
+
+    if len(labels) < 3:
+        return []
+
+    return [
+        ".".join(labels[i:])
+        for i in range(0, len(labels) - 2)
+    ]
+
+def compress_domains(domains: Set[str]) -> Set[str]:
+    suffix_members: Dict[str, Set[str]] = defaultdict(set)
+
+    for domain in domains:
+        for suffix in parent_suffixes(domain):
+            suffix_members[suffix].add(domain)
+
+    candidates = [
+        (suffix, members)
+        for suffix, members in suffix_members.items()
+        if len(members) >= DOMAIN_COMPRESSION_THRESHOLD
+    ]
+
+    candidates.sort(
+        key=lambda item: len(item[0].split(".")),
+        reverse=True,
+    )
+
+    remaining = set(domains)
+    output: Set[str] = set()
+    compressed = 0
+
+    for suffix, _ in candidates:
+        members = {
+            domain
+            for domain in remaining
+            if domain == suffix or domain.endswith("." + suffix)
+        }
+
+        if len(members) < DOMAIN_COMPRESSION_THRESHOLD:
+            continue
+
+        output.add(f"+.{suffix}")
+        remaining.difference_update(members)
+        compressed += 1
+
+    output.update(remaining)
+
+    print(
+        f"域名压缩: {len(domains):,} → {len(output):,} "
+        f"（合并 {compressed:,} 个父域）"
+    )
+
+    return output
+
+def domains_to_rules(
+    domains: Set[str],
+) -> List[Tuple[str, str]]:
+    rules: List[Tuple[str, str]] = []
+
+    for domain in sorted(domains):
+        if domain.startswith("+."):
+            rules.append(
+                (
+                    "DOMAIN-SUFFIX",
+                    domain[2:].lstrip("."),
+                )
+            )
+        else:
+            rules.append(
+                ("DOMAIN", domain)
+            )
+
+    return rules
 
 def split_mrs_rules(
     rules: Sequence[Sequence[str]],
@@ -429,7 +756,6 @@ def split_mrs_rules(
 
     return domain_rules, ip_rules
 
-
 def write_mrs_source_yaml(
     path: Path,
     rules: Sequence[str],
@@ -459,7 +785,6 @@ def write_mrs_source_yaml(
                 + dumped
                 + "\n"
             )
-
 
 def compile_to_mrs(
     temp_yaml_path: Path,
@@ -520,17 +845,11 @@ def compile_to_mrs(
             f"{output_path}"
         )
 
-
-
 def compile_parsed_rules(
     folder_name: str,
     rules: Sequence[Sequence[str]],
     destination_folder: Path,
 ) -> Tuple[bool, bool]:
-    """
-    把已解析的规则编译为 mrs（domain / ipcidr 两种 behavior）。
-    规则为空直接抛错，不静默产出空集。
-    """
 
     if not rules:
         raise RuntimeError(
@@ -630,9 +949,6 @@ def compile_parsed_rules(
         has_ip,
     )
 
-
-# ================= 文件选择 =================
-
 def select_best_yaml(
     folder_path: Path,
     folder_name: str,
@@ -666,9 +982,6 @@ def select_best_yaml(
         else None
     )
 
-
-# ================= 客户端规则转换 =================
-
 def _extra_options(
     parts: Sequence[str],
 ) -> List[str]:
@@ -678,7 +991,6 @@ def _extra_options(
         for x in parts[2:]
         if str(x).strip()
     ]
-
 
 def build_client_rule_line(
     parts: Sequence[str],
@@ -750,7 +1062,6 @@ def build_client_rule_line(
 
     return buffer.getvalue()
 
-
 def build_client_list(
     folder_name: str,
     rules: Sequence[Sequence[str]],
@@ -787,7 +1098,6 @@ def build_client_list(
         + "\n"
     )
 
-
 def write_client_lists(
     folder: Path,
     folder_name: str,
@@ -810,9 +1120,6 @@ def write_client_lists(
             newline="\n",
         )
 
-
-# ================= README（全自有版式） =================
-
 def client_heading(
     client: str,
 ) -> str:
@@ -824,7 +1131,6 @@ def client_heading(
         f'width="25" height="25" '
         f'alt="{client}" /> {client}\n\n'
     )
-
 
 def build_client_section(
     client: str,
@@ -909,7 +1215,6 @@ def build_client_section(
 
     return "".join(parts)
 
-
 def client_section_text(
     folder_name: str,
     classical_filename: str,
@@ -942,7 +1247,6 @@ def client_section_text(
         "\n\n".join(sections)
     )
 
-
 def replace_client_sections(
     content: str,
     replacement: str,
@@ -951,6 +1255,9 @@ def replace_client_sections(
     lines = content.splitlines(
         keepends=True
     )
+
+    # =========================================================
+    # =========================================================
 
     first_client_index: Optional[int] = None
 
@@ -963,8 +1270,6 @@ def replace_client_sections(
         if match:
             first_client_index = idx
             break
-
-
 
     preserve_patterns = (
         re.compile(
@@ -1000,6 +1305,8 @@ def replace_client_sections(
             preserve_index = idx
             break
 
+    # =========================================================
+    # =========================================================
 
     if first_client_index is None:
 
@@ -1051,13 +1358,9 @@ def replace_client_sections(
             + "\n"
         )
 
-
-
     prefix = "".join(
         lines[:first_client_index]
     ).rstrip()
-
-
 
     suffix = ""
 
@@ -1067,6 +1370,8 @@ def replace_client_sections(
             lines[preserve_index:]
         ).lstrip()
 
+    # =========================================================
+    # =========================================================
 
     result_parts: List[str] = []
 
@@ -1090,7 +1395,6 @@ def replace_client_sections(
         )
         + "\n"
     )
-
 
 def update_readme(
     readme_path: Path,
@@ -1124,9 +1428,6 @@ def update_readme(
         newline="\n",
     )
 
-
-# ================= 编译缓存 =================
-
 def _normalized_file_hash(
     path: Path,
 ) -> str:
@@ -1143,14 +1444,12 @@ def _normalized_file_hash(
 
     return digest.hexdigest()
 
-
 def _file_sha256(
     path: Path,
 ) -> str:
     return hashlib.sha256(
         path.read_bytes()
     ).hexdigest()
-
 
 def get_mihomo_version() -> str:
     mihomo = shutil.which("mihomo")
@@ -1178,7 +1477,6 @@ def get_mihomo_version() -> str:
         )
 
     return output[0].strip()
-
 
 class CompileCache:
 
@@ -1226,7 +1524,6 @@ class CompileCache:
                     ).encode()
                 )
             except Exception:
-                # 源文件读不到也算变化，走重编
                 digest.update(b"\x00unreadable\x00")
                 digest.update(
                     str(path).encode()
@@ -1308,19 +1605,12 @@ class CompileCache:
                 newline="\n",
             )
         except Exception as exc:
-            # 缓存写失败不影响主流程，
-            # 下次全量重做即可
             print(
                 f"警告：编译缓存写入失败"
                 f"（下次将全量重做）：{exc}"
             )
 
-
 def make_cache() -> Optional[CompileCache]:
-    """
-    初始化自定义侧编译缓存。
-    fail-open：任何异常返回 None，调用方全量重编。
-    """
     try:
         return CompileCache(
             CUSTOM_CACHE_PATH,
@@ -1337,13 +1627,11 @@ def make_cache() -> Optional[CompileCache]:
 
         return None
 
-
 def save_cache(
     cache: Optional[CompileCache],
 ) -> None:
     if cache is not None:
         cache.save()
-
 
 def prepare_temp_dir() -> None:
     if TEMP_DIR.exists():
@@ -1356,7 +1644,6 @@ def prepare_temp_dir() -> None:
         exist_ok=True,
     )
 
-
 def cleanup_temp_dir() -> None:
     if TEMP_DIR.exists():
         shutil.rmtree(
@@ -1364,15 +1651,12 @@ def cleanup_temp_dir() -> None:
             ignore_errors=True,
         )
 
-
 def ensure_mihomo_available() -> None:
 
     if not shutil.which("mihomo"):
         raise RuntimeError(
             "找不到 mihomo 命令"
         )
-
-
 
 def is_custom_rule_folder(
     folder: Path,
@@ -1402,7 +1686,6 @@ def is_custom_rule_folder(
         is not None
     )
 
-
 def emit_folder_outputs(
     folder: Path,
     classical_filename: str,
@@ -1420,6 +1703,8 @@ def emit_folder_outputs(
         )
     )
 
+    # =========================================================
+    # =========================================================
 
     write_client_lists(
         folder,
@@ -1449,6 +1734,60 @@ def emit_folder_outputs(
             folder_name,
             cache_key,
         )
+
+def write_classical_yaml(
+    path: Path,
+    header_lines: List[str],
+    rules: List[Tuple[str, str]],
+) -> None:
+    path.parent.mkdir(
+        parents=True,
+        exist_ok=True,
+    )
+
+    lines = list(header_lines)
+    lines.append("payload:")
+
+    lines.extend(
+        f"  - {kind},{value}"
+        for kind, value in rules
+    )
+
+    path.write_text(
+        "\n".join(lines) + "\n",
+        encoding="utf-8",
+        newline="\n",
+    )
+
+
+def emit_folder(
+    folder_dir: Path,
+    yaml_path: Path,
+    rules: List[Tuple[str, str]],
+) -> None:
+    ensure_mihomo_available()
+    prepare_temp_dir()
+
+    cache = make_cache()
+
+    cache_key = (
+        cache.key_for([yaml_path])
+        if cache is not None
+        else None
+    )
+
+    try:
+        convert_prepared_folder(
+            folder_dir,
+            yaml_path.name,
+            rules,
+            cache,
+            cache_key,
+        )
+    finally:
+        cleanup_temp_dir()
+
+    save_cache(cache)
 
 
 def convert_prepared_folder(
@@ -1490,7 +1829,6 @@ def convert_prepared_folder(
 
     return folder_name
 
-
 def convert_custom_folder(
     folder: Path,
     cache: Optional[CompileCache],
@@ -1508,6 +1846,8 @@ def convert_custom_folder(
     if not source_yaml:
         return None
 
+    # =========================================================
+    # =========================================================
 
     cache_key: Optional[str] = None
 
