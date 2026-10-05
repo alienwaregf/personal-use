@@ -9,19 +9,13 @@ import ipaddress
 import json
 from datetime import datetime
 import re
-import tempfile
-from collections import defaultdict
 from pathlib import Path
-from urllib.error import HTTPError, URLError
-from urllib.request import Request, urlopen
 
 import rule_converter
 
 META_URL = "https://raw.githubusercontent.com/Bon-Appetit/porn-domains/main/meta.json"
 ADULT_YAML_PATH = Path("rule/Adult/Adult.yaml")
 USER_AGENT = "alienwaregf/personal-use porn-domains_rule updater"
-TIMEOUT = 60
-COMPRESSION_THRESHOLD = 2
 
 MAJOR_DOMAINS = {
     "51cg1.com",
@@ -70,25 +64,9 @@ MAJOR_DOMAINS = {
 
 DOMAIN_LABEL_RE = re.compile(r"^[A-Za-z0-9_\-]+$")
 
-
-def fetch_text(url: str) -> str:
-    request = Request(url, headers={"User-Agent": USER_AGENT})
-
-    try:
-        with urlopen(request, timeout=TIMEOUT) as response:
-            return response.read().decode("utf-8-sig")
-    except (HTTPError, URLError, TimeoutError) as exc:
-        raise RuntimeError(f"下载失败: {url}\n{exc}") from exc
-
-
 def extract_blocklist(
     meta: dict,
 ) -> tuple[str, str]:
-    """
-    从 meta.json 取 blocklist 的 raw_url 与上游更新时间。
-    updated 是上游自带的数据新鲜度标记，缺失或格式不对
-    视为上游改版，直接报错，不静默丢弃。
-    """
     try:
         blocklist = meta["blocklist"]
         url = str(blocklist["raw_url"]).strip()
@@ -115,7 +93,6 @@ def extract_blocklist(
         "%Y-%m-%dT%H:%M:%SZ"
     )
 
-
 def _validate_host(host: str) -> bool:
     if not host or len(host) > 253:
         return False
@@ -140,7 +117,6 @@ def _validate_host(host: str) -> bool:
 
     return True
 
-
 def normalize_domain_line(line: str) -> str | None:
     line = line.strip().lstrip("\ufeff")
 
@@ -156,7 +132,6 @@ def normalize_domain_line(line: str) -> str | None:
         return None
 
     return host
-
 
 def extract_major_domains(
     domains: set[str],
@@ -190,74 +165,14 @@ def extract_major_domains(
 
     return remaining, major_rules
 
-
-def parent_suffixes(host: str) -> list[str]:
-    labels = host.split(".")
-
-    if len(labels) < 3:
-        return []
-
-    return [
-        ".".join(labels[i:])
-        for i in range(0, len(labels) - 2)
-    ]
-
-
-def compress_domains(domains: set[str]) -> set[str]:
-    suffix_members: dict[str, set[str]] = defaultdict(set)
-
-    for domain in domains:
-        for suffix in parent_suffixes(domain):
-            suffix_members[suffix].add(domain)
-
-    candidates = [
-        (suffix, members)
-        for suffix, members in suffix_members.items()
-        if len(members) >= COMPRESSION_THRESHOLD
-    ]
-
-    candidates.sort(
-        key=lambda item: len(item[0].split(".")),
-        reverse=True,
-    )
-
-    remaining = set(domains)
-    output: set[str] = set()
-    compressed = 0
-
-    for suffix, _ in candidates:
-        members = {
-            domain
-            for domain in remaining
-            if domain == suffix or domain.endswith("." + suffix)
-        }
-
-        if len(members) < COMPRESSION_THRESHOLD:
-            continue
-
-        output.add(f"+.{suffix}")
-        remaining.difference_update(members)
-        compressed += 1
-
-    output.update(remaining)
-
-    print(
-        f"域名压缩: {len(domains):,} → {len(output):,} "
-        f"（合并 {compressed:,} 个父域）"
-    )
-
-    return output
-
-
-def prepare_domains(source_path: Path) -> set[str]:
+def prepare_domains(text: str) -> set[str]:
     domains: set[str] = set()
 
-    with source_path.open("r", encoding="utf-8-sig") as source:
-        for line in source:
-            domain = normalize_domain_line(line)
+    for line in text.splitlines():
+        domain = normalize_domain_line(line)
 
-            if domain is not None:
-                domains.add(domain)
+        if domain is not None:
+            domains.add(domain)
 
     if not domains:
         raise RuntimeError("上游 blocklist 没有解析出任何有效域名")
@@ -266,68 +181,11 @@ def prepare_domains(source_path: Path) -> set[str]:
         domains
     )
 
-    compressed_domains = compress_domains(
+    compressed_domains = rule_converter.compress_domains(
         remaining_domains
     )
 
     return major_rules | compressed_domains
-
-
-def domains_to_rules(
-    domains: set[str],
-) -> list[tuple[str, str]]:
-    """
-    域名集合 → 类型化规则（全脚本唯一的推导处）：
-    +. 前缀 → DOMAIN-SUFFIX，其余 → DOMAIN。
-    """
-    rules: list[tuple[str, str]] = []
-
-    for domain in sorted(domains):
-        if domain.startswith("+."):
-            rules.append(
-                (
-                    "DOMAIN-SUFFIX",
-                    domain[2:].lstrip("."),
-                )
-            )
-        else:
-            rules.append(
-                ("DOMAIN", domain)
-            )
-
-    return rules
-
-
-def write_adult_yaml(
-    output_path: Path,
-    rules: list[tuple[str, str]],
-    updated: str,
-) -> int:
-    output_path.parent.mkdir(
-        parents=True,
-        exist_ok=True,
-    )
-
-    with output_path.open(
-        "w",
-        encoding="utf-8",
-        newline="\n",
-    ) as output:
-        output.write(
-            "# Adult 域名规则\n"
-            "# 由 Scripts/porn-domains_rule.py 自动生成，请勿手动修改\n"
-            f"# 上游最后更新时间（UTC）：{updated}\n"
-            "# 数据来源：https://github.com/Bon-Appetit/porn-domains\n"
-        )
-        output.write("payload:\n")
-
-        for rule_type, value in rules:
-            output.write(
-                f"  - {rule_type},{value}\n"
-            )
-
-    return len(rules)
-
 
 def main() -> None:
     print(
@@ -335,7 +193,11 @@ def main() -> None:
     )
 
     meta = json.loads(
-        fetch_text(META_URL)
+        rule_converter.fetch_text(
+            META_URL,
+            USER_AGENT,
+            encoding="utf-8-sig",
+        )[0]
     )
 
     blocklist_url, upstream_updated = (
@@ -361,90 +223,53 @@ def main() -> None:
         f"下载地址: {blocklist_url}"
     )
 
-    with tempfile.TemporaryDirectory(
-        prefix="Adult-"
-    ) as temp_dir:
-        temp_dir_path = Path(
-            temp_dir
+    blocklist_text, _last_modified = (
+        rule_converter.fetch_text(
+            blocklist_url,
+            USER_AGENT,
+            encoding="utf-8-sig",
         )
+    )
 
-        source_path = (
-            temp_dir_path
-            / "blocklist.txt"
-        )
+    domains = prepare_domains(
+        blocklist_text
+    )
 
-        source_path.write_text(
-            fetch_text(blocklist_url),
-            encoding="utf-8",
-        )
+    print(
+        f"最终 Domain 规则数量: "
+        f"{len(domains):,}"
+    )
 
-        domains = prepare_domains(
-            source_path
-        )
+    adult_rules = rule_converter.domains_to_rules(
+        domains
+    )
 
-        print(
-            f"最终 Domain 规则数量: "
-            f"{len(domains):,}"
-        )
+    header_lines = [
+        "# Adult 域名规则",
+        "# 由 Scripts/porn-domains_rule.py 自动生成，请勿手动修改",
+        f"# 上游最后更新时间（UTC）：{upstream_updated}",
+        "# 数据来源：https://github.com/Bon-Appetit/porn-domains",
+    ]
 
-        adult_rules = domains_to_rules(
-            domains
-        )
+    rule_converter.write_classical_yaml(
+        ADULT_YAML_PATH,
+        header_lines,
+        adult_rules,
+    )
 
-        yaml_count = write_adult_yaml(
-            ADULT_YAML_PATH,
-            adult_rules,
-            upstream_updated,
-        )
-
-        print(
-            f"Adult.yaml 已保存: "
-            f"{ADULT_YAML_PATH} "
-            f"({yaml_count:,} 条规则)"
-        )
-
-        adult_rules: list[tuple[str, str]] = []
-
-        for domain in sorted(domains):
-            if domain.startswith("+."):
-                adult_rules.append(
-                    (
-                        "DOMAIN-SUFFIX",
-                        domain[2:].lstrip("."),
-                    )
-                )
-            else:
-                adult_rules.append(
-                    ("DOMAIN", domain)
-                )
-
+    print(
+        f"Adult.yaml 已保存: "
+        f"{ADULT_YAML_PATH} "
+        f"({len(adult_rules):,} 条规则)"
+    )
 
     print("\n开始转换 Adult 规则...")
 
-    rule_converter.ensure_mihomo_available()
-    rule_converter.prepare_temp_dir()
-
-    cache = rule_converter.make_cache()
-
-    cache_key = (
-        cache.key_for([ADULT_YAML_PATH])
-        if cache is not None
-        else None
+    rule_converter.emit_folder(
+        ADULT_YAML_PATH.parent,
+        ADULT_YAML_PATH,
+        adult_rules,
     )
-
-    try:
-        rule_converter.convert_prepared_folder(
-            ADULT_YAML_PATH.parent,
-            ADULT_YAML_PATH.name,
-            adult_rules,
-            cache,
-            cache_key,
-        )
-    finally:
-        rule_converter.cleanup_temp_dir()
-
-    rule_converter.save_cache(cache)
-
 
 if __name__ == "__main__":
     main()
