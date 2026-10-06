@@ -1282,7 +1282,7 @@ def process_upstream_folder(
             cache_key,
         ):
             print(
-                f"跳过未变化的上游目录："
+                f"无更新，跳过："
                 f"{folder_name}",
                 flush=True,
             )
@@ -1382,7 +1382,7 @@ def process_upstream_folder(
         )
 
     print(
-        "上游规则转换完成: "
+        "有更新: "
         f"{folder_name}",
         flush=True,
     )
