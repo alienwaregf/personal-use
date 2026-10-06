@@ -2,18 +2,18 @@
 # 由 Scripts/AD_rule.py 自动生成，请勿手动修改
 # 数据来源：
 #   - easylist: https://easylist-downloads.adblockplus.org/easylist.txt
-#     原始 79894 行，提取 45924 条规则；最后更新时间（UTC）：2026-10-06T05:42:31Z
+#     原始 79895 行，提取 45925 条规则；最后更新时间（UTC）：2026-10-06T05:52:40Z
 #   - easyprivacy: https://easylist-downloads.adblockplus.org/easyprivacy.txt
-#     原始 54266 行，提取 40598 条规则；最后更新时间（UTC）：2026-10-06T05:42:31Z
+#     原始 54266 行，提取 40598 条规则；最后更新时间（UTC）：2026-10-06T05:52:41Z
 #   - easylistchina: https://easylist-downloads.adblockplus.org/easylistchina.txt
-#     原始 19247 行，提取 5814 条规则；最后更新时间（UTC）：2026-10-06T05:42:33Z
+#     原始 19247 行，提取 5814 条规则；最后更新时间（UTC）：2026-10-06T05:52:42Z
 #   - hagezi-ultimate: https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/ultimate.txt
 #     原始 243198 行，提取 243146 条规则；最后更新时间（UTC）：2026-10-05T08:51:00Z
 #   - stevenblack: https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
 #     原始 79056 行，提取 72230 条规则；最后更新时间（UTC）：2026-10-02T19:58:39Z
 #   - anti-ad: https://raw.githubusercontent.com/privacy-protection-tools/anti-AD/master/anti-ad-domains.txt
 #     原始 108353 行，提取 108349 条规则；最后更新时间（UTC）：2026-10-04T21:43:01Z
-# 合并去重后：域名 357843 个，IP 规则 118 条
+# 合并去重后：域名 357844 个，IP 规则 118 条
 payload:
   - DOMAIN,0.0.0.0.hpyrdr.com
   - DOMAIN,0.ackzany.com
@@ -229188,6 +229188,7 @@ payload:
   - DOMAIN-SUFFIX,njatwiklklyae.site
   - DOMAIN-SUFFIX,njawz0tlek.com
   - DOMAIN-SUFFIX,njbilmh12.com
+  - DOMAIN-SUFFIX,njbvylypblfhb.online
   - DOMAIN-SUFFIX,njc.cc
   - DOMAIN-SUFFIX,njcdqeagtnmri.online
   - DOMAIN-SUFFIX,njcgtyxmkrkqv.space
