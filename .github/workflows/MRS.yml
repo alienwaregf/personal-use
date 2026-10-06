@@ -16,6 +16,9 @@ jobs:
   build-and-push:
     runs-on: ubuntu-latest
 
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
     steps:
       - name: 检出当前仓库
         uses: actions/checkout@v5
@@ -68,7 +71,7 @@ jobs:
         run: |
           set -euo pipefail
           python Scripts/AD_rule.py
-          
+
       - name: 拉取并转换 Blackmatrix7 上游规则
         run: |
           set -euo pipefail
