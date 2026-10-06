@@ -1198,6 +1198,7 @@ def build_client_list(
 ) -> str:
 
     mapped_rules: List[str] = []
+    skipped_counts: Dict[str, int] = {}
 
     for parts in rules:
         if not parts:
@@ -1206,9 +1207,9 @@ def build_client_list(
         source_type = parts[0].upper()
 
         if source_type not in CLIENT_TYPE_MAP[client]:
-            print(
-                f"跳过 {client} 不支持的规则类型: "
-                f"{source_type}"
+            skipped_counts[source_type] = (
+                skipped_counts.get(source_type, 0)
+                + 1
             )
             continue
 
@@ -1220,6 +1221,12 @@ def build_client_list(
 
         mapped_rules.append(
             target_line
+        )
+
+    for skipped_type, count in skipped_counts.items():
+        print(
+            f"跳过 {count} 条 {client} "
+            f"不支持的规则类型：{skipped_type}"
         )
 
     return (
@@ -1952,7 +1959,7 @@ def convert_prepared_folder(
     )
 
     print(
-        "有更新: "
+        "已更新: "
         f"{folder_name}"
     )
 
@@ -2009,7 +2016,7 @@ def convert_custom_folder(
     )
 
     print(
-        "自定义规则完成: "
+        "已更新: "
         f"{folder_name}"
     )
 
