@@ -1,12 +1,12 @@
 {
-  "converter_sha256": "9b6247a1fd70b2ad855e96cd2c34df566b30d48b2f7a9654292074789f4b8600",
+  "converter_sha256": "515e165f6ec24e20b74b81efecb0ebcc7c57b48230db0f1accb65ed9d41591fb",
   "folders": {
-    "AD": "4ba66997f2a35011aa8143568d36ce2806ae1020e8d313eebebc983d1ae62e01",
-    "Adult": "acd05a3c33fe60fa4274ec14cadf1d0aeddce9ded223181396738f5835ae30b2",
-    "Apple Intelligence": "2a0ef8baefa4f48e0f36e15c78a29db85702792a16e905f1ceda50e53187f2d7",
-    "ChinaDirect": "40ceea1ed0082d4c728d63b9f9b143ddf213d33034eb2d3d0fbbd759564a0623",
-    "IP": "3b3255ab78ad251e9af5622e4fc567dd0fbb859d645da6aaefad5cc91f177da5",
-    "MuseAI": "492254228ebdc46ec3a9535be83445525f6f95a36ab0e2cf4c54026684b49685"
+    "AD": "d4e6752d49f29fdd9df7f0a8582aad338227ee44da1a38418fbc3137248eb3ca",
+    "Adult": "e40030a89fb890e4b86d546fa307209033454b2303f7a721c82749019bdda083",
+    "Apple Intelligence": "a62e592bdae962815ece1dafc9cf1e0f89d6f774b560793972052b8110cb6f65",
+    "ChinaDirect": "a03d58b07d2789282ef4305b9b6c8e86f32ba905e6dbbe45e4c501fbfa024ee3",
+    "IP": "c25f3eacc4890aa605ba192fde9697f5ca8a13e0be11e5bedddda49bb2578bfe",
+    "MuseAI": "af55e4589eb81083f8e568dd98805ddae358d0857546472fa889b1f93feea185"
   },
   "mihomo_version": "Mihomo Meta v1.19.32 linux amd64 with go1.26.8 Wed Sep 30 16:55:19 UTC 2026",
   "version": 1

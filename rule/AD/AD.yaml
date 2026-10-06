@@ -2,18 +2,18 @@
 # 由 Scripts/AD_rule.py 自动生成，请勿手动修改
 # 数据来源：
 #   - easylist: https://easylist-downloads.adblockplus.org/easylist.txt
-#     原始 79886 行，提取 45916 条规则；最后更新时间（UTC）：2026-10-06T05:32:31Z
+#     原始 79894 行，提取 45924 条规则；最后更新时间（UTC）：2026-10-06T05:42:31Z
 #   - easyprivacy: https://easylist-downloads.adblockplus.org/easyprivacy.txt
-#     原始 54266 行，提取 40598 条规则；最后更新时间（UTC）：2026-10-06T05:32:32Z
+#     原始 54266 行，提取 40598 条规则；最后更新时间（UTC）：2026-10-06T05:42:31Z
 #   - easylistchina: https://easylist-downloads.adblockplus.org/easylistchina.txt
-#     原始 19247 行，提取 5814 条规则；最后更新时间（UTC）：2026-10-06T05:32:33Z
+#     原始 19247 行，提取 5814 条规则；最后更新时间（UTC）：2026-10-06T05:42:33Z
 #   - hagezi-ultimate: https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/ultimate.txt
 #     原始 243198 行，提取 243146 条规则；最后更新时间（UTC）：2026-10-05T08:51:00Z
 #   - stevenblack: https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
 #     原始 79056 行，提取 72230 条规则；最后更新时间（UTC）：2026-10-02T19:58:39Z
 #   - anti-ad: https://raw.githubusercontent.com/privacy-protection-tools/anti-AD/master/anti-ad-domains.txt
 #     原始 108353 行，提取 108349 条规则；最后更新时间（UTC）：2026-10-04T21:43:01Z
-# 合并去重后：域名 357835 个，IP 规则 118 条
+# 合并去重后：域名 357843 个，IP 规则 118 条
 payload:
   - DOMAIN,0.0.0.0.hpyrdr.com
   - DOMAIN,0.ackzany.com
@@ -113369,6 +113369,7 @@ payload:
   - DOMAIN-SUFFIX,camagess.carte-gr.total.fr
   - DOMAIN-SUFFIX,camainks.com
   - DOMAIN-SUFFIX,camaligraia.cyou
+  - DOMAIN-SUFFIX,camanaytact.cfd
   - DOMAIN-SUFFIX,camaragrancanaria.org
   - DOMAIN-SUFFIX,camarasexlive.com
   - DOMAIN-SUFFIX,camaropartsdepot.com
@@ -200403,6 +200404,7 @@ payload:
   - DOMAIN-SUFFIX,limex.solutions
   - DOMAIN-SUFFIX,limidaeiffy.qpon
   - DOMAIN-SUFFIX,limiergirlies.cfd
+  - DOMAIN-SUFFIX,limiestcephid.cfd
   - DOMAIN-SUFFIX,liminal.forum
   - DOMAIN-SUFFIX,limitalcher.top
   - DOMAIN-SUFFIX,limitationluck.com
@@ -209425,6 +209427,7 @@ payload:
   - DOMAIN-SUFFIX,mahsang.org
   - DOMAIN-SUFFIX,mahubraces.com
   - DOMAIN-SUFFIX,mai-tel.jp
+  - DOMAIN-SUFFIX,maiaccaurceole.cfd
   - DOMAIN-SUFFIX,maidcontrarypenknife.com
   - DOMAIN-SUFFIX,maideatp.com
   - DOMAIN-SUFFIX,maidenblankets.store
@@ -212426,6 +212429,7 @@ payload:
   - DOMAIN-SUFFIX,matinvestgroup.com
   - DOMAIN-SUFFIX,matiro.com
   - DOMAIN-SUFFIX,matlement.com
+  - DOMAIN-SUFFIX,matlesstoledan.cyou
   - DOMAIN-SUFFIX,matloomreconcile.com
   - DOMAIN-SUFFIX,mato.clanto.cloud
   - DOMAIN-SUFFIX,matokebogwort.com
@@ -254985,6 +254989,7 @@ payload:
   - DOMAIN-SUFFIX,qrius.me
   - DOMAIN-SUFFIX,qriuspay.com
   - DOMAIN-SUFFIX,qrjo.qkqlqjrwymmw.top
+  - DOMAIN-SUFFIX,qrjtjidfd.com
   - DOMAIN-SUFFIX,qrjwfimn.com
   - DOMAIN-SUFFIX,qrjxween.com
   - DOMAIN-SUFFIX,qrk18b4ik735ve.cfd
@@ -325939,6 +325944,7 @@ payload:
   - DOMAIN-SUFFIX,tuba.toolg.cn
   - DOMAIN-SUFFIX,tubakinohimitsu.amebaownd.com
   - DOMAIN-SUFFIX,tubaroncrickle.shop
+  - DOMAIN-SUFFIX,tubbedempanel.cyou
   - DOMAIN-SUFFIX,tubberlo.com
   - DOMAIN-SUFFIX,tubbiewhitier.cfd
   - DOMAIN-SUFFIX,tubby-national.com
@@ -329146,6 +329152,7 @@ payload:
   - DOMAIN-SUFFIX,undandinterp.org
   - DOMAIN-SUFFIX,undaymidydles.org
   - DOMAIN-SUFFIX,undcine.com
+  - DOMAIN-SUFFIX,undconeisduvf.site
   - DOMAIN-SUFFIX,unddeliv.com
   - DOMAIN-SUFFIX,undeciliste.com
   - DOMAIN-SUFFIX,undecylupsends.com
@@ -334320,6 +334327,7 @@ payload:
   - DOMAIN-SUFFIX,vestorpremier.com
   - DOMAIN-SUFFIX,vesuvinaqueity.top
   - DOMAIN-SUFFIX,vet-ready.com
+  - DOMAIN-SUFFIX,vetandamix.cfd
   - DOMAIN-SUFFIX,vetapharma.fr
   - DOMAIN-SUFFIX,vetapotheke-shop.de
   - DOMAIN-SUFFIX,vetchesthiever.com
