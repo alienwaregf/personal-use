@@ -10,6 +10,7 @@ from datetime import datetime, timezone
 import hashlib
 import ipaddress
 import json
+import os
 import re
 import shutil
 import subprocess
@@ -527,6 +528,122 @@ SOURCE_PARSERS = {
 }
 
 
+EMBEDDED_UPDATED_PATTERNS = (
+    (
+        re.compile(
+            r"Last modified:\s*"
+            r"(\d{1,2} [A-Za-z]{3} \d{4} \d{2}:\d{2})"
+            r"\s+UTC"
+        ),
+        "%d %b %Y %H:%M",
+    ),
+    (
+        re.compile(
+            r"Date:\s*"
+            r"(\d{1,2} [A-Za-z]+ \d{4} \d{2}:\d{2}:\d{2})"
+            r"\s*\(UTC\)"
+        ),
+        "%d %B %Y %H:%M:%S",
+    ),
+)
+
+
+def extract_embedded_updated(
+    text: str,
+) -> Optional[datetime]:
+    head = "\n".join(
+        text.splitlines()[:30]
+    )
+
+    for pattern, fmt in EMBEDDED_UPDATED_PATTERNS:
+        match = pattern.search(head)
+
+        if match is None:
+            continue
+
+        try:
+            parsed = datetime.strptime(
+                match.group(1),
+                fmt,
+            )
+        except ValueError:
+            continue
+
+        return parsed.replace(
+            tzinfo=timezone.utc
+        )
+
+    return None
+
+
+def github_commit_updated(
+    url: str,
+    user_agent: str,
+    timeout: int = 60,
+) -> Optional[datetime]:
+    prefix = "https://raw.githubusercontent.com/"
+
+    if not url.startswith(prefix):
+        return None
+
+    parts = url[len(prefix):].split("/", 3)
+
+    if len(parts) < 4:
+        return None
+
+    owner, repo, branch, path = parts
+
+    api_url = (
+        "https://api.github.com/repos/"
+        f"{owner}/{repo}/commits"
+        f"?path={quote(path)}"
+        f"&sha={quote(branch)}"
+        "&per_page=1"
+    )
+
+    headers = {
+        "User-Agent": user_agent,
+        "Accept": "application/vnd.github+json",
+    }
+
+    token = os.environ.get("GITHUB_TOKEN")
+
+    if token:
+        headers["Authorization"] = (
+            f"Bearer {token}"
+        )
+
+    request = urllib.request.Request(
+        api_url,
+        headers=headers,
+    )
+
+    try:
+        with urllib.request.urlopen(
+            request,
+            timeout=timeout,
+        ) as resp:
+            data = json.loads(
+                resp.read().decode("utf-8")
+            )
+
+        date_text = data[0]["commit"]["committer"][
+            "date"
+        ]
+
+        return datetime.strptime(
+            date_text,
+            "%Y-%m-%dT%H:%M:%SZ",
+        ).replace(tzinfo=timezone.utc)
+    except Exception:
+        print(
+            "  GitHub API 取提交时间失败，"
+            f"该源时间记为未知: {url}"
+        )
+
+        return None
+
+
 def gather_source_rules(
     sources: Dict[str, Tuple[str, str]],
     user_agent: str,
@@ -549,6 +666,18 @@ def gather_source_rules(
             timeout=timeout,
             errors="replace",
         )
+
+        if last_modified is None:
+            last_modified = extract_embedded_updated(
+                text
+            )
+
+        if last_modified is None:
+            last_modified = github_commit_updated(
+                url,
+                user_agent,
+                timeout=timeout,
+            )
 
         parser = SOURCE_PARSERS[kind]
 
