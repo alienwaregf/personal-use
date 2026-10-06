@@ -1937,7 +1937,7 @@ def convert_prepared_folder(
         )
     ):
         print(
-            f"跳过未变化的目录："
+            f"无更新，跳过："
             f"{folder_name}"
         )
 
@@ -1952,7 +1952,7 @@ def convert_prepared_folder(
     )
 
     print(
-        "规则转换完成: "
+        "有更新: "
         f"{folder_name}"
     )
 
@@ -1990,7 +1990,7 @@ def convert_custom_folder(
             cache_key,
         ):
             print(
-                f"跳过未变化的自定义目录："
+                f"无更新，跳过："
                 f"{folder_name}"
             )
 
