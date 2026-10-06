@@ -2,18 +2,18 @@
 # 由 Scripts/AD_rule.py 自动生成，请勿手动修改
 # 数据来源：
 #   - easylist: https://easylist-downloads.adblockplus.org/easylist.txt
-#     原始 79895 行，提取 45925 条规则；最后更新时间（UTC）：2026-10-06T05:52:40Z
+#     原始 79907 行，提取 45937 条规则；最后更新时间（UTC）：2026-10-06T07:22:38Z
 #   - easyprivacy: https://easylist-downloads.adblockplus.org/easyprivacy.txt
-#     原始 54266 行，提取 40598 条规则；最后更新时间（UTC）：2026-10-06T05:52:41Z
+#     原始 54266 行，提取 40598 条规则；最后更新时间（UTC）：2026-10-06T07:22:39Z
 #   - easylistchina: https://easylist-downloads.adblockplus.org/easylistchina.txt
-#     原始 19247 行，提取 5814 条规则；最后更新时间（UTC）：2026-10-06T05:52:42Z
+#     原始 19247 行，提取 5814 条规则；最后更新时间（UTC）：2026-10-06T07:22:40Z
 #   - hagezi-ultimate: https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/ultimate.txt
 #     原始 243198 行，提取 243146 条规则；最后更新时间（UTC）：2026-10-05T08:51:00Z
 #   - stevenblack: https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
 #     原始 79056 行，提取 72230 条规则；最后更新时间（UTC）：2026-10-02T19:58:39Z
 #   - anti-ad: https://raw.githubusercontent.com/privacy-protection-tools/anti-AD/master/anti-ad-domains.txt
 #     原始 108353 行，提取 108349 条规则；最后更新时间（UTC）：2026-10-04T21:43:01Z
-# 合并去重后：域名 357844 个，IP 规则 118 条
+# 合并去重后：域名 357856 个，IP 规则 118 条
 payload:
   - DOMAIN,0.0.0.0.hpyrdr.com
   - DOMAIN,0.ackzany.com
@@ -66393,6 +66393,7 @@ payload:
   - DOMAIN-SUFFIX,85d6890e34.0ed35fac92.com
   - DOMAIN-SUFFIX,85dcec5317.b8763ae795.com
   - DOMAIN-SUFFIX,85gmail.com
+  - DOMAIN-SUFFIX,85hozvg7r9pb8hm.rest
   - DOMAIN-SUFFIX,85in.com
   - DOMAIN-SUFFIX,85la.com
   - DOMAIN-SUFFIX,85ltu28733cczn175evkqt2vmr5.cfd
@@ -72987,6 +72988,7 @@ payload:
   - DOMAIN-SUFFIX,abtshield.com
   - DOMAIN-SUFFIX,abtthlftcjqoz.site
   - DOMAIN-SUFFIX,abttwfawimtrq.site
+  - DOMAIN-SUFFIX,abtykeajetlyv.online
   - DOMAIN-SUFFIX,abuaac.suzette-shop.jp
   - DOMAIN-SUFFIX,abuajs.e-monsite.com
   - DOMAIN-SUFFIX,abubalive.com
@@ -102828,6 +102830,7 @@ payload:
   - DOMAIN-SUFFIX,bbhszcabrptsq.space
   - DOMAIN-SUFFIX,bbhyqp.com
   - DOMAIN-SUFFIX,bbiklzuzmsylk.online
+  - DOMAIN-SUFFIX,bbillmkzarhwh.online
   - DOMAIN-SUFFIX,bbimacfomotju.com
   - DOMAIN-SUFFIX,bbinfpwtwdhpw.website
   - DOMAIN-SUFFIX,bbipawjflxpct.site
@@ -149047,6 +149050,7 @@ payload:
   - DOMAIN-SUFFIX,eogli.org
   - DOMAIN-SUFFIX,eoglimegdapoh.site
   - DOMAIN-SUFFIX,eohhehznagsqn.online
+  - DOMAIN-SUFFIX,eohnvfkxzsrrp.com
   - DOMAIN-SUFFIX,eoiaso.onofre.com.br
   - DOMAIN-SUFFIX,eoievavdtucqs.online
   - DOMAIN-SUFFIX,eoiqaolrztuyf.site
@@ -199747,6 +199751,7 @@ payload:
   - DOMAIN-SUFFIX,lgxicvplbnejn.website
   - DOMAIN-SUFFIX,lgygy.cn
   - DOMAIN-SUFFIX,lgylib.dg-home.ru
+  - DOMAIN-SUFFIX,lgzfuwyecnuml.com
   - DOMAIN-SUFFIX,lgzkzp.bauhaus.at
   - DOMAIN-SUFFIX,lgzoido.me
   - DOMAIN-SUFFIX,lh-broker.com
@@ -210361,6 +210366,7 @@ payload:
   - DOMAIN-SUFFIX,markdebrand.com
   - DOMAIN-SUFFIX,markeair.com
   - DOMAIN-SUFFIX,markeat.net
+  - DOMAIN-SUFFIX,markebramstriamin.qpon
   - DOMAIN-SUFFIX,marked.no
   - DOMAIN-SUFFIX,markedmeasure.com
   - DOMAIN-SUFFIX,markedoneofth.com
@@ -214546,6 +214552,7 @@ payload:
   - DOMAIN-SUFFIX,mciun.com
   - DOMAIN-SUFFIX,mcizas.com
   - DOMAIN-SUFFIX,mcjdvsvjsnpdb.online
+  - DOMAIN-SUFFIX,mcjwsxoodhyxo.site
   - DOMAIN-SUFFIX,mckbpe.united-arrows.co.jp
   - DOMAIN-SUFFIX,mckenzieheatingandair.com
   - DOMAIN-SUFFIX,mckiey.thun.com
@@ -236838,6 +236845,7 @@ payload:
   - DOMAIN-SUFFIX,orckdewf.com
   - DOMAIN-SUFFIX,orcliacare.com
   - DOMAIN-SUFFIX,orcqanzpuf.com
+  - DOMAIN-SUFFIX,orcsaraldom.in
   - DOMAIN-SUFFIX,orcvupxik.com
   - DOMAIN-SUFFIX,orcwuhals.in
   - DOMAIN-SUFFIX,ord.oekotest.de
@@ -255067,6 +255075,7 @@ payload:
   - DOMAIN-SUFFIX,qshare.ru
   - DOMAIN-SUFFIX,qshxc.com
   - DOMAIN-SUFFIX,qsicrqoimhnzn.online
+  - DOMAIN-SUFFIX,qsifmdjtagkcn.site
   - DOMAIN-SUFFIX,qsiwng.com
   - DOMAIN-SUFFIX,qsjdi1vyq.com
   - DOMAIN-SUFFIX,qskrbykjjatuk.store
@@ -284434,6 +284443,7 @@ payload:
   - DOMAIN-SUFFIX,sneakystew.com
   - DOMAIN-SUFFIX,sneawin.com
   - DOMAIN-SUFFIX,sneaxsmm.com
+  - DOMAIN-SUFFIX,sneerpiperlystarve.cyou
   - DOMAIN-SUFFIX,sneezecovers.com
   - DOMAIN-SUFFIX,sneezedeplorebackache.com
   - DOMAIN-SUFFIX,sneezedisarraystrew.com
@@ -328357,6 +328367,7 @@ payload:
   - DOMAIN-SUFFIX,ul.sokamisima.com
   - DOMAIN-SUFFIX,ul.spatingaegina.com
   - DOMAIN-SUFFIX,ul781kbcu2iyce.cfd
+  - DOMAIN-SUFFIX,ulaacsljlamnl.online
   - DOMAIN-SUFFIX,ulaen.com
   - DOMAIN-SUFFIX,ulamafluxive.com
   - DOMAIN-SUFFIX,ulaodqkxrgard.website
@@ -351089,6 +351100,7 @@ payload:
   - DOMAIN-SUFFIX,xv2.us
   - DOMAIN-SUFFIX,xv2bget593zq1zv62ki3.cfd
   - DOMAIN-SUFFIX,xv2kkg.zqzjjzyllvi7lf4z2.cyou
+  - DOMAIN-SUFFIX,xv5w8wipiry424qu8ppt58hcj3nv6f64pw7z.cfd
   - DOMAIN-SUFFIX,xv62yli8iz.com
   - DOMAIN-SUFFIX,xvantage.ingrammicro.com
   - DOMAIN-SUFFIX,xvayntirbqohr.space
