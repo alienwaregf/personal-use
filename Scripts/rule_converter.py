@@ -740,6 +740,8 @@ def gather_source_rules(
             f"({skip_detail})"
         )
 
+    merged = prune_covered_domain_rules(merged)
+
     return sorted(merged), stats, updated_times
 
 
@@ -818,6 +820,61 @@ def domains_to_rules(
             )
 
     return rules
+
+def prune_covered_domain_rules(
+    rules: Set[Tuple[str, str]],
+) -> Set[Tuple[str, str]]:
+    suffixes = {
+        value
+        for rule_type, value in rules
+        if rule_type == "DOMAIN-SUFFIX"
+    }
+
+    if not suffixes:
+        return rules
+
+    def has_suffix_ancestor(
+        value: str,
+        include_self: bool,
+    ) -> bool:
+        labels = value.split(".")
+        start = 0 if include_self else 1
+
+        return any(
+            ".".join(labels[i:]) in suffixes
+            for i in range(start, len(labels))
+        )
+
+    pruned = {
+        rule
+        for rule in rules
+        if not (
+            (
+                rule[0] == "DOMAIN"
+                and has_suffix_ancestor(
+                    rule[1],
+                    include_self=True,
+                )
+            )
+            or (
+                rule[0] == "DOMAIN-SUFFIX"
+                and has_suffix_ancestor(
+                    rule[1],
+                    include_self=False,
+                )
+            )
+        )
+    }
+
+    removed = len(rules) - len(pruned)
+
+    if removed:
+        print(
+            f"去冗余: 移除 {removed:,} 条"
+            f"已被 DOMAIN-SUFFIX 覆盖的规则"
+        )
+
+    return pruned
 
 def split_mrs_rules(
     rules: Sequence[Sequence[str]],
