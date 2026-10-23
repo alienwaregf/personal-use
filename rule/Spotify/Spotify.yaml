@@ -1,0 +1,45 @@
+# Spotify 融合规则 (blackmatrix7 × MetaCubeX)
+# 由 Scripts/blackmatrix7_metacubex_rule.py 自动生成, 请勿手动修改
+# 数据来源:
+#   - blackmatrix7: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Spotify/Spotify.yaml
+#   - MetaCubeX geosite: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/spotify.yaml
+# 条数: 黑矩阵 30 条 + MetaCubeX 28 条 (geosite 28 / geoip 0) → 去重合并 38 条 (其中 Meta 新增 8 条)
+payload:
+  - DOMAIN,audio4-ak-spotify-com.akamaized.net
+  - DOMAIN,cdn-spotify-experiments.conductrics.com
+  - DOMAIN,heads-ak-spotify-com.akamaized.net
+  - DOMAIN,spotify.com.edgesuite.net
+  - DOMAIN,spotify.map.fastly.net
+  - DOMAIN,spotify.map.fastlylb.net
+  - DOMAIN-SUFFIX,audio-ak-spotify-com.akamaized.net
+  - DOMAIN-SUFFIX,byspotify.com
+  - DOMAIN-SUFFIX,heads4-ak-spotify-com.akamaized.net
+  - DOMAIN-SUFFIX,pscdn.co
+  - DOMAIN-SUFFIX,scdn.co
+  - DOMAIN-SUFFIX,spoti.fi
+  - DOMAIN-SUFFIX,spotify-com.akamaized.net
+  - DOMAIN-SUFFIX,spotify-everywhere.com
+  - DOMAIN-SUFFIX,spotify.app.link
+  - DOMAIN-SUFFIX,spotify.com
+  - DOMAIN-SUFFIX,spotify.design
+  - DOMAIN-SUFFIX,spotifycdn.com
+  - DOMAIN-SUFFIX,spotifycdn.net
+  - DOMAIN-SUFFIX,spotifycharts.com
+  - DOMAIN-SUFFIX,spotifycodes.com
+  - DOMAIN-SUFFIX,spotifyforbrands.com
+  - DOMAIN-SUFFIX,spotifyjobs.com
+  - DOMAIN-SUFFIX,spotifynewsroom.jp
+  - DOMAIN-SUFFIX,spotilocal.com
+  - DOMAIN-SUFFIX,tospotify.com
+  - DOMAIN-KEYWORD,spotify
+  - IP-CIDR,104.154.127.126/32
+  - IP-CIDR,35.186.224.47/32
+  - PROCESS-NAME,com.spotify.music
+  - DOMAIN,audio-ak-spotify-com.akamaized.net
+  - DOMAIN,heads4-ak-spotify-com.akamaized.net
+  - DOMAIN-SUFFIX,lifeatspotify.com
+  - DOMAIN-SUFFIX,spotify.link
+  - DOMAIN-SUFFIX,spotifyforvendors.com
+  - DOMAIN,adeventtracker.spotify.com
+  - DOMAIN,adstudio-assets.scdn.co
+  - DOMAIN,bloodhound.spotify.com

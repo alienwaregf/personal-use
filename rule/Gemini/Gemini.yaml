@@ -1,0 +1,58 @@
+# Gemini 融合规则 (blackmatrix7 × MetaCubeX)
+# 由 Scripts/blackmatrix7_metacubex_rule.py 自动生成, 请勿手动修改
+# 数据来源:
+#   - blackmatrix7: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Gemini/Gemini.yaml
+#   - MetaCubeX geosite: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google-gemini.yaml
+# 条数: 黑矩阵 13 条 + MetaCubeX 46 条 (geosite 46 / geoip 0) → 去重合并 51 条 (其中 Meta 新增 38 条)
+payload:
+  - DOMAIN,ai.google.dev
+  - DOMAIN,alkalimakersuite-pa.clients6.google.com
+  - DOMAIN,makersuite.google.com
+  - DOMAIN-SUFFIX,bard.google.com
+  - DOMAIN-SUFFIX,deepmind.com
+  - DOMAIN-SUFFIX,deepmind.google
+  - DOMAIN-SUFFIX,gemini.google.com
+  - DOMAIN-SUFFIX,generativeai.google
+  - DOMAIN-SUFFIX,proactivebackend-pa.googleapis.com
+  - DOMAIN-SUFFIX,apis.google.com
+  - DOMAIN-KEYWORD,colab
+  - DOMAIN-KEYWORD,developerprofiles
+  - DOMAIN-KEYWORD,generativelanguage
+  - DOMAIN,alkalicore-pa.clients6.google.com
+  - DOMAIN,webchannel-alkalimakersuite-pa.clients6.google.com
+  - DOMAIN,geminiweb-pa.clients.google.com
+  - DOMAIN,geminiweb-pa.clients6.google.com
+  - DOMAIN,cloudaicompanion.googleapis.com
+  - DOMAIN,cloudcode-pa.googleapis.com
+  - DOMAIN,daily-cloudcode-pa.googleapis.com
+  - DOMAIN,notebooklm-pa.googleapis.com
+  - DOMAIN,notebooklm.googleapis.com
+  - DOMAIN,antigravity-pa.googleapis.com
+  - DOMAIN,antigravity.googleapis.com
+  - DOMAIN-SUFFIX,notebook.google
+  - DOMAIN-SUFFIX,antigravity-unleash.goog
+  - DOMAIN-SUFFIX,antigravity.google
+  - DOMAIN-SUFFIX,opal.google
+  - DOMAIN-SUFFIX,flow.google
+  - DOMAIN-SUFFIX,labs.google
+  - DOMAIN-SUFFIX,ai.studio
+  - DOMAIN-SUFFIX,jules.google
+  - DOMAIN-SUFFIX,notebooklm.google
+  - DOMAIN-SUFFIX,gemini.google
+  - DOMAIN-SUFFIX,notebook.google.com
+  - DOMAIN-SUFFIX,labs.google.com
+  - DOMAIN-SUFFIX,gemini.gstatic.com
+  - DOMAIN-SUFFIX,notebooklm.google.com
+  - DOMAIN-SUFFIX,aistudio.google.com
+  - DOMAIN-SUFFIX,jules.google.com
+  - DOMAIN-SUFFIX,makersuite.google.com
+  - DOMAIN-SUFFIX,stitch.withgoogle.com
+  - DOMAIN-SUFFIX,robinfrontend-pa.googleapis.com
+  - DOMAIN-SUFFIX,flow.google.com
+  - DOMAIN-SUFFIX,aisandbox-pa.googleapis.com
+  - DOMAIN-SUFFIX,aicode.googleapis.com
+  - DOMAIN-SUFFIX,aida.googleapis.com
+  - DOMAIN-SUFFIX,opal.google.com
+  - DOMAIN-SUFFIX,generativelanguage.googleapis.com
+  - DOMAIN-SUFFIX,geller-pa.googleapis.com
+  - DOMAIN-SUFFIX,labstailwind.pa.googleapis.com

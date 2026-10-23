@@ -1,0 +1,39 @@
+# DMM 融合规则 (blackmatrix7 × MetaCubeX)
+# 由 Scripts/blackmatrix7_metacubex_rule.py 自动生成, 请勿手动修改
+# 数据来源:
+#   - blackmatrix7: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/DMM/DMM.yaml
+#   - MetaCubeX geosite: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/dmm.yaml
+# 条数: 黑矩阵 20 条 + MetaCubeX 17 条 (geosite 17 / geoip 0) → 去重合并 32 条 (其中 Meta 新增 12 条)
+payload:
+  - DOMAIN-SUFFIX,akabeesoft2.com
+  - DOMAIN-SUFFIX,akabeesoft3.com
+  - DOMAIN-SUFFIX,akatsukiworks.com
+  - DOMAIN-SUFFIX,alicesoft.com
+  - DOMAIN-SUFFIX,api-p.videomarket.jp
+  - DOMAIN-SUFFIX,cosmiccute.com
+  - DOMAIN-SUFFIX,ddo.jp
+  - DOMAIN-SUFFIX,dmm-extension.com
+  - DOMAIN-SUFFIX,dmm.co.jp
+  - DOMAIN-SUFFIX,dmm.com
+  - DOMAIN-SUFFIX,dmm.hk
+  - DOMAIN-SUFFIX,dmmapis.com
+  - DOMAIN-SUFFIX,dmmrex.com
+  - DOMAIN-SUFFIX,hibiki-site.com
+  - DOMAIN-SUFFIX,minori.ph
+  - DOMAIN-SUFFIX,navismithapis-cdn.com
+  - DOMAIN-SUFFIX,tenco.cc
+  - DOMAIN-SUFFIX,wheel-soft.com
+  - IP-CIDR,125.6.189.7/32
+  - IP-CIDR,203.104.209.7/32
+  - DOMAIN,api-p.videomarket.jp
+  - DOMAIN-SUFFIX,ad.games.dmm.com
+  - DOMAIN-SUFFIX,bluekai.com
+  - DOMAIN-SUFFIX,fout.jp
+  - DOMAIN-SUFFIX,gmossp-sp.jp
+  - DOMAIN-SUFFIX,i-mobile.co.jp
+  - DOMAIN-SUFFIX,im-apps.net
+  - DOMAIN-SUFFIX,impact-ad.jp
+  - DOMAIN-SUFFIX,ladsp.com
+  - DOMAIN-SUFFIX,microad.co.jp
+  - DOMAIN-SUFFIX,microad.jp
+  - DOMAIN-SUFFIX,socdm.com

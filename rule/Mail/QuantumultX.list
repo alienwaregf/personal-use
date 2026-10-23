@@ -1,0 +1,12 @@
+HOST,apple.imap.mail.yahoo.com
+HOST,apple.smtp.mail.yahoo.com
+HOST,imap-mail.outlook.com
+HOST,imap.gmail.com
+HOST,outlook.office365.com
+HOST,pop.gmail.com
+HOST,smtp-mail.outlook.com
+HOST,smtp.gmail.com
+HOST,smtp.office365.com
+HOST-SUFFIX,imap.yandex.com
+HOST-SUFFIX,m.hotmail.com
+HOST-SUFFIX,smtp.yandex.com

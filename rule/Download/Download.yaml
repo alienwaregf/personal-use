@@ -1,0 +1,41 @@
+# Download 融合规则 (blackmatrix7 × MetaCubeX)
+# 由 Scripts/blackmatrix7_metacubex_rule.py 自动生成, 请勿手动修改
+# 数据来源:
+#   - blackmatrix7: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Download/Download.yaml
+#   - MetaCubeX: (无同名规则)
+# 条数: 黑矩阵 34 条 + MetaCubeX 0 条 (geosite 0 / geoip 0) → 去重合并 34 条 (其中 Meta 新增 0 条)
+payload:
+  - DOMAIN-SUFFIX,qbittorrent.org
+  - DOMAIN-KEYWORD,aria2
+  - DOMAIN-KEYWORD,thunder
+  - DOMAIN-KEYWORD,xlliveud
+  - DOMAIN-KEYWORD,xunlei
+  - DOMAIN-KEYWORD,yunpan
+  - PROCESS-NAME,BitComet
+  - PROCESS-NAME,BitComet.exe
+  - PROCESS-NAME,BitComet_x64.exe
+  - PROCESS-NAME,DownloadService
+  - PROCESS-NAME,DownloadService.exe
+  - PROCESS-NAME,Folx
+  - PROCESS-NAME,Folx.exe
+  - PROCESS-NAME,NetTransport
+  - PROCESS-NAME,NetTransport.exe
+  - PROCESS-NAME,Thunder
+  - PROCESS-NAME,Thunder.exe
+  - PROCESS-NAME,Transmission
+  - PROCESS-NAME,Transmission.exe
+  - PROCESS-NAME,WebTorrent
+  - PROCESS-NAME,WebTorrent.exe
+  - PROCESS-NAME,WebTorrentHelper
+  - PROCESS-NAME,WebTorrentHelper.exe
+  - PROCESS-NAME,Weiyun
+  - PROCESS-NAME,Weiyun.exe
+  - PROCESS-NAME,aria2c
+  - PROCESS-NAME,aria2c.exe
+  - PROCESS-NAME,baidunetdisk.exe
+  - PROCESS-NAME,fdm
+  - PROCESS-NAME,fdm.exe
+  - PROCESS-NAME,qbittorrent
+  - PROCESS-NAME,qbittorrent.exe
+  - PROCESS-NAME,uTorrent
+  - PROCESS-NAME,uTorrent.exe

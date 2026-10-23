@@ -1,0 +1,56 @@
+# Binance 融合规则 (blackmatrix7 × MetaCubeX)
+# 由 Scripts/blackmatrix7_metacubex_rule.py 自动生成, 请勿手动修改
+# 数据来源:
+#   - blackmatrix7: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Binance/Binance.yaml
+#   - MetaCubeX geosite: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/binance.yaml
+# 条数: 黑矩阵 12 条 + MetaCubeX 45 条 (geosite 45 / geoip 0) → 去重合并 49 条 (其中 Meta 新增 37 条)
+payload:
+  - DOMAIN-SUFFIX,appsflayer.com
+  - DOMAIN-SUFFIX,binance.cloud
+  - DOMAIN-SUFFIX,binance.com
+  - DOMAIN-SUFFIX,binance.me
+  - DOMAIN-SUFFIX,binancecnt.com
+  - DOMAIN-SUFFIX,binancefuture.com
+  - DOMAIN-SUFFIX,bnappzh.co
+  - DOMAIN-SUFFIX,bnbstatic.com
+  - DOMAIN-SUFFIX,bnbzh.ac
+  - DOMAIN-SUFFIX,bntrace.com
+  - DOMAIN-SUFFIX,saasexch.cc
+  - DOMAIN-SUFFIX,saasexch.com
+  - DOMAIN,zftksc.cdn-settings.appsflyersdk.com
+  - DOMAIN,zftksc.launches.appsflyersdk.com
+  - DOMAIN-SUFFIX,binance.cc
+  - DOMAIN-SUFFIX,binance.charity
+  - DOMAIN-SUFFIX,binance.co
+  - DOMAIN-SUFFIX,binance.info
+  - DOMAIN-SUFFIX,binance.net
+  - DOMAIN-SUFFIX,binance.org
+  - DOMAIN-SUFFIX,binance.us
+  - DOMAIN-SUFFIX,binance.vision
+  - DOMAIN-SUFFIX,binancezh.be
+  - DOMAIN-SUFFIX,binancezh.biz
+  - DOMAIN-SUFFIX,binancezh.cc
+  - DOMAIN-SUFFIX,binancezh.co
+  - DOMAIN-SUFFIX,binancezh.com
+  - DOMAIN-SUFFIX,binancezh.info
+  - DOMAIN-SUFFIX,binancezh.ink
+  - DOMAIN-SUFFIX,binancezh.kim
+  - DOMAIN-SUFFIX,binancezh.link
+  - DOMAIN-SUFFIX,binancezh.live
+  - DOMAIN-SUFFIX,binancezh.mobi
+  - DOMAIN-SUFFIX,binancezh.net
+  - DOMAIN-SUFFIX,binancezh.pro
+  - DOMAIN-SUFFIX,binancezh.sh
+  - DOMAIN-SUFFIX,binancezh.top
+  - DOMAIN-SUFFIX,binanceapi.com
+  - DOMAIN-SUFFIX,binanceru.net
+  - DOMAIN-SUFFIX,bmwweb.solutions
+  - DOMAIN-SUFFIX,bnappweb.black
+  - DOMAIN-SUFFIX,bnbchain.org
+  - DOMAIN-SUFFIX,bsappapi.cc
+  - DOMAIN-SUFFIX,bsappapi.com
+  - DOMAIN-SUFFIX,bscdnweb.com
+  - DOMAIN-SUFFIX,nftstatic.com
+  - DOMAIN-SUFFIX,saasexch.co
+  - DOMAIN-SUFFIX,saasexch.info
+  - DOMAIN-SUFFIX,saasexch.io

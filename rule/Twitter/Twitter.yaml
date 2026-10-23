@@ -1,0 +1,58 @@
+# Twitter 融合规则 (blackmatrix7 × MetaCubeX)
+# 由 Scripts/blackmatrix7_metacubex_rule.py 自动生成, 请勿手动修改
+# 数据来源:
+#   - blackmatrix7: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Twitter/Twitter.yaml
+#   - MetaCubeX geosite: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/twitter.yaml
+#   - MetaCubeX geoip: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/twitter.yaml
+# 条数: 黑矩阵 33 条 + MetaCubeX 43 条 (geosite 24 / geoip 19) → 去重合并 50 条 (其中 Meta 新增 17 条)
+payload:
+  - DOMAIN-SUFFIX,ads-twitter.com
+  - DOMAIN-SUFFIX,cms-twdigitalassets.com
+  - DOMAIN-SUFFIX,grok.com
+  - DOMAIN-SUFFIX,periscope.tv
+  - DOMAIN-SUFFIX,pscp.tv
+  - DOMAIN-SUFFIX,t.co
+  - DOMAIN-SUFFIX,tellapart.com
+  - DOMAIN-SUFFIX,tweetdeck.com
+  - DOMAIN-SUFFIX,twimg.co
+  - DOMAIN-SUFFIX,twimg.com
+  - DOMAIN-SUFFIX,twimg.org
+  - DOMAIN-SUFFIX,twitpic.com
+  - DOMAIN-SUFFIX,twitter.biz
+  - DOMAIN-SUFFIX,twitter.com
+  - DOMAIN-SUFFIX,twitter.jp
+  - DOMAIN-SUFFIX,twittercommunity.com
+  - DOMAIN-SUFFIX,twitterflightschool.com
+  - DOMAIN-SUFFIX,twitterinc.com
+  - DOMAIN-SUFFIX,twitteroauth.com
+  - DOMAIN-SUFFIX,twitterstat.us
+  - DOMAIN-SUFFIX,twtrdns.net
+  - DOMAIN-SUFFIX,twttr.com
+  - DOMAIN-SUFFIX,twttr.net
+  - DOMAIN-SUFFIX,twvid.com
+  - DOMAIN-SUFFIX,vine.co
+  - DOMAIN-SUFFIX,x.com
+  - DOMAIN-KEYWORD,twitter
+  - IP-CIDR,192.133.76.0/22
+  - IP-CIDR,199.59.148.0/22
+  - IP-CIDR,199.96.56.0/21
+  - IP-CIDR,202.160.128.0/22
+  - IP-CIDR,209.237.192.0/19
+  - IP-CIDR,69.195.160.0/19
+  - DOMAIN-SUFFIX,twitter.map.fastly.net
+  - IP-CIDR,8.25.194.0/23
+  - IP-CIDR,8.25.196.0/23
+  - IP-CIDR,64.63.0.0/18
+  - IP-CIDR,69.12.56.0/21
+  - IP-CIDR,103.252.112.0/22
+  - IP-CIDR,104.244.42.0/24
+  - IP-CIDR,104.244.44.0/22
+  - IP-CIDR,185.45.4.0/22
+  - IP-CIDR,188.64.224.0/21
+  - IP-CIDR,192.48.236.0/23
+  - IP-CIDR,199.16.156.0/22
+  - IP-CIDR,199.96.56.0/23
+  - IP-CIDR,209.237.208.0/24
+  - IP-CIDR6,2400:6680:f000::/36
+  - IP-CIDR6,2606:1f80:f000::/36
+  - IP-CIDR6,2a04:9d40:f000::/36

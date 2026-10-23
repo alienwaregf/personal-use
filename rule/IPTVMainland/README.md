@@ -1,91 +1,53 @@
-# 🧸 IPTV大陆
+## IPTVMainland (blackmatrix7 × MetaCubeX 融合)
 
-## 前言
+### Clash
 
-![](https://shields.io/badge/-移除重复规则-ff69b4) ![](https://shields.io/badge/-DOMAIN与DOMAIN--SUFFIX合并-green) ![](https://shields.io/badge/-DOMAIN--SUFFIX间合并-critical) ![](https://shields.io/badge/-DOMAIN与DOMAIN--KEYWORD合并-9cf) ![](https://shields.io/badge/-DOMAIN--SUFFIX与DOMAIN--KEYWORD合并-blue) ![](https://shields.io/badge/-IP--CIDR(6)合并-blueviolet) 
+当前融合规则已收录条数: [2297](https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/rule/IPTVMainland/IPTVMainland.yaml)
 
-IPTV大陆规则由《RULE GENERATOR 规则生成器》自动生成。
-
-分流规则是互联网公共服务的域名和IP地址汇总，所有数据均收集自互联网公开信息，不代表我们支持或使用这些服务。
-
-请通过【中华人民共和国 People's Republic of China】合法的互联网出入口信道访问规则中的地址，并确保在使用过程中符合相关法律法规。
-
-## 规则统计
-
-最后更新时间：2025-06-06 09:19:58
-
-各类型规则统计：
-| 类型 | 数量(条)  | 
-| ---- | ----  |
-| DOMAIN | 990  | 
-| IP-CIDR | 1307  | 
-| TOTAL | 2297  |
-
-# <img src="https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/Picture/icon/OpenClash.png" width="25" height="25" alt="Clash" /> Clash
-
-domain
-```text
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/IPTVMainland/IPTVMainland.mrs
+```ini
+https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/rule/IPTVMainland/IPTVMainland.yaml
 ```
 
-ipcidr
-```text
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/IPTVMainland/IPTVMainland_IP.mrs
+当前 Domain .mrs 已收录条数: [990](https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/rule/IPTVMainland/IPTVMainland.mrs)
+
+```ini
+https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/rule/IPTVMainland/IPTVMainland.mrs
 ```
 
-classical
-```text
-https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/IPTVMainland/IPTVMainland_Classical.yaml
+当前 IP .mrs 已收录条数: [1307](https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/rule/IPTVMainland/IPTVMainland_IP.mrs)
+
+```ini
+https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/rule/IPTVMainland/IPTVMainland_IP.mrs
 ```
 
-# <img src="https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/02ProxySoftLogo/Loon(1).png" width="25" height="25" alt="Loon" /> Loon
+### Loon
 
-```text
-https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Loon/IPTVMainland/IPTVMainland.list
+当前规则已收录条数: [2297](https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/rule/IPTVMainland/Loon.list)
+
+```ini
+https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/rule/IPTVMainland/Loon.list
 ```
 
-# <img src="https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/Picture/icon/QX.png" width="25" height="25" alt="QuantumultX" /> QuantumultX
+### QuantumultX
 
-```text
-https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/IPTVMainland/IPTVMainland.list
+当前规则已收录条数: [2297](https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/rule/IPTVMainland/QuantumultX.list)
+
+```ini
+https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/rule/IPTVMainland/QuantumultX.list
 ```
 
-# <img src="https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/Picture/icon/shadowrocket.png" width="25" height="25" alt="Shadowrocket" /> Shadowrocket
+### Shadowrocket
 
-```text
-https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Shadowrocket/IPTVMainland/IPTVMainland.list
+当前规则已收录条数: [2297](https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/rule/IPTVMainland/Shadowrocket.list)
+
+```ini
+https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/rule/IPTVMainland/Shadowrocket.list
 ```
 
-# <img src="https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/02ProxySoftLogo/Surge(8).png" width="25" height="25" alt="Surge" /> Surge
+### Surge
 
-```text
-https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/IPTVMainland/IPTVMainland.list
+当前规则已收录条数: [2297](https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/rule/IPTVMainland/Surge.list)
+
+```ini
+https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/rule/IPTVMainland/Surge.list
 ```
-
-## 子规则/排除规则
-
-
-当前分流规则，未包含其他子规则。
-
-## 数据来源
-
-《IPTV大陆》的数据来自以下链接，如与本项目的《IPTV大陆》规则混合使用，可能会造成规则大量重复。
-
-- https://raw.githubusercontent.com/imDazui/Tvlist-awesome-m3u-m3u8/master/m3u/%E5%9B%BD%E5%86%85%E7%94%B5%E8%A7%86%E5%8F%B02023.m3u8
-- https://raw.githubusercontent.com/imDazui/Tvlist-awesome-m3u-m3u8/master/m3u/%E8%BD%AE%E6%92%AD_%E5%8D%8E%E6%95%B0.%E9%BB%91%E8%8E%93.NewTV.SiTV.CIBN.m3u
-- https://raw.githubusercontent.com/imDazui/Tvlist-awesome-m3u-m3u8/master/m3u/%E9%87%8D%E5%BA%86%E5%B9%BF%E7%94%B5cqccn.m3u
-
-
-感谢以上规则作者的辛勤付出（排名不分先后）。
-
-## 最后
-
-### 感谢
-
-[@fiiir](https://github.com/fiiir) [@Tartarus2014](https://github.com/Tartarus2014) [@zjcfynn](https://github.com/zjcfynn) [@chenyiping1995](https://github.com/chenyiping1995) [@vhdj](https://github.com/vhdj)
-
-提供规则数据源及改进建议。
-
-### 其他
-
-请不要对外宣传本项目。
