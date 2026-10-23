@@ -7,11 +7,13 @@ from __future__ import annotations
 
 import ipaddress
 import json
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 import re
 from pathlib import Path
 
 import rule_converter
+
+BEIJING_TZ = timezone(timedelta(hours=8))
 
 META_URL = "https://raw.githubusercontent.com/Bon-Appetit/porn-domains/main/meta.json"
 ADULT_YAML_PATH = Path("rule/Adult/Adult.yaml")
@@ -264,11 +266,14 @@ def main() -> None:
 
         return
 
+    updated = datetime.now(
+        BEIJING_TZ
+    ).strftime("%Y-%m-%d %H:%M:%S")
+
     header_lines = [
-        "# Adult 域名规则",
-        "# 由 Scripts/porn-domains_rule.py 自动生成，请勿手动修改",
-        f"# 上游最后更新时间（UTC）：{upstream_updated}",
-        "# 数据来源：https://github.com/Bon-Appetit/porn-domains",
+        "# Adult 规则",
+        "# 数据来源：Porn-Domains",
+        f"# 上次更新时间：{updated}",
         f"# Hash：{fingerprint}",
     ]
 
