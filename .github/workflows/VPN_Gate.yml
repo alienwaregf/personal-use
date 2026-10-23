@@ -2,7 +2,7 @@ name: Update VPN Gate home nodes
 
 on:
   schedule:
-    - cron: '2,12,22,32,42,52 * * * *' # 每 10 分钟自动运行
+    - cron: '7,22,37,52 * * * *' # 每 15 分钟自动运行
   workflow_dispatch: # 允许手动点击运行
 
 permissions:
