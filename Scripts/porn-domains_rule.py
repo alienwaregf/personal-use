@@ -244,11 +244,32 @@ def main() -> None:
         domains
     )
 
+    fingerprint = (
+        rule_converter.fingerprint_for_rules(
+            adult_rules
+        )
+    )
+
+    if (
+        rule_converter.read_stored_hash(
+            ADULT_YAML_PATH
+        )
+        == fingerprint
+        and rule_converter.outputs_complete(
+            ADULT_YAML_PATH.parent,
+            adult_rules,
+        )
+    ):
+        print("无更新，跳过：Adult")
+
+        return
+
     header_lines = [
         "# Adult 域名规则",
         "# 由 Scripts/porn-domains_rule.py 自动生成，请勿手动修改",
         f"# 上游最后更新时间（UTC）：{upstream_updated}",
         "# 数据来源：https://github.com/Bon-Appetit/porn-domains",
+        f"# Hash：{fingerprint}",
     ]
 
     rule_converter.write_classical_yaml(
@@ -269,6 +290,7 @@ def main() -> None:
         ADULT_YAML_PATH.parent,
         ADULT_YAML_PATH,
         adult_rules,
+        use_cache=False,
     )
 
 if __name__ == "__main__":
