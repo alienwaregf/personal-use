@@ -3,9 +3,11 @@
 
 from __future__ import annotations
 
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
-from typing import Dict, List, Optional, Tuple
+from typing import Dict, List, Tuple
+
+BEIJING_TZ = timezone(timedelta(hours=8))
 
 import rule_converter
 
@@ -25,9 +27,9 @@ SOURCES: Dict[str, Tuple[str, str]] = {
         "easylistchina.txt",
         "abp",
     ),
-    "hagezi-ultimate": (
+    "hagezi-normal": (
         "https://raw.githubusercontent.com/"
-        "hagezi/dns-blocklists/main/adblock/ultimate.txt",
+        "hagezi/dns-blocklists/main/adblock/multi.txt",
         "abp",
     ),
     "stevenblack": (
@@ -43,6 +45,15 @@ SOURCES: Dict[str, Tuple[str, str]] = {
     ),
 }
 
+DISPLAY_NAMES: Dict[str, str] = {
+    "easylist": "EasyList",
+    "easyprivacy": "EasyPrivacy",
+    "easylistchina": "EasyListChina",
+    "hagezi-normal": "Dns-BlockLists Normal",
+    "stevenblack": "StevenBlack",
+    "anti-ad": "anti-AD",
+}
+
 OUTPUT_DIR = Path("rule") / "AD"
 OUTPUT_FILE = OUTPUT_DIR / "AD.yaml"
 
@@ -52,7 +63,7 @@ USER_AGENT = "personal-use-ad-sync/1.0"
 def build_yaml_header(
     rules: List[Tuple[str, str]],
     stats: Dict[str, Dict[str, int]],
-    updated_times: Dict[str, Optional[datetime]],
+    fingerprint: str,
 ) -> List[str]:
     exact_count = sum(
         1 for kind, _ in rules if kind == "DOMAIN"
@@ -66,34 +77,28 @@ def build_yaml_header(
         1 for kind, _ in rules if kind == "IP-CIDR"
     )
 
-    lines = [
-        "# AD 聚合广告域名规则",
-        "# 由 Scripts/AD_rule.py 自动生成，请勿手动修改",
-        "# 数据来源：",
+    labels = [
+        DISPLAY_NAMES[name] for name in SOURCES
     ]
 
-    for name, (url, _kind) in SOURCES.items():
-        source_stats = stats[name]
-        source_updated = updated_times[name]
+    counts = [
+        f"{DISPLAY_NAMES[name]} {stats[name]['ok']}条"
+        for name in SOURCES
+    ]
 
-        if source_updated is not None:
-            updated_text = source_updated.strftime(
-                "%Y-%m-%dT%H:%M:%SZ"
-            )
-        else:
-            updated_text = "未知"
-
-        lines.append(f"#   - {name}: {url}")
-        lines.append(
-            f"#     原始 {source_stats['lines']} 行，"
-            f"提取 {source_stats['ok']} 条规则；"
-            f"最后更新时间（UTC）：{updated_text}"
-        )
-
-    lines.append(
-        f"# 合并去重后：域名 {exact_count + suffix_count} 个，"
-        f"IP 规则 {ip_count} 条"
+    updated = datetime.now(BEIJING_TZ).strftime(
+        "%Y-%m-%d %H:%M:%S"
     )
+
+    lines = [
+        "# AD 聚合广告域名规则",
+        "# 数据来源：" + " + ".join(labels),
+        "# " + " + ".join(counts),
+        f"# 合并去重后：域名 {exact_count + suffix_count} 个，"
+        f"IP 规则 {ip_count} 条",
+        f"# 上次更新时间：{updated}",
+        f"# Hash：{fingerprint}",
+    ]
 
     return lines
 
@@ -113,12 +118,32 @@ def main() -> None:
             "所有上游均未解析出任何规则，拒绝写入空规则"
         )
 
+    fingerprint = (
+        rule_converter.fingerprint_for_rules(
+            rules
+        )
+    )
+
+    if (
+        rule_converter.read_stored_hash(
+            OUTPUT_FILE
+        )
+        == fingerprint
+        and rule_converter.outputs_complete(
+            OUTPUT_DIR,
+            rules,
+        )
+    ):
+        print("无更新，跳过：AD")
+
+        return
+
     rule_converter.write_classical_yaml(
         OUTPUT_FILE,
         build_yaml_header(
             rules,
             stats,
-            updated_times,
+            fingerprint,
         ),
         rules,
     )
@@ -134,6 +159,7 @@ def main() -> None:
         OUTPUT_DIR,
         OUTPUT_FILE,
         rules,
+        use_cache=False,
     )
 
 
