@@ -37,7 +37,7 @@ jobs:
       - name: 检查 Python 脚本语法
         run: |
           set -euo pipefail
-          python -m py_compile Scripts/blackmatrix7_rule.py Scripts/porn-domains_rule.py Scripts/AD_rule.py Scripts/rule_converter.py Scripts/custom_rule.py
+          python -m py_compile Scripts/blackmatrix7_metacubex_rule.py Scripts/porn-domains_rule.py Scripts/AD_rule.py Scripts/rule_converter.py Scripts/custom_rule.py
 
       - name: 下载并安装 Mihomo 内核
         run: |
@@ -72,10 +72,10 @@ jobs:
           set -euo pipefail
           python Scripts/AD_rule.py
 
-      - name: 拉取并转换 Blackmatrix7 上游规则
+      - name: 拉取并融合 Blackmatrix7 与 MetaCubeX 规则
         run: |
           set -euo pipefail
-          python Scripts/blackmatrix7_rule.py
+          python Scripts/blackmatrix7_metacubex_rule.py
 
       - name: 处理自定义规则
         run: |
