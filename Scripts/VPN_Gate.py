@@ -3,17 +3,19 @@
 """
 VPN Gate residential (home broadband) OpenVPN nodes -> mihomo proxy-provider file.
 
-Standalone script, no verification by design (the user dropped the verify
-stage after it wiped out the whole list from datacenter runners): nodes
-are screened on the list only and liveness is left to the client's own
-health checks, same division of labor as cfnew.
+Standalone script. Screening is list/IP based only; there is NO
+connectivity checking anywhere (no tunnel is ever opened) - liveness is
+left to the client's own health checks.
 
-Screening (list-level only):
+Screening:
   1. Fetch the official VPN Gate CSV list (https first, http fallback).
   2. Drop the operator-run datacenter servers: HostName starting with
      "public-vpn", or IP inside 219.100.37.
-  3. Sort the rest by the CSV Speed field, descending.
-  4. Decode each OpenVPN config; keep only proto tcp entries with a remote.
+  3. Classify every remaining server IP via ip-api and drop the ones
+     flagged as hosting/datacenter, so volunteers running on a VPS do
+     not pass as residential. (Screening IPs, not testing connections.)
+  4. Sort by the CSV Speed field, descending.
+  5. Decode each OpenVPN config; keep only proto tcp entries with a remote.
 
 Output is a provider file (top-level "proxies:") holding only the
 residential OpenVPN nodes. Every node carries dialer-proxy pointing at
@@ -22,6 +24,7 @@ DIALER_PROXY_GROUP (the user's own auto-select group); no front nodes.
 
 import base64
 import hashlib
+import json
 import re
 import sys
 import urllib.request
@@ -32,13 +35,14 @@ SOURCE_URLS = [
     "https://www.vpngate.net/api/iphone/",
     "http://www.vpngate.net/api/iphone/",
 ]
+IP_API_BATCH = "http://ip-api.com/batch?fields=status,query,isp,org,as,hosting,proxy"
 OUTPUT_PATH = Path("proxy/VPNgate.yaml")
 DIALER_PROXY_GROUP = "自动选择"
 
 EXCLUDE_HOST_PREFIX = "public-vpn"
 EXCLUDE_IP_PREFIX = "219.100.37."
 CONFIG_PREFIX_CHARS = 6000  # decode only the head of each config first
-VERSION_TAG = "v3-noverify"
+VERSION_TAG = "v4-ipfilter"
 
 BEIJING = timezone(timedelta(hours=8))
 
@@ -107,6 +111,7 @@ def parse_list(raw):
         candidates.append(
             {
                 "country": (fields[6] or "").upper() or "XX",
+                "server_ip": (fields[1] or "").strip(),
                 "speed": speed,
                 "config64": config64,
             }
@@ -153,6 +158,7 @@ def parse_list(raw):
         nodes.append(
             {
                 "country": item["country"],
+                "server_ip": item["server_ip"],
                 "server": remote[0],
                 "port": port,
                 "cipher": get_directive(text, "cipher") or "AES-128-CBC",
@@ -165,6 +171,45 @@ def parse_list(raw):
         "skipped_not_tcp": skipped_not_tcp,
     }
     return nodes, cert, stats
+
+
+def classify_ips(ips):
+    """Batch-classify IPs via ip-api; empty dict when the service is down."""
+    result = {}
+    unique = sorted(set(ips))
+    for i in range(0, len(unique), 100):
+        batch = unique[i : i + 100]
+        try:
+            req = urllib.request.Request(
+                IP_API_BATCH,
+                data=json.dumps(batch).encode("utf-8"),
+                headers={"Content-Type": "application/json"},
+            )
+            with urllib.request.urlopen(req, timeout=30) as resp:
+                for entry in json.loads(resp.read().decode("utf-8")):
+                    if entry.get("status") == "success":
+                        result[entry["query"]] = entry
+        except Exception:  # noqa: BLE001 - screening aid, not fatal
+            return {}
+    return result
+
+
+def screen_datacenter_ips(nodes):
+    """Drop nodes whose server IP is flagged hosting/datacenter."""
+    info = classify_ips([n["server_ip"] for n in nodes if n["server_ip"]])
+    if not info:
+        return nodes, {"ran": False, "dropped": 0}
+    kept, dropped = [], 0
+    for node in nodes:
+        entry = info.get(node["server_ip"])
+        if entry and entry.get("hosting"):
+            dropped += 1
+            continue
+        if entry:
+            node["isp"] = entry.get("isp", "")
+            node["asn"] = entry.get("as", "")
+        kept.append(node)
+    return kept, {"ran": True, "dropped": dropped}
 
 
 def indent_block(text, indent):
@@ -184,13 +229,15 @@ def render_yaml(nodes, cert, fingerprint):
     now = datetime.now(BEIJING).strftime("%Y-%m-%d %H:%M:%S")
     lines = [
         "# VPN Gate 家宽节点（OpenVPN）",
-        "# 数据来源：VPN Gate 官方清单，已剔除 public-vpn 官方机房节点与 219.100.37. 网段",
+        "# 数据来源：VPN Gate 官方清单，已剔除 public-vpn 官方机房节点、219.100.37. 网段及 IP 情报标记为机房的 IP",
         f"# 上次更新时间：{now}",
         f"# 条数：{len(named)} 个节点",
         f"# Hash：{fingerprint}",
         "proxies:",
     ]
     for idx, (name, node) in enumerate(named):
+        if node.get("isp"):
+            lines.append(f"  # {node['isp']} · {node.get('asn', '')}")
         lines += [
             f'  - name: "{name}"',
             "    type: openvpn",
@@ -243,6 +290,10 @@ def main():
         # Never overwrite a good file with an empty one; fail loudly instead.
         print("解析不出可用节点，保留旧文件，退出", file=sys.stderr)
         return 1
+    nodes, ip_stats = screen_datacenter_ips(nodes)
+    if not nodes:
+        print("机房 IP 筛选后无可用节点，保留旧文件，退出", file=sys.stderr)
+        return 1
     content, count = render_yaml(nodes, cert, fingerprint)
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT_PATH.write_text(content, encoding="utf-8")
@@ -252,10 +303,15 @@ def main():
     by_country = "、".join(
         f"{k} {v}" for k, v in sorted(countries.items(), key=lambda kv: -kv[1])
     )
+    ip_text = (
+        f"IP 情报剔除机房 {ip_stats['dropped']} 个"
+        if ip_stats["ran"]
+        else "IP 情报不可用（本轮未筛机房 IP）"
+    )
     print(
         f"VPNgate 已更新：清单 {stats['listed']} 个，"
         f"剔除官方机房 {stats['excluded_official']} 个，"
-        f"跳过非 TCP {stats['skipped_not_tcp']} 个，"
+        f"跳过非 TCP {stats['skipped_not_tcp']} 个，{ip_text}，"
         f"生成家宽节点 {count} 个（{by_country}）"
     )
     return 0
