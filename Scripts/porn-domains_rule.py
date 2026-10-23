@@ -242,8 +242,10 @@ def main() -> None:
         f"{len(domains):,}"
     )
 
-    adult_rules = rule_converter.domains_to_rules(
-        domains
+    adult_rules = sorted(
+        rule_converter.domains_to_rules(
+            domains
+        )
     )
 
     fingerprint = (
