@@ -869,6 +869,7 @@ def process_folder(folder_name: str) -> Optional[Dict[str, int]]:
         return None
 
     merged, meta_added = merge_rule_sets(black_rules, meta_rules)
+    merged = sorted(merged)
     dest_folder = DEST_RULE_DIR / folder_name
     fingerprint = compute_fingerprint(black_text, geosite_text, geoip_text)
     yaml_path = dest_folder / f"{folder_name}.yaml"
