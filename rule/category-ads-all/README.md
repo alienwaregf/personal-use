@@ -33,3 +33,5 @@ https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/category-ad
 ```text
 https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/category-ads-all/Surge.list
 ```
+
+<!-- Hash：0b7b763a88f2c8d7f7667f2d7e6a6500ebed15b73ad6953373afc9a255caa3b4 -->

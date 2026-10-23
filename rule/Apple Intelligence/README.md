@@ -33,3 +33,5 @@ https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Apple%20Int
 ```text
 https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Apple%20Intelligence/Surge.list
 ```
+
+<!-- Hash：c5ebb4acfd5ff85833749bf6df1d258c515a460526c736ceb5639fb97dfb4935 -->

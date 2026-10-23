@@ -33,3 +33,5 @@ https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/MuseAI/Shad
 ```text
 https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/MuseAI/Surge.list
 ```
+
+<!-- Hash：04136c9d1b152b534103bc97283a33d7ccfe07e5230d5279fab6be26df9d4144 -->

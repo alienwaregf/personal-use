@@ -33,3 +33,5 @@ https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/ChinaDirect
 ```text
 https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/ChinaDirect/Surge.list
 ```
+
+<!-- Hash：3082478a028a289a23733b04cc428096f730e3c118b0b8583feb979423324957 -->

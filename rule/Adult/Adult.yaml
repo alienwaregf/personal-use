@@ -2,6 +2,7 @@
 # 由 Scripts/porn-domains_rule.py 自动生成，请勿手动修改
 # 上游最后更新时间（UTC）：2026-10-22T07:29:20Z
 # 数据来源：https://github.com/Bon-Appetit/porn-domains
+# Hash：8199f3fe471d68ad957ab239c05150d549c21ed2cf0ea054f7618d3106ef8356
 payload:
   - DOMAIN-SUFFIX,51-254-198-47.sslip.io
   - DOMAIN-SUFFIX,51cg1.com

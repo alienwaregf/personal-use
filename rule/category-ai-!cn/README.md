@@ -33,3 +33,5 @@ https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/category-ai
 ```text
 https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/category-ai-%21cn/Surge.list
 ```
+
+<!-- Hash：9af4b7a7f0bf092dadcc4cc383bc8606ebd33d46dd9a0b205abcdb84c93cecff -->
