@@ -42,7 +42,7 @@ DIALER_PROXY_GROUP = "自动选择"
 EXCLUDE_HOST_PREFIX = "public-vpn"
 EXCLUDE_IP_PREFIX = "219.100.37."
 CONFIG_PREFIX_CHARS = 6000  # decode only the head of each config first
-VERSION_TAG = "v6-city"
+VERSION_TAG = "v7-oneline"
 
 BEIJING = timezone(timedelta(hours=8))
 
@@ -247,30 +247,26 @@ def render_yaml(nodes, cert, fingerprint):
             if node.get("place"):
                 comment = f"  # {node['place']} · {node['isp']} · {node.get('asn', '')}"
             lines.append(comment)
-        lines += [
-            f'  - name: "{name}"',
-            "    type: openvpn",
-            f"    server: {node['server']}",
-            f"    port: {node['port']}",
-            "    proto: tcp",
-            "    username: vpn",
-            "    password: vpn",
-            f"    cipher: {node['cipher']}",
-            f"    auth: {node['auth']}",
-            "    udp: false",
-            "    handshake-timeout: 30",
-            "    remote-dns-resolve: true",
-            "    dns: [ 8.8.8.8, 1.1.1.1 ]",
-            f'    dialer-proxy: "{DIALER_PROXY_GROUP}"',
-        ]
-        # Shared cert: anchor on the first node, aliases afterwards.
-        # Cert values are written inline on one line each.
+        # One node per line (flow style); the shared cert is anchored on
+        # the first node and aliased by all the others, on the same line.
         if idx == 0:
-            lines.append("    ca: &jkca " + inline_pem(cert["ca"]))
-            lines.append("    cert: &jkcert " + inline_pem(cert["cert"]))
-            lines.append("    key: &jkkey " + inline_pem(cert["key"]))
+            cert_fields = (
+                "ca: &jkca " + inline_pem(cert["ca"])
+                + ", cert: &jkcert " + inline_pem(cert["cert"])
+                + ", key: &jkkey " + inline_pem(cert["key"])
+            )
         else:
-            lines += ["    ca: *jkca", "    cert: *jkcert", "    key: *jkkey"]
+            cert_fields = "ca: *jkca, cert: *jkcert, key: *jkkey"
+        lines.append(
+            "  - {"
+            f'name: "{name}", type: openvpn, server: {node["server"]}, '
+            f"port: {node['port']}, proto: tcp, username: vpn, password: vpn, "
+            f"cipher: {node['cipher']}, auth: {node['auth']}, udp: false, "
+            "handshake-timeout: 30, remote-dns-resolve: true, "
+            "dns: [8.8.8.8, 1.1.1.1], "
+            f'dialer-proxy: "{DIALER_PROXY_GROUP}", {cert_fields}'
+            "}"
+        )
     return "\n".join(lines) + "\n", len(named)
 
 
