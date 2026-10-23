@@ -1,10 +1,8 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-10-23 15:43:39
-# 条数：blackmatrix7 29 条 + MetaCubeX 28 条 (geosite 28 / geoip 0) → 去重合并 31 条
-# Hash：42b853fcff76553283b1c199cd254afa25bc7b0fdd39b8ef38cd618776bd343a
+# 上次更新时间：2026-10-23 20:30:17
+# 条数：blackmatrix7 29 条 + MetaCubeX 28 条 (geosite 28 / geoip 0) → 去重合并 31 条，去冗 2 条，实存 29 条
+# Hash：31a131215c96701ec7e805c318424298963db226c2facae9db13565fa0887f79
 payload:
-  - DOMAIN,discord-attachments-uploads-prd.storage.googleapis.com
-  - DOMAIN,hammerandchisel.ssl.zendesk.com
   - DOMAIN-SUFFIX,airhorn.solutions
   - DOMAIN-SUFFIX,airhornbot.com
   - DOMAIN-SUFFIX,bigbeans.solutions

@@ -1,33 +1,17 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-10-23 15:44:00
-# 条数：blackmatrix7 54 条 + MetaCubeX 61 条 (geosite 61 / geoip 0) → 去重合并 85 条
-# Hash：1cbbb0d6641a0804ee820444f7b19097a71699e30179c2ecdaba86b0b6efe8b9
+# 上次更新时间：2026-10-23 20:30:36
+# 条数：blackmatrix7 54 条 + MetaCubeX 61 条 (geosite 61 / geoip 0) → 去重合并 85 条，去冗 16 条，实存 69 条
+# Hash：4f5f0f5a4a2357bd5c6bf73e1a4f619d355d041babb1beba12aa3d4ab3255312
 payload:
   - DOMAIN,a4e8s8k3.map2.ssl.hwcdn.net
-  - DOMAIN,alibaba.cdn.steampipe.steamcontent.com
-  - DOMAIN,f3b7q2p3.ssl.hwcdn.net
   - DOMAIN,lv.queniujq.cn
-  - DOMAIN,steambroadcast.akamaized.net
-  - DOMAIN,steamcdn-a.akamaihd.net
   - DOMAIN,steamcloudsweden.blob.core.windows.net
-  - DOMAIN,steamcommunity-a.akamaihd.net
   - DOMAIN,steamcommunity-a.akamaihd.net.edgesuite.net
-  - DOMAIN,steammobile.akamaized.net
-  - DOMAIN,steampipe-kr.akamaized.net
-  - DOMAIN,steampipe-partner.akamaized.net
-  - DOMAIN,steampipe.akamaized.net
-  - DOMAIN,steamstore-a.akamaihd.net
   - DOMAIN,steamugcquincy.blob.core.windows.net
-  - DOMAIN,steamusercontent-a.akamaihd.net
-  - DOMAIN,steamuserimages-a.akamaihd.net
-  - DOMAIN,steamvideo-a.akamaihd.net
   - DOMAIN,xz.pphimalayanrt.com
   - DOMAIN-KEYWORD,steambroadcast
   - DOMAIN-KEYWORD,steamstore
   - DOMAIN-KEYWORD,steamuserimages
-  - DOMAIN-SUFFIX,cdn-ali.content.steamchina.com
-  - DOMAIN-SUFFIX,cdn-qc.content.steamchina.com
-  - DOMAIN-SUFFIX,cdn-ws.content.steamchina.com
   - DOMAIN-SUFFIX,client-update.queniuqe.com
   - DOMAIN-SUFFIX,csgo.com.cn
   - DOMAIN-SUFFIX,csgo.wmsj.cn

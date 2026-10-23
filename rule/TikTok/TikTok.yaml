@@ -1,11 +1,10 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-10-23 15:44:03
-# 条数：blackmatrix7 35 条 + MetaCubeX 37 条 (geosite 37 / geoip 0) → 去重合并 60 条
-# Hash：0a27021f474482f45f80c77baae98e620b7ffc5fe0b462ec3b626e208ce95f5b
+# 上次更新时间：2026-10-23 20:30:38
+# 条数：blackmatrix7 35 条 + MetaCubeX 37 条 (geosite 37 / geoip 0) → 去重合并 60 条，去冗 2 条，实存 58 条
+# Hash：54ef2d6d911b83973c9821805693bca0468a8b250107940ec411374276785c2c
 payload:
   - DOMAIN,lf16-effectcdn.byteeffecttos-g.com
   - DOMAIN,lf16-pkgcdn.pitaya-clientai.com
-  - DOMAIN,p16-tiktok-dm-sticker-sign-sg.ibyteimg.com
   - DOMAIN,p16-tiktokcdn-com.akamaized.net
   - DOMAIN,roovza-launches.appsflyersdk.com
   - DOMAIN,roovza.inapps.appsflyersdk.com
@@ -14,7 +13,6 @@ payload:
   - DOMAIN,trae-api-sg.mchost.guru
   - DOMAIN-KEYWORD,musical.ly
   - DOMAIN-KEYWORD,tiktok
-  - DOMAIN-SUFFIX,analytics.tiktok.com
   - DOMAIN-SUFFIX,bytedapm.com
   - DOMAIN-SUFFIX,bytegecko-i18n.com
   - DOMAIN-SUFFIX,byteintlapi.com

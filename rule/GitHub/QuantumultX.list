@@ -1,10 +1,5 @@
-HOST,copilot-proxy.githubusercontent.com
-HOST,copilot-telemetry-service.githubusercontent.com
-HOST,copilot-telemetry.githubusercontent.com
-HOST,copilot-workspace.githubnext.com
 HOST,copilotprodattachments.blob.core.windows.net
 HOST,github-api.arkoselabs.com
-HOST,github-cloud.s3.amazonaws.com
 HOST,github-production-release-asset-2e65be.s3.amazonaws.com
 HOST,github-production-repository-file-5c1aeb.s3.amazonaws.com
 HOST,github-production-repository-image-32fea6.s3.amazonaws.com
@@ -32,8 +27,6 @@ HOST,productionresultssa8.blob.core.windows.net
 HOST,productionresultssa9.blob.core.windows.net
 HOST-KEYWORD,github
 HOST-SUFFIX,atom.io
-HOST-SUFFIX,cafe.github.com
-HOST-SUFFIX,collector.github.com
 HOST-SUFFIX,dependabot.com
 HOST-SUFFIX,gh.io
 HOST-SUFFIX,ghcr.io

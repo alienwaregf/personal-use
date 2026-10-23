@@ -1,6 +1,5 @@
 HOST,lf16-effectcdn.byteeffecttos-g.com
 HOST,lf16-pkgcdn.pitaya-clientai.com
-HOST,p16-tiktok-dm-sticker-sign-sg.ibyteimg.com
 HOST,p16-tiktokcdn-com.akamaized.net
 HOST,roovza-launches.appsflyersdk.com
 HOST,roovza.inapps.appsflyersdk.com
@@ -9,7 +8,6 @@ HOST,roovza.skadsdk.appsflyersdk.com
 HOST,trae-api-sg.mchost.guru
 HOST-KEYWORD,musical.ly
 HOST-KEYWORD,tiktok
-HOST-SUFFIX,analytics.tiktok.com
 HOST-SUFFIX,bytedapm.com
 HOST-SUFFIX,bytegecko-i18n.com
 HOST-SUFFIX,byteintlapi.com

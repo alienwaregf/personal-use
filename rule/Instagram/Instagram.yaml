@@ -1,7 +1,7 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-10-23 15:43:51
-# 条数：blackmatrix7 4 条 + MetaCubeX 74 条 (geosite 74 / geoip 0) → 去重合并 76 条
-# Hash：96ec646f32b75b00761de9a827b9c9b04162cc756c8cec088683367c768d6426
+# 上次更新时间：2026-10-23 20:30:26
+# 条数：blackmatrix7 4 条 + MetaCubeX 74 条 (geosite 74 / geoip 0) → 去重合并 76 条，去冗 2 条，实存 74 条
+# Hash：4c0d832adaf84e76d638a75af9dcbef4a6b828a767674dca43943190daece673
 payload:
   - DOMAIN-KEYWORD,instagram
   - DOMAIN-SUFFIX,achat-followers-instagram.com
@@ -12,8 +12,6 @@ payload:
   - DOMAIN-SUFFIX,carstagram.com
   - DOMAIN-SUFFIX,cdninstagram.com
   - DOMAIN-SUFFIX,chickstagram.com
-  - DOMAIN-SUFFIX,graph-fallback.instagram.com
-  - DOMAIN-SUFFIX,graph.instagram.com
   - DOMAIN-SUFFIX,ig.me
   - DOMAIN-SUFFIX,igcdn.com
   - DOMAIN-SUFFIX,igsonar.com

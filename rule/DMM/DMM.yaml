@@ -1,10 +1,8 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-10-23 15:43:39
-# 条数：blackmatrix7 20 条 + MetaCubeX 17 条 (geosite 17 / geoip 0) → 去重合并 32 条
-# Hash：ba0c7f334d83d7fc4cfab71389c28e3e74d3ea1e0546c1a00134817997393b94
+# 上次更新时间：2026-10-23 20:30:16
+# 条数：blackmatrix7 20 条 + MetaCubeX 17 条 (geosite 17 / geoip 0) → 去重合并 32 条，去冗 2 条，实存 30 条
+# Hash：db8e3dacb6ae29a80fc5f4d23de15d56faa60b2fecf3269f28fa590db0eef3f8
 payload:
-  - DOMAIN,api-p.videomarket.jp
-  - DOMAIN-SUFFIX,ad.games.dmm.com
   - DOMAIN-SUFFIX,akabeesoft2.com
   - DOMAIN-SUFFIX,akabeesoft3.com
   - DOMAIN-SUFFIX,akatsukiworks.com

@@ -1,9 +1,8 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-10-23 15:43:14
-# 条数：blackmatrix7 9 条 + MetaCubeX 40 条 (geosite 40 / geoip 0) → 去重合并 40 条
-# Hash：da99c03f1200e2de7b2bfaec0db6ae3da9bcb7d2e8352c827dbb07901d3c828f
+# 上次更新时间：2026-10-23 20:30:03
+# 条数：blackmatrix7 9 条 + MetaCubeX 40 条 (geosite 40 / geoip 0) → 去重合并 40 条，去冗 6 条，实存 34 条
+# Hash：6042b67154a25aff412fe2f07a85548177cbe1dd25781accd84e64d5cbaa48a8
 payload:
-  - DOMAIN,bj1.api.bing.com
   - DOMAIN,location.microsoft.com
   - DOMAIN-SUFFIX,bing
   - DOMAIN-SUFFIX,bing.com
@@ -19,9 +18,6 @@ payload:
   - DOMAIN-SUFFIX,bingvisualsearch.com
   - DOMAIN-SUFFIX,bingworld.com
   - DOMAIN-SUFFIX,bluehatnights.com
-  - DOMAIN-SUFFIX,cn.bing.com
-  - DOMAIN-SUFFIX,cn.bing.net
-  - DOMAIN-SUFFIX,cn.mm.bing.net
   - DOMAIN-SUFFIX,copilot-stg.com
   - DOMAIN-SUFFIX,copilot.cloud.microsoft
   - DOMAIN-SUFFIX,copilot.com
@@ -39,7 +35,5 @@ payload:
   - DOMAIN-SUFFIX,msunlimitedcloudsummit.com
   - DOMAIN-SUFFIX,office365love.com
   - DOMAIN-SUFFIX,office365tw.com
-  - DOMAIN-SUFFIX,r.bing.com
   - DOMAIN-SUFFIX,renovacionoffice.com
   - DOMAIN-SUFFIX,sprinklesapp.com
-  - DOMAIN-SUFFIX,th.bing.com

@@ -1,7 +1,7 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-10-23 15:43:49
-# 条数：blackmatrix7 48 条 + MetaCubeX 65 条 (geosite 65 / geoip 0) → 去重合并 91 条
-# Hash：33965142987c2f055d5b0cf75896e6939fe21dd16eef05cdb408e6f978d2add3
+# 上次更新时间：2026-10-23 20:30:25
+# 条数：blackmatrix7 48 条 + MetaCubeX 65 条 (geosite 65 / geoip 0) → 去重合并 91 条，去冗 1 条，实存 90 条
+# Hash：a5d4e15ac531912048d508c4e8bbc0930b61fc06fefd39a3ff5d0a97701916d2
 payload:
   - DOMAIN-SUFFIX,bcbolthboa-a.akamaihd.net
   - DOMAIN-SUFFIX,beforeigners.com
@@ -64,7 +64,6 @@ payload:
   - DOMAIN-SUFFIX,hbolaunchpad.com
   - DOMAIN-SUFFIX,hbolb.onwardsmg.com
   - DOMAIN-SUFFIX,hbomailman.com
-  - DOMAIN-SUFFIX,hbomax-images.warnermediacdn.com
   - DOMAIN-SUFFIX,hbomax.com
   - DOMAIN-SUFFIX,hbomax.eu
   - DOMAIN-SUFFIX,hbomaxcdn.com

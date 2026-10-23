@@ -1,16 +1,10 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-10-23 15:43:42
-# 条数：blackmatrix7 165 条 + MetaCubeX 165 条 (geosite 165 / geoip 0) → 去重合并 171 条
-# Hash：dcd6e9644be0d74928b78a58a635016866a20939995b70f3c0a2e8528f98b438
+# 上次更新时间：2026-10-23 20:30:19
+# 条数：blackmatrix7 165 条 + MetaCubeX 165 条 (geosite 165 / geoip 0) → 去重合并 171 条，去冗 6 条，实存 165 条
+# Hash：e849fc17e3904b71ee9b01044f284829c8d01ab5e2e2166753f0970e7af9c69f
 payload:
-  - DOMAIN,cloudsync-prod.s3.amazonaws.com
-  - DOMAIN,ea.tt.omtrdc.net
   - DOMAIN,eaasserts-a.akamaihd.net
-  - DOMAIN,eaassets-a.akamaihd.net
-  - DOMAIN,origin-a.akamaihd.net
   - DOMAIN,originasserts.akamaized.net
-  - DOMAIN,rtm.tnt-ea.com
-  - DOMAIN,ssl-lvlt.cdn.ea.com
   - DOMAIN-SUFFIX,anthemgame.com
   - DOMAIN-SUFFIX,anthemthegame.com
   - DOMAIN-SUFFIX,apexlegends.com

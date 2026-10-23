@@ -1,20 +1,13 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-10-23 15:43:12
-# 条数：blackmatrix7 10 条 + MetaCubeX 18 条 (geosite 18 / geoip 0) → 去重合并 26 条
-# Hash：beb4d58220c539d42b38a1b8ac8d7988e67335fb4e6bbf478638df26e09db41f
+# 上次更新时间：2026-10-23 20:30:00
+# 条数：blackmatrix7 10 条 + MetaCubeX 18 条 (geosite 18 / geoip 0) → 去重合并 26 条，去冗 7 条，实存 19 条
+# Hash：eb206a0f3b22bf3e5dcf3be080417439fff1abc4eda5ec21455592259b659b87
 payload:
-  - DOMAIN,amp-api-edge.music.apple.com
-  - DOMAIN,amp-api.music.apple.com
   - DOMAIN,aod-ssl.itunes.apple.com
   - DOMAIN,aod.itunes.apple.com
   - DOMAIN,audio-ssl.itunes.apple.com
   - DOMAIN,audio.itunes.apple.com
-  - DOMAIN,js-cdn.music.apple.com
-  - DOMAIN,music.apple.com
-  - DOMAIN,musicstatus.music.apple.com
   - DOMAIN,mvod.itunes.apple.com
-  - DOMAIN,play.music.apple.com
-  - DOMAIN,speedysub.music.apple.com
   - DOMAIN,streamingaudio.itunes.apple.com
   - DOMAIN-SUFFIX,applemusic.berlin
   - DOMAIN-SUFFIX,applemusic.co

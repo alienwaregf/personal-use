@@ -1,7 +1,7 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-10-23 15:43:52
-# 条数：blackmatrix7 24 条 + MetaCubeX 20 条 (geosite 20 / geoip 0) → 去重合并 37 条
-# Hash：ca1d50ce5146ab47a5839f08a0213b90ad950b595f8e36bc5607d78f8fb7e57d
+# 上次更新时间：2026-10-23 20:30:28
+# 条数：blackmatrix7 24 条 + MetaCubeX 20 条 (geosite 20 / geoip 0) → 去重合并 37 条，去冗 1 条，实存 36 条
+# Hash：82afcab93df6c9193794896f1b0528ceee3bb5c53f3eefcbdb8e0a914e2b0182
 payload:
   - DOMAIN-SUFFIX,gcld-line.com
   - DOMAIN-SUFFIX,lin.ee
@@ -13,7 +13,6 @@ payload:
   - DOMAIN-SUFFIX,line-scdn.net
   - DOMAIN-SUFFIX,line.biz
   - DOMAIN-SUFFIX,line.me
-  - DOMAIN-SUFFIX,line.naver.jp
   - DOMAIN-SUFFIX,linecorp.com
   - DOMAIN-SUFFIX,linefriends.com
   - DOMAIN-SUFFIX,linefriends.com.tw

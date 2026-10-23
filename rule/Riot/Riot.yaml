@@ -1,9 +1,8 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-10-23 15:43:59
-# 条数：blackmatrix7 55 条 + MetaCubeX 54 条 (geosite 54 / geoip 0) → 去重合并 56 条
-# Hash：76c51fc6a857174c4912904f17a0295158e94d939d22e1afa747a624dc502223
+# 上次更新时间：2026-10-23 20:30:34
+# 条数：blackmatrix7 55 条 + MetaCubeX 54 条 (geosite 54 / geoip 0) → 去重合并 56 条，去冗 1 条，实存 55 条
+# Hash：073bd0838e5da7c7f997bbc25a578a26314eeb1daf99444c4e0ed0dd3c53f3f6
 payload:
-  - DOMAIN,lolstatic-a.akamaihd.net
   - DOMAIN-SUFFIX,championshipseriesleague.com
   - DOMAIN-SUFFIX,convrgencegame.com
   - DOMAIN-SUFFIX,historyofdota.com

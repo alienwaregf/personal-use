@@ -1,9 +1,8 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-10-23 15:43:43
-# 条数：blackmatrix7 570 条 + MetaCubeX 515 条 (geosite 397 / geoip 118) → 去重合并 691 条
-# Hash：5bda7f38c5b9e9399f0c6966a02e57d7950af0ba6b98f2a3135cc37d401820e7
+# 上次更新时间：2026-10-23 20:30:20
+# 条数：blackmatrix7 570 条 + MetaCubeX 515 条 (geosite 397 / geoip 118) → 去重合并 691 条，去冗 3 条，实存 688 条
+# Hash：2b533c4ae32d9c6c70c73a827e0d4151ec9b85022d7dc4ea465153ea8a78723e
 payload:
-  - DOMAIN,fbcdn-a.akamaihd.net
   - DOMAIN-KEYWORD,facebook
   - DOMAIN-KEYWORD,fbcdn
   - DOMAIN-SUFFIX,aboutfacebook.com
@@ -16,7 +15,6 @@ payload:
   - DOMAIN-SUFFIX,acheterdesfollowersinstagram.com
   - DOMAIN-SUFFIX,acheterfollowersinstagram.com
   - DOMAIN-SUFFIX,advancediddetection.com
-  - DOMAIN-SUFFIX,analytics.facebook.com
   - DOMAIN-SUFFIX,askfacebook.net
   - DOMAIN-SUFFIX,askfacebook.org
   - DOMAIN-SUFFIX,atdmt2.com
@@ -507,7 +505,6 @@ payload:
   - DOMAIN-SUFFIX,opengraphprotocol.com
   - DOMAIN-SUFFIX,opengraphprotocol.org
   - DOMAIN-SUFFIX,parse.com
-  - DOMAIN-SUFFIX,pixel.facebook.com
   - DOMAIN-SUFFIX,powersunitedvr.com
   - DOMAIN-SUFFIX,pyrobot.org
   - DOMAIN-SUFFIX,reachtheworldonfacebook.com

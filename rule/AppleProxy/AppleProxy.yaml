@@ -1,7 +1,7 @@
 # 数据来源：blackmatrix7
-# 上次更新时间：2026-10-23 15:43:13
+# 上次更新时间：2026-10-23 20:30:01
 # 条数：blackmatrix7 40 条 + MetaCubeX 0 条 (geosite 0 / geoip 0) → 去重合并 40 条
-# Hash：bf4d9c12c9351db0b5f16197ba58a42cf2e053bf95c49909a9fb87adf365cbd3
+# Hash：7c415ae3112fdad645932d22e58bee8a96f456c77866951754cf5ed4b50307ed
 payload:
   - DOMAIN,api-glb-sea.smoot.apple.com
   - DOMAIN,apple.comscoreresearch.com

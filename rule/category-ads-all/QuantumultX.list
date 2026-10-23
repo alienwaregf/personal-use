@@ -78,7 +78,6 @@ HOST,clck.yandex.com
 HOST,clck.yandex.net
 HOST,clck.yango.com
 HOST,click.rustore.ru
-HOST,disney.my.sentry.io
 HOST,error-tracking.megamarket.tech
 HOST,google-analytics-suite.ozon.ru
 HOST,informer.yandex.ru
@@ -98,9 +97,6 @@ HOST,mc.yango.com
 HOST,metrics.21-school.ru
 HOST,metrika.kontur.ru
 HOST,new-adv.ozon.ru
-HOST,o33249.ingest.sentry.io
-HOST,o33249.ingest.us.sentry.io
-HOST,o4504926511693824.ingest.sentry.io
 HOST,openai.qualtrics.com
 HOST,p3-ad-sign.byteimg.com
 HOST,p6-ad-sign.byteimg.com

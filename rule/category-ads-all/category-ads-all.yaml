@@ -1,7 +1,7 @@
 # 数据来源：MetaCubeX
-# 上次更新时间：2026-10-23 15:44:08
-# 条数：blackmatrix7 0 条 + MetaCubeX 903 条 (geosite 903 / geoip 0) → 去重合并 903 条
-# Hash：e6225595ca75eff3b36f36ba99122cf3c44fd52e6548d5e41fbedfa81032c5e6
+# 上次更新时间：2026-10-23 20:30:43
+# 条数：blackmatrix7 0 条 + MetaCubeX 903 条 (geosite 903 / geoip 0) → 去重合并 903 条，去冗 4 条，实存 899 条
+# Hash：dd016b050fc211fb8b90fead1f68042cd2807c157f879f6bd879146e0e1ccfd8
 payload:
   - DOMAIN,1l-hit.mail.ru
   - DOMAIN,1l-hit.vkplay.ru
@@ -83,7 +83,6 @@ payload:
   - DOMAIN,clck.yandex.net
   - DOMAIN,clck.yango.com
   - DOMAIN,click.rustore.ru
-  - DOMAIN,disney.my.sentry.io
   - DOMAIN,error-tracking.megamarket.tech
   - DOMAIN,google-analytics-suite.ozon.ru
   - DOMAIN,informer.yandex.ru
@@ -103,9 +102,6 @@ payload:
   - DOMAIN,metrics.21-school.ru
   - DOMAIN,metrika.kontur.ru
   - DOMAIN,new-adv.ozon.ru
-  - DOMAIN,o33249.ingest.sentry.io
-  - DOMAIN,o33249.ingest.us.sentry.io
-  - DOMAIN,o4504926511693824.ingest.sentry.io
   - DOMAIN,openai.qualtrics.com
   - DOMAIN,p3-ad-sign.byteimg.com
   - DOMAIN,p6-ad-sign.byteimg.com

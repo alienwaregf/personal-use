@@ -1,16 +1,11 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-10-23 15:44:00
-# 条数：blackmatrix7 30 条 + MetaCubeX 28 条 (geosite 28 / geoip 0) → 去重合并 38 条
-# Hash：5cce4df7d912f6a9c2676e8dabe37027efd5f3daec41c37b25bfe549f1c42d2e
+# 上次更新时间：2026-10-23 20:30:35
+# 条数：blackmatrix7 30 条 + MetaCubeX 28 条 (geosite 28 / geoip 0) → 去重合并 38 条，去冗 5 条，实存 33 条
+# Hash：70a1f6efb1fcb43092831da11095bb3bdc6addc3e96f6d856b8da2e2899e448b
 payload:
-  - DOMAIN,adeventtracker.spotify.com
-  - DOMAIN,adstudio-assets.scdn.co
-  - DOMAIN,audio-ak-spotify-com.akamaized.net
   - DOMAIN,audio4-ak-spotify-com.akamaized.net
-  - DOMAIN,bloodhound.spotify.com
   - DOMAIN,cdn-spotify-experiments.conductrics.com
   - DOMAIN,heads-ak-spotify-com.akamaized.net
-  - DOMAIN,heads4-ak-spotify-com.akamaized.net
   - DOMAIN,spotify.com.edgesuite.net
   - DOMAIN,spotify.map.fastly.net
   - DOMAIN,spotify.map.fastlylb.net

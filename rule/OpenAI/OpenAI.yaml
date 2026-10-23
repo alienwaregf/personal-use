@@ -1,18 +1,13 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-10-23 15:43:55
-# 条数：blackmatrix7 35 条 + MetaCubeX 24 条 (geosite 24 / geoip 0) → 去重合并 48 条
-# Hash：7281536e2a0302f71e28226bad275533954cb3c6cfdcfdbcbd6f2367e3625a91
+# 上次更新时间：2026-10-23 20:30:30
+# 条数：blackmatrix7 35 条 + MetaCubeX 24 条 (geosite 24 / geoip 0) → 去重合并 48 条，去冗 5 条，实存 43 条
+# Hash：90ce5af399e7361f069d640b54a3ebb11e16454d49ae8ba3f86227748bac8223
 payload:
   - DOMAIN,browser-intake-datadoghq.com
-  - DOMAIN,chat.openai.com.cdn.cloudflare.net
-  - DOMAIN,o33249.ingest.sentry.io
-  - DOMAIN,o33249.ingest.us.sentry.io
   - DOMAIN,openai-api.arkoselabs.com
   - DOMAIN,openai.qualtrics.com
-  - DOMAIN,openaiapi-site.azureedge.net
   - DOMAIN,openaiassets.blob.core.windows.net
   - DOMAIN,openaicom-api-bdcpf8c6d2e9atf6.z01.azurefd.net
-  - DOMAIN,openaicom.imgix.net
   - DOMAIN,openaicomproductionae4b.blob.core.windows.net
   - DOMAIN,production-openaicom-storage.azureedge.net
   - DOMAIN,static.cloudflareinsights.com
