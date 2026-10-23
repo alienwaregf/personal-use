@@ -1,0 +1,70 @@
+name: Update VPN Gate home nodes
+
+on:
+  schedule:
+    - cron: '42 * * * *' # 每 1 小时自动运行（与 MRS 的 17 分错开）
+  workflow_dispatch: # 允许手动点击运行
+
+permissions:
+  contents: write
+
+concurrency:
+  group: auto-update-vpngate
+  cancel-in-progress: true
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    steps:
+      - name: 检出当前仓库
+        uses: actions/checkout@v5
+
+      - name: 设置 Python 环境
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.10'
+
+      - name: 检查 Python 脚本语法
+        run: |
+          set -euo pipefail
+          python -m py_compile Scripts/vpngate_rule.py
+
+      - name: 安装 OpenVPN（实连验出口用）
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq openvpn curl
+
+      - name: 拉取 VPN Gate 清单、实连验证并生成家宽订阅
+        run: |
+          set -euo pipefail
+          python Scripts/vpngate_rule.py
+
+      - name: 清理临时文件
+        run: |
+          set -euo pipefail
+          rm -rf __pycache__
+          rm -rf Scripts/__pycache__
+          find . -name ".DS_Store" -delete
+          find . -name "__pycache__" -type d -prune -exec rm -rf {} +
+
+      - name: 提交并推送到 GitHub
+        run: |
+          set -euo pipefail
+
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add proxy/
+
+          if git diff --cached --quiet; then
+            echo "没有节点变化，无需提交"
+          else
+            git commit -m "Auto update VPN Gate home nodes"
+            git push
+          fi
