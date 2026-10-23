@@ -35,14 +35,14 @@ SOURCE_URLS = [
     "https://www.vpngate.net/api/iphone/",
     "http://www.vpngate.net/api/iphone/",
 ]
-IP_API_BATCH = "http://ip-api.com/batch?fields=status,query,isp,org,as,hosting,proxy"
+IP_API_BATCH = "http://ip-api.com/batch?fields=status,query,regionName,city,isp,org,as,hosting,proxy&lang=zh-CN"
 OUTPUT_PATH = Path("proxy/VPNgate.yaml")
 DIALER_PROXY_GROUP = "自动选择"
 
 EXCLUDE_HOST_PREFIX = "public-vpn"
 EXCLUDE_IP_PREFIX = "219.100.37."
 CONFIG_PREFIX_CHARS = 6000  # decode only the head of each config first
-VERSION_TAG = "v5-inline-cert"
+VERSION_TAG = "v6-city"
 
 BEIJING = timezone(timedelta(hours=8))
 
@@ -208,6 +208,12 @@ def screen_datacenter_ips(nodes):
         if entry:
             node["isp"] = entry.get("isp", "")
             node["asn"] = entry.get("as", "")
+            parts = []
+            for part in (entry.get("regionName", ""), entry.get("city", "")):
+                part = (part or "").strip()
+                if part and part not in parts:
+                    parts.append(part)
+            node["place"] = " ".join(parts)
         kept.append(node)
     return kept, {"ran": True, "dropped": dropped}
 
@@ -237,7 +243,10 @@ def render_yaml(nodes, cert, fingerprint):
     ]
     for idx, (name, node) in enumerate(named):
         if node.get("isp"):
-            lines.append(f"  # {node['isp']} · {node.get('asn', '')}")
+            comment = f"  # {node['isp']} · {node.get('asn', '')}"
+            if node.get("place"):
+                comment = f"  # {node['place']} · {node['isp']} · {node.get('asn', '')}"
+            lines.append(comment)
         lines += [
             f'  - name: "{name}"',
             "    type: openvpn",
