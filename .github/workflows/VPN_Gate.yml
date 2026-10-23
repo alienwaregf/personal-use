@@ -15,7 +15,7 @@ concurrency:
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
-    timeout-minutes: 40
+    timeout-minutes: 15
 
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -34,13 +34,7 @@ jobs:
           set -euo pipefail
           python -m py_compile Scripts/VPN_Gate.py
 
-      - name: 安装 OpenVPN（实连验出口用）
-        run: |
-          set -euo pipefail
-          sudo apt-get update -qq
-          sudo apt-get install -y -qq openvpn curl
-
-      - name: 拉取 VPN Gate 清单、实连验证并生成家宽订阅
+      - name: 拉取 VPN Gate 清单并生成家宽订阅
         run: |
           set -euo pipefail
           python Scripts/VPN_Gate.py
