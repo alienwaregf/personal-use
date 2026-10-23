@@ -42,7 +42,7 @@ DIALER_PROXY_GROUP = "自动选择"
 EXCLUDE_HOST_PREFIX = "public-vpn"
 EXCLUDE_IP_PREFIX = "219.100.37."
 CONFIG_PREFIX_CHARS = 6000  # decode only the head of each config first
-VERSION_TAG = "v4-ipfilter"
+VERSION_TAG = "v5-inline-cert"
 
 BEIJING = timezone(timedelta(hours=8))
 
@@ -212,10 +212,10 @@ def screen_datacenter_ips(nodes):
     return kept, {"ran": True, "dropped": dropped}
 
 
-def indent_block(text, indent):
-    return "\n".join(
-        indent + line.strip() for line in text.split("\n") if line.strip()
-    )
+def inline_pem(text):
+    """PEM block as a one-line double-quoted YAML string (\\n escapes)."""
+    lines = [line.strip() for line in text.split("\n") if line.strip()]
+    return '"' + "\\n".join(lines) + '"'
 
 
 def render_yaml(nodes, cert, fingerprint):
@@ -255,13 +255,11 @@ def render_yaml(nodes, cert, fingerprint):
             f'    dialer-proxy: "{DIALER_PROXY_GROUP}"',
         ]
         # Shared cert: anchor on the first node, aliases afterwards.
+        # Cert values are written inline on one line each.
         if idx == 0:
-            lines.append("    ca: &jkca |-")
-            lines.append(indent_block(cert["ca"], "      "))
-            lines.append("    cert: &jkcert |-")
-            lines.append(indent_block(cert["cert"], "      "))
-            lines.append("    key: &jkkey |-")
-            lines.append(indent_block(cert["key"], "      "))
+            lines.append("    ca: &jkca " + inline_pem(cert["ca"]))
+            lines.append("    cert: &jkcert " + inline_pem(cert["cert"]))
+            lines.append("    key: &jkkey " + inline_pem(cert["key"]))
         else:
             lines += ["    ca: *jkca", "    cert: *jkcert", "    key: *jkkey"]
     return "\n".join(lines) + "\n", len(named)
