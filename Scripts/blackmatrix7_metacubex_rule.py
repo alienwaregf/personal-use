@@ -11,8 +11,10 @@ both upstreams are fetched file-by-file, nothing else is pulled.
 from __future__ import annotations
 
 import csv
+import hashlib
 import io
 import ipaddress
+from datetime import datetime, timedelta, timezone
 import re
 import shutil
 import subprocess
@@ -463,7 +465,9 @@ def meta_stem_for(folder_name: str) -> str:
     return META_ALIASES.get(folder_name, folder_name.lower())
 
 
-def load_meta_rules(folder_name: str) -> Tuple[List[RuleParts], Dict[str, int]]:
+def load_meta_rules(
+    folder_name: str,
+) -> Tuple[List[RuleParts], Dict[str, int], str, str]:
     stem = meta_stem_for(folder_name)
     encoded = quote_path_part(stem)
     stats: Dict[str, int] = {"geosite": 0, "geoip": 0, "skipped": 0}
@@ -485,7 +489,7 @@ def load_meta_rules(folder_name: str) -> Tuple[List[RuleParts], Dict[str, int]]:
         stats["skipped"] += ip_skipped
         rules.extend(ip_rules)
 
-    return rules, stats
+    return rules, stats, geosite_text or "", geoip_text or ""
 
 
 # =============================================================================
@@ -615,41 +619,30 @@ def yaml_scalar_text(value: str) -> str:
     return "\n".join(lines).strip()
 
 
+BEIJING_TZ = timezone(timedelta(hours=8))
+
+
 def write_classical_yaml(dest_folder: Path, folder_name: str,
                          rules: Sequence[RuleParts],
                          black_source: Optional[str],
                          black_count: int,
                          meta_stats: Dict[str, int],
-                         merged_count: int, meta_added: int) -> None:
-    stem = meta_stem_for(folder_name)
-    encoded = quote_path_part(stem)
-    header = [
-        f"# {folder_name} 融合规则 (blackmatrix7 × MetaCubeX)",
-        "# 由 Scripts/blackmatrix7_metacubex_rule.py 自动生成, 请勿手动修改",
-        "# 数据来源:",
-    ]
+                         merged_count: int, fingerprint: str) -> None:
+    meta_count = meta_stats["geosite"] + meta_stats["geoip"]
+    sources: List[str] = []
     if black_source:
-        header.append(
-            "#   - blackmatrix7: "
-            "https://raw.githubusercontent.com/blackmatrix7/"
-            f"ios_rule_script/master/rule/Clash/{folder_name}/{black_source}")
-    else:
-        header.append("#   - blackmatrix7: (无此规则)")
-    if meta_stats["geosite"]:
-        header.append(
-            "#   - MetaCubeX geosite: "
-            f"{META_RAW_BASE_URL}/geosite/{encoded}.yaml")
-    if meta_stats["geoip"]:
-        header.append(
-            "#   - MetaCubeX geoip: "
-            f"{META_RAW_BASE_URL}/geoip/{encoded}.yaml")
-    if not meta_stats["geosite"] and not meta_stats["geoip"]:
-        header.append("#   - MetaCubeX: (无同名规则)")
-    header.append(
-        f"# 条数: 黑矩阵 {black_count} 条 + MetaCubeX "
-        f"{meta_stats['geosite'] + meta_stats['geoip']} 条"
-        f" (geosite {meta_stats['geosite']} / geoip {meta_stats['geoip']})"
-        f" → 去重合并 {merged_count} 条 (其中 Meta 新增 {meta_added} 条)")
+        sources.append("blackmatrix7")
+    if meta_count:
+        sources.append("MetaCubeX")
+    updated = datetime.now(BEIJING_TZ).strftime("%Y-%m-%d %H:%M:%S")
+    header = [
+        f"# 数据来源：{' + '.join(sources)}",
+        f"# 上次更新时间：{updated}",
+        f"# 条数：blackmatrix7 {black_count} 条 + MetaCubeX {meta_count} 条 "
+        f"(geosite {meta_stats['geosite']} / geoip {meta_stats['geoip']}) "
+        f"→ 去重合并 {merged_count} 条",
+        f"# Hash：{fingerprint}",
+    ]
 
     output_path = dest_folder / f"{folder_name}.yaml"
     with output_path.open("w", encoding="utf-8") as output_file:
@@ -793,7 +786,9 @@ BLACK_FILE_CANDIDATES = ("{name}_Classical.yaml", "{name}.yaml",
                          "{name}_Classical.yml", "{name}.yml")
 
 
-def load_black_rules(folder_name: str) -> Tuple[List[RuleParts], Optional[str]]:
+def load_black_rules(
+    folder_name: str,
+) -> Tuple[List[RuleParts], Optional[str], str]:
     encoded_folder = quote_path_part(folder_name)
     for pattern in BLACK_FILE_CANDIDATES:
         filename = pattern.format(name=folder_name)
@@ -801,8 +796,8 @@ def load_black_rules(folder_name: str) -> Tuple[List[RuleParts], Optional[str]]:
             f"{BLACK_RAW_BASE_URL}/{encoded_folder}/"
             f"{quote_path_part(filename)}")
         if text is not None:
-            return parse_rule_items(parse_payload_text(text)), filename
-    return [], None
+            return parse_rule_items(parse_payload_text(text)), filename, text
+    return [], None, ""
 
 
 # =============================================================================
@@ -810,20 +805,89 @@ def load_black_rules(folder_name: str) -> Tuple[List[RuleParts], Optional[str]]:
 # =============================================================================
 
 
+_MIHOMO_VERSION: Optional[str] = None
+_SCRIPT_BYTES: Optional[bytes] = None
+
+
+def get_mihomo_version() -> str:
+    global _MIHOMO_VERSION
+    if _MIHOMO_VERSION is None:
+        result = subprocess.run(["mihomo", "-v"],
+                                capture_output=True, text=True)
+        lines = (result.stdout + result.stderr).strip().splitlines()
+        _MIHOMO_VERSION = lines[0].strip() if lines else ""
+    return _MIHOMO_VERSION
+
+
+def compute_fingerprint(black_text: str, geosite_text: str,
+                        geoip_text: str) -> str:
+    global _SCRIPT_BYTES
+    if _SCRIPT_BYTES is None:
+        _SCRIPT_BYTES = Path(__file__).read_bytes()
+    digest = hashlib.sha256()
+    for text in (black_text, geosite_text, geoip_text):
+        digest.update(text.encode("utf-8"))
+        digest.update(b"\n")
+    digest.update(_SCRIPT_BYTES)
+    digest.update(b"\n")
+    digest.update(get_mihomo_version().encode("utf-8"))
+    return digest.hexdigest()
+
+
+HASH_LINE_RE = re.compile(r"^# Hash：([0-9a-f]{64})\s*$", re.MULTILINE)
+
+
+def read_stored_hash(yaml_path: Path) -> Optional[str]:
+    try:
+        head = yaml_path.read_text(encoding="utf-8")[:2048]
+    except OSError:
+        return None
+    match = HASH_LINE_RE.search(head)
+    return match.group(1) if match else None
+
+
+def outputs_complete(dest_folder: Path, folder_name: str,
+                     merged: Sequence[RuleParts]) -> bool:
+    required = [dest_folder / f"{folder_name}.yaml",
+                dest_folder / "README.md"]
+    required += [dest_folder / CLIENT_LIST_FILES[client]
+                 for client in NON_CLASH_CLIENTS]
+    if any(parts[0] in MRS_DOMAIN_TYPES for parts in merged):
+        required.append(dest_folder / f"{folder_name}.mrs")
+    if any(parts[0] in ("IP-CIDR", "IP-CIDR6") for parts in merged):
+        required.append(dest_folder / f"{folder_name}_IP.mrs")
+    return all(path.is_file() and path.stat().st_size > 0
+               for path in required)
+
+
 def process_folder(folder_name: str) -> Optional[Dict[str, int]]:
-    black_rules, black_source = load_black_rules(folder_name)
-    meta_rules, meta_stats = load_meta_rules(folder_name)
+    black_rules, black_source, black_text = load_black_rules(folder_name)
+    meta_rules, meta_stats, geosite_text, geoip_text = \
+        load_meta_rules(folder_name)
     if not black_rules and not meta_rules:
         print(f"跳过不存在的规则目录: {folder_name} (两边上游都没有)")
         return None
 
     merged, meta_added = merge_rule_sets(black_rules, meta_rules)
     dest_folder = DEST_RULE_DIR / folder_name
-    dest_folder.mkdir(parents=True, exist_ok=True)
+    fingerprint = compute_fingerprint(black_text, geosite_text, geoip_text)
+    yaml_path = dest_folder / f"{folder_name}.yaml"
+    if read_stored_hash(yaml_path) == fingerprint and \
+            outputs_complete(dest_folder, folder_name, merged):
+        print(f"跳过未变化的上游目录: {folder_name}", flush=True)
+        return {
+            "black": len(black_rules),
+            "meta": meta_stats["geosite"] + meta_stats["geoip"],
+            "meta_added": meta_added,
+            "merged": len(merged),
+            "meta_skipped": meta_stats["skipped"],
+            "skipped": 1,
+        }
 
+    dest_folder.mkdir(parents=True, exist_ok=True)
     write_classical_yaml(dest_folder, folder_name, merged, black_source,
                          len(black_rules), meta_stats, len(merged),
-                         meta_added)
+                         fingerprint)
 
     domain_entries, ip_entries = split_mrs_rules(merged)
     generated_mrs = compile_rules_to_mrs(dest_folder, folder_name,
@@ -838,6 +902,7 @@ def process_folder(folder_name: str) -> Optional[Dict[str, int]]:
         "meta_added": meta_added,
         "merged": len(merged),
         "meta_skipped": meta_stats["skipped"],
+        "skipped": 0,
     }
 
 
@@ -855,16 +920,19 @@ def main() -> None:
     TEMP_DIR.mkdir(parents=True, exist_ok=True)
     total_added = 0
     done = 0
+    skipped = 0
     try:
         for folder_name in sorted(UPSTREAM_INCLUDE_FOLDERS):
             result = process_folder(folder_name)
             if result is not None:
                 done += 1
-                total_added += result["meta_added"]
+                skipped += result.get("skipped", 0)
+                if not result.get("skipped"):
+                    total_added += result["meta_added"]
     finally:
         if TEMP_DIR.exists():
             shutil.rmtree(TEMP_DIR)
-    print(f"全部完成: 共处理 {done} 个规则目录, "
+    print(f"全部完成: 共处理 {done} 个规则目录 (跳过未变化 {skipped} 个), "
           f"MetaCubeX 共补入 {total_added} 条黑矩阵没有的规则")
 
 
