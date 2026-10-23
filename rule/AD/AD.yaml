@@ -1,9 +1,9 @@
 # AD 聚合广告域名规则
 # 数据来源：EasyList + EasyPrivacy + EasyListChina + Dns-BlockLists Normal + StevenBlack + anti-AD
-# EasyList 51293条 + EasyPrivacy 40631条 + EasyListChina 5577条 + Dns-BlockLists Normal 171235条 + StevenBlack 71489条 + anti-AD 112079条
-# 合并去重后：域名 249106 个，IP 规则 118 条
-# 上次更新时间：2026-10-23 15:25:07
-# Hash：f9f87b5eb68ac09af6847baeaa4b2d71af03b6e88d1654b9bede26ed7a7bf806
+# EasyList 51295条 + EasyPrivacy 40631条 + EasyListChina 5577条 + Dns-BlockLists Normal 171235条 + StevenBlack 71489条 + anti-AD 112079条
+# 合并去重后：域名 249108 个，IP 规则 118 条
+# 上次更新时间：2026-10-23 15:32:53
+# Hash：bae68fe9b49867cc771506c6ce3eefaf514d610aad060a401958651d4be1a45f
 payload:
   - DOMAIN,000.gaysexe.free.fr
   - DOMAIN,00000.uno
@@ -70150,6 +70150,7 @@ payload:
   - DOMAIN-SUFFIX,bdhymnytgaota.space
   - DOMAIN-SUFFIX,bdickh.globalgolf.com
   - DOMAIN-SUFFIX,bdikjljwzgycz.space
+  - DOMAIN-SUFFIX,bdiotsuqwtjbw.site
   - DOMAIN-SUFFIX,bdj.tianya.cn
   - DOMAIN-SUFFIX,bdj.tianyaui.cn
   - DOMAIN-SUFFIX,bdj5.terrassesmontecarlosbm.com
@@ -239987,6 +239988,7 @@ payload:
   - DOMAIN-SUFFIX,wtdshzjdlppil.online
   - DOMAIN-SUFFIX,wtdttepdbcpnx.site
   - DOMAIN-SUFFIX,wtesqx.news.mynavi.jp
+  - DOMAIN-SUFFIX,wtfjksjpifgnr.site
   - DOMAIN-SUFFIX,wtg-ads.com
   - DOMAIN-SUFFIX,wtgagdcpttgmd.store
   - DOMAIN-SUFFIX,wtgmbwdoibsaf.online
