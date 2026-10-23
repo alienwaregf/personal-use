@@ -35,14 +35,14 @@ SOURCE_URLS = [
     "https://www.vpngate.net/api/iphone/",
     "http://www.vpngate.net/api/iphone/",
 ]
-IP_API_BATCH = "http://ip-api.com/batch?fields=status,query,regionName,city,isp,org,as,hosting,proxy&lang=zh-CN"
+IP_API_BATCH = "http://ip-api.com/batch?fields=status,query,country,regionName,city,isp,org,as,hosting,proxy&lang=zh-CN"
 OUTPUT_PATH = Path("proxy/VPNgate.yaml")
 DIALER_PROXY_GROUP = "自动选择"
 
 EXCLUDE_HOST_PREFIX = "public-vpn"
 EXCLUDE_IP_PREFIX = "219.100.37."
 CONFIG_PREFIX_CHARS = 6000  # decode only the head of each config first
-VERSION_TAG = "v7-oneline"
+VERSION_TAG = "v9-name"
 
 BEIJING = timezone(timedelta(hours=8))
 
@@ -111,6 +111,7 @@ def parse_list(raw):
         candidates.append(
             {
                 "country": (fields[6] or "").upper() or "XX",
+                "country_long": (fields[5] or "").strip(),
                 "server_ip": (fields[1] or "").strip(),
                 "speed": speed,
                 "config64": config64,
@@ -158,6 +159,7 @@ def parse_list(raw):
         nodes.append(
             {
                 "country": item["country"],
+                "country_long": item["country_long"],
                 "server_ip": item["server_ip"],
                 "server": remote[0],
                 "port": port,
@@ -208,6 +210,7 @@ def screen_datacenter_ips(nodes):
         if entry:
             node["isp"] = entry.get("isp", "")
             node["asn"] = entry.get("as", "")
+            node["country_name"] = (entry.get("country") or "").strip()
             parts = []
             for part in (entry.get("regionName", ""), entry.get("city", "")):
                 part = (part or "").strip()
@@ -224,14 +227,44 @@ def inline_pem(text):
     return '"' + "\\n".join(lines) + '"'
 
 
+COUNTRY_ZH = {
+    "JP": "日本", "KR": "韩国", "US": "美国", "VN": "越南", "TH": "泰国",
+    "RU": "俄罗斯", "LA": "老挝", "NL": "荷兰", "FR": "法国", "TW": "台湾",
+    "HK": "香港", "SG": "新加坡", "GB": "英国", "DE": "德国", "CA": "加拿大",
+    "AU": "澳大利亚", "IN": "印度", "ID": "印尼", "MY": "马来西亚", "PH": "菲律宾",
+    "CN": "中国", "IT": "意大利", "ES": "西班牙", "BR": "巴西", "MX": "墨西哥",
+    "TR": "土耳其", "UA": "乌克兰", "PL": "波兰", "SE": "瑞典", "CH": "瑞士",
+}
+
+
+def flag_emoji(code):
+    if len(code) == 2 and code.isalpha():
+        return "".join(chr(0x1F1E6 + ord(c) - 0x41) for c in code.upper())
+    return ""
+
+
+def display_name(node):
+    country = (
+        node.get("country_name")
+        or COUNTRY_ZH.get(node["country"])
+        or node.get("country_long")
+        or node["country"]
+    )
+    parts = [p for p in (flag_emoji(node["country"]), country) if p]
+    if node.get("place"):
+        parts.append(node["place"])
+    parts.append("🏠 家宽")
+    return " ".join(parts)
+
+
 def render_yaml(nodes, cert, fingerprint):
-    counters = {}
+    seen = {}
     named = []
     for node in nodes:
-        counters[node["country"]] = counters.get(node["country"], 0) + 1
-        named.append(
-            (f"🏠 {node['country']}-家宽-{counters[node['country']]:02d}", node)
-        )
+        base = display_name(node)
+        seen[base] = seen.get(base, 0) + 1
+        name = base if seen[base] == 1 else f"{base}-{seen[base]:02d}"
+        named.append((name, node))
     now = datetime.now(BEIJING).strftime("%Y-%m-%d %H:%M:%S")
     lines = [
         "# VPN Gate 家宽节点（OpenVPN）",
@@ -243,10 +276,7 @@ def render_yaml(nodes, cert, fingerprint):
     ]
     for idx, (name, node) in enumerate(named):
         if node.get("isp"):
-            comment = f"  # {node['isp']} · {node.get('asn', '')}"
-            if node.get("place"):
-                comment = f"  # {node['place']} · {node['isp']} · {node.get('asn', '')}"
-            lines.append(comment)
+            lines.append(f"  # {node['isp']} · {node.get('asn', '')}")
         # One node per line (flow style); the shared cert is anchored on
         # the first node and aliased by all the others, on the same line.
         if idx == 0:
@@ -258,14 +288,14 @@ def render_yaml(nodes, cert, fingerprint):
         else:
             cert_fields = "ca: *jkca, cert: *jkcert, key: *jkkey"
         lines.append(
-            "  - {"
-            f'name: "{name}", type: openvpn, server: {node["server"]}, '
+            "  - { "
+            f"name: '{name}', type: openvpn, server: {node['server']}, "
             f"port: {node['port']}, proto: tcp, username: vpn, password: vpn, "
             f"cipher: {node['cipher']}, auth: {node['auth']}, udp: false, "
             "handshake-timeout: 30, remote-dns-resolve: true, "
             "dns: [8.8.8.8, 1.1.1.1], "
-            f'dialer-proxy: "{DIALER_PROXY_GROUP}", {cert_fields}'
-            "}"
+            f"dialer-proxy: '{DIALER_PROXY_GROUP}', {cert_fields}"
+            " }"
         )
     return "\n".join(lines) + "\n", len(named)
 
