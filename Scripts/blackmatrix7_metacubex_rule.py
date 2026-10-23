@@ -39,7 +39,7 @@ META_RAW_BASE_URL = (
 MY_REPO_URL = "https://github.com/alienwaregf/personal-use"
 MY_RAW_RULE_BASE_URL = (
     "https://raw.githubusercontent.com/"
-    "alienwaregf/personal-use/refs/heads/main/rule"
+    "alienwaregf/personal-use/main/rule"
 )
 
 DEST_RULE_DIR = Path("rule")
@@ -664,61 +664,124 @@ def write_classical_yaml(dest_folder: Path, folder_name: str,
 # =============================================================================
 
 
-def folder_base_url(folder_name: str) -> str:
-    return f"{MY_RAW_RULE_BASE_URL}/{quote_path_part(folder_name)}"
+CLIENT_ICONS = {
+    "Clash": (
+        "https://raw.githubusercontent.com/"
+        "alienwaregf/personal-use/refs/heads/main/"
+        "Picture/icon/OpenClash.png"
+    ),
+    "Loon": (
+        "https://raw.githubusercontent.com/"
+        "lige47/QuanX-icon-rule/main/"
+        "icon/02ProxySoftLogo/Loon(1).png"
+    ),
+    "QuantumultX": (
+        "https://raw.githubusercontent.com/"
+        "alienwaregf/personal-use/refs/heads/main/"
+        "Picture/icon/QX.png"
+    ),
+    "Shadowrocket": (
+        "https://raw.githubusercontent.com/"
+        "alienwaregf/personal-use/refs/heads/main/"
+        "Picture/icon/shadowrocket.png"
+    ),
+    "Surge": (
+        "https://raw.githubusercontent.com/"
+        "lige47/QuanX-icon-rule/main/"
+        "icon/02ProxySoftLogo/Surge(8).png"
+    ),
+}
+
+
+def client_heading(client: str) -> str:
+    icon = CLIENT_ICONS[client]
+    return (
+        f'# <img src="{icon}" '
+        f'width="25" height="25" '
+        f'alt="{client}" /> {client}\n\n'
+    )
+
+
+def build_client_section(
+    client: str,
+    folder_name: str,
+    classical_filename: str,
+    has_domain_mrs: bool,
+    has_ip_mrs: bool,
+) -> str:
+    folder_url = quote_path_part(folder_name)
+    parts: List[str] = [client_heading(client)]
+
+    if client == "Clash":
+        if has_domain_mrs:
+            parts.append(
+                "domain\n"
+                "```text\n"
+                f"{MY_RAW_RULE_BASE_URL}/"
+                f"{folder_url}/"
+                f"{quote_path_part(folder_name + '.mrs')}\n"
+                "```\n\n"
+            )
+        if has_ip_mrs:
+            parts.append(
+                "ipcidr\n"
+                "```text\n"
+                f"{MY_RAW_RULE_BASE_URL}/"
+                f"{folder_url}/"
+                f"{quote_path_part(folder_name + '_IP.mrs')}\n"
+                "```\n\n"
+            )
+        parts.append(
+            "classical\n"
+            "```text\n"
+            f"{MY_RAW_RULE_BASE_URL}/"
+            f"{folder_url}/"
+            f"{quote_path_part(classical_filename)}\n"
+            "```\n\n"
+        )
+        return "".join(parts)
+
+    filename = CLIENT_LIST_FILES[client]
+    parts.append(
+        "```text\n"
+        f"{MY_RAW_RULE_BASE_URL}/"
+        f"{folder_url}/"
+        f"{quote_path_part(filename)}\n"
+        "```\n\n"
+    )
+    return "".join(parts)
+
+
+def client_section_text(
+    folder_name: str,
+    classical_filename: str,
+    has_domain_mrs: bool,
+    has_ip_mrs: bool,
+) -> str:
+    sections: List[str] = []
+    for client in CLIENTS:
+        sections.append(
+            build_client_section(
+                client=client,
+                folder_name=folder_name,
+                classical_filename=classical_filename,
+                has_domain_mrs=has_domain_mrs,
+                has_ip_mrs=has_ip_mrs,
+            ).rstrip()
+        )
+    return "\n\n".join(sections)
 
 
 def write_readme(dest_folder: Path, folder_name: str,
-                 classical_count: int, domain_mrs_count: int,
-                 ip_mrs_count: int,
-                 client_counts: Dict[str, int],
                  generated_mrs_files: Sequence[str]) -> None:
-    base_url = folder_base_url(folder_name)
-    lines: List[str] = [f"## {folder_name} (blackmatrix7 × MetaCubeX 融合)", ""]
-
-    lines.append("### Clash")
-    lines.append("")
-    lines.append(
-        f"当前融合规则已收录条数: [{classical_count}]"
-        f"({base_url}/{folder_name}.yaml)")
-    lines.append("")
-    lines.append("```ini")
-    lines.append(f"{base_url}/{folder_name}.yaml")
-    lines.append("```")
-    lines.append("")
-    if f"{folder_name}.mrs" in generated_mrs_files:
-        lines.append(
-            f"当前 Domain .mrs 已收录条数: [{domain_mrs_count}]"
-            f"({base_url}/{folder_name}.mrs)")
-        lines.append("")
-        lines.append("```ini")
-        lines.append(f"{base_url}/{folder_name}.mrs")
-        lines.append("```")
-        lines.append("")
-    if f"{folder_name}_IP.mrs" in generated_mrs_files:
-        lines.append(
-            f"当前 IP .mrs 已收录条数: [{ip_mrs_count}]"
-            f"({base_url}/{folder_name}_IP.mrs)")
-        lines.append("")
-        lines.append("```ini")
-        lines.append(f"{base_url}/{folder_name}_IP.mrs")
-        lines.append("```")
-        lines.append("")
-
-    for client in NON_CLASH_CLIENTS:
-        lines.append(f"### {client}")
-        lines.append("")
-        lines.append(
-            f"当前规则已收录条数: [{client_counts.get(client, 0)}]"
-            f"({base_url}/{CLIENT_LIST_FILES[client]})")
-        lines.append("")
-        lines.append("```ini")
-        lines.append(f"{base_url}/{CLIENT_LIST_FILES[client]}")
-        lines.append("```")
-        lines.append("")
-
+    text = client_section_text(
+        folder_name=folder_name,
+        classical_filename=f"{folder_name}.yaml",
+        has_domain_mrs=f"{folder_name}.mrs" in generated_mrs_files,
+        has_ip_mrs=f"{folder_name}_IP.mrs" in generated_mrs_files,
+    )
     (dest_folder / "README.md").write_text(
-        "\n".join(lines).rstrip() + "\n", encoding="utf-8")
+        text.rstrip() + "\n", encoding="utf-8")
 
 
 
@@ -765,10 +828,8 @@ def process_folder(folder_name: str) -> Optional[Dict[str, int]]:
     domain_entries, ip_entries = split_mrs_rules(merged)
     generated_mrs = compile_rules_to_mrs(dest_folder, folder_name,
                                          domain_entries, ip_entries)
-    client_counts = write_client_lists(dest_folder, merged)
-    write_readme(dest_folder, folder_name, len(merged),
-                 len(domain_entries), len(ip_entries), client_counts,
-                 generated_mrs)
+    write_client_lists(dest_folder, merged)
+    write_readme(dest_folder, folder_name, generated_mrs)
 
     print(f"上游规则转换完成: {folder_name}", flush=True)
     return {
