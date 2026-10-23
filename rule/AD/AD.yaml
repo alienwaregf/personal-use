@@ -2,7 +2,7 @@
 # 由 Scripts/AD_rule.py 自动生成，请勿手动修改
 # 数据来源：
 #   - easylist: https://easylist-downloads.adblockplus.org/easylist.txt
-#     原始 85338 行，提取 51276 条规则；最后更新时间（UTC）：2026-10-23T06:02:22Z
+#     原始 85340 行，提取 51278 条规则；最后更新时间（UTC）：2026-10-23T06:11:46Z
 #   - easyprivacy: https://easylist-downloads.adblockplus.org/easyprivacy.txt
 #     原始 54337 行，提取 40631 条规则；最后更新时间（UTC）：2026-10-23T06:02:23Z
 #   - easylistchina: https://easylist-downloads.adblockplus.org/easylistchina.txt
@@ -13,7 +13,7 @@
 #     原始 78317 行，提取 71489 条规则；最后更新时间（UTC）：2026-10-18T19:09:16Z
 #   - anti-ad: https://raw.githubusercontent.com/privacy-protection-tools/anti-AD/master/anti-ad-domains.txt
 #     原始 112083 行，提取 112079 条规则；最后更新时间（UTC）：2026-10-22T21:48:19Z
-# 合并去重后：域名 323835 个，IP 规则 118 条
+# 合并去重后：域名 323837 个，IP 规则 118 条
 payload:
   - DOMAIN,000.gaysexe.free.fr
   - DOMAIN,00000.uno
@@ -156536,6 +156536,7 @@ payload:
   - DOMAIN-SUFFIX,iquirc.motionrc.com
   - DOMAIN-SUFFIX,iquue.com
   - DOMAIN-SUFFIX,iqvjv.dillards.com
+  - DOMAIN-SUFFIX,iqvqvssarqxfl.website
   - DOMAIN-SUFFIX,iqwbeaiqcflzf.space
   - DOMAIN-SUFFIX,iqwkkpchugfbk.space
   - DOMAIN-SUFFIX,iqxmdmynywhjn.online
@@ -165677,6 +165678,7 @@ payload:
   - DOMAIN-SUFFIX,ksks2.sportsonline.top
   - DOMAIN-SUFFIX,kslfjvhhmbrgg.online
   - DOMAIN-SUFFIX,kslfqcxumewry.store
+  - DOMAIN-SUFFIX,ksmllfcdblqqw.site
   - DOMAIN-SUFFIX,ksn-cinfo-geo.kas-labs.com
   - DOMAIN-SUFFIX,ksn-crypto-info-geo.kas-labs.com
   - DOMAIN-SUFFIX,ksn-crypto-stat-geo.kas-labs.com
