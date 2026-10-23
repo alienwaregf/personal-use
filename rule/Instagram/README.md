@@ -1,47 +1,35 @@
-## Instagram (blackmatrix7 × MetaCubeX 融合)
+# <img src="https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/Picture/icon/OpenClash.png" width="25" height="25" alt="Clash" /> Clash
 
-### Clash
-
-当前融合规则已收录条数: [76](https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/rule/Instagram/Instagram.yaml)
-
-```ini
-https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/rule/Instagram/Instagram.yaml
+domain
+```text
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Instagram/Instagram.mrs
 ```
 
-当前 Domain .mrs 已收录条数: [75](https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/rule/Instagram/Instagram.mrs)
-
-```ini
-https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/rule/Instagram/Instagram.mrs
+classical
+```text
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Instagram/Instagram.yaml
 ```
 
-### Loon
+# <img src="https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/02ProxySoftLogo/Loon(1).png" width="25" height="25" alt="Loon" /> Loon
 
-当前规则已收录条数: [76](https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/rule/Instagram/Loon.list)
-
-```ini
-https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/rule/Instagram/Loon.list
+```text
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Instagram/Loon.list
 ```
 
-### QuantumultX
+# <img src="https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/Picture/icon/QX.png" width="25" height="25" alt="QuantumultX" /> QuantumultX
 
-当前规则已收录条数: [76](https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/rule/Instagram/QuantumultX.list)
-
-```ini
-https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/rule/Instagram/QuantumultX.list
+```text
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Instagram/QuantumultX.list
 ```
 
-### Shadowrocket
+# <img src="https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/Picture/icon/shadowrocket.png" width="25" height="25" alt="Shadowrocket" /> Shadowrocket
 
-当前规则已收录条数: [76](https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/rule/Instagram/Shadowrocket.list)
-
-```ini
-https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/rule/Instagram/Shadowrocket.list
+```text
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Instagram/Shadowrocket.list
 ```
 
-### Surge
+# <img src="https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/02ProxySoftLogo/Surge(8).png" width="25" height="25" alt="Surge" /> Surge
 
-当前规则已收录条数: [76](https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/rule/Instagram/Surge.list)
-
-```ini
-https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/rule/Instagram/Surge.list
+```text
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Instagram/Surge.list
 ```

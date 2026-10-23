@@ -1,47 +1,35 @@
-## Vercel (blackmatrix7 × MetaCubeX 融合)
+# <img src="https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/Picture/icon/OpenClash.png" width="25" height="25" alt="Clash" /> Clash
 
-### Clash
-
-当前融合规则已收录条数: [30](https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/rule/Vercel/Vercel.yaml)
-
-```ini
-https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/rule/Vercel/Vercel.yaml
+domain
+```text
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Vercel/Vercel.mrs
 ```
 
-当前 Domain .mrs 已收录条数: [30](https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/rule/Vercel/Vercel.mrs)
-
-```ini
-https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/rule/Vercel/Vercel.mrs
+classical
+```text
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Vercel/Vercel.yaml
 ```
 
-### Loon
+# <img src="https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/02ProxySoftLogo/Loon(1).png" width="25" height="25" alt="Loon" /> Loon
 
-当前规则已收录条数: [30](https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/rule/Vercel/Loon.list)
-
-```ini
-https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/rule/Vercel/Loon.list
+```text
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Vercel/Loon.list
 ```
 
-### QuantumultX
+# <img src="https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/Picture/icon/QX.png" width="25" height="25" alt="QuantumultX" /> QuantumultX
 
-当前规则已收录条数: [30](https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/rule/Vercel/QuantumultX.list)
-
-```ini
-https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/rule/Vercel/QuantumultX.list
+```text
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Vercel/QuantumultX.list
 ```
 
-### Shadowrocket
+# <img src="https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/Picture/icon/shadowrocket.png" width="25" height="25" alt="Shadowrocket" /> Shadowrocket
 
-当前规则已收录条数: [30](https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/rule/Vercel/Shadowrocket.list)
-
-```ini
-https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/rule/Vercel/Shadowrocket.list
+```text
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Vercel/Shadowrocket.list
 ```
 
-### Surge
+# <img src="https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/02ProxySoftLogo/Surge(8).png" width="25" height="25" alt="Surge" /> Surge
 
-当前规则已收录条数: [30](https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/rule/Vercel/Surge.list)
-
-```ini
-https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/rule/Vercel/Surge.list
+```text
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Vercel/Surge.list
 ```

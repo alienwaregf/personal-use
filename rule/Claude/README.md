@@ -1,47 +1,35 @@
-## Claude (blackmatrix7 × MetaCubeX 融合)
+# <img src="https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/Picture/icon/OpenClash.png" width="25" height="25" alt="Clash" /> Clash
 
-### Clash
-
-当前融合规则已收录条数: [20](https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/rule/Claude/Claude.yaml)
-
-```ini
-https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/rule/Claude/Claude.yaml
+domain
+```text
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Claude/Claude.mrs
 ```
 
-当前 Domain .mrs 已收录条数: [20](https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/rule/Claude/Claude.mrs)
-
-```ini
-https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/rule/Claude/Claude.mrs
+classical
+```text
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Claude/Claude.yaml
 ```
 
-### Loon
+# <img src="https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/02ProxySoftLogo/Loon(1).png" width="25" height="25" alt="Loon" /> Loon
 
-当前规则已收录条数: [20](https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/rule/Claude/Loon.list)
-
-```ini
-https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/rule/Claude/Loon.list
+```text
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Claude/Loon.list
 ```
 
-### QuantumultX
+# <img src="https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/Picture/icon/QX.png" width="25" height="25" alt="QuantumultX" /> QuantumultX
 
-当前规则已收录条数: [20](https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/rule/Claude/QuantumultX.list)
-
-```ini
-https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/rule/Claude/QuantumultX.list
+```text
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Claude/QuantumultX.list
 ```
 
-### Shadowrocket
+# <img src="https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/Picture/icon/shadowrocket.png" width="25" height="25" alt="Shadowrocket" /> Shadowrocket
 
-当前规则已收录条数: [20](https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/rule/Claude/Shadowrocket.list)
-
-```ini
-https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/rule/Claude/Shadowrocket.list
+```text
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Claude/Shadowrocket.list
 ```
 
-### Surge
+# <img src="https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/02ProxySoftLogo/Surge(8).png" width="25" height="25" alt="Surge" /> Surge
 
-当前规则已收录条数: [20](https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/rule/Claude/Surge.list)
-
-```ini
-https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/rule/Claude/Surge.list
+```text
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Claude/Surge.list
 ```

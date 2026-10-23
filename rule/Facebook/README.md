@@ -1,53 +1,40 @@
-## Facebook (blackmatrix7 × MetaCubeX 融合)
+# <img src="https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/Picture/icon/OpenClash.png" width="25" height="25" alt="Clash" /> Clash
 
-### Clash
-
-当前融合规则已收录条数: [691](https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/rule/Facebook/Facebook.yaml)
-
-```ini
-https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/rule/Facebook/Facebook.yaml
+domain
+```text
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Facebook/Facebook.mrs
 ```
 
-当前 Domain .mrs 已收录条数: [550](https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/rule/Facebook/Facebook.mrs)
-
-```ini
-https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/rule/Facebook/Facebook.mrs
+ipcidr
+```text
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Facebook/Facebook_IP.mrs
 ```
 
-当前 IP .mrs 已收录条数: [137](https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/rule/Facebook/Facebook_IP.mrs)
-
-```ini
-https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/rule/Facebook/Facebook_IP.mrs
+classical
+```text
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Facebook/Facebook.yaml
 ```
 
-### Loon
+# <img src="https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/02ProxySoftLogo/Loon(1).png" width="25" height="25" alt="Loon" /> Loon
 
-当前规则已收录条数: [690](https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/rule/Facebook/Loon.list)
-
-```ini
-https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/rule/Facebook/Loon.list
+```text
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Facebook/Loon.list
 ```
 
-### QuantumultX
+# <img src="https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/Picture/icon/QX.png" width="25" height="25" alt="QuantumultX" /> QuantumultX
 
-当前规则已收录条数: [690](https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/rule/Facebook/QuantumultX.list)
-
-```ini
-https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/rule/Facebook/QuantumultX.list
+```text
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Facebook/QuantumultX.list
 ```
 
-### Shadowrocket
+# <img src="https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/Picture/icon/shadowrocket.png" width="25" height="25" alt="Shadowrocket" /> Shadowrocket
 
-当前规则已收录条数: [691](https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/rule/Facebook/Shadowrocket.list)
-
-```ini
-https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/rule/Facebook/Shadowrocket.list
+```text
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Facebook/Shadowrocket.list
 ```
 
-### Surge
+# <img src="https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/02ProxySoftLogo/Surge(8).png" width="25" height="25" alt="Surge" /> Surge
 
-当前规则已收录条数: [691](https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/rule/Facebook/Surge.list)
-
-```ini
-https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/rule/Facebook/Surge.list
+```text
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Facebook/Surge.list
 ```

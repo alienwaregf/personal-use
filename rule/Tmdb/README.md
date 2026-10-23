@@ -1,47 +1,35 @@
-## Tmdb (blackmatrix7 × MetaCubeX 融合)
+# <img src="https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/Picture/icon/OpenClash.png" width="25" height="25" alt="Clash" /> Clash
 
-### Clash
-
-当前融合规则已收录条数: [4](https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/rule/Tmdb/Tmdb.yaml)
-
-```ini
-https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/rule/Tmdb/Tmdb.yaml
+domain
+```text
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Tmdb/Tmdb.mrs
 ```
 
-当前 Domain .mrs 已收录条数: [4](https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/rule/Tmdb/Tmdb.mrs)
-
-```ini
-https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/rule/Tmdb/Tmdb.mrs
+classical
+```text
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Tmdb/Tmdb.yaml
 ```
 
-### Loon
+# <img src="https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/02ProxySoftLogo/Loon(1).png" width="25" height="25" alt="Loon" /> Loon
 
-当前规则已收录条数: [4](https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/rule/Tmdb/Loon.list)
-
-```ini
-https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/rule/Tmdb/Loon.list
+```text
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Tmdb/Loon.list
 ```
 
-### QuantumultX
+# <img src="https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/Picture/icon/QX.png" width="25" height="25" alt="QuantumultX" /> QuantumultX
 
-当前规则已收录条数: [4](https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/rule/Tmdb/QuantumultX.list)
-
-```ini
-https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/rule/Tmdb/QuantumultX.list
+```text
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Tmdb/QuantumultX.list
 ```
 
-### Shadowrocket
+# <img src="https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/Picture/icon/shadowrocket.png" width="25" height="25" alt="Shadowrocket" /> Shadowrocket
 
-当前规则已收录条数: [4](https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/rule/Tmdb/Shadowrocket.list)
-
-```ini
-https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/rule/Tmdb/Shadowrocket.list
+```text
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Tmdb/Shadowrocket.list
 ```
 
-### Surge
+# <img src="https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/02ProxySoftLogo/Surge(8).png" width="25" height="25" alt="Surge" /> Surge
 
-当前规则已收录条数: [4](https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/rule/Tmdb/Surge.list)
-
-```ini
-https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/rule/Tmdb/Surge.list
+```text
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Tmdb/Surge.list
 ```
