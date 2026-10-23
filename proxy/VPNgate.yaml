@@ -1,1230 +1,144 @@
 # VPN Gate 家宽节点（OpenVPN）
 # 数据来源：VPN Gate 官方清单，已剔除 public-vpn 官方机房节点、219.100.37. 网段及 IP 情报标记为机房的 IP
-# 上次更新时间：2026-10-23 17:26:57
-# 条数：68 个节点
-# Hash：e19c45a29a20497fc9ec243656155a7f7bc0c1c7d2b1d01c7ddaf9160084ce8c
+# 上次更新时间：2026-10-23 17:30:11
+# 条数：69 个节点
+# Hash：96561ff9d9beece28ae8db99004d42b05cd49ecdcc63997650ef893628d3eb5b
 proxies:
-  # 东京都 Minato · SoftBank Corp. · AS17676 SoftBank Corp.
-  - name: "🏠 JP-家宽-01"
-    type: openvpn
-    server: 126.206.11.243
-    port: 1568
-    proto: tcp
-    username: vpn
-    password: vpn
-    cipher: AES-128-CBC
-    auth: SHA1
-    udp: false
-    handshake-timeout: 30
-    remote-dns-resolve: true
-    dns: [ 8.8.8.8, 1.1.1.1 ]
-    dialer-proxy: "自动选择"
-    ca: &jkca "-----BEGIN CERTIFICATE-----\nMIIFazCCA1OgAwIBAgIRAIIQz7DSQONZRGPgu2OCiwAwDQYJKoZIhvcNAQELBQAw\nTzELMAkGA1UEBhMCVVMxKTAnBgNVBAoTIEludGVybmV0IFNlY3VyaXR5IFJlc2Vh\ncmNoIEdyb3VwMRUwEwYDVQQDEwxJU1JHIFJvb3QgWDEwHhcNMTUwNjA0MTEwNDM4\nWhcNMzUwNjA0MTEwNDM4WjBPMQswCQYDVQQGEwJVUzEpMCcGA1UEChMgSW50ZXJu\nZXQgU2VjdXJpdHkgUmVzZWFyY2ggR3JvdXAxFTATBgNVBAMTDElTUkcgUm9vdCBY\nMTCCAiIwDQYJKoZIhvcNAQEBBQADggIPADCCAgoCggIBAK3oJHP0FDfzm54rVygc\nh77ct984kIxuPOZXoHj3dcKi/vVqbvYATyjb3miGbESTtrFj/RQSa78f0uoxmyF+\n0TM8ukj13Xnfs7j/EvEhmkvBioZxaUpmZmyPfjxwv60pIgbz5MDmgK7iS4+3mX6U\nA5/TR5d8mUgjU+g4rk8Kb4Mu0UlXjIB0ttov0DiNewNwIRt18jA8+o+u3dpjq+sW\nT8KOEUt+zwvo/7V3LvSye0rgTBIlDHCNAymg4VMk7BPZ7hm/ELNKjD+Jo2FR3qyH\nB5T0Y3HsLuJvW5iB4YlcNHlsdu87kGJ55tukmi8mxdAQ4Q7e2RCOFvu396j3x+UC\nB5iPNgiV5+I3lg02dZ77DnKxHZu8A/lJBdiB3QW0KtZB6awBdpUKD9jf1b0SHzUv\nKBds0pjBqAlkd25HN7rOrFleaJ1/ctaJxQZBKT5ZPt0m9STJEadao0xAH0ahmbWn\nOlFuhjuefXKnEgV4We0+UXgVCwOPjdAvBbI+e0ocS3MFEvzG6uBQE3xDk3SzynTn\njh8BCNAw1FtxNrQHusEwMFxIt4I7mKZ9YIqioymCzLq9gwQbooMDQaHWBfEbwrbw\nqHyGO0aoSCqI3Haadr8faqU9GY/rOPNk3sgrDQoo//fb4hVC1CLQJ13hef4Y53CI\nrU7m2Ys6xt0nUW7/vGT1M0NPAgMBAAGjQjBAMA4GA1UdDwEB/wQEAwIBBjAPBgNV\nHRMBAf8EBTADAQH/MB0GA1UdDgQWBBR5tFnme7bl5AFzgAiIyBpY9umbbjANBgkq\nhkiG9w0BAQsFAAOCAgEAVR9YqbyyqFDQDLHYGmkgJykIrGF1XIpu+ILlaS/V9lZL\nubhzEFnTIZd+50xx+7LSYK05qAvqFyFWhfFQDlnrzuBZ6brJFe+GnY+EgPbk6ZGQ\n3BebYhtF8GaV0nxvwuo77x/Py9auJ/GpsMiu/X1+mvoiBOv/2X/qkSsisRcOj/KK\nNFtY2PwByVS5uCbMiogziUwthDyC3+6WVwW6LLv3xLfHTjuCvjHIInNzktHCgKQ5\nORAzI4JMPJ+GslWYHb4phowim57iaztXOoJwTdwJx4nLCgdNbOhdjsnvzqvHu7Ur\nTkXWStAmzOVyyghqpZXjFaH3pO3JLF+l+/+sKAIuvtd7u+Nxe5AW0wdeRlN8NwdC\njNPElpzVmbUq4JUagEiuTDkHzsxHpFKVK7q4+63SM1N95R1NbdWhscdCb+ZAJzVc\noyi3B43njTOQ5yOf+1CceWxG1bQVs5ZufpsMljq4Ui0/1lvh+wjChP4kqKOJ2qxq\n4RgqsahDYVvTH9w7jXbyLeiNdd8XM2w9U/t7y0Ff/9yi0GE44Za4rF2LN9d11TPA\nmRGunUHBcnWEvgJBQl9nJEiU0Zsnvgc/ubhPgXRR4Xq37Z0j4r7g1SgEEzwxA57d\nemyPxgcYxn/eR44/KJ4EBs+lVDR3veyJm+kXQ99b21/+jh5Xos1AnX5iItreGCc=\n-----END CERTIFICATE-----"
-    cert: &jkcert "-----BEGIN CERTIFICATE-----\nMIICxjCCAa4CAQAwDQYJKoZIhvcNAQEFBQAwKTEaMBgGA1UEAxMRVlBOR2F0ZUNs\naWVudENlcnQxCzAJBgNVBAYTAkpQMB4XDTEzMDIxMTAzNDk0OVoXDTM3MDExOTAz\nMTQwN1owKTEaMBgGA1UEAxMRVlBOR2F0ZUNsaWVudENlcnQxCzAJBgNVBAYTAkpQ\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA5h2lgQQYUjwoKYJbzVZA\n5VcIGd5otPc/qZRMt0KItCFA0s9RwReNVa9fDRFLRBhcITOlv3FBcW3E8h1Us7RD\n4W8GmJe8zapJnLsD39OSMRCzZJnczW4OCH1PZRZWKqDtjlNca9AF8a65jTmlDxCQ\nCjntLIWk5OLLVkFt9/tScc1GDtci55ofhaNAYMPiH7V8+1g66pGHXAoWK6AQVH67\nXCKJnGB5nlQ+HsMYPV/O49Ld91ZN/2tHkcaLLyNtywxVPRSsRh480jju0fcCsv6h\np/0yXnTB//mWutBGpdUlIbwiITbAmrsbYnjigRvnPqX1RNJUbi9Fp6C2c/HIFJGD\nywIDAQABMA0GCSqGSIb3DQEBBQUAA4IBAQChO5hgcw/4oWfoEFLu9kBa1B//kxH8\nhQkChVNn8BRC7Y0URQitPl3DKEed9URBDdg2KOAz77bb6ENPiliD+a38UJHIRMqe\nUBHhllOHIzvDhHFbaovALBQceeBzdkQxsKQESKmQmR832950UCovoyRB61UyAV7h\n+mZhYPGRKXKSJI6s0Egg/Cri+Cwk4bjJfrb5hVse11yh4D9MHhwSfCOH+0z4hPUT\nFku7dGavURO5SVxMn/sL6En5D+oSeXkadHpDs+Airym2YHh15h0+jPSOoR6yiVp/\n6zZeZkrN43kuS73KpKDFjfFPh8t4r1gOIjttkNcQqBccusnplQ7HJpsk\n-----END CERTIFICATE-----"
-    key: &jkkey "-----BEGIN RSA PRIVATE KEY-----\nMIIEpAIBAAKCAQEA5h2lgQQYUjwoKYJbzVZA5VcIGd5otPc/qZRMt0KItCFA0s9R\nwReNVa9fDRFLRBhcITOlv3FBcW3E8h1Us7RD4W8GmJe8zapJnLsD39OSMRCzZJnc\nzW4OCH1PZRZWKqDtjlNca9AF8a65jTmlDxCQCjntLIWk5OLLVkFt9/tScc1GDtci\n55ofhaNAYMPiH7V8+1g66pGHXAoWK6AQVH67XCKJnGB5nlQ+HsMYPV/O49Ld91ZN\n/2tHkcaLLyNtywxVPRSsRh480jju0fcCsv6hp/0yXnTB//mWutBGpdUlIbwiITbA\nmrsbYnjigRvnPqX1RNJUbi9Fp6C2c/HIFJGDywIDAQABAoIBAERV7X5AvxA8uRiK\nk8SIpsD0dX1pJOMIwakUVyvc4EfN0DhKRNb4rYoSiEGTLyzLpyBc/A28Dlkm5eOY\nfjzXfYkGtYi/Ftxkg3O9vcrMQ4+6i+uGHaIL2rL+s4MrfO8v1xv6+Wky33EEGCou\nQiwVGRFQXnRoQ62NBCFbUNLhmXwdj1akZzLU4p5R4zA3QhdxwEIatVLt0+7owLQ3\nlP8sfXhppPOXjTqMD4QkYwzPAa8/zF7acn4kryrUP7Q6PAfd0zEVqNy9ZCZ9ffho\nzXedFj486IFoc5gnTp2N6jsnVj4LCGIhlVHlYGozKKFqJcQVGsHCqq1oz2zjW6LS\noRYIHgECgYEA8zZrkCwNYSXJuODJ3m/hOLVxcxgJuwXoiErWd0E42vPanjjVMhnt\nKY5l8qGMJ6FhK9LYx2qCrf/E0XtUAZ2wVq3ORTyGnsMWre9tLYs55X+ZN10Tc75z\n4hacbU0hqKN1HiDmsMRY3/2NaZHoy7MKnwJJBaG48l9CCTlVwMHocIECgYEA8jby\ndGjxTH+6XHWNizb5SRbZxAnyEeJeRwTMh0gGzwGPpH/sZYGzyu0SySXWCnZh3Rgq\n5uLlNxtrXrljZlyi2nQdQgsq2YrWUs0+zgU+22uQsZpSAftmhVrtvet6MjVjbByY\nDADciEVUdJYIXk+qnFUJyeroLIkTj7WYKZ6RjksCgYBoCFIwRDeg42oK89RFmnOr\nLymNAq4+2oMhsWlVb4ejWIWeAk9nc+GXUfrXszRhS01mUnU5r5ygUvRcarV/T3U7\nTnMZ+I7Y4DgWRIDd51znhxIBtYV5j/C/t85HjqOkH+8b6RTkbchaX3mau7fpUfds\nFq0nhIq42fhEO8srfYYwgQKBgQCyhi1N/8taRwpk+3/IDEzQwjbfdzUkWWSDk9Xs\nH/pkuRHWfTMP3flWqEYgW/LW40peW2HDq5imdV8+AgZxe/XMbaji9Lgwf1RY005n\nKxaZQz7yqHupWlLGF68DPHxkZVVSagDnV/sztWX6SFsCqFVnxIXifXGC4cW5Nm9g\nva8q4QKBgQCEhLVeUfdwKvkZ94g/GFz731Z2hrdVhgMZaU/u6t0V95+YezPNCQZB\nwmE9Mmlbq1emDeROivjCfoGhR3kZXW1pTKlLh6ZMUQUOpptdXva8XxfoqQwa3enA\nM7muBbF0XN7VO80iJPv+PmIZdEIAkpwKfi201YB+BafCIuGxIF50Vg==\n-----END RSA PRIVATE KEY-----"
-  # 愛知縣 刈谷市 · Sony Network Communications Inc · AS2527 Sony Network Communications Inc.
-  - name: "🏠 JP-家宽-02"
-    type: openvpn
-    server: 223.133.135.144
-    port: 1378
-    proto: tcp
-    username: vpn
-    password: vpn
-    cipher: AES-128-CBC
-    auth: SHA1
-    udp: false
-    handshake-timeout: 30
-    remote-dns-resolve: true
-    dns: [ 8.8.8.8, 1.1.1.1 ]
-    dialer-proxy: "自动选择"
-    ca: *jkca
-    cert: *jkcert
-    key: *jkkey
-  # 东京都 Minato · SoftBank Corp. · AS17676 SoftBank Corp.
-  - name: "🏠 JP-家宽-03"
-    type: openvpn
-    server: 219.62.85.155
-    port: 1309
-    proto: tcp
-    username: vpn
-    password: vpn
-    cipher: AES-128-CBC
-    auth: SHA1
-    udp: false
-    handshake-timeout: 30
-    remote-dns-resolve: true
-    dns: [ 8.8.8.8, 1.1.1.1 ]
-    dialer-proxy: "自动选择"
-    ca: *jkca
-    cert: *jkcert
-    key: *jkkey
-  # 愛知縣 名古屋市 · KDDI · AS18126 Chubu Telecommunications Company, Inc.
-  - name: "🏠 JP-家宽-04"
-    type: openvpn
-    server: 113.155.30.115
-    port: 1730
-    proto: tcp
-    username: vpn
-    password: vpn
-    cipher: AES-128-CBC
-    auth: SHA1
-    udp: false
-    handshake-timeout: 30
-    remote-dns-resolve: true
-    dns: [ 8.8.8.8, 1.1.1.1 ]
-    dialer-proxy: "自动选择"
-    ca: *jkca
-    cert: *jkcert
-    key: *jkkey
-  # 光州广域市 Buk-gu · SK Broadband Co Ltd · AS9318 SK Broadband Co Ltd
-  - name: "🏠 KR-家宽-01"
-    type: openvpn
-    server: 211.245.185.135
-    port: 1593
-    proto: tcp
-    username: vpn
-    password: vpn
-    cipher: AES-128-CBC
-    auth: SHA1
-    udp: false
-    handshake-timeout: 30
-    remote-dns-resolve: true
-    dns: [ 8.8.8.8, 1.1.1.1 ]
-    dialer-proxy: "自动选择"
-    ca: *jkca
-    cert: *jkcert
-    key: *jkkey
-  # 愛知縣 名古屋市 · Chubu Telecommunications Company, Inc. · AS18126 Chubu Telecommunications Company, Inc.
-  - name: "🏠 JP-家宽-05"
-    type: openvpn
-    server: 118.105.178.39
-    port: 1914
-    proto: tcp
-    username: vpn
-    password: vpn
-    cipher: AES-128-CBC
-    auth: SHA1
-    udp: false
-    handshake-timeout: 30
-    remote-dns-resolve: true
-    dns: [ 8.8.8.8, 1.1.1.1 ]
-    dialer-proxy: "自动选择"
-    ca: *jkca
-    cert: *jkcert
-    key: *jkkey
-  # 曼谷 · AIS-Fibre · AS133481 AIS Fibre
-  - name: "🏠 TH-家宽-01"
-    type: openvpn
-    server: 58.136.73.201
-    port: 1589
-    proto: tcp
-    username: vpn
-    password: vpn
-    cipher: AES-128-CBC
-    auth: SHA1
-    udp: false
-    handshake-timeout: 30
-    remote-dns-resolve: true
-    dns: [ 8.8.8.8, 1.1.1.1 ]
-    dialer-proxy: "自动选择"
-    ca: *jkca
-    cert: *jkcert
-    key: *jkkey
-  # 东京都 Minato-ku · SoftBank Corp. · AS17676 SoftBank Corp.
-  - name: "🏠 JP-家宽-06"
-    type: openvpn
-    server: 60.108.251.162
-    port: 1259
-    proto: tcp
-    username: vpn
-    password: vpn
-    cipher: AES-128-CBC
-    auth: SHA1
-    udp: false
-    handshake-timeout: 30
-    remote-dns-resolve: true
-    dns: [ 8.8.8.8, 1.1.1.1 ]
-    dialer-proxy: "自动选择"
-    ca: *jkca
-    cert: *jkcert
-    key: *jkkey
-  # 兵庫縣 Kakogawa · Sony Network Communications Inc · AS2527 Sony Network Communications Inc.
-  - name: "🏠 JP-家宽-07"
-    type: openvpn
-    server: 120.74.54.109
-    port: 1483
-    proto: tcp
-    username: vpn
-    password: vpn
-    cipher: AES-128-CBC
-    auth: SHA1
-    udp: false
-    handshake-timeout: 30
-    remote-dns-resolve: true
-    dns: [ 8.8.8.8, 1.1.1.1 ]
-    dialer-proxy: "自动选择"
-    ca: *jkca
-    cert: *jkcert
-    key: *jkkey
-  # 东京都 东京 · NTT Communications Corporation · AS4713 NTT DOCOMO BUSINESS,Inc.
-  - name: "🏠 JP-家宽-08"
-    type: openvpn
-    server: 153.180.162.195
-    port: 1820
-    proto: tcp
-    username: vpn
-    password: vpn
-    cipher: AES-128-CBC
-    auth: SHA1
-    udp: false
-    handshake-timeout: 30
-    remote-dns-resolve: true
-    dns: [ 8.8.8.8, 1.1.1.1 ]
-    dialer-proxy: "自动选择"
-    ca: *jkca
-    cert: *jkcert
-    key: *jkkey
+  # 三重縣 鈴鹿市 · Chubu Telecommunications Company, Inc. · AS18126 Chubu Telecommunications Company, Inc.
+  - {name: "🏠 JP-家宽-01", type: openvpn, server: 180.198.166.141, port: 1564, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, udp: false, handshake-timeout: 30, remote-dns-resolve: true, dns: [8.8.8.8, 1.1.1.1], dialer-proxy: "自动选择", ca: &jkca "-----BEGIN CERTIFICATE-----\nMIIFazCCA1OgAwIBAgIRAIIQz7DSQONZRGPgu2OCiwAwDQYJKoZIhvcNAQELBQAw\nTzELMAkGA1UEBhMCVVMxKTAnBgNVBAoTIEludGVybmV0IFNlY3VyaXR5IFJlc2Vh\ncmNoIEdyb3VwMRUwEwYDVQQDEwxJU1JHIFJvb3QgWDEwHhcNMTUwNjA0MTEwNDM4\nWhcNMzUwNjA0MTEwNDM4WjBPMQswCQYDVQQGEwJVUzEpMCcGA1UEChMgSW50ZXJu\nZXQgU2VjdXJpdHkgUmVzZWFyY2ggR3JvdXAxFTATBgNVBAMTDElTUkcgUm9vdCBY\nMTCCAiIwDQYJKoZIhvcNAQEBBQADggIPADCCAgoCggIBAK3oJHP0FDfzm54rVygc\nh77ct984kIxuPOZXoHj3dcKi/vVqbvYATyjb3miGbESTtrFj/RQSa78f0uoxmyF+\n0TM8ukj13Xnfs7j/EvEhmkvBioZxaUpmZmyPfjxwv60pIgbz5MDmgK7iS4+3mX6U\nA5/TR5d8mUgjU+g4rk8Kb4Mu0UlXjIB0ttov0DiNewNwIRt18jA8+o+u3dpjq+sW\nT8KOEUt+zwvo/7V3LvSye0rgTBIlDHCNAymg4VMk7BPZ7hm/ELNKjD+Jo2FR3qyH\nB5T0Y3HsLuJvW5iB4YlcNHlsdu87kGJ55tukmi8mxdAQ4Q7e2RCOFvu396j3x+UC\nB5iPNgiV5+I3lg02dZ77DnKxHZu8A/lJBdiB3QW0KtZB6awBdpUKD9jf1b0SHzUv\nKBds0pjBqAlkd25HN7rOrFleaJ1/ctaJxQZBKT5ZPt0m9STJEadao0xAH0ahmbWn\nOlFuhjuefXKnEgV4We0+UXgVCwOPjdAvBbI+e0ocS3MFEvzG6uBQE3xDk3SzynTn\njh8BCNAw1FtxNrQHusEwMFxIt4I7mKZ9YIqioymCzLq9gwQbooMDQaHWBfEbwrbw\nqHyGO0aoSCqI3Haadr8faqU9GY/rOPNk3sgrDQoo//fb4hVC1CLQJ13hef4Y53CI\nrU7m2Ys6xt0nUW7/vGT1M0NPAgMBAAGjQjBAMA4GA1UdDwEB/wQEAwIBBjAPBgNV\nHRMBAf8EBTADAQH/MB0GA1UdDgQWBBR5tFnme7bl5AFzgAiIyBpY9umbbjANBgkq\nhkiG9w0BAQsFAAOCAgEAVR9YqbyyqFDQDLHYGmkgJykIrGF1XIpu+ILlaS/V9lZL\nubhzEFnTIZd+50xx+7LSYK05qAvqFyFWhfFQDlnrzuBZ6brJFe+GnY+EgPbk6ZGQ\n3BebYhtF8GaV0nxvwuo77x/Py9auJ/GpsMiu/X1+mvoiBOv/2X/qkSsisRcOj/KK\nNFtY2PwByVS5uCbMiogziUwthDyC3+6WVwW6LLv3xLfHTjuCvjHIInNzktHCgKQ5\nORAzI4JMPJ+GslWYHb4phowim57iaztXOoJwTdwJx4nLCgdNbOhdjsnvzqvHu7Ur\nTkXWStAmzOVyyghqpZXjFaH3pO3JLF+l+/+sKAIuvtd7u+Nxe5AW0wdeRlN8NwdC\njNPElpzVmbUq4JUagEiuTDkHzsxHpFKVK7q4+63SM1N95R1NbdWhscdCb+ZAJzVc\noyi3B43njTOQ5yOf+1CceWxG1bQVs5ZufpsMljq4Ui0/1lvh+wjChP4kqKOJ2qxq\n4RgqsahDYVvTH9w7jXbyLeiNdd8XM2w9U/t7y0Ff/9yi0GE44Za4rF2LN9d11TPA\nmRGunUHBcnWEvgJBQl9nJEiU0Zsnvgc/ubhPgXRR4Xq37Z0j4r7g1SgEEzwxA57d\nemyPxgcYxn/eR44/KJ4EBs+lVDR3veyJm+kXQ99b21/+jh5Xos1AnX5iItreGCc=\n-----END CERTIFICATE-----", cert: &jkcert "-----BEGIN CERTIFICATE-----\nMIICxjCCAa4CAQAwDQYJKoZIhvcNAQEFBQAwKTEaMBgGA1UEAxMRVlBOR2F0ZUNs\naWVudENlcnQxCzAJBgNVBAYTAkpQMB4XDTEzMDIxMTAzNDk0OVoXDTM3MDExOTAz\nMTQwN1owKTEaMBgGA1UEAxMRVlBOR2F0ZUNsaWVudENlcnQxCzAJBgNVBAYTAkpQ\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA5h2lgQQYUjwoKYJbzVZA\n5VcIGd5otPc/qZRMt0KItCFA0s9RwReNVa9fDRFLRBhcITOlv3FBcW3E8h1Us7RD\n4W8GmJe8zapJnLsD39OSMRCzZJnczW4OCH1PZRZWKqDtjlNca9AF8a65jTmlDxCQ\nCjntLIWk5OLLVkFt9/tScc1GDtci55ofhaNAYMPiH7V8+1g66pGHXAoWK6AQVH67\nXCKJnGB5nlQ+HsMYPV/O49Ld91ZN/2tHkcaLLyNtywxVPRSsRh480jju0fcCsv6h\np/0yXnTB//mWutBGpdUlIbwiITbAmrsbYnjigRvnPqX1RNJUbi9Fp6C2c/HIFJGD\nywIDAQABMA0GCSqGSIb3DQEBBQUAA4IBAQChO5hgcw/4oWfoEFLu9kBa1B//kxH8\nhQkChVNn8BRC7Y0URQitPl3DKEed9URBDdg2KOAz77bb6ENPiliD+a38UJHIRMqe\nUBHhllOHIzvDhHFbaovALBQceeBzdkQxsKQESKmQmR832950UCovoyRB61UyAV7h\n+mZhYPGRKXKSJI6s0Egg/Cri+Cwk4bjJfrb5hVse11yh4D9MHhwSfCOH+0z4hPUT\nFku7dGavURO5SVxMn/sL6En5D+oSeXkadHpDs+Airym2YHh15h0+jPSOoR6yiVp/\n6zZeZkrN43kuS73KpKDFjfFPh8t4r1gOIjttkNcQqBccusnplQ7HJpsk\n-----END CERTIFICATE-----", key: &jkkey "-----BEGIN RSA PRIVATE KEY-----\nMIIEpAIBAAKCAQEA5h2lgQQYUjwoKYJbzVZA5VcIGd5otPc/qZRMt0KItCFA0s9R\nwReNVa9fDRFLRBhcITOlv3FBcW3E8h1Us7RD4W8GmJe8zapJnLsD39OSMRCzZJnc\nzW4OCH1PZRZWKqDtjlNca9AF8a65jTmlDxCQCjntLIWk5OLLVkFt9/tScc1GDtci\n55ofhaNAYMPiH7V8+1g66pGHXAoWK6AQVH67XCKJnGB5nlQ+HsMYPV/O49Ld91ZN\n/2tHkcaLLyNtywxVPRSsRh480jju0fcCsv6hp/0yXnTB//mWutBGpdUlIbwiITbA\nmrsbYnjigRvnPqX1RNJUbi9Fp6C2c/HIFJGDywIDAQABAoIBAERV7X5AvxA8uRiK\nk8SIpsD0dX1pJOMIwakUVyvc4EfN0DhKRNb4rYoSiEGTLyzLpyBc/A28Dlkm5eOY\nfjzXfYkGtYi/Ftxkg3O9vcrMQ4+6i+uGHaIL2rL+s4MrfO8v1xv6+Wky33EEGCou\nQiwVGRFQXnRoQ62NBCFbUNLhmXwdj1akZzLU4p5R4zA3QhdxwEIatVLt0+7owLQ3\nlP8sfXhppPOXjTqMD4QkYwzPAa8/zF7acn4kryrUP7Q6PAfd0zEVqNy9ZCZ9ffho\nzXedFj486IFoc5gnTp2N6jsnVj4LCGIhlVHlYGozKKFqJcQVGsHCqq1oz2zjW6LS\noRYIHgECgYEA8zZrkCwNYSXJuODJ3m/hOLVxcxgJuwXoiErWd0E42vPanjjVMhnt\nKY5l8qGMJ6FhK9LYx2qCrf/E0XtUAZ2wVq3ORTyGnsMWre9tLYs55X+ZN10Tc75z\n4hacbU0hqKN1HiDmsMRY3/2NaZHoy7MKnwJJBaG48l9CCTlVwMHocIECgYEA8jby\ndGjxTH+6XHWNizb5SRbZxAnyEeJeRwTMh0gGzwGPpH/sZYGzyu0SySXWCnZh3Rgq\n5uLlNxtrXrljZlyi2nQdQgsq2YrWUs0+zgU+22uQsZpSAftmhVrtvet6MjVjbByY\nDADciEVUdJYIXk+qnFUJyeroLIkTj7WYKZ6RjksCgYBoCFIwRDeg42oK89RFmnOr\nLymNAq4+2oMhsWlVb4ejWIWeAk9nc+GXUfrXszRhS01mUnU5r5ygUvRcarV/T3U7\nTnMZ+I7Y4DgWRIDd51znhxIBtYV5j/C/t85HjqOkH+8b6RTkbchaX3mau7fpUfds\nFq0nhIq42fhEO8srfYYwgQKBgQCyhi1N/8taRwpk+3/IDEzQwjbfdzUkWWSDk9Xs\nH/pkuRHWfTMP3flWqEYgW/LW40peW2HDq5imdV8+AgZxe/XMbaji9Lgwf1RY005n\nKxaZQz7yqHupWlLGF68DPHxkZVVSagDnV/sztWX6SFsCqFVnxIXifXGC4cW5Nm9g\nva8q4QKBgQCEhLVeUfdwKvkZ94g/GFz731Z2hrdVhgMZaU/u6t0V95+YezPNCQZB\nwmE9Mmlbq1emDeROivjCfoGhR3kZXW1pTKlLh6ZMUQUOpptdXva8XxfoqQwa3enA\nM7muBbF0XN7VO80iJPv+PmIZdEIAkpwKfi201YB+BafCIuGxIF50Vg==\n-----END RSA PRIVATE KEY-----"}
+  # 滋賀縣 Kusatsu Shi · OPTAGE Inc. · AS17511 OPTAGE Inc.
+  - {name: "🏠 JP-家宽-02", type: openvpn, server: 58.70.237.246, port: 1209, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, udp: false, handshake-timeout: 30, remote-dns-resolve: true, dns: [8.8.8.8, 1.1.1.1], dialer-proxy: "自动选择", ca: *jkca, cert: *jkcert, key: *jkkey}
+  # Incheon Yeonsu-gu · Korea Telecom · AS4766 Korea Telecom
+  - {name: "🏠 KR-家宽-01", type: openvpn, server: 221.154.243.246, port: 995, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, udp: false, handshake-timeout: 30, remote-dns-resolve: true, dns: [8.8.8.8, 1.1.1.1], dialer-proxy: "自动选择", ca: *jkca, cert: *jkcert, key: *jkkey}
+  # 首尔特别市 · LG POWERCOMM · AS17858 LG POWERCOMM
+  - {name: "🏠 KR-家宽-02", type: openvpn, server: 182.224.174.231, port: 995, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, udp: false, handshake-timeout: 30, remote-dns-resolve: true, dns: [8.8.8.8, 1.1.1.1], dialer-proxy: "自动选择", ca: *jkca, cert: *jkcert, key: *jkkey}
   # Hanoi 河內市 · FPT Telecom Company · AS18403 FPT Telecom Company
-  - name: "🏠 VN-家宽-01"
-    type: openvpn
-    server: 42.119.44.141
-    port: 995
-    proto: tcp
-    username: vpn
-    password: vpn
-    cipher: AES-128-CBC
-    auth: SHA1
-    udp: false
-    handshake-timeout: 30
-    remote-dns-resolve: true
-    dns: [ 8.8.8.8, 1.1.1.1 ]
-    dialer-proxy: "自动选择"
-    ca: *jkca
-    cert: *jkcert
-    key: *jkkey
-  # 东京都 东京 · NTT Communications Corporation · AS4713 NTT DOCOMO BUSINESS,Inc.
-  - name: "🏠 JP-家宽-09"
-    type: openvpn
-    server: 153.180.162.195
-    port: 1759
-    proto: tcp
-    username: vpn
-    password: vpn
-    cipher: AES-128-CBC
-    auth: SHA1
-    udp: false
-    handshake-timeout: 30
-    remote-dns-resolve: true
-    dns: [ 8.8.8.8, 1.1.1.1 ]
-    dialer-proxy: "自动选择"
-    ca: *jkca
-    cert: *jkcert
-    key: *jkkey
-  # 首尔特别市 Gangbuk-gu · Korea Telecom · AS4766 Korea Telecom
-  - name: "🏠 KR-家宽-02"
-    type: openvpn
-    server: 119.192.8.27
-    port: 1989
-    proto: tcp
-    username: vpn
-    password: vpn
-    cipher: AES-128-CBC
-    auth: SHA1
-    udp: false
-    handshake-timeout: 30
-    remote-dns-resolve: true
-    dns: [ 8.8.8.8, 1.1.1.1 ]
-    dialer-proxy: "自动选择"
-    ca: *jkca
-    cert: *jkcert
-    key: *jkkey
+  - {name: "🏠 VN-家宽-01", type: openvpn, server: 42.119.44.141, port: 995, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, udp: false, handshake-timeout: 30, remote-dns-resolve: true, dns: [8.8.8.8, 1.1.1.1], dialer-proxy: "自动选择", ca: *jkca, cert: *jkcert, key: *jkkey}
+  # 群馬縣 藤岡市 · Kddi Corporation · AS2516 KDDI CORPORATION
+  - {name: "🏠 JP-家宽-03", type: openvpn, server: 106.174.122.123, port: 1426, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, udp: false, handshake-timeout: 30, remote-dns-resolve: true, dns: [8.8.8.8, 1.1.1.1], dialer-proxy: "自动选择", ca: *jkca, cert: *jkcert, key: *jkkey}
+  # 京畿道 Gwacheon · SK Broadband Co Ltd · AS9318 SK Broadband Co Ltd
+  - {name: "🏠 KR-家宽-03", type: openvpn, server: 1.241.242.170, port: 995, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, udp: false, handshake-timeout: 30, remote-dns-resolve: true, dns: [8.8.8.8, 1.1.1.1], dialer-proxy: "自动选择", ca: *jkca, cert: *jkcert, key: *jkkey}
   # 东京都 Minato · SoftBank Corp. · AS17676 SoftBank Corp.
-  - name: "🏠 JP-家宽-10"
-    type: openvpn
-    server: 126.63.153.253
-    port: 1562
-    proto: tcp
-    username: vpn
-    password: vpn
-    cipher: AES-128-CBC
-    auth: SHA1
-    udp: false
-    handshake-timeout: 30
-    remote-dns-resolve: true
-    dns: [ 8.8.8.8, 1.1.1.1 ]
-    dialer-proxy: "自动选择"
-    ca: *jkca
-    cert: *jkcert
-    key: *jkkey
-  # 神奈川縣 横滨市 · BIGLOBE Inc. · AS2518 BIGLOBE Inc.
-  - name: "🏠 JP-家宽-11"
-    type: openvpn
-    server: 133.209.108.50
-    port: 1258
-    proto: tcp
-    username: vpn
-    password: vpn
-    cipher: AES-128-CBC
-    auth: SHA1
-    udp: false
-    handshake-timeout: 30
-    remote-dns-resolve: true
-    dns: [ 8.8.8.8, 1.1.1.1 ]
-    dialer-proxy: "自动选择"
-    ca: *jkca
-    cert: *jkcert
-    key: *jkkey
-  # 埼玉縣 Kitamoto-shi · Kddi Corporation · AS2516 KDDI CORPORATION
-  - name: "🏠 JP-家宽-12"
-    type: openvpn
-    server: 36.8.6.31
-    port: 1237
-    proto: tcp
-    username: vpn
-    password: vpn
-    cipher: AES-128-CBC
-    auth: SHA1
-    udp: false
-    handshake-timeout: 30
-    remote-dns-resolve: true
-    dns: [ 8.8.8.8, 1.1.1.1 ]
-    dialer-proxy: "自动选择"
-    ca: *jkca
-    cert: *jkcert
-    key: *jkkey
-  # Chungcheongnam-do 牙山市 · KORNET · AS4766 Korea Telecom
-  - name: "🏠 KR-家宽-03"
-    type: openvpn
-    server: 222.114.55.155
-    port: 995
-    proto: tcp
-    username: vpn
-    password: vpn
-    cipher: AES-128-CBC
-    auth: SHA1
-    udp: false
-    handshake-timeout: 30
-    remote-dns-resolve: true
-    dns: [ 8.8.8.8, 1.1.1.1 ]
-    dialer-proxy: "自动选择"
-    ca: *jkca
-    cert: *jkcert
-    key: *jkkey
-  # 得克萨斯州 艾爾帕索 · Charter Communications · AS11427 Charter Communications Inc
-  - name: "🏠 US-家宽-01"
-    type: openvpn
-    server: 72.180.241.103
-    port: 1325
-    proto: tcp
-    username: vpn
-    password: vpn
-    cipher: AES-128-CBC
-    auth: SHA1
-    udp: false
-    handshake-timeout: 30
-    remote-dns-resolve: true
-    dns: [ 8.8.8.8, 1.1.1.1 ]
-    dialer-proxy: "自动选择"
-    ca: *jkca
-    cert: *jkcert
-    key: *jkkey
-  # 普吉府 普吉市 · TRIPLETNET · AS45758 Advanced Wireless Network Company Limited
-  - name: "🏠 TH-家宽-02"
-    type: openvpn
-    server: 171.5.11.106
-    port: 1801
-    proto: tcp
-    username: vpn
-    password: vpn
-    cipher: AES-128-CBC
-    auth: SHA1
-    udp: false
-    handshake-timeout: 30
-    remote-dns-resolve: true
-    dns: [ 8.8.8.8, 1.1.1.1 ]
-    dialer-proxy: "自动选择"
-    ca: *jkca
-    cert: *jkcert
-    key: *jkkey
-  # 茨城縣 日立市 · Sony Network Communications Inc · AS2527 Sony Network Communications Inc.
-  - name: "🏠 JP-家宽-13"
-    type: openvpn
-    server: 39.110.50.237
-    port: 1811
-    proto: tcp
-    username: vpn
-    password: vpn
-    cipher: AES-128-CBC
-    auth: SHA1
-    udp: false
-    handshake-timeout: 30
-    remote-dns-resolve: true
-    dns: [ 8.8.8.8, 1.1.1.1 ]
-    dialer-proxy: "自动选择"
-    ca: *jkca
-    cert: *jkcert
-    key: *jkkey
-  # 京畿道 Yongin-si · Korea Telecom · AS4766 Korea Telecom
-  - name: "🏠 KR-家宽-04"
-    type: openvpn
-    server: 121.136.19.208
-    port: 995
-    proto: tcp
-    username: vpn
-    password: vpn
-    cipher: AES-128-CBC
-    auth: SHA1
-    udp: false
-    handshake-timeout: 30
-    remote-dns-resolve: true
-    dns: [ 8.8.8.8, 1.1.1.1 ]
-    dialer-proxy: "自动选择"
-    ca: *jkca
-    cert: *jkcert
-    key: *jkkey
-  # 京都府 京都 · OPTAGE Inc. · AS17511 OPTAGE Inc.
-  - name: "🏠 JP-家宽-14"
-    type: openvpn
-    server: 121.81.157.127
-    port: 1346
-    proto: tcp
-    username: vpn
-    password: vpn
-    cipher: AES-128-CBC
-    auth: SHA1
-    udp: false
-    handshake-timeout: 30
-    remote-dns-resolve: true
-    dns: [ 8.8.8.8, 1.1.1.1 ]
-    dialer-proxy: "自动选择"
-    ca: *jkca
-    cert: *jkcert
-    key: *jkkey
-  # 愛知縣 豐橋市 · Chubu Telecommunications Company, Inc. · AS18126 Chubu Telecommunications Company, Inc.
-  - name: "🏠 JP-家宽-15"
-    type: openvpn
-    server: 180.196.62.66
-    port: 1404
-    proto: tcp
-    username: vpn
-    password: vpn
-    cipher: AES-128-CBC
-    auth: SHA1
-    udp: false
-    handshake-timeout: 30
-    remote-dns-resolve: true
-    dns: [ 8.8.8.8, 1.1.1.1 ]
-    dialer-proxy: "自动选择"
-    ca: *jkca
-    cert: *jkcert
-    key: *jkkey
-  # 曼谷 · Advanced Wireless Network Company Limited · AS133481 AIS Fibre
-  - name: "🏠 TH-家宽-03"
-    type: openvpn
-    server: 27.130.50.183
-    port: 1734
-    proto: tcp
-    username: vpn
-    password: vpn
-    cipher: AES-128-CBC
-    auth: SHA1
-    udp: false
-    handshake-timeout: 30
-    remote-dns-resolve: true
-    dns: [ 8.8.8.8, 1.1.1.1 ]
-    dialer-proxy: "自动选择"
-    ca: *jkca
-    cert: *jkcert
-    key: *jkkey
-  # 長野縣 Nagano · Naganoken Kyodou Densan Co.Ltd. · AS18268 Naganoken Kyodou Densan Co.Ltd.
-  - name: "🏠 JP-家宽-16"
-    type: openvpn
-    server: 220.254.220.117
-    port: 1908
-    proto: tcp
-    username: vpn
-    password: vpn
-    cipher: AES-128-CBC
-    auth: SHA1
-    udp: false
-    handshake-timeout: 30
-    remote-dns-resolve: true
-    dns: [ 8.8.8.8, 1.1.1.1 ]
-    dialer-proxy: "自动选择"
-    ca: *jkca
-    cert: *jkcert
-    key: *jkkey
-  # 大阪府 吹田市 · NTT Communications Corporation · AS4713 NTT DOCOMO BUSINESS,Inc.
-  - name: "🏠 JP-家宽-17"
-    type: openvpn
-    server: 118.17.84.230
-    port: 1791
-    proto: tcp
-    username: vpn
-    password: vpn
-    cipher: AES-128-CBC
-    auth: SHA1
-    udp: false
-    handshake-timeout: 30
-    remote-dns-resolve: true
-    dns: [ 8.8.8.8, 1.1.1.1 ]
-    dialer-proxy: "自动选择"
-    ca: *jkca
-    cert: *jkcert
-    key: *jkkey
-  # 愛知縣 丰田市 · Chubu Telecommunications Company, Inc. · AS18126 Chubu Telecommunications Company, Inc.
-  - name: "🏠 JP-家宽-18"
-    type: openvpn
-    server: 118.104.73.196
-    port: 1289
-    proto: tcp
-    username: vpn
-    password: vpn
-    cipher: AES-128-CBC
-    auth: SHA1
-    udp: false
-    handshake-timeout: 30
-    remote-dns-resolve: true
-    dns: [ 8.8.8.8, 1.1.1.1 ]
-    dialer-proxy: "自动选择"
-    ca: *jkca
-    cert: *jkcert
-    key: *jkkey
-  # 神奈川縣 Kamikuratachō · Kddi Corporation · AS2516 KDDI CORPORATION
-  - name: "🏠 JP-家宽-19"
-    type: openvpn
-    server: 175.134.228.229
-    port: 1558
-    proto: tcp
-    username: vpn
-    password: vpn
-    cipher: AES-128-CBC
-    auth: SHA1
-    udp: false
-    handshake-timeout: 30
-    remote-dns-resolve: true
-    dns: [ 8.8.8.8, 1.1.1.1 ]
-    dialer-proxy: "自动选择"
-    ca: *jkca
-    cert: *jkcert
-    key: *jkkey
-  # 神奈川縣 横滨市 · NTT Communications Corporation · AS4713 NTT DOCOMO BUSINESS,Inc.
-  - name: "🏠 JP-家宽-20"
-    type: openvpn
-    server: 153.151.191.71
-    port: 1510
-    proto: tcp
-    username: vpn
-    password: vpn
-    cipher: AES-128-CBC
-    auth: SHA1
-    udp: false
-    handshake-timeout: 30
-    remote-dns-resolve: true
-    dns: [ 8.8.8.8, 1.1.1.1 ]
-    dialer-proxy: "自动选择"
-    ca: *jkca
-    cert: *jkcert
-    key: *jkkey
-  # 京都府 京都 · JCOM Co · AS9824 JCOM Co., Ltd.
-  - name: "🏠 JP-家宽-21"
-    type: openvpn
-    server: 125.8.119.43
-    port: 1514
-    proto: tcp
-    username: vpn
-    password: vpn
-    cipher: AES-128-CBC
-    auth: SHA1
-    udp: false
-    handshake-timeout: 30
-    remote-dns-resolve: true
-    dns: [ 8.8.8.8, 1.1.1.1 ]
-    dialer-proxy: "自动选择"
-    ca: *jkca
-    cert: *jkcert
-    key: *jkkey
-  # 东京都 Minato-ku · SoftBank Corp. · AS17676 SoftBank Corp.
-  - name: "🏠 JP-家宽-22"
-    type: openvpn
-    server: 60.109.54.100
-    port: 1296
-    proto: tcp
-    username: vpn
-    password: vpn
-    cipher: AES-128-CBC
-    auth: SHA1
-    udp: false
-    handshake-timeout: 30
-    remote-dns-resolve: true
-    dns: [ 8.8.8.8, 1.1.1.1 ]
-    dialer-proxy: "自动选择"
-    ca: *jkca
-    cert: *jkcert
-    key: *jkkey
-  # Hanoi 河內市 · Vietnam Internet Network Information Center · AS18403 FPT Telecom Company
-  - name: "🏠 VN-家宽-02"
-    type: openvpn
-    server: 183.80.46.181
-    port: 1660
-    proto: tcp
-    username: vpn
-    password: vpn
-    cipher: AES-128-CBC
-    auth: SHA1
-    udp: false
-    handshake-timeout: 30
-    remote-dns-resolve: true
-    dns: [ 8.8.8.8, 1.1.1.1 ]
-    dialer-proxy: "自动选择"
-    ca: *jkca
-    cert: *jkcert
-    key: *jkkey
-  # 光州广域市 · Korea Telecom · AS4766 Korea Telecom
-  - name: "🏠 KR-家宽-05"
-    type: openvpn
-    server: 121.148.181.177
-    port: 1821
-    proto: tcp
-    username: vpn
-    password: vpn
-    cipher: AES-128-CBC
-    auth: SHA1
-    udp: false
-    handshake-timeout: 30
-    remote-dns-resolve: true
-    dns: [ 8.8.8.8, 1.1.1.1 ]
-    dialer-proxy: "自动选择"
-    ca: *jkca
-    cert: *jkcert
-    key: *jkkey
+  - {name: "🏠 JP-家宽-04", type: openvpn, server: 126.216.148.248, port: 1449, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, udp: false, handshake-timeout: 30, remote-dns-resolve: true, dns: [8.8.8.8, 1.1.1.1], dialer-proxy: "自动选择", ca: *jkca, cert: *jkcert, key: *jkkey}
+  # 东京都 國分寺市 · Kddi Corporation · AS2516 KDDI CORPORATION
+  - {name: "🏠 JP-家宽-05", type: openvpn, server: 27.84.184.174, port: 1292, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, udp: false, handshake-timeout: 30, remote-dns-resolve: true, dns: [8.8.8.8, 1.1.1.1], dialer-proxy: "自动选择", ca: *jkca, cert: *jkcert, key: *jkkey}
+  # 曼谷 · AIS-Fibre · AS133481 AIS Fibre
+  - {name: "🏠 TH-家宽-01", type: openvpn, server: 58.136.43.59, port: 1964, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, udp: false, handshake-timeout: 30, remote-dns-resolve: true, dns: [8.8.8.8, 1.1.1.1], dialer-proxy: "自动选择", ca: *jkca, cert: *jkcert, key: *jkkey}
+  # 北海道 帶廣市 · Kddi Corporation · AS2516 KDDI CORPORATION
+  - {name: "🏠 JP-家宽-06", type: openvpn, server: 210.198.250.157, port: 1895, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, udp: false, handshake-timeout: 30, remote-dns-resolve: true, dns: [8.8.8.8, 1.1.1.1], dialer-proxy: "自动选择", ca: *jkca, cert: *jkcert, key: *jkkey}
+  # 东京都 Kameido · Sony Network Communications Inc · AS2527 Sony Network Communications Inc.
+  - {name: "🏠 JP-家宽-07", type: openvpn, server: 110.67.241.211, port: 1236, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, udp: false, handshake-timeout: 30, remote-dns-resolve: true, dns: [8.8.8.8, 1.1.1.1], dialer-proxy: "自动选择", ca: *jkca, cert: *jkcert, key: *jkkey}
+  # North Chungcheong Cheongju-si · LG POWERCOMM · AS17858 LG POWERCOMM
+  - {name: "🏠 KR-家宽-04", type: openvpn, server: 116.37.252.7, port: 1250, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, udp: false, handshake-timeout: 30, remote-dns-resolve: true, dns: [8.8.8.8, 1.1.1.1], dialer-proxy: "自动选择", ca: *jkca, cert: *jkcert, key: *jkkey}
   # 胡志明市 · FPT Telecom Company · AS18403 FPT Telecom Company
-  - name: "🏠 VN-家宽-03"
-    type: openvpn
-    server: 118.68.222.29
-    port: 1634
-    proto: tcp
-    username: vpn
-    password: vpn
-    cipher: AES-128-CBC
-    auth: SHA1
-    udp: false
-    handshake-timeout: 30
-    remote-dns-resolve: true
-    dns: [ 8.8.8.8, 1.1.1.1 ]
-    dialer-proxy: "自动选择"
-    ca: *jkca
-    cert: *jkcert
-    key: *jkkey
-  # 神奈川縣 橫須賀市 · Kddi Corporation · AS2516 KDDI CORPORATION
-  - name: "🏠 JP-家宽-23"
-    type: openvpn
-    server: 106.168.151.103
-    port: 1224
-    proto: tcp
-    username: vpn
-    password: vpn
-    cipher: AES-128-CBC
-    auth: SHA1
-    udp: false
-    handshake-timeout: 30
-    remote-dns-resolve: true
-    dns: [ 8.8.8.8, 1.1.1.1 ]
-    dialer-proxy: "自动选择"
-    ca: *jkca
-    cert: *jkcert
-    key: *jkkey
-  # 京畿道 安山市 · LG POWERCOMM · AS17858 LG POWERCOMM
-  - name: "🏠 KR-家宽-06"
-    type: openvpn
-    server: 112.144.189.84
-    port: 995
-    proto: tcp
-    username: vpn
-    password: vpn
-    cipher: AES-128-CBC
-    auth: SHA1
-    udp: false
-    handshake-timeout: 30
-    remote-dns-resolve: true
-    dns: [ 8.8.8.8, 1.1.1.1 ]
-    dialer-proxy: "自动选择"
-    ca: *jkca
-    cert: *jkcert
-    key: *jkkey
-  # 京畿道 Yongin-si · Korea Telecom · AS4766 Korea Telecom
-  - name: "🏠 KR-家宽-07"
-    type: openvpn
-    server: 14.33.55.84
-    port: 1252
-    proto: tcp
-    username: vpn
-    password: vpn
-    cipher: AES-128-CBC
-    auth: SHA1
-    udp: false
-    handshake-timeout: 30
-    remote-dns-resolve: true
-    dns: [ 8.8.8.8, 1.1.1.1 ]
-    dialer-proxy: "自动选择"
-    ca: *jkca
-    cert: *jkcert
-    key: *jkkey
-  # 首尔特别市 Yongsan-dong · LG POWERCOMM · AS17858 LG POWERCOMM
-  - name: "🏠 KR-家宽-08"
-    type: openvpn
-    server: 119.65.226.136
-    port: 1878
-    proto: tcp
-    username: vpn
-    password: vpn
-    cipher: AES-128-CBC
-    auth: SHA1
-    udp: false
-    handshake-timeout: 30
-    remote-dns-resolve: true
-    dns: [ 8.8.8.8, 1.1.1.1 ]
-    dialer-proxy: "自动选择"
-    ca: *jkca
-    cert: *jkcert
-    key: *jkkey
-  # 大阪府 Noe · NTT Communications Corporation · AS4713 NTT DOCOMO BUSINESS,Inc.
-  - name: "🏠 JP-家宽-24"
-    type: openvpn
-    server: 121.118.241.33
-    port: 1582
-    proto: tcp
-    username: vpn
-    password: vpn
-    cipher: AES-128-CBC
-    auth: SHA1
-    udp: false
-    handshake-timeout: 30
-    remote-dns-resolve: true
-    dns: [ 8.8.8.8, 1.1.1.1 ]
-    dialer-proxy: "自动选择"
-    ca: *jkca
-    cert: *jkcert
-    key: *jkkey
+  - {name: "🏠 VN-家宽-02", type: openvpn, server: 1.53.147.62, port: 1771, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, udp: false, handshake-timeout: 30, remote-dns-resolve: true, dns: [8.8.8.8, 1.1.1.1], dialer-proxy: "自动选择", ca: *jkca, cert: *jkcert, key: *jkkey}
+  # 京畿道 水原市 · Korea Telecom · AS4766 Korea Telecom
+  - {name: "🏠 KR-家宽-05", type: openvpn, server: 221.153.69.130, port: 995, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, udp: false, handshake-timeout: 30, remote-dns-resolve: true, dns: [8.8.8.8, 1.1.1.1], dialer-proxy: "自动选择", ca: *jkca, cert: *jkcert, key: *jkkey}
+  # 东京都 Senzoku · NTT Communications Corporation · AS4713 NTT DOCOMO BUSINESS,Inc.
+  - {name: "🏠 JP-家宽-08", type: openvpn, server: 153.134.150.194, port: 1397, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, udp: false, handshake-timeout: 30, remote-dns-resolve: true, dns: [8.8.8.8, 1.1.1.1], dialer-proxy: "自动选择", ca: *jkca, cert: *jkcert, key: *jkkey}
+  # 京畿道 水原市 · Korea Telecom · AS4766 Korea Telecom
+  - {name: "🏠 KR-家宽-06", type: openvpn, server: 121.137.155.132, port: 995, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, udp: false, handshake-timeout: 30, remote-dns-resolve: true, dns: [8.8.8.8, 1.1.1.1], dialer-proxy: "自动选择", ca: *jkca, cert: *jkcert, key: *jkkey}
+  # Gyeongsangnam-do Gimhae · Korea Telecom · AS4766 Korea Telecom
+  - {name: "🏠 KR-家宽-07", type: openvpn, server: 119.199.196.37, port: 995, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, udp: false, handshake-timeout: 30, remote-dns-resolve: true, dns: [8.8.8.8, 1.1.1.1], dialer-proxy: "自动选择", ca: *jkca, cert: *jkcert, key: *jkkey}
+  # 首尔特别市 Eunpyeong-gu · LG HelloVision Corp. · AS17839 LG HelloVision Corp.
+  - {name: "🏠 KR-家宽-08", type: openvpn, server: 61.102.110.135, port: 995, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, udp: false, handshake-timeout: 30, remote-dns-resolve: true, dns: [8.8.8.8, 1.1.1.1], dialer-proxy: "自动选择", ca: *jkca, cert: *jkcert, key: *jkkey}
+  # 鹿兒島縣 鹿儿岛市 · SYNAPSE Co., Ltd. · AS7511 SYNAPSE Co.,Ltd.
+  - {name: "🏠 JP-家宽-09", type: openvpn, server: 124.146.89.60, port: 1674, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, udp: false, handshake-timeout: 30, remote-dns-resolve: true, dns: [8.8.8.8, 1.1.1.1], dialer-proxy: "自动选择", ca: *jkca, cert: *jkcert, key: *jkkey}
+  # 愛知縣 名古屋市 · NTT Communications Corporation · AS4713 NTT DOCOMO BUSINESS,Inc.
+  - {name: "🏠 JP-家宽-10", type: openvpn, server: 114.156.233.159, port: 1730, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, udp: false, handshake-timeout: 30, remote-dns-resolve: true, dns: [8.8.8.8, 1.1.1.1], dialer-proxy: "自动选择", ca: *jkca, cert: *jkcert, key: *jkkey}
+  # 神奈川縣 川崎市 · Sony Network Communications Inc · AS2527 Sony Network Communications Inc.
+  - {name: "🏠 JP-家宽-11", type: openvpn, server: 118.240.49.38, port: 1688, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, udp: false, handshake-timeout: 30, remote-dns-resolve: true, dns: [8.8.8.8, 1.1.1.1], dialer-proxy: "自动选择", ca: *jkca, cert: *jkcert, key: *jkkey}
+  # 斯维尔德洛夫斯克州 Polevskoy · VPN (PPPoE) customers Sverdlovsk reg. Interra Ltd. · AS48524 INTERRA telecommunications group, Ltd.
+  - {name: "🏠 RU-家宽-01", type: openvpn, server: 94.190.111.171, port: 1622, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, udp: false, handshake-timeout: 30, remote-dns-resolve: true, dns: [8.8.8.8, 1.1.1.1], dialer-proxy: "自动选择", ca: *jkca, cert: *jkcert, key: *jkkey}
+  # 京畿道 Seongnam-si · Korea Telecom · AS4766 Korea Telecom
+  - {name: "🏠 KR-家宽-09", type: openvpn, server: 59.8.32.44, port: 1353, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, udp: false, handshake-timeout: 30, remote-dns-resolve: true, dns: [8.8.8.8, 1.1.1.1], dialer-proxy: "自动选择", ca: *jkca, cert: *jkcert, key: *jkkey}
+  # 京畿道 安山市 · Korea Telecom · AS4766 Korea Telecom
+  - {name: "🏠 KR-家宽-10", type: openvpn, server: 211.252.30.183, port: 995, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, udp: false, handshake-timeout: 30, remote-dns-resolve: true, dns: [8.8.8.8, 1.1.1.1], dialer-proxy: "自动选择", ca: *jkca, cert: *jkcert, key: *jkkey}
+  # 东京都 Asagayakita · JCOM Co · AS9824 JCOM Co., Ltd.
+  - {name: "🏠 JP-家宽-12", type: openvpn, server: 125.14.182.207, port: 1956, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, udp: false, handshake-timeout: 30, remote-dns-resolve: true, dns: [8.8.8.8, 1.1.1.1], dialer-proxy: "自动选择", ca: *jkca, cert: *jkcert, key: *jkkey}
+  # 福岡縣 福岡市 · NTT Communications Corporation · AS4713 NTT DOCOMO BUSINESS,Inc.
+  - {name: "🏠 JP-家宽-13", type: openvpn, server: 153.166.94.174, port: 995, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, udp: false, handshake-timeout: 30, remote-dns-resolve: true, dns: [8.8.8.8, 1.1.1.1], dialer-proxy: "自动选择", ca: *jkca, cert: *jkcert, key: *jkkey}
+  # 东京都 Minato-ku · SoftBank Corp. · AS17676 SoftBank Corp.
+  - {name: "🏠 JP-家宽-14", type: openvpn, server: 60.142.245.177, port: 1925, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, udp: false, handshake-timeout: 30, remote-dns-resolve: true, dns: [8.8.8.8, 1.1.1.1], dialer-proxy: "自动选择", ca: *jkca, cert: *jkcert, key: *jkkey}
+  # 福岡縣 福岡市 · NTT Communications Corporation · AS4713 NTT DOCOMO BUSINESS,Inc.
+  - {name: "🏠 JP-家宽-15", type: openvpn, server: 180.16.35.7, port: 1896, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, udp: false, handshake-timeout: 30, remote-dns-resolve: true, dns: [8.8.8.8, 1.1.1.1], dialer-proxy: "自动选择", ca: *jkca, cert: *jkcert, key: *jkkey}
+  # 东京都 tabashi City · Kddi Corporation · AS2516 KDDI CORPORATION
+  - {name: "🏠 JP-家宽-16", type: openvpn, server: 59.138.46.203, port: 1949, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, udp: false, handshake-timeout: 30, remote-dns-resolve: true, dns: [8.8.8.8, 1.1.1.1], dialer-proxy: "自动选择", ca: *jkca, cert: *jkcert, key: *jkkey}
+  # 栃木縣 栃木市 · Cable TV Corporation · AS18278 Cable TV Corporation
+  - {name: "🏠 JP-家宽-17", type: openvpn, server: 118.82.55.107, port: 1290, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, udp: false, handshake-timeout: 30, remote-dns-resolve: true, dns: [8.8.8.8, 1.1.1.1], dialer-proxy: "自动选择", ca: *jkca, cert: *jkcert, key: *jkkey}
+  # 滨海边疆区 海参崴 · VLADLINK · AS42038 Krivets Sergey Sergeevich
+  - {name: "🏠 RU-家宽-02", type: openvpn, server: 46.37.157.171, port: 1694, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, udp: false, handshake-timeout: 30, remote-dns-resolve: true, dns: [8.8.8.8, 1.1.1.1], dialer-proxy: "自动选择", ca: *jkca, cert: *jkcert, key: *jkkey}
+  # 京畿道 Gwangmyeong-si · SK Broadband Co Ltd · AS17849 SK Broadband Co Ltd
+  - {name: "🏠 KR-家宽-11", type: openvpn, server: 117.123.237.73, port: 1603, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, udp: false, handshake-timeout: 30, remote-dns-resolve: true, dns: [8.8.8.8, 1.1.1.1], dialer-proxy: "自动选择", ca: *jkca, cert: *jkcert, key: *jkkey}
+  # North Chungcheong Eumseong-gun · CCS · AS45374 CCS
+  - {name: "🏠 KR-家宽-12", type: openvpn, server: 61.96.70.113, port: 1904, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, udp: false, handshake-timeout: 30, remote-dns-resolve: true, dns: [8.8.8.8, 1.1.1.1], dialer-proxy: "自动选择", ca: *jkca, cert: *jkcert, key: *jkkey}
+  # 京畿道 水原市 · SK Broadband Co Ltd · AS9318 SK Broadband Co Ltd
+  - {name: "🏠 KR-家宽-13", type: openvpn, server: 110.9.135.195, port: 995, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, udp: false, handshake-timeout: 30, remote-dns-resolve: true, dns: [8.8.8.8, 1.1.1.1], dialer-proxy: "自动选择", ca: *jkca, cert: *jkcert, key: *jkkey}
+  # 栃木縣 真岡市 · DION (KDDI CORPORATION) · AS2516 KDDI CORPORATION
+  - {name: "🏠 JP-家宽-18", type: openvpn, server: 59.139.191.107, port: 1663, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, udp: false, handshake-timeout: 30, remote-dns-resolve: true, dns: [8.8.8.8, 1.1.1.1], dialer-proxy: "自动选择", ca: *jkca, cert: *jkcert, key: *jkkey}
+  # 首尔特别市 Gangseo-gu · SK Broadband Co Ltd · AS9318 SK Broadband Co Ltd
+  - {name: "🏠 KR-家宽-14", type: openvpn, server: 211.208.239.138, port: 1864, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, udp: false, handshake-timeout: 30, remote-dns-resolve: true, dns: [8.8.8.8, 1.1.1.1], dialer-proxy: "自动选择", ca: *jkca, cert: *jkcert, key: *jkkey}
+  # 羅德島州 北士美菲路 · AS64011 · AS64011 Asia Pacific Network Information Centre
+  - {name: "🏠 US-家宽-01", type: openvpn, server: 130.215.124.186, port: 995, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, udp: false, handshake-timeout: 30, remote-dns-resolve: true, dns: [8.8.8.8, 1.1.1.1], dialer-proxy: "自动选择", ca: *jkca, cert: *jkcert, key: *jkkey}
+  # 京畿道 水原市 · LG DACOM Corporation · AS3786 LG DACOM Corporation
+  - {name: "🏠 KR-家宽-15", type: openvpn, server: 58.150.189.252, port: 1717, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, udp: false, handshake-timeout: 30, remote-dns-resolve: true, dns: [8.8.8.8, 1.1.1.1], dialer-proxy: "自动选择", ca: *jkca, cert: *jkcert, key: *jkkey}
+  # 大阪府 堺市 · CANS · AS9617 JCOM Co., Ltd.
+  - {name: "🏠 JP-家宽-19", type: openvpn, server: 122.197.135.133, port: 1327, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, udp: false, handshake-timeout: 30, remote-dns-resolve: true, dns: [8.8.8.8, 1.1.1.1], dialer-proxy: "自动选择", ca: *jkca, cert: *jkcert, key: *jkkey}
+  # 胡志明市 · Viettel Corporation · AS7552 Viettel Group
+  - {name: "🏠 VN-家宽-03", type: openvpn, server: 171.250.40.190, port: 1432, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, udp: false, handshake-timeout: 30, remote-dns-resolve: true, dns: [8.8.8.8, 1.1.1.1], dialer-proxy: "自动选择", ca: *jkca, cert: *jkcert, key: *jkkey}
+  # 富山縣 Toyama · JCOM Co., Ltd. · AS9824 JCOM Co., Ltd.
+  - {name: "🏠 JP-家宽-20", type: openvpn, server: 61.25.149.161, port: 1549, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, udp: false, handshake-timeout: 30, remote-dns-resolve: true, dns: [8.8.8.8, 1.1.1.1], dialer-proxy: "自动选择", ca: *jkca, cert: *jkcert, key: *jkkey}
+  # 首尔特别市 Dongjak-gu · Korea Telecom · AS4766 Korea Telecom
+  - {name: "🏠 KR-家宽-16", type: openvpn, server: 112.171.48.98, port: 1214, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, udp: false, handshake-timeout: 30, remote-dns-resolve: true, dns: [8.8.8.8, 1.1.1.1], dialer-proxy: "自动选择", ca: *jkca, cert: *jkcert, key: *jkkey}
   # 东京都 Minato · SoftBank Corp. · AS17676 SoftBank Corp.
-  - name: "🏠 JP-家宽-25"
-    type: openvpn
-    server: 126.67.44.20
-    port: 1915
-    proto: tcp
-    username: vpn
-    password: vpn
-    cipher: AES-128-CBC
-    auth: SHA1
-    udp: false
-    handshake-timeout: 30
-    remote-dns-resolve: true
-    dns: [ 8.8.8.8, 1.1.1.1 ]
-    dialer-proxy: "自动选择"
-    ca: *jkca
-    cert: *jkcert
-    key: *jkkey
-  # 东京都 Minato-ku · SoftBank Corp. · AS17676 SoftBank Corp.
-  - name: "🏠 JP-家宽-26"
-    type: openvpn
-    server: 60.112.234.233
-    port: 1240
-    proto: tcp
-    username: vpn
-    password: vpn
-    cipher: AES-128-CBC
-    auth: SHA1
-    udp: false
-    handshake-timeout: 30
-    remote-dns-resolve: true
-    dns: [ 8.8.8.8, 1.1.1.1 ]
-    dialer-proxy: "自动选择"
-    ca: *jkca
-    cert: *jkcert
-    key: *jkkey
-  # Jeollanam-do Muan · Korea Telecom · AS4766 Korea Telecom
-  - name: "🏠 KR-家宽-09"
-    type: openvpn
-    server: 121.178.234.19
-    port: 443
-    proto: tcp
-    username: vpn
-    password: vpn
-    cipher: AES-128-CBC
-    auth: SHA1
-    udp: false
-    handshake-timeout: 30
-    remote-dns-resolve: true
-    dns: [ 8.8.8.8, 1.1.1.1 ]
-    dialer-proxy: "自动选择"
-    ca: *jkca
-    cert: *jkcert
-    key: *jkkey
-  # 胡志明市 · FPT Telecom Company · AS18403 FPT Telecom Company
-  - name: "🏠 VN-家宽-04"
-    type: openvpn
-    server: 118.68.222.29
-    port: 1356
-    proto: tcp
-    username: vpn
-    password: vpn
-    cipher: AES-128-CBC
-    auth: SHA1
-    udp: false
-    handshake-timeout: 30
-    remote-dns-resolve: true
-    dns: [ 8.8.8.8, 1.1.1.1 ]
-    dialer-proxy: "自动选择"
-    ca: *jkca
-    cert: *jkcert
-    key: *jkkey
-  # 胡志明市 · FPT Telecom Company · AS18403 FPT Telecom Company
-  - name: "🏠 VN-家宽-05"
-    type: openvpn
-    server: 118.68.222.29
-    port: 1337
-    proto: tcp
-    username: vpn
-    password: vpn
-    cipher: AES-128-CBC
-    auth: SHA1
-    udp: false
-    handshake-timeout: 30
-    remote-dns-resolve: true
-    dns: [ 8.8.8.8, 1.1.1.1 ]
-    dialer-proxy: "自动选择"
-    ca: *jkca
-    cert: *jkcert
-    key: *jkkey
-  # 胡志明市 · FPT Telecom Company · AS18403 FPT Telecom Company
-  - name: "🏠 VN-家宽-06"
-    type: openvpn
-    server: 118.68.222.29
-    port: 1548
-    proto: tcp
-    username: vpn
-    password: vpn
-    cipher: AES-128-CBC
-    auth: SHA1
-    udp: false
-    handshake-timeout: 30
-    remote-dns-resolve: true
-    dns: [ 8.8.8.8, 1.1.1.1 ]
-    dialer-proxy: "自动选择"
-    ca: *jkca
-    cert: *jkcert
-    key: *jkkey
+  - {name: "🏠 JP-家宽-21", type: openvpn, server: 126.28.190.185, port: 1890, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, udp: false, handshake-timeout: 30, remote-dns-resolve: true, dns: [8.8.8.8, 1.1.1.1], dialer-proxy: "自动选择", ca: *jkca, cert: *jkcert, key: *jkkey}
+  # 京畿道 Yangpyeong · Korea Telecom · AS4766 Korea Telecom
+  - {name: "🏠 KR-家宽-17", type: openvpn, server: 220.77.215.202, port: 995, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, udp: false, handshake-timeout: 30, remote-dns-resolve: true, dns: [8.8.8.8, 1.1.1.1], dialer-proxy: "自动选择", ca: *jkca, cert: *jkcert, key: *jkkey}
   # 东京都 Minato · SoftBank Corp. · AS17676 SoftBank Corp.
-  - name: "🏠 JP-家宽-27"
-    type: openvpn
-    server: 126.12.201.41
-    port: 1518
-    proto: tcp
-    username: vpn
-    password: vpn
-    cipher: AES-128-CBC
-    auth: SHA1
-    udp: false
-    handshake-timeout: 30
-    remote-dns-resolve: true
-    dns: [ 8.8.8.8, 1.1.1.1 ]
-    dialer-proxy: "自动选择"
-    ca: *jkca
-    cert: *jkcert
-    key: *jkkey
-  # 釜山广域市 Yeongdo-gu · Korea Telecom · AS4766 Korea Telecom
-  - name: "🏠 KR-家宽-10"
-    type: openvpn
-    server: 125.135.49.177
-    port: 995
-    proto: tcp
-    username: vpn
-    password: vpn
-    cipher: AES-128-CBC
-    auth: SHA1
-    udp: false
-    handshake-timeout: 30
-    remote-dns-resolve: true
-    dns: [ 8.8.8.8, 1.1.1.1 ]
-    dialer-proxy: "自动选择"
-    ca: *jkca
-    cert: *jkcert
-    key: *jkkey
-  # 山口縣 Mizuhocho · DION (KDDI CORPORATION) · AS2516 KDDI CORPORATION
-  - name: "🏠 JP-家宽-28"
-    type: openvpn
-    server: 59.135.173.211
-    port: 1571
-    proto: tcp
-    username: vpn
-    password: vpn
-    cipher: AES-128-CBC
-    auth: SHA1
-    udp: false
-    handshake-timeout: 30
-    remote-dns-resolve: true
-    dns: [ 8.8.8.8, 1.1.1.1 ]
-    dialer-proxy: "自动选择"
-    ca: *jkca
-    cert: *jkcert
-    key: *jkkey
-  # 东京都 Minato-ku · SoftBank Corp. · AS17676 SoftBank Corp.
-  - name: "🏠 JP-家宽-29"
-    type: openvpn
-    server: 60.144.210.218
-    port: 1834
-    proto: tcp
-    username: vpn
-    password: vpn
-    cipher: AES-128-CBC
-    auth: SHA1
-    udp: false
-    handshake-timeout: 30
-    remote-dns-resolve: true
-    dns: [ 8.8.8.8, 1.1.1.1 ]
-    dialer-proxy: "自动选择"
-    ca: *jkca
-    cert: *jkcert
-    key: *jkkey
-  # 胡志明市 · FPT Telecom Company · AS18403 FPT Telecom Company
-  - name: "🏠 VN-家宽-07"
-    type: openvpn
-    server: 118.68.222.29
-    port: 1901
-    proto: tcp
-    username: vpn
-    password: vpn
-    cipher: AES-128-CBC
-    auth: SHA1
-    udp: false
-    handshake-timeout: 30
-    remote-dns-resolve: true
-    dns: [ 8.8.8.8, 1.1.1.1 ]
-    dialer-proxy: "自动选择"
-    ca: *jkca
-    cert: *jkcert
-    key: *jkkey
-  # Gangwon-do 原州市 · Korea Telecom · AS4766 Korea Telecom
-  - name: "🏠 KR-家宽-11"
-    type: openvpn
-    server: 211.192.121.223
-    port: 995
-    proto: tcp
-    username: vpn
-    password: vpn
-    cipher: AES-128-CBC
-    auth: SHA1
-    udp: false
-    handshake-timeout: 30
-    remote-dns-resolve: true
-    dns: [ 8.8.8.8, 1.1.1.1 ]
-    dialer-proxy: "自动选择"
-    ca: *jkca
-    cert: *jkcert
-    key: *jkkey
-  # 光州广域市 Buk-gu · Korea Telecom · AS4766 Korea Telecom
-  - name: "🏠 KR-家宽-12"
-    type: openvpn
-    server: 121.186.186.97
-    port: 1295
-    proto: tcp
-    username: vpn
-    password: vpn
-    cipher: AES-128-CBC
-    auth: SHA1
-    udp: false
-    handshake-timeout: 30
-    remote-dns-resolve: true
-    dns: [ 8.8.8.8, 1.1.1.1 ]
-    dialer-proxy: "自动选择"
-    ca: *jkca
-    cert: *jkcert
-    key: *jkkey
-  # 印第安纳州 Sunman · Great Plains Communications LLC · AS13807 Rightfiber
-  - name: "🏠 US-家宽-02"
-    type: openvpn
-    server: 216.8.232.130
-    port: 1925
-    proto: tcp
-    username: vpn
-    password: vpn
-    cipher: AES-128-CBC
-    auth: SHA1
-    udp: false
-    handshake-timeout: 30
-    remote-dns-resolve: true
-    dns: [ 8.8.8.8, 1.1.1.1 ]
-    dialer-proxy: "自动选择"
-    ca: *jkca
-    cert: *jkcert
-    key: *jkkey
-  # 首尔特别市 Eunpyeong-gu · LG POWERCOMM · AS17858 LG POWERCOMM
-  - name: "🏠 KR-家宽-13"
-    type: openvpn
-    server: 180.230.30.211
-    port: 1701
-    proto: tcp
-    username: vpn
-    password: vpn
-    cipher: AES-128-CBC
-    auth: SHA1
-    udp: false
-    handshake-timeout: 30
-    remote-dns-resolve: true
-    dns: [ 8.8.8.8, 1.1.1.1 ]
-    dialer-proxy: "自动选择"
-    ca: *jkca
-    cert: *jkcert
-    key: *jkkey
-  # 东京都 Chiyoda City · NTT PC Communications, Inc. · AS2514 NTT PC Communications, Inc.
-  - name: "🏠 JP-家宽-30"
-    type: openvpn
-    server: 210.136.248.224
-    port: 1578
-    proto: tcp
-    username: vpn
-    password: vpn
-    cipher: AES-128-CBC
-    auth: SHA1
-    udp: false
-    handshake-timeout: 30
-    remote-dns-resolve: true
-    dns: [ 8.8.8.8, 1.1.1.1 ]
-    dialer-proxy: "自动选择"
-    ca: *jkca
-    cert: *jkcert
-    key: *jkkey
-  # 神奈川縣 横滨市 · its communications Inc. · AS9365 its communications Inc.
-  - name: "🏠 JP-家宽-31"
-    type: openvpn
-    server: 101.111.51.86
-    port: 1811
-    proto: tcp
-    username: vpn
-    password: vpn
-    cipher: AES-128-CBC
-    auth: SHA1
-    udp: false
-    handshake-timeout: 30
-    remote-dns-resolve: true
-    dns: [ 8.8.8.8, 1.1.1.1 ]
-    dialer-proxy: "自动选择"
-    ca: *jkca
-    cert: *jkcert
-    key: *jkkey
-  # 首尔特别市 冠岳区 · LG DACOM Corporation · AS3786 LG DACOM Corporation
-  - name: "🏠 KR-家宽-14"
-    type: openvpn
-    server: 106.243.71.229
-    port: 1761
-    proto: tcp
-    username: vpn
-    password: vpn
-    cipher: AES-128-CBC
-    auth: SHA1
-    udp: false
-    handshake-timeout: 30
-    remote-dns-resolve: true
-    dns: [ 8.8.8.8, 1.1.1.1 ]
-    dialer-proxy: "自动选择"
-    ca: *jkca
-    cert: *jkcert
-    key: *jkkey
-  # 福岡縣 福岡市 · QTnet, Inc. · AS7679 QTnet,Inc.
-  - name: "🏠 JP-家宽-32"
-    type: openvpn
-    server: 203.179.200.136
-    port: 1905
-    proto: tcp
-    username: vpn
-    password: vpn
-    cipher: AES-128-CBC
-    auth: SHA1
-    udp: false
-    handshake-timeout: 30
-    remote-dns-resolve: true
-    dns: [ 8.8.8.8, 1.1.1.1 ]
-    dialer-proxy: "自动选择"
-    ca: *jkca
-    cert: *jkcert
-    key: *jkkey
-  # Jeollabuk-do 全州市 · LG POWERCOMM · AS17858 LG POWERCOMM
-  - name: "🏠 KR-家宽-15"
-    type: openvpn
-    server: 115.142.31.254
-    port: 995
-    proto: tcp
-    username: vpn
-    password: vpn
-    cipher: AES-128-CBC
-    auth: SHA1
-    udp: false
-    handshake-timeout: 30
-    remote-dns-resolve: true
-    dns: [ 8.8.8.8, 1.1.1.1 ]
-    dialer-proxy: "自动选择"
-    ca: *jkca
-    cert: *jkcert
-    key: *jkkey
-  # 胡志明市 · FPT Telecom Company · AS18403 FPT Telecom Company
-  - name: "🏠 VN-家宽-08"
-    type: openvpn
-    server: 118.68.222.29
-    port: 1329
-    proto: tcp
-    username: vpn
-    password: vpn
-    cipher: AES-128-CBC
-    auth: SHA1
-    udp: false
-    handshake-timeout: 30
-    remote-dns-resolve: true
-    dns: [ 8.8.8.8, 1.1.1.1 ]
-    dialer-proxy: "自动选择"
-    ca: *jkca
-    cert: *jkcert
-    key: *jkkey
-  # 伏爾加格勒州 伏尔加格勒 · CJSC "ER-Telecom Holding" Volgograd branch · AS39435 JSC ER-Telecom Holding
-  - name: "🏠 RU-家宽-01"
-    type: openvpn
-    server: 188.233.39.108
-    port: 1433
-    proto: tcp
-    username: vpn
-    password: vpn
-    cipher: AES-128-CBC
-    auth: SHA1
-    udp: false
-    handshake-timeout: 30
-    remote-dns-resolve: true
-    dns: [ 8.8.8.8, 1.1.1.1 ]
-    dialer-proxy: "自动选择"
-    ca: *jkca
-    cert: *jkcert
-    key: *jkkey
-  # Moscow 莫斯科 · KrasPromStroy, LLC · AS12737 KrasPromStroy, LLC
-  - name: "🏠 RU-家宽-02"
-    type: openvpn
-    server: 185.124.153.203
-    port: 1531
-    proto: tcp
-    username: vpn
-    password: vpn
-    cipher: AES-128-CBC
-    auth: SHA1
-    udp: false
-    handshake-timeout: 30
-    remote-dns-resolve: true
-    dns: [ 8.8.8.8, 1.1.1.1 ]
-    dialer-proxy: "自动选择"
-    ca: *jkca
-    cert: *jkcert
-    key: *jkkey
-  # 京畿道 龙仁市 · Korea Telecom · AS4766 Korea Telecom
-  - name: "🏠 KR-家宽-16"
-    type: openvpn
-    server: 118.34.253.128
-    port: 995
-    proto: tcp
-    username: vpn
-    password: vpn
-    cipher: AES-128-CBC
-    auth: SHA1
-    udp: false
-    handshake-timeout: 30
-    remote-dns-resolve: true
-    dns: [ 8.8.8.8, 1.1.1.1 ]
-    dialer-proxy: "自动选择"
-    ca: *jkca
-    cert: *jkcert
-    key: *jkkey
-  # 京畿道 Pocheon-si · Korea Telecom · AS4766 Korea Telecom
-  - name: "🏠 KR-家宽-17"
-    type: openvpn
-    server: 14.42.117.133
-    port: 995
-    proto: tcp
-    username: vpn
-    password: vpn
-    cipher: AES-128-CBC
-    auth: SHA1
-    udp: false
-    handshake-timeout: 30
-    remote-dns-resolve: true
-    dns: [ 8.8.8.8, 1.1.1.1 ]
-    dialer-proxy: "自动选择"
-    ca: *jkca
-    cert: *jkcert
-    key: *jkkey
-  # 英格兰 泰恩河畔纽卡斯尔 · TalkTalk · AS13285 TalkTalk Communications Limited
-  - name: "🏠 GB-家宽-01"
-    type: openvpn
-    server: 92.16.99.146
-    port: 1750
-    proto: tcp
-    username: vpn
-    password: vpn
-    cipher: AES-128-CBC
-    auth: SHA1
-    udp: false
-    handshake-timeout: 30
-    remote-dns-resolve: true
-    dns: [ 8.8.8.8, 1.1.1.1 ]
-    dialer-proxy: "自动选择"
-    ca: *jkca
-    cert: *jkcert
-    key: *jkkey
+  - {name: "🏠 JP-家宽-22", type: openvpn, server: 126.60.161.188, port: 1673, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, udp: false, handshake-timeout: 30, remote-dns-resolve: true, dns: [8.8.8.8, 1.1.1.1], dialer-proxy: "自动选择", ca: *jkca, cert: *jkcert, key: *jkkey}
+  # Gyeongsangbuk-do 金泉市 · HYUNDAI COMMUNICATIONS & NETWORK · AS9981 Saero Network Service LTD
+  - {name: "🏠 KR-家宽-18", type: openvpn, server: 122.199.109.234, port: 1623, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, udp: false, handshake-timeout: 30, remote-dns-resolve: true, dns: [8.8.8.8, 1.1.1.1], dialer-proxy: "自动选择", ca: *jkca, cert: *jkcert, key: *jkkey}
+  # 京畿道 Gwacheon-si · Korea Telecom · AS4766 Korea Telecom
+  - {name: "🏠 KR-家宽-19", type: openvpn, server: 61.74.83.145, port: 995, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, udp: false, handshake-timeout: 30, remote-dns-resolve: true, dns: [8.8.8.8, 1.1.1.1], dialer-proxy: "自动选择", ca: *jkca, cert: *jkcert, key: *jkkey}
   # 首尔特别市 九老区 · Korea Telecom · AS4766 Korea Telecom
-  - name: "🏠 KR-家宽-18"
-    type: openvpn
-    server: 221.150.51.112
-    port: 995
-    proto: tcp
-    username: vpn
-    password: vpn
-    cipher: AES-128-CBC
-    auth: SHA1
-    udp: false
-    handshake-timeout: 30
-    remote-dns-resolve: true
-    dns: [ 8.8.8.8, 1.1.1.1 ]
-    dialer-proxy: "自动选择"
-    ca: *jkca
-    cert: *jkcert
-    key: *jkkey
-  # 上艾瑟尔省 兹沃勒 · Vodafone Ziggo · AS33915 Vodafone Libertel B.V.
-  - name: "🏠 NL-家宽-01"
-    type: openvpn
-    server: 83.87.60.130
-    port: 1513
-    proto: tcp
-    username: vpn
-    password: vpn
-    cipher: AES-128-CBC
-    auth: SHA1
-    udp: false
-    handshake-timeout: 30
-    remote-dns-resolve: true
-    dns: [ 8.8.8.8, 1.1.1.1 ]
-    dialer-proxy: "自动选择"
-    ca: *jkca
-    cert: *jkcert
-    key: *jkkey
-  # 首尔特别市 Yongsan-gu · Korea Telecom · AS4766 Korea Telecom
-  - name: "🏠 KR-家宽-19"
-    type: openvpn
-    server: 121.162.174.151
-    port: 1848
-    proto: tcp
-    username: vpn
-    password: vpn
-    cipher: AES-128-CBC
-    auth: SHA1
-    udp: false
-    handshake-timeout: 30
-    remote-dns-resolve: true
-    dns: [ 8.8.8.8, 1.1.1.1 ]
-    dialer-proxy: "自动选择"
-    ca: *jkca
-    cert: *jkcert
-    key: *jkkey
+  - {name: "🏠 KR-家宽-20", type: openvpn, server: 222.108.175.4, port: 995, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, udp: false, handshake-timeout: 30, remote-dns-resolve: true, dns: [8.8.8.8, 1.1.1.1], dialer-proxy: "自动选择", ca: *jkca, cert: *jkcert, key: *jkkey}
+  # 东京都 Minato · SoftBank Corp. · AS17676 SoftBank Corp.
+  - {name: "🏠 JP-家宽-23", type: openvpn, server: 126.218.26.174, port: 1284, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, udp: false, handshake-timeout: 30, remote-dns-resolve: true, dns: [8.8.8.8, 1.1.1.1], dialer-proxy: "自动选择", ca: *jkca, cert: *jkcert, key: *jkkey}
+  # Gangwon-do 原州市 · Korea Telecom · AS4766 Korea Telecom
+  - {name: "🏠 KR-家宽-21", type: openvpn, server: 211.192.121.223, port: 995, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, udp: false, handshake-timeout: 30, remote-dns-resolve: true, dns: [8.8.8.8, 1.1.1.1], dialer-proxy: "自动选择", ca: *jkca, cert: *jkcert, key: *jkkey}
+  # 大阪府 大阪市 · NTT Communications Corporation · AS4713 NTT DOCOMO BUSINESS,Inc.
+  - {name: "🏠 JP-家宽-24", type: openvpn, server: 118.18.160.137, port: 1674, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, udp: false, handshake-timeout: 30, remote-dns-resolve: true, dns: [8.8.8.8, 1.1.1.1], dialer-proxy: "自动选择", ca: *jkca, cert: *jkcert, key: *jkkey}
+  # 埼玉縣 川口市 · Kddi Corporation · AS2516 KDDI CORPORATION
+  - {name: "🏠 JP-家宽-25", type: openvpn, server: 111.238.154.218, port: 1795, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, udp: false, handshake-timeout: 30, remote-dns-resolve: true, dns: [8.8.8.8, 1.1.1.1], dialer-proxy: "自动选择", ca: *jkca, cert: *jkcert, key: *jkkey}
+  # 京畿道 Anyang-si · Korea Telecom · AS4766 Korea Telecom
+  - {name: "🏠 KR-家宽-22", type: openvpn, server: 121.139.53.139, port: 995, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, udp: false, handshake-timeout: 30, remote-dns-resolve: true, dns: [8.8.8.8, 1.1.1.1], dialer-proxy: "自动选择", ca: *jkca, cert: *jkcert, key: *jkkey}
+  # 首尔特别市 江南区 · Korea Telecom · AS4766 Korea Telecom
+  - {name: "🏠 KR-家宽-23", type: openvpn, server: 59.10.57.184, port: 1930, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, udp: false, handshake-timeout: 30, remote-dns-resolve: true, dns: [8.8.8.8, 1.1.1.1], dialer-proxy: "自动选择", ca: *jkca, cert: *jkcert, key: *jkkey}
+  # 东京都 Fujimichō · Kddi Corporation · AS2516 KDDI CORPORATION
+  - {name: "🏠 JP-家宽-26", type: openvpn, server: 27.92.236.186, port: 1654, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, udp: false, handshake-timeout: 30, remote-dns-resolve: true, dns: [8.8.8.8, 1.1.1.1], dialer-proxy: "自动选择", ca: *jkca, cert: *jkcert, key: *jkkey}
+  # 首尔特别市 Mapo-gu · Korea Telecom · AS4766 Korea Telecom
+  - {name: "🏠 KR-家宽-24", type: openvpn, server: 118.33.57.194, port: 1998, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, udp: false, handshake-timeout: 30, remote-dns-resolve: true, dns: [8.8.8.8, 1.1.1.1], dialer-proxy: "自动选择", ca: *jkca, cert: *jkcert, key: *jkkey}
+  # 千葉縣 Ichikawa · Kddi Corporation · AS2516 KDDI CORPORATION
+  - {name: "🏠 JP-家宽-27", type: openvpn, server: 36.13.6.150, port: 1419, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, udp: false, handshake-timeout: 30, remote-dns-resolve: true, dns: [8.8.8.8, 1.1.1.1], dialer-proxy: "自动选择", ca: *jkca, cert: *jkcert, key: *jkkey}
+  # Incheon Seo-gu · Korea Telecom · AS4766 Korea Telecom
+  - {name: "🏠 KR-家宽-25", type: openvpn, server: 220.127.163.154, port: 995, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, udp: false, handshake-timeout: 30, remote-dns-resolve: true, dns: [8.8.8.8, 1.1.1.1], dialer-proxy: "自动选择", ca: *jkca, cert: *jkcert, key: *jkkey}
+  # 首尔特别市 Eunpyeong-gu · LG POWERCOMM · AS17858 LG POWERCOMM
+  - {name: "🏠 KR-家宽-26", type: openvpn, server: 180.230.30.211, port: 1701, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, udp: false, handshake-timeout: 30, remote-dns-resolve: true, dns: [8.8.8.8, 1.1.1.1], dialer-proxy: "自动选择", ca: *jkca, cert: *jkcert, key: *jkkey}
+  # 京畿道 Goyang-si · LG DACOM Corporation · AS3786 LG DACOM Corporation
+  - {name: "🏠 KR-家宽-27", type: openvpn, server: 106.244.144.71, port: 1917, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, udp: false, handshake-timeout: 30, remote-dns-resolve: true, dns: [8.8.8.8, 1.1.1.1], dialer-proxy: "自动选择", ca: *jkca, cert: *jkcert, key: *jkkey}
+  # Hanoi 河內市 · FPT Telecom Company · AS18403 FPT Telecom Company
+  - {name: "🏠 VN-家宽-04", type: openvpn, server: 113.23.56.143, port: 1861, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, udp: false, handshake-timeout: 30, remote-dns-resolve: true, dns: [8.8.8.8, 1.1.1.1], dialer-proxy: "自动选择", ca: *jkca, cert: *jkcert, key: *jkkey}
+  # 首尔特别市 冠岳区 · LG DACOM Corporation · AS3786 LG DACOM Corporation
+  - {name: "🏠 KR-家宽-28", type: openvpn, server: 106.243.71.229, port: 1761, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, udp: false, handshake-timeout: 30, remote-dns-resolve: true, dns: [8.8.8.8, 1.1.1.1], dialer-proxy: "自动选择", ca: *jkca, cert: *jkcert, key: *jkkey}
+  # Kyiv City Kyiv · Corbina Telecom Llc · AS48438 Corbina Telecom Llc.
+  - {name: "🏠 UA-家宽-01", type: openvpn, server: 31.43.129.131, port: 5555, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, udp: false, handshake-timeout: 30, remote-dns-resolve: true, dns: [8.8.8.8, 1.1.1.1], dialer-proxy: "自动选择", ca: *jkca, cert: *jkcert, key: *jkkey}
+  # 埼玉縣 朝霞市 · Sony Network Communications Inc · AS2527 Sony Network Communications Inc.
+  - {name: "🏠 JP-家宽-28", type: openvpn, server: 111.216.91.199, port: 1599, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, udp: false, handshake-timeout: 30, remote-dns-resolve: true, dns: [8.8.8.8, 1.1.1.1], dialer-proxy: "自动选择", ca: *jkca, cert: *jkcert, key: *jkkey}
+  # 德島縣 Katsuura Gun · STNet, Incorporated · AS7522 STNet, Incorporated
+  - {name: "🏠 JP-家宽-29", type: openvpn, server: 36.53.244.181, port: 1716, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, udp: false, handshake-timeout: 30, remote-dns-resolve: true, dns: [8.8.8.8, 1.1.1.1], dialer-proxy: "自动选择", ca: *jkca, cert: *jkcert, key: *jkkey}
+  # Gyeongsangnam-do 晋州 · Korea Telecom · AS4766 Korea Telecom
+  - {name: "🏠 KR-家宽-29", type: openvpn, server: 115.22.253.136, port: 995, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, udp: false, handshake-timeout: 30, remote-dns-resolve: true, dns: [8.8.8.8, 1.1.1.1], dialer-proxy: "自动选择", ca: *jkca, cert: *jkcert, key: *jkkey}
+  # 京畿道 水原市 · Korea Telecom · AS4766 Korea Telecom
+  - {name: "🏠 KR-家宽-30", type: openvpn, server: 121.137.3.64, port: 995, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, udp: false, handshake-timeout: 30, remote-dns-resolve: true, dns: [8.8.8.8, 1.1.1.1], dialer-proxy: "自动选择", ca: *jkca, cert: *jkcert, key: *jkkey}
+  # Gyeongsangbuk-do Pohang · Korea Telecom · AS4766 Korea Telecom
+  - {name: "🏠 KR-家宽-31", type: openvpn, server: 119.202.94.225, port: 995, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, udp: false, handshake-timeout: 30, remote-dns-resolve: true, dns: [8.8.8.8, 1.1.1.1], dialer-proxy: "自动选择", ca: *jkca, cert: *jkcert, key: *jkkey}
