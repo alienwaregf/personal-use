@@ -1,17 +1,17 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-10-23 14:43:57
+# 上次更新时间：2026-10-23 15:43:37
 # 条数：blackmatrix7 3 条 + MetaCubeX 19 条 (geosite 19 / geoip 0) → 去重合并 20 条
-# Hash：694f7a7a14c2f416537ac8f8d3103d04fa664ce5c1b82af5d765a85413b7e4a1
+# Hash：f7d03e5dc54cf0efdddaeb341a15dbc2d840d0e00e296d16f8670e23916aa22b
 payload:
   - DOMAIN,cdn.usefathom.com
-  - DOMAIN-SUFFIX,anthropic.com
-  - DOMAIN-SUFFIX,claude.ai
   - DOMAIN,servd-anthropic-website.b-cdn.net
   - DOMAIN-SUFFIX,ant.dev
+  - DOMAIN-SUFFIX,anthropic.com
   - DOMAIN-SUFFIX,anthropic.team
   - DOMAIN-SUFFIX,antspace.dev
   - DOMAIN-SUFFIX,chatbotclaude.com
   - DOMAIN-SUFFIX,clau.de
+  - DOMAIN-SUFFIX,claude.ai
   - DOMAIN-SUFFIX,claude.app
   - DOMAIN-SUFFIX,claude.com
   - DOMAIN-SUFFIX,claude.dev

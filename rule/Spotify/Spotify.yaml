@@ -1,17 +1,24 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-10-23 14:44:20
+# 上次更新时间：2026-10-23 15:44:00
 # 条数：blackmatrix7 30 条 + MetaCubeX 28 条 (geosite 28 / geoip 0) → 去重合并 38 条
-# Hash：cfce1b17481c77ab69b9abd809cea6fd5749ad22ecb9ac39bf47afcbd0caa4d3
+# Hash：5cce4df7d912f6a9c2676e8dabe37027efd5f3daec41c37b25bfe549f1c42d2e
 payload:
+  - DOMAIN,adeventtracker.spotify.com
+  - DOMAIN,adstudio-assets.scdn.co
+  - DOMAIN,audio-ak-spotify-com.akamaized.net
   - DOMAIN,audio4-ak-spotify-com.akamaized.net
+  - DOMAIN,bloodhound.spotify.com
   - DOMAIN,cdn-spotify-experiments.conductrics.com
   - DOMAIN,heads-ak-spotify-com.akamaized.net
+  - DOMAIN,heads4-ak-spotify-com.akamaized.net
   - DOMAIN,spotify.com.edgesuite.net
   - DOMAIN,spotify.map.fastly.net
   - DOMAIN,spotify.map.fastlylb.net
+  - DOMAIN-KEYWORD,spotify
   - DOMAIN-SUFFIX,audio-ak-spotify-com.akamaized.net
   - DOMAIN-SUFFIX,byspotify.com
   - DOMAIN-SUFFIX,heads4-ak-spotify-com.akamaized.net
+  - DOMAIN-SUFFIX,lifeatspotify.com
   - DOMAIN-SUFFIX,pscdn.co
   - DOMAIN-SUFFIX,scdn.co
   - DOMAIN-SUFFIX,spoti.fi
@@ -20,24 +27,17 @@ payload:
   - DOMAIN-SUFFIX,spotify.app.link
   - DOMAIN-SUFFIX,spotify.com
   - DOMAIN-SUFFIX,spotify.design
+  - DOMAIN-SUFFIX,spotify.link
   - DOMAIN-SUFFIX,spotifycdn.com
   - DOMAIN-SUFFIX,spotifycdn.net
   - DOMAIN-SUFFIX,spotifycharts.com
   - DOMAIN-SUFFIX,spotifycodes.com
   - DOMAIN-SUFFIX,spotifyforbrands.com
+  - DOMAIN-SUFFIX,spotifyforvendors.com
   - DOMAIN-SUFFIX,spotifyjobs.com
   - DOMAIN-SUFFIX,spotifynewsroom.jp
   - DOMAIN-SUFFIX,spotilocal.com
   - DOMAIN-SUFFIX,tospotify.com
-  - DOMAIN-KEYWORD,spotify
   - IP-CIDR,104.154.127.126/32
   - IP-CIDR,35.186.224.47/32
   - PROCESS-NAME,com.spotify.music
-  - DOMAIN,audio-ak-spotify-com.akamaized.net
-  - DOMAIN,heads4-ak-spotify-com.akamaized.net
-  - DOMAIN-SUFFIX,lifeatspotify.com
-  - DOMAIN-SUFFIX,spotify.link
-  - DOMAIN-SUFFIX,spotifyforvendors.com
-  - DOMAIN,adeventtracker.spotify.com
-  - DOMAIN,adstudio-assets.scdn.co
-  - DOMAIN,bloodhound.spotify.com

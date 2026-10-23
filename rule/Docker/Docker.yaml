@@ -1,15 +1,15 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-10-23 14:44:01
+# 上次更新时间：2026-10-23 15:43:40
 # 条数：blackmatrix7 7 条 + MetaCubeX 6 条 (geosite 6 / geoip 0) → 去重合并 10 条
-# Hash：9de9bf07f5b46c5fbc1b7a71c5f62fa6449f294ef76def3e0b53abf05a9b1e96
+# Hash：72f6dff9688f777c3295ac70a76fcb681a9d032df1eee27919a1eb47d0363b69
 payload:
   - DOMAIN,d1q6f0aelx0por.cloudfront.net
   - DOMAIN,d2wy8f7a9ursnm.cloudfront.net
   - DOMAIN,d36jcksde1wxzq.cloudfront.net
+  - DOMAIN,docker-images-prod.6aa30f8b08e16409b46e0173d6de2f56.r2.cloudflarestorage.com
+  - DOMAIN,docker-pinata-support.s3.amazonaws.com
   - DOMAIN-SUFFIX,compose-spec.io
   - DOMAIN-SUFFIX,docker.com
   - DOMAIN-SUFFIX,docker.io
   - DOMAIN-SUFFIX,dockerhub.com
-  - DOMAIN,docker-images-prod.6aa30f8b08e16409b46e0173d6de2f56.r2.cloudflarestorage.com
-  - DOMAIN,docker-pinata-support.s3.amazonaws.com
   - DOMAIN-SUFFIX,dockerstatic.com

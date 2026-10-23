@@ -1,6 +1,3 @@
-DOMAIN-SUFFIX,cdninstagram.com
-DOMAIN-SUFFIX,instagr.am
-DOMAIN-SUFFIX,instagram.com
 DOMAIN-KEYWORD,instagram
 DOMAIN-SUFFIX,achat-followers-instagram.com
 DOMAIN-SUFFIX,acheter-followers-instagram.com
@@ -8,7 +5,10 @@ DOMAIN-SUFFIX,acheterdesfollowersinstagram.com
 DOMAIN-SUFFIX,acheterfollowersinstagram.com
 DOMAIN-SUFFIX,bookstagram.com
 DOMAIN-SUFFIX,carstagram.com
+DOMAIN-SUFFIX,cdninstagram.com
 DOMAIN-SUFFIX,chickstagram.com
+DOMAIN-SUFFIX,graph-fallback.instagram.com
+DOMAIN-SUFFIX,graph.instagram.com
 DOMAIN-SUFFIX,ig.me
 DOMAIN-SUFFIX,igcdn.com
 DOMAIN-SUFFIX,igsonar.com
@@ -24,11 +24,13 @@ DOMAIN-SUFFIX,instagda.com
 DOMAIN-SUFFIX,instagify.com
 DOMAIN-SUFFIX,instagmania.com
 DOMAIN-SUFFIX,instagor.com
+DOMAIN-SUFFIX,instagr.am
 DOMAIN-SUFFIX,instagram-brand.com
 DOMAIN-SUFFIX,instagram-engineering.com
 DOMAIN-SUFFIX,instagram-help.com
 DOMAIN-SUFFIX,instagram-press.com
 DOMAIN-SUFFIX,instagram-press.net
+DOMAIN-SUFFIX,instagram.com
 DOMAIN-SUFFIX,instagramci.com
 DOMAIN-SUFFIX,instagramcn.com
 DOMAIN-SUFFIX,instagramdi.com
@@ -66,11 +68,9 @@ DOMAIN-SUFFIX,intagrm.com
 DOMAIN-SUFFIX,intgram.com
 DOMAIN-SUFFIX,kingstagram.com
 DOMAIN-SUFFIX,lnstagram-help.com
-DOMAIN-SUFFIX,theinstagramhack.com
 DOMAIN-SUFFIX,oninstagram.com
 DOMAIN-SUFFIX,online-instagram.com
 DOMAIN-SUFFIX,onlineinstagram.com
+DOMAIN-SUFFIX,theinstagramhack.com
 DOMAIN-SUFFIX,web-instagram.net
 DOMAIN-SUFFIX,wwwinstagram.com
-DOMAIN-SUFFIX,graph.instagram.com
-DOMAIN-SUFFIX,graph-fallback.instagram.com

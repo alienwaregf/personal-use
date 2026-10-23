@@ -1,3 +1,6 @@
+DOMAIN,cn.download.nvidia.com
+DOMAIN,nvidia.custhelp.com
+DOMAIN,nvidia.tt.omtrdc.net
 DOMAIN-SUFFIX,geforce.cn
 DOMAIN-SUFFIX,geforce.co.kr
 DOMAIN-SUFFIX,geforce.co.uk
@@ -11,6 +14,9 @@ DOMAIN-SUFFIX,gputechconf.com.tw
 DOMAIN-SUFFIX,gputechconf.eu
 DOMAIN-SUFFIX,gputechconf.in
 DOMAIN-SUFFIX,gputechconf.jp
+DOMAIN-SUFFIX,hf.co
+DOMAIN-SUFFIX,hf.space
+DOMAIN-SUFFIX,huggingface.co
 DOMAIN-SUFFIX,nvda.d2.sc.omtrdc.net
 DOMAIN-SUFFIX,nvidia.asia
 DOMAIN-SUFFIX,nvidia.at
@@ -60,9 +66,3 @@ DOMAIN-SUFFIX,tegrazone.co.kr
 DOMAIN-SUFFIX,tegrazone.com
 DOMAIN-SUFFIX,tegrazone.jp
 DOMAIN-SUFFIX,tegrazone.kr
-DOMAIN,nvidia.custhelp.com
-DOMAIN,nvidia.tt.omtrdc.net
-DOMAIN-SUFFIX,huggingface.co
-DOMAIN-SUFFIX,hf.space
-DOMAIN-SUFFIX,hf.co
-DOMAIN,cn.download.nvidia.com

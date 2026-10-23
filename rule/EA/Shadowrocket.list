@@ -1,5 +1,11 @@
+DOMAIN,cloudsync-prod.s3.amazonaws.com
+DOMAIN,ea.tt.omtrdc.net
 DOMAIN,eaasserts-a.akamaihd.net
+DOMAIN,eaassets-a.akamaihd.net
+DOMAIN,origin-a.akamaihd.net
 DOMAIN,originasserts.akamaized.net
+DOMAIN,rtm.tnt-ea.com
+DOMAIN,ssl-lvlt.cdn.ea.com
 DOMAIN-SUFFIX,anthemgame.com
 DOMAIN-SUFFIX,anthemthegame.com
 DOMAIN-SUFFIX,apexlegends.com
@@ -163,9 +169,3 @@ DOMAIN-SUFFIX,uoherald.com
 DOMAIN-SUFFIX,visceralgames.com
 DOMAIN-SUFFIX,xdsummit.com
 DOMAIN-SUFFIX,yogify.com
-DOMAIN,ea.tt.omtrdc.net
-DOMAIN,eaassets-a.akamaihd.net
-DOMAIN,cloudsync-prod.s3.amazonaws.com
-DOMAIN,origin-a.akamaihd.net
-DOMAIN,rtm.tnt-ea.com
-DOMAIN,ssl-lvlt.cdn.ea.com

@@ -1,12 +1,12 @@
 DOMAIN,cdn.usefathom.com
-DOMAIN-SUFFIX,anthropic.com
-DOMAIN-SUFFIX,claude.ai
 DOMAIN,servd-anthropic-website.b-cdn.net
 DOMAIN-SUFFIX,ant.dev
+DOMAIN-SUFFIX,anthropic.com
 DOMAIN-SUFFIX,anthropic.team
 DOMAIN-SUFFIX,antspace.dev
 DOMAIN-SUFFIX,chatbotclaude.com
 DOMAIN-SUFFIX,clau.de
+DOMAIN-SUFFIX,claude.ai
 DOMAIN-SUFFIX,claude.app
 DOMAIN-SUFFIX,claude.com
 DOMAIN-SUFFIX,claude.dev

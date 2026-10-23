@@ -1,7 +1,7 @@
 # 数据来源：blackmatrix7
-# 上次更新时间：2026-10-23 14:44:18
+# 上次更新时间：2026-10-23 15:43:58
 # 条数：blackmatrix7 248 条 + MetaCubeX 0 条 (geosite 0 / geoip 0) → 去重合并 248 条
-# Hash：286296a6b04e1cce68fb4b348add280221532a1a654cdf24762f139b7842f06c
+# Hash：3c1a62657dd5e78359ec03335a184f1c7c3968e150f917125bfabc4eee82aaba
 payload:
   - DOMAIN,004430.xyz
   - DOMAIN,021912.xyz
@@ -121,6 +121,10 @@ payload:
   - DOMAIN,www.wareztorrent.com
   - DOMAIN,yuptracker-eu.gaijinent.com
   - DOMAIN,zer0day.ch
+  - DOMAIN-KEYWORD,announce
+  - DOMAIN-KEYWORD,chdbits
+  - DOMAIN-KEYWORD,m-team
+  - DOMAIN-KEYWORD,torrent
   - DOMAIN-SUFFIX,1ptba.com
   - DOMAIN-SUFFIX,2xfree.org
   - DOMAIN-SUFFIX,52pt.site
@@ -244,10 +248,6 @@ payload:
   - DOMAIN-SUFFIX,u2.dmhy.org
   - DOMAIN-SUFFIX,uhdbits.org
   - DOMAIN-SUFFIX,xauat6.edu.cn
-  - DOMAIN-KEYWORD,announce
-  - DOMAIN-KEYWORD,chdbits
-  - DOMAIN-KEYWORD,m-team
-  - DOMAIN-KEYWORD,torrent
   - IP-CIDR,207.241.226.111/32
   - IP-CIDR,207.241.231.226/32
   - IP-CIDR,52.58.128.163/32

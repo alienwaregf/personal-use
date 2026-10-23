@@ -1,12 +1,14 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-10-23 14:44:25
+# 上次更新时间：2026-10-23 15:44:05
 # 条数：blackmatrix7 27 条 + MetaCubeX 27 条 (geosite 27 / geoip 0) → 去重合并 30 条
-# Hash：7fa24494a1b1b1993524ca1f9e0c50e33c19bcfb9bc63f6996e468668e080653
+# Hash：c6e86414bccc4287bf900530714fa119d8d4018213b13d1fe420b48d1a49d876
 payload:
+  - DOMAIN-SUFFIX,ai-sdk.dev
   - DOMAIN-SUFFIX,err.sh
   - DOMAIN-SUFFIX,hyper.is
   - DOMAIN-SUFFIX,nextjs.org
   - DOMAIN-SUFFIX,now.sh
+  - DOMAIN-SUFFIX,skills.sh
   - DOMAIN-SUFFIX,static.fun
   - DOMAIN-SUFFIX,title.sh
   - DOMAIN-SUFFIX,turborepo.org
@@ -17,6 +19,7 @@ payload:
   - DOMAIN-SUFFIX,vercel.app
   - DOMAIN-SUFFIX,vercel.blog
   - DOMAIN-SUFFIX,vercel.com
+  - DOMAIN-SUFFIX,vercel.dev
   - DOMAIN-SUFFIX,vercel.events
   - DOMAIN-SUFFIX,vercel.link
   - DOMAIN-SUFFIX,vercel.live
@@ -30,6 +33,3 @@ payload:
   - DOMAIN-SUFFIX,zeit.co
   - DOMAIN-SUFFIX,zeit.sh
   - DOMAIN-SUFFIX,zeitworld.com
-  - DOMAIN-SUFFIX,skills.sh
-  - DOMAIN-SUFFIX,vercel.dev
-  - DOMAIN-SUFFIX,ai-sdk.dev

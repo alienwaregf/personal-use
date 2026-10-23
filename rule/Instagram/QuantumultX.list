@@ -1,6 +1,3 @@
-HOST-SUFFIX,cdninstagram.com
-HOST-SUFFIX,instagr.am
-HOST-SUFFIX,instagram.com
 HOST-KEYWORD,instagram
 HOST-SUFFIX,achat-followers-instagram.com
 HOST-SUFFIX,acheter-followers-instagram.com
@@ -8,7 +5,10 @@ HOST-SUFFIX,acheterdesfollowersinstagram.com
 HOST-SUFFIX,acheterfollowersinstagram.com
 HOST-SUFFIX,bookstagram.com
 HOST-SUFFIX,carstagram.com
+HOST-SUFFIX,cdninstagram.com
 HOST-SUFFIX,chickstagram.com
+HOST-SUFFIX,graph-fallback.instagram.com
+HOST-SUFFIX,graph.instagram.com
 HOST-SUFFIX,ig.me
 HOST-SUFFIX,igcdn.com
 HOST-SUFFIX,igsonar.com
@@ -24,11 +24,13 @@ HOST-SUFFIX,instagda.com
 HOST-SUFFIX,instagify.com
 HOST-SUFFIX,instagmania.com
 HOST-SUFFIX,instagor.com
+HOST-SUFFIX,instagr.am
 HOST-SUFFIX,instagram-brand.com
 HOST-SUFFIX,instagram-engineering.com
 HOST-SUFFIX,instagram-help.com
 HOST-SUFFIX,instagram-press.com
 HOST-SUFFIX,instagram-press.net
+HOST-SUFFIX,instagram.com
 HOST-SUFFIX,instagramci.com
 HOST-SUFFIX,instagramcn.com
 HOST-SUFFIX,instagramdi.com
@@ -66,11 +68,9 @@ HOST-SUFFIX,intagrm.com
 HOST-SUFFIX,intgram.com
 HOST-SUFFIX,kingstagram.com
 HOST-SUFFIX,lnstagram-help.com
-HOST-SUFFIX,theinstagramhack.com
 HOST-SUFFIX,oninstagram.com
 HOST-SUFFIX,online-instagram.com
 HOST-SUFFIX,onlineinstagram.com
+HOST-SUFFIX,theinstagramhack.com
 HOST-SUFFIX,web-instagram.net
 HOST-SUFFIX,wwwinstagram.com
-HOST-SUFFIX,graph.instagram.com
-HOST-SUFFIX,graph-fallback.instagram.com

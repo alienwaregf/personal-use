@@ -1,14 +1,14 @@
 # 数据来源：blackmatrix7
-# 上次更新时间：2026-10-23 14:44:01
+# 上次更新时间：2026-10-23 15:43:41
 # 条数：blackmatrix7 34 条 + MetaCubeX 0 条 (geosite 0 / geoip 0) → 去重合并 34 条
-# Hash：bf7feadb47fc8a3606f5b2ced8884d949228ed8b8ec5cd48c3e5de0a8aea1901
+# Hash：2b834eacb536bc690a71919e78434fc54dc5ee0e1a919ffe1859da4ac085ec5c
 payload:
-  - DOMAIN-SUFFIX,qbittorrent.org
   - DOMAIN-KEYWORD,aria2
   - DOMAIN-KEYWORD,thunder
   - DOMAIN-KEYWORD,xlliveud
   - DOMAIN-KEYWORD,xunlei
   - DOMAIN-KEYWORD,yunpan
+  - DOMAIN-SUFFIX,qbittorrent.org
   - PROCESS-NAME,BitComet
   - PROCESS-NAME,BitComet.exe
   - PROCESS-NAME,BitComet_x64.exe

@@ -1,31 +1,31 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-10-23 14:43:32
+# 上次更新时间：2026-10-23 15:43:12
 # 条数：blackmatrix7 10 条 + MetaCubeX 18 条 (geosite 18 / geoip 0) → 去重合并 26 条
-# Hash：3d0dfe893eaaee019f820a225153bd5ac0256dce23e371a2872ffe74ee12f7ed
+# Hash：beb4d58220c539d42b38a1b8ac8d7988e67335fb4e6bbf478638df26e09db41f
 payload:
+  - DOMAIN,amp-api-edge.music.apple.com
+  - DOMAIN,amp-api.music.apple.com
   - DOMAIN,aod-ssl.itunes.apple.com
   - DOMAIN,aod.itunes.apple.com
   - DOMAIN,audio-ssl.itunes.apple.com
   - DOMAIN,audio.itunes.apple.com
+  - DOMAIN,js-cdn.music.apple.com
+  - DOMAIN,music.apple.com
+  - DOMAIN,musicstatus.music.apple.com
   - DOMAIN,mvod.itunes.apple.com
+  - DOMAIN,play.music.apple.com
+  - DOMAIN,speedysub.music.apple.com
   - DOMAIN,streamingaudio.itunes.apple.com
-  - DOMAIN-SUFFIX,applemusic.com
-  - DOMAIN-SUFFIX,blobstore.apple.com
-  - DOMAIN-SUFFIX,music.apple.com
-  - PROCESS-NAME,Music
   - DOMAIN-SUFFIX,applemusic.berlin
   - DOMAIN-SUFFIX,applemusic.co
+  - DOMAIN-SUFFIX,applemusic.com
+  - DOMAIN-SUFFIX,applemusic.com.au
   - DOMAIN-SUFFIX,applemusic.hamburg
   - DOMAIN-SUFFIX,applemusic.wang
   - DOMAIN-SUFFIX,applemusicconnect.com
   - DOMAIN-SUFFIX,applemusicfestival.com
+  - DOMAIN-SUFFIX,blobstore.apple.com
+  - DOMAIN-SUFFIX,music.apple.com
   - DOMAIN-SUFFIX,musickit.net
   - DOMAIN-SUFFIX,wwwapplemusic.com
-  - DOMAIN-SUFFIX,applemusic.com.au
-  - DOMAIN,amp-api-edge.music.apple.com
-  - DOMAIN,amp-api.music.apple.com
-  - DOMAIN,js-cdn.music.apple.com
-  - DOMAIN,music.apple.com
-  - DOMAIN,musicstatus.music.apple.com
-  - DOMAIN,play.music.apple.com
-  - DOMAIN,speedysub.music.apple.com
+  - PROCESS-NAME,Music

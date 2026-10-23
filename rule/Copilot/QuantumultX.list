@@ -18,6 +18,7 @@ HOST,services.bingapis.com
 HOST,static.cloudflareinsights.com
 HOST,sydney.bing.com
 HOST,www.bing.com
+HOST-KEYWORD,openaicom-api
 HOST-SUFFIX,algolia.net
 HOST-SUFFIX,api.microsoftapp.net
 HOST-SUFFIX,auth0.com
@@ -44,6 +45,5 @@ HOST-SUFFIX,segment.io
 HOST-SUFFIX,sentry.io
 HOST-SUFFIX,stripe.com
 HOST-SUFFIX,turn.livekit.cloud
-HOST-KEYWORD,openaicom-api
 IP-CIDR,24.199.123.28/32
 IP-CIDR,64.23.132.171/32

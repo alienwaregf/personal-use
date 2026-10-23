@@ -1,11 +1,8 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-10-23 14:44:11
+# 上次更新时间：2026-10-23 15:43:51
 # 条数：blackmatrix7 4 条 + MetaCubeX 74 条 (geosite 74 / geoip 0) → 去重合并 76 条
-# Hash：f9b0b91e605ec7bec8120297a219692888f99fd1fa5742c9948bc1a87afdc85e
+# Hash：96ec646f32b75b00761de9a827b9c9b04162cc756c8cec088683367c768d6426
 payload:
-  - DOMAIN-SUFFIX,cdninstagram.com
-  - DOMAIN-SUFFIX,instagr.am
-  - DOMAIN-SUFFIX,instagram.com
   - DOMAIN-KEYWORD,instagram
   - DOMAIN-SUFFIX,achat-followers-instagram.com
   - DOMAIN-SUFFIX,acheter-followers-instagram.com
@@ -13,7 +10,10 @@ payload:
   - DOMAIN-SUFFIX,acheterfollowersinstagram.com
   - DOMAIN-SUFFIX,bookstagram.com
   - DOMAIN-SUFFIX,carstagram.com
+  - DOMAIN-SUFFIX,cdninstagram.com
   - DOMAIN-SUFFIX,chickstagram.com
+  - DOMAIN-SUFFIX,graph-fallback.instagram.com
+  - DOMAIN-SUFFIX,graph.instagram.com
   - DOMAIN-SUFFIX,ig.me
   - DOMAIN-SUFFIX,igcdn.com
   - DOMAIN-SUFFIX,igsonar.com
@@ -29,11 +29,13 @@ payload:
   - DOMAIN-SUFFIX,instagify.com
   - DOMAIN-SUFFIX,instagmania.com
   - DOMAIN-SUFFIX,instagor.com
+  - DOMAIN-SUFFIX,instagr.am
   - DOMAIN-SUFFIX,instagram-brand.com
   - DOMAIN-SUFFIX,instagram-engineering.com
   - DOMAIN-SUFFIX,instagram-help.com
   - DOMAIN-SUFFIX,instagram-press.com
   - DOMAIN-SUFFIX,instagram-press.net
+  - DOMAIN-SUFFIX,instagram.com
   - DOMAIN-SUFFIX,instagramci.com
   - DOMAIN-SUFFIX,instagramcn.com
   - DOMAIN-SUFFIX,instagramdi.com
@@ -71,11 +73,9 @@ payload:
   - DOMAIN-SUFFIX,intgram.com
   - DOMAIN-SUFFIX,kingstagram.com
   - DOMAIN-SUFFIX,lnstagram-help.com
-  - DOMAIN-SUFFIX,theinstagramhack.com
   - DOMAIN-SUFFIX,oninstagram.com
   - DOMAIN-SUFFIX,online-instagram.com
   - DOMAIN-SUFFIX,onlineinstagram.com
+  - DOMAIN-SUFFIX,theinstagramhack.com
   - DOMAIN-SUFFIX,web-instagram.net
   - DOMAIN-SUFFIX,wwwinstagram.com
-  - DOMAIN-SUFFIX,graph.instagram.com
-  - DOMAIN-SUFFIX,graph-fallback.instagram.com

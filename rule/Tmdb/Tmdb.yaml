@@ -1,9 +1,9 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-10-23 14:44:23
+# 上次更新时间：2026-10-23 15:44:03
 # 条数：blackmatrix7 2 条 + MetaCubeX 4 条 (geosite 4 / geoip 0) → 去重合并 4 条
-# Hash：22f92d5d0e32cfa6a900b941cbf09d807eb007625ea136ff5009f18307a714b9
+# Hash：a1290246d487464d726ff26638139569b1f421f8d0d96a9578b1907211577275
 payload:
-  - DOMAIN-SUFFIX,themoviedb.org
-  - DOMAIN-SUFFIX,tmdb.org
   - DOMAIN,tmdb-image-prod.b-cdn.net
   - DOMAIN,tmdb-web-image-prod.b-cdn.net
+  - DOMAIN-SUFFIX,themoviedb.org
+  - DOMAIN-SUFFIX,tmdb.org

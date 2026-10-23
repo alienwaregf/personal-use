@@ -1,30 +1,26 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-10-23 14:43:34
+# 上次更新时间：2026-10-23 15:43:14
 # 条数：blackmatrix7 12 条 + MetaCubeX 45 条 (geosite 45 / geoip 0) → 去重合并 49 条
-# Hash：d9e1745d838829738b7dd80ccb6a008944cb398873010dcf431d268fcc3b98fb
+# Hash：780c1f5d957ffef378aa080ed5e602624e4de490166937475d7fa2f0fbd1b93a
 payload:
-  - DOMAIN-SUFFIX,appsflayer.com
-  - DOMAIN-SUFFIX,binance.cloud
-  - DOMAIN-SUFFIX,binance.com
-  - DOMAIN-SUFFIX,binance.me
-  - DOMAIN-SUFFIX,binancecnt.com
-  - DOMAIN-SUFFIX,binancefuture.com
-  - DOMAIN-SUFFIX,bnappzh.co
-  - DOMAIN-SUFFIX,bnbstatic.com
-  - DOMAIN-SUFFIX,bnbzh.ac
-  - DOMAIN-SUFFIX,bntrace.com
-  - DOMAIN-SUFFIX,saasexch.cc
-  - DOMAIN-SUFFIX,saasexch.com
   - DOMAIN,zftksc.cdn-settings.appsflyersdk.com
   - DOMAIN,zftksc.launches.appsflyersdk.com
+  - DOMAIN-SUFFIX,appsflayer.com
   - DOMAIN-SUFFIX,binance.cc
   - DOMAIN-SUFFIX,binance.charity
+  - DOMAIN-SUFFIX,binance.cloud
   - DOMAIN-SUFFIX,binance.co
+  - DOMAIN-SUFFIX,binance.com
   - DOMAIN-SUFFIX,binance.info
+  - DOMAIN-SUFFIX,binance.me
   - DOMAIN-SUFFIX,binance.net
   - DOMAIN-SUFFIX,binance.org
   - DOMAIN-SUFFIX,binance.us
   - DOMAIN-SUFFIX,binance.vision
+  - DOMAIN-SUFFIX,binanceapi.com
+  - DOMAIN-SUFFIX,binancecnt.com
+  - DOMAIN-SUFFIX,binancefuture.com
+  - DOMAIN-SUFFIX,binanceru.net
   - DOMAIN-SUFFIX,binancezh.be
   - DOMAIN-SUFFIX,binancezh.biz
   - DOMAIN-SUFFIX,binancezh.cc
@@ -40,15 +36,19 @@ payload:
   - DOMAIN-SUFFIX,binancezh.pro
   - DOMAIN-SUFFIX,binancezh.sh
   - DOMAIN-SUFFIX,binancezh.top
-  - DOMAIN-SUFFIX,binanceapi.com
-  - DOMAIN-SUFFIX,binanceru.net
   - DOMAIN-SUFFIX,bmwweb.solutions
   - DOMAIN-SUFFIX,bnappweb.black
+  - DOMAIN-SUFFIX,bnappzh.co
   - DOMAIN-SUFFIX,bnbchain.org
+  - DOMAIN-SUFFIX,bnbstatic.com
+  - DOMAIN-SUFFIX,bnbzh.ac
+  - DOMAIN-SUFFIX,bntrace.com
   - DOMAIN-SUFFIX,bsappapi.cc
   - DOMAIN-SUFFIX,bsappapi.com
   - DOMAIN-SUFFIX,bscdnweb.com
   - DOMAIN-SUFFIX,nftstatic.com
+  - DOMAIN-SUFFIX,saasexch.cc
   - DOMAIN-SUFFIX,saasexch.co
+  - DOMAIN-SUFFIX,saasexch.com
   - DOMAIN-SUFFIX,saasexch.info
   - DOMAIN-SUFFIX,saasexch.io

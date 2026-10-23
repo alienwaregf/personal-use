@@ -1,5 +1,11 @@
+HOST,cloudsync-prod.s3.amazonaws.com
+HOST,ea.tt.omtrdc.net
 HOST,eaasserts-a.akamaihd.net
+HOST,eaassets-a.akamaihd.net
+HOST,origin-a.akamaihd.net
 HOST,originasserts.akamaized.net
+HOST,rtm.tnt-ea.com
+HOST,ssl-lvlt.cdn.ea.com
 HOST-SUFFIX,anthemgame.com
 HOST-SUFFIX,anthemthegame.com
 HOST-SUFFIX,apexlegends.com
@@ -163,9 +169,3 @@ HOST-SUFFIX,uoherald.com
 HOST-SUFFIX,visceralgames.com
 HOST-SUFFIX,xdsummit.com
 HOST-SUFFIX,yogify.com
-HOST,ea.tt.omtrdc.net
-HOST,eaassets-a.akamaihd.net
-HOST,cloudsync-prod.s3.amazonaws.com
-HOST,origin-a.akamaihd.net
-HOST,rtm.tnt-ea.com
-HOST,ssl-lvlt.cdn.ea.com

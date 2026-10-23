@@ -1,12 +1,12 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-10-23 14:44:30
+# 上次更新时间：2026-10-23 15:44:09
 # 条数：blackmatrix7 6 条 + MetaCubeX 3 条 (geosite 3 / geoip 0) → 去重合并 7 条
-# Hash：a03bbb22789dd07ce9a2b3ce82ee45e1927b8ef16a2512fec09db7bd3559e924
+# Hash：6f03ac2ee2e32d5170dbdf61deec0bc1ac2bb17c7249cd35dc1ce2468bcd638d
 payload:
   - DOMAIN,mask-api.fe.apple-dns.net
   - DOMAIN,mask-api.icloud.com
   - DOMAIN,mask-t.apple-dns.net
   - DOMAIN,mask.apple-dns.net
+  - DOMAIN-SUFFIX,mask-api.icloud.com
   - DOMAIN-SUFFIX,mask-h2.icloud.com
   - DOMAIN-SUFFIX,mask.icloud.com
-  - DOMAIN-SUFFIX,mask-api.icloud.com

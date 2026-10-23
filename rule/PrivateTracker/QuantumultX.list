@@ -116,6 +116,10 @@ HOST,whybother.torrentonline.cc
 HOST,www.wareztorrent.com
 HOST,yuptracker-eu.gaijinent.com
 HOST,zer0day.ch
+HOST-KEYWORD,announce
+HOST-KEYWORD,chdbits
+HOST-KEYWORD,m-team
+HOST-KEYWORD,torrent
 HOST-SUFFIX,1ptba.com
 HOST-SUFFIX,2xfree.org
 HOST-SUFFIX,52pt.site
@@ -239,10 +243,6 @@ HOST-SUFFIX,trontv.com
 HOST-SUFFIX,u2.dmhy.org
 HOST-SUFFIX,uhdbits.org
 HOST-SUFFIX,xauat6.edu.cn
-HOST-KEYWORD,announce
-HOST-KEYWORD,chdbits
-HOST-KEYWORD,m-team
-HOST-KEYWORD,torrent
 IP-CIDR,207.241.226.111/32
 IP-CIDR,207.241.231.226/32
 IP-CIDR,52.58.128.163/32

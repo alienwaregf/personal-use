@@ -1,8 +1,11 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-10-23 14:44:15
+# 上次更新时间：2026-10-23 15:43:55
 # 条数：blackmatrix7 62 条 + MetaCubeX 66 条 (geosite 66 / geoip 0) → 去重合并 68 条
-# Hash：671b05e6ac33b4a9c07a9021742228de42887bece407c87707b06a5f2546fa13
+# Hash：b2b1f64cca32474c74d61ca66f5d904ed0a80d3dd78025c52de7b5ec08db8535
 payload:
+  - DOMAIN,cn.download.nvidia.com
+  - DOMAIN,nvidia.custhelp.com
+  - DOMAIN,nvidia.tt.omtrdc.net
   - DOMAIN-SUFFIX,geforce.cn
   - DOMAIN-SUFFIX,geforce.co.kr
   - DOMAIN-SUFFIX,geforce.co.uk
@@ -16,6 +19,9 @@ payload:
   - DOMAIN-SUFFIX,gputechconf.eu
   - DOMAIN-SUFFIX,gputechconf.in
   - DOMAIN-SUFFIX,gputechconf.jp
+  - DOMAIN-SUFFIX,hf.co
+  - DOMAIN-SUFFIX,hf.space
+  - DOMAIN-SUFFIX,huggingface.co
   - DOMAIN-SUFFIX,nvda.d2.sc.omtrdc.net
   - DOMAIN-SUFFIX,nvidia.asia
   - DOMAIN-SUFFIX,nvidia.at
@@ -65,9 +71,3 @@ payload:
   - DOMAIN-SUFFIX,tegrazone.com
   - DOMAIN-SUFFIX,tegrazone.jp
   - DOMAIN-SUFFIX,tegrazone.kr
-  - DOMAIN,nvidia.custhelp.com
-  - DOMAIN,nvidia.tt.omtrdc.net
-  - DOMAIN-SUFFIX,huggingface.co
-  - DOMAIN-SUFFIX,hf.space
-  - DOMAIN-SUFFIX,hf.co
-  - DOMAIN,cn.download.nvidia.com

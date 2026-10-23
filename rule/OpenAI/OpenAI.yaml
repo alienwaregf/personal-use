@@ -1,22 +1,32 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-10-23 14:44:15
+# 上次更新时间：2026-10-23 15:43:55
 # 条数：blackmatrix7 35 条 + MetaCubeX 24 条 (geosite 24 / geoip 0) → 去重合并 48 条
-# Hash：557b9617919c5e9196201950b2fd68c841bcad811d45aac5d834df9b13adef66
+# Hash：7281536e2a0302f71e28226bad275533954cb3c6cfdcfdbcbd6f2367e3625a91
 payload:
   - DOMAIN,browser-intake-datadoghq.com
   - DOMAIN,chat.openai.com.cdn.cloudflare.net
+  - DOMAIN,o33249.ingest.sentry.io
+  - DOMAIN,o33249.ingest.us.sentry.io
   - DOMAIN,openai-api.arkoselabs.com
+  - DOMAIN,openai.qualtrics.com
+  - DOMAIN,openaiapi-site.azureedge.net
+  - DOMAIN,openaiassets.blob.core.windows.net
   - DOMAIN,openaicom-api-bdcpf8c6d2e9atf6.z01.azurefd.net
+  - DOMAIN,openaicom.imgix.net
   - DOMAIN,openaicomproductionae4b.blob.core.windows.net
   - DOMAIN,production-openaicom-storage.azureedge.net
   - DOMAIN,static.cloudflareinsights.com
+  - DOMAIN-KEYWORD,openai
   - DOMAIN-SUFFIX,ai.com
   - DOMAIN-SUFFIX,algolia.net
   - DOMAIN-SUFFIX,api.statsig.com
   - DOMAIN-SUFFIX,auth0.com
+  - DOMAIN-SUFFIX,chat.com
   - DOMAIN-SUFFIX,chatgpt.com
   - DOMAIN-SUFFIX,chatgpt.livekit.cloud
+  - DOMAIN-SUFFIX,chatgpt.site
   - DOMAIN-SUFFIX,client-api.arkoselabs.com
+  - DOMAIN-SUFFIX,crixet.com
   - DOMAIN-SUFFIX,events.statsigapi.net
   - DOMAIN-SUFFIX,featuregates.org
   - DOMAIN-SUFFIX,host.livekit.cloud
@@ -25,29 +35,19 @@ payload:
   - DOMAIN-SUFFIX,intercomcdn.com
   - DOMAIN-SUFFIX,launchdarkly.com
   - DOMAIN-SUFFIX,oaistatic.com
+  - DOMAIN-SUFFIX,oaistatsig.com
   - DOMAIN-SUFFIX,oaiusercontent.com
   - DOMAIN-SUFFIX,observeit.net
   - DOMAIN-SUFFIX,openai.com
+  - DOMAIN-SUFFIX,openai.com.cdn.cloudflare.net
+  - DOMAIN-SUFFIX,openai.org
   - DOMAIN-SUFFIX,openaiapi-site.azureedge.net
   - DOMAIN-SUFFIX,openaicom.imgix.net
   - DOMAIN-SUFFIX,segment.io
   - DOMAIN-SUFFIX,sentry.io
+  - DOMAIN-SUFFIX,sora.com
   - DOMAIN-SUFFIX,stripe.com
   - DOMAIN-SUFFIX,turn.livekit.cloud
-  - DOMAIN-KEYWORD,openai
+  - IP-ASN,20473
   - IP-CIDR,24.199.123.28/32
   - IP-CIDR,64.23.132.171/32
-  - IP-ASN,20473
-  - DOMAIN,openaiapi-site.azureedge.net
-  - DOMAIN,openaiassets.blob.core.windows.net
-  - DOMAIN,openaicom.imgix.net
-  - DOMAIN-SUFFIX,chatgpt.site
-  - DOMAIN-SUFFIX,crixet.com
-  - DOMAIN-SUFFIX,oaistatsig.com
-  - DOMAIN-SUFFIX,openai.org
-  - DOMAIN-SUFFIX,chat.com
-  - DOMAIN-SUFFIX,sora.com
-  - DOMAIN-SUFFIX,openai.com.cdn.cloudflare.net
-  - DOMAIN,o33249.ingest.sentry.io
-  - DOMAIN,o33249.ingest.us.sentry.io
-  - DOMAIN,openai.qualtrics.com

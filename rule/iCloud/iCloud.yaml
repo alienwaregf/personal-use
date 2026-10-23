@@ -1,8 +1,10 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-10-23 14:44:29
+# 上次更新时间：2026-10-23 15:44:09
 # 条数：blackmatrix7 61 条 + MetaCubeX 53 条 (geosite 53 / geoip 0) → 去重合并 62 条
-# Hash：62253af95517559c0eb366e8b65c39226e80db2ebd10d33723b01826e95074ec
+# Hash：cc503f7986259180488bf0e5ff35a957372ad9101a1fa3087e1a470830bd08cb
 payload:
+  - DOMAIN,www-cdn.icloud.com.akadns.net
+  - DOMAIN-KEYWORD,icloud.com.akadns.net
   - DOMAIN-SUFFIX,apple-cloudkit.com
   - DOMAIN-SUFFIX,apple-icloud.cn
   - DOMAIN-SUFFIX,apple-livephotoskit.com
@@ -63,5 +65,3 @@ payload:
   - DOMAIN-SUFFIX,mylcloud.net
   - DOMAIN-SUFFIX,www-cdn.icloud.com.akadns.net
   - DOMAIN-SUFFIX,wwwicloud.com
-  - DOMAIN-KEYWORD,icloud.com.akadns.net
-  - DOMAIN,www-cdn.icloud.com.akadns.net

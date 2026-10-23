@@ -1,3 +1,5 @@
+HOST,www-cdn.icloud.com.akadns.net
+HOST-KEYWORD,icloud.com.akadns.net
 HOST-SUFFIX,apple-cloudkit.com
 HOST-SUFFIX,apple-icloud.cn
 HOST-SUFFIX,apple-livephotoskit.com
@@ -58,5 +60,3 @@ HOST-SUFFIX,myicloud.net
 HOST-SUFFIX,mylcloud.net
 HOST-SUFFIX,www-cdn.icloud.com.akadns.net
 HOST-SUFFIX,wwwicloud.com
-HOST-KEYWORD,icloud.com.akadns.net
-HOST,www-cdn.icloud.com.akadns.net

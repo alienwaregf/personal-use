@@ -1,7 +1,7 @@
 # 数据来源：blackmatrix7
-# 上次更新时间：2026-10-23 14:43:34
+# 上次更新时间：2026-10-23 15:43:13
 # 条数：blackmatrix7 8 条 + MetaCubeX 0 条 (geosite 0 / geoip 0) → 去重合并 8 条
-# Hash：d79c6dbbec513be55812d663ae5add70ae067c313d771e7f9706c8c4e35317cc
+# Hash：adaaa31af9ac09554017f8c6e15a3f55863890d68b2a9191b782fe7d98f1827e
 payload:
   - DOMAIN,hls-amt.itunes.apple.com
   - DOMAIN,hls.itunes.apple.com

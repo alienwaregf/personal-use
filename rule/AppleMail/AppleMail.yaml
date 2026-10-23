@@ -1,7 +1,7 @@
 # 数据来源：blackmatrix7
-# 上次更新时间：2026-10-23 14:43:31
+# 上次更新时间：2026-10-23 15:43:11
 # 条数：blackmatrix7 2 条 + MetaCubeX 0 条 (geosite 0 / geoip 0) → 去重合并 2 条
-# Hash：d078d9ebbd4f247ee632445cf634e971a069ad9c957cb7dfd57df789584f3e09
+# Hash：ca7678c5e76b05ffccc7e2336aa2313a81d6d4f209eb8f350f70ba2a9a5e5d76
 payload:
   - DOMAIN-SUFFIX,mail.icloud.com.cn
   - DOMAIN-SUFFIX,mail.me.com

@@ -116,6 +116,10 @@ DOMAIN,whybother.torrentonline.cc
 DOMAIN,www.wareztorrent.com
 DOMAIN,yuptracker-eu.gaijinent.com
 DOMAIN,zer0day.ch
+DOMAIN-KEYWORD,announce
+DOMAIN-KEYWORD,chdbits
+DOMAIN-KEYWORD,m-team
+DOMAIN-KEYWORD,torrent
 DOMAIN-SUFFIX,1ptba.com
 DOMAIN-SUFFIX,2xfree.org
 DOMAIN-SUFFIX,52pt.site
@@ -239,10 +243,6 @@ DOMAIN-SUFFIX,trontv.com
 DOMAIN-SUFFIX,u2.dmhy.org
 DOMAIN-SUFFIX,uhdbits.org
 DOMAIN-SUFFIX,xauat6.edu.cn
-DOMAIN-KEYWORD,announce
-DOMAIN-KEYWORD,chdbits
-DOMAIN-KEYWORD,m-team
-DOMAIN-KEYWORD,torrent
 IP-CIDR,207.241.226.111/32
 IP-CIDR,207.241.231.226/32
 IP-CIDR,52.58.128.163/32

@@ -1,8 +1,10 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-10-23 14:44:16
+# 上次更新时间：2026-10-23 15:43:56
 # 条数：blackmatrix7 247 条 + MetaCubeX 245 条 (geosite 245 / geoip 0) → 去重合并 248 条
-# Hash：08e9fa49f5cb0093e8489df3c45825d881063357d1df93c005dab3531197c2ed
+# Hash：ad291b7c1a3bc23ea86f5a64167a589b72b19870d81d7af9df133828c78124ed
 payload:
+  - DOMAIN,venmo.s3.amazonaws.com
+  - DOMAIN-KEYWORD,paypal
   - DOMAIN-SUFFIX,account-paypal.info
   - DOMAIN-SUFFIX,account-paypal.net
   - DOMAIN-SUFFIX,account-paypal.org
@@ -249,5 +251,3 @@ payload:
   - DOMAIN-SUFFIX,xoom.net.cn
   - DOMAIN-SUFFIX,xoom.us
   - DOMAIN-SUFFIX,xoomcom.com
-  - DOMAIN-KEYWORD,paypal
-  - DOMAIN,venmo.s3.amazonaws.com

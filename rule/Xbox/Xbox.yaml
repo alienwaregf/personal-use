@@ -1,28 +1,35 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-10-23 14:44:26
+# 上次更新时间：2026-10-23 15:44:06
 # 条数：blackmatrix7 42 条 + MetaCubeX 42 条 (geosite 42 / geoip 0) → 去重合并 49 条
-# Hash：ec05d63d59a12a9e96d968bea700e961f43dc2859bb67487bdf62541d9d3d66f
+# Hash：0ff26d3620fc197ceda7cbc8d796c748bc887bba4c4efff8df265689b73de6d6
 payload:
   - DOMAIN,img-prod-cms-rt-microsoft-com.akamaized.net
   - DOMAIN,login.live.com
   - DOMAIN,logincdn.msauth.net
+  - DOMAIN,prodforza.blob.core.windows.net
   - DOMAIN,store-images.s-microsoft.com
   - DOMAIN-SUFFIX,beth.games
   - DOMAIN-SUFFIX,bethesda.net
   - DOMAIN-SUFFIX,bethesdagamestudios.com
   - DOMAIN-SUFFIX,bethsoft.com
   - DOMAIN-SUFFIX,callersbane.com
+  - DOMAIN-SUFFIX,doom.com
+  - DOMAIN-SUFFIX,elderscrolls.com
+  - DOMAIN-SUFFIX,forza.net
   - DOMAIN-SUFFIX,forzamotorsport.net
   - DOMAIN-SUFFIX,forzaracingchampionship.com
   - DOMAIN-SUFFIX,forzarc.com
   - DOMAIN-SUFFIX,gamepass.com
+  - DOMAIN-SUFFIX,minecraft-services.net
   - DOMAIN-SUFFIX,minecraft.net
+  - DOMAIN-SUFFIX,minecraftservices.com
   - DOMAIN-SUFFIX,minecraftshop.com
   - DOMAIN-SUFFIX,mojang.com
   - DOMAIN-SUFFIX,msgamestudios.com
   - DOMAIN-SUFFIX,orithegame.com
   - DOMAIN-SUFFIX,renovacionxboxlive.com
   - DOMAIN-SUFFIX,tellmewhygame.com
+  - DOMAIN-SUFFIX,xbox
   - DOMAIN-SUFFIX,xbox.co
   - DOMAIN-SUFFIX,xbox.com
   - DOMAIN-SUFFIX,xbox.eu
@@ -45,10 +52,3 @@ payload:
   - DOMAIN-SUFFIX,xboxservices.com
   - DOMAIN-SUFFIX,xboxstudios.com
   - DOMAIN-SUFFIX,xbx.lv
-  - DOMAIN,prodforza.blob.core.windows.net
-  - DOMAIN-SUFFIX,xbox
-  - DOMAIN-SUFFIX,doom.com
-  - DOMAIN-SUFFIX,elderscrolls.com
-  - DOMAIN-SUFFIX,forza.net
-  - DOMAIN-SUFFIX,minecraft-services.net
-  - DOMAIN-SUFFIX,minecraftservices.com

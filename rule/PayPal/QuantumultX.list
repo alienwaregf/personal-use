@@ -1,3 +1,5 @@
+HOST,venmo.s3.amazonaws.com
+HOST-KEYWORD,paypal
 HOST-SUFFIX,account-paypal.info
 HOST-SUFFIX,account-paypal.net
 HOST-SUFFIX,account-paypal.org
@@ -244,5 +246,3 @@ HOST-SUFFIX,xoom.io
 HOST-SUFFIX,xoom.net.cn
 HOST-SUFFIX,xoom.us
 HOST-SUFFIX,xoomcom.com
-HOST-KEYWORD,paypal
-HOST,venmo.s3.amazonaws.com

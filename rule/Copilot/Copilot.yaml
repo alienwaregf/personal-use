@@ -1,7 +1,7 @@
 # 数据来源：blackmatrix7
-# 上次更新时间：2026-10-23 14:43:59
+# 上次更新时间：2026-10-23 15:43:38
 # 条数：blackmatrix7 51 条 + MetaCubeX 0 条 (geosite 0 / geoip 0) → 去重合并 51 条
-# Hash：170a8b52de67c13cf1bc510210d998cc993e9a3692c2a8e15f5d113f3ffeb944
+# Hash：fa3c75ea5af45f3c2cde0e2d325a58f0429c9413fdc2c8e4ec03b7b116131689
 payload:
   - DOMAIN,api.msn.com
   - DOMAIN,api.statsig.com
@@ -23,6 +23,7 @@ payload:
   - DOMAIN,static.cloudflareinsights.com
   - DOMAIN,sydney.bing.com
   - DOMAIN,www.bing.com
+  - DOMAIN-KEYWORD,openaicom-api
   - DOMAIN-SUFFIX,algolia.net
   - DOMAIN-SUFFIX,api.microsoftapp.net
   - DOMAIN-SUFFIX,auth0.com
@@ -49,8 +50,7 @@ payload:
   - DOMAIN-SUFFIX,sentry.io
   - DOMAIN-SUFFIX,stripe.com
   - DOMAIN-SUFFIX,turn.livekit.cloud
-  - DOMAIN-KEYWORD,openaicom-api
-  - IP-CIDR,24.199.123.28/32
-  - IP-CIDR,64.23.132.171/32
   - IP-ASN,14061
   - IP-ASN,20473
+  - IP-CIDR,24.199.123.28/32
+  - IP-CIDR,64.23.132.171/32
