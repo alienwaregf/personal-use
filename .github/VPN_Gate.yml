@@ -32,7 +32,7 @@ jobs:
       - name: 检查 Python 脚本语法
         run: |
           set -euo pipefail
-          python -m py_compile Scripts/vpngate_rule.py
+          python -m py_compile Scripts/VPN_Gate.py
 
       - name: 安装 OpenVPN（实连验出口用）
         run: |
@@ -43,7 +43,7 @@ jobs:
       - name: 拉取 VPN Gate 清单、实连验证并生成家宽订阅
         run: |
           set -euo pipefail
-          python Scripts/vpngate_rule.py
+          python Scripts/VPN_Gate.py
 
       - name: 清理临时文件
         run: |
