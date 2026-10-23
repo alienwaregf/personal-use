@@ -74,7 +74,7 @@ UPSTREAM_INCLUDE_FOLDERS = {
     "AppleTV",
     "Binance",
     "Bing",
-    "category-ads-all@ads",
+    "category-ads-all",
     "category-ai-!cn",
     "ChinaMax",
     "Claude",
@@ -526,6 +526,41 @@ def merge_rule_sets(
     return merged, added
 
 
+def prune_covered_domain_rules(
+    rules: Sequence[RuleParts],
+) -> Tuple[List[RuleParts], int]:
+    suffixes = {
+        parts[1]
+        for parts in rules
+        if len(parts) >= 2 and parts[0].upper() == "DOMAIN-SUFFIX"
+    }
+    if not suffixes:
+        return [list(parts) for parts in rules], 0
+
+    def has_suffix_ancestor(value: str, include_self: bool) -> bool:
+        labels = value.split(".")
+        start = 0 if include_self else 1
+        return any(
+            ".".join(labels[i:]) in suffixes
+            for i in range(start, len(labels))
+        )
+
+    kept: List[RuleParts] = []
+    removed = 0
+    for parts in rules:
+        kind = parts[0].upper() if parts else ""
+        covered = len(parts) >= 2 and (
+            (kind == "DOMAIN" and has_suffix_ancestor(parts[1], True))
+            or (kind == "DOMAIN-SUFFIX"
+                and has_suffix_ancestor(parts[1], False))
+        )
+        if covered:
+            removed += 1
+        else:
+            kept.append(list(parts))
+    return kept, removed
+
+
 
 # =============================================================================
 # Client List Generation
@@ -627,7 +662,8 @@ def write_classical_yaml(dest_folder: Path, folder_name: str,
                          black_source: Optional[str],
                          black_count: int,
                          meta_stats: Dict[str, int],
-                         merged_count: int, fingerprint: str) -> None:
+                         merged_count: int, pruned_count: int,
+                         fingerprint: str) -> None:
     meta_count = meta_stats["geosite"] + meta_stats["geoip"]
     sources: List[str] = []
     if black_source:
@@ -635,12 +671,17 @@ def write_classical_yaml(dest_folder: Path, folder_name: str,
     if meta_count:
         sources.append("MetaCubeX")
     updated = datetime.now(BEIJING_TZ).strftime("%Y-%m-%d %H:%M:%S")
+    count_line = (
+        f"# 条数：blackmatrix7 {black_count} 条 + MetaCubeX {meta_count} 条 "
+        f"(geosite {meta_stats['geosite']} / geoip {meta_stats['geoip']}) "
+        f"→ 去重合并 {merged_count + pruned_count} 条"
+    )
+    if pruned_count:
+        count_line += f"，去冗 {pruned_count} 条，实存 {merged_count} 条"
     header = [
         f"# 数据来源：{' + '.join(sources)}",
         f"# 上次更新时间：{updated}",
-        f"# 条数：blackmatrix7 {black_count} 条 + MetaCubeX {meta_count} 条 "
-        f"(geosite {meta_stats['geosite']} / geoip {meta_stats['geoip']}) "
-        f"→ 去重合并 {merged_count} 条",
+        count_line,
         f"# Hash：{fingerprint}",
     ]
 
@@ -869,6 +910,10 @@ def process_folder(folder_name: str) -> Optional[Dict[str, int]]:
         return None
 
     merged, meta_added = merge_rule_sets(black_rules, meta_rules)
+    merged, pruned_count = prune_covered_domain_rules(merged)
+    if pruned_count:
+        print(f"去冗余：{folder_name} 移除 {pruned_count} 条"
+              f"已被 DOMAIN-SUFFIX 覆盖的规则", flush=True)
     merged = sorted(merged)
     dest_folder = DEST_RULE_DIR / folder_name
     fingerprint = compute_fingerprint(black_text, geosite_text, geoip_text)
@@ -881,6 +926,7 @@ def process_folder(folder_name: str) -> Optional[Dict[str, int]]:
             "meta": meta_stats["geosite"] + meta_stats["geoip"],
             "meta_added": meta_added,
             "merged": len(merged),
+            "pruned": pruned_count,
             "meta_skipped": meta_stats["skipped"],
             "skipped": 1,
         }
@@ -888,7 +934,7 @@ def process_folder(folder_name: str) -> Optional[Dict[str, int]]:
     dest_folder.mkdir(parents=True, exist_ok=True)
     write_classical_yaml(dest_folder, folder_name, merged, black_source,
                          len(black_rules), meta_stats, len(merged),
-                         fingerprint)
+                         pruned_count, fingerprint)
 
     domain_entries, ip_entries = split_mrs_rules(merged)
     generated_mrs = compile_rules_to_mrs(dest_folder, folder_name,
@@ -902,6 +948,7 @@ def process_folder(folder_name: str) -> Optional[Dict[str, int]]:
         "meta": meta_stats["geosite"] + meta_stats["geoip"],
         "meta_added": meta_added,
         "merged": len(merged),
+        "pruned": pruned_count,
         "meta_skipped": meta_stats["skipped"],
         "skipped": 0,
     }
@@ -920,6 +967,7 @@ def main() -> None:
     ensure_mihomo_exists()
     TEMP_DIR.mkdir(parents=True, exist_ok=True)
     total_added = 0
+    total_pruned = 0
     done = 0
     skipped = 0
     try:
@@ -930,11 +978,15 @@ def main() -> None:
                 skipped += result.get("skipped", 0)
                 if not result.get("skipped"):
                     total_added += result["meta_added"]
+                    total_pruned += result.get("pruned", 0)
     finally:
         if TEMP_DIR.exists():
             shutil.rmtree(TEMP_DIR)
-    print(f"全部完成: 共处理 {done} 个规则目录 (跳过未变化 {skipped} 个), "
-          f"MetaCubeX 共补入 {total_added} 条黑矩阵没有的规则")
+    summary = (f"全部完成: 共处理 {done} 个规则目录 (跳过未变化 {skipped} 个), "
+               f"MetaCubeX 共补入 {total_added} 条黑矩阵没有的规则")
+    if total_pruned:
+        summary += f", 共去冗 {total_pruned} 条"
+    print(summary)
 
 
 if __name__ == "__main__":
