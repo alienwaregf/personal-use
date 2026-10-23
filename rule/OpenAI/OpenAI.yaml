@@ -1,9 +1,7 @@
-# OpenAI 融合规则 (blackmatrix7 × MetaCubeX)
-# 由 Scripts/blackmatrix7_metacubex_rule.py 自动生成, 请勿手动修改
-# 数据来源:
-#   - blackmatrix7: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/OpenAI/OpenAI.yaml
-#   - MetaCubeX geosite: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/openai.yaml
-# 条数: 黑矩阵 35 条 + MetaCubeX 24 条 (geosite 24 / geoip 0) → 去重合并 48 条 (其中 Meta 新增 13 条)
+# 数据来源：blackmatrix7 + MetaCubeX
+# 上次更新时间：2026-10-23 14:44:15
+# 条数：blackmatrix7 35 条 + MetaCubeX 24 条 (geosite 24 / geoip 0) → 去重合并 48 条
+# Hash：557b9617919c5e9196201950b2fd68c841bcad811d45aac5d834df9b13adef66
 payload:
   - DOMAIN,browser-intake-datadoghq.com
   - DOMAIN,chat.openai.com.cdn.cloudflare.net

@@ -1,9 +1,7 @@
-# GitHub 融合规则 (blackmatrix7 × MetaCubeX)
-# 由 Scripts/blackmatrix7_metacubex_rule.py 自动生成, 请勿手动修改
-# 数据来源:
-#   - blackmatrix7: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/GitHub/GitHub.yaml
-#   - MetaCubeX geosite: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/github.yaml
-# 条数: 黑矩阵 31 条 + MetaCubeX 65 条 (geosite 65 / geoip 0) → 去重合并 71 条 (其中 Meta 新增 40 条)
+# 数据来源：blackmatrix7 + MetaCubeX
+# 上次更新时间：2026-10-23 14:44:05
+# 条数：blackmatrix7 31 条 + MetaCubeX 65 条 (geosite 65 / geoip 0) → 去重合并 71 条
+# Hash：1fb580b7c133a5565c31cf94ca928a07a78d2c6d136edaffa9789b53e400b47a
 payload:
   - DOMAIN-SUFFIX,atom.io
   - DOMAIN-SUFFIX,dependabot.com

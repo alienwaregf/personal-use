@@ -1,9 +1,7 @@
-# IPTVMainland 融合规则 (blackmatrix7 × MetaCubeX)
-# 由 Scripts/blackmatrix7_metacubex_rule.py 自动生成, 请勿手动修改
-# 数据来源:
-#   - blackmatrix7: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/IPTVMainland/IPTVMainland_Classical.yaml
-#   - MetaCubeX: (无同名规则)
-# 条数: 黑矩阵 2297 条 + MetaCubeX 0 条 (geosite 0 / geoip 0) → 去重合并 2297 条 (其中 Meta 新增 0 条)
+# 数据来源：blackmatrix7
+# 上次更新时间：2026-10-23 14:44:09
+# 条数：blackmatrix7 2297 条 + MetaCubeX 0 条 (geosite 0 / geoip 0) → 去重合并 2297 条
+# Hash：81fd45e5c67437aece455fb4d619d25ac39a8908c9d81e63cbb3fb649abbe0f0
 payload:
   - DOMAIN,1-fss24-s0.streamhoster.com
   - DOMAIN,1.cache.applinzi.com

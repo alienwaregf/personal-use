@@ -1,9 +1,7 @@
-# YouTube 融合规则 (blackmatrix7 × MetaCubeX)
-# 由 Scripts/blackmatrix7_metacubex_rule.py 自动生成, 请勿手动修改
-# 数据来源:
-#   - blackmatrix7: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/YouTube/YouTube.yaml
-#   - MetaCubeX geosite: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/youtube.yaml
-# 条数: 黑矩阵 183 条 + MetaCubeX 178 条 (geosite 178 / geoip 0) → 去重合并 185 条 (其中 Meta 新增 2 条)
+# 数据来源：blackmatrix7 + MetaCubeX
+# 上次更新时间：2026-10-23 14:44:27
+# 条数：blackmatrix7 183 条 + MetaCubeX 178 条 (geosite 178 / geoip 0) → 去重合并 185 条
+# Hash：e90afec1000948f3828fb49cd4efbac13ea73dd2f1090466837681eae8c6de79
 payload:
   - DOMAIN-SUFFIX,ggpht.cn
   - DOMAIN-SUFFIX,ggpht.com

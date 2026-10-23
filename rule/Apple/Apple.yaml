@@ -1,9 +1,7 @@
-# Apple 融合规则 (blackmatrix7 × MetaCubeX)
-# 由 Scripts/blackmatrix7_metacubex_rule.py 自动生成, 请勿手动修改
-# 数据来源:
-#   - blackmatrix7: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Apple/Apple_Classical.yaml
-#   - MetaCubeX geosite: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/apple.yaml
-# 条数: 黑矩阵 1593 条 + MetaCubeX 1792 条 (geosite 1792 / geoip 0) → 去重合并 1847 条 (其中 Meta 新增 254 条)
+# 数据来源：blackmatrix7 + MetaCubeX
+# 上次更新时间：2026-10-23 14:43:29
+# 条数：blackmatrix7 1593 条 + MetaCubeX 1792 条 (geosite 1792 / geoip 0) → 去重合并 1847 条
+# Hash：a91e07311dcadd3ffa98ab8c4b9bc5a54eac0f9fc53725f0b5e914a0c8a27bf6
 payload:
   - DOMAIN,apple-events.akamaized.net
   - DOMAIN,appleworldwidedeveloper.hb-api.omtrdc.net

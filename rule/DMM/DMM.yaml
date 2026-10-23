@@ -1,9 +1,7 @@
-# DMM 融合规则 (blackmatrix7 × MetaCubeX)
-# 由 Scripts/blackmatrix7_metacubex_rule.py 自动生成, 请勿手动修改
-# 数据来源:
-#   - blackmatrix7: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/DMM/DMM.yaml
-#   - MetaCubeX geosite: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/dmm.yaml
-# 条数: 黑矩阵 20 条 + MetaCubeX 17 条 (geosite 17 / geoip 0) → 去重合并 32 条 (其中 Meta 新增 12 条)
+# 数据来源：blackmatrix7 + MetaCubeX
+# 上次更新时间：2026-10-23 14:43:59
+# 条数：blackmatrix7 20 条 + MetaCubeX 17 条 (geosite 17 / geoip 0) → 去重合并 32 条
+# Hash：78286392e1dd1562ead9599f48f00cd3d4653f15263c152fc0e183f84bffce1b
 payload:
   - DOMAIN-SUFFIX,akabeesoft2.com
   - DOMAIN-SUFFIX,akabeesoft3.com

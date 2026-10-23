@@ -1,10 +1,7 @@
-# Cloudflare 融合规则 (blackmatrix7 × MetaCubeX)
-# 由 Scripts/blackmatrix7_metacubex_rule.py 自动生成, 请勿手动修改
-# 数据来源:
-#   - blackmatrix7: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Cloudflare/Cloudflare.yaml
-#   - MetaCubeX geosite: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/cloudflare.yaml
-#   - MetaCubeX geoip: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cloudflare.yaml
-# 条数: 黑矩阵 65 条 + MetaCubeX 856 条 (geosite 76 / geoip 780) → 去重合并 856 条 (其中 Meta 新增 791 条)
+# 数据来源：blackmatrix7 + MetaCubeX
+# 上次更新时间：2026-10-23 14:43:58
+# 条数：blackmatrix7 65 条 + MetaCubeX 856 条 (geosite 76 / geoip 780) → 去重合并 856 条
+# Hash：f760b2d8cc35312bbdd7116ee65acd61fa0a5e636869da1fc0be05bbcafb614e
 payload:
   - DOMAIN-SUFFIX,cf-ipfs.com
   - DOMAIN-SUFFIX,cf-ns.com

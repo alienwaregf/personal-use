@@ -1,9 +1,7 @@
-# IPTVOther 融合规则 (blackmatrix7 × MetaCubeX)
-# 由 Scripts/blackmatrix7_metacubex_rule.py 自动生成, 请勿手动修改
-# 数据来源:
-#   - blackmatrix7: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/IPTVOther/IPTVOther_Classical.yaml
-#   - MetaCubeX: (无同名规则)
-# 条数: 黑矩阵 2814 条 + MetaCubeX 0 条 (geosite 0 / geoip 0) → 去重合并 2814 条 (其中 Meta 新增 0 条)
+# 数据来源：blackmatrix7
+# 上次更新时间：2026-10-23 14:44:10
+# 条数：blackmatrix7 2814 条 + MetaCubeX 0 条 (geosite 0 / geoip 0) → 去重合并 2814 条
+# Hash：763f58425a036d21f5278961d85b1457a52615cf47d45ee373823224ca908c22
 payload:
   - DOMAIN,0813a4e76b5d404a97a4070b8e087bc4.mediatailor.us-east-1.amazonaws.com
   - DOMAIN,0b1ea79d9170498c91073ff8c460de18.mediatailor.us-west-2.amazonaws.com

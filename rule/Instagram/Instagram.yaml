@@ -1,9 +1,7 @@
-# Instagram 融合规则 (blackmatrix7 × MetaCubeX)
-# 由 Scripts/blackmatrix7_metacubex_rule.py 自动生成, 请勿手动修改
-# 数据来源:
-#   - blackmatrix7: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Instagram/Instagram.yaml
-#   - MetaCubeX geosite: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/instagram.yaml
-# 条数: 黑矩阵 4 条 + MetaCubeX 74 条 (geosite 74 / geoip 0) → 去重合并 76 条 (其中 Meta 新增 72 条)
+# 数据来源：blackmatrix7 + MetaCubeX
+# 上次更新时间：2026-10-23 14:44:11
+# 条数：blackmatrix7 4 条 + MetaCubeX 74 条 (geosite 74 / geoip 0) → 去重合并 76 条
+# Hash：f9b0b91e605ec7bec8120297a219692888f99fd1fa5742c9948bc1a87afdc85e
 payload:
   - DOMAIN-SUFFIX,cdninstagram.com
   - DOMAIN-SUFFIX,instagr.am

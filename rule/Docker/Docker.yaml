@@ -1,9 +1,7 @@
-# Docker 融合规则 (blackmatrix7 × MetaCubeX)
-# 由 Scripts/blackmatrix7_metacubex_rule.py 自动生成, 请勿手动修改
-# 数据来源:
-#   - blackmatrix7: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Docker/Docker.yaml
-#   - MetaCubeX geosite: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/docker.yaml
-# 条数: 黑矩阵 7 条 + MetaCubeX 6 条 (geosite 6 / geoip 0) → 去重合并 10 条 (其中 Meta 新增 3 条)
+# 数据来源：blackmatrix7 + MetaCubeX
+# 上次更新时间：2026-10-23 14:44:01
+# 条数：blackmatrix7 7 条 + MetaCubeX 6 条 (geosite 6 / geoip 0) → 去重合并 10 条
+# Hash：9de9bf07f5b46c5fbc1b7a71c5f62fa6449f294ef76def3e0b53abf05a9b1e96
 payload:
   - DOMAIN,d1q6f0aelx0por.cloudfront.net
   - DOMAIN,d2wy8f7a9ursnm.cloudfront.net

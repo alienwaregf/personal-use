@@ -1,9 +1,7 @@
-# PlayStation 融合规则 (blackmatrix7 × MetaCubeX)
-# 由 Scripts/blackmatrix7_metacubex_rule.py 自动生成, 请勿手动修改
-# 数据来源:
-#   - blackmatrix7: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/PlayStation/PlayStation.yaml
-#   - MetaCubeX geosite: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/playstation.yaml
-# 条数: 黑矩阵 4 条 + MetaCubeX 5 条 (geosite 5 / geoip 0) → 去重合并 5 条 (其中 Meta 新增 1 条)
+# 数据来源：blackmatrix7 + MetaCubeX
+# 上次更新时间：2026-10-23 14:44:17
+# 条数：blackmatrix7 4 条 + MetaCubeX 5 条 (geosite 5 / geoip 0) → 去重合并 5 条
+# Hash：e27118a8d86f41d5fadeecfab1a2c18760efa274a5d5c865e102df492ffe45aa
 payload:
   - DOMAIN-SUFFIX,playstation.com
   - DOMAIN-SUFFIX,playstation.net

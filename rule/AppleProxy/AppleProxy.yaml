@@ -1,9 +1,7 @@
-# AppleProxy 融合规则 (blackmatrix7 × MetaCubeX)
-# 由 Scripts/blackmatrix7_metacubex_rule.py 自动生成, 请勿手动修改
-# 数据来源:
-#   - blackmatrix7: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AppleProxy/AppleProxy.yaml
-#   - MetaCubeX: (无同名规则)
-# 条数: 黑矩阵 40 条 + MetaCubeX 0 条 (geosite 0 / geoip 0) → 去重合并 40 条 (其中 Meta 新增 0 条)
+# 数据来源：blackmatrix7
+# 上次更新时间：2026-10-23 14:43:33
+# 条数：blackmatrix7 40 条 + MetaCubeX 0 条 (geosite 0 / geoip 0) → 去重合并 40 条
+# Hash：c38852f4cfea3f67a73cf9a028060ed1a84bc19be4f831877c807ee94ae94d04
 payload:
   - DOMAIN,api-glb-sea.smoot.apple.com
   - DOMAIN,apple.comscoreresearch.com

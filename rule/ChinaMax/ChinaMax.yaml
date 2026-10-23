@@ -1,9 +1,7 @@
-# ChinaMax 融合规则 (blackmatrix7 × MetaCubeX)
-# 由 Scripts/blackmatrix7_metacubex_rule.py 自动生成, 请勿手动修改
-# 数据来源:
-#   - blackmatrix7: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ChinaMax/ChinaMax_Classical.yaml
-#   - MetaCubeX: (无同名规则)
-# 条数: 黑矩阵 123331 条 + MetaCubeX 0 条 (geosite 0 / geoip 0) → 去重合并 123331 条 (其中 Meta 新增 0 条)
+# 数据来源：blackmatrix7
+# 上次更新时间：2026-10-23 14:43:43
+# 条数：blackmatrix7 123331 条 + MetaCubeX 0 条 (geosite 0 / geoip 0) → 去重合并 123331 条
+# Hash：f00d69f0dab89206aeb10268ecd4bfe21a4106689ff82ee52662996d20d68155
 payload:
   - DOMAIN,cpro.baidustatic.com
   - DOMAIN,analytics.strava.com

@@ -1,9 +1,7 @@
-# TikTok 融合规则 (blackmatrix7 × MetaCubeX)
-# 由 Scripts/blackmatrix7_metacubex_rule.py 自动生成, 请勿手动修改
-# 数据来源:
-#   - blackmatrix7: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/TikTok/TikTok.yaml
-#   - MetaCubeX geosite: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/tiktok.yaml
-# 条数: 黑矩阵 35 条 + MetaCubeX 37 条 (geosite 37 / geoip 0) → 去重合并 60 条 (其中 Meta 新增 25 条)
+# 数据来源：blackmatrix7 + MetaCubeX
+# 上次更新时间：2026-10-23 14:44:23
+# 条数：blackmatrix7 35 条 + MetaCubeX 37 条 (geosite 37 / geoip 0) → 去重合并 60 条
+# Hash：4dd8b3dcb2b22dd104fb848bee8d4924228242b944d6df7dabf04ae30dd3129a
 payload:
   - DOMAIN,lf16-effectcdn.byteeffecttos-g.com
   - DOMAIN,lf16-pkgcdn.pitaya-clientai.com

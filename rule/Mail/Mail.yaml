@@ -1,9 +1,7 @@
-# Mail 融合规则 (blackmatrix7 × MetaCubeX)
-# 由 Scripts/blackmatrix7_metacubex_rule.py 自动生成, 请勿手动修改
-# 数据来源:
-#   - blackmatrix7: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Mail/Mail.yaml
-#   - MetaCubeX: (无同名规则)
-# 条数: 黑矩阵 12 条 + MetaCubeX 0 条 (geosite 0 / geoip 0) → 去重合并 12 条 (其中 Meta 新增 0 条)
+# 数据来源：blackmatrix7
+# 上次更新时间：2026-10-23 14:44:12
+# 条数：blackmatrix7 12 条 + MetaCubeX 0 条 (geosite 0 / geoip 0) → 去重合并 12 条
+# Hash：8cf83b100cfbd6104b31daec3be69bae733e017a1b725c6e643c959f45b51e60
 payload:
   - DOMAIN,apple.imap.mail.yahoo.com
   - DOMAIN,apple.smtp.mail.yahoo.com

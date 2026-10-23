@@ -1,9 +1,7 @@
-# TestFlight 融合规则 (blackmatrix7 × MetaCubeX)
-# 由 Scripts/blackmatrix7_metacubex_rule.py 自动生成, 请勿手动修改
-# 数据来源:
-#   - blackmatrix7: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/TestFlight/TestFlight.yaml
-#   - MetaCubeX: (无同名规则)
-# 条数: 黑矩阵 3 条 + MetaCubeX 0 条 (geosite 0 / geoip 0) → 去重合并 3 条 (其中 Meta 新增 0 条)
+# 数据来源：blackmatrix7
+# 上次更新时间：2026-10-23 14:44:22
+# 条数：blackmatrix7 3 条 + MetaCubeX 0 条 (geosite 0 / geoip 0) → 去重合并 3 条
+# Hash：0de61bc79f469c7bfb11144dd2b6072859b997102b3f6f0688da31f28040199c
 payload:
   - DOMAIN,beta.apple.com
   - DOMAIN,testflight.apple.com

@@ -1,9 +1,7 @@
-# Reddit 融合规则 (blackmatrix7 × MetaCubeX)
-# 由 Scripts/blackmatrix7_metacubex_rule.py 自动生成, 请勿手动修改
-# 数据来源:
-#   - blackmatrix7: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Reddit/Reddit.yaml
-#   - MetaCubeX geosite: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/reddit.yaml
-# 条数: 黑矩阵 8 条 + MetaCubeX 12 条 (geosite 12 / geoip 0) → 去重合并 15 条 (其中 Meta 新增 7 条)
+# 数据来源：blackmatrix7 + MetaCubeX
+# 上次更新时间：2026-10-23 14:44:18
+# 条数：blackmatrix7 8 条 + MetaCubeX 12 条 (geosite 12 / geoip 0) → 去重合并 15 条
+# Hash：a9b488dc82faee2844d2d4be9e88826a9bdaa5b1ea703ff89503bbd921c99925
 payload:
   - DOMAIN-SUFFIX,redd.it
   - DOMAIN-SUFFIX,reddit.com

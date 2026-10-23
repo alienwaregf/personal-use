@@ -1,10 +1,7 @@
-# Telegram 融合规则 (blackmatrix7 × MetaCubeX)
-# 由 Scripts/blackmatrix7_metacubex_rule.py 自动生成, 请勿手动修改
-# 数据来源:
-#   - blackmatrix7: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Telegram/Telegram.yaml
-#   - MetaCubeX geosite: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/telegram.yaml
-#   - MetaCubeX geoip: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/telegram.yaml
-# 条数: 黑矩阵 46 条 + MetaCubeX 33 条 (geosite 21 / geoip 12) → 去重合并 57 条 (其中 Meta 新增 11 条)
+# 数据来源：blackmatrix7 + MetaCubeX
+# 上次更新时间：2026-10-23 14:44:21
+# 条数：blackmatrix7 46 条 + MetaCubeX 33 条 (geosite 21 / geoip 12) → 去重合并 57 条
+# Hash：881fe1b4537adb5af7d75c6802fcb52ce330ecddc61387c05f6c63ae6dd7ca5f
 payload:
   - DOMAIN,api.imem.app
   - DOMAIN,api.swiftgram.app

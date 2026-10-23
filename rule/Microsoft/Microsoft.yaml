@@ -1,9 +1,7 @@
-# Microsoft 融合规则 (blackmatrix7 × MetaCubeX)
-# 由 Scripts/blackmatrix7_metacubex_rule.py 自动生成, 请勿手动修改
-# 数据来源:
-#   - blackmatrix7: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Microsoft/Microsoft.yaml
-#   - MetaCubeX geosite: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/microsoft.yaml
-# 条数: 黑矩阵 670 条 + MetaCubeX 746 条 (geosite 746 / geoip 0) → 去重合并 885 条 (其中 Meta 新增 215 条)
+# 数据来源：blackmatrix7 + MetaCubeX
+# 上次更新时间：2026-10-23 14:44:13
+# 条数：blackmatrix7 670 条 + MetaCubeX 746 条 (geosite 746 / geoip 0) → 去重合并 885 条
+# Hash：8b48aa31cb0cfc2caf08e4eb8fa3bc1fd1d7287f414bd43c112af1322d548403
 payload:
   - DOMAIN,vsmarketplacebadge.apphb.com
   - DOMAIN-SUFFIX,1drv.ms

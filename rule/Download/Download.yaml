@@ -1,9 +1,7 @@
-# Download 融合规则 (blackmatrix7 × MetaCubeX)
-# 由 Scripts/blackmatrix7_metacubex_rule.py 自动生成, 请勿手动修改
-# 数据来源:
-#   - blackmatrix7: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Download/Download.yaml
-#   - MetaCubeX: (无同名规则)
-# 条数: 黑矩阵 34 条 + MetaCubeX 0 条 (geosite 0 / geoip 0) → 去重合并 34 条 (其中 Meta 新增 0 条)
+# 数据来源：blackmatrix7
+# 上次更新时间：2026-10-23 14:44:01
+# 条数：blackmatrix7 34 条 + MetaCubeX 0 条 (geosite 0 / geoip 0) → 去重合并 34 条
+# Hash：bf7feadb47fc8a3606f5b2ced8884d949228ed8b8ec5cd48c3e5de0a8aea1901
 payload:
   - DOMAIN-SUFFIX,qbittorrent.org
   - DOMAIN-KEYWORD,aria2

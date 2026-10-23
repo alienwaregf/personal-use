@@ -1,9 +1,7 @@
-# category-ads-all 融合规则 (blackmatrix7 × MetaCubeX)
-# 由 Scripts/blackmatrix7_metacubex_rule.py 自动生成, 请勿手动修改
-# 数据来源:
-#   - blackmatrix7: (无此规则)
-#   - MetaCubeX geosite: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-ads-all.yaml
-# 条数: 黑矩阵 0 条 + MetaCubeX 903 条 (geosite 903 / geoip 0) → 去重合并 903 条 (其中 Meta 新增 903 条)
+# 数据来源：MetaCubeX
+# 上次更新时间：2026-10-23 14:44:28
+# 条数：blackmatrix7 0 条 + MetaCubeX 903 条 (geosite 903 / geoip 0) → 去重合并 903 条
+# Hash：c6f9780624078b11b73f5e6ba48082734d5941d5d661c36dda2064dbd96dc6a1
 payload:
   - DOMAIN,logs.ads.vungle.com
   - DOMAIN-SUFFIX,s4yxaqyq95.com

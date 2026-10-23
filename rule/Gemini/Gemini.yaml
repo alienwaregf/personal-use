@@ -1,9 +1,7 @@
-# Gemini 融合规则 (blackmatrix7 × MetaCubeX)
-# 由 Scripts/blackmatrix7_metacubex_rule.py 自动生成, 请勿手动修改
-# 数据来源:
-#   - blackmatrix7: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Gemini/Gemini.yaml
-#   - MetaCubeX geosite: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google-gemini.yaml
-# 条数: 黑矩阵 13 条 + MetaCubeX 46 条 (geosite 46 / geoip 0) → 去重合并 51 条 (其中 Meta 新增 38 条)
+# 数据来源：blackmatrix7 + MetaCubeX
+# 上次更新时间：2026-10-23 14:44:04
+# 条数：blackmatrix7 13 条 + MetaCubeX 46 条 (geosite 46 / geoip 0) → 去重合并 51 条
+# Hash：6b50a3d13df13375ba752c297b94f23c8f80b3c77fe76d381f17ed7922d7e1f2
 payload:
   - DOMAIN,ai.google.dev
   - DOMAIN,alkalimakersuite-pa.clients6.google.com

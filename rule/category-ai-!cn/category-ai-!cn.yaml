@@ -1,9 +1,7 @@
-# category-ai-!cn 融合规则 (blackmatrix7 × MetaCubeX)
-# 由 Scripts/blackmatrix7_metacubex_rule.py 自动生成, 请勿手动修改
-# 数据来源:
-#   - blackmatrix7: (无此规则)
-#   - MetaCubeX geosite: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-ai-%21cn.yaml
-# 条数: 黑矩阵 0 条 + MetaCubeX 204 条 (geosite 204 / geoip 0) → 去重合并 204 条 (其中 Meta 新增 204 条)
+# 数据来源：MetaCubeX
+# 上次更新时间：2026-10-23 14:44:28
+# 条数：blackmatrix7 0 条 + MetaCubeX 204 条 (geosite 204 / geoip 0) → 去重合并 204 条
+# Hash：7f001dc89c3f429adfb9ae060ae60834f0b13251fc93c8e86ad6f807c361fc8c
 payload:
   - DOMAIN,openaiapi-site.azureedge.net
   - DOMAIN,openaiassets.blob.core.windows.net

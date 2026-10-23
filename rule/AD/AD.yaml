@@ -2,18 +2,18 @@
 # 由 Scripts/AD_rule.py 自动生成，请勿手动修改
 # 数据来源：
 #   - easylist: https://easylist-downloads.adblockplus.org/easylist.txt
-#     原始 85340 行，提取 51278 条规则；最后更新时间（UTC）：2026-10-23T06:11:46Z
+#     原始 85346 行，提取 51284 条规则；最后更新时间（UTC）：2026-10-23T06:32:18Z
 #   - easyprivacy: https://easylist-downloads.adblockplus.org/easyprivacy.txt
-#     原始 54337 行，提取 40631 条规则；最后更新时间（UTC）：2026-10-23T06:11:46Z
+#     原始 54337 行，提取 40631 条规则；最后更新时间（UTC）：2026-10-23T06:32:19Z
 #   - easylistchina: https://easylist-downloads.adblockplus.org/easylistchina.txt
-#     原始 17784 行，提取 5577 条规则；最后更新时间（UTC）：2026-10-23T06:11:47Z
+#     原始 17784 行，提取 5577 条规则；最后更新时间（UTC）：2026-10-23T06:32:20Z
 #   - hagezi-ultimate: https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/ultimate.txt
 #     原始 245366 行，提取 245314 条规则；最后更新时间（UTC）：2026-10-22T08:56:00Z
 #   - stevenblack: https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
 #     原始 78317 行，提取 71489 条规则；最后更新时间（UTC）：2026-10-18T19:09:16Z
 #   - anti-ad: https://raw.githubusercontent.com/privacy-protection-tools/anti-AD/master/anti-ad-domains.txt
 #     原始 112083 行，提取 112079 条规则；最后更新时间（UTC）：2026-10-22T21:48:19Z
-# 合并去重后：域名 323837 个，IP 规则 118 条
+# 合并去重后：域名 323843 个，IP 规则 118 条
 payload:
   - DOMAIN,000.gaysexe.free.fr
   - DOMAIN,00000.uno
@@ -36525,6 +36525,7 @@ payload:
   - DOMAIN-SUFFIX,3uovpvhi8flm6ktzmzn.cfd
   - DOMAIN-SUFFIX,3utilities.com
   - DOMAIN-SUFFIX,3uyule.y579.com
+  - DOMAIN-SUFFIX,3uz3nno742k8h5t1vnly8.cfd
   - DOMAIN-SUFFIX,3v14lgwnojml1i9ekvi175yeunr5c1qom8.rest
   - DOMAIN-SUFFIX,3v7c7y.com
   - DOMAIN-SUFFIX,3vetz.com
@@ -72052,6 +72053,7 @@ payload:
   - DOMAIN-SUFFIX,b1bdol.sbs
   - DOMAIN-SUFFIX,b1dba49870.c8841fd6e9.com
   - DOMAIN-SUFFIX,b1f51f1561.79fb811d53.com
+  - DOMAIN-SUFFIX,b1hrrbqeqx325fhom54mvhepz.rest
   - DOMAIN-SUFFIX,b1ht7m8bkbjc32t2yij7yutub.cfd
   - DOMAIN-SUFFIX,b1img.com
   - DOMAIN-SUFFIX,b1j77.com
@@ -84403,6 +84405,7 @@ payload:
   - DOMAIN-SUFFIX,camelote.cn
   - DOMAIN-SUFFIX,camelsfestival.com
   - DOMAIN-SUFFIX,camelspark.com
+  - DOMAIN-SUFFIX,camelusnakulabiotite.cyou
   - DOMAIN-SUFFIX,cameogmbh.de
   - DOMAIN-SUFFIX,camep.xyz
   - DOMAIN-SUFFIX,cameracaseira.com
@@ -130356,6 +130359,7 @@ payload:
   - DOMAIN-SUFFIX,fpnpmcdn.net
   - DOMAIN-SUFFIX,fpofgwxhxtjaj.online
   - DOMAIN-SUFFIX,fpolkyzunpax.com
+  - DOMAIN-SUFFIX,fponhion.in
   - DOMAIN-SUFFIX,fpoolkovzfha.com
   - DOMAIN-SUFFIX,fpooraaqmxbnc.space
   - DOMAIN-SUFFIX,fposfzmqexyzw.online
@@ -225395,6 +225399,7 @@ payload:
   - DOMAIN-SUFFIX,qxmvywrkypkwq.space
   - DOMAIN-SUFFIX,qxpxrbettkskb.space
   - DOMAIN-SUFFIX,qxqjccxfiihvf.online
+  - DOMAIN-SUFFIX,qxqtxzxgkedxi.website
   - DOMAIN-SUFFIX,qxrrzo.rediredge.com
   - DOMAIN-SUFFIX,qxsfaj.caloo.jp
   - DOMAIN-SUFFIX,qxsgambwwkoib.site
@@ -283145,6 +283150,7 @@ payload:
   - DOMAIN-SUFFIX,thwerbakxfysg.space
   - DOMAIN-SUFFIX,thwujirmhunzf.website
   - DOMAIN-SUFFIX,thwxzegtztpvi.online
+  - DOMAIN-SUFFIX,thxzdjzbsyboh.site
   - DOMAIN-SUFFIX,thy7v872x26qot4.cfd
   - DOMAIN-SUFFIX,thycamois.qpon
   - DOMAIN-SUFFIX,thyglypsuphy.com

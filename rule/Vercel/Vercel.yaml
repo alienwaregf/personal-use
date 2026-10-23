@@ -1,9 +1,7 @@
-# Vercel 融合规则 (blackmatrix7 × MetaCubeX)
-# 由 Scripts/blackmatrix7_metacubex_rule.py 自动生成, 请勿手动修改
-# 数据来源:
-#   - blackmatrix7: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Vercel/Vercel.yaml
-#   - MetaCubeX geosite: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/vercel.yaml
-# 条数: 黑矩阵 27 条 + MetaCubeX 27 条 (geosite 27 / geoip 0) → 去重合并 30 条 (其中 Meta 新增 3 条)
+# 数据来源：blackmatrix7 + MetaCubeX
+# 上次更新时间：2026-10-23 14:44:25
+# 条数：blackmatrix7 27 条 + MetaCubeX 27 条 (geosite 27 / geoip 0) → 去重合并 30 条
+# Hash：7fa24494a1b1b1993524ca1f9e0c50e33c19bcfb9bc63f6996e468668e080653
 payload:
   - DOMAIN-SUFFIX,err.sh
   - DOMAIN-SUFFIX,hyper.is

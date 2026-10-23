@@ -1,9 +1,7 @@
-# NTPService 融合规则 (blackmatrix7 × MetaCubeX)
-# 由 Scripts/blackmatrix7_metacubex_rule.py 自动生成, 请勿手动修改
-# 数据来源:
-#   - blackmatrix7: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/NTPService/NTPService.yaml
-#   - MetaCubeX: (无同名规则)
-# 条数: 黑矩阵 82 条 + MetaCubeX 0 条 (geosite 0 / geoip 0) → 去重合并 82 条 (其中 Meta 新增 0 条)
+# 数据来源：blackmatrix7
+# 上次更新时间：2026-10-23 14:44:13
+# 条数：blackmatrix7 82 条 + MetaCubeX 0 条 (geosite 0 / geoip 0) → 去重合并 82 条
+# Hash：6add7f71392f03b139fce80a70b6e7f1f0c54a0f5712c10342f079220cd50b7e
 payload:
   - DOMAIN-SUFFIX,cn.ntp.org.cn
   - DOMAIN-SUFFIX,de.ntp.org.cn
