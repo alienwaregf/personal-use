@@ -1,9 +1,9 @@
 # AD 聚合广告域名规则
 # 数据来源：EasyList + EasyPrivacy + EasyListChina + Dns-BlockLists Normal + StevenBlack + anti-AD
-# EasyList 51290条 + EasyPrivacy 40631条 + EasyListChina 5577条 + Dns-BlockLists Normal 171235条 + StevenBlack 71489条 + anti-AD 112079条
-# 合并去重后：域名 249103 个，IP 规则 118 条
-# 上次更新时间：2026-10-23 15:14:52
-# Hash：34a441840dfa18d92037e9b11ef84c6f2bc12c8913c0e8a1dd1ddb0dd9a7866b
+# EasyList 51293条 + EasyPrivacy 40631条 + EasyListChina 5577条 + Dns-BlockLists Normal 171235条 + StevenBlack 71489条 + anti-AD 112079条
+# 合并去重后：域名 249106 个，IP 规则 118 条
+# 上次更新时间：2026-10-23 15:25:07
+# Hash：f9f87b5eb68ac09af6847baeaa4b2d71af03b6e88d1654b9bede26ed7a7bf806
 payload:
   - DOMAIN,000.gaysexe.free.fr
   - DOMAIN,00000.uno
@@ -79858,6 +79858,7 @@ payload:
   - DOMAIN-SUFFIX,cfngncvzumazd.space
   - DOMAIN-SUFFIX,cfnokaixpcius.online
   - DOMAIN-SUFFIX,cfo.stats.cegedim.cloud
+  - DOMAIN-SUFFIX,cforctiztixhe.space
   - DOMAIN-SUFFIX,cfpgsnkdmtugz.space
   - DOMAIN-SUFFIX,cfpisltkhedst.online
   - DOMAIN-SUFFIX,cfpro.ru
@@ -119951,6 +119952,7 @@ payload:
   - DOMAIN-SUFFIX,hdggrhgzgptxg.site
   - DOMAIN-SUFFIX,hdhuxrsiymfbvs.com
   - DOMAIN-SUFFIX,hdicsm.autoscout24.be
+  - DOMAIN-SUFFIX,hdithsqsb.com
   - DOMAIN-SUFFIX,hdj.baidu.com
   - DOMAIN-SUFFIX,hdjhsudhe.kuaizhan.com
   - DOMAIN-SUFFIX,hdjoi.omniluxled.com
@@ -134961,6 +134963,7 @@ payload:
   - DOMAIN-SUFFIX,kingered-banctours.com
   - DOMAIN-SUFFIX,kingfainted.com
   - DOMAIN-SUFFIX,kingfisher.gedaly.com
+  - DOMAIN-SUFFIX,kinggonifbunn.qpon
   - DOMAIN-SUFFIX,kingko.xyz
   - DOMAIN-SUFFIX,kingkong.co
   - DOMAIN-SUFFIX,kingleads.pro
