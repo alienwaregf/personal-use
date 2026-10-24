@@ -1,7 +1,7 @@
 # 数据来源：blackmatrix7
-# 上次更新时间：2026-10-23 20:30:07
-# 条数：blackmatrix7 123331 条 + MetaCubeX 0 条 (geosite 0 / geoip 0) → 去重合并 123331 条
-# Hash：34bebd566897f1a7dafafdffcb7929f4eb21fd56a3a8bf0b990d3e91e5293865
+# 上次更新时间：2026-10-24 08:44:37
+# 条数：blackmatrix7 123333 条 + MetaCubeX 0 条 (geosite 0 / geoip 0) → 去重合并 123333 条
+# Hash：3d95015475857a12e0c5591afa3fb5dc57ded6441dced0d0be8c9f5548c730f2
 payload:
   - DOMAIN,1-fss24-s0.streamhoster.com
   - DOMAIN,14033.live.streamtheworld.com
@@ -85993,6 +85993,8 @@ payload:
   - DOMAIN-SUFFIX,szty56.com
   - DOMAIN-SUFFIX,sztz.org
   - DOMAIN-SUFFIX,sztzzs.com
+  - DOMAIN-SUFFIX,szu.app
+  - DOMAIN-SUFFIX,szu.moe
   - DOMAIN-SUFFIX,szuavia.org
   - DOMAIN-SUFFIX,szudad.com
   - DOMAIN-SUFFIX,szunionlab.com
@@ -111579,6 +111581,7 @@ payload:
   - IP-CIDR,103.186.4.0/23
   - IP-CIDR,103.189.140.0/23
   - IP-CIDR,103.189.152.0/22
+  - IP-CIDR,103.189.197.0/24
   - IP-CIDR,103.189.92.0/23
   - IP-CIDR,103.19.12.0/22
   - IP-CIDR,103.19.232.0/22
@@ -114992,8 +114995,7 @@ payload:
   - IP-CIDR,175.30.0.0/15
   - IP-CIDR,175.42.0.0/15
   - IP-CIDR,175.44.0.0/16
-  - IP-CIDR,175.45.176.0/24
-  - IP-CIDR,175.45.178.0/23
+  - IP-CIDR,175.45.179.0/24
   - IP-CIDR,175.46.0.0/15
   - IP-CIDR,175.48.0.0/12
   - IP-CIDR,175.64.0.0/11
@@ -115175,7 +115177,6 @@ payload:
   - IP-CIDR,192.168.10.1/32
   - IP-CIDR,192.168.119.253/32
   - IP-CIDR,192.171.224.0/21
-  - IP-CIDR,192.186.4.0/24
   - IP-CIDR,192.197.113.0/24
   - IP-CIDR,192.23.191.0/24
   - IP-CIDR,192.232.34.0/23
@@ -115714,10 +115715,9 @@ payload:
   - IP-CIDR,202.91.224.0/19
   - IP-CIDR,202.91.36.0/22
   - IP-CIDR,202.91.96.0/20
-  - IP-CIDR,202.92.0.0/22
+  - IP-CIDR,202.92.0.0/20
   - IP-CIDR,202.92.252.0/22
   - IP-CIDR,202.92.48.0/20
-  - IP-CIDR,202.92.8.0/21
   - IP-CIDR,202.93.0.0/22
   - IP-CIDR,202.93.252.0/22
   - IP-CIDR,202.94.0.0/19
@@ -118519,6 +118519,7 @@ payload:
   - IP-CIDR,45.119.104.0/22
   - IP-CIDR,45.119.116.0/22
   - IP-CIDR,45.119.232.0/22
+  - IP-CIDR,45.119.42.0/23
   - IP-CIDR,45.119.52.0/22
   - IP-CIDR,45.119.60.0/22
   - IP-CIDR,45.119.64.0/21
@@ -121305,7 +121306,10 @@ payload:
   - IP-CIDR6,2406:840:9f00::/40
   - IP-CIDR6,2406:840::/48
   - IP-CIDR6,2406:840:a000::/35
-  - IP-CIDR6,2406:840:a00::/44
+  - IP-CIDR6,2406:840:a01::/48
+  - IP-CIDR6,2406:840:a02::/47
+  - IP-CIDR6,2406:840:a04::/46
+  - IP-CIDR6,2406:840:a08::/45
   - IP-CIDR6,2406:840:a12::/47
   - IP-CIDR6,2406:840:a14::/46
   - IP-CIDR6,2406:840:a18::/45
@@ -121791,8 +121795,6 @@ payload:
   - IP-CIDR6,2620:171:32::/48
   - IP-CIDR6,2620:171:5a:f0::/64
   - IP-CIDR6,2620:171:fb::/48
-  - IP-CIDR6,2620:57:4004::/47
-  - IP-CIDR6,2804:1e48:9002::/48
   - IP-CIDR6,2a00:79e0:200:500::/56
   - IP-CIDR6,2a00:79e0:ffe5:3a00::/56
   - IP-CIDR6,2a00:79e1:abc:ab00::/56

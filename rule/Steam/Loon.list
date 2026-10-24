@@ -67,3 +67,15 @@ DOMAIN-SUFFIX,underlords.com
 DOMAIN-SUFFIX,valve.net
 DOMAIN-SUFFIX,valvesoftware.com
 DOMAIN-SUFFIX,wmsjsteam.com
+IP-CIDR,103.10.124.0/23,extended-matching
+IP-CIDR,103.28.54.0/24,extended-matching
+IP-CIDR,146.66.152.0/24,extended-matching
+IP-CIDR,146.66.155.0/24,extended-matching
+IP-CIDR,155.133.224.0/19,extended-matching
+IP-CIDR,162.254.192.0/21,extended-matching
+IP-CIDR,185.25.180.0/22,extended-matching
+IP-CIDR,192.69.96.0/22,extended-matching
+IP-CIDR,205.196.6.0/24,extended-matching
+IP-CIDR,208.64.200.0/22,extended-matching
+IP-CIDR,208.78.164.0/22,extended-matching
+IP-CIDR,45.121.184.0/24,extended-matching

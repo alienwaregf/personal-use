@@ -5,6 +5,11 @@ domain
 https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Steam/Steam.mrs
 ```
 
+ipcidr
+```text
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Steam/Steam_IP.mrs
+```
+
 classical
 ```text
 https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Steam/Steam.yaml

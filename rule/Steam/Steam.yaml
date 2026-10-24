@@ -1,7 +1,7 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-10-23 20:30:36
-# 条数：blackmatrix7 54 条 + MetaCubeX 61 条 (geosite 61 / geoip 0) → 去重合并 85 条，去冗 16 条，实存 69 条
-# Hash：4f5f0f5a4a2357bd5c6bf73e1a4f619d355d041babb1beba12aa3d4ab3255312
+# 上次更新时间：2026-10-24 08:45:05
+# 条数：blackmatrix7 69 条 + MetaCubeX 61 条 (geosite 61 / geoip 0) → 去重合并 97 条，去冗 16 条，实存 81 条
+# Hash：3c138874a648f99675574dbb1ef4325c1f1f9985afb4d09706998513ea93fae7
 payload:
   - DOMAIN,a4e8s8k3.map2.ssl.hwcdn.net
   - DOMAIN,lv.queniujq.cn
@@ -72,3 +72,15 @@ payload:
   - DOMAIN-SUFFIX,valve.net
   - DOMAIN-SUFFIX,valvesoftware.com
   - DOMAIN-SUFFIX,wmsjsteam.com
+  - IP-CIDR,103.10.124.0/23
+  - IP-CIDR,103.28.54.0/24
+  - IP-CIDR,146.66.152.0/24
+  - IP-CIDR,146.66.155.0/24
+  - IP-CIDR,155.133.224.0/19
+  - IP-CIDR,162.254.192.0/21
+  - IP-CIDR,185.25.180.0/22
+  - IP-CIDR,192.69.96.0/22
+  - IP-CIDR,205.196.6.0/24
+  - IP-CIDR,208.64.200.0/22
+  - IP-CIDR,208.78.164.0/22
+  - IP-CIDR,45.121.184.0/24
