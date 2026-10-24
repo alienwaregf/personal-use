@@ -18,8 +18,9 @@ Screening:
   5. Decode each OpenVPN config; keep only proto tcp entries with a remote.
 
 Output is a provider file (top-level "proxies:") holding only the
-residential OpenVPN nodes. Every node carries dialer-proxy pointing at
-DIALER_PROXY_GROUP (the user's own auto-select group); no front nodes.
+residential OpenVPN nodes, with pure per-node fields only: chaining
+(dialer-proxy), DNS and other shared settings are applied by the
+user's own config via provider override, not baked into the nodes.
 """
 
 import base64
@@ -35,14 +36,13 @@ SOURCE_URLS = [
     "https://www.vpngate.net/api/iphone/",
     "http://www.vpngate.net/api/iphone/",
 ]
-IP_API_BATCH = "http://ip-api.com/batch?fields=status,query,country,regionName,city,isp,org,as,hosting,proxy&lang=zh-CN"
+IP_API_BATCH = "http://ip-api.com/batch?fields=status,query,country,regionName,isp,org,as,hosting,proxy&lang=zh-CN"
 OUTPUT_PATH = Path("proxy/VPNgate.yaml")
-DIALER_PROXY_GROUP = "自动选择"
 
 EXCLUDE_HOST_PREFIX = "public-vpn"
 EXCLUDE_IP_PREFIX = "219.100.37."
 CONFIG_PREFIX_CHARS = 6000  # decode only the head of each config first
-VERSION_TAG = "v9-name"
+VERSION_TAG = "v12-name-region"
 
 BEIJING = timezone(timedelta(hours=8))
 
@@ -211,12 +211,7 @@ def screen_datacenter_ips(nodes):
             node["isp"] = entry.get("isp", "")
             node["asn"] = entry.get("as", "")
             node["country_name"] = (entry.get("country") or "").strip()
-            parts = []
-            for part in (entry.get("regionName", ""), entry.get("city", "")):
-                part = (part or "").strip()
-                if part and part not in parts:
-                    parts.append(part)
-            node["place"] = " ".join(parts)
+            node["region"] = (entry.get("regionName") or "").strip()
         kept.append(node)
     return kept, {"ran": True, "dropped": dropped}
 
@@ -250,11 +245,14 @@ def display_name(node):
         or node.get("country_long")
         or node["country"]
     )
-    parts = [p for p in (flag_emoji(node["country"]), country) if p]
-    if node.get("place"):
-        parts.append(node["place"])
-    parts.append("🏠 家宽")
-    return " ".join(parts)
+    region = (node.get("region") or "").strip()
+    if region == country:
+        region = ""
+    flag = flag_emoji(node["country"])
+    head = f"{country}{region}家宽"
+    if flag:
+        head = f"{flag} {head}"
+    return f"{head} {node['server']}"
 
 
 def render_yaml(nodes, cert, fingerprint):
@@ -291,10 +289,7 @@ def render_yaml(nodes, cert, fingerprint):
             "  - { "
             f"name: '{name}', type: openvpn, server: {node['server']}, "
             f"port: {node['port']}, proto: tcp, username: vpn, password: vpn, "
-            f"cipher: {node['cipher']}, auth: {node['auth']}, udp: false, "
-            "handshake-timeout: 30, remote-dns-resolve: true, "
-            "dns: [8.8.8.8, 1.1.1.1], "
-            f"dialer-proxy: '{DIALER_PROXY_GROUP}', {cert_fields}"
+            f"cipher: {node['cipher']}, auth: {node['auth']}, {cert_fields}"
             " }"
         )
     return "\n".join(lines) + "\n", len(named)
