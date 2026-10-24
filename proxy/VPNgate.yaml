@@ -1,142 +1,136 @@
 # VPN Gate 家宽节点（OpenVPN）
 # 数据来源：VPN Gate 官方清单，已剔除 public-vpn 官方机房节点、219.100.37. 网段及 IP 情报标记为机房的 IP
-# 上次更新时间：2026-10-24 17:03:01
-# 条数：68 个节点
-# Hash：9167b6a1487bae91a7facc2c352afbcadcb438270edabd95549633573f7fbfb2
+# 上次更新时间：2026-10-24 21:14:25
+# 条数：65 个节点
+# Hash：95cdfe6bb73254ba225b98f37e44bba02666835fd0d0288bc30e6e66f7fe5c23
 proxies:
-  # SoftBank Corp. · AS17676 SoftBank Corp.
-  - { name: '🇯🇵 日本东京都家宽 221.71.146.229', type: openvpn, server: 221.71.146.229, port: 1402, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: &jkca "-----BEGIN CERTIFICATE-----\nMIIFazCCA1OgAwIBAgIRAIIQz7DSQONZRGPgu2OCiwAwDQYJKoZIhvcNAQELBQAw\nTzELMAkGA1UEBhMCVVMxKTAnBgNVBAoTIEludGVybmV0IFNlY3VyaXR5IFJlc2Vh\ncmNoIEdyb3VwMRUwEwYDVQQDEwxJU1JHIFJvb3QgWDEwHhcNMTUwNjA0MTEwNDM4\nWhcNMzUwNjA0MTEwNDM4WjBPMQswCQYDVQQGEwJVUzEpMCcGA1UEChMgSW50ZXJu\nZXQgU2VjdXJpdHkgUmVzZWFyY2ggR3JvdXAxFTATBgNVBAMTDElTUkcgUm9vdCBY\nMTCCAiIwDQYJKoZIhvcNAQEBBQADggIPADCCAgoCggIBAK3oJHP0FDfzm54rVygc\nh77ct984kIxuPOZXoHj3dcKi/vVqbvYATyjb3miGbESTtrFj/RQSa78f0uoxmyF+\n0TM8ukj13Xnfs7j/EvEhmkvBioZxaUpmZmyPfjxwv60pIgbz5MDmgK7iS4+3mX6U\nA5/TR5d8mUgjU+g4rk8Kb4Mu0UlXjIB0ttov0DiNewNwIRt18jA8+o+u3dpjq+sW\nT8KOEUt+zwvo/7V3LvSye0rgTBIlDHCNAymg4VMk7BPZ7hm/ELNKjD+Jo2FR3qyH\nB5T0Y3HsLuJvW5iB4YlcNHlsdu87kGJ55tukmi8mxdAQ4Q7e2RCOFvu396j3x+UC\nB5iPNgiV5+I3lg02dZ77DnKxHZu8A/lJBdiB3QW0KtZB6awBdpUKD9jf1b0SHzUv\nKBds0pjBqAlkd25HN7rOrFleaJ1/ctaJxQZBKT5ZPt0m9STJEadao0xAH0ahmbWn\nOlFuhjuefXKnEgV4We0+UXgVCwOPjdAvBbI+e0ocS3MFEvzG6uBQE3xDk3SzynTn\njh8BCNAw1FtxNrQHusEwMFxIt4I7mKZ9YIqioymCzLq9gwQbooMDQaHWBfEbwrbw\nqHyGO0aoSCqI3Haadr8faqU9GY/rOPNk3sgrDQoo//fb4hVC1CLQJ13hef4Y53CI\nrU7m2Ys6xt0nUW7/vGT1M0NPAgMBAAGjQjBAMA4GA1UdDwEB/wQEAwIBBjAPBgNV\nHRMBAf8EBTADAQH/MB0GA1UdDgQWBBR5tFnme7bl5AFzgAiIyBpY9umbbjANBgkq\nhkiG9w0BAQsFAAOCAgEAVR9YqbyyqFDQDLHYGmkgJykIrGF1XIpu+ILlaS/V9lZL\nubhzEFnTIZd+50xx+7LSYK05qAvqFyFWhfFQDlnrzuBZ6brJFe+GnY+EgPbk6ZGQ\n3BebYhtF8GaV0nxvwuo77x/Py9auJ/GpsMiu/X1+mvoiBOv/2X/qkSsisRcOj/KK\nNFtY2PwByVS5uCbMiogziUwthDyC3+6WVwW6LLv3xLfHTjuCvjHIInNzktHCgKQ5\nORAzI4JMPJ+GslWYHb4phowim57iaztXOoJwTdwJx4nLCgdNbOhdjsnvzqvHu7Ur\nTkXWStAmzOVyyghqpZXjFaH3pO3JLF+l+/+sKAIuvtd7u+Nxe5AW0wdeRlN8NwdC\njNPElpzVmbUq4JUagEiuTDkHzsxHpFKVK7q4+63SM1N95R1NbdWhscdCb+ZAJzVc\noyi3B43njTOQ5yOf+1CceWxG1bQVs5ZufpsMljq4Ui0/1lvh+wjChP4kqKOJ2qxq\n4RgqsahDYVvTH9w7jXbyLeiNdd8XM2w9U/t7y0Ff/9yi0GE44Za4rF2LN9d11TPA\nmRGunUHBcnWEvgJBQl9nJEiU0Zsnvgc/ubhPgXRR4Xq37Z0j4r7g1SgEEzwxA57d\nemyPxgcYxn/eR44/KJ4EBs+lVDR3veyJm+kXQ99b21/+jh5Xos1AnX5iItreGCc=\n-----END CERTIFICATE-----", cert: &jkcert "-----BEGIN CERTIFICATE-----\nMIICxjCCAa4CAQAwDQYJKoZIhvcNAQEFBQAwKTEaMBgGA1UEAxMRVlBOR2F0ZUNs\naWVudENlcnQxCzAJBgNVBAYTAkpQMB4XDTEzMDIxMTAzNDk0OVoXDTM3MDExOTAz\nMTQwN1owKTEaMBgGA1UEAxMRVlBOR2F0ZUNsaWVudENlcnQxCzAJBgNVBAYTAkpQ\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA5h2lgQQYUjwoKYJbzVZA\n5VcIGd5otPc/qZRMt0KItCFA0s9RwReNVa9fDRFLRBhcITOlv3FBcW3E8h1Us7RD\n4W8GmJe8zapJnLsD39OSMRCzZJnczW4OCH1PZRZWKqDtjlNca9AF8a65jTmlDxCQ\nCjntLIWk5OLLVkFt9/tScc1GDtci55ofhaNAYMPiH7V8+1g66pGHXAoWK6AQVH67\nXCKJnGB5nlQ+HsMYPV/O49Ld91ZN/2tHkcaLLyNtywxVPRSsRh480jju0fcCsv6h\np/0yXnTB//mWutBGpdUlIbwiITbAmrsbYnjigRvnPqX1RNJUbi9Fp6C2c/HIFJGD\nywIDAQABMA0GCSqGSIb3DQEBBQUAA4IBAQChO5hgcw/4oWfoEFLu9kBa1B//kxH8\nhQkChVNn8BRC7Y0URQitPl3DKEed9URBDdg2KOAz77bb6ENPiliD+a38UJHIRMqe\nUBHhllOHIzvDhHFbaovALBQceeBzdkQxsKQESKmQmR832950UCovoyRB61UyAV7h\n+mZhYPGRKXKSJI6s0Egg/Cri+Cwk4bjJfrb5hVse11yh4D9MHhwSfCOH+0z4hPUT\nFku7dGavURO5SVxMn/sL6En5D+oSeXkadHpDs+Airym2YHh15h0+jPSOoR6yiVp/\n6zZeZkrN43kuS73KpKDFjfFPh8t4r1gOIjttkNcQqBccusnplQ7HJpsk\n-----END CERTIFICATE-----", key: &jkkey "-----BEGIN RSA PRIVATE KEY-----\nMIIEpAIBAAKCAQEA5h2lgQQYUjwoKYJbzVZA5VcIGd5otPc/qZRMt0KItCFA0s9R\nwReNVa9fDRFLRBhcITOlv3FBcW3E8h1Us7RD4W8GmJe8zapJnLsD39OSMRCzZJnc\nzW4OCH1PZRZWKqDtjlNca9AF8a65jTmlDxCQCjntLIWk5OLLVkFt9/tScc1GDtci\n55ofhaNAYMPiH7V8+1g66pGHXAoWK6AQVH67XCKJnGB5nlQ+HsMYPV/O49Ld91ZN\n/2tHkcaLLyNtywxVPRSsRh480jju0fcCsv6hp/0yXnTB//mWutBGpdUlIbwiITbA\nmrsbYnjigRvnPqX1RNJUbi9Fp6C2c/HIFJGDywIDAQABAoIBAERV7X5AvxA8uRiK\nk8SIpsD0dX1pJOMIwakUVyvc4EfN0DhKRNb4rYoSiEGTLyzLpyBc/A28Dlkm5eOY\nfjzXfYkGtYi/Ftxkg3O9vcrMQ4+6i+uGHaIL2rL+s4MrfO8v1xv6+Wky33EEGCou\nQiwVGRFQXnRoQ62NBCFbUNLhmXwdj1akZzLU4p5R4zA3QhdxwEIatVLt0+7owLQ3\nlP8sfXhppPOXjTqMD4QkYwzPAa8/zF7acn4kryrUP7Q6PAfd0zEVqNy9ZCZ9ffho\nzXedFj486IFoc5gnTp2N6jsnVj4LCGIhlVHlYGozKKFqJcQVGsHCqq1oz2zjW6LS\noRYIHgECgYEA8zZrkCwNYSXJuODJ3m/hOLVxcxgJuwXoiErWd0E42vPanjjVMhnt\nKY5l8qGMJ6FhK9LYx2qCrf/E0XtUAZ2wVq3ORTyGnsMWre9tLYs55X+ZN10Tc75z\n4hacbU0hqKN1HiDmsMRY3/2NaZHoy7MKnwJJBaG48l9CCTlVwMHocIECgYEA8jby\ndGjxTH+6XHWNizb5SRbZxAnyEeJeRwTMh0gGzwGPpH/sZYGzyu0SySXWCnZh3Rgq\n5uLlNxtrXrljZlyi2nQdQgsq2YrWUs0+zgU+22uQsZpSAftmhVrtvet6MjVjbByY\nDADciEVUdJYIXk+qnFUJyeroLIkTj7WYKZ6RjksCgYBoCFIwRDeg42oK89RFmnOr\nLymNAq4+2oMhsWlVb4ejWIWeAk9nc+GXUfrXszRhS01mUnU5r5ygUvRcarV/T3U7\nTnMZ+I7Y4DgWRIDd51znhxIBtYV5j/C/t85HjqOkH+8b6RTkbchaX3mau7fpUfds\nFq0nhIq42fhEO8srfYYwgQKBgQCyhi1N/8taRwpk+3/IDEzQwjbfdzUkWWSDk9Xs\nH/pkuRHWfTMP3flWqEYgW/LW40peW2HDq5imdV8+AgZxe/XMbaji9Lgwf1RY005n\nKxaZQz7yqHupWlLGF68DPHxkZVVSagDnV/sztWX6SFsCqFVnxIXifXGC4cW5Nm9g\nva8q4QKBgQCEhLVeUfdwKvkZ94g/GFz731Z2hrdVhgMZaU/u6t0V95+YezPNCQZB\nwmE9Mmlbq1emDeROivjCfoGhR3kZXW1pTKlLh6ZMUQUOpptdXva8XxfoqQwa3enA\nM7muBbF0XN7VO80iJPv+PmIZdEIAkpwKfi201YB+BafCIuGxIF50Vg==\n-----END RSA PRIVATE KEY-----" }
-  # KDDI · AS18126 Chubu Telecommunications Company, Inc.
-  - { name: '🇯🇵 日本愛知縣家宽 113.155.2.119', type: openvpn, server: 113.155.2.119, port: 1779, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  # Chubu Telecommunications Company, Inc. · AS18126 Chubu Telecommunications Company, Inc.
-  - { name: '🇯🇵 日本愛知縣家宽 124.18.39.182', type: openvpn, server: 124.18.39.182, port: 1341, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  # SoftBank Corp. · AS17676 SoftBank Corp.
-  - { name: '🇯🇵 日本东京都家宽 218.115.40.234', type: openvpn, server: 218.115.40.234, port: 1795, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  # JCOM · AS4721 JCOM Co., Ltd.
-  - { name: '🇯🇵 日本千葉縣家宽 14.193.8.125', type: openvpn, server: 14.193.8.125, port: 1932, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
   # Kddi Corporation · AS2516 KDDI CORPORATION
-  - { name: '🇯🇵 日本东京都家宽 106.161.34.210', type: openvpn, server: 106.161.34.210, port: 1998, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  - { name: '🇯🇵 日本东京都家宽 111.238.186.43', type: openvpn, server: 111.238.186.43, port: 1651, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: &jkca "-----BEGIN CERTIFICATE-----\nMIIFazCCA1OgAwIBAgIRAIIQz7DSQONZRGPgu2OCiwAwDQYJKoZIhvcNAQELBQAw\nTzELMAkGA1UEBhMCVVMxKTAnBgNVBAoTIEludGVybmV0IFNlY3VyaXR5IFJlc2Vh\ncmNoIEdyb3VwMRUwEwYDVQQDEwxJU1JHIFJvb3QgWDEwHhcNMTUwNjA0MTEwNDM4\nWhcNMzUwNjA0MTEwNDM4WjBPMQswCQYDVQQGEwJVUzEpMCcGA1UEChMgSW50ZXJu\nZXQgU2VjdXJpdHkgUmVzZWFyY2ggR3JvdXAxFTATBgNVBAMTDElTUkcgUm9vdCBY\nMTCCAiIwDQYJKoZIhvcNAQEBBQADggIPADCCAgoCggIBAK3oJHP0FDfzm54rVygc\nh77ct984kIxuPOZXoHj3dcKi/vVqbvYATyjb3miGbESTtrFj/RQSa78f0uoxmyF+\n0TM8ukj13Xnfs7j/EvEhmkvBioZxaUpmZmyPfjxwv60pIgbz5MDmgK7iS4+3mX6U\nA5/TR5d8mUgjU+g4rk8Kb4Mu0UlXjIB0ttov0DiNewNwIRt18jA8+o+u3dpjq+sW\nT8KOEUt+zwvo/7V3LvSye0rgTBIlDHCNAymg4VMk7BPZ7hm/ELNKjD+Jo2FR3qyH\nB5T0Y3HsLuJvW5iB4YlcNHlsdu87kGJ55tukmi8mxdAQ4Q7e2RCOFvu396j3x+UC\nB5iPNgiV5+I3lg02dZ77DnKxHZu8A/lJBdiB3QW0KtZB6awBdpUKD9jf1b0SHzUv\nKBds0pjBqAlkd25HN7rOrFleaJ1/ctaJxQZBKT5ZPt0m9STJEadao0xAH0ahmbWn\nOlFuhjuefXKnEgV4We0+UXgVCwOPjdAvBbI+e0ocS3MFEvzG6uBQE3xDk3SzynTn\njh8BCNAw1FtxNrQHusEwMFxIt4I7mKZ9YIqioymCzLq9gwQbooMDQaHWBfEbwrbw\nqHyGO0aoSCqI3Haadr8faqU9GY/rOPNk3sgrDQoo//fb4hVC1CLQJ13hef4Y53CI\nrU7m2Ys6xt0nUW7/vGT1M0NPAgMBAAGjQjBAMA4GA1UdDwEB/wQEAwIBBjAPBgNV\nHRMBAf8EBTADAQH/MB0GA1UdDgQWBBR5tFnme7bl5AFzgAiIyBpY9umbbjANBgkq\nhkiG9w0BAQsFAAOCAgEAVR9YqbyyqFDQDLHYGmkgJykIrGF1XIpu+ILlaS/V9lZL\nubhzEFnTIZd+50xx+7LSYK05qAvqFyFWhfFQDlnrzuBZ6brJFe+GnY+EgPbk6ZGQ\n3BebYhtF8GaV0nxvwuo77x/Py9auJ/GpsMiu/X1+mvoiBOv/2X/qkSsisRcOj/KK\nNFtY2PwByVS5uCbMiogziUwthDyC3+6WVwW6LLv3xLfHTjuCvjHIInNzktHCgKQ5\nORAzI4JMPJ+GslWYHb4phowim57iaztXOoJwTdwJx4nLCgdNbOhdjsnvzqvHu7Ur\nTkXWStAmzOVyyghqpZXjFaH3pO3JLF+l+/+sKAIuvtd7u+Nxe5AW0wdeRlN8NwdC\njNPElpzVmbUq4JUagEiuTDkHzsxHpFKVK7q4+63SM1N95R1NbdWhscdCb+ZAJzVc\noyi3B43njTOQ5yOf+1CceWxG1bQVs5ZufpsMljq4Ui0/1lvh+wjChP4kqKOJ2qxq\n4RgqsahDYVvTH9w7jXbyLeiNdd8XM2w9U/t7y0Ff/9yi0GE44Za4rF2LN9d11TPA\nmRGunUHBcnWEvgJBQl9nJEiU0Zsnvgc/ubhPgXRR4Xq37Z0j4r7g1SgEEzwxA57d\nemyPxgcYxn/eR44/KJ4EBs+lVDR3veyJm+kXQ99b21/+jh5Xos1AnX5iItreGCc=\n-----END CERTIFICATE-----", cert: &jkcert "-----BEGIN CERTIFICATE-----\nMIICxjCCAa4CAQAwDQYJKoZIhvcNAQEFBQAwKTEaMBgGA1UEAxMRVlBOR2F0ZUNs\naWVudENlcnQxCzAJBgNVBAYTAkpQMB4XDTEzMDIxMTAzNDk0OVoXDTM3MDExOTAz\nMTQwN1owKTEaMBgGA1UEAxMRVlBOR2F0ZUNsaWVudENlcnQxCzAJBgNVBAYTAkpQ\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA5h2lgQQYUjwoKYJbzVZA\n5VcIGd5otPc/qZRMt0KItCFA0s9RwReNVa9fDRFLRBhcITOlv3FBcW3E8h1Us7RD\n4W8GmJe8zapJnLsD39OSMRCzZJnczW4OCH1PZRZWKqDtjlNca9AF8a65jTmlDxCQ\nCjntLIWk5OLLVkFt9/tScc1GDtci55ofhaNAYMPiH7V8+1g66pGHXAoWK6AQVH67\nXCKJnGB5nlQ+HsMYPV/O49Ld91ZN/2tHkcaLLyNtywxVPRSsRh480jju0fcCsv6h\np/0yXnTB//mWutBGpdUlIbwiITbAmrsbYnjigRvnPqX1RNJUbi9Fp6C2c/HIFJGD\nywIDAQABMA0GCSqGSIb3DQEBBQUAA4IBAQChO5hgcw/4oWfoEFLu9kBa1B//kxH8\nhQkChVNn8BRC7Y0URQitPl3DKEed9URBDdg2KOAz77bb6ENPiliD+a38UJHIRMqe\nUBHhllOHIzvDhHFbaovALBQceeBzdkQxsKQESKmQmR832950UCovoyRB61UyAV7h\n+mZhYPGRKXKSJI6s0Egg/Cri+Cwk4bjJfrb5hVse11yh4D9MHhwSfCOH+0z4hPUT\nFku7dGavURO5SVxMn/sL6En5D+oSeXkadHpDs+Airym2YHh15h0+jPSOoR6yiVp/\n6zZeZkrN43kuS73KpKDFjfFPh8t4r1gOIjttkNcQqBccusnplQ7HJpsk\n-----END CERTIFICATE-----", key: &jkkey "-----BEGIN RSA PRIVATE KEY-----\nMIIEpAIBAAKCAQEA5h2lgQQYUjwoKYJbzVZA5VcIGd5otPc/qZRMt0KItCFA0s9R\nwReNVa9fDRFLRBhcITOlv3FBcW3E8h1Us7RD4W8GmJe8zapJnLsD39OSMRCzZJnc\nzW4OCH1PZRZWKqDtjlNca9AF8a65jTmlDxCQCjntLIWk5OLLVkFt9/tScc1GDtci\n55ofhaNAYMPiH7V8+1g66pGHXAoWK6AQVH67XCKJnGB5nlQ+HsMYPV/O49Ld91ZN\n/2tHkcaLLyNtywxVPRSsRh480jju0fcCsv6hp/0yXnTB//mWutBGpdUlIbwiITbA\nmrsbYnjigRvnPqX1RNJUbi9Fp6C2c/HIFJGDywIDAQABAoIBAERV7X5AvxA8uRiK\nk8SIpsD0dX1pJOMIwakUVyvc4EfN0DhKRNb4rYoSiEGTLyzLpyBc/A28Dlkm5eOY\nfjzXfYkGtYi/Ftxkg3O9vcrMQ4+6i+uGHaIL2rL+s4MrfO8v1xv6+Wky33EEGCou\nQiwVGRFQXnRoQ62NBCFbUNLhmXwdj1akZzLU4p5R4zA3QhdxwEIatVLt0+7owLQ3\nlP8sfXhppPOXjTqMD4QkYwzPAa8/zF7acn4kryrUP7Q6PAfd0zEVqNy9ZCZ9ffho\nzXedFj486IFoc5gnTp2N6jsnVj4LCGIhlVHlYGozKKFqJcQVGsHCqq1oz2zjW6LS\noRYIHgECgYEA8zZrkCwNYSXJuODJ3m/hOLVxcxgJuwXoiErWd0E42vPanjjVMhnt\nKY5l8qGMJ6FhK9LYx2qCrf/E0XtUAZ2wVq3ORTyGnsMWre9tLYs55X+ZN10Tc75z\n4hacbU0hqKN1HiDmsMRY3/2NaZHoy7MKnwJJBaG48l9CCTlVwMHocIECgYEA8jby\ndGjxTH+6XHWNizb5SRbZxAnyEeJeRwTMh0gGzwGPpH/sZYGzyu0SySXWCnZh3Rgq\n5uLlNxtrXrljZlyi2nQdQgsq2YrWUs0+zgU+22uQsZpSAftmhVrtvet6MjVjbByY\nDADciEVUdJYIXk+qnFUJyeroLIkTj7WYKZ6RjksCgYBoCFIwRDeg42oK89RFmnOr\nLymNAq4+2oMhsWlVb4ejWIWeAk9nc+GXUfrXszRhS01mUnU5r5ygUvRcarV/T3U7\nTnMZ+I7Y4DgWRIDd51znhxIBtYV5j/C/t85HjqOkH+8b6RTkbchaX3mau7fpUfds\nFq0nhIq42fhEO8srfYYwgQKBgQCyhi1N/8taRwpk+3/IDEzQwjbfdzUkWWSDk9Xs\nH/pkuRHWfTMP3flWqEYgW/LW40peW2HDq5imdV8+AgZxe/XMbaji9Lgwf1RY005n\nKxaZQz7yqHupWlLGF68DPHxkZVVSagDnV/sztWX6SFsCqFVnxIXifXGC4cW5Nm9g\nva8q4QKBgQCEhLVeUfdwKvkZ94g/GFz731Z2hrdVhgMZaU/u6t0V95+YezPNCQZB\nwmE9Mmlbq1emDeROivjCfoGhR3kZXW1pTKlLh6ZMUQUOpptdXva8XxfoqQwa3enA\nM7muBbF0XN7VO80iJPv+PmIZdEIAkpwKfi201YB+BafCIuGxIF50Vg==\n-----END RSA PRIVATE KEY-----" }
+  # Korea Telecom · AS4766 Korea Telecom
+  - { name: '🇰🇷 韩国Gangwon-do家宽 221.144.193.218', type: openvpn, server: 221.144.193.218, port: 1395, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
   # QTnet, Inc. · AS7679 QTnet,Inc.
-  - { name: '🇯🇵 日本福岡縣家宽 124.159.242.240', type: openvpn, server: 124.159.242.240, port: 1885, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  # Korea Telecom · AS4766 Korea Telecom
-  - { name: '🇰🇷 韩国京畿道家宽 119.197.200.143', type: openvpn, server: 119.197.200.143, port: 1483, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  - { name: '🇯🇵 日本福岡縣家宽 125.56.5.147', type: openvpn, server: 125.56.5.147, port: 1707, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
   # SK Broadband Co Ltd · AS9318 SK Broadband Co Ltd
-  - { name: '🇰🇷 韩国Chungcheongnam-do家宽 1.228.233.199', type: openvpn, server: 1.228.233.199, port: 1464, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  # Korea Telecom · AS4766 Korea Telecom
-  - { name: '🇰🇷 韩国Gangwon-do家宽 175.209.230.20', type: openvpn, server: 175.209.230.20, port: 1427, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  - { name: '🇰🇷 韩国釜山广域市家宽 211.49.243.215', type: openvpn, server: 211.49.243.215, port: 995, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  # SK Broadband Co Ltd · AS9318 SK Broadband Co Ltd
+  - { name: '🇰🇷 韩国首尔特别市家宽 211.243.238.200', type: openvpn, server: 211.243.238.200, port: 995, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
   # SoftBank Corp. · AS17676 SoftBank Corp.
-  - { name: '🇯🇵 日本东京都家宽 221.105.204.43', type: openvpn, server: 221.105.204.43, port: 1788, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  # LG DACOM Corporation · AS3786 LG DACOM Corporation
-  - { name: '🇰🇷 韩国Gyeongsangnam-do家宽 106.250.211.122', type: openvpn, server: 106.250.211.122, port: 995, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  # NTT Communications Corporation · AS4713 NTT DOCOMO BUSINESS,Inc.
-  - { name: '🇯🇵 日本东京都家宽 124.85.56.64', type: openvpn, server: 124.85.56.64, port: 1954, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  # SoftBank Corp. · AS17676 SoftBank Corp.
-  - { name: '🇯🇵 日本东京都家宽 60.65.241.137', type: openvpn, server: 60.65.241.137, port: 1325, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  # Kddi Corporation · AS2516 KDDI CORPORATION
-  - { name: '🇯🇵 日本东京都家宽 111.238.167.52', type: openvpn, server: 111.238.167.52, port: 1512, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  # Korea Telecom · AS4766 Korea Telecom
-  - { name: '🇰🇷 韩国光州广域市家宽 221.156.57.238', type: openvpn, server: 221.156.57.238, port: 995, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  - { name: '🇯🇵 日本东京都家宽 126.40.27.196', type: openvpn, server: 126.40.27.196, port: 1563, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  # SK Broadband Co Ltd · AS9318 SK Broadband Co Ltd
+  - { name: '🇰🇷 韩国North Chungcheong家宽 222.232.103.200', type: openvpn, server: 222.232.103.200, port: 1773, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
   # DION (KDDI CORPORATION) · AS2516 KDDI CORPORATION
-  - { name: '🇯🇵 日本千葉縣家宽 113.154.67.10', type: openvpn, server: 113.154.67.10, port: 1944, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  # Rostelecom networks · AS12389 PJSC Rostelecom
-  - { name: '🇷🇺 俄罗斯联邦滨海边疆区家宽 77.35.237.64', type: openvpn, server: 77.35.237.64, port: 1507, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  # Korea Telecom · AS4766 Korea Telecom
-  - { name: '🇰🇷 韩国Incheon家宽 61.79.222.123', type: openvpn, server: 61.79.222.123, port: 1727, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  # Korea Telecom · AS4766 Korea Telecom
-  - { name: '🇰🇷 韩国Jeollanam-do家宽 221.144.30.91', type: openvpn, server: 221.144.30.91, port: 1545, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  # OCTOPUSNET-NAT · AS44724 Octopusnet LTD
-  - { name: '🇷🇺 俄罗斯联邦滨海边疆区家宽 95.154.65.51', type: openvpn, server: 95.154.65.51, port: 1968, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  - { name: '🇯🇵 日本神奈川縣家宽 121.105.126.183', type: openvpn, server: 121.105.126.183, port: 1799, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
   # Sony Network Communications Inc · AS2527 Sony Network Communications Inc.
-  - { name: '🇯🇵 日本东京都家宽 39.111.1.5', type: openvpn, server: 39.111.1.5, port: 1498, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  # SoftBank Corp. · AS17676 SoftBank Corp.
-  - { name: '🇯🇵 日本东京都家宽 126.75.41.90', type: openvpn, server: 126.75.41.90, port: 1267, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  # SK Broadband Co Ltd · AS9318 SK Broadband Co Ltd
-  - { name: '🇰🇷 韩国京畿道家宽 180.68.53.76', type: openvpn, server: 180.68.53.76, port: 1724, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  # OPTAGE Inc. · AS17511 OPTAGE Inc.
-  - { name: '🇯🇵 日本大阪府家宽 121.81.4.205', type: openvpn, server: 121.81.4.205, port: 1480, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  # TRIPLETNET · AS45758 Advanced Wireless Network Company Limited
-  - { name: '🇹🇭 泰国清邁府家宽 171.4.224.39', type: openvpn, server: 171.4.224.39, port: 1471, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  - { name: '🇯🇵 日本神奈川縣家宽 118.240.70.11', type: openvpn, server: 118.240.70.11, port: 1329, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  # eAccess · AS7522 STNet, Incorporated
+  - { name: '🇯🇵 日本德島縣家宽 123.230.2.42', type: openvpn, server: 123.230.2.42, port: 1749, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
   # Kddi Corporation · AS2516 KDDI CORPORATION
-  - { name: '🇯🇵 日本愛知縣家宽 111.96.225.33', type: openvpn, server: 111.96.225.33, port: 1566, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  - { name: '🇯🇵 日本东京都家宽 111.97.248.208', type: openvpn, server: 111.97.248.208, port: 1675, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
   # Korea Telecom · AS4766 Korea Telecom
-  - { name: '🇰🇷 韩国京畿道家宽 119.207.190.236', type: openvpn, server: 119.207.190.236, port: 995, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  # FPT Telecom Company · AS18403 FPT Telecom Company
-  - { name: '🇻🇳 越南Hanoi家宽 113.22.73.196', type: openvpn, server: 113.22.73.196, port: 1225, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  # JCOM Co · AS9824 JCOM Co., Ltd.
-  - { name: '🇯🇵 日本熊本縣家宽 125.13.84.29', type: openvpn, server: 125.13.84.29, port: 1831, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  # SYNAPSE Co., Ltd. · AS7511 SYNAPSE Co.,Ltd.
-  - { name: '🇯🇵 日本鹿兒島縣家宽 124.146.89.60', type: openvpn, server: 124.146.89.60, port: 1674, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  # VNPT · AS45899 VNPT Corp
-  - { name: '🇻🇳 越南Hanoi家宽 14.232.208.27', type: openvpn, server: 14.232.208.27, port: 1392, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  - { name: '🇰🇷 韩国京畿道家宽 220.85.129.210', type: openvpn, server: 220.85.129.210, port: 995, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  # DION (KDDI CORPORATION) · AS2516 KDDI CORPORATION
+  - { name: '🇯🇵 日本茨城縣家宽 221.119.75.211', type: openvpn, server: 221.119.75.211, port: 1359, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  # Sony Network Communications Inc · AS2527 Sony Network Communications Inc.
+  - { name: '🇯🇵 日本千葉縣家宽 159.28.178.62', type: openvpn, server: 159.28.178.62, port: 1400, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  # Korea Telecom · AS4766 Korea Telecom
+  - { name: '🇰🇷 韩国京畿道家宽 221.150.225.77', type: openvpn, server: 221.150.225.77, port: 995, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  # SoftBank Corp. · AS17676 SoftBank Corp.
+  - { name: '🇯🇵 日本千葉縣家宽 126.221.221.240', type: openvpn, server: 126.221.221.240, port: 1819, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  # Korea Telecom · AS4766 Korea Telecom
+  - { name: '🇰🇷 韩国京畿道家宽 125.130.183.11', type: openvpn, server: 125.130.183.11, port: 995, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  # Korea Telecom · AS4766 Korea Telecom
+  - { name: '🇰🇷 韩国Incheon家宽 14.37.187.122', type: openvpn, server: 14.37.187.122, port: 995, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  # SoftBank Corp. · AS17676 SoftBank Corp.
+  - { name: '🇯🇵 日本东京都家宽 60.86.217.41', type: openvpn, server: 60.86.217.41, port: 1206, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
   # NTT Communications Corporation · AS4713 NTT DOCOMO BUSINESS,Inc.
-  - { name: '🇯🇵 日本宮城縣家宽 153.175.43.56', type: openvpn, server: 153.175.43.56, port: 1508, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  # SoftBank Corp. · AS17676 SoftBank Corp.
-  - { name: '🇯🇵 日本东京都家宽 126.58.231.39', type: openvpn, server: 126.58.231.39, port: 1376, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  # SoftBank Corp. · AS17676 SoftBank Corp.
-  - { name: '🇯🇵 日本东京都家宽 218.115.40.234-02', type: openvpn, server: 218.115.40.234, port: 1784, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  - { name: '🇯🇵 日本岡山縣家宽 153.200.131.48', type: openvpn, server: 153.200.131.48, port: 1580, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  # NTT Communications Corporation · AS4713 NTT DOCOMO BUSINESS,Inc.
+  - { name: '🇯🇵 日本福井縣家宽 125.201.146.18', type: openvpn, server: 125.201.146.18, port: 1693, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  # LG POWERCOMM · AS17858 LG POWERCOMM
+  - { name: '🇰🇷 韩国首尔特别市家宽 119.65.226.136', type: openvpn, server: 119.65.226.136, port: 1878, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
   # Kddi Corporation · AS2516 KDDI CORPORATION
-  - { name: '🇯🇵 日本东京都家宽 175.128.95.93', type: openvpn, server: 175.128.95.93, port: 1648, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  # LG HelloVision Corp. · AS38669 LG HelloVision Corp.
-  - { name: '🇰🇷 韩国Chungcheongnam-do家宽 180.182.100.167', type: openvpn, server: 180.182.100.167, port: 995, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  # Chubu Telecommunications Company, Inc. · AS18126 Chubu Telecommunications Company, Inc.
-  - { name: '🇯🇵 日本靜岡縣家宽 123.48.122.88', type: openvpn, server: 123.48.122.88, port: 1880, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  - { name: '🇯🇵 日本北海道家宽 210.224.227.71', type: openvpn, server: 210.224.227.71, port: 1855, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  # Korea Telecom · AS4766 Korea Telecom
+  - { name: '🇰🇷 韩国Chungcheongnam-do家宽 59.27.231.135', type: openvpn, server: 59.27.231.135, port: 1761, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  # SoftBank Corp. · AS17676 SoftBank Corp.
+  - { name: '🇯🇵 日本东京都家宽 60.95.76.42', type: openvpn, server: 60.95.76.42, port: 1230, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  # Viettel Corporation · AS7552 Viettel Group
+  - { name: '🇻🇳 越南胡志明市家宽 171.235.180.176', type: openvpn, server: 171.235.180.176, port: 995, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  # SoftBank Corp. · AS17676 SoftBank Corp.
+  - { name: '🇯🇵 日本东京都家宽 60.137.146.81', type: openvpn, server: 60.137.146.81, port: 1437, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  # Korea Telecom · AS4766 Korea Telecom
+  - { name: '🇰🇷 韩国京畿道家宽 14.47.248.47', type: openvpn, server: 14.47.248.47, port: 1428, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  # SK Broadband Co Ltd · AS9318 SK Broadband Co Ltd
+  - { name: '🇰🇷 韩国京畿道家宽 218.239.169.226', type: openvpn, server: 218.239.169.226, port: 995, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  # Emirates Telecommunications Corporation · AS5384 Emirates Internet
+  - { name: '🇦🇪 阿联酋阿布扎比家宽 176.205.49.54', type: openvpn, server: 176.205.49.54, port: 1951, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  # Internet Initiative Japan Inc. · AS2497 Internet Initiative Japan Inc.
+  - { name: '🇯🇵 日本京都府家宽 150.31.161.247', type: openvpn, server: 150.31.161.247, port: 1872, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
   # TOKAI Communications Corporation · AS10010 TOKAI Communications Corporation
-  - { name: '🇯🇵 日本靜岡縣家宽 42.127.190.184', type: openvpn, server: 42.127.190.184, port: 1510, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  # SK Broadband Co Ltd · AS9318 SK Broadband Co Ltd
-  - { name: '🇰🇷 韩国North Chungcheong家宽 221.138.46.130', type: openvpn, server: 221.138.46.130, port: 1210, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  # Korea Telecom · AS4766 Korea Telecom
-  - { name: '🇰🇷 韩国京畿道家宽 14.33.13.62', type: openvpn, server: 14.33.13.62, port: 995, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  # Korea Telecom · AS4766 Korea Telecom
-  - { name: '🇰🇷 韩国首尔特别市家宽 221.145.8.220', type: openvpn, server: 221.145.8.220, port: 1278, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  # SK Broadband Co Ltd · AS9318 SK Broadband Co Ltd
-  - { name: '🇰🇷 韩国首尔特别市家宽 110.8.1.171', type: openvpn, server: 110.8.1.171, port: 995, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  # DLIVE · AS10036 DLIVE
-  - { name: '🇰🇷 韩国首尔特别市家宽 58.140.198.138', type: openvpn, server: 58.140.198.138, port: 1430, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  # NTT Communications Corporation · AS4713 NTT DOCOMO BUSINESS,Inc.
-  - { name: '🇯🇵 日本富山縣家宽 153.203.240.196', type: openvpn, server: 153.203.240.196, port: 1674, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  # CMBKWANGJUNET · AS10054 CMB Kwangju Broadcasting
-  - { name: '🇰🇷 韩国光州广域市家宽 120.29.134.202', type: openvpn, server: 120.29.134.202, port: 1535, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  # Korea Telecom · AS4766 Korea Telecom
-  - { name: '🇰🇷 韩国首尔特别市家宽 14.36.114.122', type: openvpn, server: 14.36.114.122, port: 995, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  # ARTERIA Networks Corporation · AS2519 ARTERIA Networks Corporation
-  - { name: '🇯🇵 日本岡山縣家宽 183.180.36.162', type: openvpn, server: 183.180.36.162, port: 1766, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  # Korea Telecom · AS4766 Korea Telecom
-  - { name: '🇰🇷 韩国釜山广域市家宽 121.145.185.21', type: openvpn, server: 121.145.185.21, port: 1905, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  # NTT MYANMAR CO., LTD. · AS134736 NTT MYANMAR CO., LTD.
-  - { name: '🇲🇲 缅甸仰光省家宽 103.198.148.130', type: openvpn, server: 103.198.148.130, port: 995, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  # SK Broadband Co Ltd · AS9318 SK Broadband Co Ltd
-  - { name: '🇰🇷 韩国Gyeongsangnam-do家宽 39.122.7.147', type: openvpn, server: 39.122.7.147, port: 995, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  # NTT Communications Corporation · AS4713 NTT DOCOMO BUSINESS,Inc.
-  - { name: '🇯🇵 日本岐阜县家宽 153.185.142.171', type: openvpn, server: 153.185.142.171, port: 1659, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  # SK Broadband Co Ltd · AS9318 SK Broadband Co Ltd
-  - { name: '🇰🇷 韩国京畿道家宽 58.122.38.225', type: openvpn, server: 58.122.38.225, port: 1369, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  # DION (KDDI CORPORATION) · AS2516 KDDI CORPORATION
-  - { name: '🇯🇵 日本千葉縣家宽 113.154.110.135', type: openvpn, server: 113.154.110.135, port: 1990, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  - { name: '🇯🇵 日本东京都家宽 219.117.99.6', type: openvpn, server: 219.117.99.6, port: 1376, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
   # SoftBank Corp. · AS17676 SoftBank Corp.
-  - { name: '🇯🇵 日本东京都家宽 60.96.219.14', type: openvpn, server: 60.96.219.14, port: 1889, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  # OTNet CO., Inc · AS9621 OTNet Co.,Inc.
-  - { name: '🇯🇵 日本沖繩縣家宽 125.2.252.52', type: openvpn, server: 125.2.252.52, port: 1958, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  # ASAHI Net, Inc. · AS4685 Asahi Net
-  - { name: '🇯🇵 日本东京都家宽 220.146.162.215', type: openvpn, server: 220.146.162.215, port: 1664, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  # Uninet S.A. de C.V. · AS8151 Uninet S.A. de C.V.
-  - { name: '🇲🇽 墨西哥锡那罗亚州家宽 187.149.106.94', type: openvpn, server: 187.149.106.94, port: 992, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  # Sony Network Communications Inc · AS2527 Sony Network Communications Inc.
-  - { name: '🇯🇵 日本愛知縣家宽 182.171.136.48', type: openvpn, server: 182.171.136.48, port: 1346, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  - { name: '🇯🇵 日本东京都家宽 126.235.217.208', type: openvpn, server: 126.235.217.208, port: 1971, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  # Chubu Telecommunications Company, Inc. · AS18126 Chubu Telecommunications Company, Inc.
+  - { name: '🇯🇵 日本靜岡縣家宽 14.132.140.167', type: openvpn, server: 14.132.140.167, port: 1877, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  # SoftBank Corp. · AS17676 SoftBank Corp.
+  - { name: '🇯🇵 日本东京都家宽 126.111.49.134', type: openvpn, server: 126.111.49.134, port: 1426, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  # JCOM Co., Ltd. · AS9824 JCOM Co., Ltd.
+  - { name: '🇯🇵 日本东京都家宽 42.146.26.235', type: openvpn, server: 42.146.26.235, port: 1587, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  # NTT Communications Corporation · AS4713 NTT DOCOMO BUSINESS,Inc.
+  - { name: '🇯🇵 日本福島縣家宽 153.166.162.57', type: openvpn, server: 153.166.162.57, port: 1811, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
   # Korea Telecom · AS4766 Korea Telecom
-  - { name: '🇰🇷 韩国首尔特别市家宽 112.187.180.113', type: openvpn, server: 112.187.180.113, port: 995, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  # JCOM Co., Ltd. · AS9617 JCOM Co., Ltd.
-  - { name: '🇯🇵 日本大阪府家宽 180.221.239.185', type: openvpn, server: 180.221.239.185, port: 1462, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  # JSC Rostelecom regional branch "Siberia" · AS12389 PJSC Rostelecom
-  - { name: '🇷🇺 俄罗斯联邦Kemerovo Oblast家宽 176.210.169.101', type: openvpn, server: 176.210.169.101, port: 1333, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  - { name: '🇰🇷 韩国首尔特别市家宽 121.131.159.91', type: openvpn, server: 121.131.159.91, port: 1791, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  # OPTAGE Inc. · AS17511 OPTAGE Inc.
+  - { name: '🇯🇵 日本京都府家宽 219.122.142.248', type: openvpn, server: 219.122.142.248, port: 1425, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  # SK Broadband Co Ltd · AS17857 SK Broadband Co Ltd
+  - { name: '🇰🇷 韩国釜山广域市家宽 122.254.245.109', type: openvpn, server: 122.254.245.109, port: 1436, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  # Chubu Telecommunications Company, Inc. · AS18126 Chubu Telecommunications Company, Inc.
+  - { name: '🇯🇵 日本三重縣家宽 118.104.248.62', type: openvpn, server: 118.104.248.62, port: 1295, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  # SK Broadband Co Ltd · AS9318 SK Broadband Co Ltd
+  - { name: '🇰🇷 韩国首尔特别市家宽 39.125.44.203', type: openvpn, server: 39.125.44.203, port: 1662, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
   # Korea Telecom · AS4766 Korea Telecom
-  - { name: '🇰🇷 韩国Incheon家宽 59.26.41.201', type: openvpn, server: 59.26.41.201, port: 1612, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  # Sony Network Communications Inc · AS2527 Sony Network Communications Inc.
-  - { name: '🇯🇵 日本大阪府家宽 115.162.122.158', type: openvpn, server: 115.162.122.158, port: 1538, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  - { name: '🇰🇷 韩国京畿道家宽 61.84.111.238', type: openvpn, server: 61.84.111.238, port: 995, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
   # Korea Telecom · AS4766 Korea Telecom
-  - { name: '🇰🇷 韩国首尔特别市家宽 218.156.18.217', type: openvpn, server: 218.156.18.217, port: 1281, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  - { name: '🇰🇷 韩国京畿道家宽 211.184.37.208', type: openvpn, server: 211.184.37.208, port: 1283, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  # SoftBank Corp. · AS17676 SoftBank Corp.
+  - { name: '🇯🇵 日本东京都家宽 126.117.195.173', type: openvpn, server: 126.117.195.173, port: 1721, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
   # Korea Telecom · AS4766 Korea Telecom
-  - { name: '🇰🇷 韩国京畿道家宽 222.99.195.19', type: openvpn, server: 222.99.195.19, port: 1752, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  - { name: '🇰🇷 韩国Chungcheongnam-do家宽 175.213.239.59', type: openvpn, server: 175.213.239.59, port: 1507, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  # DION (KDDI CORPORATION) · AS2516 KDDI CORPORATION
+  - { name: '🇯🇵 日本千葉縣家宽 114.19.166.236', type: openvpn, server: 114.19.166.236, port: 1903, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
   # Korea Telecom · AS4766 Korea Telecom
-  - { name: '🇰🇷 韩国首尔特别市家宽 220.72.169.200', type: openvpn, server: 220.72.169.200, port: 995, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  - { name: '🇰🇷 韩国Gangwon-do家宽 121.187.145.64', type: openvpn, server: 121.187.145.64, port: 995, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  # JCOM Co., Ltd. · AS9824 JCOM Co., Ltd.
+  - { name: '🇯🇵 日本东京都家宽 119.173.158.65', type: openvpn, server: 119.173.158.65, port: 995, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
   # Korea Telecom · AS4766 Korea Telecom
-  - { name: '🇰🇷 韩国京畿道家宽 112.168.254.233', type: openvpn, server: 112.168.254.233, port: 1761, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  - { name: '🇰🇷 韩国釜山广域市家宽 125.135.49.177', type: openvpn, server: 125.135.49.177, port: 995, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  # LG HelloVision Corp. · AS17839 LG HelloVision Corp.
+  - { name: '🇰🇷 韩国京畿道家宽 59.86.240.113', type: openvpn, server: 59.86.240.113, port: 1575, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  # KHT RU · AS12389 PJSC Rostelecom
+  - { name: '🇷🇺 俄罗斯联邦哈巴罗夫斯克边疆区家宽 92.37.230.45', type: openvpn, server: 92.37.230.45, port: 1525, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  # Korea Telecom · AS4766 Korea Telecom
+  - { name: '🇰🇷 韩国京畿道家宽 59.14.195.224', type: openvpn, server: 59.14.195.224, port: 995, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  # Korea Telecom · AS4766 Korea Telecom
+  - { name: '🇰🇷 韩国首尔特别市家宽 121.166.206.146', type: openvpn, server: 121.166.206.146, port: 995, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  # Korea Telecom · AS4766 Korea Telecom
+  - { name: '🇰🇷 韩国首尔特别市家宽 14.40.28.234', type: openvpn, server: 14.40.28.234, port: 1471, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  # SoftBank Corp. · AS17676 SoftBank Corp.
+  - { name: '🇯🇵 日本东京都家宽 126.40.191.59', type: openvpn, server: 126.40.191.59, port: 1315, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  # Comcast Cable Communications · AS7922 Comcast Cable Communications, LLC
+  - { name: '🇺🇸 美国乔治亚家宽 69.180.9.139', type: openvpn, server: 69.180.9.139, port: 1673, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  # ACT Fibernet · AS24309 Atria Convergence Technologies Pvt. Ltd. Broadband Internet Service Provider INDIA
+  - { name: '🇮🇳 印度卡纳塔克邦家宽 106.51.189.183', type: openvpn, server: 106.51.189.183, port: 1531, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  # Korea Telecom · AS4766 Korea Telecom
+  - { name: '🇰🇷 韩国京畿道家宽 218.147.213.47', type: openvpn, server: 218.147.213.47, port: 995, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  # DLIVE · AS10036 DLIVE
+  - { name: '🇰🇷 韩国Jeollanam-do家宽 182.172.122.57', type: openvpn, server: 182.172.122.57, port: 1936, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  # Korea Telecom · AS4766 Korea Telecom
+  - { name: '🇰🇷 韩国Daejeon家宽 59.26.60.162', type: openvpn, server: 59.26.60.162, port: 1783, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  # Rostelecom networks · AS12389 PJSC Rostelecom
+  - { name: '🇷🇺 俄罗斯联邦滨海边疆区家宽 77.35.205.23', type: openvpn, server: 77.35.205.23, port: 1789, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  # Korea Telecom · AS4766 Korea Telecom
+  - { name: '🇰🇷 韩国首尔特别市家宽 121.160.178.247', type: openvpn, server: 121.160.178.247, port: 1903, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  # Korea Telecom · AS4766 Korea Telecom
+  - { name: '🇰🇷 韩国Gyeongsangbuk-do家宽 119.202.94.225', type: openvpn, server: 119.202.94.225, port: 995, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  # Korea Telecom · AS4766 Korea Telecom
+  - { name: '🇰🇷 韩国首尔特别市家宽 61.82.162.106', type: openvpn, server: 61.82.162.106, port: 1333, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
