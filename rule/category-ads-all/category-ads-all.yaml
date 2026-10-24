@@ -1,7 +1,7 @@
 # 数据来源：MetaCubeX
-# 上次更新时间：2026-10-23 20:30:43
+# 上次更新时间：2026-10-24 13:55:16
 # 条数：blackmatrix7 0 条 + MetaCubeX 903 条 (geosite 903 / geoip 0) → 去重合并 903 条，去冗 4 条，实存 899 条
-# Hash：dd016b050fc211fb8b90fead1f68042cd2807c157f879f6bd879146e0e1ccfd8
+# Hash：7564402eda2760921e01c69bb1f5a60cf84368e8b73fa3f9c74878fdf7cd4330
 payload:
   - DOMAIN,1l-hit.mail.ru
   - DOMAIN,1l-hit.vkplay.ru
