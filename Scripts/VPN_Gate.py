@@ -28,6 +28,7 @@ import hashlib
 import json
 import re
 import sys
+import time
 import urllib.request
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
@@ -42,22 +43,48 @@ OUTPUT_PATH = Path("proxy/VPNgate.yaml")
 EXCLUDE_HOST_PREFIX = "public-vpn"
 EXCLUDE_IP_PREFIX = "219.100.37."
 CONFIG_PREFIX_CHARS = 6000  # decode only the head of each config first
-VERSION_TAG = "v12-name-region"
+VERSION_TAG = "v13-fetch-deadline"
 
 BEIJING = timezone(timedelta(hours=8))
 
 
+FETCH_DEADLINE = 120  # seconds, per attempt, for the whole download
+FETCH_ATTEMPTS = 3
+
+
+def fetch_once(url, deadline):
+    """Download one URL under a total deadline.
+
+    The per-read socket timeout alone cannot stop a slow-drip source
+    (each gap stays under the timeout while the transfer never ends),
+    so reads use read1 (one socket read per call, returning whatever
+    has arrived) and the elapsed time is checked after every chunk.
+    """
+    req = urllib.request.Request(
+        url, headers={"User-Agent": "Mozilla/5.0", "Accept": "text/plain"}
+    )
+    started = time.monotonic()
+    chunks = []
+    with urllib.request.urlopen(req, timeout=60) as resp:
+        while True:
+            chunk = resp.read1(65536)
+            if not chunk:
+                break
+            chunks.append(chunk)
+            if time.monotonic() - started > deadline:
+                raise TimeoutError(f"下载超过总时限 {deadline} 秒：{url}")
+    return b"".join(chunks).decode("utf-8", errors="replace")
+
+
 def fetch_text(urls):
     last_error = None
-    for url in urls:
+    for attempt in range(FETCH_ATTEMPTS):
         try:
-            req = urllib.request.Request(
-                url, headers={"User-Agent": "Mozilla/5.0", "Accept": "text/plain"}
-            )
-            with urllib.request.urlopen(req, timeout=60) as resp:
-                return resp.read().decode("utf-8", errors="replace")
-        except Exception as e:  # noqa: BLE001 - try the next source
+            return fetch_once(urls[attempt % len(urls)], FETCH_DEADLINE)
+        except Exception as e:  # noqa: BLE001 - retry on the next source
             last_error = e
+            if attempt + 1 < FETCH_ATTEMPTS:
+                time.sleep(5)
     raise RuntimeError(f"节点源拉取失败：{last_error}")
 
 
