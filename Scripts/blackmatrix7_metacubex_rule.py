@@ -1,12 +1,3 @@
-"""blackmatrix7 x MetaCubeX merged rule converter.
-
-For each name in UPSTREAM_INCLUDE_FOLDERS, fetches the blackmatrix7
-Classical rules and the MetaCubeX geosite/geoip rules of the same name,
-unions them, and writes a merged rule/<Name>/ folder (classical yaml,
-.mrs files, four client .list files, README). Standalone script;
-both upstreams are fetched file-by-file, nothing else is pulled.
-"""
-
 from __future__ import annotations
 
 import csv
