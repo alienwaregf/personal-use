@@ -1,7 +1,7 @@
 # 数据来源：blackmatrix7
-# 上次更新时间：2026-10-25 10:58:54
+# 上次更新时间：2026-10-25 13:34:05
 # 条数：blackmatrix7 82 条 + MetaCubeX 0 条 (geosite 0 / geoip 0) → 去重合并 82 条
-# Hash：9a204e7ae843d9bb1b4b4e0c21032568014ee2b2941cc0d5054581b8be30072c
+# Hash：eb626d1040e1ac1ea805c9f7762f0ab27e572ffdc54d30701b8ff2957099e1f0
 payload:
   - DOMAIN-SUFFIX,cn.ntp.org.cn
   - DOMAIN-SUFFIX,de.ntp.org.cn

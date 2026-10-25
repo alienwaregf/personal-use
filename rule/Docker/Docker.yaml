@@ -1,7 +1,7 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-10-25 10:58:42
+# 上次更新时间：2026-10-25 13:33:55
 # 条数：blackmatrix7 7 条 + MetaCubeX 6 条 (geosite 6 / geoip 0) → 去重合并 10 条
-# Hash：43ee97f50820eb939aa4fa72dd5295b679e512abcdb76756276a88619970465e
+# Hash：f57b318e7a8ec77f20286de640c8e8d51eb048d5618c9218211f2b9f729eaae7
 payload:
   - DOMAIN,d1q6f0aelx0por.cloudfront.net
   - DOMAIN,d2wy8f7a9ursnm.cloudfront.net

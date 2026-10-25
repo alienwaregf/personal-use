@@ -1,7 +1,7 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-10-25 10:59:00
+# 上次更新时间：2026-10-25 13:34:10
 # 条数：blackmatrix7 30 条 + MetaCubeX 28 条 (geosite 28 / geoip 0) → 去重合并 38 条，去冗 5 条，实存 33 条
-# Hash：fead149201e21394d65054d10cbe55fe249d63ef0e676733fc1ce586e18aff2d
+# Hash：68192c2387538b8ebb7146bb2e59627cfc3efced0ca79542a390aa8d28489c13
 payload:
   - DOMAIN,audio4-ak-spotify-com.akamaized.net
   - DOMAIN,cdn-spotify-experiments.conductrics.com

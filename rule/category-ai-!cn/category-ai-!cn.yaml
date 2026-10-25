@@ -1,7 +1,7 @@
 # 数据来源：MetaCubeX
-# 上次更新时间：2026-10-25 10:59:08
+# 上次更新时间：2026-10-25 13:34:17
 # 条数：blackmatrix7 0 条 + MetaCubeX 204 条 (geosite 204 / geoip 0) → 去重合并 204 条
-# Hash：b7b1387303f812080cefa307607b4d5fd59150b91aec0b1f23cb5f0f36769a60
+# Hash：fd1480053841fc4d542118849808072cf1a7d770c6f3d6c6bf4da021ef1adf9f
 payload:
   - DOMAIN,ai.google.dev
   - DOMAIN,alkalicore-pa.clients6.google.com

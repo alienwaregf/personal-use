@@ -1,6 +1,6 @@
-HOST-KEYWORD,aria2
-HOST-KEYWORD,thunder
-HOST-KEYWORD,xlliveud
-HOST-KEYWORD,xunlei
-HOST-KEYWORD,yunpan
-HOST-SUFFIX,qbittorrent.org
+HOST-KEYWORD,aria2,Download
+HOST-KEYWORD,thunder,Download
+HOST-KEYWORD,xlliveud,Download
+HOST-KEYWORD,xunlei,Download
+HOST-KEYWORD,yunpan,Download
+HOST-SUFFIX,qbittorrent.org,Download
