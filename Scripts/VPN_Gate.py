@@ -1,27 +1,5 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-VPN Gate residential (home broadband) OpenVPN nodes -> mihomo proxy-provider file.
-
-Standalone script. Screening is list/IP based only; there is NO
-connectivity checking anywhere (no tunnel is ever opened) - liveness is
-left to the client's own health checks.
-
-Screening:
-  1. Fetch the official VPN Gate CSV list (https first, http fallback).
-  2. Drop the operator-run datacenter servers: HostName starting with
-     "public-vpn", or IP inside 219.100.37.
-  3. Classify every remaining server IP via ip-api and drop the ones
-     flagged as hosting/datacenter, so volunteers running on a VPS do
-     not pass as residential. (Screening IPs, not testing connections.)
-  4. Sort by the CSV Speed field, descending.
-  5. Decode each OpenVPN config; keep only proto tcp entries with a remote.
-
-Output is a provider file (top-level "proxies:") holding only the
-residential OpenVPN nodes, with pure per-node fields only: chaining
-(dialer-proxy), DNS and other shared settings are applied by the
-user's own config via provider override, not baked into the nodes.
-"""
 
 import base64
 import hashlib
@@ -37,13 +15,13 @@ SOURCE_URLS = [
     "https://www.vpngate.net/api/iphone/",
     "http://www.vpngate.net/api/iphone/",
 ]
-IP_API_BATCH = "http://ip-api.com/batch?fields=status,query,country,regionName,isp,org,as,hosting,proxy&lang=zh-CN"
+IP_API_BATCH = "http://ip-api.com/batch?fields=status,query,country,countryCode,regionName,isp,org,as,hosting,proxy&lang=zh-CN"
 OUTPUT_PATH = Path("proxy/VPNgate.yaml")
 
 EXCLUDE_HOST_PREFIX = "public-vpn"
 EXCLUDE_IP_PREFIX = "219.100.37."
 CONFIG_PREFIX_CHARS = 6000  # decode only the head of each config first
-VERSION_TAG = "v13-fetch-deadline"
+VERSION_TAG = "v14-name-sort-mismatch"
 
 BEIJING = timezone(timedelta(hours=8))
 
@@ -224,15 +202,31 @@ def classify_ips(ips):
 
 
 def screen_datacenter_ips(nodes):
-    """Drop nodes whose server IP is flagged hosting/datacenter."""
+    """Drop nodes whose server IP is flagged hosting/datacenter, or whose
+    ip-api country disagrees with the CSV country code. The second rule
+    catches cloud-fronted IPs (e.g. a Cloudflare WARP egress): the CSV
+    code follows the IP block's registration while ip-api follows the
+    anycast PoP, so the two sources point at different countries. The
+    ip-api proxy flag is deliberately NOT used here: it fires on plain
+    residential ISPs too (44 of 75 nodes in one real run, including
+    SoftBank/KDDI/SK Broadband lines)."""
     info = classify_ips([n["server_ip"] for n in nodes if n["server_ip"]])
     if not info:
-        return nodes, {"ran": False, "dropped": 0}
-    kept, dropped = [], 0
+        return nodes, {"ran": False, "dropped_hosting": 0, "dropped_mismatch": 0}
+    kept, dropped_hosting, dropped_mismatch = [], 0, 0
     for node in nodes:
         entry = info.get(node["server_ip"])
         if entry and entry.get("hosting"):
-            dropped += 1
+            dropped_hosting += 1
+            continue
+        csv_code = node["country"]
+        if (
+            entry
+            and entry.get("countryCode")
+            and csv_code not in ("", "XX")
+            and entry["countryCode"] != csv_code
+        ):
+            dropped_mismatch += 1
             continue
         if entry:
             node["isp"] = entry.get("isp", "")
@@ -240,7 +234,11 @@ def screen_datacenter_ips(nodes):
             node["country_name"] = (entry.get("country") or "").strip()
             node["region"] = (entry.get("regionName") or "").strip()
         kept.append(node)
-    return kept, {"ran": True, "dropped": dropped}
+    return kept, {
+        "ran": True,
+        "dropped_hosting": dropped_hosting,
+        "dropped_mismatch": dropped_mismatch,
+    }
 
 
 def inline_pem(text):
@@ -290,6 +288,7 @@ def render_yaml(nodes, cert, fingerprint):
         seen[base] = seen.get(base, 0) + 1
         name = base if seen[base] == 1 else f"{base}-{seen[base]:02d}"
         named.append((name, node))
+    named.sort(key=lambda item: item[0])
     now = datetime.now(BEIJING).strftime("%Y-%m-%d %H:%M:%S")
     lines = [
         "# VPN Gate 家宽节点（OpenVPN）",
@@ -359,7 +358,8 @@ def main():
         f"{k} {v}" for k, v in sorted(countries.items(), key=lambda kv: -kv[1])
     )
     ip_text = (
-        f"IP 情报剔除机房 {ip_stats['dropped']} 个"
+        f"IP 情报剔除机房 {ip_stats['dropped_hosting']} 个、"
+        f"国家不一致 {ip_stats['dropped_mismatch']} 个"
         if ip_stats["ran"]
         else "IP 情报不可用（本轮未筛机房 IP）"
     )
