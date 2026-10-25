@@ -78,6 +78,7 @@ UPSTREAM_INCLUDE_FOLDERS = {
     "GoogleEarth",
     "GoogleFCM",
     "HBO",
+    "Homebrew",
     "Instagram",
     "iCloud",
     "iCloudPrivateRelay",
