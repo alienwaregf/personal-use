@@ -524,7 +524,8 @@ def prune_covered_domain_rules(
     return kept, removed
 
 
-def build_client_rule_line(parts: Sequence[str], client: str) -> str:
+def build_client_rule_line(parts: Sequence[str], client: str,
+                           policy: Optional[str] = None) -> str:
     if len(parts) < 2:
         raise ValueError("规则至少包含类型和值两段")
     source_type = parts[0].upper()
@@ -553,6 +554,8 @@ def build_client_rule_line(parts: Sequence[str], client: str) -> str:
         value += "/128"
 
     output_parts = [target_type, value]
+    if policy is not None:
+        output_parts.append(policy)
     if NO_RESOLVE_SUFFIX in extras:
         output_parts.append(NO_RESOLVE_SUFFIX)
     if client == "Loon" and target_type in {"IP-CIDR", "IP-CIDR6"}:
@@ -561,14 +564,14 @@ def build_client_rule_line(parts: Sequence[str], client: str) -> str:
 
 
 def build_client_list(rules: Sequence[RuleParts],
-                      client: str) -> List[str]:
+                      client: str, policy: Optional[str] = None) -> List[str]:
     lines: List[str] = []
     skipped_by_type: Dict[str, int] = {}
     failed_by_type: Dict[str, int] = {}
     for parts in rules:
         source_type = parts[0].upper() if parts else ""
         try:
-            line = build_client_rule_line(parts, client)
+            line = build_client_rule_line(parts, client, policy)
         except ValueError:
             failed_by_type[source_type] = \
                 failed_by_type.get(source_type, 0) + 1
@@ -589,7 +592,9 @@ def write_client_lists(dest_folder: Path,
                        rules: Sequence[RuleParts]) -> Dict[str, int]:
     counts: Dict[str, int] = {}
     for client in NON_CLASH_CLIENTS:
-        lines = build_client_list(rules, client)
+        lines = build_client_list(
+            rules, client,
+            dest_folder.name if client == "QuantumultX" else None)
         counts[client] = len(lines)
         output_path = dest_folder / CLIENT_LIST_FILES[client]
         output_path.write_text(
