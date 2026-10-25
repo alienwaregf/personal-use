@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """blackmatrix7 x MetaCubeX merged rule converter.
 
 For each name in UPSTREAM_INCLUDE_FOLDERS, fetches the blackmatrix7
@@ -126,13 +125,16 @@ UPSTREAM_INCLUDE_FOLDERS = {
 }
 
 META_ALIASES: Dict[str, str] = {
+    "Advertising": "category-ads-all",
     "AppleMusic": "apple-music",
+    "AppleTV": "apple-tvplus",
     "ChinaMax": "cn",
     "Claude": "anthropic",
+    "Copilot": "github-copilot",
     "Epic": "epicgames",
     "Gemini": "google-gemini",
+    "Lan": "private",
 }
-
 
 
 CLIENT_TYPE_MAP: Dict[str, Dict[str, Optional[str]]] = {
@@ -263,7 +265,6 @@ NO_RESOLVE_SUFFIX = "no-resolve"
 RuleParts = List[str]
 
 
-
 def quote_path_part(value: str) -> str:
     return urllib.parse.quote(value, safe="")
 
@@ -297,7 +298,6 @@ def parse_rule_items(items: Iterable[str]) -> List[RuleParts]:
         if parts is not None:
             parsed_rules.append(parts)
     return parsed_rules
-
 
 
 def ensure_mihomo_exists() -> None:
@@ -344,7 +344,7 @@ def split_mrs_rules(
         if kind in MRS_DOMAIN_TYPES:
             if kind == "DOMAIN":
                 domain_entries.append("+." + value)
-            else:  # DOMAIN-SUFFIX
+            else:
                 domain_entries.append("+." + value)
         elif kind in MRS_SKIP_DOMAIN_TYPES:
             skipped_counts[kind] = skipped_counts.get(kind, 0) + 1
@@ -381,7 +381,6 @@ def compile_rules_to_mrs(dest_folder: Path, folder_name: str,
         ip_mrs.unlink(missing_ok=True)
 
     return generated_files
-
 
 
 def fetch_optional_text(url: str) -> Optional[str]:
@@ -470,7 +469,6 @@ def load_meta_rules(
     return rules, stats, geosite_text or "", geoip_text or ""
 
 
-
 def dedup_key(parts: Sequence[str]) -> Tuple[str, ...]:
     kind = parts[0].upper()
     if kind in ("IP-CIDR", "IP-CIDR6"):
@@ -533,8 +531,6 @@ def prune_covered_domain_rules(
         else:
             kept.append(list(parts))
     return kept, removed
-
-
 
 
 def build_client_rule_line(parts: Sequence[str], client: str) -> str:
@@ -610,7 +606,6 @@ def write_client_lists(dest_folder: Path,
     return counts
 
 
-
 def yaml_scalar_text(value: str) -> str:
     dumped = yaml.safe_dump(
         value, allow_unicode=True, default_flow_style=True).strip()
@@ -657,7 +652,6 @@ def write_classical_yaml(dest_folder: Path, folder_name: str,
         output_file.write("payload:\n")
         for parts in rules:
             output_file.write("  - " + yaml_scalar_text(",".join(parts)) + "\n")
-
 
 
 CLIENT_ICONS = {
@@ -780,7 +774,6 @@ def write_readme(dest_folder: Path, folder_name: str,
         text.rstrip() + "\n", encoding="utf-8")
 
 
-
 BLACK_FILE_CANDIDATES = ("{name}_Classical.yaml", "{name}.yaml",
                          "{name}_Classical.yml", "{name}.yml")
 
@@ -797,7 +790,6 @@ def load_black_rules(
         if text is not None:
             return parse_rule_items(parse_payload_text(text)), filename, text
     return [], None, ""
-
 
 
 _MIHOMO_VERSION: Optional[str] = None
@@ -906,8 +898,6 @@ def process_folder(folder_name: str) -> Optional[Dict[str, int]]:
         "meta_skipped": meta_stats["skipped"],
         "skipped": 0,
     }
-
-
 
 
 def main() -> None:
