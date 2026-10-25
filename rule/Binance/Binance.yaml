@@ -1,7 +1,7 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-10-25 10:40:36
+# 上次更新时间：2026-10-25 10:58:18
 # 条数：blackmatrix7 12 条 + MetaCubeX 45 条 (geosite 45 / geoip 0) → 去重合并 49 条
-# Hash：38c04cb8ddc9eeefce738957ca7de93517b41b026de612d516e763f54cebf95b
+# Hash：b684d494cf0dada9d93f374406840c85b18e83bbdc086c294f81634f580e8830
 payload:
   - DOMAIN,zftksc.cdn-settings.appsflyersdk.com
   - DOMAIN,zftksc.launches.appsflyersdk.com

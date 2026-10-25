@@ -1,7 +1,7 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-10-25 10:40:58
+# 上次更新时间：2026-10-25 10:58:39
 # 条数：blackmatrix7 3 条 + MetaCubeX 19 条 (geosite 19 / geoip 0) → 去重合并 20 条
-# Hash：28f2680af626a6c403a1a1a558dc8dab3b2ff4ab82a4ccf8a01a252c1899b1c4
+# Hash：c5caaa5c50709cf8531bbafde523f0c2439ad2f5a1f374e11fbe51ef0eb52d61
 payload:
   - DOMAIN,cdn.usefathom.com
   - DOMAIN,servd-anthropic-website.b-cdn.net

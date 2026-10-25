@@ -1,7 +1,7 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-10-25 10:40:47
+# 上次更新时间：2026-10-25 10:58:29
 # 条数：blackmatrix7 123333 条 + MetaCubeX 120459 条 (geosite 110448 / geoip 10011) → 去重合并 125847 条
-# Hash：012be723b39bb4b220c5dec0ad831ff67a7cb84b60a9cb8ad936bda5ac330cb2
+# Hash：9483858d470d7205afa8a2ae216fbfb933a6b3a5ed463b3c827e2d70dc54ea85
 payload:
   - DOMAIN,1-fss24-s0.streamhoster.com
   - DOMAIN,14033.live.streamtheworld.com

@@ -1,9 +1,9 @@
 # AD 聚合广告域名规则
 # 数据来源：EasyList + EasyPrivacy + EasyListChina + Dns-BlockLists Normal + StevenBlack + anti-AD
-# EasyList 51925条 + EasyPrivacy 40633条 + EasyListChina 5600条 + Dns-BlockLists Normal 172178条 + StevenBlack 71489条 + anti-AD 112078条
-# 合并去重后：域名 251005 个，IP 规则 118 条
-# 上次更新时间：2026-10-25 10:39:36
-# Hash：41128dc5912c3e4c1bc8c7d5e0588d14faa75dd6531b066b296acfb472780dd8
+# EasyList 51928条 + EasyPrivacy 40633条 + EasyListChina 5600条 + Dns-BlockLists Normal 172178条 + StevenBlack 71489条 + anti-AD 112078条
+# 合并去重后：域名 251008 个，IP 规则 118 条
+# 上次更新时间：2026-10-25 10:57:20
+# Hash：97f439862f078a5fb2204ea02c6c660c32c6d24a626c0ad2fe20a6aa7a3b4447
 payload:
   - DOMAIN,000.gaysexe.free.fr
   - DOMAIN,00000.uno
@@ -83354,6 +83354,7 @@ payload:
   - DOMAIN-SUFFIX,cmahrukfuqkiv.online
   - DOMAIN-SUFFIX,cmas.sdcdns.com
   - DOMAIN-SUFFIX,cmass.massmedian.co.jp
+  - DOMAIN-SUFFIX,cmbakofizm.com
   - DOMAIN-SUFFIX,cmbkgmx.cn
   - DOMAIN-SUFFIX,cmc.americanexpress.co.uk
   - DOMAIN-SUFFIX,cmc.tanx.com
@@ -99137,6 +99138,7 @@ payload:
   - DOMAIN-SUFFIX,dxeldq.madeindesign.com
   - DOMAIN-SUFFIX,dxenmweujarfm.store
   - DOMAIN-SUFFIX,dxgo95ahe73e8.cloudfront.net
+  - DOMAIN-SUFFIX,dxgyfgrglgzjq.online
   - DOMAIN-SUFFIX,dxh2ivs16758.cloudfront.net
   - DOMAIN-SUFFIX,dxhrbqrt.com
   - DOMAIN-SUFFIX,dxi.net
@@ -115549,6 +115551,7 @@ payload:
   - DOMAIN-SUFFIX,gjljde.kathmandu.co.nz
   - DOMAIN-SUFFIX,gjlol.com
   - DOMAIN-SUFFIX,gjlrdjdkvnlaj.online
+  - DOMAIN-SUFFIX,gjmfjknlclosi.online
   - DOMAIN-SUFFIX,gjmovc.epapoutsia.gr
   - DOMAIN-SUFFIX,gjmqzcxfbihuw.store
   - DOMAIN-SUFFIX,gjndsa.amaro.com

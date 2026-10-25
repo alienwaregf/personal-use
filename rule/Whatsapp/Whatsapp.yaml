@@ -1,7 +1,7 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-10-25 10:41:26
+# 上次更新时间：2026-10-25 10:59:05
 # 条数：blackmatrix7 17 条 + MetaCubeX 11 条 (geosite 11 / geoip 0) → 去重合并 26 条
-# Hash：877ad522a74ef5ecc7015c275701f869c47d3803507aed96d7effcdca28009f9
+# Hash：c59331daaed200164f3a5cd261d47439daa28863ca905a9a6d9369fdc45c4d3f
 payload:
   - DOMAIN,graph.facebook.com
   - DOMAIN-KEYWORD,whatsapp

@@ -1,7 +1,7 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-10-25 10:41:27
+# 上次更新时间：2026-10-25 10:59:06
 # 条数：blackmatrix7 183 条 + MetaCubeX 178 条 (geosite 178 / geoip 0) → 去重合并 185 条，去冗 1 条，实存 184 条
-# Hash：c308495a0dde4445aaa8027f5af2ca90fddd37a2b42afda122ece62fc7fe1a9c
+# Hash：6bd3ebfbe4325a52545b4e86ad65c947028a3c294e6a2507ec2185b3c1d97e7a
 payload:
   - DOMAIN,yt3.googleusercontent.com
   - DOMAIN-KEYWORD,youtube

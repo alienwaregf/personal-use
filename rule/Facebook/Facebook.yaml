@@ -1,7 +1,7 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-10-25 10:41:03
+# 上次更新时间：2026-10-25 10:58:44
 # 条数：blackmatrix7 570 条 + MetaCubeX 515 条 (geosite 397 / geoip 118) → 去重合并 691 条，去冗 3 条，实存 688 条
-# Hash：e3c0482eb85401c6550c1afd6ca961b9c624297d3598d5e2c9b3ffd21b81932a
+# Hash：c8e762d6df898ca129469846863034afe449e734b15e61c1c068d8cf3ecffe2d
 payload:
   - DOMAIN-KEYWORD,facebook
   - DOMAIN-KEYWORD,fbcdn
