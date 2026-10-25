@@ -1,7 +1,7 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-10-25 19:30:14
-# 条数：blackmatrix7 1593 条 + MetaCubeX 1791 条 (geosite 1791 / geoip 0) → 去重合并 1847 条，去冗 253 条，实存 1594 条
-# Hash：1fec768d35d36e46837544aae5916ec3e23122c5c069b02483657ea94419afe2
+# 上次更新时间：2026-10-26 06:34:55
+# 条数：blackmatrix7 1592 条 + MetaCubeX 1791 条 (geosite 1791 / geoip 0) → 去重合并 1846 条，去冗 253 条，实存 1593 条
+# Hash：ea80ba21c58389eb78351bcd2bece9a018ddb29d8e692a59ea5e41538923354a
 payload:
   - DOMAIN,apple-events.akamaized.net
   - DOMAIN,appleworldwidedeveloper.hb-api.omtrdc.net
@@ -1023,7 +1023,6 @@ payload:
   - DOMAIN-SUFFIX,icloud-isupport.com
   - DOMAIN-SUFFIX,icloud-sandbox.com
   - DOMAIN-SUFFIX,icloud.ch
-  - DOMAIN-SUFFIX,icloud.cn
   - DOMAIN-SUFFIX,icloud.com
   - DOMAIN-SUFFIX,icloud.com.cn
   - DOMAIN-SUFFIX,icloud.de
