@@ -1,7 +1,7 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-10-25 13:33:42
+# 上次更新时间：2026-10-25 19:30:51
 # 条数：blackmatrix7 29 条 + MetaCubeX 28 条 (geosite 28 / geoip 0) → 去重合并 31 条，去冗 2 条，实存 29 条
-# Hash：2cce28bd2406868b261d076c730a2ea3e39cc7f6ec393d2720431a377f3a8f74
+# Hash：8106da57b63e43627a4d8f41e1deed7bf675eb11e12ac54a04f3fa3e947e0ac7
 payload:
   - DOMAIN-SUFFIX,airhorn.solutions
   - DOMAIN-SUFFIX,airhornbot.com

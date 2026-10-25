@@ -1,7 +1,7 @@
 # 数据来源：blackmatrix7
-# 上次更新时间：2026-10-25 13:33:12
+# 上次更新时间：2026-10-25 19:30:16
 # 条数：blackmatrix7 4 条 + MetaCubeX 0 条 (geosite 0 / geoip 0) → 去重合并 4 条
-# Hash：3b4f17683546338fa18c6a0ae14afc30490ea06a2a0eaddd7f58ca162ceb445a
+# Hash：6b8aea6a7da8bd9fe3346f6af1253a8c7ada30d6b887a55d5f450c15ad580ded
 payload:
   - DOMAIN,appleid.apple.com
   - DOMAIN,appleid.cdn-apple.com

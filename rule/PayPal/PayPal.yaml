@@ -1,7 +1,7 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-10-25 13:34:07
+# 上次更新时间：2026-10-25 19:31:10
 # 条数：blackmatrix7 247 条 + MetaCubeX 245 条 (geosite 245 / geoip 0) → 去重合并 248 条，去冗 1 条，实存 247 条
-# Hash：d72b8e9e674ec3dec30b254dd6a416be6a502a98597c6a74d8742e6a0bd25a21
+# Hash：43efcd9da1b2a06b3c7ca2b995357936c9fbc5cedbde4467943c321a95cb6b4e
 payload:
   - DOMAIN-KEYWORD,paypal
   - DOMAIN-SUFFIX,account-paypal.info

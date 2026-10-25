@@ -1,7 +1,7 @@
 # 数据来源：blackmatrix7
-# 上次更新时间：2026-10-25 13:33:57
+# 上次更新时间：2026-10-25 19:30:55
 # 条数：blackmatrix7 2 条 + MetaCubeX 0 条 (geosite 0 / geoip 0) → 去重合并 2 条
-# Hash：a691a801aeb186b88e98a91ba18cc7bd360b61517145f0e422ae0bed4bf0067b
+# Hash：039d10c7ffa7d6792162917cfe6d0734a5ebd086b6158aede1175cff7736e2ac
 payload:
   - DOMAIN,amp-api.fitness.apple.com
   - DOMAIN,hls-svod.itunes.apple.com
