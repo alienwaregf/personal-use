@@ -26,9 +26,6 @@ from typing import Dict, Iterable, List, Optional, Sequence, Set, Tuple
 
 import yaml
 
-# =============================================================================
-# Core Configuration
-# =============================================================================
 
 BLACK_RAW_BASE_URL = (
     "https://raw.githubusercontent.com/"
@@ -54,11 +51,6 @@ CLIENTS = ["Clash", "Loon", "QuantumultX", "Shadowrocket", "Surge"]
 NON_CLASH_CLIENTS = [client for client in CLIENTS if client != "Clash"]
 CLIENT_LIST_FILES = {client: f"{client}.list" for client in NON_CLASH_CLIENTS}
 
-# UPSTREAM_INCLUDE_FOLDERS = {
-#     "OpenAI",
-#     "Netflix",
-#     "category-ai-!cn",
-# }
 UPSTREAM_INCLUDE_FOLDERS = {
     "Advertising",
     "AppStore",
@@ -141,9 +133,6 @@ META_ALIASES: Dict[str, str] = {
     "Gemini": "google-gemini",
 }
 
-# =============================================================================
-# Type Mapping
-# =============================================================================
 
 
 CLIENT_TYPE_MAP: Dict[str, Dict[str, Optional[str]]] = {
@@ -273,9 +262,6 @@ NO_RESOLVE_SUFFIX = "no-resolve"
 
 RuleParts = List[str]
 
-# =============================================================================
-# Core Parsing Utilities
-# =============================================================================
 
 
 def quote_path_part(value: str) -> str:
@@ -312,11 +298,6 @@ def parse_rule_items(items: Iterable[str]) -> List[RuleParts]:
             parsed_rules.append(parts)
     return parsed_rules
 
-
-
-# =============================================================================
-# Mihomo Compilation
-# =============================================================================
 
 
 def ensure_mihomo_exists() -> None:
@@ -401,10 +382,6 @@ def compile_rules_to_mrs(dest_folder: Path, folder_name: str,
 
     return generated_files
 
-
-# =============================================================================
-# MetaCubeX Fetching and Parsing
-# =============================================================================
 
 
 def fetch_optional_text(url: str) -> Optional[str]:
@@ -493,10 +470,6 @@ def load_meta_rules(
     return rules, stats, geosite_text or "", geoip_text or ""
 
 
-# =============================================================================
-# Merge
-# =============================================================================
-
 
 def dedup_key(parts: Sequence[str]) -> Tuple[str, ...]:
     kind = parts[0].upper()
@@ -562,10 +535,6 @@ def prune_covered_domain_rules(
     return kept, removed
 
 
-
-# =============================================================================
-# Client List Generation
-# =============================================================================
 
 
 def build_client_rule_line(parts: Sequence[str], client: str) -> str:
@@ -641,10 +610,6 @@ def write_client_lists(dest_folder: Path,
     return counts
 
 
-# =============================================================================
-# Merge
-# =============================================================================
-
 
 def yaml_scalar_text(value: str) -> str:
     dumped = yaml.safe_dump(
@@ -693,10 +658,6 @@ def write_classical_yaml(dest_folder: Path, folder_name: str,
         for parts in rules:
             output_file.write("  - " + yaml_scalar_text(",".join(parts)) + "\n")
 
-
-# =============================================================================
-# README Generation
-# =============================================================================
 
 
 CLIENT_ICONS = {
@@ -820,10 +781,6 @@ def write_readme(dest_folder: Path, folder_name: str,
 
 
 
-# =============================================================================
-# blackmatrix7 Fetching
-# =============================================================================
-
 BLACK_FILE_CANDIDATES = ("{name}_Classical.yaml", "{name}.yaml",
                          "{name}_Classical.yml", "{name}.yml")
 
@@ -841,10 +798,6 @@ def load_black_rules(
             return parse_rule_items(parse_payload_text(text)), filename, text
     return [], None, ""
 
-
-# =============================================================================
-# Folder Processing
-# =============================================================================
 
 
 _MIHOMO_VERSION: Optional[str] = None
@@ -955,9 +908,6 @@ def process_folder(folder_name: str) -> Optional[Dict[str, int]]:
     }
 
 
-# =============================================================================
-# Main
-# =============================================================================
 
 
 def main() -> None:
