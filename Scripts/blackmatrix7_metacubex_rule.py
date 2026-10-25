@@ -135,6 +135,7 @@ UPSTREAM_INCLUDE_FOLDERS = {
 
 META_ALIASES: Dict[str, str] = {
     "AppleMusic": "apple-music",
+    "ChinaMax": "cn",
     "Claude": "anthropic",
     "Epic": "epicgames",
     "Gemini": "google-gemini",
