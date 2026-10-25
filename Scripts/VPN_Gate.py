@@ -1,5 +1,27 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+"""
+VPN Gate residential (home broadband) OpenVPN nodes -> mihomo proxy-provider file.
+
+Standalone script. Screening is list/IP based only; there is NO
+connectivity checking anywhere (no tunnel is ever opened) - liveness is
+left to the client's own health checks.
+
+Screening:
+  1. Fetch the official VPN Gate CSV list (https first, http fallback).
+  2. Drop the operator-run datacenter servers: HostName starting with
+     "public-vpn", or IP inside 219.100.37.
+  3. Classify every remaining server IP via ip-api and drop the ones
+     flagged as hosting/datacenter, so volunteers running on a VPS do
+     not pass as residential. (Screening IPs, not testing connections.)
+  4. Sort by the CSV Speed field, descending.
+  5. Decode each OpenVPN config; keep only proto tcp entries with a remote.
+
+Output is a provider file (top-level "proxies:") holding only the
+residential OpenVPN nodes, with pure per-node fields only: chaining
+(dialer-proxy), DNS and other shared settings are applied by the
+user's own config via provider override, not baked into the nodes.
+"""
 
 import base64
 import hashlib
@@ -21,7 +43,7 @@ OUTPUT_PATH = Path("proxy/VPNgate.yaml")
 EXCLUDE_HOST_PREFIX = "public-vpn"
 EXCLUDE_IP_PREFIX = "219.100.37."
 CONFIG_PREFIX_CHARS = 6000  # decode only the head of each config first
-VERSION_TAG = "v14-name-sort-mismatch"
+VERSION_TAG = "v15-no-isp-comment"
 
 BEIJING = timezone(timedelta(hours=8))
 
@@ -299,8 +321,6 @@ def render_yaml(nodes, cert, fingerprint):
         "proxies:",
     ]
     for idx, (name, node) in enumerate(named):
-        if node.get("isp"):
-            lines.append(f"  # {node['isp']} · {node.get('asn', '')}")
         # One node per line (flow style); the shared cert is anchored on
         # the first node and aliased by all the others, on the same line.
         if idx == 0:
