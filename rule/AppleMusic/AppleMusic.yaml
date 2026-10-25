@@ -1,7 +1,7 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-10-23 20:30:00
+# 上次更新时间：2026-10-25 10:40:34
 # 条数：blackmatrix7 10 条 + MetaCubeX 18 条 (geosite 18 / geoip 0) → 去重合并 26 条，去冗 7 条，实存 19 条
-# Hash：eb206a0f3b22bf3e5dcf3be080417439fff1abc4eda5ec21455592259b659b87
+# Hash：c68bca401e5d79838a868d42263cf0fe179361506a96da42a7d0073f473d3a2f
 payload:
   - DOMAIN,aod-ssl.itunes.apple.com
   - DOMAIN,aod.itunes.apple.com

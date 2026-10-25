@@ -1,7 +1,7 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-10-23 20:30:38
+# 上次更新时间：2026-10-25 10:41:23
 # 条数：blackmatrix7 35 条 + MetaCubeX 37 条 (geosite 37 / geoip 0) → 去重合并 60 条，去冗 2 条，实存 58 条
-# Hash：54ef2d6d911b83973c9821805693bca0468a8b250107940ec411374276785c2c
+# Hash：577b514f9ff5e5c860e766333aa37cd53ec3cc84783ae20c36d6c2f1e3d8c471
 payload:
   - DOMAIN,lf16-effectcdn.byteeffecttos-g.com
   - DOMAIN,lf16-pkgcdn.pitaya-clientai.com

@@ -1,7 +1,7 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-10-23 20:30:19
+# 上次更新时间：2026-10-25 10:41:03
 # 条数：blackmatrix7 15 条 + MetaCubeX 30 条 (geosite 30 / geoip 0) → 去重合并 31 条
-# Hash：354c435d8f0ec08d3c0df35e0046be6cc41a0db50e853858a8bd5b631d7d5cdc
+# Hash：f4148689a892e4600cc04d7d323e40dbf26abd4dc380085ed9391c88d72bc954
 payload:
   - DOMAIN-SUFFIX,3lateral.com
   - DOMAIN-SUFFIX,artstation.com

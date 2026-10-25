@@ -1,7 +1,7 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-10-23 20:30:38
+# 上次更新时间：2026-10-25 10:41:24
 # 条数：blackmatrix7 2 条 + MetaCubeX 4 条 (geosite 4 / geoip 0) → 去重合并 4 条
-# Hash：52ee17b68e5070010ed6bcc4e67dcac3da628a7a15bbbc5f3fd9ca69fcb46209
+# Hash：1dd102c842b0d128e861a6f8d8c746e8e28e04bc4bfe94725d4fd452308e02fb
 payload:
   - DOMAIN,tmdb-image-prod.b-cdn.net
   - DOMAIN,tmdb-web-image-prod.b-cdn.net
