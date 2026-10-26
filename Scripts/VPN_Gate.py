@@ -287,6 +287,7 @@ def render_yaml(nodes, cert, fingerprint):
     for node in nodes:
         base = display_name(node)
         seen[base] = seen.get(base, 0) + 1
+        count = seen[base]
         name = base if count == 1 else base + str(count).translate(str.maketrans("0123456789", "⁰¹²³⁴⁵⁶⁷⁸⁹"))
         named.append((base, count, name, node))
     named.sort(key=lambda item: (item[0], item[1]))
