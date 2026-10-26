@@ -18,7 +18,7 @@ OUTPUT_PATH = Path("proxy/VPNgate.yaml")
 EXCLUDE_HOST_PREFIX = "public-vpn"
 EXCLUDE_IP_PREFIX = "219.100.37."
 CONFIG_PREFIX_CHARS = 6000  # decode only the head of each config first
-VERSION_TAG = "v19-us-168h-city-common-anchor"
+VERSION_TAG = "v21-explicit"
 
 BEIJING = timezone(timedelta(hours=8))
 
@@ -282,18 +282,22 @@ def display_name(node):
 
 
 def render_yaml(nodes, cert, fingerprint):
+    totals = {}
+    for node in nodes:
+        totals[display_name(node)] = totals.get(display_name(node), 0) + 1
     seen = {}
     named = []
     for node in nodes:
         base = display_name(node)
         seen[base] = seen.get(base, 0) + 1
         count = seen[base]
-        if count == 1:
-        name = base
+        if totals[base] == 1:
+            name = base
         else:
             head, ip = base.split(" 家宽 ", 1)
             name = head + str(count).translate(str.maketrans("0123456789", "⁰¹²³⁴⁵⁶⁷⁸⁹")) + " 家宽 " + ip
-    named.append((base, count, name, node))
+        named.append((base, count, name, node))
+    named.sort(key=lambda item: (item[0], item[1]))
     now = datetime.now(BEIJING).strftime("%Y-%m-%d %H:%M:%S")
     lines = [
         "# VPN Gate 家宽节点（OpenVPN）",
@@ -301,17 +305,14 @@ def render_yaml(nodes, cert, fingerprint):
         f"# 上次更新时间：{now}",
         f"# 条数：{len(named)} 个节点",
         f"# Hash：{fingerprint}",
-        # The shared cert lives once in its own block above the nodes, so
-        # no node line is long and dropping nodes never orphans an anchor.
         "x-certs:",
         "  ca: &jkca " + inline_pem(cert["ca"]),
         "  cert: &jkcert " + inline_pem(cert["cert"]),
         "  key: &jkkey " + inline_pem(cert["key"]),
-        # Fields identical on every node; merged into each node line.
         "proxies:",
     ]
     for _, _, name, node in named:
-        # One node per line (flow style); common fields come from the anchor.
+        # One node per line (flow style); every node only carries aliases.
         lines.append(
             "  - { "
             f"name: '{name}', type: openvpn, server: {node['server']}, "
@@ -349,7 +350,7 @@ def rewrite_us_only(path):
     """Rewrite the committed file keeping only US nodes.
 
     The header time is deliberately NOT refreshed: it still marks when the
-    kept nodes were last fully updated, so the 168h bound keeps counting down
+    kept nodes were last fully updated, so the 720h bound keeps counting down
     instead of renewing on every rewrite. The Hash line is dropped so the
     unchanged-skip logic can never mistake this partial file for a full one.
     The cert anchors live in the standalone x-certs block above the nodes,
@@ -391,7 +392,7 @@ def main():
             return 0
         if age is not None and age < US_FALLBACK_TTL:
             if rewrite_us_only(OUTPUT_PATH):
-                print(f"拉取失败（{e}），现有文件 {age:.0f} 秒前更新（超 10 分钟、未超 168 小时），仅保留美国节点")
+                print(f"拉取失败（{e}），现有文件 {age:.0f} 秒前更新（超 10 分钟、未超 720 小时），仅保留美国节点")
                 return 0
         raise
     fingerprint = hashlib.sha256(
