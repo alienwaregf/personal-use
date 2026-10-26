@@ -340,7 +340,7 @@ def rewrite_us_only(path):
     """Rewrite the committed file keeping only US nodes.
 
     The header time is deliberately NOT refreshed: it still marks when the
-    kept nodes were last fully updated, so the 168h bound keeps counting down
+    kept nodes were last fully updated, so the 720h bound keeps counting down
     instead of renewing on every rewrite. The Hash line is dropped so the
     unchanged-skip logic can never mistake this partial file for a full one.
     The shared anchor lives in the single x-all line above the nodes,
@@ -382,7 +382,7 @@ def main():
             return 0
         if age is not None and age < US_FALLBACK_TTL:
             if rewrite_us_only(OUTPUT_PATH):
-                print(f"拉取失败（{e}），现有文件 {age:.0f} 秒前更新（超 10 分钟、未超 168 小时），仅保留美国节点")
+                print(f"拉取失败（{e}），现有文件 {age:.0f} 秒前更新（超 10 分钟、未超 720 小时），仅保留美国节点")
                 return 0
         raise
     fingerprint = hashlib.sha256(
