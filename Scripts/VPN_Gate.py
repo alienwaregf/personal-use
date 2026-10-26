@@ -43,7 +43,7 @@ OUTPUT_PATH = Path("proxy/VPNgate.yaml")
 EXCLUDE_HOST_PREFIX = "public-vpn"
 EXCLUDE_IP_PREFIX = "219.100.37."
 CONFIG_PREFIX_CHARS = 6000  # decode only the head of each config first
-VERSION_TAG = "v16-10min-cache"
+VERSION_TAG = "v18-us-36h-top-anchors"
 
 BEIJING = timezone(timedelta(hours=8))
 
@@ -52,6 +52,7 @@ FETCH_DEADLINE = 120  # seconds, per attempt, for the whole download
 FETCH_ATTEMPTS = 3
 
 FETCH_FALLBACK_TTL = 10 * 60  # seconds: on fetch failure, keep the committed file and exit 0 while it is this fresh
+US_FALLBACK_TTL = 36 * 60 * 60  # seconds: past the tier above, keep only US nodes and exit 0 while the file is this fresh
 
 
 def fetch_once(url, deadline):
@@ -320,24 +321,22 @@ def render_yaml(nodes, cert, fingerprint):
         f"# 上次更新时间：{now}",
         f"# 条数：{len(named)} 个节点",
         f"# Hash：{fingerprint}",
+        # The shared cert lives once in its own block above the nodes, so
+        # no node line is long and dropping nodes never orphans an anchor.
+        "x-certs:",
+        "  ca: &jkca " + inline_pem(cert["ca"]),
+        "  cert: &jkcert " + inline_pem(cert["cert"]),
+        "  key: &jkkey " + inline_pem(cert["key"]),
         "proxies:",
     ]
-    for idx, (name, node) in enumerate(named):
-        # One node per line (flow style); the shared cert is anchored on
-        # the first node and aliased by all the others, on the same line.
-        if idx == 0:
-            cert_fields = (
-                "ca: &jkca " + inline_pem(cert["ca"])
-                + ", cert: &jkcert " + inline_pem(cert["cert"])
-                + ", key: &jkkey " + inline_pem(cert["key"])
-            )
-        else:
-            cert_fields = "ca: *jkca, cert: *jkcert, key: *jkkey"
+    for name, node in named:
+        # One node per line (flow style); every node only carries aliases.
         lines.append(
             "  - { "
             f"name: '{name}', type: openvpn, server: {node['server']}, "
             f"port: {node['port']}, proto: tcp, username: vpn, password: vpn, "
-            f"cipher: {node['cipher']}, auth: {node['auth']}, {cert_fields}"
+            f"cipher: {node['cipher']}, auth: {node['auth']}, "
+            "ca: *jkca, cert: *jkcert, key: *jkkey"
             " }"
         )
     return "\n".join(lines) + "\n", len(named)
@@ -365,6 +364,41 @@ def stored_time(path):
         return None
 
 
+def rewrite_us_only(path):
+    """Rewrite the committed file keeping only US nodes.
+
+    The header time is deliberately NOT refreshed: it still marks when the
+    kept nodes were last fully updated, so the 36h bound keeps counting down
+    instead of renewing on every rewrite. The Hash line is dropped so the
+    unchanged-skip logic can never mistake this partial file for a full one.
+    The cert anchors live in the standalone x-certs block above the nodes,
+    which is kept as-is, so filtering node lines cannot orphan an alias.
+    Returns True on success, False when there is nothing safe to write.
+    """
+    text = path.read_text(encoding="utf-8", errors="replace")
+    lines = text.split("\n")
+    try:
+        pidx = lines.index("proxies:")
+    except ValueError:
+        return False
+    header = lines[:pidx]
+    body = [line for line in lines[pidx + 1:] if line.strip()]
+    us = [line for line in body if "name: '🇺🇸" in line]
+    if not us:
+        return False
+    kept = [line for line in header
+            if not line.startswith("# 条数") and not line.startswith("# Hash")]
+    count_line = f"# 条数：{len(us)} 个节点（仅美国，分层回退）"
+    for i, line in enumerate(kept):
+        if line.startswith("# 上次更新时间"):
+            kept.insert(i + 1, count_line)
+            break
+    else:
+        kept.append(count_line)
+    path.write_text("\n".join(kept + ["proxies:"] + us) + "\n", encoding="utf-8")
+    return True
+
+
 def main():
     try:
         raw = fetch_text(SOURCE_URLS)
@@ -374,6 +408,10 @@ def main():
         if age is not None and age < FETCH_FALLBACK_TTL:
             print(f"拉取失败（{e}），但现有文件 {age:.0f} 秒前才更新（TTL 内），保留旧文件")
             return 0
+        if age is not None and age < US_FALLBACK_TTL:
+            if rewrite_us_only(OUTPUT_PATH):
+                print(f"拉取失败（{e}），现有文件 {age:.0f} 秒前更新（超 10 分钟、未超 36 小时），仅保留美国节点")
+                return 0
         raise
     fingerprint = hashlib.sha256(
         raw.encode("utf-8")
