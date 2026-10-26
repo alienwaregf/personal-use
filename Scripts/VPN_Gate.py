@@ -304,7 +304,6 @@ def render_yaml(nodes, cert, fingerprint):
         "  cert: &jkcert " + inline_pem(cert["cert"]),
         "  key: &jkkey " + inline_pem(cert["key"]),
         # Fields identical on every node; merged into each node line.
-        "x-common: &jkcommon { type: openvpn, proto: tcp, username: vpn, password: vpn }",
         "proxies:",
     ]
     for name, node in named:
