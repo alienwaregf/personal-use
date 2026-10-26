@@ -287,9 +287,9 @@ def render_yaml(nodes, cert, fingerprint):
     for node in nodes:
         base = display_name(node)
         seen[base] = seen.get(base, 0) + 1
-        name = base if seen[base] == 1 else base + str(seen[base]).translate(str.maketrans("0123456789", "⁰¹²³⁴⁵⁶⁷⁸⁹"))
-        named.append((name, node))
-    named.sort(key=lambda item: item[0])
+        name = base if count == 1 else base + str(count).translate(str.maketrans("0123456789", "⁰¹²³⁴⁵⁶⁷⁸⁹"))
+        named.append((base, count, name, node))
+    named.sort(key=lambda item: (item[0], item[1]))
     now = datetime.now(BEIJING).strftime("%Y-%m-%d %H:%M:%S")
     lines = [
         "# VPN Gate 家宽节点（OpenVPN）",
@@ -306,7 +306,7 @@ def render_yaml(nodes, cert, fingerprint):
         # Fields identical on every node; merged into each node line.
         "proxies:",
     ]
-    for name, node in named:
+    for _, _, name, node in named:
         # One node per line (flow style); common fields come from the anchor.
         lines.append(
             "  - { "
