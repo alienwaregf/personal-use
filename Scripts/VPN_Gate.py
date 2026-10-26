@@ -311,8 +311,8 @@ def render_yaml(nodes, cert, fingerprint):
         # One node per line (flow style); common fields come from the anchor.
         lines.append(
             "  - { "
-            f"name: '{name}', server: {node['server']}, "
-            f"port: {node['port']}, <<: *jkcommon, "
+            f"name: '{name}', type: openvpn, server: {node['server']}, "
+            f"port: {node['port']}, proto: tcp, username: vpn, password: vpn, "
             f"cipher: {node['cipher']}, auth: {node['auth']}, "
             "ca: *jkca, cert: *jkcert, key: *jkkey"
             " }"
