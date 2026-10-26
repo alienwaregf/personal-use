@@ -43,13 +43,15 @@ OUTPUT_PATH = Path("proxy/VPNgate.yaml")
 EXCLUDE_HOST_PREFIX = "public-vpn"
 EXCLUDE_IP_PREFIX = "219.100.37."
 CONFIG_PREFIX_CHARS = 6000  # decode only the head of each config first
-VERSION_TAG = "v15-no-isp-comment"
+VERSION_TAG = "v16-10min-cache"
 
 BEIJING = timezone(timedelta(hours=8))
 
 
 FETCH_DEADLINE = 120  # seconds, per attempt, for the whole download
 FETCH_ATTEMPTS = 3
+
+FETCH_FALLBACK_TTL = 10 * 60  # seconds: on fetch failure, keep the committed file and exit 0 while it is this fresh
 
 
 def fetch_once(url, deadline):
@@ -349,8 +351,30 @@ def stored_hash(path):
     return m.group(1) if m else ""
 
 
+def stored_time(path):
+    """Beijing timestamp from the output file header, or None if absent/unparseable."""
+    if not path.exists():
+        return None
+    head = path.read_text(encoding="utf-8", errors="replace")[:2048]
+    m = re.search(r"# 上次更新时间：(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})", head)
+    if not m:
+        return None
+    try:
+        return datetime.strptime(m.group(1), "%Y-%m-%d %H:%M:%S").replace(tzinfo=BEIJING)
+    except ValueError:
+        return None
+
+
 def main():
-    raw = fetch_text(SOURCE_URLS)
+    try:
+        raw = fetch_text(SOURCE_URLS)
+    except Exception as e:
+        stored = stored_time(OUTPUT_PATH)
+        age = (datetime.now(BEIJING) - stored).total_seconds() if stored else None
+        if age is not None and age < FETCH_FALLBACK_TTL:
+            print(f"拉取失败（{e}），但现有文件 {age:.0f} 秒前才更新（TTL 内），保留旧文件")
+            return 0
+        raise
     fingerprint = hashlib.sha256(
         raw.encode("utf-8")
         + Path(__file__).read_bytes()
