@@ -28,7 +28,7 @@ FETCH_DEADLINE = 120  # seconds, per attempt, for the whole download
 FETCH_ATTEMPTS = 3
 
 FETCH_FALLBACK_TTL = 10 * 60  # seconds: on fetch failure, keep the committed file and exit 0 while it is this fresh
-US_FALLBACK_TTL = 36 * 60 * 60  # seconds: past the tier above, keep only US nodes and exit 0 while the file is this fresh
+US_FALLBACK_TTL = 168 * 60 * 60  # seconds: past the tier above, keep only US nodes and exit 0 while the file is this fresh
 
 
 def fetch_once(url, deadline):
