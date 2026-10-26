@@ -1,73 +1,84 @@
 # VPN Gate 家宽节点（OpenVPN）
 # 数据来源：VPN Gate 官方清单，已剔除 public-vpn 官方机房节点、219.100.37. 网段及 IP 情报标记为机房的 IP
-# 上次更新时间：2026-10-26 16:45:09
-# 条数：66 个节点
-# Hash：3728cd12af7e8a910fbfdf9c4989b8b0c1307cf4b05937984c44ffa6cc14176d
+# 上次更新时间：2026-10-26 16:49:05
+# 条数：77 个节点
+# Hash：baa5ce83ec197cc4837d791e2e39fc719bcc6a0041a1f471dd2b7188f3eb9b20
 x-all: &jkall { ca: "-----BEGIN CERTIFICATE-----\nMIIFazCCA1OgAwIBAgIRAIIQz7DSQONZRGPgu2OCiwAwDQYJKoZIhvcNAQELBQAw\nTzELMAkGA1UEBhMCVVMxKTAnBgNVBAoTIEludGVybmV0IFNlY3VyaXR5IFJlc2Vh\ncmNoIEdyb3VwMRUwEwYDVQQDEwxJU1JHIFJvb3QgWDEwHhcNMTUwNjA0MTEwNDM4\nWhcNMzUwNjA0MTEwNDM4WjBPMQswCQYDVQQGEwJVUzEpMCcGA1UEChMgSW50ZXJu\nZXQgU2VjdXJpdHkgUmVzZWFyY2ggR3JvdXAxFTATBgNVBAMTDElTUkcgUm9vdCBY\nMTCCAiIwDQYJKoZIhvcNAQEBBQADggIPADCCAgoCggIBAK3oJHP0FDfzm54rVygc\nh77ct984kIxuPOZXoHj3dcKi/vVqbvYATyjb3miGbESTtrFj/RQSa78f0uoxmyF+\n0TM8ukj13Xnfs7j/EvEhmkvBioZxaUpmZmyPfjxwv60pIgbz5MDmgK7iS4+3mX6U\nA5/TR5d8mUgjU+g4rk8Kb4Mu0UlXjIB0ttov0DiNewNwIRt18jA8+o+u3dpjq+sW\nT8KOEUt+zwvo/7V3LvSye0rgTBIlDHCNAymg4VMk7BPZ7hm/ELNKjD+Jo2FR3qyH\nB5T0Y3HsLuJvW5iB4YlcNHlsdu87kGJ55tukmi8mxdAQ4Q7e2RCOFvu396j3x+UC\nB5iPNgiV5+I3lg02dZ77DnKxHZu8A/lJBdiB3QW0KtZB6awBdpUKD9jf1b0SHzUv\nKBds0pjBqAlkd25HN7rOrFleaJ1/ctaJxQZBKT5ZPt0m9STJEadao0xAH0ahmbWn\nOlFuhjuefXKnEgV4We0+UXgVCwOPjdAvBbI+e0ocS3MFEvzG6uBQE3xDk3SzynTn\njh8BCNAw1FtxNrQHusEwMFxIt4I7mKZ9YIqioymCzLq9gwQbooMDQaHWBfEbwrbw\nqHyGO0aoSCqI3Haadr8faqU9GY/rOPNk3sgrDQoo//fb4hVC1CLQJ13hef4Y53CI\nrU7m2Ys6xt0nUW7/vGT1M0NPAgMBAAGjQjBAMA4GA1UdDwEB/wQEAwIBBjAPBgNV\nHRMBAf8EBTADAQH/MB0GA1UdDgQWBBR5tFnme7bl5AFzgAiIyBpY9umbbjANBgkq\nhkiG9w0BAQsFAAOCAgEAVR9YqbyyqFDQDLHYGmkgJykIrGF1XIpu+ILlaS/V9lZL\nubhzEFnTIZd+50xx+7LSYK05qAvqFyFWhfFQDlnrzuBZ6brJFe+GnY+EgPbk6ZGQ\n3BebYhtF8GaV0nxvwuo77x/Py9auJ/GpsMiu/X1+mvoiBOv/2X/qkSsisRcOj/KK\nNFtY2PwByVS5uCbMiogziUwthDyC3+6WVwW6LLv3xLfHTjuCvjHIInNzktHCgKQ5\nORAzI4JMPJ+GslWYHb4phowim57iaztXOoJwTdwJx4nLCgdNbOhdjsnvzqvHu7Ur\nTkXWStAmzOVyyghqpZXjFaH3pO3JLF+l+/+sKAIuvtd7u+Nxe5AW0wdeRlN8NwdC\njNPElpzVmbUq4JUagEiuTDkHzsxHpFKVK7q4+63SM1N95R1NbdWhscdCb+ZAJzVc\noyi3B43njTOQ5yOf+1CceWxG1bQVs5ZufpsMljq4Ui0/1lvh+wjChP4kqKOJ2qxq\n4RgqsahDYVvTH9w7jXbyLeiNdd8XM2w9U/t7y0Ff/9yi0GE44Za4rF2LN9d11TPA\nmRGunUHBcnWEvgJBQl9nJEiU0Zsnvgc/ubhPgXRR4Xq37Z0j4r7g1SgEEzwxA57d\nemyPxgcYxn/eR44/KJ4EBs+lVDR3veyJm+kXQ99b21/+jh5Xos1AnX5iItreGCc=\n-----END CERTIFICATE-----", cert: "-----BEGIN CERTIFICATE-----\nMIICxjCCAa4CAQAwDQYJKoZIhvcNAQEFBQAwKTEaMBgGA1UEAxMRVlBOR2F0ZUNs\naWVudENlcnQxCzAJBgNVBAYTAkpQMB4XDTEzMDIxMTAzNDk0OVoXDTM3MDExOTAz\nMTQwN1owKTEaMBgGA1UEAxMRVlBOR2F0ZUNsaWVudENlcnQxCzAJBgNVBAYTAkpQ\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA5h2lgQQYUjwoKYJbzVZA\n5VcIGd5otPc/qZRMt0KItCFA0s9RwReNVa9fDRFLRBhcITOlv3FBcW3E8h1Us7RD\n4W8GmJe8zapJnLsD39OSMRCzZJnczW4OCH1PZRZWKqDtjlNca9AF8a65jTmlDxCQ\nCjntLIWk5OLLVkFt9/tScc1GDtci55ofhaNAYMPiH7V8+1g66pGHXAoWK6AQVH67\nXCKJnGB5nlQ+HsMYPV/O49Ld91ZN/2tHkcaLLyNtywxVPRSsRh480jju0fcCsv6h\np/0yXnTB//mWutBGpdUlIbwiITbAmrsbYnjigRvnPqX1RNJUbi9Fp6C2c/HIFJGD\nywIDAQABMA0GCSqGSIb3DQEBBQUAA4IBAQChO5hgcw/4oWfoEFLu9kBa1B//kxH8\nhQkChVNn8BRC7Y0URQitPl3DKEed9URBDdg2KOAz77bb6ENPiliD+a38UJHIRMqe\nUBHhllOHIzvDhHFbaovALBQceeBzdkQxsKQESKmQmR832950UCovoyRB61UyAV7h\n+mZhYPGRKXKSJI6s0Egg/Cri+Cwk4bjJfrb5hVse11yh4D9MHhwSfCOH+0z4hPUT\nFku7dGavURO5SVxMn/sL6En5D+oSeXkadHpDs+Airym2YHh15h0+jPSOoR6yiVp/\n6zZeZkrN43kuS73KpKDFjfFPh8t4r1gOIjttkNcQqBccusnplQ7HJpsk\n-----END CERTIFICATE-----", key: "-----BEGIN RSA PRIVATE KEY-----\nMIIEpAIBAAKCAQEA5h2lgQQYUjwoKYJbzVZA5VcIGd5otPc/qZRMt0KItCFA0s9R\nwReNVa9fDRFLRBhcITOlv3FBcW3E8h1Us7RD4W8GmJe8zapJnLsD39OSMRCzZJnc\nzW4OCH1PZRZWKqDtjlNca9AF8a65jTmlDxCQCjntLIWk5OLLVkFt9/tScc1GDtci\n55ofhaNAYMPiH7V8+1g66pGHXAoWK6AQVH67XCKJnGB5nlQ+HsMYPV/O49Ld91ZN\n/2tHkcaLLyNtywxVPRSsRh480jju0fcCsv6hp/0yXnTB//mWutBGpdUlIbwiITbA\nmrsbYnjigRvnPqX1RNJUbi9Fp6C2c/HIFJGDywIDAQABAoIBAERV7X5AvxA8uRiK\nk8SIpsD0dX1pJOMIwakUVyvc4EfN0DhKRNb4rYoSiEGTLyzLpyBc/A28Dlkm5eOY\nfjzXfYkGtYi/Ftxkg3O9vcrMQ4+6i+uGHaIL2rL+s4MrfO8v1xv6+Wky33EEGCou\nQiwVGRFQXnRoQ62NBCFbUNLhmXwdj1akZzLU4p5R4zA3QhdxwEIatVLt0+7owLQ3\nlP8sfXhppPOXjTqMD4QkYwzPAa8/zF7acn4kryrUP7Q6PAfd0zEVqNy9ZCZ9ffho\nzXedFj486IFoc5gnTp2N6jsnVj4LCGIhlVHlYGozKKFqJcQVGsHCqq1oz2zjW6LS\noRYIHgECgYEA8zZrkCwNYSXJuODJ3m/hOLVxcxgJuwXoiErWd0E42vPanjjVMhnt\nKY5l8qGMJ6FhK9LYx2qCrf/E0XtUAZ2wVq3ORTyGnsMWre9tLYs55X+ZN10Tc75z\n4hacbU0hqKN1HiDmsMRY3/2NaZHoy7MKnwJJBaG48l9CCTlVwMHocIECgYEA8jby\ndGjxTH+6XHWNizb5SRbZxAnyEeJeRwTMh0gGzwGPpH/sZYGzyu0SySXWCnZh3Rgq\n5uLlNxtrXrljZlyi2nQdQgsq2YrWUs0+zgU+22uQsZpSAftmhVrtvet6MjVjbByY\nDADciEVUdJYIXk+qnFUJyeroLIkTj7WYKZ6RjksCgYBoCFIwRDeg42oK89RFmnOr\nLymNAq4+2oMhsWlVb4ejWIWeAk9nc+GXUfrXszRhS01mUnU5r5ygUvRcarV/T3U7\nTnMZ+I7Y4DgWRIDd51znhxIBtYV5j/C/t85HjqOkH+8b6RTkbchaX3mau7fpUfds\nFq0nhIq42fhEO8srfYYwgQKBgQCyhi1N/8taRwpk+3/IDEzQwjbfdzUkWWSDk9Xs\nH/pkuRHWfTMP3flWqEYgW/LW40peW2HDq5imdV8+AgZxe/XMbaji9Lgwf1RY005n\nKxaZQz7yqHupWlLGF68DPHxkZVVSagDnV/sztWX6SFsCqFVnxIXifXGC4cW5Nm9g\nva8q4QKBgQCEhLVeUfdwKvkZ94g/GFz731Z2hrdVhgMZaU/u6t0V95+YezPNCQZB\nwmE9Mmlbq1emDeROivjCfoGhR3kZXW1pTKlLh6ZMUQUOpptdXva8XxfoqQwa3enA\nM7muBbF0XN7VO80iJPv+PmIZdEIAkpwKfi201YB+BafCIuGxIF50Vg==\n-----END RSA PRIVATE KEY-----", type: openvpn, proto: tcp, username: vpn, password: vpn }
 proxies:
-  - { name: '🇨🇦 加拿大 Rimouski 家宽 75.158.255.70', server: 75.158.255.70, port: 1954, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
-  - { name: '🇬🇧 英国 泰恩河畔纽卡斯尔 家宽 92.16.99.146', server: 92.16.99.146, port: 1750, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
-  - { name: '🇯🇵 日本 Adachi 家宽 121.109.181.23', server: 121.109.181.23, port: 1527, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
+  - { name: '🇯🇵 日本 Asagayakita 家宽 42.146.135.190', server: 42.146.135.190, port: 995, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
   - { name: '🇯🇵 日本 Chiyoda City 家宽 115.179.206.241', server: 115.179.206.241, port: 443, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
-  - { name: '🇯🇵 日本 Chuo 家宽 143.189.192.65', server: 143.189.192.65, port: 1837, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
-  - { name: '🇯🇵 日本 Chūōku 家宽 61.26.71.210', server: 61.26.71.210, port: 1896, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
-  - { name: '🇯🇵 日本 Kochi 家宽 218.221.210.237', server: 218.221.210.237, port: 1921, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
-  - { name: '🇯🇵 日本 Minato 家宽 126.214.179.9', server: 126.214.179.9, port: 1890, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
-  - { name: '🇯🇵 日本 Minato 家宽 126.217.176.127', server: 126.217.176.127, port: 1211, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
-  - { name: '🇯🇵 日本 Minato 家宽 126.221.18.49', server: 126.221.18.49, port: 1634, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
-  - { name: '🇯🇵 日本 Minato 家宽 126.237.151.103', server: 126.237.151.103, port: 1881, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
+  - { name: '🇯🇵 日本 Chiyoda City 家宽 202.229.208.93', server: 202.229.208.93, port: 1547, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
+  - { name: '🇯🇵 日本 Chiyoda City 家宽 220.210.140.97', server: 220.210.140.97, port: 1817, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
+  - { name: '🇯🇵 日本 Ichikawa 家宽 159.28.178.62', server: 159.28.178.62, port: 1400, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
+  - { name: '🇯🇵 日本 Kamekubo 家宽 124.212.19.24', server: 124.212.19.24, port: 1202, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
+  - { name: '🇯🇵 日本 Kamisato-machi 家宽 14.101.163.7', server: 14.101.163.7, port: 1750, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
+  - { name: '🇯🇵 日本 Kanamechō 家宽 118.156.137.250', server: 118.156.137.250, port: 1253, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
+  - { name: '🇯🇵 日本 Kiribatake 家宽 175.177.114.100', server: 175.177.114.100, port: 1281, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
+  - { name: '🇯🇵 日本 Mejiro 家宽 42.144.208.76', server: 42.144.208.76, port: 1815, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
+  - { name: '🇯🇵 日本 Mejiro 家宽 42.144.211.19', server: 42.144.211.19, port: 1390, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
   - { name: '🇯🇵 日本 Minato 家宽 126.38.129.219', server: 126.38.129.219, port: 1645, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
-  - { name: '🇯🇵 日本 Minato 家宽 126.66.208.41', server: 126.66.208.41, port: 1408, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
-  - { name: '🇯🇵 日本 Minato 家宽 126.77.185.5', server: 126.77.185.5, port: 1724, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
-  - { name: '🇯🇵 日本 Minato 家宽 126.79.124.253', server: 126.79.124.253, port: 1691, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
-  - { name: '🇯🇵 日本 Minato-ku 家宽 60.124.68.169', server: 60.124.68.169, port: 1460, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
-  - { name: '🇯🇵 日本 Minato-ku 家宽 60.146.126.196', server: 60.146.126.196, port: 1705, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
-  - { name: '🇯🇵 日本 Minato-ku 家宽 60.86.178.76', server: 60.86.178.76, port: 1752, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
-  - { name: '🇯🇵 日本 Minato-ku 家宽 60.92.3.220', server: 60.92.3.220, port: 1324, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
-  - { name: '🇯🇵 日本 Sendai 家宽 42.148.85.217', server: 42.148.85.217, port: 1702, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
-  - { name: '🇯🇵 日本 东京 家宽 150.249.65.33', server: 150.249.65.33, port: 1418, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
-  - { name: '🇯🇵 日本 名古屋市 家宽 124.100.138.216', server: 124.100.138.216, port: 1496, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
+  - { name: '🇯🇵 日本 Toyama 家宽 61.25.149.161', server: 61.25.149.161, port: 1549, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
+  - { name: '🇯🇵 日本 Ōita 家宽 221.113.16.33', server: 221.113.16.33, port: 1669, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
+  - { name: '🇯🇵 日本 东京 家宽 36.12.244.203', server: 36.12.244.203, port: 1916, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
+  - { name: '🇯🇵 日本 东京 家宽 42.124.47.246', server: 42.124.47.246, port: 1857, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
+  - { name: '🇯🇵 日本 八王子市 家宽 61.23.154.7', server: 61.23.154.7, port: 1579, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
+  - { name: '🇯🇵 日本 名古屋市 家宽 118.106.66.243', server: 118.106.66.243, port: 1963, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
+  - { name: '🇯🇵 日本 名古屋市 家宽 124.18.41.79', server: 124.18.41.79, port: 1506, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
   - { name: '🇯🇵 日本 名古屋市 家宽 180.196.19.88', server: 180.196.19.88, port: 1737, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
-  - { name: '🇯🇵 日本 名古屋市 家宽 222.9.93.169', server: 222.9.93.169, port: 1432, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
-  - { name: '🇯🇵 日本 坂戶市 家宽 14.101.10.239', server: 14.101.10.239, port: 1352, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
-  - { name: '🇯🇵 日本 堺市 家宽 101.141.47.78', server: 101.141.47.78, port: 1293, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
-  - { name: '🇯🇵 日本 大阪市 家宽 119.229.64.207', server: 119.229.64.207, port: 1795, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
-  - { name: '🇯🇵 日本 松山市 家宽 219.109.62.62', server: 219.109.62.62, port: 1956, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
-  - { name: '🇯🇵 日本 町田市 家宽 122.132.220.88', server: 122.132.220.88, port: 1497, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
-  - { name: '🇯🇵 日本 船橋市 家宽 175.41.115.139', server: 175.41.115.139, port: 1875, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
-  - { name: '🇯🇵 日本 藤澤市 家宽 182.20.240.27', server: 182.20.240.27, port: 1535, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
-  - { name: '🇯🇵 日本 鈴鹿市 家宽 118.104.248.62', server: 118.104.248.62, port: 1295, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
-  - { name: '🇰🇷 韩国 Anyang-si 家宽 119.195.254.240', server: 119.195.254.240, port: 1414, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
-  - { name: '🇰🇷 韩国 Bucheon-si 家宽 59.86.200.244', server: 59.86.200.244, port: 1475, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
-  - { name: '🇰🇷 韩国 Eumseong-gun 家宽 61.96.70.113', server: 61.96.70.113, port: 1904, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
-  - { name: '🇰🇷 韩国 Gangseo-gu 家宽 121.145.11.40', server: 121.145.11.40, port: 1524, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
+  - { name: '🇯🇵 日本 磐田市 家宽 124.18.175.178', server: 124.18.175.178, port: 1441, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
+  - { name: '🇯🇵 日本 藤岡市 家宽 106.174.122.123', server: 106.174.122.123, port: 1426, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
+  - { name: '🇯🇵 日本 长崎市 家宽 14.101.82.147', server: 14.101.82.147, port: 1234, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
+  - { name: '🇰🇷 韩国 Cheongju-si 家宽 112.173.198.136', server: 112.173.198.136, port: 1662, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
   - { name: '🇰🇷 韩国 Gimhae 家宽 123.199.101.140', server: 123.199.101.140, port: 995, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
-  - { name: '🇰🇷 韩国 Goyang-si 家宽 183.97.153.219', server: 183.97.153.219, port: 1232, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
-  - { name: '🇰🇷 韩国 Goyang-si 家宽 211.216.167.19', server: 211.216.167.19, port: 1954, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
-  - { name: '🇰🇷 韩国 Guri-si 家宽 221.165.229.38', server: 221.165.229.38, port: 1632, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
-  - { name: '🇰🇷 韩国 Gwangsan-gu 家宽 119.200.143.121', server: 119.200.143.121, port: 995, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
-  - { name: '🇰🇷 韩国 Hwangchi 家宽 211.115.152.102', server: 211.115.152.102, port: 995, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
-  - { name: '🇰🇷 韩国 Jongno-gu 家宽 211.196.123.188', server: 211.196.123.188, port: 995, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
-  - { name: '🇰🇷 韩国 Nowon-gu 家宽 58.122.63.92', server: 58.122.63.92, port: 1794, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
-  - { name: '🇰🇷 韩国 Seo-gu 家宽 211.222.139.80', server: 211.222.139.80, port: 443, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
-  - { name: '🇰🇷 韩国 Seongnam-si 家宽 211.213.23.156', server: 211.213.23.156, port: 1366, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
+  - { name: '🇰🇷 韩国 Gwacheon 家宽 119.197.200.143', server: 119.197.200.143, port: 1483, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
+  - { name: '🇰🇷 韩国 Icheon-si 家宽 59.12.238.246', server: 59.12.238.246, port: 995, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
+  - { name: '🇰🇷 韩国 Jeongeup 家宽 1.250.179.6', server: 1.250.179.6, port: 1800, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
+  - { name: '🇰🇷 韩国 Jung-gu 家宽 175.122.73.80', server: 175.122.73.80, port: 1298, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
+  - { name: '🇰🇷 韩国 Jung-gu 家宽 175.192.186.64', server: 175.192.186.64, port: 1752, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
+  - { name: '🇰🇷 韩国 Nam-gu 家宽 211.195.17.110', server: 211.195.17.110, port: 995, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
+  - { name: '🇰🇷 韩国 Paju 家宽 220.79.186.206', server: 220.79.186.206, port: 995, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
+  - { name: '🇰🇷 韩国 Pohang 家宽 58.227.86.166', server: 58.227.86.166, port: 1529, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
+  - { name: '🇰🇷 韩国 Seo-gu 家宽 211.54.125.171', server: 211.54.125.171, port: 995, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
+  - { name: '🇰🇷 韩国 Seongbuk-gu 家宽 121.160.2.180', server: 121.160.2.180, port: 1455, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
+  - { name: '🇰🇷 韩国 Seongdong-gu 家宽 121.130.194.50', server: 121.130.194.50, port: 1725, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
+  - { name: '🇰🇷 韩国 Seongnam-si 家宽 221.144.146.230', server: 221.144.146.230, port: 995, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
+  - { name: '🇰🇷 韩国 Seongnam-si 家宽 221.156.184.248', server: 221.156.184.248, port: 995, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
+  - { name: '🇰🇷 韩国 Seongnam-si 家宽 39.118.138.90', server: 39.118.138.90, port: 1879, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
+  - { name: '🇰🇷 韩国 Sokcho 家宽 112.184.204.177', server: 112.184.204.177, port: 1301, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
   - { name: '🇰🇷 韩国 Suseong-gu 家宽 183.106.84.223', server: 183.106.84.223, port: 1418, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
+  - { name: '🇰🇷 韩国 Suyeong-gu 家宽 221.161.133.98', server: 221.161.133.98, port: 1872, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
+  - { name: '🇰🇷 韩国 Suyeong-gu 家宽 221.164.117.21', server: 221.164.117.21, port: 1722, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
+  - { name: '🇰🇷 韩国 Uijeongbu-si 家宽 182.220.18.3', server: 182.220.18.3, port: 1945, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
+  - { name: '🇰🇷 韩国 Yeongdeungpo-gu 家宽 118.37.33.91', server: 118.37.33.91, port: 1459, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
+  - { name: '🇰🇷 韩国 Yeongdeungpo-gu 家宽 58.77.30.52', server: 58.77.30.52, port: 1821, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
+  - { name: '🇰🇷 韩国 Yongsan-dong 家宽 61.250.170.158', server: 61.250.170.158, port: 1676, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
   - { name: '🇰🇷 韩国 Yongsan-gu 家宽 61.73.152.142', server: 61.73.152.142, port: 995, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
-  - { name: '🇰🇷 韩国 Yuseong-gu 家宽 125.140.171.241', server: 125.140.171.241, port: 1594, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
-  - { name: '🇰🇷 韩国 仁川广域市 家宽 119.196.134.174', server: 119.196.134.174, port: 995, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
-  - { name: '🇰🇷 韩国 大邱廣域市 家宽 218.149.226.154', server: 218.149.226.154, port: 1745, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
-  - { name: '🇰🇷 韩国 天安市 家宽 220.123.97.183', server: 220.123.97.183, port: 1831, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
-  - { name: '🇰🇷 韩国 廣州市 家宽 183.99.109.76', server: 183.99.109.76, port: 1737, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
-  - { name: '🇰🇷 韩国 廣州市 家宽 211.34.73.150', server: 211.34.73.150, port: 1795, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
-  - { name: '🇰🇷 韩国 昌原市 家宽 123.248.163.147', server: 123.248.163.147, port: 1814, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
-  - { name: '🇰🇷 韩国 昌原市 家宽 61.253.166.119', server: 61.253.166.119, port: 1463, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
-  - { name: '🇰🇷 韩国 江南区 家宽 49.174.213.183', server: 49.174.213.183, port: 1757, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
-  - { name: '🇰🇷 韩国 龙仁市 家宽 121.168.25.111', server: 121.168.25.111, port: 995, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
-  - { name: '🇰🇷 韩国 龙仁市 家宽 39.115.217.57', server: 39.115.217.57, port: 1335, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
-  - { name: '🇷🇺 俄罗斯联邦 Yakutsk 家宽 46.48.195.157', server: 46.48.195.157, port: 1222, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
-  - { name: '🇷🇺 俄罗斯联邦 海参崴 家宽 77.35.34.107', server: 77.35.34.107, port: 1858, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
-  - { name: '🇷🇺 俄罗斯联邦 海参崴 家宽 95.154.89.139', server: 95.154.89.139, port: 1482, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
-  - { name: '🇹🇭 泰国 Pattaya 家宽 183.89.221.245', server: 183.89.221.245, port: 1964, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
-  - { name: '🇹🇭 泰国 曼谷 家宽 183.88.74.38', server: 183.88.74.38, port: 1738, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
-  - { name: '🇺🇸 美国 北士美菲路 家宽 130.215.124.186', server: 130.215.124.186, port: 995, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
-  - { name: '🇺🇸 美国 聖路易斯-奧比斯保 家宽 174.87.100.177', server: 174.87.100.177, port: 443, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
+  - { name: '🇰🇷 韩国 Yuseong-gu 家宽 112.160.98.139', server: 112.160.98.139, port: 995, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
+  - { name: '🇰🇷 韩国 东大门区 家宽 14.40.20.238', server: 14.40.20.238, port: 1954, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
+  - { name: '🇰🇷 韩国 东大门区 家宽 58.127.236.201', server: 58.127.236.201, port: 1790, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
+  - { name: '🇰🇷 韩国 九老区 家宽 222.108.175.4', server: 222.108.175.4, port: 995, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
+  - { name: '🇰🇷 韩国 仁川广域市 家宽 218.237.44.234', server: 218.237.44.234, port: 1780, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
+  - { name: '🇰🇷 韩国 光州广域市 家宽 220.80.43.121', server: 220.80.43.121, port: 995, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
+  - { name: '🇰🇷 韩国 全州市 家宽 175.123.66.109', server: 175.123.66.109, port: 995, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
+  - { name: '🇰🇷 韩国 华城市 家宽 182.214.53.18', server: 182.214.53.18, port: 1201, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
+  - { name: '🇰🇷 韩国 南楊州市 家宽 1.240.213.9', server: 1.240.213.9, port: 995, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
+  - { name: '🇰🇷 韩国 大田广域市 家宽 114.207.172.165', server: 114.207.172.165, port: 1766, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
+  - { name: '🇰🇷 韩国 大田广域市 家宽 210.91.252.33', server: 210.91.252.33, port: 995, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
+  - { name: '🇰🇷 韩国 大邱廣域市 家宽 119.70.219.13', server: 119.70.219.13, port: 1529, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
+  - { name: '🇰🇷 韩国 昌原市 家宽 118.35.235.124', server: 118.35.235.124, port: 995, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
+  - { name: '🇰🇷 韩国 梁山市 家宽 1.176.240.230', server: 1.176.240.230, port: 995, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
+  - { name: '🇰🇷 韩国 水原市 家宽 211.195.98.172', server: 211.195.98.172, port: 1680, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
+  - { name: '🇰🇷 韩国 牙山市 家宽 121.185.107.63', server: 121.185.107.63, port: 995, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
+  - { name: '🇰🇷 韩国 羅州市 家宽 221.144.30.91', server: 221.144.30.91, port: 1545, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
+  - { name: '🇰🇷 韩国 蔚山 家宽 220.77.26.67', server: 220.77.26.67, port: 995, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
+  - { name: '🇰🇷 韩国 首尔特别市 家宽 1.241.4.195', server: 1.241.4.195, port: 1209, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
+  - { name: '🇰🇷 韩国 龟尾市 家宽 59.23.135.114', server: 59.23.135.114, port: 1346, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
+  - { name: '🇷🇺 俄罗斯联邦 Neryungri 家宽 188.244.154.180', server: 188.244.154.180, port: 1460, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
+  - { name: '🇷🇺 俄罗斯联邦 利波夫齐 家宽 77.34.107.106', server: 77.34.107.106, port: 1847, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
+  - { name: '🇹🇭 泰国 普吉市 家宽 27.130.224.138', server: 27.130.224.138, port: 1371, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
+  - { name: '🇹🇭 泰国 曼谷 家宽 124.121.182.199', server: 124.121.182.199, port: 1571, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
+  - { name: '🇹🇭 泰国 曼谷 家宽 180.183.136.12', server: 180.183.136.12, port: 444, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
+  - { name: '🇺🇸 美国 格倫代爾 家宽 47.232.209.214', server: 47.232.209.214, port: 1488, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
+  - { name: '🇺🇸 美国 比美頓市 家宽 24.21.53.105', server: 24.21.53.105, port: 1689, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
+  - { name: '🇺🇸 美国 聖貝納迪諾 家宽 76.167.43.6', server: 76.167.43.6, port: 1318, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
+  - { name: '🇻🇳 越南 河內市 家宽 42.118.99.136', server: 42.118.99.136, port: 1343, <<: *jkall, cipher: AES-128-CBC, auth: SHA1 }
