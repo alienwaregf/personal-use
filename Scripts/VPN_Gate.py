@@ -18,7 +18,7 @@ OUTPUT_PATH = Path("proxy/VPNgate.yaml")
 EXCLUDE_HOST_PREFIX = "public-vpn"
 EXCLUDE_IP_PREFIX = "219.100.37."
 CONFIG_PREFIX_CHARS = 6000  # decode only the head of each config first
-VERSION_TAG = "v18-us-36h-top-anchors"
+VERSION_TAG = "v19-us-168h-city-common-anchor"
 
 BEIJING = timezone(timedelta(hours=8))
 
@@ -303,14 +303,16 @@ def render_yaml(nodes, cert, fingerprint):
         "  ca: &jkca " + inline_pem(cert["ca"]),
         "  cert: &jkcert " + inline_pem(cert["cert"]),
         "  key: &jkkey " + inline_pem(cert["key"]),
+        # Fields identical on every node; merged into each node line.
+        "x-common: &jkcommon { type: openvpn, proto: tcp, username: vpn, password: vpn }",
         "proxies:",
     ]
     for name, node in named:
-        # One node per line (flow style); every node only carries aliases.
+        # One node per line (flow style); common fields come from the anchor.
         lines.append(
             "  - { "
-            f"name: '{name}', type: openvpn, server: {node['server']}, "
-            f"port: {node['port']}, proto: tcp, username: vpn, password: vpn, "
+            f"name: '{name}', server: {node['server']}, "
+            f"port: {node['port']}, <<: *jkcommon, "
             f"cipher: {node['cipher']}, auth: {node['auth']}, "
             "ca: *jkca, cert: *jkcert, key: *jkkey"
             " }"
@@ -344,7 +346,7 @@ def rewrite_us_only(path):
     """Rewrite the committed file keeping only US nodes.
 
     The header time is deliberately NOT refreshed: it still marks when the
-    kept nodes were last fully updated, so the 36h bound keeps counting down
+    kept nodes were last fully updated, so the 168h bound keeps counting down
     instead of renewing on every rewrite. The Hash line is dropped so the
     unchanged-skip logic can never mistake this partial file for a full one.
     The cert anchors live in the standalone x-certs block above the nodes,
@@ -386,7 +388,7 @@ def main():
             return 0
         if age is not None and age < US_FALLBACK_TTL:
             if rewrite_us_only(OUTPUT_PATH):
-                print(f"拉取失败（{e}），现有文件 {age:.0f} 秒前更新（超 10 分钟、未超 36 小时），仅保留美国节点")
+                print(f"拉取失败（{e}），现有文件 {age:.0f} 秒前更新（超 10 分钟、未超 168 小时），仅保留美国节点")
                 return 0
         raise
     fingerprint = hashlib.sha256(
