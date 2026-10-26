@@ -313,9 +313,12 @@ def render_yaml(nodes, cert, fingerprint):
     ]
     for _, _, name, node in named:
         # One node per line (flow style); every node only carries aliases.
+        # A single quote inside a single-quoted name must be doubled,
+        # otherwise it ends the string early and breaks the flow mapping.
+        safe_name = name.replace("'", "''")
         lines.append(
             "  - { "
-            f"name: '{name}', type: openvpn, server: {node['server']}, "
+            f"name: '{safe_name}', type: openvpn, server: {node['server']}, "
             f"port: {node['port']}, proto: tcp, username: vpn, password: vpn, "
             f"cipher: {node['cipher']}, auth: {node['auth']}, "
             "ca: *jkca, cert: *jkcert, key: *jkkey"
