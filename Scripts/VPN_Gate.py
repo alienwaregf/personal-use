@@ -287,7 +287,7 @@ def render_yaml(nodes, cert, fingerprint):
     for node in nodes:
         base = display_name(node)
         seen[base] = seen.get(base, 0) + 1
-        name = base if seen[base] == 1 else f"{base}-{seen[base]:02d}"
+        name = base if seen[base] == 1 else base + str(seen[base]).translate(str.maketrans("0123456789", "⁰¹²³⁴⁵⁶⁷⁸⁹"))
         named.append((name, node))
     named.sort(key=lambda item: item[0])
     now = datetime.now(BEIJING).strftime("%Y-%m-%d %H:%M:%S")
