@@ -13,7 +13,7 @@ SOURCE_URLS = [
     "https://www.vpngate.net/api/iphone/",
     "http://www.vpngate.net/api/iphone/",
 ]
-IP_API_BATCH = "http://ip-api.com/batch?fields=status,query,country,countryCode,regionName,isp,org,as,hosting,proxy&lang=zh-CN"
+IP_API_BATCH = "http://ip-api.com/batch?fields=status,query,country,countryCode,regionName,city,isp,org,as,hosting,proxy&lang=zh-CN"
 OUTPUT_PATH = Path("proxy/VPNgate.yaml")
 
 EXCLUDE_HOST_PREFIX = "public-vpn"
@@ -234,6 +234,7 @@ def screen_datacenter_ips(nodes):
             node["asn"] = entry.get("as", "")
             node["country_name"] = (entry.get("country") or "").strip()
             node["region"] = (entry.get("regionName") or "").strip()
+            node["city"] = (entry.get("city") or "").strip()
         kept.append(node)
     return kept, {
         "ran": True,
