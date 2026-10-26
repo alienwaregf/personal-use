@@ -288,9 +288,12 @@ def render_yaml(nodes, cert, fingerprint):
         base = display_name(node)
         seen[base] = seen.get(base, 0) + 1
         count = seen[base]
-        name = base if count == 1 else base + str(count).translate(str.maketrans("0123456789", "⁰¹²³⁴⁵⁶⁷⁸⁹"))
-        named.append((base, count, name, node))
-    named.sort(key=lambda item: (item[0], item[1]))
+        if count == 1:
+        name = base
+        else:
+            head, ip = base.split(" 家宽 ", 1)
+            name = head + str(count).translate(str.maketrans("0123456789", "⁰¹²³⁴⁵⁶⁷⁸⁹")) + " 家宽 " + ip
+    named.append((base, count, name, node))
     now = datetime.now(BEIJING).strftime("%Y-%m-%d %H:%M:%S")
     lines = [
         "# VPN Gate 家宽节点（OpenVPN）",
