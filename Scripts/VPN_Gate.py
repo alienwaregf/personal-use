@@ -1,27 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-VPN Gate residential (home broadband) OpenVPN nodes -> mihomo proxy-provider file.
-
-Standalone script. Screening is list/IP based only; there is NO
-connectivity checking anywhere (no tunnel is ever opened) - liveness is
-left to the client's own health checks.
-
-Screening:
-  1. Fetch the official VPN Gate CSV list (https first, http fallback).
-  2. Drop the operator-run datacenter servers: HostName starting with
-     "public-vpn", or IP inside 219.100.37.
-  3. Classify every remaining server IP via ip-api and drop the ones
-     flagged as hosting/datacenter, so volunteers running on a VPS do
-     not pass as residential. (Screening IPs, not testing connections.)
-  4. Sort by the CSV Speed field, descending.
-  5. Decode each OpenVPN config; keep only proto tcp entries with a remote.
-
-Output is a provider file (top-level "proxies:") holding only the
-residential OpenVPN nodes, with pure per-node fields only: chaining
-(dialer-proxy), DNS and other shared settings are applied by the
-user's own config via provider override, not baked into the nodes.
-"""
 
 import base64
 import hashlib
