@@ -271,11 +271,11 @@ def display_name(node):
         or node.get("country_long")
         or node["country"]
     )
-    region = (node.get("region") or "").strip()
-    if region == country:
-        region = ""
+    city = (node.get("city") or "").strip() or (node.get("region") or "").strip()
+    if city == country:
+        city = ""
     flag = flag_emoji(node["country"])
-    head = f"{country}{region}家宽"
+    head = f"{country}{city}家宽"
     if flag:
         head = f"{flag} {head}"
     return f"{head} {node['server']}"
