@@ -18,7 +18,7 @@ OUTPUT_PATH = Path("proxy/VPNgate.yaml")
 EXCLUDE_HOST_PREFIX = "public-vpn"
 EXCLUDE_IP_PREFIX = "219.100.37."
 CONFIG_PREFIX_CHARS = 6000  # decode only the head of each config first
-VERSION_TAG = "v19-us-168h-city-common-anchor"
+VERSION_TAG = "v20-oneline-anchor"
 
 BEIJING = timezone(timedelta(hours=8))
 
@@ -297,24 +297,18 @@ def render_yaml(nodes, cert, fingerprint):
         f"# 上次更新时间：{now}",
         f"# 条数：{len(named)} 个节点",
         f"# Hash：{fingerprint}",
-        # The shared cert lives once in its own block above the nodes, so
-        # no node line is long and dropping nodes never orphans an anchor.
-        "x-certs:",
-        "  ca: &jkca " + inline_pem(cert["ca"]),
-        "  cert: &jkcert " + inline_pem(cert["cert"]),
-        "  key: &jkkey " + inline_pem(cert["key"]),
-        # Fields identical on every node; merged into each node line.
-        "x-common: &jkcommon { type: openvpn, proto: tcp, username: vpn, password: vpn }",
+        # Every field shared by all nodes lives once in a single anchor
+        # above the nodes; each node line only merges it and adds its own cipher/auth.
+        "x-all: &jkall { ca: " + inline_pem(cert["ca"]) + ", cert: " + inline_pem(cert["cert"]) + ", key: " + inline_pem(cert["key"]) + ", type: openvpn, proto: tcp, username: vpn, password: vpn }",
         "proxies:",
     ]
     for name, node in named:
-        # One node per line (flow style); common fields come from the anchor.
+        # One node per line (flow style); shared fields come from the anchor.
         lines.append(
             "  - { "
             f"name: '{name}', server: {node['server']}, "
-            f"port: {node['port']}, <<: *jkcommon, "
-            f"cipher: {node['cipher']}, auth: {node['auth']}, "
-            "ca: *jkca, cert: *jkcert, key: *jkkey"
+            f"port: {node['port']}, <<: *jkall, "
+            f"cipher: {node['cipher']}, auth: {node['auth']}"
             " }"
         )
     return "\n".join(lines) + "\n", len(named)
@@ -349,7 +343,7 @@ def rewrite_us_only(path):
     kept nodes were last fully updated, so the 168h bound keeps counting down
     instead of renewing on every rewrite. The Hash line is dropped so the
     unchanged-skip logic can never mistake this partial file for a full one.
-    The cert anchors live in the standalone x-certs block above the nodes,
+    The shared anchor lives in the single x-all line above the nodes,
     which is kept as-is, so filtering node lines cannot orphan an alias.
     Returns True on success, False when there is nothing safe to write.
     """
