@@ -276,7 +276,7 @@ def display_name(node):
     if city == country:
         city = ""
     flag = flag_emoji(node["country"])
-    head = f"{country}{city}家宽"
+    head = f"{country} {city} 家宽" if city else f"{country} 家宽"
     if flag:
         head = f"{flag} {head}"
     return f"{head} {node['server']}"
