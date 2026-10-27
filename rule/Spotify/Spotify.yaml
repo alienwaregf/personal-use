@@ -1,12 +1,11 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-10-25 19:31:15
-# 条数：blackmatrix7 30 条 + MetaCubeX 28 条 (geosite 28 / geoip 0) → 去重合并 38 条，去冗 5 条，实存 33 条
-# Hash：f62b5918b86dcd5b97bfa4cb321c16d38d17ae96aa066797d52ef04fb14055fe
+# 上次更新时间：2026-10-27 13:05:51
+# 条数：blackmatrix7 30 条 + MetaCubeX 28 条 (geosite 28 / geoip 0) → 去重合并 39 条，去冗 6 条，实存 33 条
+# Hash：ab784c15466e53883f357513b4db1adb5b6ce0cb2e201fcef027a8d2e76f2851
 payload:
   - DOMAIN,audio4-ak-spotify-com.akamaized.net
   - DOMAIN,cdn-spotify-experiments.conductrics.com
   - DOMAIN,heads-ak-spotify-com.akamaized.net
-  - DOMAIN,spotify.com.edgesuite.net
   - DOMAIN,spotify.map.fastly.net
   - DOMAIN,spotify.map.fastlylb.net
   - DOMAIN-KEYWORD,spotify
@@ -21,6 +20,7 @@ payload:
   - DOMAIN-SUFFIX,spotify-everywhere.com
   - DOMAIN-SUFFIX,spotify.app.link
   - DOMAIN-SUFFIX,spotify.com
+  - DOMAIN-SUFFIX,spotify.com.edgesuite.net
   - DOMAIN-SUFFIX,spotify.design
   - DOMAIN-SUFFIX,spotify.link
   - DOMAIN-SUFFIX,spotifycdn.com

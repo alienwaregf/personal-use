@@ -1,13 +1,16 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-10-25 19:30:56
-# 条数：blackmatrix7 13 条 + MetaCubeX 46 条 (geosite 46 / geoip 0) → 去重合并 51 条，去冗 1 条，实存 50 条
-# Hash：f4cda33586a91b08c7972171aaf0be5d2c1f51ea97c6175f9dc172d1e5b6196f
+# 上次更新时间：2026-10-27 13:05:35
+# 条数：blackmatrix7 13 条 + MetaCubeX 49 条 (geosite 49 / geoip 0) → 去重合并 54 条，去冗 1 条，实存 53 条
+# Hash：d9c788f7d1b20cf59b4dfa25005207680446005ed0d611ac4954d29e9ffda913
 payload:
   - DOMAIN,ai.google.dev
   - DOMAIN,alkalicore-pa.clients6.google.com
   - DOMAIN,alkalimakersuite-pa.clients6.google.com
   - DOMAIN,antigravity-pa.googleapis.com
   - DOMAIN,antigravity.googleapis.com
+  - DOMAIN,appsgenaiserver-pa.clients.google.com
+  - DOMAIN,appsgenaiserver-pa.clients6.google.com
+  - DOMAIN,appsgenaiserver-pa.googleapis.com
   - DOMAIN,cloudaicompanion.googleapis.com
   - DOMAIN,cloudcode-pa.googleapis.com
   - DOMAIN,daily-cloudcode-pa.googleapis.com

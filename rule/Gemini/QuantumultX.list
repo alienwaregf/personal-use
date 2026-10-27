@@ -3,6 +3,9 @@ HOST,alkalicore-pa.clients6.google.com,Gemini
 HOST,alkalimakersuite-pa.clients6.google.com,Gemini
 HOST,antigravity-pa.googleapis.com,Gemini
 HOST,antigravity.googleapis.com,Gemini
+HOST,appsgenaiserver-pa.clients.google.com,Gemini
+HOST,appsgenaiserver-pa.clients6.google.com,Gemini
+HOST,appsgenaiserver-pa.googleapis.com,Gemini
 HOST,cloudaicompanion.googleapis.com,Gemini
 HOST,cloudcode-pa.googleapis.com,Gemini
 HOST,daily-cloudcode-pa.googleapis.com,Gemini

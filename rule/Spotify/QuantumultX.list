@@ -1,7 +1,6 @@
 HOST,audio4-ak-spotify-com.akamaized.net,Spotify
 HOST,cdn-spotify-experiments.conductrics.com,Spotify
 HOST,heads-ak-spotify-com.akamaized.net,Spotify
-HOST,spotify.com.edgesuite.net,Spotify
 HOST,spotify.map.fastly.net,Spotify
 HOST,spotify.map.fastlylb.net,Spotify
 HOST-KEYWORD,spotify,Spotify
@@ -16,6 +15,7 @@ HOST-SUFFIX,spotify-com.akamaized.net,Spotify
 HOST-SUFFIX,spotify-everywhere.com,Spotify
 HOST-SUFFIX,spotify.app.link,Spotify
 HOST-SUFFIX,spotify.com,Spotify
+HOST-SUFFIX,spotify.com.edgesuite.net,Spotify
 HOST-SUFFIX,spotify.design,Spotify
 HOST-SUFFIX,spotify.link,Spotify
 HOST-SUFFIX,spotifycdn.com,Spotify
