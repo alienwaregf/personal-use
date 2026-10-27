@@ -18,7 +18,7 @@ OUTPUT_PATH = Path("proxy/VPNgate.yaml")
 EXCLUDE_HOST_PREFIX = "public-vpn"
 EXCLUDE_IP_PREFIX = "219.100.37."
 CONFIG_PREFIX_CHARS = 6000  # decode only the head of each config first
-VERSION_TAG = "v21-explicit"
+VERSION_TAG = "v23-fail-visible"
 
 BEIJING = timezone(timedelta(hours=8))
 
@@ -26,8 +26,7 @@ BEIJING = timezone(timedelta(hours=8))
 FETCH_DEADLINE = 120  # seconds, per attempt, for the whole download
 FETCH_ATTEMPTS = 3
 
-FETCH_FALLBACK_TTL = 10 * 60  # seconds: on fetch failure, keep the committed file and exit 0 while it is this fresh
-US_FALLBACK_TTL = 720 * 60 * 60  # seconds: past the tier above, keep only US nodes and exit 0 while the file is this fresh
+US_RETAIN_TTL = 720 * 60 * 60  # seconds: a US node that disappears from the list stays in the file this long past its last sighting
 
 
 def fetch_once(url, deadline):
@@ -281,7 +280,7 @@ def display_name(node):
     return f"{head} {node['server']}"
 
 
-def render_yaml(nodes, cert, fingerprint):
+def render_yaml(nodes, cert, fingerprint, us_seen=None):
     totals = {}
     for node in nodes:
         totals[display_name(node)] = totals.get(display_name(node), 0) + 1
@@ -305,6 +304,14 @@ def render_yaml(nodes, cert, fingerprint):
         f"# 上次更新时间：{now}",
         f"# 条数：{len(named)} 个节点",
         f"# Hash：{fingerprint}",
+    ]
+    if us_seen:
+        for server, port in sorted(us_seen):
+            seen_at = us_seen[(server, port)].astimezone(BEIJING)
+            lines.append(
+                f"# US seen {server}:{port} {seen_at.strftime('%Y-%m-%dT%H:%M:%S+08:00')}"
+            )
+    lines += [
         "x-certs:",
         "  ca: &jkca " + inline_pem(cert["ca"]),
         "  cert: &jkcert " + inline_pem(cert["cert"]),
@@ -349,54 +356,143 @@ def stored_time(path):
         return None
 
 
-def rewrite_us_only(path):
-    """Rewrite the committed file keeping only US nodes.
+SUPERSCRIPT_CHARS = "⁰¹²³⁴⁵⁶⁷⁸⁹"
 
-    The header time is deliberately NOT refreshed: it still marks when the
-    kept nodes were last fully updated, so the 720h bound keeps counting down
-    instead of renewing on every rewrite. The Hash line is dropped so the
-    unchanged-skip logic can never mistake this partial file for a full one.
-    The cert anchors live in the standalone x-certs block above the nodes,
-    which is kept as-is, so filtering node lines cannot orphan an alias.
-    Returns True on success, False when there is nothing safe to write.
+
+def flag_to_code(flag):
+    if len(flag) == 2 and all(0x1F1E6 <= ord(c) <= 0x1F1FF for c in flag):
+        return "".join(chr(ord(c) - 0x1F1E6 + 0x41) for c in flag)
+    return ""
+
+
+def node_from_old_proxy(proxy):
+    """Rebuild a pipeline node dict from a parsed old-file US proxy.
+
+    The old display name already carries everything display_name needs:
+    flag, Chinese country, city (maybe with a duplicate superscript) and
+    server. The superscript is stripped here; the pipeline recomputes
+    suffixes for the merged set, so numbering stays contiguous.
+    Returns None when the old name does not follow our format.
     """
-    text = path.read_text(encoding="utf-8", errors="replace")
-    lines = text.split("\n")
+    name = proxy.get("name") or ""
+    server = proxy.get("server") or ""
+    if not name or not server or " 家宽 " not in name:
+        return None
+    code = flag_to_code(name[:2])
+    if not code:
+        return None
+    head = name[2:].strip().split(" 家宽 ", 1)[0]
+    geo = head.rstrip(SUPERSCRIPT_CHARS)
+    parts = geo.split(" ", 1)
+    country_name = parts[0]
+    city = parts[1] if len(parts) > 1 else ""
     try:
-        pidx = lines.index("proxies:")
-    except ValueError:
-        return False
-    header = lines[:pidx]
-    body = [line for line in lines[pidx + 1:] if line.strip()]
-    us = [line for line in body if "name: '🇺🇸" in line]
-    if not us:
-        return False
-    kept = [line for line in header
-            if not line.startswith("# 条数") and not line.startswith("# Hash")]
-    count_line = f"# 条数：{len(us)} 个节点（仅美国，分层回退）"
-    for i, line in enumerate(kept):
-        if line.startswith("# 上次更新时间"):
-            kept.insert(i + 1, count_line)
-            break
-    else:
-        kept.append(count_line)
-    path.write_text("\n".join(kept + ["proxies:"] + us) + "\n", encoding="utf-8")
-    return True
+        port = int(proxy.get("port", 443))
+    except (TypeError, ValueError):
+        port = 443
+    return {
+        "country": code,
+        "country_name": country_name,
+        "city": city,
+        "region": "",
+        "server": server,
+        "server_ip": server,
+        "port": port,
+        "cipher": proxy.get("cipher") or "AES-128-CBC",
+        "auth": proxy.get("auth") or "SHA1",
+    }
+
+
+def load_retention(path):
+    """Read the previous file's US nodes and their last-seen times.
+
+    Returns (old_us, seen, file_time): old_us maps (server, port) to a
+    rebuilt pipeline node dict, seen maps (server, port) to the datetime
+    it was last seen upstream, file_time is the header timestamp (or
+    None). The old node lines are parsed with a regex for our fixed
+    field order, so this needs no YAML library. Missing, unreadable or
+    unparseable files yield empty results; the caller then simply has
+    nothing to retain.
+    """
+    old_us = {}
+    seen = {}
+    file_time = stored_time(path)
+    if not path.exists():
+        return old_us, seen, file_time
+    try:
+        text = path.read_text(encoding="utf-8", errors="replace")
+    except Exception:
+        return old_us, seen, file_time
+    for line in text.split("\n"):
+        m = re.match(r"# US seen (\S+):(\d+) (\S+)", line)
+        if m:
+            try:
+                seen[(m.group(1), int(m.group(2)))] = datetime.fromisoformat(m.group(3))
+            except ValueError:
+                continue
+    for line in text.split("\n"):
+        if "name: '🇺🇸" not in line:
+            continue
+        m = re.search(
+            r"name: '(.*)', type: openvpn, server: (\S+), port: (\d+), "
+            r"proto: tcp, username: vpn, password: vpn, cipher: (\S+), auth: (\S+),",
+            line,
+        )
+        if not m:
+            continue
+        node = node_from_old_proxy(
+            {
+                "name": m.group(1).replace("''", "'"),
+                "server": m.group(2),
+                "port": int(m.group(3)),
+                "cipher": m.group(4),
+                "auth": m.group(5),
+            }
+        )
+        if node:
+            old_us[(node["server"], node["port"])] = node
+    return old_us, seen, file_time
+
+
+def merge_retained(fresh, path, now):
+    """Merge disappeared US nodes from the previous file into this run.
+
+    Returns (merged_nodes, us_seen). Fresh nodes always win on
+    (server, port); a disappeared US node is kept only while its last
+    sighting is within US_RETAIN_TTL. A node with no recorded sighting
+    falls back to the previous file's header time, then to now.
+    Seen times for fresh US nodes are now; retained ones keep their old
+    sighting time, so the 30-day clock keeps running from when they
+    were last actually upstream.
+    """
+    old_us, old_seen, file_time = load_retention(path)
+    fresh_keys = {(n["server"], n["port"]) for n in fresh}
+    retained = []
+    for key, node in old_us.items():
+        if key in fresh_keys:
+            continue
+        last = old_seen.get(key) or file_time or now
+        if (now - last).total_seconds() < US_RETAIN_TTL:
+            retained.append(node)
+    merged = list(fresh) + retained
+    us_seen = {}
+    for n in merged:
+        if n["country"] == "US":
+            key = (n["server"], n["port"])
+            if key in old_us and key not in fresh_keys:
+                us_seen[key] = old_seen.get(key) or file_time or now
+            else:
+                us_seen[key] = now
+    return merged, us_seen
 
 
 def main():
     try:
         raw = fetch_text(SOURCE_URLS)
     except Exception as e:
-        stored = stored_time(OUTPUT_PATH)
-        age = (datetime.now(BEIJING) - stored).total_seconds() if stored else None
-        if age is not None and age < FETCH_FALLBACK_TTL:
-            print(f"拉取失败（{e}），但现有文件 {age:.0f} 秒前才更新（TTL 内），保留旧文件")
-            return 0
-        if age is not None and age < US_FALLBACK_TTL:
-            if rewrite_us_only(OUTPUT_PATH):
-                print(f"拉取失败（{e}），现有文件 {age:.0f} 秒前更新（超 10 分钟、未超 720 小时），仅保留美国节点")
-                return 0
+        if OUTPUT_PATH.exists():
+            print(f"拉取失败（{e}），上版所有节点不动、保留旧文件，退出", file=sys.stderr)
+            return 1
         raise
     fingerprint = hashlib.sha256(
         raw.encode("utf-8")
@@ -415,11 +511,12 @@ def main():
     if not nodes:
         print("机房 IP 筛选后无可用节点，保留旧文件，退出", file=sys.stderr)
         return 1
-    content, count = render_yaml(nodes, cert, fingerprint)
+    merged, us_seen = merge_retained(nodes, OUTPUT_PATH, datetime.now(BEIJING))
+    content, count = render_yaml(merged, cert, fingerprint, us_seen)
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT_PATH.write_text(content, encoding="utf-8")
     countries = {}
-    for node in nodes:
+    for node in merged:
         countries[node["country"]] = countries.get(node["country"], 0) + 1
     by_country = "、".join(
         f"{k} {v}" for k, v in sorted(countries.items(), key=lambda kv: -kv[1])
