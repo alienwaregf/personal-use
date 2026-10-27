@@ -26,7 +26,7 @@ BEIJING = timezone(timedelta(hours=8))
 FETCH_DEADLINE = 120  # seconds, per attempt, for the whole download
 FETCH_ATTEMPTS = 3
 
-US_RETAIN_TTL = 720 * 60 * 60  # seconds: a US node that disappears from the list stays in the file this long past its last sighting
+US_RETAIN_TTL = 72 * 60 * 60  # seconds: a US node that disappears from the list stays in the file this long past its last sighting
 
 
 def fetch_once(url, deadline):
