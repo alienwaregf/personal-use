@@ -34047,6 +34047,7 @@ HOST-SUFFIX,filfox.info,ChinaMax
 HOST-SUFFIX,fillersmart.com,ChinaMax
 HOST-SUFFIX,fillseo.com,ChinaMax
 HOST-SUFFIX,film-yuelongchina.com,ChinaMax
+HOST-SUFFIX,filmorigin.com,ChinaMax
 HOST-SUFFIX,fily.fun,ChinaMax
 HOST-SUFFIX,fim34s.com,ChinaMax
 HOST-SUFFIX,fimmu.com,ChinaMax
@@ -56563,6 +56564,7 @@ HOST-SUFFIX,kakamobi.com,ChinaMax
 HOST-SUFFIX,kakappt.com,ChinaMax
 HOST-SUFFIX,kakashuzi.net,ChinaMax
 HOST-SUFFIX,kakatx.com,ChinaMax
+HOST-SUFFIX,kakaxing.com,ChinaMax
 HOST-SUFFIX,kakayuy.net,ChinaMax
 HOST-SUFFIX,kaken-china.com,ChinaMax
 HOST-SUFFIX,kaku-scdn.com,ChinaMax
@@ -114787,7 +114789,6 @@ IP-CIDR,154.72.44.0/24,ChinaMax
 IP-CIDR,154.72.47.0/24,ChinaMax
 IP-CIDR,154.8.128.0/17,ChinaMax
 IP-CIDR,154.8.48.0/20,ChinaMax
-IP-CIDR,154.84.180.0/24,ChinaMax
 IP-CIDR,154.89.32.0/20,ChinaMax
 IP-CIDR,155.102.0.0/16,ChinaMax
 IP-CIDR,155.126.176.0/23,ChinaMax
@@ -115369,7 +115370,7 @@ IP-CIDR,175.24.0.0/14,ChinaMax
 IP-CIDR,175.30.0.0/15,ChinaMax
 IP-CIDR,175.42.0.0/15,ChinaMax
 IP-CIDR,175.44.0.0/16,ChinaMax
-IP-CIDR,175.45.179.0/24,ChinaMax
+IP-CIDR,175.45.178.0/23,ChinaMax
 IP-CIDR,175.46.0.0/15,ChinaMax
 IP-CIDR,175.48.0.0/12,ChinaMax
 IP-CIDR,175.64.0.0/11,ChinaMax
