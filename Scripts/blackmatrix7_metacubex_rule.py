@@ -48,6 +48,7 @@ UPSTREAM_INCLUDE_FOLDERS = {
     "AppleFirmware",
     "AppleHardware",
     "AppleID",
+    "AppleIntelligence",
     "AppleMail",
     "AppleMedia",
     "AppleMusic",
@@ -126,7 +127,7 @@ META_ALIASES: Dict[str, str] = {
     "Epic": "epicgames",
     "Gemini": "google-gemini",
     "Lan": "private",
-    "Apple Intelligence": "apple-intelligence",
+    "AppleIntelligence": "apple-intelligence",
 }
 
 
