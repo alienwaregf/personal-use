@@ -1,7 +1,7 @@
 # 数据来源：blackmatrix7
-# 上次更新时间：2026-10-29 19:41:55
+# 上次更新时间：2026-10-29 19:55:57
 # 条数：blackmatrix7 12 条 + MetaCubeX 0 条 (geosite 0 / geoip 0) → 去重合并 12 条
-# Hash：43b9890fa5a547a7a447cbc2633fe2dc388bc0ffaee00a917ad341e50d883af4
+# Hash：3b59786a6df53732960bf96ddeb19a3855aaf7b5cfb61cb33455ec8dd003ced0
 payload:
   - DOMAIN,apple.imap.mail.yahoo.com
   - DOMAIN,apple.smtp.mail.yahoo.com

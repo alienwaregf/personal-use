@@ -1,6 +1,5 @@
-HOST,guzzoni.apple.com,Apple Intelligence
-HOST-SUFFIX,smoot.apple.com,Apple Intelligence
-HOST,apple-relay.cloudflare.com,Apple Intelligence
-HOST,apple-relay.fastly-edge.com,Apple Intelligence
-HOST,cp4.cloudflare.com,Apple Intelligence
-HOST,apple-relay.apple.com,Apple Intelligence
+HOST,apple-relay.apple.com,AppleIntelligence
+HOST,apple-relay.cloudflare.com,AppleIntelligence
+HOST,apple-relay.fastly-edge.com,AppleIntelligence
+HOST,apple-relay.mask.apple-dns.net,AppleIntelligence
+HOST,gspe1-ssl.ls.apple.com,AppleIntelligence

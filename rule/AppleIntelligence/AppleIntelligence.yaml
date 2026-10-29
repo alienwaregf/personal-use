@@ -1,21 +1,10 @@
+# 数据来源：MetaCubeX
+# 上次更新时间：2026-10-29 19:55:12
+# 条数：blackmatrix7 0 条 + MetaCubeX 5 条 (geosite 5 / geoip 0) → 去重合并 5 条
+# Hash：8ad9aeb883a855f4f887947d2a5335f9460fbc9f02f542d78ec4dc48276deb1b
 payload:
-  # ==============================
-  # Apple Intelligence
-  # ==============================
-
-  - DOMAIN,guzzoni.apple.com
-  - DOMAIN-SUFFIX,smoot.apple.com
-
-  # ==============================
-  # Apple Intelligence - Private Cloud Compute
-  # ==============================
-
+  - DOMAIN,apple-relay.apple.com
   - DOMAIN,apple-relay.cloudflare.com
   - DOMAIN,apple-relay.fastly-edge.com
-  - DOMAIN,cp4.cloudflare.com
-
-  # ==============================
-  # Apple Intelligence Extensions
-  # ==============================
-
-  - DOMAIN,apple-relay.apple.com
+  - DOMAIN,apple-relay.mask.apple-dns.net
+  - DOMAIN,gspe1-ssl.ls.apple.com

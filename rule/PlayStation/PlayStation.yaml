@@ -1,7 +1,7 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-10-29 19:42:00
+# 上次更新时间：2026-10-29 19:56:01
 # 条数：blackmatrix7 4 条 + MetaCubeX 5 条 (geosite 5 / geoip 0) → 去重合并 5 条
-# Hash：4cc36abbf630ebad50c21728064f0642de8abec7d3be8309546e70875f881e39
+# Hash：85d00d9458380798a86463ca88918ab386562e3f26a33329dccf522b786bc893
 payload:
   - DOMAIN-SUFFIX,playstation
   - DOMAIN-SUFFIX,playstation.com

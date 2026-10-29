@@ -1,7 +1,7 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-10-29 19:41:44
+# 上次更新时间：2026-10-29 19:55:48
 # 条数：blackmatrix7 165 条 + MetaCubeX 165 条 (geosite 165 / geoip 0) → 去重合并 171 条，去冗 6 条，实存 165 条
-# Hash：e61ea7c27b5ebd0ad76bd120b2fe2d225446298f2c9cf494700c70525556d1b6
+# Hash：b97ff44f4ce0f365fdff299914c4d5c9ddefd43f06542d2317586c16e5e98d3d
 payload:
   - DOMAIN,eaasserts-a.akamaihd.net
   - DOMAIN,originasserts.akamaized.net

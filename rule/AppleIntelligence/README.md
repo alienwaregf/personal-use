@@ -2,36 +2,34 @@
 
 domain
 ```text
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Apple%20Intelligence/Apple%20Intelligence.mrs
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/AppleIntelligence/AppleIntelligence.mrs
 ```
 
 classical
 ```text
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Apple%20Intelligence/Apple%20Intelligence.yaml
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/AppleIntelligence/AppleIntelligence.yaml
 ```
 
 # <img src="https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/02ProxySoftLogo/Loon(1).png" width="25" height="25" alt="Loon" /> Loon
 
 ```text
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Apple%20Intelligence/Loon.list
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/AppleIntelligence/Loon.list
 ```
 
 # <img src="https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/Picture/icon/QX.png" width="25" height="25" alt="QuantumultX" /> QuantumultX
 
 ```text
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Apple%20Intelligence/QuantumultX.list
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/AppleIntelligence/QuantumultX.list
 ```
 
 # <img src="https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/Picture/icon/shadowrocket.png" width="25" height="25" alt="Shadowrocket" /> Shadowrocket
 
 ```text
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Apple%20Intelligence/Shadowrocket.list
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/AppleIntelligence/Shadowrocket.list
 ```
 
 # <img src="https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/02ProxySoftLogo/Surge(8).png" width="25" height="25" alt="Surge" /> Surge
 
 ```text
-https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/Apple%20Intelligence/Surge.list
+https://raw.githubusercontent.com/alienwaregf/personal-use/main/rule/AppleIntelligence/Surge.list
 ```
-
-<!-- Hash：c5ebb4acfd5ff85833749bf6df1d258c515a460526c736ceb5639fb97dfb4935 -->

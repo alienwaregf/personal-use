@@ -1,7 +1,7 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-10-29 19:41:57
+# 上次更新时间：2026-10-29 19:55:59
 # 条数：blackmatrix7 62 条 + MetaCubeX 66 条 (geosite 66 / geoip 0) → 去重合并 68 条，去冗 2 条，实存 66 条
-# Hash：4f993b74bd365fd8bc37ba108e7311398549e1e7d989c2305458613543ec4e65
+# Hash：c920e50f72df040010d6bd5893fde427ae2c10e3ef5d058fef90fe412cc09e13
 payload:
   - DOMAIN,nvidia.custhelp.com
   - DOMAIN-SUFFIX,geforce.cn

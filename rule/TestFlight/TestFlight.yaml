@@ -1,7 +1,7 @@
 # 数据来源：blackmatrix7
-# 上次更新时间：2026-10-29 19:42:04
+# 上次更新时间：2026-10-29 19:56:03
 # 条数：blackmatrix7 3 条 + MetaCubeX 0 条 (geosite 0 / geoip 0) → 去重合并 3 条
-# Hash：68d384f0bf9cc711436cc49159030e305fac8956cb932bd1129b561524e25f6b
+# Hash：abfb5d42ab8ed4edfe0241788f0ee2f1de47537dfb35f2a9288b47bf7c9b1b2b
 payload:
   - DOMAIN,beta.apple.com
   - DOMAIN,testflight.apple.com

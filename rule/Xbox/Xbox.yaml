@@ -1,7 +1,7 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-10-29 19:42:08
+# 上次更新时间：2026-10-29 19:56:07
 # 条数：blackmatrix7 42 条 + MetaCubeX 42 条 (geosite 42 / geoip 0) → 去重合并 49 条
-# Hash：7c83c109115f0dd29797eb3c44cfcead6bc13983b6138acbeff14bf4409b2abc
+# Hash：68fde67a692a1b93309e7381acc2d78bdf76c9ac9106222761ade9aa4872a050
 payload:
   - DOMAIN,img-prod-cms-rt-microsoft-com.akamaized.net
   - DOMAIN,login.live.com
