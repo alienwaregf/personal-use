@@ -126,6 +126,7 @@ META_ALIASES: Dict[str, str] = {
     "Epic": "epicgames",
     "Gemini": "google-gemini",
     "Lan": "private",
+    "Apple Intelligence": "apple-intelligence",
 }
 
 
