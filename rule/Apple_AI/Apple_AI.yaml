@@ -1,0 +1,23 @@
+# 数据来源：RocM301/Apple-Rule
+# 上次更新时间：2026-10-30 15:09:01
+# 条数：RocM301/Apple-Rule 19 条 → 去重合并 19 条，去冗 1 条，实存 18 条
+# Hash：f3142cd1d076d271d66b7be2a35bcd71e6a4f5b7eca9d92d120baef31712adfa
+payload:
+  - DOMAIN,guzzoni.apple.com
+  - DOMAIN,mask-api.fe.apple-dns.net
+  - DOMAIN,mask-api.icloud.com
+  - DOMAIN,mask-t.apple-dns.net
+  - DOMAIN,mask.apple-dns.net
+  - DOMAIN,wps.apple.com
+  - DOMAIN-KEYWORD,siri
+  - DOMAIN-SUFFIX,apple-relay.apple.com
+  - DOMAIN-SUFFIX,apple-relay.cloudflare.com
+  - DOMAIN-SUFFIX,apple-relay.fastly-edge.com
+  - DOMAIN-SUFFIX,apple-relay.mask.apple-dns.net
+  - DOMAIN-SUFFIX,apps.mzstatic.com
+  - DOMAIN-SUFFIX,cp4.cloudflare.com
+  - DOMAIN-SUFFIX,gateway.icloud.com
+  - DOMAIN-SUFFIX,ls.apple.com
+  - DOMAIN-SUFFIX,mask-h2.icloud.com
+  - DOMAIN-SUFFIX,mask.icloud.com
+  - DOMAIN-SUFFIX,smoot.apple.com
