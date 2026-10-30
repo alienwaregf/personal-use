@@ -1,7 +1,7 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-10-29 19:55:54
+# 上次更新时间：2026-10-30 13:50:54
 # 条数：blackmatrix7 48 条 + MetaCubeX 65 条 (geosite 65 / geoip 0) → 去重合并 91 条，去冗 1 条，实存 90 条
-# Hash：3c8e6de7d82e9f1ebec5c3e16a269e92068ef4bd08d14b1d4e2c95335bf00c50
+# Hash：b081f3e8ad7dcd26d7a1c278d4f4e4180575aa5244c920628c7c66eeda35f230
 payload:
   - DOMAIN-SUFFIX,bcbolthboa-a.akamaihd.net
   - DOMAIN-SUFFIX,beforeigners.com

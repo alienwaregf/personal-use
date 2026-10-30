@@ -1,7 +1,7 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-10-29 19:55:59
+# 上次更新时间：2026-10-30 13:50:59
 # 条数：blackmatrix7 35 条 + MetaCubeX 24 条 (geosite 24 / geoip 0) → 去重合并 48 条，去冗 5 条，实存 43 条
-# Hash：9cd25ce85371be52346303a234105f4f9abd5c049ec22c6bc109a8b480b5937e
+# Hash：6c188dd923f0aaa15a0c1c9dfee1d2321a905172894166ba490281f3ba964666
 payload:
   - DOMAIN,browser-intake-datadoghq.com
   - DOMAIN,openai-api.arkoselabs.com

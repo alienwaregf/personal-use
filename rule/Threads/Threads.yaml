@@ -1,7 +1,7 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-10-29 19:56:04
+# 上次更新时间：2026-10-30 13:51:03
 # 条数：blackmatrix7 1 条 + MetaCubeX 2 条 (geosite 2 / geoip 0) → 去重合并 2 条
-# Hash：c0981ae213a3d104bd82b32b8060e0c705385e407ac2d1e079c896c6171adb7e
+# Hash：beefd0535e4a153ff1bc622808f9568b3e81578432c3ca30cbdde6fedea7ae1d
 payload:
   - DOMAIN-SUFFIX,threads.com
   - DOMAIN-SUFFIX,threads.net
