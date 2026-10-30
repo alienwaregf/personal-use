@@ -57,7 +57,6 @@ UPSTREAM_INCLUDE_FOLDERS = {
     "AppleTV",
     "Binance",
     "Bing",
-    "category-ads-all",
     "category-ai-!cn",
     "ChinaMax",
     "Claude",
