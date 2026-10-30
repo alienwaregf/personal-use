@@ -1,0 +1,98 @@
+name: Update RocM301 Apple-AI
+
+on:
+  schedule:
+    - cron: '47 * * * *' # 每 1 小时自动运行，与 Convert rules（17 分）和 VPN Gate（7/22/37/52 分）错开
+  workflow_dispatch: # 允许手动点击运行
+
+permissions:
+  contents: write
+
+concurrency:
+  group: auto-update-rocm301-apple-ai
+  cancel-in-progress: true
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    steps:
+      - name: 检出当前仓库
+        uses: actions/checkout@v5
+
+      - name: 设置 Python 环境
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.10'
+
+      - name: 安装 Python 依赖
+        run: |
+          set -euo pipefail
+          python -m pip install --upgrade pip
+          pip install pyyaml
+
+      - name: 检查 Python 脚本语法
+        run: |
+          set -euo pipefail
+          python -m py_compile Scripts/RocM301_Apple-AI.py
+
+      - name: 下载并安装 Mihomo 内核
+        run: |
+          set -euo pipefail
+
+          MIHOMO_URL=$(curl -s https://api.github.com/repos/MetaCubeX/mihomo/releases/latest \
+            | grep "browser_download_url.*linux-amd64-compatible" \
+            | cut -d '"' -f 4 \
+            | head -n 1)
+
+          if [ -z "$MIHOMO_URL" ]; then
+            echo "无法获取 Mihomo 下载地址"
+            exit 1
+          fi
+
+          echo "Mihomo 下载地址: $MIHOMO_URL"
+
+          wget -O mihomo.gz "$MIHOMO_URL"
+          gunzip mihomo.gz
+          chmod +x mihomo
+          sudo mv mihomo /usr/local/bin/mihomo
+
+          mihomo -v
+
+      - name: 拉取并转换 RocM301 Apple-AI 规则
+        run: |
+          set -euo pipefail
+          python Scripts/RocM301_Apple-AI.py
+
+      - name: 清理临时文件
+        run: |
+          set -euo pipefail
+
+          rm -rf temp_compile
+          rm -rf __pycache__
+          rm -rf Scripts/__pycache__
+          rm -f mihomo
+          rm -f mihomo.gz
+
+          find . -name ".DS_Store" -delete
+          find . -name "__pycache__" -type d -prune -exec rm -rf {} +
+
+      - name: 提交并推送到 GitHub
+        run: |
+          set -euo pipefail
+
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add rule/Apple_AI
+
+          if git diff --cached --quiet; then
+            echo "没有规则变化，无需提交"
+          else
+            git commit -m "Auto update RocM301 Apple-AI rules"
+            git pull --rebase
+            git push
+          fi
