@@ -1,7 +1,7 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-10-30 13:50:57
-# 条数：blackmatrix7 670 条 + MetaCubeX 753 条 (geosite 753 / geoip 0) → 去重合并 892 条，去冗 126 条，实存 766 条
-# Hash：d081369cca4b9ea8b445711d89bca4f0362ae9b943b799c521f89c5b5a8a6af7
+# 上次更新时间：2026-10-31 10:25:01
+# 条数：blackmatrix7 670 条 + MetaCubeX 755 条 (geosite 755 / geoip 0) → 去重合并 894 条，去冗 126 条，实存 768 条
+# Hash：886aeadf390cc6a3eefbbaafb3eb92e45a274263810e0baa7115bc57465126d3
 payload:
   - DOMAIN,github-api.arkoselabs.com
   - DOMAIN,github-cloud.s3.amazonaws.com
@@ -175,6 +175,7 @@ payload:
   - DOMAIN-SUFFIX,bingpk.com
   - DOMAIN-SUFFIX,bings.com
   - DOMAIN-SUFFIX,bingsandbox.com
+  - DOMAIN-SUFFIX,bingstatic.com
   - DOMAIN-SUFFIX,bingtoolbar.com
   - DOMAIN-SUFFIX,bingtranslator.com
   - DOMAIN-SUFFIX,bingvisualsearch.com
@@ -514,6 +515,7 @@ payload:
   - DOMAIN-SUFFIX,msftidentity.com
   - DOMAIN-SUFFIX,msftncsi.com
   - DOMAIN-SUFFIX,msftnet.org
+  - DOMAIN-SUFFIX,msftstatic.com
   - DOMAIN-SUFFIX,msgamesresearch.com
   - DOMAIN-SUFFIX,msgamestudios.com
   - DOMAIN-SUFFIX,mshome.net

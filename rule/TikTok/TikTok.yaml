@@ -1,7 +1,7 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-10-30 13:51:03
-# 条数：blackmatrix7 35 条 + MetaCubeX 37 条 (geosite 37 / geoip 0) → 去重合并 60 条，去冗 2 条，实存 58 条
-# Hash：be323ae8377b264682b459d2ce7b2a596a4ee8de7a87d9a3a1a963c6d929cf2f
+# 上次更新时间：2026-10-31 10:25:15
+# 条数：blackmatrix7 35 条 + MetaCubeX 40 条 (geosite 40 / geoip 0) → 去重合并 63 条，去冗 2 条，实存 61 条
+# Hash：66b1b4059582eeeb4ff68f86df5d74bf245bcae53c3ae93d93daa39f2a8258b3
 payload:
   - DOMAIN,lf16-effectcdn.byteeffecttos-g.com
   - DOMAIN,lf16-pkgcdn.pitaya-clientai.com
@@ -47,11 +47,14 @@ payload:
   - DOMAIN-SUFFIX,tiktokminis.us
   - DOMAIN-SUFFIX,tiktokmusic.app
   - DOMAIN-SUFFIX,tiktokrow-cdn.com
+  - DOMAIN-SUFFIX,tiktokshop.com
+  - DOMAIN-SUFFIX,tiktokstaticb.com
   - DOMAIN-SUFFIX,tiktokv.com
   - DOMAIN-SUFFIX,tiktokv.com.edgekey.net
   - DOMAIN-SUFFIX,tiktokv.com.edgesuite.net
   - DOMAIN-SUFFIX,tiktokv.eu
   - DOMAIN-SUFFIX,tiktokv.us
+  - DOMAIN-SUFFIX,tiktokvapp.com
   - DOMAIN-SUFFIX,tiktokw.eu
   - DOMAIN-SUFFIX,tiktokw.us
   - DOMAIN-SUFFIX,trae.ai

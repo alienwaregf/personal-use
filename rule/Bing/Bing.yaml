@@ -1,7 +1,7 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-10-30 13:50:17
-# 条数：blackmatrix7 9 条 + MetaCubeX 40 条 (geosite 40 / geoip 0) → 去重合并 40 条，去冗 6 条，实存 34 条
-# Hash：f22e1d73a6252d32dca3773b528ca823585569041cbc38becd887384fa754ff4
+# 上次更新时间：2026-10-31 10:24:30
+# 条数：blackmatrix7 9 条 + MetaCubeX 41 条 (geosite 41 / geoip 0) → 去重合并 41 条，去冗 6 条，实存 35 条
+# Hash：9c018c25e6c4da3618b839f523283ba4960c26a0745a5c7496859d9cfbf1fd89
 payload:
   - DOMAIN,location.microsoft.com
   - DOMAIN-SUFFIX,bing
@@ -15,6 +15,7 @@ payload:
   - DOMAIN-SUFFIX,bingapistatistics.com
   - DOMAIN-SUFFIX,bingparachute.com
   - DOMAIN-SUFFIX,bingsandbox.com
+  - DOMAIN-SUFFIX,bingstatic.com
   - DOMAIN-SUFFIX,bingvisualsearch.com
   - DOMAIN-SUFFIX,bingworld.com
   - DOMAIN-SUFFIX,bluehatnights.com
