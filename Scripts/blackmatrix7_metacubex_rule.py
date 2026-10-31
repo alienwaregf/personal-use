@@ -102,6 +102,7 @@ UPSTREAM_INCLUDE_FOLDERS = {
     "Siri",
     "Spotify",
     "Steam",
+    "TapTap",
     "Telegram",
     "TestFlight",
     "Threads",
