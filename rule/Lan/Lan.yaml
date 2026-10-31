@@ -1,7 +1,7 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-10-30 13:50:56
+# 上次更新时间：2026-10-31 17:00:57
 # 条数：blackmatrix7 142 条 + MetaCubeX 160 条 (geosite 132 / geoip 28) → 去重合并 165 条，去冗 3 条，实存 162 条
-# Hash：91ea74382661f0608a0685368e2fe758353e19fa31510916a33f54335e4ba2ed
+# Hash：e3b994f2caf3a4e82dae2ab458c0baf5a29a231cce296900698847fa4bffba84
 payload:
   - DOMAIN,asusrouter.com
   - DOMAIN,instant.arubanetworks.com

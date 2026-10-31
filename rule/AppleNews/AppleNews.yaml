@@ -1,7 +1,7 @@
 # 数据来源：blackmatrix7
-# 上次更新时间：2026-10-30 13:50:16
+# 上次更新时间：2026-10-31 17:00:17
 # 条数：blackmatrix7 2 条 + MetaCubeX 0 条 (geosite 0 / geoip 0) → 去重合并 2 条
-# Hash：e2e1899a6ce7054a04e0c6cda285234fbcc4a4cd0e306ba0674ba31102f1e5e0
+# Hash：eb72c58f5e44a949dbdd5cb5139479d042cd6455504fd0c17dadf3b5ee6a269f
 payload:
   - DOMAIN,gspe1-ssl.ls.apple.com
   - DOMAIN,news-client-search.apple.com

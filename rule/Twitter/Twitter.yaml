@@ -1,7 +1,7 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-10-30 13:51:04
+# 上次更新时间：2026-10-31 17:01:05
 # 条数：blackmatrix7 33 条 + MetaCubeX 43 条 (geosite 24 / geoip 19) → 去重合并 50 条
-# Hash：b065e4c1c0b617f2c45ec7189a5c9e78a42bf6aa44c1e01747e2c8acf81316c0
+# Hash：f779a5364d3b713878bd1b6a9f5d1036cffb7d2e0adaf8d3e276e4eb4a28a408
 payload:
   - DOMAIN-KEYWORD,twitter
   - DOMAIN-SUFFIX,ads-twitter.com

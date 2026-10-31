@@ -1,7 +1,7 @@
 # 数据来源：MetaCubeX
-# 上次更新时间：2026-10-30 13:50:54
+# 上次更新时间：2026-10-31 17:00:55
 # 条数：blackmatrix7 0 条 + MetaCubeX 2 条 (geosite 2 / geoip 0) → 去重合并 2 条
-# Hash：9e970af2efd50346207534861f9e76a65d37cc9e449194fd910d7bca1742fdb2
+# Hash：af143acc04397e6fcf44af6d07a32d8e7c1549c79c4cf653f83c5b02b4cbc7f9
 payload:
   - DOMAIN,homebrew.bintray.com
   - DOMAIN-SUFFIX,brew.sh

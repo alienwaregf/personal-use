@@ -1,7 +1,7 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-10-30 13:51:01
+# 上次更新时间：2026-10-31 17:01:02
 # 条数：blackmatrix7 55 条 + MetaCubeX 54 条 (geosite 54 / geoip 0) → 去重合并 56 条，去冗 1 条，实存 55 条
-# Hash：c05af2748ecbc53b9e3fef8b69b5c56a67170cc450405c84d8980641f1c92ac8
+# Hash：f941c24ef77c2d6d421542c4dfdbc5af97eced11a2f807367b0dd511404af956
 payload:
   - DOMAIN-SUFFIX,championshipseriesleague.com
   - DOMAIN-SUFFIX,convrgencegame.com
