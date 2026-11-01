@@ -19,7 +19,7 @@ payload:
   - DOMAIN,ip4.me
   - DOMAIN,ip6.me
   - DOMAIN,test-ipv6.com
-  - DOMAIN,ip.istatmenus.app
+  - DOMAIN,istatmenus.app
   - DOMAIN,whois.pconline.com.cn
   - DOMAIN,api.ipify.org
   - DOMAIN,ip.skk.moe
