@@ -100,6 +100,7 @@ UPSTREAM_INCLUDE_FOLDERS = {
     "Reddit",
     "Riot",
     "Siri",
+    "Speedtest",
     "Spotify",
     "Steam",
     "TapTap",
