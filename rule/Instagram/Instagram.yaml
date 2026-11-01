@@ -1,7 +1,7 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-10-31 17:00:57
+# 上次更新时间：2026-11-01 22:54:34
 # 条数：blackmatrix7 4 条 + MetaCubeX 74 条 (geosite 74 / geoip 0) → 去重合并 76 条，去冗 2 条，实存 74 条
-# Hash：a3d74a7f463c52999b786037fd654efda928b6218cd2e01d9964ba91a400d3c0
+# Hash：2063a29f2aad0d6635698ff5ff1d6ccd107fb31bc1d0e750b1ec5d78f3dc0412
 payload:
   - DOMAIN-KEYWORD,instagram
   - DOMAIN-SUFFIX,achat-followers-instagram.com

@@ -1,7 +1,7 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-10-31 17:00:47
+# 上次更新时间：2026-11-01 22:54:21
 # 条数：blackmatrix7 65 条 + MetaCubeX 864 条 (geosite 76 / geoip 788) → 去重合并 864 条
-# Hash：64e4a0d7d9fd1805c47c21aff4b1f5c0c05f488d563b71ea913a5b921cc218a6
+# Hash：209ce60b430b843a3334c0d3c036b468ae97fbac5948d7e66277b424162af7b2
 payload:
   - DOMAIN-SUFFIX,argotunnel.com
   - DOMAIN-SUFFIX,browser.run

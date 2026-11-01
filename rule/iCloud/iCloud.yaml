@@ -1,7 +1,7 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-10-31 17:01:08
+# 上次更新时间：2026-11-01 22:54:52
 # 条数：blackmatrix7 61 条 + MetaCubeX 52 条 (geosite 52 / geoip 0) → 去重合并 62 条，去冗 1 条，实存 61 条
-# Hash：c18718e69dc35b5248fd94c24d8f48702774ed08b72338f8cbdc1e9d22a7fc4f
+# Hash：65a7d79d07b7ea8b6277b374785cb6af2a9b4628970c9617e3d46b251b927776
 payload:
   - DOMAIN-KEYWORD,icloud.com.akadns.net
   - DOMAIN-SUFFIX,apple-cloudkit.com

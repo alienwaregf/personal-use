@@ -1,7 +1,7 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-10-31 17:00:59
+# 上次更新时间：2026-11-01 22:54:37
 # 条数：blackmatrix7 1157 条 + MetaCubeX 146 条 (geosite 24 / geoip 122) → 去重合并 1266 条，去冗 1 条，实存 1265 条
-# Hash：1f05c9c2c3c7da4f381306236e5f20c63a554a15c80d73a93489985ecdf640db
+# Hash：58b31a5a36a609ef8dc592d2f1ac51567a6c45b5724cd60b2205cc2e4548b1ab
 payload:
   - DOMAIN,e13252.dscg.akamaiedge.net
   - DOMAIN,h-netflix.online-metrix.net
