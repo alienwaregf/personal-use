@@ -1,9 +1,9 @@
 # AD 聚合广告域名规则
 # 数据来源：EasyList + EasyPrivacy + EasyListChina + Dns-BlockLists Normal + StevenBlack + anti-AD
-# EasyList 42906条 + EasyPrivacy 40639条 + EasyListChina 5673条 + Dns-BlockLists Normal 175746条 + StevenBlack 76733条 + anti-AD 109119条
-# 合并去重后：域名 250570 个，IP 规则 118 条
-# 上次更新时间：2026-11-01 22:53:19
-# Hash：70a0100c5218b051be84d5c9704f9172f33b9fcdbf8d478a047d3c073bbbc38f
+# EasyList 42908条 + EasyPrivacy 40639条 + EasyListChina 5674条 + Dns-BlockLists Normal 175746条 + StevenBlack 76733条 + anti-AD 109119条
+# 合并去重后：域名 250573 个，IP 规则 118 条
+# 上次更新时间：2026-11-01 22:59:43
+# Hash：97c0389312079f804b2f43dcc3cbdc97512bc94935108e37971e200f4e4d33da
 payload:
   - DOMAIN,000.gaysexe.free.fr
   - DOMAIN,00000.uno
@@ -47421,6 +47421,7 @@ payload:
   - DOMAIN-SUFFIX,7g761j2nc.com
   - DOMAIN-SUFFIX,7gc5.9227giuzyg11g4jg9xy71vqrywopkpi5tulk.cyou
   - DOMAIN-SUFFIX,7gp33kffg6.com
+  - DOMAIN-SUFFIX,7hc5zpcv6.com
   - DOMAIN-SUFFIX,7hdl8dlfjm4g.www.cybernetman.com
   - DOMAIN-SUFFIX,7ho-axyvwx-2pz8-rh894-l32n.pages.dev
   - DOMAIN-SUFFIX,7ho8oc3svg.com
@@ -187224,6 +187225,7 @@ payload:
   - DOMAIN-SUFFIX,rheumaschuhe.de
   - DOMAIN-SUFFIX,rheumatologie-wien.at
   - DOMAIN-SUFFIX,rhexiastarful.qpon
+  - DOMAIN-SUFFIX,rhghwnwrilmwc.website
   - DOMAIN-SUFFIX,rhgxenlijkggd.website
   - DOMAIN-SUFFIX,rhhahzqblcxem.online
   - DOMAIN-SUFFIX,rhhqqdsjtyaga.site
@@ -221739,6 +221741,7 @@ payload:
   - DOMAIN-SUFFIX,tk71mu9u7.com
   - DOMAIN-SUFFIX,tkads.millemedia.de
   - DOMAIN-SUFFIX,tkajdudv.com
+  - DOMAIN-SUFFIX,tkaxszeqntbiu.online
   - DOMAIN-SUFFIX,tkbo.com
   - DOMAIN-SUFFIX,tkbtgedqqopnz.site
   - DOMAIN-SUFFIX,tkcatrun.aotter.net
