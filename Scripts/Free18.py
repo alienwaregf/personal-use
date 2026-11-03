@@ -1,0 +1,2300 @@
+from __future__ import annotations
+
+import base64
+import binascii
+import hashlib
+import ipaddress
+import json
+import re
+import sys
+import time
+from collections import Counter
+from datetime import datetime, timedelta, timezone
+from pathlib import Path
+from urllib.parse import parse_qsl, quote, unquote, urlencode, urlsplit
+
+import requests
+import yaml
+
+# ---------------------------------------------------------------- sources
+# (key, label, url). One entry per authoritative file; same-pool duplicates
+# (AutoMerge fork, ssrsub mirror, clashfree sister repo, TGParse per-protocol
+# files, NoMoreWalls list.yml, free18 c.yaml, Dafeide clash.yaml/sing-box)
+# are deliberately NOT listed. See proxy/README.md for the rationale.
+SOURCES = [
+    ("ripaojiedian", "ripaojiedian/freenode",
+     "https://raw.githubusercontent.com/ripaojiedian/freenode/main/clash"),
+    ("shaoyouvip", "shaoyouvip/free",
+     "https://raw.githubusercontent.com/shaoyouvip/free/main/mihomo.yaml"),
+    ("lagzian", "lagzian/SS-Collector",
+     "https://raw.githubusercontent.com/lagzian/SS-Collector/main/configs/subscription-all.b64"),
+    ("tgparse", "Surfboardv2ray/TGParse",
+     "https://raw.githubusercontent.com/Surfboardv2ray/TGParse/main/splitted/mixed"),
+    ("clashfree", "free-nodes/clashfree",
+     "https://raw.githubusercontent.com/free-nodes/clashfree/main/sub.yml"),
+    ("jsnzkpg", "Jsnzkpg/Jsnzkpg",
+     "https://raw.githubusercontent.com/Jsnzkpg/Jsnzkpg/Jsnzkpg/Jsnzkpg"),
+    ("subcrawler-a11", "Leon406/SubCrawler sub/share/a11",
+     "https://raw.githubusercontent.com/Leon406/SubCrawler/main/sub/share/a11"),
+    ("subcrawler-v2", "Leon406/SubCrawler sub/share/v2",
+     "https://raw.githubusercontent.com/Leon406/SubCrawler/main/sub/share/v2"),
+    ("subcrawler-vless", "Leon406/SubCrawler sub/share/vless",
+     "https://raw.githubusercontent.com/Leon406/SubCrawler/main/sub/share/vless"),
+    ("subcrawler-ss", "Leon406/SubCrawler sub/share/ss",
+     "https://raw.githubusercontent.com/Leon406/SubCrawler/main/sub/share/ss"),
+    ("subcrawler-tr", "Leon406/SubCrawler sub/share/tr",
+     "https://raw.githubusercontent.com/Leon406/SubCrawler/main/sub/share/tr"),
+    ("subcrawler-ssr", "Leon406/SubCrawler sub/share/ssr",
+     "https://raw.githubusercontent.com/Leon406/SubCrawler/main/sub/share/ssr"),
+    ("subcrawler-hy2", "Leon406/SubCrawler sub/share/hysteria2",
+     "https://raw.githubusercontent.com/Leon406/SubCrawler/main/sub/share/hysteria2"),
+    ("psg-cdn", "itsyebekhe/PSG subscriptions/xray/cdn",
+     "https://raw.githubusercontent.com/itsyebekhe/PSG/main/subscriptions/xray/cdn"),
+    ("psg-hy2", "itsyebekhe/PSG subscriptions/xray/hy2",
+     "https://raw.githubusercontent.com/itsyebekhe/PSG/main/subscriptions/xray/hy2"),
+    ("psg-mix", "itsyebekhe/PSG subscriptions/xray/mix",
+     "https://raw.githubusercontent.com/itsyebekhe/PSG/main/subscriptions/xray/mix"),
+    ("psg-reality", "itsyebekhe/PSG subscriptions/xray/reality",
+     "https://raw.githubusercontent.com/itsyebekhe/PSG/main/subscriptions/xray/reality"),
+    ("psg-reality-ipv4", "itsyebekhe/PSG subscriptions/xray/reality_ipv4",
+     "https://raw.githubusercontent.com/itsyebekhe/PSG/main/subscriptions/xray/reality_ipv4"),
+    ("psg-ss", "itsyebekhe/PSG subscriptions/xray/ss",
+     "https://raw.githubusercontent.com/itsyebekhe/PSG/main/subscriptions/xray/ss"),
+    ("psg-ss-ipv4", "itsyebekhe/PSG subscriptions/xray/ss_ipv4",
+     "https://raw.githubusercontent.com/itsyebekhe/PSG/main/subscriptions/xray/ss_ipv4"),
+    ("chromego", "Misaka-blog/chromego_merge",
+     "https://raw.githubusercontent.com/Misaka-blog/chromego_merge/main/sub/merged_proxies_new.yaml"),
+    ("free18", "free18/v2ray",
+     "https://raw.githubusercontent.com/free18/v2ray/main/v.txt"),
+    ("nomorewalls", "peasoft/NoMoreWalls",
+     "https://raw.githubusercontent.com/peasoft/NoMoreWalls/master/list.txt"),
+    ("mahdibland", "mahdibland/V2RayAggregator",
+     "https://raw.githubusercontent.com/mahdibland/V2RayAggregator/master/Eternity"),
+    ("dafeide", "Dafeide Gist",
+     "https://gist.githubusercontent.com/Dafeide/7a072d3de39083d469988844ba2ef165/raw/v2ray"),
+]
+
+RAW_BASE = "https://raw.githubusercontent.com/alienwaregf/personal-use/main/proxy/"
+GEO_CACHE_NAME = "Free18_geo_cache.json"
+STATS_NAME = "Free18_stats.json"
+USER_AGENT = "Free18/1.0 (+https://github.com/alienwaregf/personal-use)"
+
+COUNTRY_ZH = {
+    "HK": "香港", "TW": "台湾", "MO": "澳门",
+    "JP": "日本", "KR": "韩国", "SG": "新加坡", "MY": "马来西亚",
+    "TH": "泰国", "VN": "越南", "ID": "印度尼西亚", "PH": "菲律宾",
+    "IN": "印度", "PK": "巴基斯坦", "BD": "孟加拉国", "LK": "斯里兰卡",
+    "US": "美国", "CA": "加拿大", "MX": "墨西哥", "BR": "巴西",
+    "AR": "阿根廷", "CL": "智利", "CO": "哥伦比亚", "PE": "秘鲁",
+    "GB": "英国", "DE": "德国", "FR": "法国", "NL": "荷兰",
+    "BE": "比利时", "CH": "瑞士", "AT": "奥地利", "SE": "瑞典",
+    "NO": "挪威", "DK": "丹麦", "FI": "芬兰", "IE": "爱尔兰",
+    "ES": "西班牙", "PT": "葡萄牙", "IT": "意大利", "PL": "波兰",
+    "CZ": "捷克", "SK": "斯洛伐克", "HU": "匈牙利", "GR": "希腊",
+    "RO": "罗马尼亚", "BG": "保加利亚", "HR": "克罗地亚", "SI": "斯洛文尼亚",
+    "UA": "乌克兰", "RU": "俄罗斯", "TR": "土耳其", "IL": "以色列",
+    "AE": "阿联酋", "SA": "沙特阿拉伯", "IR": "伊朗", "IQ": "伊拉克",
+    "EG": "埃及", "ZA": "南非", "NG": "尼日利亚", "KE": "肯尼亚",
+    "AU": "澳大利亚", "NZ": "新西兰", "FJ": "斐济",
+    "KZ": "哈萨克斯坦", "UZ": "乌兹别克斯坦",
+    "IS": "冰岛", "EE": "爱沙尼亚", "LV": "拉脱维亚", "LT": "立陶宛",
+    "LU": "卢森堡", "MT": "马耳他", "CY": "塞浦路斯",
+}
+
+LINK_SCHEMES = (
+    "vmess://", "vless://", "trojan://", "ss://", "ssr://",
+    "hysteria2://", "hy2://", "hysteria://", "tuic://",
+    "socks://", "socks5://", "http://", "https://",
+)
+SUPERSCRIPTS = "¹²³⁴⁵⁶⁷⁸⁹"
+
+
+
+def b64decode_loose(text):
+    """Decode standard or URL-safe base64 with missing padding tolerated."""
+    s = re.sub(r"\s+", "", text.strip())
+    s += "=" * (-len(s) % 4)
+    try:
+        return base64.urlsafe_b64decode(s)
+    except (binascii.Error, ValueError):
+        return base64.b64decode(s)
+
+
+def b64encode_std(data: bytes) -> str:
+    return base64.b64encode(data).decode("ascii")
+
+
+def b64encode_url_nopad(data: bytes) -> str:
+    return base64.urlsafe_b64encode(data).decode("ascii").rstrip("=")
+
+
+def flag_emoji(code: str) -> str:
+    code = (code or "").upper()
+    if len(code) != 2 or not code.isalpha():
+        return ""
+    return "".join(chr(0x1F1E6 + ord(c) - ord("A")) for c in code)
+
+
+def is_ip(value: str) -> bool:
+    try:
+        ipaddress.ip_address(value)
+        return True
+    except ValueError:
+        return False
+
+
+def norm_server(server: str) -> str:
+    return (server or "").strip().strip("[]").lower()
+
+
+def parse_port(value) -> int | None:
+    try:
+        port = int(str(value).strip())
+    except (TypeError, ValueError):
+        return None
+    return port if 1 <= port <= 65535 else None
+
+
+def split_hostport(netloc: str):
+    """Split 'host:port' (IPv6-aware) -> (host, port|None)."""
+    if netloc.startswith("["):
+        end = netloc.find("]")
+        if end == -1:
+            return netloc, None
+        host = netloc[1:end]
+        rest = netloc[end + 1:]
+        port = parse_port(rest[1:]) if rest.startswith(":") else None
+        return host, port
+    if netloc.count(":") == 1:
+        host, _, port_s = netloc.partition(":")
+        return host, parse_port(port_s)
+    return netloc, None
+
+
+def query_dict(pairs) -> dict:
+    out = {}
+    for key, val in pairs:
+        out[key] = val
+    return out
+
+
+def boolish(value) -> bool | None:
+    if isinstance(value, bool):
+        return value
+    if value is None:
+        return None
+    s = str(value).strip().lower()
+    if s in ("1", "true", "yes", "on"):
+        return True
+    if s in ("0", "false", "no", "off", ""):
+        return False
+    return None
+
+
+def to_int(value) -> int | None:
+    try:
+        if value is None or str(value).strip() == "":
+            return None
+        return int(float(str(value).strip()))
+    except (TypeError, ValueError):
+        return None
+
+
+def new_node(ntype: str) -> dict:
+    return {
+        "type": ntype, "server": "", "port": None, "name_orig": "",
+        "uuid": None, "password": None, "username": None,
+        "cipher": None, "alter_id": None,
+        "network": None, "header_type": None,
+        "path": None, "host": None, "service_name": None,
+        "tls": False, "sni": None, "alpn": None, "fp": None,
+        "skip_cert_verify": None,
+        "flow": None, "encryption": None, "security": None,
+        "pbk": None, "sid": None,
+        "plugin": None, "plugin_opts": {},
+        "ssr_protocol": None, "ssr_protocol_param": None,
+        "ssr_obfs": None, "ssr_obfs_param": None,
+        "hy2_obfs": None, "hy2_obfs_password": None, "mport": None,
+        "hy2_up": None, "hy2_down": None,
+        "tuic_congestion": None, "tuic_udp_relay": None,
+        "tuic_reduce_rtt": None, "tuic_max_udp": None,
+        "hy1_auth": None, "hy1_protocol": None, "hy1_up": None,
+        "hy1_down": None, "hy1_obfs": None,
+        "http_method": None, "http_headers": None,
+        "packet_encoding": None,
+        "query": None, "ss_query": None, "ssr_params": None,
+        "vmess_json": None, "yaml_dict": None,
+    }
+
+
+def _uri_parts(link: str):
+    """Split a scheme:// link into (userinfo, host, port, query dict, name)."""
+    parts = urlsplit(link)
+    raw_netloc = parts.netloc
+    if "@" in raw_netloc:
+        userinfo, _, hostport = raw_netloc.rpartition("@")
+    else:
+        userinfo, hostport = "", raw_netloc
+    host, port = split_hostport(hostport)
+    query = query_dict(parse_qsl(parts.query, keep_blank_values=True))
+    name = unquote(parts.fragment) if parts.fragment else ""
+    return userinfo, host, port, query, name
+
+
+def parse_vmess_link(link: str):
+    try:
+        payload = b64decode_loose(link[len("vmess://"):].split("#")[0])
+        data = json.loads(payload.decode("utf-8"))
+    except Exception:
+        return None
+    if not isinstance(data, dict) or not data.get("add") or not data.get("id"):
+        return None
+    node = new_node("vmess")
+    node["server"] = norm_server(str(data.get("add", "")))
+    node["port"] = parse_port(data.get("port"))
+    node["uuid"] = str(data.get("id", "")).strip()
+    node["cipher"] = str(data.get("scy", "") or "").strip() or None
+    node["alter_id"] = to_int(data.get("aid"))
+    node["network"] = str(data.get("net", "") or "").strip().lower() or None
+    node["header_type"] = str(data.get("type", "") or "").strip() or None
+    node["host"] = str(data.get("host", "") or "").strip() or None
+    node["path"] = str(data.get("path", "") or "").strip() or None
+    node["tls"] = str(data.get("tls", "")).strip().lower() == "tls"
+    node["sni"] = str(data.get("sni", "") or "").strip() or None
+    alpn = data.get("alpn")
+    node["alpn"] = [str(a).strip() for a in alpn] if isinstance(alpn, list) else (
+        [a.strip() for a in str(alpn).split(",") if a.strip()] if alpn else None)
+    node["fp"] = str(data.get("fp", "") or "").strip() or None
+    node["name_orig"] = str(data.get("ps", "") or "")
+    extra = {k: v for k, v in data.items()
+             if k not in ("v", "ps", "add", "port", "id", "aid", "scy",
+                          "net", "type", "host", "path", "tls", "sni",
+                          "alpn", "fp")}
+    node["vmess_json"] = extra
+    return node
+
+
+def parse_query_link(link: str, ntype: str):
+    userinfo, host, port, query, name = _uri_parts(link)
+    node = new_node(ntype)
+    node["server"] = norm_server(host)
+    node["port"] = port
+    node["name_orig"] = name
+    node["query"] = query
+    if "@" in userinfo or ":" in userinfo:
+        user, _, pwd = userinfo.partition(":")
+        node["username"] = unquote(user) or None
+        node["password"] = unquote(pwd) or None
+    else:
+        node["username"] = unquote(userinfo) or None
+    return node, query
+
+
+def parse_vless_link(link: str):
+    node, query = parse_query_link(link, "vless")
+    node["uuid"] = node.pop("username")
+    node["password"] = None
+    node["flow"] = query.get("flow") or None
+    node["encryption"] = query.get("encryption") or None
+    node["security"] = query.get("security") or None
+    node["network"] = (query.get("type") or query.get("network") or "").lower() or None
+    node["header_type"] = query.get("headerType") or None
+    node["path"] = unquote(query["path"]) if "path" in query else None
+    node["host"] = query.get("host") or None
+    node["service_name"] = query.get("serviceName") or query.get("servicename") or None
+    node["sni"] = query.get("sni") or query.get("peer") or query.get("servername") or None
+    node["fp"] = query.get("fp") or None
+    node["pbk"] = query.get("pbk") or None
+    node["sid"] = query.get("sid") or None
+    alpn = query.get("alpn")
+    node["alpn"] = [a.strip() for a in alpn.split(",") if a.strip()] if alpn else None
+    node["tls"] = node["security"] in ("tls", "reality", "xtls")
+    node["packet_encoding"] = query.get("packetEncoding") or None
+    return node
+
+
+def parse_trojan_link(link: str):
+    node, query = parse_query_link(link, "trojan")
+    node["password"] = node.pop("username")
+    node["username"] = None
+    node["security"] = query.get("security") or None
+    node["network"] = (query.get("type") or query.get("network") or "").lower() or None
+    node["header_type"] = query.get("headerType") or None
+    node["path"] = unquote(query["path"]) if "path" in query else None
+    node["host"] = query.get("host") or None
+    node["service_name"] = query.get("serviceName") or query.get("servicename") or None
+    node["sni"] = query.get("sni") or query.get("peer") or query.get("servername") or None
+    node["fp"] = query.get("fp") or None
+    node["pbk"] = query.get("pbk") or None
+    node["sid"] = query.get("sid") or None
+    alpn = query.get("alpn")
+    node["alpn"] = [a.strip() for a in alpn.split(",") if a.strip()] if alpn else None
+    node["tls"] = True  # trojan is always TLS
+    return node
+
+
+def _parse_ss_plugin(query: dict, node: dict):
+    raw_plugin = query.get("plugin", "")
+    if not raw_plugin:
+        return
+    plugin = unquote(raw_plugin)
+    parts = plugin.split(";")
+    node["plugin"] = parts[0].strip()
+    opts = {}
+    for piece in parts[1:]:
+        if "=" in piece:
+            key, _, val = piece.partition("=")
+            opts[key.strip()] = val.strip()
+        elif piece.strip():
+            opts[piece.strip()] = True  # bare flag, e.g. v2ray-plugin "tls"
+    node["plugin_opts"] = opts
+
+
+def parse_ss_link(link: str):
+    rest = link[len("ss://"):]
+    name = ""
+    if "#" in rest:
+        rest, _, name = rest.partition("#")
+        name = unquote(name)
+    query = {}
+    if "?" in rest:
+        rest, _, qstr = rest.partition("?")
+        query = query_dict(parse_qsl(qstr, keep_blank_values=True))
+    node = new_node("ss")
+    node["name_orig"] = name
+    node["ss_query"] = query
+    _parse_ss_plugin(query, node)
+    
+    userinfo_hostport = rest
+    if "@" in rest:
+        userinfo, _, hostport = rest.rpartition("@")
+        hostport = hostport.rstrip("/")  # ss links often end the authority with "/"
+        host, port = split_hostport(hostport)
+        try:
+            decoded = b64decode_loose(userinfo).decode("utf-8")
+            if ":" in decoded:
+                method, _, password = decoded.partition(":")
+            else:
+                raise ValueError("no colon in decoded ss userinfo")
+        except Exception:
+            method, _, password = unquote(userinfo).partition(":")
+            password = unquote(password)
+        node["cipher"] = method.strip() or None
+        node["password"] = password
+        node["server"] = norm_server(host)
+        node["port"] = port
+        return node
+    try:
+        decoded = b64decode_loose(rest).decode("utf-8")
+    except Exception:
+        return None
+    if "@" not in decoded or ":" not in decoded:
+        return None
+    left, _, hostport = decoded.rpartition("@")
+    method, _, password = left.partition(":")
+    host, port = split_hostport(hostport.rstrip("/"))
+    node["cipher"] = method.strip() or None
+    node["password"] = password
+    node["server"] = norm_server(host)
+    node["port"] = port
+    return node
+
+
+def parse_ssr_link(link: str):
+    try:
+        decoded = b64decode_loose(link[len("ssr://"):]).decode("utf-8")
+    except Exception:
+        return None
+    main, _, qstr = decoded.partition("/?")
+    parts = main.split(":")
+    if len(parts) != 6:
+        return None
+    host, port_s, protocol, method, obfs, pwd_b64 = parts
+    try:
+        password = b64decode_loose(pwd_b64).decode("utf-8")
+    except Exception:
+        return None
+    params = query_dict(parse_qsl(qstr, keep_blank_values=True)) if qstr else {}
+    node = new_node("ssr")
+    node["server"] = norm_server(host)
+    node["port"] = parse_port(port_s)
+    node["cipher"] = method or None
+    node["password"] = password
+    node["ssr_protocol"] = protocol or None
+    node["ssr_obfs"] = obfs or None
+    node["ssr_params"] = params
+
+    def _dec(key):
+        val = params.get(key)
+        if not val:
+            return None
+        try:
+            return b64decode_loose(val).decode("utf-8")
+        except Exception:
+            return val
+    node["ssr_protocol_param"] = _dec("protoparam")
+    node["ssr_obfs_param"] = _dec("obfsparam")
+    node["name_orig"] = _dec("remarks") or ""
+    return node
+
+
+def parse_hy2_link(link: str):
+    node, query = parse_query_link(link, "hysteria2")
+    node["password"] = node.pop("username")
+    node["username"] = None
+    node["sni"] = query.get("sni") or query.get("peer") or None
+    node["skip_cert_verify"] = boolish(query.get("insecure") or query.get("allowInsecure"))
+    node["hy2_obfs"] = query.get("obfs") or None
+    node["hy2_obfs_password"] = query.get("obfs-password") or query.get("obfs_password") or None
+    alpn = query.get("alpn")
+    node["alpn"] = [a.strip() for a in alpn.split(",") if a.strip()] if alpn else None
+    node["mport"] = query.get("mport") or None
+    node["hy2_up"] = to_int(query.get("up"))
+    node["hy2_down"] = to_int(query.get("down"))
+    node["fp"] = query.get("fp") or None
+    node["tls"] = True
+    return node
+
+
+def parse_hysteria_link(link: str):
+    node, query = parse_query_link(link, "hysteria")
+    node["hy1_auth"] = query.get("auth") or query.get("auth_str") or node.pop("username")
+    node["username"] = None
+    node["hy1_protocol"] = query.get("protocol") or None
+    node["hy1_up"] = to_int(query.get("up"))
+    node["hy1_down"] = to_int(query.get("down"))
+    node["hy1_obfs"] = query.get("obfs") or None
+    node["sni"] = query.get("sni") or query.get("peer") or None
+    node["skip_cert_verify"] = boolish(query.get("insecure") or query.get("allowInsecure"))
+    alpn = query.get("alpn")
+    node["alpn"] = [a.strip() for a in alpn.split(",") if a.strip()] if alpn else None
+    node["fp"] = query.get("fp") or None
+    node["tls"] = True
+    return node
+
+
+def parse_tuic_link(link: str):
+    node, query = parse_query_link(link, "tuic")
+    node["uuid"] = node["username"]
+    node["username"] = None
+    node["sni"] = query.get("sni") or query.get("peer") or None
+    node["skip_cert_verify"] = boolish(
+        query.get("allow-insecure") or query.get("allowInsecure"))
+    alpn = query.get("alpn")
+    node["alpn"] = [a.strip() for a in alpn.split(",") if a.strip()] if alpn else None
+    node["tuic_congestion"] = (
+        query.get("congestion-control") or query.get("congestion_control") or None)
+    node["tuic_udp_relay"] = (
+        query.get("udp-relay-mode") or query.get("udp_relay_mode") or None)
+    node["tuic_reduce_rtt"] = boolish(query.get("reduce-rtt") or query.get("reduce_rtt"))
+    node["tuic_max_udp"] = to_int(
+        query.get("max-udp-relay-packet-size") or query.get("max_udp_relay_packet_size"))
+    node["fp"] = query.get("fp") or None
+    node["tls"] = True
+    return node
+
+
+def parse_socks_link(link: str):
+    node, query = parse_query_link(link, "socks5")
+    node["tls"] = link.startswith("socks5-tls://") or boolish(query.get("tls")) or False
+    node["sni"] = query.get("sni") or None
+    node["skip_cert_verify"] = boolish(query.get("insecure") or query.get("allowInsecure"))
+    return node
+
+
+def parse_http_link(link: str):
+    node, query = parse_query_link(link, "http")
+    node["tls"] = link.startswith("https://")
+    node["sni"] = query.get("sni") or None
+    node["skip_cert_verify"] = boolish(query.get("insecure") or query.get("allowInsecure"))
+    return node
+
+
+def parse_link(line: str):
+    """Parse one share-link line -> neutral node dict or None."""
+    line = line.strip()
+    if not line:
+        return None
+    low = line.lower()
+    try:
+        if low.startswith("vmess://"):
+            node = parse_vmess_link(line)
+        elif low.startswith("vless://"):
+            node = parse_vless_link(line)
+        elif low.startswith("trojan://"):
+            node = parse_trojan_link(line)
+        elif low.startswith("ss://"):
+            node = parse_ss_link(line)
+        elif low.startswith("ssr://"):
+            node = parse_ssr_link(line)
+        elif low.startswith(("hysteria2://", "hy2://")):
+            node = parse_hy2_link(line)
+        elif low.startswith("hysteria://"):
+            node = parse_hysteria_link(line)
+        elif low.startswith("tuic://"):
+            node = parse_tuic_link(line)
+        elif low.startswith(("socks://", "socks5://", "socks5-tls://")):
+            node = parse_socks_link(line)
+        elif low.startswith(("http://", "https://")):
+            node = parse_http_link(line)
+        else:
+            return None
+    except Exception:
+        return None
+    if node is None or not node.get("server") or not node.get("port"):
+        return None
+    return node
+
+
+def node_complete(node: dict) -> bool:
+    return bool(node.get("server")) and bool(node.get("port"))
+
+
+# ---------------------------------------------------------------- YAML / JSON
+
+
+def _alpn_list(value):
+    if value is None:
+        return None
+    if isinstance(value, list):
+        return [str(a).strip() for a in value if str(a).strip()]
+    return [a.strip() for a in str(value).split(",") if a.strip()]
+
+
+def _transport_from_yaml(node: dict, data: dict):
+    network = str(data.get("network", "") or "").strip().lower() or None
+    node["network"] = network
+    ws_opts = data.get("ws-opts") or {}
+    if isinstance(ws_opts, dict):
+        node["path"] = ws_opts.get("path") or node["path"]
+        headers = ws_opts.get("headers") or {}
+        if isinstance(headers, dict):
+            node["host"] = headers.get("Host") or headers.get("host") or node["host"]
+    http_opts = data.get("http-opts") or {}
+    if isinstance(http_opts, dict):
+        node["http_method"] = http_opts.get("method") or None
+        node["path"] = http_opts.get("path") or node["path"]
+        headers = http_opts.get("headers") or {}
+        if isinstance(headers, dict):
+            node["http_headers"] = dict(headers)
+            node["host"] = headers.get("Host") or headers.get("host") or node["host"]
+    h2_opts = data.get("h2-opts") or {}
+    if isinstance(h2_opts, dict):
+        hosts = h2_opts.get("host")
+        if isinstance(hosts, list) and hosts:
+            node["host"] = str(hosts[0])
+        elif hosts:
+            node["host"] = str(hosts)
+        node["path"] = h2_opts.get("path") or node["path"]
+    grpc_opts = data.get("grpc-opts") or {}
+    if isinstance(grpc_opts, dict):
+        node["service_name"] = grpc_opts.get("grpc-service-name") or None
+    xhttp_opts = data.get("xhttp-opts") or {}
+    if isinstance(xhttp_opts, dict):
+        node["path"] = xhttp_opts.get("path") or node["path"]
+        node["host"] = xhttp_opts.get("host") or node["host"]
+        node["service_name"] = xhttp_opts.get("mode") or node["service_name"]
+
+
+def yaml_to_neutral(data: dict):
+    """Convert one Clash/Mihomo proxy dict to a neutral node (passthrough kept)."""
+    if not isinstance(data, dict):
+        return None
+    raw_type = str(data.get("type", "") or "").strip().lower()
+    type_map = {
+        "vmess": "vmess", "vless": "vless", "trojan": "trojan",
+        "ss": "ss", "shadowsocks": "ss", "ssr": "ssr",
+        "shadowsocksr": "ssr", "hysteria2": "hysteria2", "hy2": "hysteria2",
+        "hysteria": "hysteria", "tuic": "tuic",
+        "socks5": "socks5", "socks": "socks5",
+        "http": "http", "https": "http",
+    }
+    ntype = type_map.get(raw_type)
+    if ntype is None:
+        return None
+    node = new_node(ntype)
+    node["yaml_dict"] = dict(data)
+    node["server"] = norm_server(str(data.get("server", "")))
+    node["port"] = parse_port(data.get("port"))
+    node["name_orig"] = str(data.get("name", "") or "")
+    node["uuid"] = str(data.get("uuid", "") or "").strip() or None
+    node["password"] = str(data.get("password", "") or "") or None
+    node["username"] = str(data.get("username", "") or "") or None
+    node["cipher"] = str(data.get("cipher", "") or "").strip() or None
+    node["alter_id"] = to_int(data.get("alterId"))
+    node["tls"] = boolish(data.get("tls")) or False
+    node["sni"] = str(data.get("sni") or data.get("servername") or "") or None
+    node["alpn"] = _alpn_list(data.get("alpn"))
+    node["fp"] = str(data.get("fingerprint") or data.get("client-fingerprint") or "") or None
+    node["skip_cert_verify"] = boolish(data.get("skip-cert-verify"))
+    node["flow"] = str(data.get("flow", "") or "") or None
+    node["packet_encoding"] = str(data.get("packet-encoding", "") or "") or None
+    reality = data.get("reality-opts") or {}
+    if isinstance(reality, dict):
+        node["pbk"] = str(reality.get("public-key", "") or "") or None
+        node["sid"] = str(reality.get("short-id", "") or "") or None
+        node["security"] = "reality"
+    elif node["tls"]:
+        node["security"] = "tls"
+    _transport_from_yaml(node, data)
+    if ntype == "ss":
+        plugin = data.get("plugin")
+        if plugin:
+            node["plugin"] = str(plugin)
+        opts = data.get("plugin-opts") or {}
+        if isinstance(opts, dict):
+            node["plugin_opts"] = {str(k): str(v) for k, v in opts.items()}
+    if ntype == "ssr":
+        node["ssr_protocol"] = str(data.get("protocol", "") or "") or None
+        node["ssr_protocol_param"] = str(data.get("protocol-param", "") or "") or None
+        node["ssr_obfs"] = str(data.get("obfs", "") or "") or None
+        node["ssr_obfs_param"] = str(data.get("obfs-param", "") or "") or None
+    if ntype == "hysteria2":
+        node["hy2_obfs"] = str(data.get("obfs", "") or "") or None
+        node["hy2_obfs_password"] = str(data.get("obfs-password", "") or "") or None
+        node["hy2_up"] = to_int(data.get("up"))
+        node["hy2_down"] = to_int(data.get("down"))
+        ports = data.get("ports")
+        node["mport"] = str(ports) if ports else None
+    if ntype == "tuic":
+        node["tuic_congestion"] = str(data.get("congestion-controller", "") or "") or None
+        node["tuic_udp_relay"] = str(data.get("udp-relay-mode", "") or "") or None
+        node["tuic_reduce_rtt"] = boolish(data.get("reduce-rtt"))
+    if ntype == "hysteria":
+        node["hy1_auth"] = str(data.get("auth_str") or data.get("authStr")
+                               or data.get("auth") or "") or None
+        node["hy1_protocol"] = str(data.get("protocol", "") or "") or None
+        node["hy1_up"] = to_int(data.get("up"))
+        node["hy1_down"] = to_int(data.get("down"))
+        node["hy1_obfs"] = str(data.get("obfs", "") or "") or None
+    if ntype == "http":
+        node["tls"] = raw_type == "https" or boolish(data.get("tls")) or False
+    return node
+
+
+def singbox_to_neutral(data: dict):
+    """Convert one sing-box outbound dict to a neutral node (best effort)."""
+    if not isinstance(data, dict):
+        return None
+    raw_type = str(data.get("type", "") or "").strip().lower()
+    type_map = {
+        "vmess": "vmess", "vless": "vless", "trojan": "trojan",
+        "shadowsocks": "ss", "shadowsocksr": "ssr", "hysteria2": "hysteria2",
+        "hysteria": "hysteria", "tuic": "tuic", "socks": "socks5",
+        "http": "http",
+    }
+    ntype = type_map.get(raw_type)
+    if ntype is None:
+        return None
+    node = new_node(ntype)
+    node["server"] = norm_server(str(data.get("server", "")))
+    node["port"] = parse_port(data.get("server_port"))
+    node["name_orig"] = str(data.get("tag", "") or "")
+    node["uuid"] = str(data.get("uuid", "") or "") or None
+    node["password"] = str(data.get("password", "") or "") or None
+    node["username"] = str(data.get("username", "") or "") or None
+    node["cipher"] = str(data.get("method", "") or "") or None
+    node["alter_id"] = to_int(data.get("alter_id"))
+    transport = data.get("transport") or {}
+    if isinstance(transport, dict):
+        node["network"] = str(transport.get("type", "") or "").lower() or None
+        node["path"] = transport.get("path") or None
+        headers = transport.get("headers") or {}
+        if isinstance(headers, dict):
+            node["host"] = headers.get("Host") or headers.get("host") or None
+        node["service_name"] = transport.get("service_name") or None
+        node["http_method"] = transport.get("method") or None
+    tls = data.get("tls") or {}
+    if isinstance(tls, dict) and tls.get("enabled"):
+        node["tls"] = True
+        node["sni"] = str(tls.get("server_name", "") or "") or None
+        node["alpn"] = _alpn_list(tls.get("alpn"))
+        node["skip_cert_verify"] = boolish(tls.get("insecure"))
+        utls = tls.get("utls") or {}
+        if isinstance(utls, dict):
+            node["fp"] = str(utls.get("fingerprint", "") or "") or None
+        reality = tls.get("reality") or {}
+        if isinstance(reality, dict) and reality.get("enabled"):
+            node["pbk"] = str(reality.get("public_key", "") or "") or None
+            node["sid"] = str(reality.get("short_id", "") or "") or None
+            node["security"] = "reality"
+    if ntype == "ssr":
+        node["ssr_protocol"] = str(data.get("protocol", "") or "") or None
+        node["ssr_protocol_param"] = str(data.get("protocol_param", "") or "") or None
+        node["ssr_obfs"] = str(data.get("obfs", "") or "") or None
+        node["ssr_obfs_param"] = str(data.get("obfs_param", "") or "") or None
+    if ntype == "hysteria2":
+        node["hy2_obfs"] = str(data.get("obfs", {}).get("type", "") or "") or None
+        obfs = data.get("obfs") or {}
+        if isinstance(obfs, dict):
+            node["hy2_obfs_password"] = str(obfs.get("password", "") or "") or None
+        node["hy2_up"] = to_int(data.get("up_mbps"))
+        node["hy2_down"] = to_int(data.get("down_mbps"))
+    if ntype == "tuic":
+        node["tuic_congestion"] = str(data.get("congestion_control", "") or "") or None
+        node["tuic_udp_relay"] = str(data.get("udp_relay_mode", "") or "") or None
+        node["tuic_reduce_rtt"] = boolish(data.get("reduce_rtt"))
+    return node
+
+
+def parse_content(text: str):
+    """Sniff one fetched source body -> (nodes, kind). Never raises."""
+    nodes = []
+    stripped = text.strip().lstrip("\ufeff")
+    if not stripped:
+        return nodes, "empty"
+    # 1) Whole-blob base64 -> decode once, then re-sniff (max 2 levels).
+    blob = re.sub(r"\s+", "", stripped)
+    if len(blob) >= 40 and re.fullmatch(r"[A-Za-z0-9+/=_-]+", blob):
+        try:
+            decoded = b64decode_loose(blob).decode("utf-8")
+            if any(s in decoded for s in ("://", "proxies:", "outbounds")):
+                inner_nodes, inner_kind = parse_content(decoded)
+                if inner_nodes:
+                    return inner_nodes, "base64+" + inner_kind
+        except Exception:
+            pass
+    # 2) JSON (sing-box) or YAML (Clash/Mihomo) structured docs.
+    if stripped.startswith("{"):
+        try:
+            doc = json.loads(stripped)
+        except Exception:
+            doc = None
+        if isinstance(doc, dict) and isinstance(doc.get("outbounds"), list):
+            for item in doc["outbounds"]:
+                node = singbox_to_neutral(item)
+                if node and node_complete(node):
+                    nodes.append(node)
+            if nodes:
+                return nodes, "singbox-json"
+    try:
+        doc = yaml.safe_load(stripped)
+    except Exception:
+        doc = None
+    if isinstance(doc, dict) and isinstance(doc.get("proxies"), list):
+        for item in doc["proxies"]:
+            node = yaml_to_neutral(item)
+            if node and node_complete(node):
+                nodes.append(node)
+        if nodes:
+            return nodes, "clash-yaml"
+    if isinstance(doc, list):
+        for item in doc:
+            node = yaml_to_neutral(item)
+            if node and node_complete(node):
+                nodes.append(node)
+        if nodes:
+            return nodes, "yaml-list"
+    # 3) Share-link lines (one per line). A bare-base64 line that decodes
+    # to a link is also accepted.
+    for raw_line in stripped.splitlines():
+        line = raw_line.strip()
+        if not line or line.startswith("#"):
+            continue
+        node = parse_link(line)
+        if node is None and re.fullmatch(r"[A-Za-z0-9+/=_-]+", line) and len(line) >= 20:
+            try:
+                decoded = b64decode_loose(line).decode("utf-8").strip()
+            except Exception:
+                decoded = ""
+            if decoded:
+                node = parse_link(decoded)
+                if node is None and decoded.startswith("{"):
+                    try:
+                        vm = json.loads(decoded)
+                    except Exception:
+                        vm = None
+                    if isinstance(vm, dict) and vm.get("add") and vm.get("id"):
+                        node = parse_vmess_link(
+                            "vmess://" + b64encode_std(decoded.encode("utf-8")))
+        if node is not None:
+            nodes.append(node)
+    return nodes, "link-lines"
+
+
+# ---------------------------------------------------------------- dedupe
+
+
+def dedupe_key(node: dict):
+    ntype = node["type"]
+    cred = node.get("uuid") or node.get("password") or ""
+    if ntype == "ssr":
+        cred = "|".join([
+            node.get("password") or "", node.get("cipher") or "",
+            node.get("ssr_protocol") or "", node.get("ssr_obfs") or ""])
+    elif ntype == "tuic":
+        cred = f"{node.get('uuid') or ''}:{node.get('password') or ''}"
+    elif ntype in ("socks5", "http"):
+        cred = f"{node.get('username') or ''}:{node.get('password') or ''}"
+    elif ntype == "hysteria":
+        cred = node.get("hy1_auth") or node.get("password") or ""
+    if not cred:
+        canon = {k: v for k, v in sorted(node.items())
+                 if k not in ("name_orig", "yaml_dict")}
+        cred = hashlib.sha256(
+            json.dumps(canon, sort_keys=True, default=str).encode("utf-8")
+        ).hexdigest()[:16]
+    return (ntype, norm_server(node["server"]), node["port"], str(cred))
+
+
+def dedupe(nodes):
+    seen = {}
+    duplicates = 0
+    for node in nodes:
+        key = dedupe_key(node)
+        if key in seen:
+            duplicates += 1
+            continue
+        seen[key] = node
+    return list(seen.values()), duplicates
+
+
+# ---------------------------------------------------------------- emitters
+# Each emitter renders the SAME neutral nodes into one client's native
+# subscribable form. A node a client cannot express is skipped and counted,
+# never written as a possibly-broken line. Evidence per client is recorded
+# in the parent report; Loon/Surge grammar follows the vendors' own docs,
+# QX follows the Surgio/V2Board builder mappings, Shadowrocket follows the
+# share-link subscription form, Mihomo follows the proxy-provider YAML form.
+
+
+def _clean(d: dict) -> dict:
+    return {k: v for k, v in d.items() if v is not None}
+
+
+def _transport_opts(node: dict):
+    """Return (network, ws_path, ws_host, service_name) for link-sourced nodes."""
+    network = (node.get("network") or "tcp").lower()
+    return network, node.get("path"), node.get("host"), node.get("service_name")
+
+
+def to_mihomo_dict(node: dict, name: str):
+    """Build one Mihomo proxy dict, or None if it cannot be expressed."""
+    if node.get("yaml_dict") is not None:
+        data = dict(node["yaml_dict"])
+        data["name"] = name
+        return data
+    ntype = node["type"]
+    if ntype in ("ssr", "ss", "trojan", "vmess", "vless",
+                 "hysteria2", "hysteria", "tuic", "socks5", "http"):
+        pass
+    else:
+        return None
+    d = {"name": name, "type": ntype, "server": node["server"],
+         "port": node["port"]}
+    network, ws_path, ws_host, service_name = _transport_opts(node)
+    tls = bool(node.get("tls"))
+    if ntype == "vmess":
+        d["uuid"] = node["uuid"]
+        d["alterId"] = node["alter_id"] if node["alter_id"] is not None else 0
+        d["cipher"] = node["cipher"] or "auto"
+        if tls:
+            d["tls"] = True
+        if node.get("sni"):
+            d["servername"] = node["sni"]
+        if node.get("alpn"):
+            d["alpn"] = list(node["alpn"])
+        if node.get("fp"):
+            d["fingerprint"] = node["fp"]
+        if node.get("skip_cert_verify") is not None:
+            d["skip-cert-verify"] = bool(node["skip_cert_verify"])
+        if network == "ws":
+            opts = _clean({"path": ws_path, "headers": (
+                {"Host": ws_host} if ws_host else None)})
+            d["network"] = "ws"
+            d["ws-opts"] = opts
+        elif network == "tcp" and (node.get("header_type") or "").lower() == "http":
+            d["network"] = "tcp"
+            d["http-opts"] = _clean({
+                "method": node.get("http_method") or "GET",
+                "path": [ws_path] if ws_path else None,
+                "headers": ({"Host": ws_host} if ws_host else None)})
+        elif network == "h2":
+            d["network"] = "h2"
+            d["h2-opts"] = _clean({"host": [ws_host] if ws_host else None,
+                                   "path": ws_path})
+        elif network == "grpc":
+            d["network"] = "grpc"
+            d["grpc-opts"] = {"grpc-service-name": service_name or ""}
+        elif network in ("tcp",):
+            d["network"] = "tcp"
+        else:
+            return None
+        if node.get("pbk"):
+            d["reality-opts"] = _clean({"public-key": node["pbk"],
+                                        "short-id": node["sid"] or ""})
+    elif ntype == "vless":
+        d["uuid"] = node["uuid"]
+        if node.get("flow"):
+            d["flow"] = node["flow"]
+        if tls:
+            d["tls"] = True
+        if node.get("sni"):
+            d["servername"] = node["sni"]
+        if node.get("alpn"):
+            d["alpn"] = list(node["alpn"])
+        if node.get("fp"):
+            d["fingerprint"] = node["fp"]
+        if node.get("skip_cert_verify") is not None:
+            d["skip-cert-verify"] = bool(node["skip_cert_verify"])
+        if node.get("packet_encoding") in ("packetaddr", "xudp", "none"):
+            d["packet-encoding"] = node["packet_encoding"]
+        if network == "ws":
+            d["network"] = "ws"
+            d["ws-opts"] = _clean({"path": ws_path, "headers": (
+                {"Host": ws_host} if ws_host else None)})
+        elif network == "grpc":
+            d["network"] = "grpc"
+            d["grpc-opts"] = {"grpc-service-name": service_name or ""}
+        elif network == "h2":
+            d["network"] = "h2"
+            d["h2-opts"] = _clean({"host": [ws_host] if ws_host else None,
+                                   "path": ws_path})
+        elif network in ("tcp", "http"):
+            d["network"] = network
+            if network == "http":
+                d["http-opts"] = _clean({
+                    "method": node.get("http_method") or "GET",
+                    "path": [ws_path] if ws_path else None,
+                    "headers": ({"Host": ws_host} if ws_host else None)})
+        else:
+            return None
+        if node.get("pbk"):
+            d["reality-opts"] = _clean({"public-key": node["pbk"],
+                                        "short-id": node["sid"] or ""})
+    elif ntype == "trojan":
+        d["password"] = node["password"]
+        if node.get("sni"):
+            d["sni"] = node["sni"]
+        if node.get("alpn"):
+            d["alpn"] = list(node["alpn"])
+        if node.get("fp"):
+            d["fingerprint"] = node["fp"]
+        if node.get("skip_cert_verify") is not None:
+            d["skip-cert-verify"] = bool(node["skip_cert_verify"])
+        if network == "ws":
+            d["network"] = "ws"
+            d["ws-opts"] = _clean({"path": ws_path, "headers": (
+                {"Host": ws_host} if ws_host else None)})
+        elif network == "grpc":
+            d["network"] = "grpc"
+            d["grpc-opts"] = {"grpc-service-name": service_name or ""}
+        elif network in ("tcp", None, ""):
+            pass
+        else:
+            return None
+        if node.get("pbk"):
+            d["reality-opts"] = _clean({"public-key": node["pbk"],
+                                        "short-id": node["sid"] or ""})
+    elif ntype == "ss":
+        d["cipher"] = node["cipher"]
+        d["password"] = node["password"]
+        if node.get("plugin"):
+            d["plugin"] = node["plugin"]
+            opts = {}
+            for key, val in (node.get("plugin_opts") or {}).items():
+                opts[key] = val
+            if opts:
+                d["plugin-opts"] = opts
+    elif ntype == "ssr":
+        d["cipher"] = node["cipher"]
+        d["password"] = node["password"]
+        d["protocol"] = node["ssr_protocol"]
+        if node.get("ssr_protocol_param"):
+            d["protocol-param"] = node["ssr_protocol_param"]
+        d["obfs"] = node["ssr_obfs"]
+        if node.get("ssr_obfs_param"):
+            d["obfs-param"] = node["ssr_obfs_param"]
+    elif ntype == "hysteria2":
+        if node.get("mport"):
+            return None  # port hopping has no verified Mihomo field mapping
+        d["password"] = node["password"]
+        if node.get("sni"):
+            d["sni"] = node["sni"]
+        if node.get("alpn"):
+            d["alpn"] = list(node["alpn"])
+        if node.get("skip_cert_verify") is not None:
+            d["skip-cert-verify"] = bool(node["skip_cert_verify"])
+        if node.get("hy2_obfs"):
+            d["obfs"] = node["hy2_obfs"]
+        if node.get("hy2_obfs_password"):
+            d["obfs-password"] = node["hy2_obfs_password"]
+        if node.get("hy2_up") is not None:
+            d["up"] = node["hy2_up"]
+        if node.get("hy2_down") is not None:
+            d["down"] = node["hy2_down"]
+        if node.get("fp"):
+            d["fingerprint"] = node["fp"]
+    elif ntype == "hysteria":
+        d["auth_str"] = node.get("hy1_auth")
+        if node.get("hy1_protocol"):
+            d["protocol"] = node["hy1_protocol"]
+        if node.get("sni"):
+            d["sni"] = node["sni"]
+        if node.get("alpn"):
+            d["alpn"] = list(node["alpn"])
+        if node.get("skip_cert_verify") is not None:
+            d["skip-cert-verify"] = bool(node["skip_cert_verify"])
+        if node.get("hy1_up") is not None:
+            d["up"] = node["hy1_up"]
+        if node.get("hy1_down") is not None:
+            d["down"] = node["hy1_down"]
+        if node.get("hy1_obfs"):
+            d["obfs"] = node["hy1_obfs"]
+        if node.get("fp"):
+            d["fingerprint"] = node["fp"]
+    elif ntype == "tuic":
+        d["uuid"] = node["uuid"]
+        d["password"] = node["password"]
+        if node.get("sni"):
+            d["sni"] = node["sni"]
+        if node.get("alpn"):
+            d["alpn"] = list(node["alpn"])
+        if node.get("tuic_congestion"):
+            d["congestion-controller"] = node["tuic_congestion"]
+        if node.get("tuic_udp_relay"):
+            d["udp-relay-mode"] = node["tuic_udp_relay"]
+        if node.get("skip_cert_verify") is not None:
+            d["skip-cert-verify"] = bool(node["skip_cert_verify"])
+        if node.get("tuic_reduce_rtt") is not None:
+            d["reduce-rtt"] = bool(node["tuic_reduce_rtt"])
+        if node.get("tuic_max_udp") is not None:
+            d["max-udp-relay-packet-size"] = node["tuic_max_udp"]
+        if node.get("fp"):
+            d["fingerprint"] = node["fp"]
+    elif ntype == "socks5":
+        if node.get("username"):
+            d["username"] = node["username"]
+        if node.get("password"):
+            d["password"] = node["password"]
+        if node.get("tls"):
+            d["tls"] = True
+            if node.get("sni"):
+                d["sni"] = node["sni"]
+            if node.get("skip_cert_verify") is not None:
+                d["skip-cert-verify"] = bool(node["skip_cert_verify"])
+    elif ntype == "http":
+        if node.get("username"):
+            d["username"] = node["username"]
+        if node.get("password"):
+            d["password"] = node["password"]
+        if node.get("tls"):
+            d["tls"] = True
+            if node.get("sni"):
+                d["sni"] = node["sni"]
+            if node.get("skip_cert_verify") is not None:
+                d["skip-cert-verify"] = bool(node["skip_cert_verify"])
+    return d
+
+
+MIHOMO_REQUIRED = {
+    "vmess": ("uuid",), "vless": ("uuid",), "trojan": ("password",),
+    "ss": ("cipher", "password"), "ssr": ("cipher", "password", "protocol", "obfs"),
+    "hysteria2": ("password",), "hysteria": ("auth_str",),
+    "tuic": ("uuid", "password"), "socks5": (), "http": (),
+}
+
+
+def validate_mihomo(d: dict) -> bool:
+    if not isinstance(d, dict):
+        return False
+    ntype = str(d.get("type", "")).lower()
+    if ntype not in MIHOMO_REQUIRED:
+        return False
+    if not d.get("server") or not parse_port(d.get("port")) or not d.get("name"):
+        return False
+    for key in MIHOMO_REQUIRED[ntype]:
+        if not d.get(key):
+            return False
+    return True
+
+
+def render_mihomo(nodes, names):
+    proxies, skipped = [], Counter()
+    for node, name in zip(nodes, names):
+        d = to_mihomo_dict(node, name)
+        if d is None or not validate_mihomo(d):
+            skipped[node["type"]] += 1
+            continue
+        proxies.append(d)
+    body = yaml.safe_dump({"proxies": proxies}, allow_unicode=True,
+                          sort_keys=False, width=1000000,
+                          default_flow_style=False)
+    header = ("# Free18 - Mihomo / Clash proxy-provider (proxies list)\n"
+              "# Generated by Scripts/Free18.py. Do not edit by hand.\n")
+    return header + body, len(proxies), skipped
+
+
+# ------------------------------------------------------------------- Loon
+# Grammar: Loon official docs (nsloon.app/en/docs/Node): one node per line
+# under [Proxy] in a full config; remote node subscriptions are bare lines.
+
+LOON_SSR_PROTOCOLS = {"origin", "auth_chain_a", "auth_chain_b",
+                      "auth_aes128_md5", "auth_aes128_sha1", "auth_sha1_v4",
+                      "auth_sha1_v2", "auth_sha1"}
+LOON_SSR_OBFS = {"plain", "tls1.2_ticket_auth", "http_simple", "http_post"}
+LOON_VMESS_CIPHERS = {"none", "auto", "aes-128-cfb", "aes-128-gcm",
+                      "chacha20-ietf-poly1305"}
+
+
+def _q(s: str) -> str:
+    return '"' + s.replace("\\", "\\\\").replace('"', '\\"') + '"'
+
+
+def _bool_arg(key, value):
+    if value is None:
+        return None
+    return f"{key}={'true' if value else 'false'}"
+
+
+def to_loon_line(node: dict, name: str):
+    ntype = node["type"]
+    server, port = node["server"], node["port"]
+    network = (node.get("network") or "tcp").lower()
+    tls = bool(node.get("tls"))
+    args = []
+    if ntype == "ss":
+        if not node.get("cipher") or node.get("password") is None:
+            return None
+        head = f"{name} = Shadowsocks,{server},{port},{node['cipher']},{_q(node['password'])}"
+        plugin = node.get("plugin") or ""
+        opts = node.get("plugin_opts") or {}
+        if plugin in ("obfs-local", "simple-obfs", "obfs"):
+            if opts.get("obfs") in ("http", "tls"):
+                args.append(f"obfs-name={opts['obfs']}")
+            elif opts.get("obfs") not in (None, "", "none"):
+                return None
+            if opts.get("obfs-host"):
+                args.append(f"obfs-host={opts['obfs-host']}")
+            if opts.get("obfs-uri"):
+                args.append(f"obfs-uri={opts['obfs-uri']}")
+        elif plugin == "shadow-tls":
+            args.append(f"shadow-tls-password={opts.get('password', '')}")
+            if opts.get("sni"):
+                args.append(f"shadow-tls-sni={opts['sni']}")
+            if opts.get("version"):
+                args.append(f"shadow-tls-version={opts['version']}")
+        elif plugin:
+            return None
+        return ", ".join([head] + args) if args else head
+    if ntype == "ssr":
+        if (node.get("ssr_protocol") not in LOON_SSR_PROTOCOLS
+                or node.get("ssr_obfs") not in LOON_SSR_OBFS):
+            return None
+        head = (f"{name} = ShadowsocksR,{server},{port},{node['cipher']},"
+                f"{_q(node['password'] or '')},protocol={node['ssr_protocol']}")
+        if node.get("ssr_protocol_param"):
+            head += f",protocol-param={node['ssr_protocol_param']}"
+        head += f",obfs={node['ssr_obfs']}"
+        if node.get("ssr_obfs_param"):
+            head += f",obfs-param={node['ssr_obfs_param']}"
+        return head
+    if ntype == "socks5":
+        head = f"{name} = socks5,{server},{port}"
+        if node.get("username") or node.get("password"):
+            head += f",{node.get('username') or ''},{_q(node.get('password') or '')}"
+        if tls:
+            args.append("over-tls=true")
+            if node.get("sni"):
+                args.append(f"sni={node['sni']}")
+            scv = _bool_arg("skip-cert-verify", node.get("skip_cert_verify"))
+            if scv:
+                args.append(scv)
+        return ", ".join([head] + args) if args else head
+    if ntype == "vmess":
+        if node.get("cipher") not in LOON_VMESS_CIPHERS:
+            return None
+        if network not in ("tcp", "ws", "http"):
+            return None
+        if node.get("alpn"):
+            return None
+        head = (f"{name} = VMess,{server},{port},{node['cipher']},"
+                f"{_q(node['uuid'] or '')},transport={network}")
+        args.append(f"alterId={node['alter_id'] if node['alter_id'] is not None else 0}")
+        if network in ("ws", "http"):
+            if node.get("path"):
+                args.append(f"path={node['path']}")
+            if node.get("host"):
+                args.append(f"host={node['host']}")
+        args.append(f"over-tls={'true' if tls else 'false'}")
+        if node.get("sni"):
+            args.append(f"sni={node['sni']}")
+        scv = _bool_arg("skip-cert-verify", node.get("skip_cert_verify"))
+        if scv:
+            args.append(scv)
+        if node.get("pbk"):
+            args.append(f"public-key={_q(node['pbk'])}")
+        if node.get("sid"):
+            args.append(f"short-id={node['sid']}")
+        return ", ".join([head] + args)
+    if ntype == "vless":
+        if network not in ("tcp", "ws", "http"):
+            return None
+        if node.get("flow") not in (None, "", "xtls-rprx-vision"):
+            return None
+        head = (f"{name} = VLESS,{server},{port},{_q(node['uuid'] or '')},"
+                f"transport={network}")
+        if node.get("flow"):
+            args.append(f"flow={node['flow']}")
+        if network in ("ws", "http"):
+            if node.get("path"):
+                args.append(f"path={node['path']}")
+            if node.get("host"):
+                args.append(f"host={node['host']}")
+        args.append(f"over-tls={'true' if tls else 'false'}")
+        if node.get("sni"):
+            args.append(f"sni={node['sni']}")
+        scv = _bool_arg("skip-cert-verify", node.get("skip_cert_verify"))
+        if scv:
+            args.append(scv)
+        if node.get("pbk"):
+            args.append(f"public-key={_q(node['pbk'])}")
+        if node.get("sid"):
+            args.append(f"short-id={node['sid']}")
+        return ", ".join([head] + args)
+    if ntype == "trojan":
+        if network not in ("tcp", "ws", "http"):
+            return None
+        head = (f"{name} = Trojan,{server},{port},{_q(node['password'] or '')},"
+                f"transport={'ws' if network in ('ws', 'http') else 'tcp'}")
+        if network in ("ws", "http"):
+            if node.get("path"):
+                args.append(f"path={node['path']}")
+            if node.get("host"):
+                args.append(f"host={node['host']}")
+        if node.get("alpn"):
+            args.append(f"alpn={_q(','.join(node['alpn']))}")
+        if node.get("sni"):
+            args.append(f"sni={node['sni']}")
+        scv = _bool_arg("skip-cert-verify", node.get("skip_cert_verify"))
+        if scv:
+            args.append(scv)
+        if node.get("pbk"):
+            args.append(f"public-key={_q(node['pbk'])}")
+        if node.get("sid"):
+            args.append(f"short-id={node['sid']}")
+        return ", ".join([head] + args) if args else head
+    if ntype == "hysteria2":
+        if node.get("hy2_obfs") not in (None, "", "salamander"):
+            return None
+        head = (f"{name} = Hysteria2,{server},{port},{_q(node['password'] or '')}")
+        if node.get("sni"):
+            args.append(f"sni={node['sni']}")
+        scv = _bool_arg("skip-cert-verify", node.get("skip_cert_verify"))
+        if scv:
+            args.append(scv)
+        if node.get("alpn"):
+            args.append(f"alpn={_q(','.join(node['alpn']))}")
+        if node.get("hy2_obfs") == "salamander":
+            if not node.get("hy2_obfs_password"):
+                return None
+            args.append(f"salamander-password={node['hy2_obfs_password']}")
+        if node.get("mport"):
+            match = re.fullmatch(r"(\d+)-(\d+)", node["mport"].strip())
+            if not match:
+                return None
+            args.append(f"server-ports={_q(match.group(1) + ':' + match.group(2))}")
+        if node.get("hy2_down") is not None:
+            args.append(f"download-bandwidth={node['hy2_down']}")
+        return ", ".join([head] + args) if args else head
+    return None
+
+
+def render_loon(nodes, names):
+    lines, skipped = [], Counter()
+    for node, name in zip(nodes, names):
+        line = to_loon_line(node, name)
+        if line is None:
+            skipped[node["type"]] += 1
+        else:
+            lines.append(line)
+    return "\n".join(lines) + ("\n" if lines else ""), len(lines), skipped
+
+
+# ------------------------------------------------------- Quantumult X
+# Grammar: bare node lines (remote subscriptions are bare node lists).
+# ss/vmess/ssr/trojan/http mappings follow the Surgio + V2Board builders;
+# vless/hysteria2/tuic/socks are skipped: sources conflict or are silent
+# on whether QX can express them, so no line is guessed.
+
+
+def _qx_bad_value(value) -> bool:
+    return value is not None and ("," in str(value) or "\n" in str(value))
+
+
+def to_qx_line(node: dict, name: str):
+    ntype = node["type"]
+    server, port = node["server"], node["port"]
+    network = (node.get("network") or "tcp").lower()
+    tls = bool(node.get("tls"))
+    if _qx_bad_value(node.get("password")) or _qx_bad_value(node.get("uuid")):
+        return None
+    if ntype == "ss":
+        if not node.get("cipher") or node.get("password") is None:
+            return None
+        parts = [f"shadowsocks = {server}:{port}",
+                 f"method={node['cipher']}",
+                 f"password={node['password']}"]
+        plugin = node.get("plugin") or ""
+        opts = node.get("plugin_opts") or {}
+        if plugin in ("obfs-local", "simple-obfs", "obfs"):
+            obfs = opts.get("obfs")
+            if obfs == "http":
+                parts.append("obfs=http")
+            elif obfs == "tls":
+                parts.append("obfs=tls")
+            elif obfs not in (None, "", "none"):
+                return None
+            if opts.get("obfs-host"):
+                parts.append(f"obfs-host={opts['obfs-host']}")
+        elif plugin == "v2ray-plugin":
+            mode = str(opts.get("mode", "")).lower()
+            use_tls = boolish(opts.get("tls"))
+            if mode == "websocket":
+                parts.append("obfs=wss" if use_tls else "obfs=ws")
+            elif mode in ("", "tcp"):
+                if use_tls:
+                    parts.append("obfs=over-tls")
+            else:
+                return None
+            if opts.get("path"):
+                parts.append(f"obfs-uri={opts['path']}")
+            if opts.get("host"):
+                parts.append(f"obfs-host={opts['host']}")
+        elif plugin == "shadow-tls":
+            return None
+        elif plugin:
+            return None
+        parts.append(f"tag={name}")
+        return ", ".join(parts)
+    if ntype == "ssr":
+        parts = [f"shadowsocks = {server}:{port}",
+                 f"method={node['cipher']}",
+                 f"password={node['password']}",
+                 f"ssr-protocol={node['ssr_protocol']}"]
+        if node.get("ssr_protocol_param"):
+            parts.append(f"ssr-protocol-param={node['ssr_protocol_param']}")
+        parts.append(f"obfs={node['ssr_obfs']}")
+        if node.get("ssr_obfs_param"):
+            parts.append(f"obfs-host={node['ssr_obfs_param']}")
+        parts.append(f"tag={name}")
+        return ", ".join(parts)
+    if ntype == "vmess":
+        method_map = {"auto": "chacha20-poly1305", "none": "chacha20-poly1305",
+                      "chacha20-poly1305": "chacha20-poly1305",
+                      "chacha20-ietf-poly1305": "chacha20-ietf-poly1305",
+                      "aes-128-gcm": "aes-128-gcm"}
+        method = method_map.get((node.get("cipher") or "").lower())
+        if method is None or (node.get("alter_id") or 0) != 0:
+            return None
+        if network in ("grpc", "h2", "kcp", "xhttp", "splithttp"):
+            return None
+        if node.get("alpn") or node.get("pbk"):
+            return None
+        parts = [f"vmess = {server}:{port}", f"method={method}",
+                 f"password={node['uuid']}", "aead=true"]
+        if network == "ws":
+            parts.append("obfs=wss" if tls else "obfs=ws")
+            if node.get("path"):
+                parts.append(f"obfs-uri={node['path']}")
+            obfs_host = node.get("host")
+            if node.get("sni") and obfs_host and node["sni"] != obfs_host:
+                return None
+            if obfs_host or node.get("sni"):
+                parts.append(f"obfs-host={obfs_host or node['sni']}")
+        elif network == "http":
+            parts.append("obfs=http")
+            if node.get("path"):
+                parts.append(f"obfs-uri={node['path']}")
+            if node.get("host"):
+                parts.append(f"obfs-host={node['host']}")
+        elif network == "tcp" and tls:
+            parts.append("obfs=over-tls")
+        if tls:
+            parts.append("tls-verification=false"
+                         if node.get("skip_cert_verify") else "tls-verification=true")
+        if node.get("sni") and network != "ws":
+            parts.append(f"tls-host={node['sni']}")
+        parts.append(f"tag={name}")
+        return ", ".join(parts)
+    if ntype == "trojan":
+        if network in ("grpc", "h2", "kcp", "xhttp", "splithttp"):
+            return None
+        if node.get("pbk"):
+            return None
+        parts = [f"trojan = {server}:{port}",
+                 f"password={node['password']}", "over-tls=true"]
+        parts.append("tls-verification=false"
+                     if node.get("skip_cert_verify") else "tls-verification=true")
+        if node.get("sni"):
+            parts.append(f"tls-host={node['sni']}")
+        if network == "ws":
+            parts.append("obfs=wss")
+            if node.get("path"):
+                parts.append(f"obfs-uri={node['path']}")
+            if node.get("host"):
+                parts.append(f"obfs-host={node['host']}")
+        parts.append(f"tag={name}")
+        return ", ".join(parts)
+    if ntype == "http":
+        parts = [f"http = {server}:{port}"]
+        if node.get("username"):
+            parts.append(f"username={node['username']}")
+        if node.get("password"):
+            parts.append(f"password={node['password']}")
+        if tls:
+            parts.append("over-tls=true")
+        parts.append(f"tag={name}")
+        return ", ".join(parts)
+    return None
+
+
+def render_qx(nodes, names):
+    lines, skipped = [], Counter()
+    for node, name in zip(nodes, names):
+        safe_name = name.replace(",", " ").replace("\n", " ").replace("\r", " ").strip()
+        line = to_qx_line(node, safe_name)
+        if line is None:
+            skipped[node["type"]] += 1
+        else:
+            lines.append(line)
+    return "\n".join(lines) + ("\n" if lines else ""), len(lines), skipped
+
+
+# ------------------------------------------------------------------ Surge
+# Grammar: Surge manual (manual.nssurge.com): a config with a [Proxy]
+# section, one "Name = type, server, port, ..." line per node.
+
+
+def to_surge_line(node: dict, name: str):
+    ntype = node["type"]
+    server, port = node["server"], node["port"]
+    network = (node.get("network") or "tcp").lower()
+    tls = bool(node.get("tls"))
+    scv = ("skip-cert-verify=true" if node.get("skip_cert_verify")
+           else "skip-cert-verify=false")
+    if ntype == "ss":
+        if node.get("plugin"):
+            return None
+        return (f"{name} = ss, {server}, {port}, "
+                f"encrypt-method={node['cipher']}, password={node['password']}, "
+                f"udp-relay=true")
+    if ntype == "vmess":
+        if (node.get("alter_id") or 0) != 0 or node.get("pbk"):
+            return None
+        if network not in ("tcp", "ws", "grpc"):
+            return None
+        cipher = node.get("cipher") or "auto"
+        enc = {"auto": "aes-128-gcm", "aes-128-gcm": "aes-128-gcm",
+               "chacha20-ietf-poly1305": "chacha20-ietf-poly1305",
+               "none": "aes-128-gcm"}.get(cipher.lower())
+        if enc is None:
+            return None
+        parts = [f"{name} = vmess, {server}, {port}",
+                 f"username={node['uuid']}", f"encrypt-method={enc}",
+                 "vmess-aead=true", f"tls={'true' if tls else 'false'}"]
+        if network == "ws":
+            parts.append("ws=true")
+            if node.get("path"):
+                parts.append(f"ws-path={node['path']}")
+            if node.get("host"):
+                parts.append(f"ws-headers=Host:{node['host']}")
+        elif network == "grpc":
+            parts.append("grpc=true")
+            if node.get("service_name"):
+                parts.append(f"grpc-service-name={node['service_name']}")
+        if node.get("sni"):
+            parts.append(f"sni={node['sni']}")
+        if node.get("alpn"):
+            alpn = ",".join(node["alpn"])
+            parts.append(f"alpn={_q(alpn)}" if "," in alpn else f"alpn={alpn}")
+        parts.append(scv)
+        return ", ".join(parts)
+    if ntype == "vless":
+        if node.get("pbk"):
+            return None
+        if network not in ("tcp", "ws", "grpc"):
+            return None
+        parts = [f"{name} = vless, {server}, {port}",
+                 f"uuid={node['uuid']}", f"tls={'true' if tls else 'false'}"]
+        if node.get("flow"):
+            parts.append(f"flow={node['flow']}")
+        if network == "ws":
+            parts.append("ws=true")
+            if node.get("path"):
+                parts.append(f"ws-path={node['path']}")
+            if node.get("host"):
+                parts.append(f"ws-headers=Host:{node['host']}")
+        elif network == "grpc":
+            parts.append("grpc=true")
+            if node.get("service_name"):
+                parts.append(f"grpc-service-name={node['service_name']}")
+        if node.get("sni"):
+            parts.append(f"sni={node['sni']}")
+        if node.get("alpn"):
+            alpn = ",".join(node["alpn"])
+            parts.append(f"alpn={_q(alpn)}" if "," in alpn else f"alpn={alpn}")
+        parts.append(scv)
+        return ", ".join(parts)
+    if ntype == "trojan":
+        if node.get("pbk") or network not in ("tcp", "ws"):
+            return None
+        parts = [f"{name} = trojan, {server}, {port}",
+                 f"password={node['password']}"]
+        if node.get("sni"):
+            parts.append(f"sni={node['sni']}")
+        if node.get("alpn"):
+            alpn = ",".join(node["alpn"])
+            parts.append(f"alpn={_q(alpn)}" if "," in alpn else f"alpn={alpn}")
+        if network == "ws":
+            parts.append("ws=true")
+            if node.get("path"):
+                parts.append(f"ws-path={node['path']}")
+            if node.get("host"):
+                parts.append(f"ws-headers=Host:{node['host']}")
+        parts.append(scv)
+        return ", ".join(parts)
+    if ntype == "hysteria2":
+        if node.get("mport"):
+            return None
+        parts = [f"{name} = hysteria2, {server}, {port}",
+                 f"password={node['password']}"]
+        if node.get("sni"):
+            parts.append(f"sni={node['sni']}")
+        if node.get("alpn"):
+            alpn = ",".join(node["alpn"])
+            parts.append(f"alpn={_q(alpn)}" if "," in alpn else f"alpn={alpn}")
+        if node.get("hy2_obfs"):
+            parts.append(f"obfs={node['hy2_obfs']}")
+        if node.get("hy2_obfs_password"):
+            parts.append(f"obfs-password={node['hy2_obfs_password']}")
+        if node.get("hy2_up") is not None:
+            parts.append(f"up={node['hy2_up']}")
+        if node.get("hy2_down") is not None:
+            parts.append(f"down={node['hy2_down']}")
+        parts.append(scv)
+        return ", ".join(parts)
+    if ntype == "tuic":
+        if not node.get("uuid") or not node.get("password"):
+            return None
+        parts = [f"{name} = tuic, {server}, {port}",
+                 f"uuid={node['uuid']}", f"password={node['password']}"]
+        if node.get("alpn"):
+            alpn = ",".join(node["alpn"])
+            parts.append(f"alpn={_q(alpn)}" if "," in alpn else f"alpn={alpn}")
+        if node.get("tuic_congestion"):
+            parts.append(f"congestion-controller={node['tuic_congestion']}")
+        if node.get("tuic_udp_relay"):
+            parts.append(f"udp-relay-mode={node['tuic_udp_relay']}")
+        if node.get("sni"):
+            parts.append(f"sni={node['sni']}")
+        if node.get("tuic_reduce_rtt") is not None:
+            parts.append(f"reduce-rtt={'true' if node['tuic_reduce_rtt'] else 'false'}")
+        parts.append(scv)
+        return ", ".join(parts)
+    if ntype == "socks5":
+        ptype = "socks5-tls" if tls else "socks5"
+        parts = [f"{name} = {ptype}, {server}, {port}"]
+        if node.get("username"):
+            parts.append(node["username"])
+        if node.get("password"):
+            parts.append(node["password"])
+        if tls:
+            if node.get("sni"):
+                parts.append(f"sni={node['sni']}")
+            parts.append(scv)
+        return ", ".join(parts)
+    if ntype == "http":
+        ptype = "https" if tls else "http"
+        parts = [f"{name} = {ptype}, {server}, {port}"]
+        if node.get("username"):
+            parts.append(node["username"])
+        if node.get("password"):
+            parts.append(node["password"])
+        if tls and node.get("sni"):
+            parts.append(f"sni={node['sni']}")
+        return ", ".join(parts)
+    return None
+
+
+def render_surge(nodes, names):
+    lines, skipped = [], Counter()
+    for node, name in zip(nodes, names):
+        line = to_surge_line(node, name)
+        if line is None:
+            skipped[node["type"]] += 1
+        else:
+            lines.append(line)
+    header = ("# Free18 - Surge [Proxy] section (node subscription)\n"
+              "# Generated by Scripts/Free18.py. Do not edit by hand.\n\n"
+              "[Proxy]\n")
+    body = "\n".join(lines)
+    return header + body + ("\n" if lines else ""), len(lines), skipped
+
+
+# ---------------------------------------------------------- Shadowrocket
+# Subscription body: one share link per line, whole body base64-encoded
+# (the generic subscription form Shadowrocket and v2ray clients read).
+
+
+def _hostport(node: dict) -> str:
+    server = node["server"]
+    if ":" in server and not server.startswith("["):
+        server = f"[{server}]"
+    return f"{server}:{node['port']}"
+
+
+def _query_str(query: dict) -> str:
+    if not query:
+        return ""
+    return urlencode(query, doseq=True, quote_via=quote)
+
+
+def _rebuild_query_link(scheme: str, userinfo: str, node: dict, name: str) -> str:
+    query = dict(node.get("query") or {})
+    link = f"{scheme}{userinfo}@{_hostport(node)}"
+    qs = _query_str(query)
+    if qs:
+        link += "?" + qs
+    return link + "#" + quote(name, safe="")
+
+
+def _build_query(node: dict) -> dict:
+    query = {}
+    if node.get("flow"):
+        query["flow"] = node["flow"]
+    if node.get("encryption"):
+        query["encryption"] = node["encryption"]
+    if node.get("security"):
+        query["security"] = node["security"]
+    if node.get("sni"):
+        query["sni"] = node["sni"]
+    if node.get("fp"):
+        query["fp"] = node["fp"]
+    if node.get("pbk"):
+        query["pbk"] = node["pbk"]
+    if node.get("sid"):
+        query["sid"] = node["sid"]
+    if node.get("network"):
+        query["type"] = node["network"]
+    if node.get("path"):
+        query["path"] = node["path"]
+    if node.get("host"):
+        query["host"] = node["host"]
+    if node.get("header_type"):
+        query["headerType"] = node["header_type"]
+    if node.get("service_name"):
+        query["serviceName"] = node["service_name"]
+    if node.get("alpn"):
+        query["alpn"] = ",".join(node["alpn"])
+    if node.get("packet_encoding"):
+        query["packetEncoding"] = node["packet_encoding"]
+    return query
+
+
+def to_shadowrocket_link(node: dict, name: str):
+    ntype = node["type"]
+    if ntype == "vmess":
+        data = {
+            "v": "2", "ps": name, "add": node["server"],
+            "port": str(node["port"]), "id": node["uuid"],
+            "aid": str(node["alter_id"] if node["alter_id"] is not None else 0),
+            "scy": node["cipher"] or "auto",
+            "net": node["network"] or "tcp",
+            "type": node["header_type"] or "none",
+            "host": node["host"] or "",
+            "path": node["path"] or "",
+            "tls": "tls" if node.get("tls") else "",
+            "sni": node.get("sni") or "",
+            "alpn": ",".join(node["alpn"]) if node.get("alpn") else "",
+            "fp": node.get("fp") or "",
+        }
+        for key, val in (node.get("vmess_json") or {}).items():
+            data.setdefault(key, val)
+        payload = json.dumps(data, ensure_ascii=False,
+                             separators=(",", ":")).encode("utf-8")
+        return "vmess://" + b64encode_std(payload)
+    if ntype == "vless":
+        query = dict(node.get("query") or {}) or _build_query(node)
+        return _rebuild_query_link("vless://", quote(node["uuid"] or "", safe=""),
+                                   {**node, "query": query}, name)
+    if ntype == "trojan":
+        query = dict(node.get("query") or {}) or _build_query(node)
+        return _rebuild_query_link("trojan://", quote(node["password"] or "", safe=""),
+                                   {**node, "query": query}, name)
+    if ntype == "ss":
+        userinfo = b64encode_url_nopad(
+            f"{node['cipher']}:{node['password']}".encode("utf-8"))
+        link = f"ss://{userinfo}@{_hostport(node)}"
+        query = dict(node.get("ss_query") or {})
+        if node.get("plugin"):
+            plugin = node["plugin"]
+            opts = node.get("plugin_opts") or {}
+            pieces = []
+            for key, val in opts.items():
+                pieces.append(f"{key}={val}" if val is not True else key)
+            if pieces:
+                plugin += ";" + ";".join(pieces)
+            query["plugin"] = plugin
+        qs = _query_str(query)
+        if qs:
+            link += "?" + qs
+        return link + "#" + quote(name, safe="")
+    if ntype == "ssr":
+        params = dict(node.get("ssr_params") or {})
+        if node.get("ssr_obfs_param"):
+            params["obfsparam"] = b64encode_url_nopad(
+                node["ssr_obfs_param"].encode("utf-8"))
+        if node.get("ssr_protocol_param"):
+            params["protoparam"] = b64encode_url_nopad(
+                node["ssr_protocol_param"].encode("utf-8"))
+        params["remarks"] = b64encode_url_nopad(name.encode("utf-8"))
+        body = (f"{node['server']}:{node['port']}:{node['ssr_protocol']}:"
+                f"{node['cipher']}:{node['ssr_obfs']}:"
+                f"{b64encode_url_nopad((node['password'] or '').encode('utf-8'))}"
+                f"/?{_query_str(params)}")
+        return "ssr://" + b64encode_url_nopad(body.encode("utf-8"))
+    if ntype == "hysteria2":
+        query = dict(node.get("query") or {}) or _build_query(node)
+        if node.get("sni") and "sni" not in query:
+            query["sni"] = node["sni"]
+        if node.get("hy2_obfs"):
+            query.setdefault("obfs", node["hy2_obfs"])
+        if node.get("hy2_obfs_password"):
+            query.setdefault("obfs-password", node["hy2_obfs_password"])
+        if node.get("mport"):
+            query.setdefault("mport", node["mport"])
+        return _rebuild_query_link(
+            "hysteria2://", quote(node["password"] or "", safe=""),
+            {**node, "query": query}, name)
+    if ntype == "tuic":
+        query = dict(node.get("query") or {}) or _build_query(node)
+        userinfo = (quote(node["uuid"] or "", safe="") + ":"
+                    + quote(node["password"] or "", safe=""))
+        return _rebuild_query_link("tuic://", userinfo, {**node, "query": query}, name)
+    return None
+
+
+def render_shadowrocket(nodes, names):
+    links, skipped = [], Counter()
+    for node, name in zip(nodes, names):
+        link = to_shadowrocket_link(node, name)
+        if link is None:
+            skipped[node["type"]] += 1
+        else:
+            links.append(link)
+    blob = b64encode_std(("\n".join(links) + "\n").encode("utf-8"))
+    return blob + "\n", len(links), skipped
+
+
+# ---------------------------------------------------------------- geo / naming
+
+
+def _sup_num(n: int) -> str:
+    digits = "⁰¹²³⁴⁵⁶⁷⁸⁹"
+    return "".join(digits[int(ch)] for ch in str(n))
+
+
+def load_geo_cache(path: Path) -> dict:
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+        if isinstance(data, dict) and isinstance(data.get("ips"), dict):
+            return data
+    except Exception:
+        pass
+    return {"version": 1, "ips": {}}
+
+
+def lookup_geo(ips, cache: dict, session, sleep_fn=time.sleep):
+    """Batch-lookup IPs via ip-api (free HTTP endpoint), honouring the cache.
+
+    Returns {ip: entry|None}. Cache entries: ok=True with geo fields, or
+    ok=False failures retried only after 7 days. 429/5xx: up to 3 retries
+    with Retry-After-aware backoff. A failed lookup never fails the run.
+    """
+    entries = cache.setdefault("ips", {})
+    now = datetime.now(timezone.utc)
+    result = {}
+    todo = []
+    for ip in dict.fromkeys(ips):
+        entry = entries.get(ip)
+        if isinstance(entry, dict) and entry.get("ok"):
+            result[ip] = entry
+            continue
+        if isinstance(entry, dict) and not entry.get("ok"):
+            try:
+                failed_at = datetime.fromisoformat(entry.get("updated", ""))
+            except ValueError:
+                failed_at = None
+            if failed_at and now - failed_at < timedelta(days=7):
+                result[ip] = None
+                continue
+        todo.append(ip)
+    for start in range(0, len(todo), 100):
+        batch = todo[start:start + 100]
+        payload = [{"query": ip} for ip in batch]
+        data = None
+        for attempt in range(4):
+            try:
+                resp = session.post(
+                    "http://ip-api.com/batch?lang=zh-CN&fields=status,message,"
+                    "country,countryCode,regionName,city,query",
+                    json=payload, timeout=30)
+            except requests.RequestException:
+                resp = None
+            if resp is not None and resp.status_code == 200:
+                try:
+                    data = resp.json()
+                except ValueError:
+                    data = None
+                break
+            if resp is not None and resp.status_code in (429, 500, 502, 503, 504):
+                wait = 10 * (attempt + 1)
+                retry_after = resp.headers.get("Retry-After")
+                if retry_after:
+                    try:
+                        wait = min(120, max(wait, int(retry_after)))
+                    except ValueError:
+                        pass
+                sleep_fn(wait)
+                continue
+            break
+        if not isinstance(data, list):
+            for ip in batch:
+                entries[ip] = {"ok": False, "updated": now.isoformat()}
+                result[ip] = None
+            continue
+        for item in data:
+            ip = item.get("query")
+            if not ip:
+                continue
+            if item.get("status") == "success" and item.get("countryCode"):
+                entry = {
+                    "ok": True,
+                    "countryCode": item["countryCode"],
+                    "country": item.get("country") or "",
+                    "region": item.get("regionName") or "",
+                    "city": item.get("city") or "",
+                    "updated": now.isoformat(),
+                }
+                entries[ip] = entry
+                result[ip] = entry
+            else:
+                entries[ip] = {"ok": False, "updated": now.isoformat()}
+                result[ip] = None
+        if start + 100 < len(todo):
+            sleep_fn(1.0)
+    return result
+
+
+def display_name(node: dict, geo):
+    """User-specified format: flag + country + city + TWO spaces + IP."""
+    server = norm_server(node["server"])
+    orig = (node.get("name_orig") or "").strip()
+    fallback = orig or f"{node['type']} {server}:{node['port']}"
+    if not is_ip(server) or not geo:
+        return fallback
+    code = (geo.get("countryCode") or "").upper()
+    country = COUNTRY_ZH.get(code) or (geo.get("country") or "").strip()
+    if not code or not country:
+        return fallback
+    city = (geo.get("city") or geo.get("region") or "").strip()
+    flag = flag_emoji(code)
+    if city:
+        return f"{flag} {country} {city}  {server}"
+    return f"{flag} {country}  {server}"
+
+
+def assign_names(nodes, geo_map):
+    """Name, de-collide with superscripts, and sort deterministically."""
+    bases = []
+    for node in nodes:
+        geo = geo_map.get(norm_server(node["server"]))
+        node["_geo"] = geo
+        bases.append(display_name(node, geo))
+    groups = {}
+    for idx, base in enumerate(bases):
+        groups.setdefault(base, []).append(idx)
+    names = list(bases)
+    for base, idxs in groups.items():
+        if len(idxs) >= 2:
+            for pos, idx in enumerate(idxs, start=1):
+                names[idx] = base + _sup_num(pos)
+    order = sorted(
+        range(len(nodes)),
+        key=lambda i: (
+            (nodes[i]["_geo"] or {}).get("countryCode") or "",
+            (nodes[i]["_geo"] or {}).get("city")
+            or (nodes[i]["_geo"] or {}).get("region") or "",
+            norm_server(nodes[i]["server"]),
+            nodes[i]["port"] or 0,
+            nodes[i]["type"],
+        ),
+    )
+    return [nodes[i] for i in order], [names[i] for i in order]
+
+
+# ------------------------------------------------------------------ README
+
+
+def render_readme(stats: dict, fingerprints: dict, counts: dict, updated: str) -> str:
+    lines = ["# Free18", "",
+             "Free18 免费节点订阅：13 处权威源整合、去重、按 IP 归属地重命名，每小时自动更新。",
+             "",
+             f"- 去重后节点数：{stats['total']}",
+             f"- 上次更新：{updated}",
+             "- 各源节点数（解析后、去重前）：" + "、".join(
+                 f"{label} {stats['per_source'].get(key, 0)}"
+                 for key, label, _url in SOURCES),
+             "",
+             "文件指纹（SHA256）：",
+             "",
+             "| 文件 | 节点数 | SHA256 |",
+             "| --- | --- | --- |"]
+    for fname in ("Free18.yaml", "Free18_Loon.list", "Free18_QuantumultX.list",
+                  "Free18_Shadowrocket.list", "Free18_Surge.list"):
+        lines.append(f"| {fname} | {counts.get(fname, 0)} | "
+                     f"{fingerprints.get(fname, '')} |")
+    lines += ["",
+              "各客户端文件仅含该客户端可表示的节点；无法表示的节点已跳过，计数见 Actions 运行日志。",
+              ""]
+
+    def section(heading, label, filename):
+        block = [heading, "", ""]
+        if label:
+            block += [label, ""]
+        block += ["```text", "", RAW_BASE + filename, "", "```", "", ""]
+        return block
+
+    lines += section(
+        '# <img src="https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/Picture/icon/OpenClash.png" width="25" height="25" alt="Clash" /> Clash',
+        "proxies", "Free18.yaml")
+    lines += section(
+        '# <img src="https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/02ProxySoftLogo/Loon(1).png" width="25" height="25" alt="Loon" /> Loon',
+        None, "Free18_Loon.list")
+    lines += section(
+        '# <img src="https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/Picture/icon/QX.png" width="25" height="25" alt="QuantumultX" /> \nQuantumultX',
+        None, "Free18_QuantumultX.list")
+    lines += section(
+        '# <img src="https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/Picture/icon/shadowrocket.png" width="25" height="25" alt="Shadowrocket" \n/> Shadowrocket',
+        None, "Free18_Shadowrocket.list")
+    lines += section(
+        '# <img src="https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/02ProxySoftLogo/Surge(8).png" width="25" height="25" alt="Surge" /> Surge',
+        None, "Free18_Surge.list")
+    return "\n".join(lines) + "\n"
+
+
+# ---------------------------------------------------------------- pipeline
+
+
+def fetch_url(session, url: str, timeout: int = 30):
+    """GET with retries on 429/5xx. Raises RuntimeError on failure."""
+    last_error = None
+    for attempt in range(4):
+        try:
+            resp = session.get(url, timeout=timeout)
+        except requests.RequestException as exc:
+            last_error = str(exc)
+            time.sleep(2 * (attempt + 1))
+            continue
+        if resp.status_code == 200:
+            if len(resp.content) > 30 * 1024 * 1024:
+                raise RuntimeError("response too large (>30MB)")
+            return resp.text
+        last_error = f"HTTP {resp.status_code}"
+        if resp.status_code in (429, 500, 502, 503, 504) and attempt < 3:
+            wait = 2 * (attempt + 1)
+            retry_after = resp.headers.get("Retry-After")
+            if retry_after:
+                try:
+                    wait = min(60, max(wait, int(retry_after)))
+                except ValueError:
+                    pass
+            time.sleep(wait)
+            continue
+        raise RuntimeError(last_error)
+    raise RuntimeError(last_error or "fetch failed")
+
+
+# ---------------------------------------------------------------- rename fallback
+# Source files are addressed by fixed raw URLs, but upstream authors rename
+# or move them (e.g. clashfree's dated clashYYYYMMDD.yml files). When the
+# primary URL 404s, fall back to a branch swap (main <-> master) and then
+# to listing the source's directory through the GitHub Contents API (or the
+# Gist API for the Dafeide Gist), fetching the first file matching one of
+# the patterns below, newest name first within a pattern. The API is only
+# touched on a 404, so a normal run makes zero API calls. Patterns are
+# deliberately narrow: the exact current filename first, then only dated
+# variants of the same stem that the source is already known to publish.
+# kind "contents": repo contents listing (array of entries).
+# kind "gist": Gist API response (files dict).
+DISCOVERY = {
+    "ripaojiedian": ("https://api.github.com/repos/ripaojiedian/freenode/contents/",
+                     "contents", [r"^clash$", r"^sub$"]),
+    "shaoyouvip": ("https://api.github.com/repos/shaoyouvip/free/contents/",
+                   "contents", [r"^mihomo\.yaml$", r"^all\.yaml$"]),
+    "lagzian": ("https://api.github.com/repos/lagzian/SS-Collector/contents/configs",
+                "contents", [r"^subscription-all\.b64$"]),
+    "tgparse": ("https://api.github.com/repos/Surfboardv2ray/TGParse/contents/splitted",
+                "contents", [r"^mixed$"]),
+    "clashfree": ("https://api.github.com/repos/free-nodes/clashfree/contents/",
+                  "contents", [r"^sub\.yml$", r"^clash\d{8}\.ya?ml$"]),
+    "jsnzkpg": ("https://api.github.com/repos/Jsnzkpg/Jsnzkpg/contents/",
+                "contents", [r"^Jsnzkpg$"]),
+    "subcrawler-a11": ("https://api.github.com/repos/Leon406/SubCrawler/contents/sub/share",
+                      "contents", [r"^a11$"]),
+    "subcrawler-v2": ("https://api.github.com/repos/Leon406/SubCrawler/contents/sub/share",
+                     "contents", [r"^v2$"]),
+    "subcrawler-vless": ("https://api.github.com/repos/Leon406/SubCrawler/contents/sub/share",
+                        "contents", [r"^vless$"]),
+    "subcrawler-ss": ("https://api.github.com/repos/Leon406/SubCrawler/contents/sub/share",
+                     "contents", [r"^ss$"]),
+    "subcrawler-tr": ("https://api.github.com/repos/Leon406/SubCrawler/contents/sub/share",
+                     "contents", [r"^tr$"]),
+    "subcrawler-ssr": ("https://api.github.com/repos/Leon406/SubCrawler/contents/sub/share",
+                      "contents", [r"^ssr$"]),
+    "subcrawler-hy2": ("https://api.github.com/repos/Leon406/SubCrawler/contents/sub/share",
+                      "contents", [r"^hysteria2$"]),
+    "psg-cdn": ("https://api.github.com/repos/itsyebekhe/PSG/contents/subscriptions/xray",
+                "contents", [r"^cdn$"]),
+    "psg-hy2": ("https://api.github.com/repos/itsyebekhe/PSG/contents/subscriptions/xray",
+                "contents", [r"^hy2$"]),
+    "psg-mix": ("https://api.github.com/repos/itsyebekhe/PSG/contents/subscriptions/xray",
+                "contents", [r"^mix$"]),
+    "psg-reality": ("https://api.github.com/repos/itsyebekhe/PSG/contents/subscriptions/xray",
+                   "contents", [r"^reality$"]),
+    "psg-reality-ipv4": ("https://api.github.com/repos/itsyebekhe/PSG/contents/subscriptions/xray",
+                         "contents", [r"^reality_ipv4$"]),
+    "psg-ss": ("https://api.github.com/repos/itsyebekhe/PSG/contents/subscriptions/xray",
+               "contents", [r"^ss$"]),
+    "psg-ss-ipv4": ("https://api.github.com/repos/itsyebekhe/PSG/contents/subscriptions/xray",
+                    "contents", [r"^ss_ipv4$"]),
+    "chromego": ("https://api.github.com/repos/Misaka-blog/chromego_merge/contents/sub",
+                 "contents", [r"^merged_proxies_new\.yaml$", r"^merged.*\.yaml$"]),
+    "free18": ("https://api.github.com/repos/free18/v2ray/contents/",
+               "contents", [r"^v\.txt$", r"^c\.yaml$"]),
+    "nomorewalls": ("https://api.github.com/repos/peasoft/NoMoreWalls/contents/",
+                    "contents", [r"^list\.txt$", r"^list\.ya?ml$"]),
+    "mahdibland": ("https://api.github.com/repos/mahdibland/V2RayAggregator/contents/",
+                   "contents", [r"^Eternity$", r"^Eternity\.txt$"]),
+    "dafeide": ("https://api.github.com/gists/7a072d3de39083d469988844ba2ef165",
+                "gist", [r"^v2ray$", r"^clash\.yaml$"]),
+}
+
+
+def branch_swap_url(url: str):
+    """Swap the branch segment (main <-> master) of a raw URL, else None."""
+    parts = urlsplit(url)
+    segs = parts.path.strip("/").split("/")
+    # raw.githubusercontent.com/{owner}/{repo}/{branch}/{path...}
+    if len(segs) >= 4 and segs[2] in ("main", "master"):
+        segs[2] = "master" if segs[2] == "main" else "main"
+        return parts._replace(path="/" + "/".join(segs)).geturl()
+    return None
+
+
+def discover_candidates(session, key: str):
+    """Candidate raw URLs for a source from its directory listing."""
+    spec = DISCOVERY.get(key)
+    if not spec:
+        return []
+    api_url, kind, patterns = spec
+    resp = session.get(api_url, timeout=30,
+                       headers={"Accept": "application/vnd.github+json"})
+    if resp.status_code != 200:
+        raise RuntimeError(f"discovery API HTTP {resp.status_code}")
+    data = resp.json()
+    if kind == "gist":
+        entries = [(name, info.get("raw_url"))
+                   for name, info in (data.get("files") or {}).items()]
+    else:
+        entries = [(e.get("name", ""), e.get("download_url"))
+                   for e in data if isinstance(e, dict)]
+    by_name = dict(entries)
+    candidates = []
+    for pattern in patterns:
+        matched = sorted((name for name, _u in entries
+                          if _u and re.match(pattern, name)), reverse=True)
+        for name in matched:
+            if by_name[name] not in candidates:
+                candidates.append(by_name[name])
+    return candidates
+
+
+def fetch_source(session, key: str, label: str, url: str):
+    """Fetch one source: primary URL, branch swap, then discovery.
+
+    Discovery runs only when the primary URL 404s/410s. Any other failure
+    (timeout, 5xx after retries, oversize) raises immediately.
+    """
+    errors = []
+    try:
+        return fetch_url(session, url)
+    except RuntimeError as exc:
+        errors.append(str(exc))
+        if not str(exc).startswith(("HTTP 404", "HTTP 410")):
+            raise
+    swapped = branch_swap_url(url)
+    if swapped:
+        try:
+            text = fetch_url(session, swapped)
+            print(f"[Free18] {label}: primary 404, branch fallback worked: "
+                  f"{swapped}", flush=True)
+            return text
+        except RuntimeError as exc:
+            errors.append(str(exc))
+    try:
+        candidates = discover_candidates(session, key)
+    except Exception as exc:
+        errors.append(f"discovery: {exc}")
+        candidates = []
+    for cand in candidates:
+        if cand in (url, swapped):
+            continue
+        try:
+            text = fetch_url(session, cand)
+            print(f"[Free18] {label}: renamed/moved, discovered: {cand}",
+                  flush=True)
+            return text
+        except RuntimeError as exc:
+            errors.append(str(exc))
+    raise RuntimeError("; ".join(errors) or "fetch failed")
+
+
+def write_if_changed(path: Path, text: str) -> bool:
+    data = text.encode("utf-8")
+    if path.exists() and path.read_bytes() == data:
+        return False
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_bytes(data)
+    return True
+
+
+def run_pipeline(root: Path, sources, fetch_fn, geo_fn, now: datetime):
+    """Run one merge. Returns (stats dict, exit_code)."""
+    root = Path(root)
+    proxy_dir = root / "proxy"
+    scripts_dir = root / "Scripts"
+    cache_path = scripts_dir / GEO_CACHE_NAME
+    cache = load_geo_cache(cache_path)
+    cache_before = json.dumps(cache, sort_keys=True, ensure_ascii=False)
+
+    per_source = {}
+    failed_sources = []
+    all_nodes = []
+    for key, label, url in sources:
+        try:
+            text = fetch_fn(key, label, url)
+        except Exception as exc:
+            failed_sources.append({"key": key, "label": label, "error": str(exc)})
+            per_source[key] = 0
+            print(f"[Free18] source failed: {label}: {exc}", flush=True)
+            continue
+        try:
+            nodes, kind = parse_content(text)
+        except Exception as exc:  # parse_content should not raise; be safe
+            failed_sources.append({"key": key, "label": label,
+                                   "error": f"parse error: {exc}"})
+            per_source[key] = 0
+            continue
+        if not nodes:
+            failed_sources.append({"key": key, "label": label,
+                                   "error": f"parsed 0 nodes (kind={kind})"})
+            per_source[key] = 0
+            continue
+        per_source[key] = len(nodes)
+        for node in nodes:
+            node["_source"] = key
+        all_nodes.extend(nodes)
+        print(f"[Free18] {label}: {len(nodes)} nodes ({kind})", flush=True)
+
+    if not all_nodes:
+        stats = {"updated": now.strftime("%Y-%m-%d %H:%M UTC"), "total": 0,
+                 "duplicates": 0, "per_source": per_source,
+                 "failed_sources": failed_sources, "per_file": {},
+                 "geo_failed": [], "changed": False}
+        (scripts_dir / STATS_NAME).write_text(
+            json.dumps(stats, ensure_ascii=False, indent=2) + "\n",
+            encoding="utf-8")
+        print("[Free18] ALL SOURCES FAILED - nothing to write", flush=True)
+        return stats, 1
+
+    nodes, duplicates = dedupe(all_nodes)
+    ip_servers = sorted({norm_server(n["server"]) for n in nodes
+                         if is_ip(norm_server(n["server"]))})
+    geo_map = geo_fn(ip_servers, cache, None) if geo_fn else {}
+    geo_failed = sorted(ip for ip in ip_servers if not geo_map.get(ip))
+    nodes, names = assign_names(nodes, geo_map)
+
+    rendered = {}
+    counts = {}
+    skipped_all = {}
+    rendered["Free18.yaml"], counts["Free18.yaml"], skipped_all["Free18.yaml"] = \
+        render_mihomo(nodes, names)
+    rendered["Free18_Loon.list"], counts["Free18_Loon.list"], skipped_all["Free18_Loon.list"] = \
+        render_loon(nodes, names)
+    rendered["Free18_QuantumultX.list"], counts["Free18_QuantumultX.list"], skipped_all["Free18_QuantumultX.list"] = \
+        render_qx(nodes, names)
+    rendered["Free18_Shadowrocket.list"], counts["Free18_Shadowrocket.list"], skipped_all["Free18_Shadowrocket.list"] = \
+        render_shadowrocket(nodes, names)
+    rendered["Free18_Surge.list"], counts["Free18_Surge.list"], skipped_all["Free18_Surge.list"] = \
+        render_surge(nodes, names)
+
+    fingerprints = {fname: hashlib.sha256(text.encode("utf-8")).hexdigest()
+                    for fname, text in rendered.items()}
+    updated = now.strftime("%Y-%m-%d %H:%M UTC")
+    stats = {"updated": updated, "total": len(nodes), "duplicates": duplicates,
+             "per_source": per_source, "failed_sources": failed_sources,
+             "per_file": {fname: {"nodes": counts[fname],
+                                  "skipped": dict(skipped_all[fname]),
+                                  "sha256": fingerprints[fname]}
+                        for fname in rendered},
+             "geo_failed": geo_failed, "changed": False}
+
+    changed = False
+    for fname, text in rendered.items():
+        if write_if_changed(proxy_dir / fname, text):
+            changed = True
+    if changed:
+        readme = render_readme(stats, fingerprints, counts, updated)
+        write_if_changed(proxy_dir / "README.md", readme)
+    if json.dumps(cache, sort_keys=True, ensure_ascii=False) != cache_before:
+        cache_path.parent.mkdir(parents=True, exist_ok=True)
+        cache_path.write_text(
+            json.dumps(cache, sort_keys=True, ensure_ascii=False, indent=2) + "\n",
+            encoding="utf-8")
+        changed = True
+    stats["changed"] = changed
+    (scripts_dir / STATS_NAME).write_text(
+        json.dumps(stats, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    for fname in rendered:
+        print(f"[Free18] {fname}: {counts[fname]} nodes, "
+              f"skipped={dict(skipped_all[fname])}", flush=True)
+    print(f"[Free18] total={len(nodes)} duplicates={duplicates} "
+          f"failed_sources={len(failed_sources)} geo_failed={len(geo_failed)} "
+          f"changed={changed}", flush=True)
+    return stats, 0
+
+
+def main(argv=None) -> int:
+    root = Path(__file__).resolve().parent.parent
+    session = requests.Session()
+    session.headers.update({"User-Agent": USER_AGENT})
+    now = datetime.now(timezone.utc)
+
+    def fetch_fn(key, label, url):
+        return fetch_source(session, key, label, url)
+
+    def geo_fn(ips, cache, _session):
+        return lookup_geo(ips, cache, session)
+
+    try:
+        _stats, code = run_pipeline(root, SOURCES, fetch_fn, geo_fn, now)
+    except Exception as exc:
+        print(f"[Free18] fatal: {exc}", file=sys.stderr, flush=True)
+        return 1
+    return code
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
