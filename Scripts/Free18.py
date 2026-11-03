@@ -1,3 +1,22 @@
+#!/usr/bin/env python3
+"""Free18: merge 13 verified free subscription sources into 5 client files.
+
+Standalone script (no rule_converter import). Only stdlib + requests + pyyaml.
+Reads each source, sniffs its format (base64 blob / share-link lines /
+Clash-Mihomo YAML / sing-box JSON), parses nodes into a neutral dict,
+dedupes on (protocol, server, port, credential), renames from ip-api geo
+data, and writes proxy/Free18.yaml + Loon/QuantumultX/Shadowrocket/Surge
+files + proxy/README.md. A primary URL that 404s falls back to a branch
+swap (main <-> master) and then to a directory listing via the GitHub
+Contents/Gist API, matching only narrow filename patterns. Never embeds real credentials in code or logs:
+all fixtures in tests use TEST-NET addresses and fake secrets.
+
+Naming (user-specified, verbatim): "{flag} {country} {city}  {ip}"
+(flag, country, city joined by single spaces; TWO spaces before the IP).
+City falls back to regionName; no city -> country only. Domain servers
+keep their original name. Name collisions get superscript suffixes.
+"""
+
 from __future__ import annotations
 
 import base64
@@ -16,6 +35,11 @@ from urllib.parse import parse_qsl, quote, unquote, urlencode, urlsplit
 import requests
 import yaml
 
+# ---------------------------------------------------------------- sources
+# (key, label, url). One entry per authoritative file; same-pool duplicates
+# (AutoMerge fork, ssrsub mirror, clashfree sister repo, TGParse per-protocol
+# files, NoMoreWalls list.yml, free18 c.yaml, Dafeide clash.yaml/sing-box)
+# are deliberately NOT listed. See proxy/README.md for the rationale.
 SOURCES = [
     ("ripaojiedian", "ripaojiedian/freenode",
      "https://raw.githubusercontent.com/ripaojiedian/freenode/main/clash"),
@@ -74,7 +98,11 @@ GEO_CACHE_NAME = "Free18_geo_cache.json"
 STATS_NAME = "Free18_stats.json"
 USER_AGENT = "Free18/1.0 (+https://github.com/alienwaregf/personal-use)"
 
-
+# Country-code -> Chinese name table, covering every two-letter code in
+# the CLDR zh territory list. The original short names are kept verbatim;
+# added entries use CLDR zh wording. Used in preference to the ip-api
+# country string so names stay deterministic Chinese. A code outside this
+# table falls back to the API string.
 COUNTRY_ZH = {
     "HK": "香港", "TW": "台湾", "MO": "澳门",
     "JP": "日本", "KR": "韩国", "SG": "新加坡", "MY": "马来西亚",
@@ -279,6 +307,7 @@ def new_node(ntype: str) -> dict:
     }
 
 
+# ---------------------------------------------------------------- link parsing
 
 
 def _uri_parts(link: str):
@@ -383,7 +412,7 @@ def parse_trojan_link(link: str):
     node["sid"] = query.get("sid") or None
     alpn = query.get("alpn")
     node["alpn"] = [a.strip() for a in alpn.split(",") if a.strip()] if alpn else None
-    node["tls"] = True
+    node["tls"] = True  # trojan is always TLS
     return node
 
 
@@ -400,7 +429,7 @@ def _parse_ss_plugin(query: dict, node: dict):
             key, _, val = piece.partition("=")
             opts[key.strip()] = val.strip()
         elif piece.strip():
-            opts[piece.strip()] = True
+            opts[piece.strip()] = True  # bare flag, e.g. v2ray-plugin "tls"
     node["plugin_opts"] = opts
 
 
@@ -418,11 +447,12 @@ def parse_ss_link(link: str):
     node["name_orig"] = name
     node["ss_query"] = query
     _parse_ss_plugin(query, node)
-
+    # Form A: base64(method:password)@host:port ; Form B: base64(whole) ;
+    # Form C: plain method:password@host:port (password percent-encoded).
     userinfo_hostport = rest
     if "@" in rest:
         userinfo, _, hostport = rest.rpartition("@")
-        hostport = hostport.rstrip("/")
+        hostport = hostport.rstrip("/")  # ss links often end the authority with "/"
         host, port = split_hostport(hostport)
         try:
             decoded = b64decode_loose(userinfo).decode("utf-8")
@@ -604,6 +634,7 @@ def node_complete(node: dict) -> bool:
     return bool(node.get("server")) and bool(node.get("port"))
 
 
+# ---------------------------------------------------------------- YAML / JSON
 
 
 def _alpn_list(value):
@@ -796,7 +827,7 @@ def parse_content(text: str):
     stripped = text.strip().lstrip("\ufeff")
     if not stripped:
         return nodes, "empty"
-
+    # 1) Whole-blob base64 -> decode once, then re-sniff (max 2 levels).
     blob = re.sub(r"\s+", "", stripped)
     if len(blob) >= 40 and re.fullmatch(r"[A-Za-z0-9+/=_-]+", blob):
         try:
@@ -807,7 +838,7 @@ def parse_content(text: str):
                     return inner_nodes, "base64+" + inner_kind
         except Exception:
             pass
-
+    # 2) JSON (sing-box) or YAML (Clash/Mihomo) structured docs.
     if stripped.startswith("{"):
         try:
             doc = json.loads(stripped)
@@ -838,7 +869,8 @@ def parse_content(text: str):
                 nodes.append(node)
         if nodes:
             return nodes, "yaml-list"
-            
+    # 3) Share-link lines (one per line). A bare-base64 line that decodes
+    # to a link is also accepted.
     for raw_line in stripped.splitlines():
         line = raw_line.strip()
         if not line or line.startswith("#"):
@@ -864,6 +896,7 @@ def parse_content(text: str):
     return nodes, "link-lines"
 
 
+# ---------------------------------------------------------------- dedupe
 
 
 def dedupe_key(node: dict):
@@ -899,6 +932,14 @@ def dedupe(nodes):
         seen[key] = node
     return list(seen.values()), duplicates
 
+
+# ---------------------------------------------------------------- emitters
+# Each emitter renders the SAME neutral nodes into one client's native
+# subscribable form. A node a client cannot express is skipped and counted,
+# never written as a possibly-broken line. Evidence per client is recorded
+# in the parent report; Loon/Surge grammar follows the vendors' own docs,
+# QX follows the Surgio/V2Board builder mappings, Shadowrocket follows the
+# share-link subscription form, Mihomo follows the proxy-provider YAML form.
 
 
 def _clean(d: dict) -> dict:
@@ -1050,7 +1091,7 @@ def to_mihomo_dict(node: dict, name: str):
             d["obfs-param"] = node["ssr_obfs_param"]
     elif ntype == "hysteria2":
         if node.get("mport"):
-            return None
+            return None  # port hopping has no verified Mihomo field mapping
         d["password"] = node["password"]
         if node.get("sni"):
             d["sni"] = node["sni"]
@@ -1160,13 +1201,22 @@ def render_mihomo(nodes, names):
             skipped[node["type"]] += 1
             continue
         proxies.append(d)
-    body = yaml.safe_dump({"proxies": proxies}, allow_unicode=True,
-                          sort_keys=False, width=1000000,
-                          default_flow_style=False)
+    if proxies:
+        body = "proxies:\n" + "".join(
+            "- " + yaml.safe_dump(d, allow_unicode=True, sort_keys=False,
+                                  width=1000000,
+                                  default_flow_style=True).strip() + "\n"
+            for d in proxies)
+    else:
+        body = "proxies: []\n"
     header = ("# Free18 - Mihomo / Clash proxy-provider (proxies list)\n"
               "# Generated by Scripts/Free18.py. Do not edit by hand.\n")
     return header + body, len(proxies), skipped
 
+
+# ------------------------------------------------------------------- Loon
+# Grammar: Loon official docs (nsloon.app/en/docs/Node): one node per line
+# under [Proxy] in a full config; remote node subscriptions are bare lines.
 
 LOON_SSR_PROTOCOLS = {"origin", "auth_chain_a", "auth_chain_b",
                       "auth_aes128_md5", "auth_aes128_sha1", "auth_sha1_v4",
@@ -1350,6 +1400,12 @@ def render_loon(nodes, names):
     return "\n".join(lines) + ("\n" if lines else ""), len(lines), skipped
 
 
+# ------------------------------------------------------- Quantumult X
+# Grammar: bare node lines (remote subscriptions are bare node lists).
+# ss/vmess/ssr/trojan/http mappings follow the Surgio + V2Board builders;
+# vless/hysteria2/tuic/socks are skipped: sources conflict or are silent
+# on whether QX can express them, so no line is guessed.
+
 
 def _qx_bad_value(value) -> bool:
     return value is not None and ("," in str(value) or "\n" in str(value))
@@ -1493,6 +1549,10 @@ def render_qx(nodes, names):
             lines.append(line)
     return "\n".join(lines) + ("\n" if lines else ""), len(lines), skipped
 
+
+# ------------------------------------------------------------------ Surge
+# Grammar: Surge manual (manual.nssurge.com): a config with a [Proxy]
+# section, one "Name = type, server, port, ..." line per node.
 
 
 def to_surge_line(node: dict, name: str):
@@ -1661,6 +1721,10 @@ def render_surge(nodes, names):
     return header + body + ("\n" if lines else ""), len(lines), skipped
 
 
+# ---------------------------------------------------------- Shadowrocket
+# Subscription body: one share link per line, whole body base64-encoded
+# (the generic subscription form Shadowrocket and v2ray clients read).
+
 
 def _hostport(node: dict) -> str:
     server = node["server"]
@@ -1811,6 +1875,8 @@ def render_shadowrocket(nodes, names):
     blob = b64encode_std(("\n".join(links) + "\n").encode("utf-8"))
     return blob + "\n", len(links), skipped
 
+
+# ---------------------------------------------------------------- geo / naming
 
 
 def _sup_num(n: int) -> str:
@@ -1964,25 +2030,8 @@ def assign_names(nodes, geo_map):
 
 def render_readme(stats: dict, fingerprints: dict, counts: dict, updated: str) -> str:
     lines = ["# Free18", "",
-             "Free18 免费节点订阅：13 处权威源整合、去重、按 IP 归属地重命名，每小时自动更新。",
-             "",
-             f"- 去重后节点数：{stats['total']}",
-             f"- 上次更新：{updated}",
-             "- 各源节点数（解析后、去重前）：" + "、".join(
-                 f"{label} {stats['per_source'].get(key, 0)}"
-                 for key, label, _url in SOURCES),
-             "",
-             "文件指纹（SHA256）：",
-             "",
-             "| 文件 | 节点数 | SHA256 |",
-             "| --- | --- | --- |"]
-    for fname in ("Free18.yaml", "Free18_Loon.list", "Free18_QuantumultX.list",
-                  "Free18_Shadowrocket.list", "Free18_Surge.list"):
-        lines.append(f"| {fname} | {counts.get(fname, 0)} | "
-                     f"{fingerprints.get(fname, '')} |")
-    lines += ["",
-              "各客户端文件仅含该客户端可表示的节点；无法表示的节点已跳过，计数见 Actions 运行日志。",
-              ""]
+             "各客户端文件仅含该客户端可表示的节点；无法表示的节点已跳过，计数见 Actions 运行日志。",
+             ""]
 
     def section(heading, label, filename):
         block = [heading, "", ""]
@@ -1991,17 +2040,20 @@ def render_readme(stats: dict, fingerprints: dict, counts: dict, updated: str) -
         block += ["```text", "", RAW_BASE + filename, "", "```", "", ""]
         return block
 
-    lines += section(
-        '# <img src="https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/Picture/icon/OpenClash.png" width="25" height="25" alt="Clash" /> Clash',
-        "proxies", "Free18.yaml")
+    lines += ['# <img src="https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/Picture/icon/OpenClash.png" width="25" height="25" alt="Clash" /> Clash',
+              "", "",
+              "Free18", "",
+              "```text", "", RAW_BASE + "Free18.yaml", "", "```", "", "",
+              "VPNgate", "",
+              "```text", "", RAW_BASE + "VPNgate.yaml", "", "```", "", ""]
     lines += section(
         '# <img src="https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/02ProxySoftLogo/Loon(1).png" width="25" height="25" alt="Loon" /> Loon',
         None, "Free18_Loon.list")
     lines += section(
-        '# <img src="https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/Picture/icon/QX.png" width="25" height="25" alt="QuantumultX" /> \nQuantumultX',
+        '# <img src="https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/Picture/icon/QX.png" width="25" height="25" alt="QuantumultX" /> QuantumultX',
         None, "Free18_QuantumultX.list")
     lines += section(
-        '# <img src="https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/Picture/icon/shadowrocket.png" width="25" height="25" alt="Shadowrocket" \n/> Shadowrocket',
+        '# <img src="https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/Picture/icon/shadowrocket.png" width="25" height="25" alt="Shadowrocket" /> Shadowrocket',
         None, "Free18_Shadowrocket.list")
     lines += section(
         '# <img src="https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/02ProxySoftLogo/Surge(8).png" width="25" height="25" alt="Surge" /> Surge',
@@ -2040,6 +2092,19 @@ def fetch_url(session, url: str, timeout: int = 30):
         raise RuntimeError(last_error)
     raise RuntimeError(last_error or "fetch failed")
 
+
+# ---------------------------------------------------------------- rename fallback
+# Source files are addressed by fixed raw URLs, but upstream authors rename
+# or move them (e.g. clashfree's dated clashYYYYMMDD.yml files). When the
+# primary URL 404s, fall back to a branch swap (main <-> master) and then
+# to listing the source's directory through the GitHub Contents API (or the
+# Gist API for the Dafeide Gist), fetching the first file matching one of
+# the patterns below, newest name first within a pattern. The API is only
+# touched on a 404, so a normal run makes zero API calls. Patterns are
+# deliberately narrow: the exact current filename first, then only dated
+# variants of the same stem that the source is already known to publish.
+# kind "contents": repo contents listing (array of entries).
+# kind "gist": Gist API response (files dict).
 DISCOVERY = {
     "ripaojiedian": ("https://api.github.com/repos/ripaojiedian/freenode/contents/",
                      "contents", [r"^clash$", r"^sub$"]),
@@ -2222,7 +2287,8 @@ def run_pipeline(root: Path, sources, fetch_fn, geo_fn, now: datetime):
         stats = {"updated": now.strftime("%Y-%m-%d %H:%M UTC"), "total": 0,
                  "duplicates": 0, "per_source": per_source,
                  "failed_sources": failed_sources, "per_file": {},
-                 "geo_failed": [], "gfw_excluded": 0, "changed": False}
+                 "geo_failed": [], "gfw_excluded": 0,
+                 "no_geo_excluded": 0, "changed": False}
         (scripts_dir / STATS_NAME).write_text(
             json.dumps(stats, ensure_ascii=False, indent=2) + "\n",
             encoding="utf-8")
@@ -2242,6 +2308,21 @@ def run_pipeline(root: Path, sources, fetch_fn, geo_fn, now: datetime):
             gfw_excluded += 1
         else:
             kept.append(node)
+    nodes = kept
+    no_geo_excluded = 0
+    kept = []
+    for node in nodes:
+        geo = geo_map.get(norm_server(node["server"]))
+        if geo:
+            code = (geo.get("countryCode") or "").upper()
+            country = COUNTRY_ZH.get(code) or (geo.get("country") or "").strip()
+        else:
+            code = ""
+            country = ""
+        if is_ip(norm_server(node["server"])) and code and country:
+            kept.append(node)
+        else:
+            no_geo_excluded += 1
     nodes = kept
     nodes, names = assign_names(nodes, geo_map)
 
@@ -2269,7 +2350,7 @@ def run_pipeline(root: Path, sources, fetch_fn, geo_fn, now: datetime):
                                   "sha256": fingerprints[fname]}
                         for fname in rendered},
              "geo_failed": geo_failed, "gfw_excluded": gfw_excluded,
-             "changed": False}
+             "no_geo_excluded": no_geo_excluded, "changed": False}
 
     changed = False
     for fname, text in rendered.items():
@@ -2291,7 +2372,7 @@ def run_pipeline(root: Path, sources, fetch_fn, geo_fn, now: datetime):
         print(f"[Free18] {fname}：{counts[fname]} 个节点，"
               f"已跳过={dict(skipped_all[fname])}", flush=True)
     print(f"[Free18] 总计={len(nodes)} 去重={duplicates} "
-          f"排除={gfw_excluded} 失败来源={len(failed_sources)} "
+          f"排除={gfw_excluded} 无归属={no_geo_excluded} 失败来源={len(failed_sources)} "
           f"地理失败={len(geo_failed)} 已变更={changed}", flush=True)
     return stats, 0
 
