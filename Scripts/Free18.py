@@ -890,9 +890,15 @@ def _transport_opts(node: dict):
 
 
 def to_mihomo_dict(node: dict, name: str):
+    if node.get("type") == "vless":
+        flow = node.get("flow")
+        if flow and str(flow).strip().lower() != "xtls-rprx-vision":
+            return None
     if node.get("yaml_dict") is not None:
         data = dict(node["yaml_dict"])
         data["name"] = name
+        if node.get("type") == "vless" and data.get("flow"):
+            data["flow"] = "xtls-rprx-vision"
         return data
     ntype = node["type"]
     if ntype in ("ssr", "ss", "trojan", "vmess", "vless",
@@ -946,7 +952,7 @@ def to_mihomo_dict(node: dict, name: str):
     elif ntype == "vless":
         d["uuid"] = node["uuid"]
         if node.get("flow"):
-            d["flow"] = node["flow"]
+            d["flow"] = "xtls-rprx-vision"
         if tls:
             d["tls"] = True
         if node.get("sni"):
