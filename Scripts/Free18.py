@@ -127,6 +127,17 @@ COUNTRY_ZH = {
 
 GFW_COUNTRIES = frozenset({"CN", "KP", "IR", "TM", "RU", "BY", "CU", "VN", "MM"})
 
+CF_NETWORKS = tuple(ipaddress.ip_network(cidr) for cidr in (
+    "103.21.244.0/22", "103.22.200.0/22", "103.31.4.0/22",
+    "104.16.0.0/13", "104.24.0.0/14", "108.162.192.0/18",
+    "131.0.72.0/22", "141.101.64.0/18", "162.158.0.0/15",
+    "172.64.0.0/13", "173.245.48.0/20", "188.114.96.0/20",
+    "190.93.240.0/20", "197.234.240.0/22", "198.41.128.0/17",
+    "2400:cb00::/32", "2405:8100::/32", "2405:b500::/32",
+    "2606:4700::/32", "2803:f800::/32", "2a06:98c0::/29",
+    "2c0f:f248::/32",
+))
+
 LINK_SCHEMES = (
     "vmess://", "vless://", "trojan://", "ss://", "ssr://",
     "hysteria2://", "hy2://", "hysteria://", "tuic://",
@@ -165,6 +176,14 @@ def is_ip(value: str) -> bool:
         return True
     except ValueError:
         return False
+
+
+def is_cloudflare_ip(server: str) -> bool:
+    try:
+        addr = ipaddress.ip_address((server or "").strip().strip("[]").lower())
+    except ValueError:
+        return False
+    return any(addr in net for net in CF_NETWORKS)
 
 
 def norm_server(server: str) -> str:
@@ -2234,7 +2253,7 @@ def run_pipeline(root: Path, sources, fetch_fn, geo_fn, now: datetime):
                  "duplicates": 0, "per_source": per_source,
                  "failed_sources": failed_sources, "per_file": {},
                  "geo_failed": [], "gfw_excluded": 0,
-                 "no_geo_excluded": 0, "changed": False}
+                 "cf_excluded": 0, "no_geo_excluded": 0, "changed": False}
         (scripts_dir / STATS_NAME).write_text(
             json.dumps(stats, ensure_ascii=False, indent=2) + "\n",
             encoding="utf-8")
@@ -2242,6 +2261,14 @@ def run_pipeline(root: Path, sources, fetch_fn, geo_fn, now: datetime):
         return stats, 1
 
     nodes, duplicates = dedupe(all_nodes)
+    cf_excluded = 0
+    kept = []
+    for node in nodes:
+        if is_cloudflare_ip(node["server"]) and (node.get("host") or node.get("sni")):
+            cf_excluded += 1
+        else:
+            kept.append(node)
+    nodes = kept
     ip_servers = sorted({norm_server(n["server"]) for n in nodes
                          if is_ip(norm_server(n["server"]))})
     geo_map = geo_fn(ip_servers, cache, None) if geo_fn else {}
@@ -2296,7 +2323,7 @@ def run_pipeline(root: Path, sources, fetch_fn, geo_fn, now: datetime):
                                   "sha256": fingerprints[fname]}
                         for fname in rendered},
              "geo_failed": geo_failed, "gfw_excluded": gfw_excluded,
-             "no_geo_excluded": no_geo_excluded, "changed": False}
+             "cf_excluded": cf_excluded, "no_geo_excluded": no_geo_excluded, "changed": False}
 
     changed = False
     for fname, text in rendered.items():
@@ -2318,7 +2345,7 @@ def run_pipeline(root: Path, sources, fetch_fn, geo_fn, now: datetime):
         print(f"[Free18] {fname}：{counts[fname]} 个节点，"
               f"已跳过={dict(skipped_all[fname])}", flush=True)
     print(f"[Free18] 总计={len(nodes)} 去重={duplicates} "
-          f"排除={gfw_excluded} 无归属={no_geo_excluded} 失败来源={len(failed_sources)} "
+          f"排除={gfw_excluded} CF排除={cf_excluded} 无归属={no_geo_excluded} 失败来源={len(failed_sources)} "
           f"地理失败={len(geo_failed)} 已变更={changed}", flush=True)
     return stats, 0
 
