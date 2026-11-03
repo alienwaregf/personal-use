@@ -42,6 +42,8 @@ SOURCES = [
      "https://raw.githubusercontent.com/mahdibland/V2RayAggregator/master/Eternity"),
     ("dafeide", "Dafeide Gist",
      "https://gist.githubusercontent.com/Dafeide/7a072d3de39083d469988844ba2ef165/raw/v2ray"),
+    ("freev2", "freev2.net",
+     "https://xmxosfepggzm.503403.xyz"),
 ]
 
 RAW_BASE = "https://raw.githubusercontent.com/alienwaregf/personal-use/main/proxy/"
@@ -2333,8 +2335,10 @@ def main(argv=None) -> int:
     def geo_fn(ips, cache, _session):
         return lookup_geo(ips, cache, session)
 
+    freev2_url = discover_freev2_url(session)
+    sources = [*SOURCES, ("freev2", "freev2.net", freev2_url)]
     try:
-        _stats, code = run_pipeline(root, SOURCES, fetch_fn, geo_fn, now)
+        _stats, code = run_pipeline(root, sources, fetch_fn, geo_fn, now)
     except Exception as exc:
         print(f"[Free18] 致命错误：{exc}", file=sys.stderr, flush=True)
         return 1
