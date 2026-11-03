@@ -13020,8 +13020,6 @@ proxies:
 - {name: 🇩🇪 德国 法兰克福  31.59.179.110, type: vless, server: 31.59.179.110, port: 443, uuid: 4a02614f-c461-4675-9017-bb5a757c8edd, flow: xtls-rprx-vision, tls: true, servername: grr.milas.click, network: tcp, reality-opts: {public-key: pJpaRasoceUeRDJTXEZNnKT3yW5IocPXudB_B7_rBR0, short-id: 4fa44664f6a566d3}}
 - {name: 🇩🇪 德国 法兰克福  31.59.179.90, type: vless, server: 31.59.179.90, port: 443, uuid: 4a02614f-c461-4675-9017-bb5a757c8edd, flow: xtls-rprx-vision, tls: true, servername: grr.milas.click, fingerprint: firefox, network: tcp}
 - {name: 🇩🇪 德国 法兰克福  31.76.10.180, type: trojan, server: 31.76.10.180, port: 36508, password: cMCQxnflDO}
-- {name: 🇩🇪 德国 法兰克福  31.76.11.83¹, type: ss, server: 31.76.11.83, port: 11650, cipher: chacha20-poly1305, password: iku/Gfrt9YeEUUleXr2Ptf3uvs0hszCR0JHPqGSjs+c=}
-- {name: 🇩🇪 德国 法兰克福  31.76.11.83², type: ss, server: 31.76.11.83, port: 15731, cipher: chacha20-poly1305, password: xAYXtB+XMdfWWOlmL8PWcOZEPfKHKVv7NcTY6jpcL/A=}
 - {name: 🇩🇪 德国 法兰克福  31.76.11.83⁵, type: vmess, server: 31.76.11.83, port: 22266, uuid: 2d8f57bd-12b5-41ad-a806-6501753c264c, alterId: 0, cipher: auto, network: tcp}
 - {name: 🇩🇪 德国 法兰克福  31.76.11.83⁷, type: vmess, server: 31.76.11.83, port: 22366, uuid: 632cfa69-ae00-49d1-81e0-554979d1e9fa, alterId: 0, cipher: auto, network: tcp}
 - {name: 🇩🇪 德国 法兰克福  31.76.11.83³, type: vless, server: 31.76.11.83, port: 22849, uuid: 2e511783-125c-466b-925d-a9cd1c98e30e, network: tcp}
@@ -13047,7 +13045,6 @@ proxies:
 - {name: 🇩🇪 德国 法兰克福  31.77.10.167², type: vless, server: 31.77.10.167, port: 24503, uuid: fafc7c16-f890-45ee-a856-02df225172dd, flow: xtls-rprx-vision, tls: true, servername: nl3-gkv6mb.vpvr4ib84nuv6hdkt.ru, fingerprint: chrome, network: tcp, reality-opts: {public-key: iiApJD_tVRzp1t8EfIpG7T4dnx-O0ai5nkzD9GUV9Fc, short-id: 02ea11017a1c951f}}
 - {name: 🇩🇪 德国 法兰克福  31.77.135.76, type: vless, server: 31.77.135.76, port: 8443, uuid: dbda40e2-25b5-416c-8d35-56d07e8dcdbc, tls: true, servername: indigostar.click, network: ws, ws-opts: {path: /ws}}
 - {name: 🇩🇪 德国 法兰克福  31.77.142.249, type: vless, server: 31.77.142.249, port: 443, uuid: c18b978e-1c4e-415c-8bea-07942b563a64, tls: true, servername: shuma.ccwu.cc, fingerprint: chrome, network: ws, ws-opts: {path: /, headers: {Host: shuma.ccwu.cc}}}
-- {name: 🇩🇪 德国 法兰克福  31.77.148.89, type: ss, server: 31.77.148.89, port: 56752, cipher: chacha20-poly1305, password: rHmUhnjv7b+V8o3YWAMaIDBSBlgSNjv3zHYMu6ALFU8=}
 - {name: 🇩🇪 德国 法兰克福  31.77.152.14, type: vless, server: 31.77.152.14, port: 443, uuid: a6f6d9c9-9d43-4d0e-bf95-4b87cc5bbaac, flow: xtls-rprx-vision, tls: true, servername: de1.murhost.network, fingerprint: chrome, network: tcp, reality-opts: {public-key: jJQ3uy2Se5ObXCsYJnT-2ukvUMRiOBBfOZ38Wnm2Ygs, short-id: a75046af5dcaf1d2}}
 - {name: 🇩🇪 德国 法兰克福  31.77.168.179, type: trojan, server: 31.77.168.179, port: 443, password: humanity, sni: www.cordweave.com, fingerprint: chrome, network: ws, ws-opts: {path: /assignment}}
 - {name: 🇩🇪 德国 法兰克福  31.77.168.192, type: vless, server: 31.77.168.192, port: 443, uuid: 87fd990d-ca93-440a-bbd4-e8281c4a0910, flow: xtls-rprx-vision, tls: true, servername: d3-de1.cloud-cdn.xyz, fingerprint: chrome, network: tcp, reality-opts: {public-key: SPyieysl8w1lo950icthB72kn_ElyJXkpCdKqmnjGEY, short-id: 494afdc75f8c2fa8}}
@@ -16626,7 +16623,6 @@ proxies:
 - {name: 🇳🇱 荷兰 阿姆斯特丹  82.38.31.162², type: ss, server: 82.38.31.162, port: 443, cipher: chacha20-ietf-poly1305, password: oZIoA69Q8yhcQV8ka3Pa3A}
 - {name: 🇳🇱 荷兰 阿姆斯特丹  82.38.31.165¹, type: ss, server: 82.38.31.165, port: 443, cipher: chacha20-ietf-poly1305, password: oZIoA69Q8yhcQV8ka3Pa3A}
 - {name: 🇳🇱 荷兰 阿姆斯特丹  82.38.31.165², type: ss, server: 82.38.31.165, port: 443, cipher: chacha20-ietf-poly1305, password: oZIoA69Q8yhcQV8ka3Pa3A}
-- {name: 🇳🇱 荷兰 阿姆斯特丹  82.38.31.167¹, type: ss, server: 82.38.31.167, port: 8080, cipher: chacha20-poly1305, password: oZIoA69Q8yhcQV8ka3Pa3A}
 - {name: 🇳🇱 荷兰 阿姆斯特丹  82.38.31.167², type: ss, server: 82.38.31.167, port: 8080, cipher: chacha20-ietf-poly1305, password: oZIoA69Q8yhcQV8ka3Pa3A}
 - {name: 🇳🇱 荷兰 阿姆斯特丹  82.38.31.169¹, type: ss, server: 82.38.31.169, port: 443, cipher: chacha20-ietf-poly1305, password: oZIoA69Q8yhcQV8ka3Pa3A}
 - {name: 🇳🇱 荷兰 阿姆斯特丹  82.38.31.169², type: ss, server: 82.38.31.169, port: 443, cipher: chacha20-ietf-poly1305, password: oZIoA69Q8yhcQV8ka3Pa3A}
@@ -16750,7 +16746,6 @@ proxies:
 - {name: 🇳🇱 荷兰 阿姆斯特丹  82.38.31.48, type: ss, server: 82.38.31.48, port: 8080, cipher: chacha20-ietf-poly1305, password: oZIoA69Q8yhcQV8ka3Pa3A}
 - {name: 🇳🇱 荷兰 阿姆斯特丹  82.38.31.49, type: ss, server: 82.38.31.49, port: 8080, cipher: chacha20-ietf-poly1305, password: oZIoA69Q8yhcQV8ka3Pa3A}
 - {name: 🇳🇱 荷兰 阿姆斯特丹  82.38.31.54¹, type: ss, server: 82.38.31.54, port: 8080, cipher: chacha20-ietf-poly1305, password: oZIoA69Q8yhcQV8ka3Pa3A}
-- {name: 🇳🇱 荷兰 阿姆斯特丹  82.38.31.54², type: ss, server: 82.38.31.54, port: 8080, cipher: chacha20-poly1305, password: oZIoA69Q8yhcQV8ka3Pa3A}
 - {name: 🇳🇱 荷兰 阿姆斯特丹  82.38.31.54³, type: ss, server: 82.38.31.54, port: 8080, cipher: chacha20-ietf-poly1305, password: oZIoA69Q8yhcQV8ka3Pa3A}
 - {name: 🇳🇱 荷兰 阿姆斯特丹  82.38.31.54⁴, type: ss, server: 82.38.31.54, port: 8080, cipher: chacha20-ietf-poly1305, password: oZIoA69Q8yhcQV8ka3Pa3A}
 - {name: 🇳🇱 荷兰 阿姆斯特丹  82.38.31.54⁵, type: ss, server: 82.38.31.54, port: 8080, cipher: chacha20-ietf-poly1305, password: oZIoA69Q8yhcQV8ka3Pa3A}
