@@ -14,32 +14,33 @@ permissions:
 
 jobs:
   build:
+    name: 合并订阅
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
-      - name: Check out
+      - name: 检出代码
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: Set up Python
+      - name: 设置 Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
 
-      - name: Install dependencies
+      - name: 安装依赖
         run: pip install requests pyyaml
 
-      - name: Merge subscriptions
+      - name: 合并订阅
         run: python Scripts/Free18.py
 
-      - name: Commit and push
+      - name: 提交并推送
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add proxy/Free18.yaml proxy/Free18_Loon.list proxy/Free18_QuantumultX.list proxy/Free18_Shadowrocket.list proxy/Free18_Surge.list proxy/README.md Scripts/Free18_geo_cache.json
           if git diff --cached --quiet; then
-            echo "No changes."
+            echo "无变化。"
             exit 0
           fi
           python3 <<'PYEOF' > /tmp/free18_commit_msg.txt
@@ -57,8 +58,5 @@ jobs:
                 ", ".join(f"{k}={v['nodes']}" for k, v in s["per_file"].items()))
           PYEOF
           git commit -F /tmp/free18_commit_msg.txt
-          # Rebase onto main before pushing: never force-push. If another
-          # run landed first, this replays our commit on top; a conflict
-          # fails the job visibly instead of overwriting history.
           git pull --rebase
           git push
