@@ -57,5 +57,8 @@ jobs:
                 ", ".join(f"{k}={v['nodes']}" for k, v in s["per_file"].items()))
           PYEOF
           git commit -F /tmp/free18_commit_msg.txt
+          # Rebase onto main before pushing: never force-push. If another
+          # run landed first, this replays our commit on top; a conflict
+          # fails the job visibly instead of overwriting history.
           git pull --rebase
           git push
