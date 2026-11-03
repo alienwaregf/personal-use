@@ -925,10 +925,41 @@ def _fix_mihomo_opts(data: dict) -> dict:
     return data
 
 
+def _valid_reality_pubkey(key) -> bool:
+    if not isinstance(key, str):
+        return False
+    key = key.strip()
+    if len(key) != 43:
+        return False
+    try:
+        raw = base64.urlsafe_b64decode(key + "=")
+    except (binascii.Error, ValueError):
+        return False
+    if len(raw) != 32:
+        return False
+    return base64.urlsafe_b64encode(raw).decode().rstrip("=") == key
+
+
+def _valid_reality_sid(sid) -> bool:
+    if sid is None:
+        return True
+    sid = str(sid).strip()
+    if not sid:
+        return True
+    if len(sid) % 2:
+        return False
+    return all(c in "0123456789abcdefABCDEF" for c in sid)
+
+
 def to_mihomo_dict(node: dict, name: str):
     if node.get("type") == "vless":
         flow = node.get("flow")
         if flow and str(flow).strip().lower() != "xtls-rprx-vision":
+            return None
+    if node.get("type") in ("vmess", "vless", "trojan") and node.get("pbk"):
+        if not _valid_reality_pubkey(node["pbk"]):
+            return None
+        if not _valid_reality_sid(node.get("sid")):
             return None
     if node.get("yaml_dict") is not None:
         data = dict(node["yaml_dict"])
