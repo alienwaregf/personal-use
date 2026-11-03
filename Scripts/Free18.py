@@ -2010,7 +2010,12 @@ def assign_names(nodes, geo_map):
     for base, idxs in groups.items():
         if len(idxs) >= 2:
             for pos, idx in enumerate(idxs, start=1):
-                names[idx] = base + _sup_num(pos)
+                sup = _sup_num(pos)
+                tail = "  " + norm_server(nodes[idx]["server"])
+                if base.endswith(tail):
+                    names[idx] = base[:-len(tail)] + sup + tail
+                else:
+                    names[idx] = base + sup
     order = sorted(
         range(len(nodes)),
         key=lambda i: (
