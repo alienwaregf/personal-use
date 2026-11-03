@@ -74,10 +74,11 @@ GEO_CACHE_NAME = "Free18_geo_cache.json"
 STATS_NAME = "Free18_stats.json"
 USER_AGENT = "Free18/1.0 (+https://github.com/alienwaregf/personal-use)"
 
+
 COUNTRY_ZH = {
     "HK": "香港", "TW": "台湾", "MO": "澳门",
     "JP": "日本", "KR": "韩国", "SG": "新加坡", "MY": "马来西亚",
-    "TH": "泰国", "VN": "越南", "ID": "印度尼西亚", "PH": "菲律宾",
+    "TH": "泰国", "ID": "印度尼西亚", "PH": "菲律宾",
     "IN": "印度", "PK": "巴基斯坦", "BD": "孟加拉国", "LK": "斯里兰卡",
     "US": "美国", "CA": "加拿大", "MX": "墨西哥", "BR": "巴西",
     "AR": "阿根廷", "CL": "智利", "CO": "哥伦比亚", "PE": "秘鲁",
@@ -87,13 +88,14 @@ COUNTRY_ZH = {
     "ES": "西班牙", "PT": "葡萄牙", "IT": "意大利", "PL": "波兰",
     "CZ": "捷克", "SK": "斯洛伐克", "HU": "匈牙利", "GR": "希腊",
     "RO": "罗马尼亚", "BG": "保加利亚", "HR": "克罗地亚", "SI": "斯洛文尼亚",
-    "UA": "乌克兰", "RU": "俄罗斯", "TR": "土耳其", "IL": "以色列",
-    "AE": "阿联酋", "SA": "沙特阿拉伯", "IR": "伊朗", "IQ": "伊拉克",
+    "UA": "乌克兰", "TR": "土耳其", "IL": "以色列",
+    "AE": "阿联酋", "SA": "沙特阿拉伯", "IQ": "伊拉克",
     "EG": "埃及", "ZA": "南非", "NG": "尼日利亚", "KE": "肯尼亚",
     "AU": "澳大利亚", "NZ": "新西兰", "FJ": "斐济",
     "KZ": "哈萨克斯坦", "UZ": "乌兹别克斯坦",
     "IS": "冰岛", "EE": "爱沙尼亚", "LV": "拉脱维亚", "LT": "立陶宛",
     "LU": "卢森堡", "MT": "马耳他", "CY": "塞浦路斯",
+    # Added 2026-11-03: remaining CLDR zh two-letter codes.
     "AC": "阿森松岛", "AD": "安道尔", "AF": "阿富汗", "AG": "安提瓜和巴布达",
     "AI": "安圭拉", "AL": "阿尔巴尼亚", "AM": "亚美尼亚", "AO": "安哥拉",
     "AQ": "南极洲", "AS": "美属萨摩亚", "AW": "阿鲁巴", "AX": "奥兰群岛",
@@ -101,10 +103,10 @@ COUNTRY_ZH = {
     "BF": "布基纳法索", "BH": "巴林", "BI": "布隆迪", "BJ": "贝宁",
     "BL": "圣巴泰勒米", "BM": "百慕大", "BN": "文莱", "BO": "玻利维亚",
     "BQ": "荷属加勒比区", "BS": "巴哈马", "BT": "不丹", "BV": "布韦岛",
-    "BY": "白俄罗斯", "BZ": "伯利兹", "CC": "科科斯（基林）群岛",
+    "BZ": "伯利兹", "CC": "科科斯（基林）群岛",
     "CD": "刚果（金）", "CF": "中非共和国", "CG": "刚果（布）",
     "CI": "科特迪瓦", "CK": "库克群岛", "CM": "喀麦隆",
-    "CP": "克利珀顿岛", "CQ": "萨克岛", "CR": "哥斯达黎加", "CU": "古巴",
+    "CP": "克利珀顿岛", "CQ": "萨克岛", "CR": "哥斯达黎加",
     "CV": "佛得角", "CW": "库拉索", "CX": "圣诞岛", "DG": "迪戈加西亚岛",
     "DJ": "吉布提", "DM": "多米尼克", "DO": "多米尼加共和国",
     "DZ": "阿尔及利亚", "EA": "休达及梅利利亚", "EC": "厄瓜多尔",
@@ -118,12 +120,12 @@ COUNTRY_ZH = {
     "HN": "洪都拉斯", "HT": "海地", "IC": "加纳利群岛", "IM": "马恩岛",
     "IO": "英属印度洋领地", "JE": "泽西岛", "JM": "牙买加", "JO": "约旦",
     "KG": "吉尔吉斯斯坦", "KH": "柬埔寨", "KI": "基里巴斯", "KM": "科摩罗",
-    "KN": "圣基茨和尼维斯", "KP": "朝鲜", "KW": "科威特", "KY": "开曼群岛",
+    "KN": "圣基茨和尼维斯", "KW": "科威特", "KY": "开曼群岛",
     "LA": "老挝", "LB": "黎巴嫩", "LC": "圣卢西亚", "LI": "列支敦士登",
     "LR": "利比里亚", "LS": "莱索托", "LY": "利比亚", "MA": "摩洛哥",
     "MC": "摩纳哥", "MD": "摩尔多瓦", "ME": "黑山", "MF": "法属圣马丁",
     "MG": "马达加斯加", "MH": "马绍尔群岛", "MK": "北马其顿", "ML": "马里",
-    "MM": "缅甸", "MN": "蒙古", "MP": "北马里亚纳群岛", "MQ": "马提尼克",
+    "MN": "蒙古", "MP": "北马里亚纳群岛", "MQ": "马提尼克",
     "MR": "毛里塔尼亚", "MS": "蒙特塞拉特", "MU": "毛里求斯",
     "MV": "马尔代夫", "MW": "马拉维", "MZ": "莫桑比克", "NA": "纳米比亚",
     "NC": "新喀里多尼亚", "NE": "尼日尔", "NF": "诺福克岛",
@@ -139,7 +141,7 @@ COUNTRY_ZH = {
     "SX": "荷属圣马丁", "SY": "叙利亚", "SZ": "斯威士兰",
     "TA": "特里斯坦-达库尼亚群岛", "TC": "特克斯和凯科斯群岛",
     "TD": "乍得", "TF": "法属南部领地", "TG": "多哥", "TJ": "塔吉克斯坦",
-    "TK": "托克劳", "TL": "东帝汶", "TM": "土库曼斯坦", "TN": "突尼斯",
+    "TK": "托克劳", "TL": "东帝汶", "TN": "突尼斯",
     "TO": "汤加", "TT": "特立尼达和多巴哥", "TV": "图瓦卢", "TZ": "坦桑尼亚",
     "UG": "乌干达", "UM": "美国本土外小岛屿", "UY": "乌拉圭", "VA": "梵蒂冈",
     "VC": "圣文森特和格林纳丁斯", "VE": "委内瑞拉",
@@ -148,6 +150,8 @@ COUNTRY_ZH = {
     "YT": "马约特", "ZM": "赞比亚", "ZW": "津巴布韦",
 }
 
+GFW_COUNTRIES = frozenset({"CN", "KP", "IR", "TM", "RU", "BY", "CU", "VN", "MM"})
+
 LINK_SCHEMES = (
     "vmess://", "vless://", "trojan://", "ss://", "ssr://",
     "hysteria2://", "hy2://", "hysteria://", "tuic://",
@@ -155,6 +159,7 @@ LINK_SCHEMES = (
 )
 SUPERSCRIPTS = "¹²³⁴⁵⁶⁷⁸⁹"
 
+# ---------------------------------------------------------------- helpers
 
 
 def b64decode_loose(text):
@@ -274,6 +279,8 @@ def new_node(ntype: str) -> dict:
     }
 
 
+
+
 def _uri_parts(link: str):
     """Split a scheme:// link into (userinfo, host, port, query dict, name)."""
     parts = urlsplit(link)
@@ -376,7 +383,7 @@ def parse_trojan_link(link: str):
     node["sid"] = query.get("sid") or None
     alpn = query.get("alpn")
     node["alpn"] = [a.strip() for a in alpn.split(",") if a.strip()] if alpn else None
-    node["tls"] = True  # trojan is always TLS
+    node["tls"] = True
     return node
 
 
@@ -393,7 +400,7 @@ def _parse_ss_plugin(query: dict, node: dict):
             key, _, val = piece.partition("=")
             opts[key.strip()] = val.strip()
         elif piece.strip():
-            opts[piece.strip()] = True  # bare flag, e.g. v2ray-plugin "tls"
+            opts[piece.strip()] = True
     node["plugin_opts"] = opts
 
 
@@ -411,11 +418,11 @@ def parse_ss_link(link: str):
     node["name_orig"] = name
     node["ss_query"] = query
     _parse_ss_plugin(query, node)
-    
+
     userinfo_hostport = rest
     if "@" in rest:
         userinfo, _, hostport = rest.rpartition("@")
-        hostport = hostport.rstrip("/")  # ss links often end the authority with "/"
+        hostport = hostport.rstrip("/")
         host, port = split_hostport(hostport)
         try:
             decoded = b64decode_loose(userinfo).decode("utf-8")
@@ -597,7 +604,6 @@ def node_complete(node: dict) -> bool:
     return bool(node.get("server")) and bool(node.get("port"))
 
 
-# ---------------------------------------------------------------- YAML / JSON
 
 
 def _alpn_list(value):
@@ -790,7 +796,7 @@ def parse_content(text: str):
     stripped = text.strip().lstrip("\ufeff")
     if not stripped:
         return nodes, "empty"
-    # 1) Whole-blob base64 -> decode once, then re-sniff (max 2 levels).
+
     blob = re.sub(r"\s+", "", stripped)
     if len(blob) >= 40 and re.fullmatch(r"[A-Za-z0-9+/=_-]+", blob):
         try:
@@ -801,7 +807,7 @@ def parse_content(text: str):
                     return inner_nodes, "base64+" + inner_kind
         except Exception:
             pass
-    # 2) JSON (sing-box) or YAML (Clash/Mihomo) structured docs.
+
     if stripped.startswith("{"):
         try:
             doc = json.loads(stripped)
@@ -832,8 +838,7 @@ def parse_content(text: str):
                 nodes.append(node)
         if nodes:
             return nodes, "yaml-list"
-    # 3) Share-link lines (one per line). A bare-base64 line that decodes
-    # to a link is also accepted.
+            
     for raw_line in stripped.splitlines():
         line = raw_line.strip()
         if not line or line.startswith("#"):
@@ -859,7 +864,6 @@ def parse_content(text: str):
     return nodes, "link-lines"
 
 
-# ---------------------------------------------------------------- dedupe
 
 
 def dedupe_key(node: dict):
@@ -895,14 +899,6 @@ def dedupe(nodes):
         seen[key] = node
     return list(seen.values()), duplicates
 
-
-# ---------------------------------------------------------------- emitters
-# Each emitter renders the SAME neutral nodes into one client's native
-# subscribable form. A node a client cannot express is skipped and counted,
-# never written as a possibly-broken line. Evidence per client is recorded
-# in the parent report; Loon/Surge grammar follows the vendors' own docs,
-# QX follows the Surgio/V2Board builder mappings, Shadowrocket follows the
-# share-link subscription form, Mihomo follows the proxy-provider YAML form.
 
 
 def _clean(d: dict) -> dict:
@@ -1054,7 +1050,7 @@ def to_mihomo_dict(node: dict, name: str):
             d["obfs-param"] = node["ssr_obfs_param"]
     elif ntype == "hysteria2":
         if node.get("mport"):
-            return None  # port hopping has no verified Mihomo field mapping
+            return None
         d["password"] = node["password"]
         if node.get("sni"):
             d["sni"] = node["sni"]
@@ -1171,10 +1167,6 @@ def render_mihomo(nodes, names):
               "# Generated by Scripts/Free18.py. Do not edit by hand.\n")
     return header + body, len(proxies), skipped
 
-
-# ------------------------------------------------------------------- Loon
-# Grammar: Loon official docs (nsloon.app/en/docs/Node): one node per line
-# under [Proxy] in a full config; remote node subscriptions are bare lines.
 
 LOON_SSR_PROTOCOLS = {"origin", "auth_chain_a", "auth_chain_b",
                       "auth_aes128_md5", "auth_aes128_sha1", "auth_sha1_v4",
@@ -1358,12 +1350,6 @@ def render_loon(nodes, names):
     return "\n".join(lines) + ("\n" if lines else ""), len(lines), skipped
 
 
-# ------------------------------------------------------- Quantumult X
-# Grammar: bare node lines (remote subscriptions are bare node lists).
-# ss/vmess/ssr/trojan/http mappings follow the Surgio + V2Board builders;
-# vless/hysteria2/tuic/socks are skipped: sources conflict or are silent
-# on whether QX can express them, so no line is guessed.
-
 
 def _qx_bad_value(value) -> bool:
     return value is not None and ("," in str(value) or "\n" in str(value))
@@ -1507,10 +1493,6 @@ def render_qx(nodes, names):
             lines.append(line)
     return "\n".join(lines) + ("\n" if lines else ""), len(lines), skipped
 
-
-# ------------------------------------------------------------------ Surge
-# Grammar: Surge manual (manual.nssurge.com): a config with a [Proxy]
-# section, one "Name = type, server, port, ..." line per node.
 
 
 def to_surge_line(node: dict, name: str):
@@ -1679,10 +1661,6 @@ def render_surge(nodes, names):
     return header + body + ("\n" if lines else ""), len(lines), skipped
 
 
-# ---------------------------------------------------------- Shadowrocket
-# Subscription body: one share link per line, whole body base64-encoded
-# (the generic subscription form Shadowrocket and v2ray clients read).
-
 
 def _hostport(node: dict) -> str:
     server = node["server"]
@@ -1834,8 +1812,6 @@ def render_shadowrocket(nodes, names):
     return blob + "\n", len(links), skipped
 
 
-# ---------------------------------------------------------------- geo / naming
-
 
 def _sup_num(n: int) -> str:
     digits = "⁰¹²³⁴⁵⁶⁷⁸⁹"
@@ -1878,6 +1854,8 @@ def lookup_geo(ips, cache: dict, session, sleep_fn=time.sleep):
                 continue
         todo.append(ip)
     for start in range(0, len(todo), 100):
+        if (start // 100) % 10 == 0:
+            print(f"[Free18] 地理查询：{start}/{len(todo)} 个 IP", flush=True)
         batch = todo[start:start + 100]
         payload = [{"query": ip} for ip in batch]
         data = None
@@ -2062,19 +2040,6 @@ def fetch_url(session, url: str, timeout: int = 30):
         raise RuntimeError(last_error)
     raise RuntimeError(last_error or "fetch failed")
 
-
-# ---------------------------------------------------------------- rename fallback
-# Source files are addressed by fixed raw URLs, but upstream authors rename
-# or move them (e.g. clashfree's dated clashYYYYMMDD.yml files). When the
-# primary URL 404s, fall back to a branch swap (main <-> master) and then
-# to listing the source's directory through the GitHub Contents API (or the
-# Gist API for the Dafeide Gist), fetching the first file matching one of
-# the patterns below, newest name first within a pattern. The API is only
-# touched on a 404, so a normal run makes zero API calls. Patterns are
-# deliberately narrow: the exact current filename first, then only dated
-# variants of the same stem that the source is already known to publish.
-# kind "contents": repo contents listing (array of entries).
-# kind "gist": Gist API response (files dict).
 DISCOVERY = {
     "ripaojiedian": ("https://api.github.com/repos/ripaojiedian/freenode/contents/",
                      "contents", [r"^clash$", r"^sub$"]),
@@ -2149,7 +2114,7 @@ def discover_candidates(session, key: str):
     resp = session.get(api_url, timeout=30,
                        headers={"Accept": "application/vnd.github+json"})
     if resp.status_code != 200:
-        raise RuntimeError(f"discovery API HTTP {resp.status_code}")
+        raise RuntimeError(f"发现接口 HTTP {resp.status_code}")
     data = resp.json()
     if kind == "gist":
         entries = [(name, info.get("raw_url"))
@@ -2185,27 +2150,25 @@ def fetch_source(session, key: str, label: str, url: str):
     if swapped:
         try:
             text = fetch_url(session, swapped)
-            print(f"[Free18] {label}: primary 404, branch fallback worked: "
-                  f"{swapped}", flush=True)
+            print(f"[Free18] {label}：主地址 404，已用分支回退：{swapped}", flush=True)
             return text
         except RuntimeError as exc:
             errors.append(str(exc))
     try:
         candidates = discover_candidates(session, key)
     except Exception as exc:
-        errors.append(f"discovery: {exc}")
+        errors.append(f"发现：{exc}")
         candidates = []
     for cand in candidates:
         if cand in (url, swapped):
             continue
         try:
             text = fetch_url(session, cand)
-            print(f"[Free18] {label}: renamed/moved, discovered: {cand}",
-                  flush=True)
+            print(f"[Free18] {label}：已改名或移动，已发现：{cand}", flush=True)
             return text
         except RuntimeError as exc:
             errors.append(str(exc))
-    raise RuntimeError("; ".join(errors) or "fetch failed")
+    raise RuntimeError("; ".join(errors) or "抓取失败")
 
 
 def write_if_changed(path: Path, text: str) -> bool:
@@ -2235,35 +2198,35 @@ def run_pipeline(root: Path, sources, fetch_fn, geo_fn, now: datetime):
         except Exception as exc:
             failed_sources.append({"key": key, "label": label, "error": str(exc)})
             per_source[key] = 0
-            print(f"[Free18] source failed: {label}: {exc}", flush=True)
+            print(f"[Free18] 来源失败：{label}：{exc}", flush=True)
             continue
         try:
             nodes, kind = parse_content(text)
         except Exception as exc:  # parse_content should not raise; be safe
             failed_sources.append({"key": key, "label": label,
-                                   "error": f"parse error: {exc}"})
+                                   "error": f"解析错误：{exc}"})
             per_source[key] = 0
             continue
         if not nodes:
             failed_sources.append({"key": key, "label": label,
-                                   "error": f"parsed 0 nodes (kind={kind})"})
+                                   "error": "解析出 0 个节点"})
             per_source[key] = 0
             continue
         per_source[key] = len(nodes)
         for node in nodes:
             node["_source"] = key
         all_nodes.extend(nodes)
-        print(f"[Free18] {label}: {len(nodes)} nodes ({kind})", flush=True)
+        print(f"[Free18] {label}：{len(nodes)} 个节点", flush=True)
 
     if not all_nodes:
         stats = {"updated": now.strftime("%Y-%m-%d %H:%M UTC"), "total": 0,
                  "duplicates": 0, "per_source": per_source,
                  "failed_sources": failed_sources, "per_file": {},
-                 "geo_failed": [], "changed": False}
+                 "geo_failed": [], "gfw_excluded": 0, "changed": False}
         (scripts_dir / STATS_NAME).write_text(
             json.dumps(stats, ensure_ascii=False, indent=2) + "\n",
             encoding="utf-8")
-        print("[Free18] ALL SOURCES FAILED - nothing to write", flush=True)
+        print("[Free18] 全部来源失败，未写入任何内容", flush=True)
         return stats, 1
 
     nodes, duplicates = dedupe(all_nodes)
@@ -2271,6 +2234,15 @@ def run_pipeline(root: Path, sources, fetch_fn, geo_fn, now: datetime):
                          if is_ip(norm_server(n["server"]))})
     geo_map = geo_fn(ip_servers, cache, None) if geo_fn else {}
     geo_failed = sorted(ip for ip in ip_servers if not geo_map.get(ip))
+    gfw_excluded = 0
+    kept = []
+    for node in nodes:
+        geo = geo_map.get(norm_server(node["server"]))
+        if geo and (geo.get("countryCode") or "").upper() in GFW_COUNTRIES:
+            gfw_excluded += 1
+        else:
+            kept.append(node)
+    nodes = kept
     nodes, names = assign_names(nodes, geo_map)
 
     rendered = {}
@@ -2296,7 +2268,8 @@ def run_pipeline(root: Path, sources, fetch_fn, geo_fn, now: datetime):
                                   "skipped": dict(skipped_all[fname]),
                                   "sha256": fingerprints[fname]}
                         for fname in rendered},
-             "geo_failed": geo_failed, "changed": False}
+             "geo_failed": geo_failed, "gfw_excluded": gfw_excluded,
+             "changed": False}
 
     changed = False
     for fname, text in rendered.items():
@@ -2315,11 +2288,11 @@ def run_pipeline(root: Path, sources, fetch_fn, geo_fn, now: datetime):
     (scripts_dir / STATS_NAME).write_text(
         json.dumps(stats, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     for fname in rendered:
-        print(f"[Free18] {fname}: {counts[fname]} nodes, "
-              f"skipped={dict(skipped_all[fname])}", flush=True)
-    print(f"[Free18] total={len(nodes)} duplicates={duplicates} "
-          f"failed_sources={len(failed_sources)} geo_failed={len(geo_failed)} "
-          f"changed={changed}", flush=True)
+        print(f"[Free18] {fname}：{counts[fname]} 个节点，"
+              f"已跳过={dict(skipped_all[fname])}", flush=True)
+    print(f"[Free18] 总计={len(nodes)} 去重={duplicates} "
+          f"排除={gfw_excluded} 失败来源={len(failed_sources)} "
+          f"地理失败={len(geo_failed)} 已变更={changed}", flush=True)
     return stats, 0
 
 
@@ -2338,7 +2311,7 @@ def main(argv=None) -> int:
     try:
         _stats, code = run_pipeline(root, SOURCES, fetch_fn, geo_fn, now)
     except Exception as exc:
-        print(f"[Free18] fatal: {exc}", file=sys.stderr, flush=True)
+        print(f"[Free18] 致命错误：{exc}", file=sys.stderr, flush=True)
         return 1
     return code
 
