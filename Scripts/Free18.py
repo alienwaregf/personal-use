@@ -974,7 +974,7 @@ def to_mihomo_dict(node: dict, name: str):
         flow = node.get("flow")
         if flow and str(flow).strip().lower() != "xtls-rprx-vision":
             return None
-    if node.get("type") in ("vmess", "vless", "trojan") and node.get("pbk"):
+    if node.get("yaml_dict") is None and node.get("type") in ("vmess", "vless", "trojan") and node.get("pbk"):
         if not _valid_reality_pubkey(node["pbk"]):
             return None
         if not _valid_reality_sid(node.get("sid")):
@@ -992,6 +992,18 @@ def to_mihomo_dict(node: dict, name: str):
         if node.get("type") == "vless" and data.get("flow"):
             data["flow"] = "xtls-rprx-vision"
         data = _fix_mihomo_opts(data)
+        if node.get("type") in ("vmess", "vless", "trojan"):
+            ropts = data.get("reality-opts")
+            if isinstance(ropts, dict) and ropts.get("public-key"):
+                ropts = dict(ropts)
+                ropts["public-key"] = str(ropts["public-key"]).strip()
+                if ropts.get("short-id") is not None:
+                    ropts["short-id"] = str(ropts["short-id"]).strip()
+                data["reality-opts"] = ropts
+                if not _valid_reality_pubkey(ropts["public-key"]):
+                    return None
+                if not _valid_reality_sid(ropts.get("short-id")):
+                    return None
         return data
     ntype = node["type"]
     if ntype in ("ssr", "ss", "trojan", "vmess", "vless",
