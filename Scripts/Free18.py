@@ -9,6 +9,7 @@ import hashlib
 import ipaddress
 import json
 import os
+import random
 import re
 import sys
 import time
@@ -43,8 +44,6 @@ SOURCES = [
      "https://raw.githubusercontent.com/mahdibland/V2RayAggregator/master/Eternity"),
     ("dafeide", "Dafeide Gist",
      "https://gist.githubusercontent.com/Dafeide/7a072d3de39083d469988844ba2ef165/raw/v2ray"),
-    ("freev2", "freev2.net",
-     "https://xmxosfepggzm.503403.xyz"),
 ]
 
 RAW_BASE = "https://raw.githubusercontent.com/alienwaregf/personal-use/main/proxy/"
@@ -126,6 +125,10 @@ COUNTRY_ZH = {
 }
 
 GFW_COUNTRIES = frozenset({"CN", "KP", "IR", "TM", "RU", "BY", "CU", "VN", "MM"})
+
+COUNTRY_CAP = 10
+COUNTRY_CAP_EXEMPT = frozenset({"US"})
+COUNTRY_CAP_SEED = "Free18"
 
 CF_NETWORKS = tuple(ipaddress.ip_network(cidr) for cidr in (
     "103.21.244.0/22", "103.22.200.0/22", "103.31.4.0/22",
@@ -2297,6 +2300,7 @@ def run_pipeline(root: Path, sources, fetch_fn, geo_fn, now: datetime):
                  "failed_sources": failed_sources, "per_file": {},
                  "geo_failed": [], "gfw_excluded": 0,
                  "cf_excluded": 0, "no_geo_excluded": 0, "changed": False,
+                 "country_cap_removed": 0, "per_country": {},
                  "sources": source_meta}
         (scripts_dir / STATS_NAME).write_text(
             json.dumps(stats, ensure_ascii=False, indent=2) + "\n",
@@ -2341,6 +2345,24 @@ def run_pipeline(root: Path, sources, fetch_fn, geo_fn, now: datetime):
         else:
             no_geo_excluded += 1
     nodes = kept
+    groups = {}
+    for node in nodes:
+        geo = geo_map.get(norm_server(node["server"])) or {}
+        code = (geo.get("countryCode") or "").upper()
+        groups.setdefault(code, []).append(node)
+    per_country = {}
+    cap_removed = 0
+    kept = []
+    for code, group in groups.items():
+        before = len(group)
+        if code not in COUNTRY_CAP_EXEMPT and before > COUNTRY_CAP:
+            rng = random.Random(COUNTRY_CAP_SEED + ":" + code)
+            group = rng.sample(group, COUNTRY_CAP)
+            cap_removed += before - COUNTRY_CAP
+        per_country[code] = len(group)
+        kept.extend(group)
+    per_country = dict(sorted(per_country.items()))
+    nodes = kept
     nodes, names = assign_names(nodes, geo_map)
     updated = now.strftime("%Y-%m-%d %H:%M UTC")
 
@@ -2368,6 +2390,7 @@ def run_pipeline(root: Path, sources, fetch_fn, geo_fn, now: datetime):
                         for fname in rendered},
              "geo_failed": geo_failed, "gfw_excluded": gfw_excluded,
              "cf_excluded": cf_excluded, "no_geo_excluded": no_geo_excluded, "changed": False,
+             "country_cap_removed": cap_removed, "per_country": per_country,
              "sources": source_meta}
 
     changed = False
@@ -2384,7 +2407,7 @@ def run_pipeline(root: Path, sources, fetch_fn, geo_fn, now: datetime):
         print(f"[Free18] {fname}：{counts[fname]} 个节点，"
               f"已跳过={dict(skipped_all[fname])}", flush=True)
     print(f"[Free18] 总计={len(nodes)} 去重={duplicates} "
-          f"排除={gfw_excluded} CF排除={cf_excluded} 无归属={no_geo_excluded} 失败来源={len(failed_sources)} "
+          f"排除={gfw_excluded} CF排除={cf_excluded} 无归属={no_geo_excluded} 国家上限删={cap_removed} 失败来源={len(failed_sources)} "
           f"地理失败={len(geo_failed)} 已变更={changed}", flush=True)
     return stats, 0
 
