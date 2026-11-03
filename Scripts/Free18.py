@@ -16,11 +16,6 @@ from urllib.parse import parse_qsl, quote, unquote, urlencode, urlsplit
 import requests
 import yaml
 
-# ---------------------------------------------------------------- sources
-# (key, label, url). One entry per authoritative file; same-pool duplicates
-# (AutoMerge fork, ssrsub mirror, clashfree sister repo, TGParse per-protocol
-# files, NoMoreWalls list.yml, free18 c.yaml, Dafeide clash.yaml/sing-box)
-# are deliberately NOT listed. See proxy/README.md for the rationale.
 SOURCES = [
     ("ripaojiedian", "ripaojiedian/freenode",
      "https://raw.githubusercontent.com/ripaojiedian/freenode/main/clash"),
