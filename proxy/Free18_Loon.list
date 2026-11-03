@@ -22,8 +22,9 @@
 🇦🇺 澳大利亚 悉尼  45.63.30.142⁴ = Trojan,45.63.30.142,443,"0ab6c98dae3b48e8b9c4a776b6c9c19a",transport=tcp, sni=connectwithemployerstohireyouridealteam.com
 🇧🇬 保加利亚 索菲亞  213.183.63.60 = Shadowsocks,213.183.63.60,9054,aes-256-cfb,"VcFuyXvND2yQWSFY"
 🇧🇷 巴西 Osasco  216.238.104.154¹ = Trojan,216.238.104.154,443,"0ab6c98dae3b48e8b9c4a776b6c9c19a",transport=tcp, sni=findtemporaryworkandfreelancerprojectsonlineplatform.com
-🇧🇷 巴西 Osasco  216.238.104.154² = Trojan,216.238.104.154,443,"0ab6c98dae3b48e8b9c4a776b6c9c19a",transport=tcp
+🇧🇷 巴西 Osasco  216.238.104.154² = Trojan,216.238.104.154,443,"0ab6c98dae3b48e8b9c4a776b6c9c19a",transport=tcp, sni=findtemporaryworkandfreelancerprojectsonlineplatform.com
 🇧🇷 巴西 Osasco  216.238.104.154³ = Trojan,216.238.104.154,443,"0ab6c98dae3b48e8b9c4a776b6c9c19a",transport=tcp
+🇧🇷 巴西 Osasco  216.238.104.154⁴ = Trojan,216.238.104.154,443,"0ab6c98dae3b48e8b9c4a776b6c9c19a",transport=tcp
 🇧🇷 巴西 维亚芒  177.7.51.29¹ = VLESS,177.7.51.29,8443,"c6b1b2d0-ed5e-48ce-99e6-112ff330030d",transport=tcp, over-tls=true
 🇧🇷 巴西 维亚芒  177.7.51.29² = VLESS,177.7.51.29,8443,"c6b1b2d0-ed5e-48ce-99e6-112ff330030d",transport=tcp, over-tls=false
 🇨🇦 加拿大 Beauharnois  51.222.12.127¹ = Shadowsocks,51.222.12.127,445,aes-256-gcm,"zDNVedRFPQexG9v"
@@ -51,34 +52,57 @@
 🇨🇦 加拿大 多伦多  104.16.60.8 = VMess,104.16.60.8,2086,auto,"76221bfb-e92f-4e80-81c5-6fe48f50ac0b",transport=ws, alterId=0, path=/glweidf.sbs/linkws, host=1c11-muddy-rice-1c11.vetanex501.workers.dev, over-tls=false
 🇨🇦 加拿大 多伦多  104.16.7.70¹ = VLESS,104.16.7.70,2095,"2b5f8588-87f6-40af-a785-322c8fa1df77",transport=ws, path=/XnXnXnXnXnXnXnXnXnXnXnXnXnXnXnXnXnXnXnXnXnXnXnXnXnXnXnXn?ed=2560, host=sni.111000.dynv6.azazilvpn.sbs, over-tls=false
 🇨🇦 加拿大 多伦多  104.16.7.70² = VLESS,104.16.7.70,2096,"6202b230-417c-4d8e-b624-0f71afa9c75d",transport=ws, path=/, host=sni.jpmj.dev, over-tls=true, sni=sni.jpmj.dev
+🇨🇦 加拿大 多伦多  104.17.0.3¹ = Trojan,104.17.0.3,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me, skip-cert-verify=true
+🇨🇦 加拿大 多伦多  104.17.0.3² = Trojan,104.17.0.3,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me, skip-cert-verify=true
 🇨🇦 加拿大 多伦多  104.17.11.191¹ = VLESS,104.17.11.191,443,"fc7d2cfe-f5ef-40c8-a848-a0bdc11f6349",transport=ws, path=/vlessws, host=vpn.cintaku.qzz.io, over-tls=true, sni=vpn.cintaku.qzz.io
 🇨🇦 加拿大 多伦多  104.17.11.191² = VLESS,104.17.11.191,443,"fc7d2cfe-f5ef-40c8-a848-a0bdc11f6349",transport=ws, path=/vlesswsfp=chrome, host=vpn.cintaku.qzz.io, over-tls=true, sni=vpn.cintaku.qzz.io
 🇨🇦 加拿大 多伦多  104.17.119.248 = VLESS,104.17.119.248,8080,"ff9307e6-f04a-4905-8cd4-7e690bd63eb8",transport=ws, path=/eyJqdW5rIjoiYUVJQnRNVEk1MlJKUiIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbXX0=?ed=2560, host=green-flower-361d.iamxenor.workers.dev, over-tls=false
-🇨🇦 加拿大 多伦多  104.17.148.22 = VLESS,104.17.148.22,80,"8bdb892c-3f28-4821-8169-a73a23a9bb6d",transport=ws, host=asan.net.v2rayng6.6.6.6.ir.com.site.列列男事的事列上赛男.golestan-vpn.LINK., over-tls=false
 🇨🇦 加拿大 多伦多  104.17.72.206 = VLESS,104.17.72.206,443,"7d12caa2-43e0-45d2-8636-08b342615c7b",transport=ws, path=/, over-tls=true, sni=clod.pedramhost.shop
 🇨🇦 加拿大 多伦多  104.18.12.149 = VLESS,104.18.12.149,443,"0f705100-9799-4e7e-be81-cfcfc6835630",transport=ws, path=/, host=c1.iranesf031.ir, over-tls=true, sni=c1.iranesf031.ir
-🇨🇦 加拿大 多伦多  104.18.12.229¹ = Trojan,104.18.12.229,8443,"trojan",transport=ws, path=/, host=longwanghen.pages.dev, sni=longwanghen.pages.dev
-🇨🇦 加拿大 多伦多  104.18.12.229² = Trojan,104.18.12.229,8443,"trojan",transport=tcp, sni=longwanghen.pages.dev
+🇨🇦 加拿大 多伦多  104.18.12.229¹ = Trojan,104.18.12.229,8443,"trojan",transport=ws, path=/, host=longwanghen.pages.dev, sni=longwanghen.pages.dev, skip-cert-verify=true
+🇨🇦 加拿大 多伦多  104.18.12.229² = Trojan,104.18.12.229,8443,"trojan",transport=tcp, sni=longwanghen.pages.dev, skip-cert-verify=true
+🇨🇦 加拿大 多伦多  104.18.12.229³ = Trojan,104.18.12.229,8443,"trojan",transport=ws, path=/, host=longwanghen.pages.dev, sni=longwanghen.pages.dev
+🇨🇦 加拿大 多伦多  104.18.12.229⁴ = Trojan,104.18.12.229,8443,"trojan",transport=tcp, sni=longwanghen.pages.dev
 🇨🇦 加拿大 多伦多  104.18.203.232 = VLESS,104.18.203.232,2095,"b4d2cb44-6eaf-48e7-adcb-5a7c49bddd8d",transport=ws, path=/, host=aaaaaaaaaaaaaaaaAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA.Iran-Check-Host-server-sitesssssssssssssssssssssss--sssssssssss.com, over-tls=false
-🇨🇦 加拿大 多伦多  104.18.218.118¹ = VLESS,104.18.218.118,443,"a94edb46-0734-4593-a8b5-9cd11ddc57f6",transport=ws, path=/Telegram-@Azarakhsh_Proxy/?ed=2560, host=5c53ca21.vpn-aryoo.pages.dev, over-tls=true, sni=5c53ca21.vpn-aryoo.pages.dev
-🇨🇦 加拿大 多伦多  104.18.218.118² = VLESS,104.18.218.118,443,"a94edb46-0734-4593-a8b5-9cd11ddc57f6",transport=ws, path=/Telegram-------V2rayi_net_-_-_-_-Telegram-------V2rayi_net/?ed=2560, host=5c53ca21.vpn-aryoo.pages.dev, over-tls=true, sni=5c53ca21.vpn-aryoo.pages.dev
-🇨🇦 加拿大 多伦多  104.18.35.86¹ = VLESS,104.18.35.86,2083,"a1de0630-5786-48a0-84f6-dc6f2de10d6d",transport=ws, path=/fp=unsafefp=chrome, host=vlsovip.1d.mom, over-tls=true, sni=vlsovip.1d.mom
-🇨🇦 加拿大 多伦多  104.18.35.86² = Trojan,104.18.35.86,2096,"123456",transport=ws, path=/, host=321dfbc6.uir-9i6.pages.dev, sni=321dfbc6.uir-9i6.pages.dev
-🇨🇦 加拿大 多伦多  104.18.35.86³ = Trojan,104.18.35.86,2096,"123456",transport=tcp, sni=321dfbc6.uir-9i6.pages.dev
+🇨🇦 加拿大 多伦多  104.18.218.118¹ = VLESS,104.18.218.118,443,"a94edb46-0734-4593-a8b5-9cd11ddc57f6",transport=ws, path=/Telegram-------V2rayi_net_-_-_-_-Telegram-------V2rayi_net/?ed=2560, host=5c53ca21.vpn-aryoo.pages.dev, over-tls=true, sni=5c53ca21.vpn-aryoo.pages.dev
+🇨🇦 加拿大 多伦多  104.18.218.118² = VLESS,104.18.218.118,443,"a94edb46-0734-4593-a8b5-9cd11ddc57f6",transport=ws, path=/Telegram-@Azarakhsh_Proxy/?ed=2560, host=5c53ca21.vpn-aryoo.pages.dev, over-tls=true, sni=5c53ca21.vpn-aryoo.pages.dev
+🇨🇦 加拿大 多伦多  104.18.35.86⁵ = VLESS,104.18.35.86,2083,"a1de0630-5786-48a0-84f6-dc6f2de10d6d",transport=ws, path=/fp=unsafefp=chrome, host=vlsovip.1d.mom, over-tls=true, sni=vlsovip.1d.mom
+🇨🇦 加拿大 多伦多  104.18.35.86² = Trojan,104.18.35.86,2096,"123456",transport=ws, path=/, host=321dfbc6.uir-9i6.pages.dev, sni=321dfbc6.uir-9i6.pages.dev, skip-cert-verify=true
+🇨🇦 加拿大 多伦多  104.18.35.86⁴ = Trojan,104.18.35.86,2096,"123456",transport=tcp, sni=321dfbc6.uir-9i6.pages.dev, skip-cert-verify=true
+🇨🇦 加拿大 多伦多  104.18.35.86⁶ = Trojan,104.18.35.86,2096,"123456",transport=ws, path=/, host=321dfbc6.uir-9i6.pages.dev, sni=321dfbc6.uir-9i6.pages.dev
+🇨🇦 加拿大 多伦多  104.18.35.86⁷ = Trojan,104.18.35.86,2096,"123456",transport=tcp, sni=321dfbc6.uir-9i6.pages.dev
+🇨🇦 加拿大 多伦多  104.18.35.86¹ = Trojan,104.18.35.86,8443,"trojan",transport=ws, path=/, host=longwanghen.pages.dev, sni=longwanghen.pages.dev, skip-cert-verify=true
+🇨🇦 加拿大 多伦多  104.18.35.86³ = Trojan,104.18.35.86,8443,"trojan",transport=tcp, sni=longwanghen.pages.dev, skip-cert-verify=true
 🇨🇦 加拿大 多伦多  104.18.4.130 = VLESS,104.18.4.130,8443,"83f03646-fb28-44cc-9d2c-8853f6c09285",transport=ws, path=/XIXVPN?ed, host=r4fnviw9jl4i4rx.zjde5.de5.net, over-tls=true, sni=r4fnviw9jl4i4rx.zjde5.de5.net
 🇨🇦 加拿大 多伦多  104.18.40.100 = VLESS,104.18.40.100,443,"d342d11e-d224-4463-b982-532309285094",transport=ws, path=/fp=chromefp=chrome, host=ccc.010304.xyz, over-tls=true, sni=ccc.010304.xyz
-🇨🇦 加拿大 多伦多  104.18.43.20¹ = Trojan,104.18.43.20,2087,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me
-🇨🇦 加拿大 多伦多  104.18.43.20² = Trojan,104.18.43.20,2087,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me
+🇨🇦 加拿大 多伦多  104.18.43.20¹ = Trojan,104.18.43.20,2087,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me, skip-cert-verify=true
+🇨🇦 加拿大 多伦多  104.18.43.20² = Trojan,104.18.43.20,2087,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me, skip-cert-verify=true
+🇨🇦 加拿大 多伦多  104.18.43.20³ = Trojan,104.18.43.20,2087,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me
+🇨🇦 加拿大 多伦多  104.18.43.20⁴ = Trojan,104.18.43.20,2087,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me
 🇨🇦 加拿大 多伦多  104.18.45.38 = VLESS,104.18.45.38,443,"d342d11e-d224-4463-b982-532309285094",transport=ws, path=/?TELEGRAM--MARAMBASHI--MARAMBASHI--MARAMBASHI--MARAMBASHI?ed=2560, host=ccc.010304.xyz, over-tls=true, sni=ccc.010304.xyz
 🇨🇦 加拿大 多伦多  104.18.5.250 = VLESS,104.18.5.250,443,"a64f0cea-ca89-40e6-b316-b3badff1eb90",transport=ws, path=/Telegram-------V2rayi_net_-_-_-_-Telegram-------V2rayi_net/?ed=2560, host=iSAA1.paGEs.DEV, over-tls=true, sni=iSaa1.PAGeS.DeV
 🇨🇦 加拿大 多伦多  104.18.59.70 = VLESS,104.18.59.70,2053,"89b3cbba-e6ac-485a-9481-976a0415eab9",transport=ws, path=/9wUhFMKgsGMqAUO6?ed=2560, host=mAHdIserveR-asL.paGES.dEv, over-tls=true, sni=MaHdisErVEr-asl.pAGEs.DEv
+🇨🇦 加拿大 多伦多  104.19.0.5¹ = Trojan,104.19.0.5,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me, skip-cert-verify=true
+🇨🇦 加拿大 多伦多  104.19.0.5² = Trojan,104.19.0.5,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me, skip-cert-verify=true
 🇨🇦 加拿大 多伦多  104.19.19.58 = VLESS,104.19.19.58,2096,"d342d11e-d424-4583-b36e-524ab1f0afa4",transport=ws, path=/?ed=2048, host=baipiao1.curly-train.pages.dev, over-tls=true, sni=baipiao1.curly-train.pages.dev
 🇨🇦 加拿大 多伦多  104.19.229.21¹ = Trojan,104.19.229.21,443,"humanity",transport=ws, path=/assignment, host=www.calmlunch.com, sni=www.calmlunch.com
 🇨🇦 加拿大 多伦多  104.19.229.21² = Trojan,104.19.229.21,443,"humanity",transport=ws, path=/assignment, host=www.calmlunch.com, sni=www.calmlunch.com
 🇨🇦 加拿大 多伦多  104.19.229.21³ = Trojan,104.19.229.21,443,"humanity",transport=ws, path=%2Fassignment, host=www.calmlunch.com, sni=www.calmlunch.com, skip-cert-verify=false
 🇨🇦 加拿大 多伦多  104.19.229.21⁴ = Trojan,104.19.229.21,443,"humanity",transport=ws, path=/assignment, host=www.calmlunch.com, sni=www.calmlunch.com
-🇨🇦 加拿大 多伦多  104.21.0.5¹ = Trojan,104.21.0.5,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me
-🇨🇦 加拿大 多伦多  104.21.0.5² = Trojan,104.21.0.5,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me
+🇨🇦 加拿大 多伦多  104.21.0.1¹ = Trojan,104.21.0.1,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me, skip-cert-verify=true
+🇨🇦 加拿大 多伦多  104.21.0.1² = Trojan,104.21.0.1,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me, skip-cert-verify=true
+🇨🇦 加拿大 多伦多  104.21.0.2¹ = Trojan,104.21.0.2,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me, skip-cert-verify=true
+🇨🇦 加拿大 多伦多  104.21.0.2² = Trojan,104.21.0.2,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me, skip-cert-verify=true
+🇨🇦 加拿大 多伦多  104.21.0.3¹ = Trojan,104.21.0.3,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me, skip-cert-verify=true
+🇨🇦 加拿大 多伦多  104.21.0.3² = Trojan,104.21.0.3,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me, skip-cert-verify=true
+🇨🇦 加拿大 多伦多  104.21.0.4¹ = Trojan,104.21.0.4,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me, skip-cert-verify=true
+🇨🇦 加拿大 多伦多  104.21.0.4² = Trojan,104.21.0.4,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me, skip-cert-verify=true
+🇨🇦 加拿大 多伦多  104.21.0.5¹ = Trojan,104.21.0.5,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me, skip-cert-verify=true
+🇨🇦 加拿大 多伦多  104.21.0.5² = Trojan,104.21.0.5,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me, skip-cert-verify=true
+🇨🇦 加拿大 多伦多  104.21.0.5³ = Trojan,104.21.0.5,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me
+🇨🇦 加拿大 多伦多  104.21.0.5⁴ = Trojan,104.21.0.5,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me
+🇨🇦 加拿大 多伦多  104.21.0.7¹ = Trojan,104.21.0.7,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me, skip-cert-verify=true
+🇨🇦 加拿大 多伦多  104.21.0.7² = Trojan,104.21.0.7,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me, skip-cert-verify=true
 🇨🇦 加拿大 多伦多  104.21.12.150 = VLESS,104.21.12.150,8443,"a2dadb95-3f15-4e1c-b517-0b54c336a5fd",transport=ws, path=/?ed=2048, host=nl57.vlessx.us, over-tls=true, sni=nl57.Vlessx.us
 🇨🇦 加拿大 多伦多  104.21.15.212 = VMess,104.21.15.212,443,auto,"76221bfb-e92f-4e80-81c5-6fe48f50ac0b",transport=ws, alterId=0, path=/linkws, host=glweidf.sbs, over-tls=true, sni=glweidf.sbs
 🇨🇦 加拿大 多伦多  104.21.221.158¹ = VLESS,104.21.221.158,443,"d342d11e-d224-4463-b982-532309285094",transport=ws, path=/fp=chrome, host=ccc.010304.xyz, over-tls=true, sni=ccc.010304.xyz
@@ -95,19 +119,35 @@
 🇨🇦 加拿大 多伦多  104.21.74.214 = VLESS,104.21.74.214,2096,"50414e45-4c5f-5a45-5553-6f51879c0594",transport=ws, path=/fp=chrome, host=levikoconfig.levikogjgfdd.ir, over-tls=true, sni=levikoconfig.levikogjgfdd.ir
 🇨🇦 加拿大 多伦多  104.21.94.161¹ = VLESS,104.21.94.161,443,"d342d11e-d224-4463-b982-532309285094",transport=ws, path=/, host=ccc.010304.xyz, over-tls=true, sni=ccc.010304.xyz
 🇨🇦 加拿大 多伦多  104.21.94.161² = VLESS,104.21.94.161,443,"d342d11e-d224-4463-b982-532309285094",transport=ws, path=/fp=chrome, host=ccc.010304.xyz, over-tls=true, sni=ccc.010304.xyz
-🇨🇦 加拿大 多伦多  104.24.0.4¹ = Trojan,104.24.0.4,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me
-🇨🇦 加拿大 多伦多  104.24.0.4² = Trojan,104.24.0.4,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me
-🇨🇦 加拿大 多伦多  104.25.0.6¹ = Trojan,104.25.0.6,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me
-🇨🇦 加拿大 多伦多  104.25.0.6² = Trojan,104.25.0.6,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me
-🇨🇦 加拿大 多伦多  104.25.0.8¹ = Trojan,104.25.0.8,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me
-🇨🇦 加拿大 多伦多  104.25.0.8² = Trojan,104.25.0.8,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me
+🇨🇦 加拿大 多伦多  104.24.0.4¹ = Trojan,104.24.0.4,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me, skip-cert-verify=true
+🇨🇦 加拿大 多伦多  104.24.0.4² = Trojan,104.24.0.4,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me, skip-cert-verify=true
+🇨🇦 加拿大 多伦多  104.24.0.4³ = Trojan,104.24.0.4,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me
+🇨🇦 加拿大 多伦多  104.24.0.4⁴ = Trojan,104.24.0.4,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me
+🇨🇦 加拿大 多伦多  104.25.0.2¹ = Trojan,104.25.0.2,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me, skip-cert-verify=true
+🇨🇦 加拿大 多伦多  104.25.0.2² = Trojan,104.25.0.2,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me, skip-cert-verify=true
+🇨🇦 加拿大 多伦多  104.25.0.6¹ = Trojan,104.25.0.6,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me, skip-cert-verify=true
+🇨🇦 加拿大 多伦多  104.25.0.6² = Trojan,104.25.0.6,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me, skip-cert-verify=true
+🇨🇦 加拿大 多伦多  104.25.0.6³ = Trojan,104.25.0.6,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me
+🇨🇦 加拿大 多伦多  104.25.0.6⁴ = Trojan,104.25.0.6,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me
+🇨🇦 加拿大 多伦多  104.25.0.8¹ = Trojan,104.25.0.8,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me, skip-cert-verify=true
+🇨🇦 加拿大 多伦多  104.25.0.8² = Trojan,104.25.0.8,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me, skip-cert-verify=true
+🇨🇦 加拿大 多伦多  104.25.0.8³ = Trojan,104.25.0.8,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me
+🇨🇦 加拿大 多伦多  104.25.0.8⁴ = Trojan,104.25.0.8,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me
 🇨🇦 加拿大 多伦多  104.25.95.31 = VLESS,104.25.95.31,443,"d342d11e-d224-4463-b982-532309285094",transport=ws, path=/fp=chromefp=chrome, host=ccc.010304.xyz, over-tls=true, sni=ccc.010304.xyz
-🇨🇦 加拿大 多伦多  104.26.0.3¹ = Trojan,104.26.0.3,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me
-🇨🇦 加拿大 多伦多  104.26.0.3² = Trojan,104.26.0.3,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me
-🇨🇦 加拿大 多伦多  104.27.0.2¹ = Trojan,104.27.0.2,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me
-🇨🇦 加拿大 多伦多  104.27.0.2² = Trojan,104.27.0.2,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me
-🇨🇦 加拿大 多伦多  104.27.0.3¹ = Trojan,104.27.0.3,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me
-🇨🇦 加拿大 多伦多  104.27.0.3² = Trojan,104.27.0.3,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me
+🇨🇦 加拿大 多伦多  104.26.0.3¹ = Trojan,104.26.0.3,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me, skip-cert-verify=true
+🇨🇦 加拿大 多伦多  104.26.0.3² = Trojan,104.26.0.3,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me, skip-cert-verify=true
+🇨🇦 加拿大 多伦多  104.26.0.3³ = Trojan,104.26.0.3,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me
+🇨🇦 加拿大 多伦多  104.26.0.3⁴ = Trojan,104.26.0.3,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me
+🇨🇦 加拿大 多伦多  104.26.0.6¹ = Trojan,104.26.0.6,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me, skip-cert-verify=true
+🇨🇦 加拿大 多伦多  104.26.0.6² = Trojan,104.26.0.6,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me, skip-cert-verify=true
+🇨🇦 加拿大 多伦多  104.27.0.2¹ = Trojan,104.27.0.2,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me, skip-cert-verify=true
+🇨🇦 加拿大 多伦多  104.27.0.2² = Trojan,104.27.0.2,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me, skip-cert-verify=true
+🇨🇦 加拿大 多伦多  104.27.0.2³ = Trojan,104.27.0.2,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me
+🇨🇦 加拿大 多伦多  104.27.0.2⁴ = Trojan,104.27.0.2,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me
+🇨🇦 加拿大 多伦多  104.27.0.3¹ = Trojan,104.27.0.3,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me, skip-cert-verify=true
+🇨🇦 加拿大 多伦多  104.27.0.3² = Trojan,104.27.0.3,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me, skip-cert-verify=true
+🇨🇦 加拿大 多伦多  104.27.0.3³ = Trojan,104.27.0.3,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me
+🇨🇦 加拿大 多伦多  104.27.0.3⁴ = Trojan,104.27.0.3,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me
 🇨🇦 加拿大 多伦多  104.27.207.92 = VLESS,104.27.207.92,443,"f06ac303-e626-451d-bcfc-ee825ee69398",transport=ws, path=/Telegram-------V2rayi_net_-_-_-_-Telegram-------V2rayi_net/?ed=2560, host=azADNet-seMEJ.pageS.DeV, over-tls=true, sni=AzAdnET-SemeJ.pAGES.dev
 🇨🇦 加拿大 多伦多  104.27.66.214 = VLESS,104.27.66.214,8443,"be5851ff-9af5-45ea-b874-a0a035714114",transport=ws, path=/admin.php, host=ratatouille.adaspoloandco.com, over-tls=true, sni=ratatouille.adaspoloandco.com
 🇨🇦 加拿大 多伦多  104.27.88.172¹ = VLESS,104.27.88.172,80,"50414e45-4c5f-5a45-5553-52108a2d5224",transport=ws, path=/api/ws, host=web-app-nr6wpa.app-tp57xz.workers.dev, over-tls=false, sni=web-app-nr6wpa.app-tp57xz.workers.dev
@@ -135,9 +175,13 @@
 🇨🇦 加拿大 多伦多  172.64.155.209² = VLESS,172.64.155.209,443,"d342d11e-d224-4463-b982-532309285094",transport=ws, path=/fp=chrome, host=ccc.010304.xyz, over-tls=true, sni=ccc.010304.xyz
 🇨🇦 加拿大 多伦多  172.64.155.209¹ = VLESS,172.64.155.209,8443,"e8c61352-444f-4154-ba34-9d3141154a8d",transport=ws, path=/uploader.php, host=maple.adaspoloandco.com, over-tls=true, sni=maple.adaspoloandco.com
 🇨🇦 加拿大 多伦多  172.64.157.229 = VLESS,172.64.157.229,443,"d342d11e-d224-4463-b982-532309285094",transport=ws, path=/, host=ccc.010304.xyz, over-tls=true, sni=ccc.010304.xyz
-🇨🇦 加拿大 多伦多  172.64.229.135¹ = Trojan,172.64.229.135,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me
-🇨🇦 加拿大 多伦多  172.64.229.135² = Trojan,172.64.229.135,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me
+🇨🇦 加拿大 多伦多  172.64.229.135¹ = Trojan,172.64.229.135,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me, skip-cert-verify=true
+🇨🇦 加拿大 多伦多  172.64.229.135² = Trojan,172.64.229.135,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me, skip-cert-verify=true
+🇨🇦 加拿大 多伦多  172.64.229.135³ = Trojan,172.64.229.135,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me
+🇨🇦 加拿大 多伦多  172.64.229.135⁴ = Trojan,172.64.229.135,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me
 🇨🇦 加拿大 多伦多  172.64.229.21 = VMess,172.64.229.21,443,auto,"0cf6d970-3f1d-4aae-a989-92a8f76ae3db",transport=ws, alterId=0, path=/ws, host=vmess.lbw666.dpdns.org, over-tls=true, sni=vmess.lbw666.dpdns.org
+🇨🇦 加拿大 多伦多  172.64.229.7¹ = Trojan,172.64.229.7,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me, skip-cert-verify=true
+🇨🇦 加拿大 多伦多  172.64.229.7² = Trojan,172.64.229.7,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me, skip-cert-verify=true
 🇨🇦 加拿大 多伦多  172.66.0.1 = Trojan,172.66.0.1,443,"humanity",transport=ws, path=/assignment, host=www.calmlunch.com, alpn="http/1.1", sni=www.calmlunch.com
 🇨🇦 加拿大 多伦多  172.66.0.162 = VLESS,172.66.0.162,443,"d342d11e-d224-4463-b982-532309285094",transport=ws, path=/, host=ccc.010304.xyz, over-tls=true, sni=ccc.010304.xyz
 🇨🇦 加拿大 多伦多  172.66.44.254 = VLESS,172.66.44.254,2053,"89b3cbba-e6ac-485a-9481-976a0415eab9",transport=ws, path=/, host=cXrolvpn.pagEs.DEv, over-tls=true, sni=cXrOLvPn.PAgEs.dev
@@ -162,10 +206,14 @@
 🇨🇦 加拿大 多伦多  188.114.97.3² = VLESS,188.114.97.3,443,"08c41e17-9d1c-4d4a-9edc-242d3d71c1ac",transport=ws, path=/B7tnDeiaEFHTS0Li, host=order.fortgift.ir, over-tls=true, sni=oRdEr.fortGIFT.ir
 🇨🇦 加拿大 多伦多  188.114.97.3¹ = VMess,188.114.97.3,443,auto,"f584de15-2034-4170-a723-f48c2bae5e0f",transport=ws, alterId=0, path=/linkws, host=afrhms16v.bestxray.buzz, over-tls=true, sni=afrhms16v.bestxray.buzz
 🇨🇦 加拿大 多伦多  188.114.97.3³ = VLESS,188.114.97.3,8080,"08c41e17-9d1c-4d4a-9edc-242d3d71c1ac",transport=ws, path=/gfWh39Z4XwUXaqVY, host=order.fortgift.ir, over-tls=false
-🇨🇦 加拿大 多伦多  188.114.97.6² = VLESS,188.114.97.6,443,"495c7195-85b8-498a-bf20-2ea9ce9175b5",transport=tcp, over-tls=true
-🇨🇦 加拿大 多伦多  188.114.97.6³ = VLESS,188.114.97.6,443,"1ce9392f-caf4-48f7-bbb9-475b101fbde0",transport=ws, path=/id-tksi, host=graph.instagram.com.cyylr.eu.cc, over-tls=true, sni=graph.instagram.com.cyylr.eu.cc
+🇨🇦 加拿大 多伦多  188.114.97.6² = VLESS,188.114.97.6,443,"44eae030-290b-4083-8102-6f8bab05701b",transport=ws, path=/, host=cfvvv-ev1.pages.dev, over-tls=true, sni=cfvvv-ev1.pages.dev
+🇨🇦 加拿大 多伦多  188.114.97.6³ = VLESS,188.114.97.6,443,"8102891d-7b37-4dc5-8261-9474b59b5c63",transport=ws, path=/proxyip=us.xiabibi.cf, host=vip.868068.xyz, over-tls=true, sni=vip.868068.xyz
+🇨🇦 加拿大 多伦多  188.114.97.6⁴ = VLESS,188.114.97.6,443,"44eae030-290b-4083-8102-6f8bab05701b",transport=ws, path=/?TELEGRAM--V2ray_confiig?ed=2560, host=cfvvv-ev1.pages.dev, over-tls=true, sni=cfvvv-ev1.pages.dev
+🇨🇦 加拿大 多伦多  188.114.97.6⁵ = VLESS,188.114.97.6,443,"44eae030-290b-4083-8102-6f8bab05701b",transport=ws, path=/mtmvpn, host=cfvvv-ev1.pages.dev, over-tls=true, sni=cfvvv-ev1.pages.dev
+🇨🇦 加拿大 多伦多  188.114.97.6⁶ = VLESS,188.114.97.6,443,"495c7195-85b8-498a-bf20-2ea9ce9175b5",transport=tcp, over-tls=true
+🇨🇦 加拿大 多伦多  188.114.97.6⁷ = VLESS,188.114.97.6,443,"1ce9392f-caf4-48f7-bbb9-475b101fbde0",transport=ws, path=/id-tksi, host=graph.instagram.com.cyylr.eu.cc, over-tls=true, sni=graph.instagram.com.cyylr.eu.cc
 🇨🇦 加拿大 多伦多  188.114.97.6¹ = VLESS,188.114.97.6,8080,"e5cc16a6-ea42-46b2-82ae-ad2157e1641b",transport=ws, path=/sg-melbi, host=hhlfy.twiladaphne.ndjp.net, over-tls=false, sni=hhlfy.twiladaphne.ndjp.net
-🇨🇦 加拿大 多伦多  188.114.97.6⁴ = VLESS,188.114.97.6,8080,"e5cc16a6-ea42-46b2-82ae-ad2157e1641b",transport=ws, path=/sg-melbi, host=hhlfy.twiladaphne.ndjp.net, over-tls=false, sni=hhlfy.twiladaphne.ndjp.net
+🇨🇦 加拿大 多伦多  188.114.97.6⁸ = VLESS,188.114.97.6,8080,"e5cc16a6-ea42-46b2-82ae-ad2157e1641b",transport=ws, path=/sg-melbi, host=hhlfy.twiladaphne.ndjp.net, over-tls=false, sni=hhlfy.twiladaphne.ndjp.net
 🇨🇦 加拿大 多伦多  188.114.98.0¹ = VLESS,188.114.98.0,443,"fef4a93d-eb4f-4657-b56b-32a0dc060045",transport=ws, path=/, over-tls=true, sni=dev.twistsparrow.xyz
 🇨🇦 加拿大 多伦多  188.114.98.0² = VLESS,188.114.98.0,443,"8a30cf48-9fa2-46c5-8815-2822b12852e0",transport=ws, path=/, host=xqkxw.ccwu.cc, over-tls=true, sni=xqkxw.ccwu.cc
 🇨🇦 加拿大 多伦多  188.114.98.0³ = VLESS,188.114.98.0,443,"4e4f1f70-5e56-4a76-bb9d-db087f4690c4",transport=ws, path=/tyxywsfp=unsafe, host=jp3.yohototo.top, over-tls=true, sni=jp3.yohototo.top
@@ -182,8 +230,8 @@
 🇨🇦 加拿大 多伦多  216.152.147.48 = Trojan,216.152.147.48,443,"0ab6c98dae3b48e8b9c4a776b6c9c19a",transport=tcp, sni=courses.connectingpeoplewithgreatjobs.com
 🇨🇦 加拿大 多伦多  216.152.147.79¹ = Trojan,216.152.147.79,443,"0ab6c98dae3b48e8b9c4a776b6c9c19a",transport=tcp
 🇨🇦 加拿大 多伦多  216.152.147.79² = Trojan,216.152.147.79,443,"0ab6c98dae3b48e8b9c4a776b6c9c19a",transport=tcp, sni=blog.connectingpeoplewithgreatjobs.com
-🇨🇦 加拿大 多伦多  216.152.147.79³ = Trojan,216.152.147.79,443,"0ab6c98dae3b48e8b9c4a776b6c9c19a",transport=tcp, sni=blog.connectingpeoplewithgreatjobs.com
-🇨🇦 加拿大 多伦多  216.152.147.79⁴ = Trojan,216.152.147.79,443,"0ab6c98dae3b48e8b9c4a776b6c9c19a",transport=tcp
+🇨🇦 加拿大 多伦多  216.152.147.79³ = Trojan,216.152.147.79,443,"0ab6c98dae3b48e8b9c4a776b6c9c19a",transport=tcp
+🇨🇦 加拿大 多伦多  216.152.147.79⁴ = Trojan,216.152.147.79,443,"0ab6c98dae3b48e8b9c4a776b6c9c19a",transport=tcp, sni=blog.connectingpeoplewithgreatjobs.com
 🇨🇦 加拿大 多伦多  216.152.147.79⁵ = Trojan,216.152.147.79,443,"0ab6c98dae3b48e8b9c4a776b6c9c19a",transport=tcp
 🇨🇦 加拿大 多伦多  216.152.147.79⁶ = Trojan,216.152.147.79,443,"0ab6c98dae3b48e8b9c4a776b6c9c19a",transport=tcp, sni=blog.connectingpeoplewithgreatjobs.com
 🇨🇦 加拿大 多伦多  216.152.147.85¹ = Trojan,216.152.147.85,443,"0ab6c98dae3b48e8b9c4a776b6c9c19a",transport=tcp
@@ -255,10 +303,10 @@
 🇨🇭 瑞士 門內多夫  195.141.65.98⁹ = VLESS,195.141.65.98,443,"53f03acd-fec1-6685-fc8f-03baf9550cb8",transport=ws, path=/test-ws, host=148-253-210-191.sslip.io, over-tls=true, sni=148-253-210-191.sslip.io
 🇨🇱 智利 圣地亚哥  64.176.2.21¹ = Shadowsocks,64.176.2.21,8388,aes-256-gcm,"xBStBEVqvGwHPocc"
 🇨🇱 智利 圣地亚哥  64.176.2.21² = Shadowsocks,64.176.2.21,8388,aes-256-gcm,"xBStBEVqvGwHPocc"
+🇨🇱 智利 圣地亚哥  64.176.2.21³ = Shadowsocks,64.176.2.21,8388,aes-256-gcm,"xBStBEVqvGwHPocc"
 🇨🇱 智利 圣地亚哥  64.176.7.205¹ = Trojan,64.176.7.205,443,"0ab6c98dae3b48e8b9c4a776b6c9c19a",transport=tcp
 🇨🇱 智利 圣地亚哥  64.176.7.205² = Trojan,64.176.7.205,443,"0ab6c98dae3b48e8b9c4a776b6c9c19a",transport=tcp
-🇨🇱 智利 圣地亚哥  64.176.7.205³ = Trojan,64.176.7.205,443,"0ab6c98dae3b48e8b9c4a776b6c9c19a",transport=tcp, sni=advanceyouremploymentskillsandcareerdevelopmenthub.com
-🇨🇱 智利 圣地亚哥  64.176.7.205⁴ = Trojan,64.176.7.205,443,"0ab6c98dae3b48e8b9c4a776b6c9c19a",transport=tcp
+🇨🇱 智利 圣地亚哥  64.176.7.205³ = Trojan,64.176.7.205,443,"0ab6c98dae3b48e8b9c4a776b6c9c19a",transport=tcp
 🇨🇴 哥伦比亚 波哥大  149.104.107.41¹ = Shadowsocks,149.104.107.41,8090,aes-256-gcm,"PCnnH6SQSnfoS27"
 🇨🇴 哥伦比亚 波哥大  149.104.107.41² = Shadowsocks,149.104.107.41,8090,aes-256-gcm,"PCnnH6SQSnfoS27"
 🇨🇴 哥伦比亚 波哥大  149.104.107.41³ = Shadowsocks,149.104.107.41,8090,aes-256-gcm,"PCnnH6SQSnfoS27"
@@ -277,8 +325,10 @@
 🇨🇿 捷克 盧日尼采河畔韋塞利  91.199.147.41 = VLESS,91.199.147.41,443,"4d945644-69ab-47e0-98b3-d43a6313135d",transport=ws, path=/vl/SaXqikbSPA3ImtmZKAFin?ed=2560fp=chrome, host=mhoX6Xz96zGe3qv5HISuFj9B.paGeS.DEV, over-tls=true, sni=mhoX6Xz96zGe3qv5HISuFj9B.paGeS.DEV
 🇩🇪 德国 Falkenstein  167.233.59.162 = VLESS,167.233.59.162,443,"e2773031-7418-424e-ae49-99b4b474aeba",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=drive.google.com, public-key="VwWuZIAZf4msfvsDZQjQHY6hZPK5r0O-s7yStyjOqhk", short-id=fc87828b94144d
 🇩🇪 德国 Falkenstein  167.235.205.182 = VMess,167.235.205.182,443,auto,"6b7cbc41-fb80-41a8-8eb6-b5bdb0e86147",transport=tcp, alterId=0, over-tls=false
-🇩🇪 德国 Falkenstein  5.75.244.105¹ = Trojan,5.75.244.105,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me
-🇩🇪 德国 Falkenstein  5.75.244.105² = Trojan,5.75.244.105,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me
+🇩🇪 德国 Falkenstein  5.75.244.105¹ = Trojan,5.75.244.105,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me, skip-cert-verify=true
+🇩🇪 德国 Falkenstein  5.75.244.105² = Trojan,5.75.244.105,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me, skip-cert-verify=true
+🇩🇪 德国 Falkenstein  5.75.244.105³ = Trojan,5.75.244.105,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me
+🇩🇪 德国 Falkenstein  5.75.244.105⁴ = Trojan,5.75.244.105,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me
 🇩🇪 德国 Falkenstein  78.47.131.39 = VMess,78.47.131.39,8443,auto,"4d598e48-234f-4c60-fdd3-fa90e084770d",transport=tcp, alterId=0, over-tls=false
 🇩🇪 德国 Frankfurt  198.13.140.193 = Hysteria2,198.13.140.193,443,"59018379-d5df-4314-ab23-df0e838d7953", sni=efa11.lumariqis.com, salamander-password=litevpn
 🇩🇪 德国 Frankfurt  3.126.31.60 = VLESS,3.126.31.60,443,"fa12c1f5-24be-4119-8506-aad16f3bcd35",transport=tcp, over-tls=false
@@ -290,7 +340,6 @@
 🇩🇪 德国 Frankfurt Am Main  185.255.179.166¹ = Trojan,185.255.179.166,443,"humanity",transport=ws, path=/assignment, host=www.calmlunch.com, sni=www.calmlunch.com
 🇩🇪 德国 Frankfurt Am Main  185.255.179.166² = Trojan,185.255.179.166,443,"humanity",transport=ws, path=/assignment, host=www.calmlunch.com, sni=www.calmlunch.com, skip-cert-verify=false
 🇩🇪 德国 Frankfurt Am Main  185.255.179.166³ = Trojan,185.255.179.166,443,"humanity",transport=ws, path=/assignment, host=www.calmlunch.com, sni=www.calmlunch.com
-🇩🇪 德国 Frankfurt Am Main  91.107.244.55 = VLESS,91.107.244.55,8080,"92929b0d-a473-4ea2-bba5-f651ea263872",transport=tcp, over-tls=false
 🇩🇪 德国 哈斯富尔特  185.220.100.168¹ = Trojan,185.220.100.168,443,"humanity",transport=ws, path=/assignment, host=www.calmlunch.com, sni=www.calmlunch.com
 🇩🇪 德国 哈斯富尔特  185.220.100.168² = Trojan,185.220.100.168,443,"humanity",transport=ws, path=/assignment, host=www.calmlunch.com, sni=www.calmlunch.com
 🇩🇪 德国 哈斯富尔特  185.220.100.168³ = Trojan,185.220.100.168,443,"humanity",transport=ws, path=/assignment, host=www.calmlunch.com, sni=www.calmlunch.com, skip-cert-verify=false
@@ -318,9 +367,8 @@
 🇩🇪 德国 法兰克福  193.108.119.15¹ = Trojan,193.108.119.15,443,"0ab6c98dae3b48e8b9c4a776b6c9c19a",transport=tcp, sni=courses.iloverussia2026.com
 🇩🇪 德国 法兰克福  193.108.119.15² = Trojan,193.108.119.15,443,"0ab6c98dae3b48e8b9c4a776b6c9c19a",transport=tcp, sni=courses.iloverussia2026.com
 🇩🇪 德国 法兰克福  193.108.119.15³ = Trojan,193.108.119.15,443,"0ab6c98dae3b48e8b9c4a776b6c9c19a",transport=tcp, sni=courses.iloverussia2026.com
-🇩🇪 德国 法兰克福  193.108.119.15⁴ = Trojan,193.108.119.15,443,"0ab6c98dae3b48e8b9c4a776b6c9c19a",transport=tcp
+🇩🇪 德国 法兰克福  193.108.119.15⁴ = Trojan,193.108.119.15,443,"0ab6c98dae3b48e8b9c4a776b6c9c19a",transport=tcp, sni=courses.iloverussia2026.com
 🇩🇪 德国 法兰克福  193.108.119.15⁵ = Trojan,193.108.119.15,443,"0ab6c98dae3b48e8b9c4a776b6c9c19a",transport=tcp, sni=courses.iloverussia2026.com
-🇩🇪 德国 法兰克福  193.108.119.15⁶ = Trojan,193.108.119.15,443,"0ab6c98dae3b48e8b9c4a776b6c9c19a",transport=tcp, sni=courses.iloverussia2026.com
 🇩🇪 德国 法兰克福  193.108.119.29 = Trojan,193.108.119.29,443,"0ab6c98dae3b48e8b9c4a776b6c9c19a",transport=tcp, sni=blog.iloverussia2026.com
 🇩🇪 德国 法兰克福  193.108.119.78¹ = Trojan,193.108.119.78,443,"0ab6c98dae3b48e8b9c4a776b6c9c19a",transport=tcp
 🇩🇪 德国 法兰克福  193.108.119.78² = Trojan,193.108.119.78,443,"0ab6c98dae3b48e8b9c4a776b6c9c19a",transport=tcp
@@ -329,6 +377,8 @@
 🇩🇪 德国 法兰克福  193.148.253.194² = VLESS,193.148.253.194,25362,"36fb6650-8a50-42b5-9f66-06538806f32c",transport=tcp, over-tls=true, sni=www.chip.de, public-key="hFee7zTreqlv_wccK_8zxN5v23hj9u-DshByvGf-KAA", short-id=23732d14a527990d
 🇩🇪 德国 法兰克福  193.148.253.194³ = VLESS,193.148.253.194,25362,"36fb6650-8a50-42b5-9f66-06538806f32c",transport=tcp, over-tls=true, sni=www.chip.de
 🇩🇪 德国 法兰克福  195.137.226.133 = VLESS,195.137.226.133,2083,"7f733b1a-6c00-48ac-ae3b-cbc178a9146e",transport=ws, path=/wss?TELEGRAM----@GHOFLSHCAN----@GHOFLSHCAN----@GHOFLSHCAN----@GHOFLSHCAN----@GHOFLSHCAN----@GHOFLSHCAN----@GHOFLSHCAN----@GHOFLSHCAN----@GHOFLSHCAN----@GHOFLSHCAN----@GHOFLSHCAN----@GHOFLSHCAN----@GHOFLSHCAN----@GHOFLSHCAN----@GHOFLSHCAN----@GHOFLSHCAN----@GHOFLSHCAN----@GHOFLSHCAN----@GHOFLSHCAN----@GHOFLSHCAN, host=nexostore.xnetaro.ir, over-tls=true, sni=nexostore.xnetaro.ir
+🇩🇪 德国 法兰克福  212.17.236.177¹ = Trojan,212.17.236.177,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me, skip-cert-verify=true
+🇩🇪 德国 法兰克福  212.17.236.177² = Trojan,212.17.236.177,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me, skip-cert-verify=true
 🇩🇪 德国 法兰克福  213.108.198.158¹ = VLESS,213.108.198.158,8442,"35352039-3820-4532-a031-303120313030",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=creativecommons.org, public-key="pFRfJJDY6TYJq-OVgAqFXhdaeur7gJWJM-RZT8g8yAA", short-id=59b75803
 🇩🇪 德国 法兰克福  213.108.198.158² = VLESS,213.108.198.158,8442,"35352039-3820-4532-a031-303120313030",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=creativecommons.org
 🇩🇪 德国 法兰克福  31.76.27.23 = Hysteria2,31.76.27.23,37009,"Telegram-vpnjey", sni=de.vpnjey.store, skip-cert-verify=true, alpn="h3", salamander-password=Telegram@vpnjey
@@ -347,11 +397,12 @@
 🇩🇪 德国 法兰克福  62.84.162.161² = VLESS,62.84.162.161,443,"26524cce-d514-4014-a426-365fb266a14d",transport=ws, path=/, host=xy1ej.stream-node-us.danfeng.qzz.io, over-tls=true, sni=xy1ej.stream-node-us.danfeng.qzz.io
 🇩🇪 德国 法兰克福  64.227.115.28¹ = VLESS,64.227.115.28,443,"26524cce-d514-4014-a426-365fb266a14d",transport=ws, path=/danfeng?ed=2560, host=xy1ej.stream-node-us.danfeng.qzz.io, over-tls=true, sni=xy1ej.stream-node-us.danfeng.qzz.io
 🇩🇪 德国 法兰克福  64.227.115.28² = VLESS,64.227.115.28,443,"26524cce-d514-4014-a426-365fb266a14d",transport=ws, path=/, host=xy1ej.stream-node-us.danfeng.qzz.io, over-tls=true, sni=xy1ej.stream-node-us.danfeng.qzz.io
+🇩🇪 德国 法兰克福  82.139.236.254¹ = Trojan,82.139.236.254,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me, skip-cert-verify=true
+🇩🇪 德国 法兰克福  82.139.236.254² = Trojan,82.139.236.254,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me, skip-cert-verify=true
 🇩🇪 德国 法兰克福  92.223.124.29 = VLESS,92.223.124.29,443,"e1034c59-c944-4a60-bdba-8f9cea0324b1",transport=ws, path=/telegram?ed=2048, host=zema-brand.ir, over-tls=true, sni=speedtest-fr5.gcore.com
 🇩🇪 德国 法兰克福  92.243.74.224¹ = VLESS,92.243.74.224,8443,"a52fd54b-ba4d-4d11-8e00-301e2646cd66",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=de8.vpngold.ru, public-key="1H1DiBCBB7fpALV71pH1q66ePybBFlVOcxftdlQimQ8", short-id=385cb18df0892069
 🇩🇪 德国 法兰克福  92.243.74.224² = VLESS,92.243.74.224,8443,"a52fd54b-ba4d-4d11-8e00-301e2646cd66",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=de8.vpngold.ru, public-key="1H1DiBCBB7fpALV71pH1q66ePybBFlVOcxftdlQimQ8", short-id=385cb18df0892069
 🇩🇪 德国 法兰克福  92.243.74.224³ = VLESS,92.243.74.224,8443,"a52fd54b-ba4d-4d11-8e00-301e2646cd66",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=de8.vpngold.ru, public-key="1H1DiBCBB7fpALV71pH1q66ePybBFlVOcxftdlQimQ8", short-id=385cb18df0892069
-🇩🇪 德国 纽伦堡  168.119.174.229 = VMess,168.119.174.229,443,auto,"6b7cbc41-fb80-41a8-8eb6-b5bdb0e86147",transport=tcp, alterId=0, over-tls=false
 🇩🇪 德国 纽伦堡  178.104.118.247 = VLESS,178.104.118.247,2087,"a34a5f3e-e9fa-40a6-f3af-2984adbd701b",transport=tcp, over-tls=false
 🇩🇪 德国 纽伦堡  202.61.198.53 = Trojan,202.61.198.53,443,"humanity",transport=ws, path=/assignment, sni=www.cordweave.com
 🇩🇪 德国 纽伦堡  5.75.150.23 = VMess,5.75.150.23,443,auto,"6b7cbc41-fb80-41a8-8eb6-b5bdb0e86147",transport=tcp, alterId=0, over-tls=false
@@ -386,8 +437,7 @@
 🇪🇸 西班牙 马德里  66.163.118.166 = Trojan,66.163.118.166,443,"0ab6c98dae3b48e8b9c4a776b6c9c19a",transport=tcp, sni=learn.discovergreatjobsandadvanceyourcareer.com
 🇪🇸 西班牙 马德里  66.163.118.244 = Trojan,66.163.118.244,443,"0ab6c98dae3b48e8b9c4a776b6c9c19a",transport=tcp, sni=api.discovergreatjobsandadvanceyourcareer.com
 🇪🇸 西班牙 马德里  66.163.118.251 = Trojan,66.163.118.251,443,"0ab6c98dae3b48e8b9c4a776b6c9c19a",transport=tcp, sni=resources.discovergreatjobsandadvanceyourcareer.com
-🇪🇸 西班牙 马德里  66.163.118.62¹ = Trojan,66.163.118.62,443,"0ab6c98dae3b48e8b9c4a776b6c9c19a",transport=tcp, sni=courses.discovergreatjobsandadvanceyourcareer.com
-🇪🇸 西班牙 马德里  66.163.118.62² = Trojan,66.163.118.62,443,"0ab6c98dae3b48e8b9c4a776b6c9c19a",transport=tcp, sni=courses.discovergreatjobsandadvanceyourcareer.com
+🇪🇸 西班牙 马德里  66.163.118.62 = Trojan,66.163.118.62,443,"0ab6c98dae3b48e8b9c4a776b6c9c19a",transport=tcp, sni=courses.discovergreatjobsandadvanceyourcareer.com
 🇪🇸 西班牙 马德里  83.97.79.93 = VLESS,83.97.79.93,8443,"e0216964-ffa1-4d39-82c4-0e40879a470d",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=ger.nullo.pro, public-key="e8vusEkL9FTC7oxFCp8biOWMFH-e-1IN21V6YNynGDg", short-id=6350d1647a4880
 🇫🇮 芬兰 赫尔辛基  13.140.92.21 = VLESS,13.140.92.21,80,"35eb914a-f7c2-4ffa-8503-1bf30df0f1a5",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=www.cloudflare.com, public-key="rtYs5r9380Y2zvtXBFfaBbnypJQ7_1x_uYu0cLpOXk4", short-id=d8fee47b2d3d94
 🇫🇮 芬兰 赫尔辛基  13.140.94.191 = VLESS,13.140.94.191,443,"1d1eda2e-0bd7-4478-877b-1c5425c6c4dd",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=tradingview.com, public-key="yr_opKG6DGTppNDXkk-DhGSYJZXbb9o-caexk2FZO38", short-id=8f3c6e2a1b5d4f09
@@ -419,6 +469,7 @@
 🇫🇷 法国 Vélizy-Villacoublay  198.16.113.221² = VLESS,198.16.113.221,8443,"98a24806-141a-43d3-b094-bd66c4eb93b8",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=www.apple.com
 🇫🇷 法国 Vélizy-Villacoublay  198.16.113.222¹ = VLESS,198.16.113.222,8443,"98a24806-141a-43d3-b094-bd66c4eb93b8",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=www.apple.com, public-key="8NkTRxC5Q7bptx-8ADobkuhPK-ZN0kEEbzv6tCFGMzE", short-id=69984b9e02545831
 🇫🇷 法国 Vélizy-Villacoublay  198.16.113.222² = VLESS,198.16.113.222,8443,"98a24806-141a-43d3-b094-bd66c4eb93b8",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=www.apple.com
+🇫🇷 法国 巴黎  13.37.31.164 = VLESS,13.37.31.164,22222,"e4514801-0d5a-42ba-869f-39bd605aef9e",transport=tcp, over-tls=false
 🇫🇷 法国 巴黎  138.124.70.41¹ = VLESS,138.124.70.41,14430,"6cc745e3-4eb9-46c8-a4a1-85dee7b87edc",transport=ws, path=/vless, host=138.124.70.41, over-tls=false
 🇫🇷 法国 巴黎  138.124.70.41² = VLESS,138.124.70.41,14430,"6cc745e3-4eb9-46c8-a4a1-85dee7b87edc",transport=ws, path=/vless, over-tls=false
 🇫🇷 法国 巴黎  145.223.68.58¹ = VLESS,145.223.68.58,443,"edb50d20-2d3e-4c1e-8a75-a17168a89aa5",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=www.cloudflare.com, public-key="qc2DcqT9zPPZr6ePZ7ukxACWrYhRNIBjDIjCK7veyQg", short-id=a44ff7d2e80213c2
@@ -429,31 +480,32 @@
 🇫🇷 法国 巴黎  2001:bc8:32d7:1a9::3¹ = VMess,2001:bc8:32d7:1a9::3,18901,auto,"3a966d20-7b9d-48cc-ba2c-8d38161b6d3a",transport=ws, alterId=0, path=/github.com/Alvin9999-newpac/fanqiang?ed#Telegram---PLANB_NET---PLANB_NET---PLANB_NET---PLANB_NET, over-tls=true
 🇫🇷 法国 巴黎  2001:bc8:32d7:1a9::3² = VMess,2001:bc8:32d7:1a9::3,18901,auto,"3a966d20-7b9d-48cc-ba2c-8d38161b6d3a",transport=ws, alterId=0, path=/github.com/Alvin9999-newpac/fanqiang, over-tls=false
 🇫🇷 法国 巴黎  2001:bc8:32d7:1a9::3³ = VMess,2001:bc8:32d7:1a9::3,18901,auto,"3a966d20-7b9d-48cc-ba2c-8d38161b6d3a",transport=ws, alterId=0, path=/github.com/Alvin9999-newpac/fanqiang?ed#Telegram---PLANB_NET---PLANB_NET---PLANB_NET---PLANB_NET, over-tls=false
-🇫🇷 法国 巴黎  51.44.3.217 = VLESS,51.44.3.217,22222,"e4514801-0d5a-42ba-869f-39bd605aef9e",transport=tcp, over-tls=false
+🇫🇷 法国 巴黎  35.181.146.101 = VLESS,35.181.146.101,22222,"e4514801-0d5a-42ba-869f-39bd605aef9e",transport=tcp, over-tls=false
 🇫🇷 法国 巴黎  89.208.97.224¹ = VLESS,89.208.97.224,8443,"3305c285-8d55-4f52-a3b0-2a582f5ffd59",transport=ws, path=/?ed=2048, host=sdwf-amq.pages.dev, over-tls=true, sni=sdwf-amq.pages.dev
 🇫🇷 法国 巴黎  89.208.97.224² = VLESS,89.208.97.224,8443,"3305c285-8d55-4f52-a3b0-2a582f5ffd59",transport=ws, path=/, host=sdwf-amq.pages.dev, over-tls=true, sni=sdwf-amq.pages.dev
 🇫🇷 法国 斯特拉斯堡  163.245.42.120 = VLESS,163.245.42.120,443,"b9bfa54d-bc44-4592-a6d6-89a9665d286f",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=mother-earth.fyi, public-key="SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc"
 🇫🇷 法国 斯特拉斯堡  163.245.42.132 = VLESS,163.245.42.132,443,"b9bfa54d-bc44-4592-a6d6-89a9665d286f",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=mother-earth.fyi, public-key="SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc"
 🇫🇷 法国 斯特拉斯堡  163.245.42.157 = VLESS,163.245.42.157,443,"b9bfa54d-bc44-4592-a6d6-89a9665d286f",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=mother-earth.fyi, public-key="SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc"
 🇫🇷 法国 瓦特勒洛  137.74.16.237¹ = VLESS,137.74.16.237,443,"aaec4e42-a095-44b6-a239-f16d234a0798",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=www.icloud.com, public-key="7LSzvilTVKGMtBDuKGeMrLtlhY7tQf5YcG566dEgO0I", short-id=b390e0a721d242b0
-🇫🇷 法国 瓦特勒洛  137.74.16.237² = VLESS,137.74.16.237,443,"aaec4e42-a095-44b6-a239-f16d234a0798",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=www.icloud.com, public-key="7LSzvilTVKGMtBDuKGeMrLtlhY7tQf5YcG566dEgO0I", short-id=b390e0a721d242b0
-🇫🇷 法国 瓦特勒洛  137.74.16.237³ = VLESS,137.74.16.237,443,"aaec4e42-a095-44b6-a239-f16d234a0798",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=www.icloud.com
+🇫🇷 法国 瓦特勒洛  137.74.16.237² = VLESS,137.74.16.237,443,"aaec4e42-a095-44b6-a239-f16d234a0798",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=www.icloud.com
 🇫🇷 法国 鲁贝  51.255.166.202 = VLESS,51.255.166.202,443,"593bf46b-8316-5050-9357-d8a41e4db78b",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=e3k67dwms3-51255166202-direct.tavafog.com
 🇫🇷 法国 鲁贝  51.68.34.78 = VLESS,51.68.34.78,20155,"5365cb12-83e2-4e12-8098-c9673ed7f540",transport=ws, path=/bp-vless, over-tls=false
-🇫🇷 法国 鲁贝  51.75.118.5² = Hysteria2,51.75.118.5,20222,"Vt-D1BUk4HLncS1rtf8mUZ8h", sni=www.bing.com, skip-cert-verify=true, alpn="h3", salamander-password=ad7088dafb02115c
-🇫🇷 法国 鲁贝  51.75.118.5¹ = Shadowsocks,51.75.118.5,20222,aes-256-gcm,"lF3nRjH58koKTe-_VtABbg"
+🇫🇷 法国 鲁贝  51.75.118.5 = Hysteria2,51.75.118.5,20222,"Vt-D1BUk4HLncS1rtf8mUZ8h", sni=www.bing.com, skip-cert-verify=true, alpn="h3", salamander-password=ad7088dafb02115c
 🇫🇷 法国 鲁贝  51.75.30.8 = VLESS,51.75.30.8,80,"1949f066-bcb0-49be-88e9-74abd940f80e",transport=ws, path=/http, over-tls=false
 🇫🇷 法国 鲁贝  51.77.217.70 = VLESS,51.77.217.70,2053,"bf16ee0c-8b3c-41e4-ab3a-8b48033c404e",transport=tcp, over-tls=true, sni=www.apple.com
 🇬🇧 英国 Bexley  57.129.132.223 = VMess,57.129.132.223,80,auto,"a25cbf11-2908-4a1b-a3a8-9a571777dca3",transport=ws, alterId=0, path=/vmess/, host=google.com, over-tls=false
 🇬🇧 英国 Bexley  57.129.138.142 = VLESS,57.129.138.142,8080,"6228ee5b-fe07-4ee5-8300-386cd004eb84",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=icloud.com, public-key="itUb_lVoLPqG2cGs6vxsOaOImohnpXucmiaDm6_6iyU", short-id=fe57
 🇬🇧 英国 Slough  159.65.51.189¹ = VLESS,159.65.51.189,443,"d342d11e-d224-4463-b982-532309285094",transport=ws, path=/, host=ccc.010304.xyz, over-tls=true, sni=ccc.010304.xyz
 🇬🇧 英国 Slough  159.65.51.189² = VLESS,159.65.51.189,443,"d342d11e-d224-4463-b982-532309285094",transport=ws, path=/fp=chrome, host=ccc.010304.xyz, over-tls=true, sni=ccc.010304.xyz
-🇬🇧 英国 Stretford  141.98.101.181 = Shadowsocks,141.98.101.181,443,aes-128-gcm,"shadowsocks"
+🇬🇧 英国 Stretford  141.98.101.181¹ = Shadowsocks,141.98.101.181,443,aes-128-gcm,"shadowsocks"
+🇬🇧 英国 Stretford  141.98.101.181² = Shadowsocks,141.98.101.181,443,aes-128-gcm,"shadowsocks"
 🇬🇧 英国 伦敦  132.243.207.154 = VLESS,132.243.207.154,443,"7ad63b26-bf70-4872-8fab-ebaf73a1e19d",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=get-37.topp-con.xyz, public-key="tVx2o1LD0BI7CCoXfFSv-Rr_etGde9XpQ-iNA9P3338", short-id=59d2296aa6320c76
 🇬🇧 英国 伦敦  140.225.208.140 = VLESS,140.225.208.140,2083,"e3c3b722-1264-4cdc-a97c-b0a1bb73cd67",transport=ws, path=/vless-wsfp=chrome, host=speedtestmark.com, over-tls=true, sni=speedtestmark.com
 🇬🇧 英国 伦敦  158.173.24.73¹ = Shadowsocks,158.173.24.73,443,aes-128-gcm,"shadowsocks"
 🇬🇧 英国 伦敦  158.173.24.73² = Shadowsocks,158.173.24.73,443,aes-128-gcm,"shadowsocks"
 🇬🇧 英国 伦敦  158.173.24.73³ = Shadowsocks,158.173.24.73,443,aes-128-gcm,"shadowsocks"
+🇬🇧 英国 伦敦  45.152.65.100¹ = Trojan,45.152.65.100,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me, skip-cert-verify=true
+🇬🇧 英国 伦敦  45.152.65.100² = Trojan,45.152.65.100,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me, skip-cert-verify=true
 🇬🇧 英国 伦敦  45.152.67.226¹ = VLESS,45.152.67.226,443,"26524cce-d514-4014-a426-365fb266a14d",transport=ws, path=/danfeng?ed=2560, host=xy1ej.stream-node-us.danfeng.qzz.io, over-tls=true, sni=xy1ej.stream-node-us.danfeng.qzz.io
 🇬🇧 英国 伦敦  45.152.67.226² = VLESS,45.152.67.226,443,"26524cce-d514-4014-a426-365fb266a14d",transport=ws, path=/, host=xy1ej.stream-node-us.danfeng.qzz.io, over-tls=true, sni=xy1ej.stream-node-us.danfeng.qzz.io
 🇬🇧 英国 伦敦  51.38.71.147 = VLESS,51.38.71.147,8443,"c08f0056-7a6d-4931-813b-aaa3cdd00aed",transport=tcp, over-tls=true, sni=node-uk.connectsuite.org
@@ -469,8 +521,8 @@
 🇬🇧 英国 伦敦  83.147.18.75³ = VLESS,83.147.18.75,443,"5de0c218-0138-45d8-94d2-c2c3f37a1a6d",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=www.bing.com
 🇬🇧 英国 伦敦  92.242.165.11¹ = VLESS,92.242.165.11,2083,"75b517db-1f97-4bda-a479-863d988c31a0",transport=ws, path=/vless-ws, over-tls=true, sni=speedtestmark.com
 🇬🇧 英国 伦敦  92.242.165.11² = VLESS,92.242.165.11,2083,"75b517db-1f97-4bda-a479-863d988c31a0",transport=ws, path=/vless-wsfp=firefox, over-tls=true, sni=speedtestmark.com
-🇬🇧 英国 倫敦  13.135.43.120 = VLESS,13.135.43.120,22222,"e4514801-0d5a-42ba-869f-39bd605aef9e",transport=tcp, over-tls=false
-🇬🇧 英国 倫敦  18.175.87.81 = VLESS,18.175.87.81,22222,"e4514801-0d5a-42ba-869f-39bd605aef9e",transport=tcp, over-tls=false
+🇬🇧 英国 倫敦  16.60.45.121 = VLESS,16.60.45.121,22222,"e4514801-0d5a-42ba-869f-39bd605aef9e",transport=tcp, over-tls=false
+🇬🇧 英国 倫敦  16.60.84.79 = VLESS,16.60.84.79,22222,"e4514801-0d5a-42ba-869f-39bd605aef9e",transport=tcp, over-tls=false
 🇬🇧 英国 倫敦金融城  185.176.206.9¹ = Shadowsocks,185.176.206.9,19999,aes-256-gcm,"ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4="
 🇬🇧 英国 倫敦金融城  185.176.206.9² = Shadowsocks,185.176.206.9,19999,aes-256-gcm,"ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4="
 🇬🇧 英国 倫敦金融城  185.176.206.9³ = Shadowsocks,185.176.206.9,19999,aes-256-gcm,"ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4="
@@ -483,6 +535,8 @@
 🇬🇧 英国 倫敦金融城  94.156.250.148⁴ = Shadowsocks,94.156.250.148,7001,aes-256-gcm,"RexnBgU7EV5ADxG"
 🇬🇧 英国 曼彻斯特  151.101.56.9 = VLESS,151.101.56.9,80,"d8b3f1c4-94c7-423e-a03a-bfa7f6af0ea1",transport=ws, path=/ws, host=freekabotar.global.ssl.fastly.net, over-tls=false
 🇬🇷 希腊 塞萨洛尼基  85.90.197.220 = VLESS,85.90.197.220,443,"8f704ed6-9a1a-4d04-94dd-1bff501716de",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=www.cloudflare.com, public-key="biNcdU5mywtNw-KyPpLHindBxdEyAolT1WJ26N0b7y4", short-id=94acb54627612d43
+🇭🇰 香港 旺角  38.207.178.173¹ = Trojan,38.207.178.173,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me, skip-cert-verify=true
+🇭🇰 香港 旺角  38.207.178.173² = Trojan,38.207.178.173,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me, skip-cert-verify=true
 🇭🇰 香港 沙田  103.148.73.173¹ = VLESS,103.148.73.173,8443,"c1c04450-bf71-4049-ad0c-9cf6d94d9f1f",transport=ws, path=/81574b6b-c9d7-44a0-b83d-dad56e8cb530, host=ty986gfazs.cainiaohub.xyz, over-tls=true, sni=ty986gfazs.cainiaohub.xyz
 🇭🇰 香港 沙田  103.148.73.173² = VLESS,103.148.73.173,8443,"c1c04450-bf71-4049-ad0c-9cf6d94d9f1f",transport=ws, path=/81574b6b-c9d7-44a0-b83d-dad56e8cb530fp=chrome, host=ty986gfazs.cainiaohub.xyz, over-tls=true, sni=ty986gfazs.cainiaohub.xyz
 🇭🇰 香港 火炭  202.146.222.174 = Hysteria2,202.146.222.174,443,"H7mP2xY9kJ4nQ8wR5tF6vB3z", sni=https://t.me/WangCai2🇨🇳, skip-cert-verify=true
@@ -495,27 +549,31 @@
 🇭🇰 香港 香港  152.175.6.229⁴ = VLESS,152.175.6.229,31884,"e9a8144e-5237-488a-afb1-9ca3d8d54c80",transport=tcp, over-tls=true, sni=hk010.zestapp778.com
 🇭🇰 香港 香港  154.21.203.106¹ = VLESS,154.21.203.106,51279,"57beeeb0-03fc-4fc9-94da-7604488a7134",transport=tcp, over-tls=true
 🇭🇰 香港 香港  154.21.203.106² = VLESS,154.21.203.106,51279,"57beeeb0-03fc-4fc9-94da-7604488a7134",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=www.tesla.com
+🇭🇰 香港 香港  172.93.188.25¹ = Trojan,172.93.188.25,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me, skip-cert-verify=true
+🇭🇰 香港 香港  172.93.188.25² = Trojan,172.93.188.25,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me, skip-cert-verify=true
 🇭🇰 香港 香港  193.134.209.165 = Trojan,193.134.209.165,443,"humanity",transport=ws, path=/assignment, sni=www.cordweave.com
 🇭🇰 香港 香港  43.161.253.137¹ = VLESS,43.161.253.137,443,"26524cce-d514-4014-a426-365fb266a14d",transport=ws, path=/danfeng?ed=2560, host=xy1ej.stream-node-us.danfeng.qzz.io, over-tls=true, sni=xy1ej.stream-node-us.danfeng.qzz.io
 🇭🇰 香港 香港  43.161.253.137² = VLESS,43.161.253.137,443,"26524cce-d514-4014-a426-365fb266a14d",transport=ws, path=/, host=xy1ej.stream-node-us.danfeng.qzz.io, over-tls=true, sni=xy1ej.stream-node-us.danfeng.qzz.io
 🇭🇰 香港 香港  47.242.19.215 = socks5,47.242.19.215,8899,YWRtaW46YWRtaW4=,""
-🇭🇰 香港 香港  47.243.167.44¹ = VMess,47.243.167.44,443,auto,"78b3f149-f037-465d-b2fb-11adb6f73ff8",transport=ws, alterId=0, path=/ws-vmess, host=rhHiErkwRf6fHs2H.v.3dns.vip, over-tls=true, sni=rhHiErkwRf6fHs2H.v.3dns.vip, skip-cert-verify=true
+🇭🇰 香港 香港  47.243.167.44¹ = VMess,47.243.167.44,443,auto,"78b3f149-f037-465d-b2fb-11adb6f73ff8",transport=ws, alterId=0, path=/ws-vmess, host=rhHiErkwRf6fHs2H.v.3dns.vip, over-tls=true, skip-cert-verify=true
 🇭🇰 香港 香港  47.243.167.44² = VMess,47.243.167.44,443,auto,"78b3f149-f037-465d-b2fb-11adb6f73ff8",transport=ws, alterId=0, path=/ws-vmess, host=rhHiErkwRf6fHs2H.v.3dns.vip, over-tls=true
 🇭🇰 香港 香港  47.243.194.125¹ = VMess,47.243.194.125,443,auto,"f23bb427-c1f9-4373-876c-2f43e9f790f3",transport=ws, alterId=0, path=/ws-vmess, host=nycqg19zkwacpm1b.v.3dns.vip, over-tls=true, skip-cert-verify=true
 🇭🇰 香港 香港  47.243.194.125² = VMess,47.243.194.125,443,auto,"f23bb427-c1f9-4373-876c-2f43e9f790f3",transport=ws, alterId=0, path=/ws-vmess, host=nycqg19zkwacpm1b.v.3dns.vip, over-tls=true
-🇭🇰 香港 香港  47.244.120.197² = VMess,47.244.120.197,23026,auto,"b9de1bc9-baa7-41ac-86f7-ccd59695cb21",transport=ws, alterId=0, path=/arki, host=47.244.120.197, over-tls=false, skip-cert-verify=true
-🇭🇰 香港 香港  47.244.120.197¹ = VMess,47.244.120.197,36703,auto,"45b83519-9c4f-4052-a11b-02e017b636d4",transport=ws, alterId=0, path=/arki, over-tls=false, skip-cert-verify=true
-🇭🇰 香港 香港  47.76.57.83 = VMess,47.76.57.83,443,auto,"f23bb427-c1f9-4373-876c-2f43e9f790f3",transport=ws, alterId=0, path=/ws-vmess, host=vah4urdzl3jdx5r2.v.3dns.vip, over-tls=true, skip-cert-verify=true
-🇭🇰 香港 香港  85.121.245.35¹ = Trojan,85.121.245.35,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me
-🇭🇰 香港 香港  85.121.245.35² = Trojan,85.121.245.35,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me
+🇭🇰 香港 香港  47.75.104.211¹ = Trojan,47.75.104.211,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me, skip-cert-verify=true
+🇭🇰 香港 香港  47.75.104.211² = Trojan,47.75.104.211,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me, skip-cert-verify=true
+🇭🇰 香港 香港  85.121.245.35¹ = Trojan,85.121.245.35,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me, skip-cert-verify=true
+🇭🇰 香港 香港  85.121.245.35² = Trojan,85.121.245.35,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me, skip-cert-verify=true
+🇭🇰 香港 香港  85.121.245.35³ = Trojan,85.121.245.35,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me
+🇭🇰 香港 香港  85.121.245.35⁴ = Trojan,85.121.245.35,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me
 🇮🇩 印度尼西亚 雅加达  147.139.139.151¹ = VLESS,147.139.139.151,587,"26524cce-d514-4014-a426-365fb266a14d",transport=ws, path=/danfeng?ed=2560, host=xy1ej.stream-node-us.danfeng.qzz.io, over-tls=true, sni=xy1ej.stream-node-us.danfeng.qzz.io
 🇮🇩 印度尼西亚 雅加达  147.139.139.151² = VLESS,147.139.139.151,587,"26524cce-d514-4014-a426-365fb266a14d",transport=ws, path=/, host=xy1ej.stream-node-us.danfeng.qzz.io, over-tls=true, sni=xy1ej.stream-node-us.danfeng.qzz.io
 🇮🇩 印度尼西亚 雅加达  8.215.25.3 = socks5,8.215.25.3,2080,Og==,""
 🇮🇪 爱尔兰 都柏林  20.107.184.151 = Shadowsocks,20.107.184.151,443,chacha20-ietf-poly1305,"zziXHDOFXc4qRjoj"
 🇮🇪 爱尔兰 都柏林  20.123.1.55 = Shadowsocks,20.123.1.55,443,chacha20-ietf-poly1305,"YF329KNGVTUZ1qrH"
 🇮🇱 以色列 特拉维夫  64.176.163.182¹ = Trojan,64.176.163.182,443,"0ab6c98dae3b48e8b9c4a776b6c9c19a",transport=tcp, sni=exploreeducationsectoropportunitiestodayandadvancecareers.com
-🇮🇱 以色列 特拉维夫  64.176.163.182² = Trojan,64.176.163.182,443,"0ab6c98dae3b48e8b9c4a776b6c9c19a",transport=tcp, sni=exploreeducationsectoropportunitiestodayandadvancecareers.com, skip-cert-verify=true
-🇮🇱 以色列 特拉维夫  64.176.163.182³ = Trojan,64.176.163.182,443,"0ab6c98dae3b48e8b9c4a776b6c9c19a",transport=tcp, sni=exploreeducationsectoropportunitiestodayandadvancecareers.com
+🇮🇱 以色列 特拉维夫  64.176.163.182² = Trojan,64.176.163.182,443,"0ab6c98dae3b48e8b9c4a776b6c9c19a",transport=tcp, sni=exploreeducationsectoropportunitiestodayandadvancecareers.com
+🇮🇱 以色列 特拉维夫  64.176.163.182³ = Trojan,64.176.163.182,443,"0ab6c98dae3b48e8b9c4a776b6c9c19a",transport=tcp, sni=exploreeducationsectoropportunitiestodayandadvancecareers.com, skip-cert-verify=true
+🇮🇱 以色列 特拉维夫  64.176.163.182⁴ = Trojan,64.176.163.182,443,"0ab6c98dae3b48e8b9c4a776b6c9c19a",transport=tcp, sni=exploreeducationsectoropportunitiestodayandadvancecareers.com
 🇮🇳 印度 Dhār  122.176.216.52¹ = VLESS,122.176.216.52,443,"16ae3ea5-cf3e-6973-7bf3-2b4b28d0ea88",transport=tcp, over-tls=false
 🇮🇳 印度 Dhār  122.176.216.52² = VLESS,122.176.216.52,443,"16ae3ea5-cf3e-6973-7bf3-2b4b28d0ea88",transport=tcp, over-tls=false
 🇮🇳 印度 孟买  13.140.56.100¹ = VLESS,13.140.56.100,14430,"68512eac-cd53-4de3-8d1e-08f6e04af1a9",transport=ws, path=/vless, host=13.140.56.100, over-tls=false, sni=13.140.56.100
@@ -574,9 +632,7 @@
 🇮🇹 意大利 Milan  202.50.253.99³ = Shadowsocks,202.50.253.99,19999,aes-256-gcm,"ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4="
 🇮🇹 意大利 Milan  202.50.253.99⁴ = Shadowsocks,202.50.253.99,19999,aes-256-gcm,"ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4="
 🇮🇹 意大利 Milan  202.50.253.99⁵ = Shadowsocks,202.50.253.99,19999,aes-256-gcm,"ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4="
-🇮🇹 意大利 Milan  31.76.113.51 = VLESS,31.76.113.51,443,"dfc0cb9d-f005-41b0-848c-7703bd39d0de",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=it.s3-cloud.xyz, public-key="zPi2L9vrl2hkaCTT3lZTzBna-qz6JrteRjDz1i-DsxY", short-id=7a3f9e2b1c8d4f6a
 🇮🇹 意大利 Milan  57.131.38.163 = VLESS,57.131.38.163,2053,"d4b08cd6-0903-411a-9dac-45dbdf5c9712",transport=tcp, over-tls=true, sni=www.apple.com
-🇮🇹 意大利 Milan  57.131.48.45 = Shadowsocks,57.131.48.45,8388,aes-256-gcm,"itzvpn@321"
 🇮🇹 意大利 Milan  82.118.16.187 = VLESS,82.118.16.187,443,"dc2259c4-388e-4285-ba18-df619b6672b6",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=www.cloudflare.com, public-key="R5ycsjJ-v024902dMSqTsSdqxUwCFEXMebdBEWFt9VU", short-id=cd6065902eea7a02
 🇮🇹 意大利 罗马市  151.91.39.191 = VLESS,151.91.39.191,443,"53f03acd-fec1-6685-fc8f-03baf9550cb8",transport=ws, path=/test-ws, host=148-253-210-191.sslip.io, over-tls=true, sni=148-253-210-191.sslip.io
 🇯🇵 日本 Minamishinagawa  45.32.52.173¹ = Trojan,45.32.52.173,8886,"e26a229d-e8f2-4ff9-8c7d-58a9d83ee437",transport=tcp, sni=45.32.52.173
@@ -600,12 +656,22 @@
 🇯🇵 日本 东京  149.22.87.240² = Shadowsocks,149.22.87.240,443,aes-128-gcm,"shadowsocks"
 🇯🇵 日本 东京  149.22.87.240³ = Shadowsocks,149.22.87.240,443,aes-128-gcm,"shadowsocks"
 🇯🇵 日本 东京  149.22.87.241 = Shadowsocks,149.22.87.241,443,aes-128-gcm,"shadowsocks"
+🇯🇵 日本 东京  154.19.187.190¹ = Trojan,154.19.187.190,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me, skip-cert-verify=true
+🇯🇵 日本 东京  154.19.187.190² = Trojan,154.19.187.190,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me, skip-cert-verify=true
 🇯🇵 日本 东京  154.36.158.197¹ = Shadowsocks,154.36.158.197,8388,aes-256-gcm,"BeaUf9c0AEWH40Pu"
 🇯🇵 日本 东京  154.36.158.197² = Shadowsocks,154.36.158.197,8388,aes-256-gcm,"BeaUf9c0AEWH40Pu"
 🇯🇵 日本 东京  154.36.158.197³ = Shadowsocks,154.36.158.197,8388,aes-256-gcm,"BeaUf9c0AEWH40Pu"
 🇯🇵 日本 东京  154.36.158.197⁴ = Shadowsocks,154.36.158.197,8388,aes-256-gcm,"BeaUf9c0AEWH40Pu"
-🇯🇵 日本 东京  172.104.89.73¹ = Trojan,172.104.89.73,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me
-🇯🇵 日本 东京  172.104.89.73² = Trojan,172.104.89.73,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me
+🇯🇵 日本 东京  172.104.89.73¹ = Trojan,172.104.89.73,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me, skip-cert-verify=true
+🇯🇵 日本 东京  172.104.89.73² = Trojan,172.104.89.73,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me, skip-cert-verify=true
+🇯🇵 日本 东京  172.104.89.73³ = Trojan,172.104.89.73,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me
+🇯🇵 日本 东京  172.104.89.73⁴ = Trojan,172.104.89.73,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me
+🇯🇵 日本 东京  172.237.1.32¹ = Trojan,172.237.1.32,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me, skip-cert-verify=true
+🇯🇵 日本 东京  172.237.1.32² = Trojan,172.237.1.32,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me, skip-cert-verify=true
+🇯🇵 日本 东京  172.238.22.178¹ = Trojan,172.238.22.178,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me, skip-cert-verify=true
+🇯🇵 日本 东京  172.238.22.178² = Trojan,172.238.22.178,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me, skip-cert-verify=true
+🇯🇵 日本 东京  172.238.29.97¹ = Trojan,172.238.29.97,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me, skip-cert-verify=true
+🇯🇵 日本 东京  172.238.29.97² = Trojan,172.238.29.97,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me, skip-cert-verify=true
 🇯🇵 日本 东京  31.57.172.242¹ = VLESS,31.57.172.242,443,"26524cce-d514-4014-a426-365fb266a14d",transport=ws, path=/danfeng?ed=2560, host=xy1ej.stream-node-us.danfeng.qzz.io, over-tls=true, sni=xy1ej.stream-node-us.danfeng.qzz.io
 🇯🇵 日本 东京  31.57.172.242² = VLESS,31.57.172.242,443,"26524cce-d514-4014-a426-365fb266a14d",transport=ws, path=/, host=xy1ej.stream-node-us.danfeng.qzz.io, over-tls=true, sni=xy1ej.stream-node-us.danfeng.qzz.io
 🇯🇵 日本 东京  31.76.91.98¹ = VLESS,31.76.91.98,443,"7072eeba-94fd-4fb3-92f2-a4506dd84cd8",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=fuji.etherhub.cc, public-key="ejx56dFtS4LK_Th6HSLFFdm7v7zqRpv8KfjrWAw4Sjg", short-id=bd6f67b6b2152b45
@@ -616,33 +682,43 @@
 🇯🇵 日本 东京  84.247.155.196³ = Shadowsocks,84.247.155.196,443,aes-256-gcm,"3eOFeNssde7PYYMv"
 🇯🇵 日本 东京  84.247.155.196⁴ = Shadowsocks,84.247.155.196,443,aes-256-gcm,"3eOFeNssde7PYYMv"
 🇯🇵 日本 东京  84.247.155.196⁶ = Shadowsocks,84.247.155.196,443,aes-256-gcm,"3eOFeNssde7PYYMv"
+🇯🇵 日本 大阪市  172.233.91.12¹ = Trojan,172.233.91.12,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me, skip-cert-verify=true
+🇯🇵 日本 大阪市  172.233.91.12² = Trojan,172.233.91.12,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me, skip-cert-verify=true
 🇯🇵 日本 札幌市  142.91.108.25¹ = VLESS,142.91.108.25,443,"ee18d188-14cc-417e-beb1-70e4add6d023",transport=tcp, over-tls=true
 🇯🇵 日本 札幌市  142.91.108.25² = VLESS,142.91.108.25,443,"ee18d188-14cc-417e-beb1-70e4add6d023",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=jp3.nztvpn.com, public-key="9ZCYjybxMQ7JpE39B8u_Bo-alI1LIbt5ER0E-4yMjiM", short-id=ea36c03d86f91287
 🇯🇵 日本 札幌市  142.91.108.25³ = VLESS,142.91.108.25,443,"ee18d188-14cc-417e-beb1-70e4add6d023",transport=tcp, over-tls=false
-🇯🇵 日本 東京都  13.158.71.221¹ = Trojan,13.158.71.221,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me
-🇯🇵 日本 東京都  13.158.71.221² = Trojan,13.158.71.221,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me
-🇯🇵 日本 東京都  13.158.86.30¹ = Trojan,13.158.86.30,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me
-🇯🇵 日本 東京都  13.158.86.30² = Trojan,13.158.86.30,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me
-🇯🇵 日本 東京都  175.41.232.194¹ = Trojan,175.41.232.194,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me
-🇯🇵 日本 東京都  175.41.232.194² = Trojan,175.41.232.194,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me
+🇯🇵 日本 東京都  13.158.71.221¹ = Trojan,13.158.71.221,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me, skip-cert-verify=true
+🇯🇵 日本 東京都  13.158.71.221² = Trojan,13.158.71.221,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me, skip-cert-verify=true
+🇯🇵 日本 東京都  13.158.71.221³ = Trojan,13.158.71.221,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me
+🇯🇵 日本 東京都  13.158.71.221⁴ = Trojan,13.158.71.221,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me
+🇯🇵 日本 東京都  13.158.86.30¹ = Trojan,13.158.86.30,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me, skip-cert-verify=true
+🇯🇵 日本 東京都  13.158.86.30² = Trojan,13.158.86.30,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me, skip-cert-verify=true
+🇯🇵 日本 東京都  13.158.86.30³ = Trojan,13.158.86.30,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me
+🇯🇵 日本 東京都  13.158.86.30⁴ = Trojan,13.158.86.30,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me
+🇯🇵 日本 東京都  175.41.232.194¹ = Trojan,175.41.232.194,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me, skip-cert-verify=true
+🇯🇵 日本 東京都  175.41.232.194² = Trojan,175.41.232.194,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me, skip-cert-verify=true
+🇯🇵 日本 東京都  175.41.232.194³ = Trojan,175.41.232.194,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me
+🇯🇵 日本 東京都  175.41.232.194⁴ = Trojan,175.41.232.194,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me
 🇯🇵 日本 東京都  3.114.220.22¹ = VLESS,3.114.220.22,10583,"814bd064-544d-4255-a070-5705c03f6da9",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=www.apple.com, public-key="k2hPp0tTW0Da-HK94wYpSCLbuK44LfGqC2MSJIM1Ti0", short-id=48050fab
 🇯🇵 日本 東京都  3.114.220.22² = VLESS,3.114.220.22,18007,"814bd064-544d-4255-a070-5705c03f6da9",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=www.apple.com
 🇯🇵 日本 東京都  35.78.243.103 = Trojan,35.78.243.103,443,"humanity",transport=ws, path=/assignment, sni=www.cordweave.com
+🇯🇵 日本 東京都  54.249.160.228¹ = Trojan,54.249.160.228,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me, skip-cert-verify=true
+🇯🇵 日本 東京都  54.249.160.228² = Trojan,54.249.160.228,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me, skip-cert-verify=true
 🇰🇷 韩国 Incheon  15.165.236.77 = VLESS,15.165.236.77,443,"7e68e32f-8015-4f37-9082-70e8b0b58043",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=www.3dlabs-querygis.co.kr, public-key="DHOrfoin7TeRpnIoU3d6qT5Yrq3QPVFp49kApATA4iE", short-id=e04a526b0b09c765
 🇰🇷 韩国 Incheon  3.39.4.109¹ = VLESS,3.39.4.109,18967,"814bd064-544d-4255-a070-5705c03f6da9",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=www.apple.com, public-key="k2hPp0tTW0Da-HK94wYpSCLbuK44LfGqC2MSJIM1Ti0", short-id=48050fab
 🇰🇷 韩国 Incheon  3.39.4.109² = VLESS,3.39.4.109,18967,"814bd064-544d-4255-a070-5705c03f6da9",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=www.apple.com
-🇰🇷 韩国 Incheon  43.202.1.87 = Shadowsocks,43.202.1.87,8443,chacha20-ietf-poly1305,"7e68e32f-8015-4f37-9082-70e8b0b58043"
 🇰🇷 韩国 Incheon  54.180.135.1 = Hysteria2,54.180.135.1,443,"7e68e32f-8015-4f37-9082-70e8b0b58043", sni=www.bing.com, skip-cert-verify=true
+🇰🇷 韩国 光明市  49.254.204.133 = Shadowsocks,49.254.204.133,1774,aes-256-cfb,"1234!@#$"
 🇰🇷 韩国 安山市  211.178.105.134 = Shadowsocks,211.178.105.134,6123,aes-256-cfb,"qwerREWQ@@"
 🇰🇷 韩国 春川市  152.69.226.63¹ = VLESS,152.69.226.63,25555,"27c5483f-17f4-48ae-9a04-def53d88440d",transport=ws, path=/, over-tls=false
 🇰🇷 韩国 春川市  152.69.226.63² = VLESS,152.69.226.63,25555,"27c5483f-17f4-48ae-9a04-def53d88440d",transport=ws, path=/, over-tls=false, sni=152.69.226.63
 🇰🇷 韩国 水原市  121.169.46.116 = socks5,121.169.46.116,1090,T2clM0QlM0Q6T2clM0QlM0Q=,""
 🇰🇷 韩国 首尔特别市  132.226.226.189 = Hysteria2,132.226.226.189,50160,"1671a252e2a97dc2bda4e515475931da", sni=www.bing.com, skip-cert-verify=true
 🇰🇷 韩国 首尔特别市  141.164.34.161 = Trojan,141.164.34.161,8443,"humanity",transport=ws, path=/assignment, sni=www.cordweave.com
+🇰🇷 韩国 首尔特别市  141.164.45.187³ = Shadowsocks,141.164.45.187,5001,aes-256-gcm,"Y6R9pAtvxxzmGC"
 🇰🇷 韩国 首尔特别市  141.164.45.187⁴ = Shadowsocks,141.164.45.187,5001,aes-256-gcm,"Y6R9pAtvxxzmGC"
-🇰🇷 韩国 首尔特别市  141.164.45.187³ = Shadowsocks,141.164.45.187,8000,aes-256-gcm,"KixLvKzwjekG00rm"
-🇰🇷 韩国 首尔特别市  141.164.45.187² = Shadowsocks,141.164.45.187,8888,aes-256-gcm,"Y6R9pAtvxxzmGC"
 🇰🇷 韩国 首尔特别市  141.164.45.187¹ = Shadowsocks,141.164.45.187,9090,aes-256-gcm,"Y6R9pAtvxxzmGC"
+🇰🇷 韩国 首尔特别市  141.164.45.187² = Shadowsocks,141.164.45.187,9090,aes-256-gcm,"Y6R9pAtvxxzmGC"
 🇰🇷 韩国 首尔特别市  151.245.106.49¹ = VLESS,151.245.106.49,2053,"a2de9567-9646-45a9-a410-7303a43bdb6c",transport=tcp, over-tls=true, sni=www.cloudflare.com, public-key="F6C33iIbfmt1mUsuLTarIC8ygdHKMqsaGvrSQltyxUo", short-id=429499c03d4cc8a0
 🇰🇷 韩国 首尔特别市  151.245.106.49² = VLESS,151.245.106.49,2053,"a2de9567-9646-45a9-a410-7303a43bdb6c",transport=tcp, over-tls=true, sni=www.cloudflare.com
 🇰🇷 韩国 首尔特别市  152.70.237.123 = Hysteria2,152.70.237.123,2053,"maintell", sni=bing.com, skip-cert-verify=true
@@ -672,6 +748,7 @@
 🇲🇩 摩尔多瓦 基希讷乌  5.181.158.195 = VLESS,5.181.158.195,8463,"1c8f7130-8c1a-4949-831d-1d45b39c795b",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=svoboda2.bystriynet.online
 🇲🇽 墨西哥 克雷塔罗  64.177.90.30¹ = Shadowsocks,64.177.90.30,8388,aes-256-gcm,"BWyPPTusFKhGgzKh"
 🇲🇽 墨西哥 克雷塔罗  64.177.90.30² = Shadowsocks,64.177.90.30,8388,aes-256-gcm,"BWyPPTusFKhGgzKh"
+🇲🇽 墨西哥 克雷塔罗  64.177.90.30³ = Shadowsocks,64.177.90.30,8388,aes-256-gcm,"BWyPPTusFKhGgzKh"
 🇲🇽 墨西哥 梅里达  131.196.253.141¹ = VLESS,131.196.253.141,443,"0575005f-0ba9-4d6d-85e0-4a6a8cbafc1b",transport=ws, path=/154.16.10.34-8080, host=kclx.eu.org, over-tls=true, sni=kclx.eu.org
 🇲🇽 墨西哥 梅里达  131.196.253.141² = VLESS,131.196.253.141,443,"0575005f-0ba9-4d6d-85e0-4a6a8cbafc1b",transport=ws, path=/154.16.10.34-8080fp=chrome, host=kclx.eu.org, over-tls=true, sni=kclx.eu.org
 🇲🇾 马来西亚 吉隆坡  216.173.67.59¹ = VLESS,216.173.67.59,443,"d342d11e-d224-4463-b982-532309285094",transport=ws, path=/, host=ccc.010304.xyz, over-tls=true, sni=ccc.010304.xyz
@@ -711,11 +788,12 @@
 🇳🇱 荷兰 格罗宁根  45.87.41.18¹ = Trojan,45.87.41.18,443,"humanity",transport=ws, path=/assignment, host=www.calmlunch.com, sni=www.calmlunch.com
 🇳🇱 荷兰 格罗宁根  45.87.41.18² = Trojan,45.87.41.18,443,"humanity",transport=ws, path=/assignment, host=www.calmlunch.com, sni=www.calmlunch.com, skip-cert-verify=false
 🇳🇱 荷兰 格罗宁根  45.87.41.18³ = Trojan,45.87.41.18,443,"humanity",transport=ws, path=/assignment, host=www.calmlunch.com, sni=www.calmlunch.com
-🇳🇱 荷兰 阿姆斯特丹  104.239.12.81¹ = Shadowsocks,104.239.12.81,43385,chacha20-ietf-poly1305,"AwW1fV6oDDQKh8r2znmptv59tPgt4eHVTgFaTqgKS2jiSdikJ7GyGCBYehDaK38S8yMgHFdbJqcTmRJSfYS5CFw345bNhFZa"
-🇳🇱 荷兰 阿姆斯特丹  104.239.12.81² = Shadowsocks,104.239.12.81,43385,chacha20-ietf-poly1305,"AwW1fV6oDDQKh8r2znmptv59tPgt4eHVTgFaTqgKS2jiSdikJ7GyGCBYehDaK38S8yMgHFdbJqcTmRJSfYS5CFw345bNhFZa"
+🇳🇱 荷兰 阿姆斯特丹  104.239.12.81 = Shadowsocks,104.239.12.81,43385,chacha20-ietf-poly1305,"AwW1fV6oDDQKh8r2znmptv59tPgt4eHVTgFaTqgKS2jiSdikJ7GyGCBYehDaK38S8yMgHFdbJqcTmRJSfYS5CFw345bNhFZa"
 🇳🇱 荷兰 阿姆斯特丹  108.61.164.217 = VLESS,108.61.164.217,4443,"20dd9433-389e-4573-ba7b-689619cf13da",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=www.samsung.com, public-key="k9srkQedwHsZGJP-R-GGwDOGok05gk23s8d4mtidMC4", short-id=835391010667297d
-🇳🇱 荷兰 阿姆斯特丹  144.31.247.190¹ = Trojan,144.31.247.190,8443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me
-🇳🇱 荷兰 阿姆斯特丹  144.31.247.190² = Trojan,144.31.247.190,8443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me
+🇳🇱 荷兰 阿姆斯特丹  144.31.247.190¹ = Trojan,144.31.247.190,8443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me, skip-cert-verify=true
+🇳🇱 荷兰 阿姆斯特丹  144.31.247.190² = Trojan,144.31.247.190,8443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me, skip-cert-verify=true
+🇳🇱 荷兰 阿姆斯特丹  144.31.247.190³ = Trojan,144.31.247.190,8443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me
+🇳🇱 荷兰 阿姆斯特丹  144.31.247.190⁴ = Trojan,144.31.247.190,8443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me
 🇳🇱 荷兰 阿姆斯特丹  156.252.229.11¹ = VLESS,156.252.229.11,8443,"3e21e3d3-6d26-4155-b851-764dd8e8c6b5",transport=tcp, over-tls=true, sni=play.googleapis.com, public-key="7jPluypHwPilf_Mq7JOY96SwKkbK35WuIlN1HwGQ_0A", short-id=974f7f8f
 🇳🇱 荷兰 阿姆斯特丹  156.252.229.11² = VLESS,156.252.229.11,8443,"3e21e3d3-6d26-4155-b851-764dd8e8c6b5",transport=tcp, over-tls=true, sni=play.googleapis.com
 🇳🇱 荷兰 阿姆斯特丹  156.252.229.136¹ = VLESS,156.252.229.136,8443,"3e21e3d3-6d26-4155-b851-764dd8e8c6b5",transport=tcp, over-tls=true, sni=play.googleapis.com, public-key="7jPluypHwPilf_Mq7JOY96SwKkbK35WuIlN1HwGQ_0A", short-id=974f7f8f
@@ -758,12 +836,14 @@
 🇳🇱 荷兰 阿姆斯特丹  62.132.3.104² = VLESS,62.132.3.104,8443,"26524cce-d514-4014-a426-365fb266a14d",transport=ws, path=/, host=xy1ej.stream-node-us.danfeng.qzz.io, over-tls=true, sni=xy1ej.stream-node-us.danfeng.qzz.io
 🇳🇱 荷兰 阿姆斯特丹  66.163.127.155¹ = Trojan,66.163.127.155,443,"0ab6c98dae3b48e8b9c4a776b6c9c19a",transport=tcp
 🇳🇱 荷兰 阿姆斯特丹  66.163.127.155² = Trojan,66.163.127.155,443,"0ab6c98dae3b48e8b9c4a776b6c9c19a",transport=tcp
+🇳🇱 荷兰 阿姆斯特丹  66.163.127.155³ = Trojan,66.163.127.155,443,"0ab6c98dae3b48e8b9c4a776b6c9c19a",transport=tcp
 🇳🇱 荷兰 阿姆斯特丹  78.17.53.142 = VLESS,78.17.53.142,8443,"6b566898-8416-4ac3-8b8f-66db059c462b",transport=tcp, over-tls=true, sni=www.ru.nl
 🇳🇱 荷兰 阿姆斯特丹  82.38.31.10 = Shadowsocks,82.38.31.10,8080,chacha20-ietf-poly1305,"oZIoA69Q8yhcQV8ka3Pa3A"
 🇳🇱 荷兰 阿姆斯特丹  82.38.31.149 = Shadowsocks,82.38.31.149,8080,chacha20-ietf-poly1305,"oZIoA69Q8yhcQV8ka3Pa3A"
 🇳🇱 荷兰 阿姆斯特丹  82.38.31.155 = Shadowsocks,82.38.31.155,8080,chacha20-ietf-poly1305,"oZIoA69Q8yhcQV8ka3Pa3A"
 🇳🇱 荷兰 阿姆斯特丹  82.38.31.159 = Shadowsocks,82.38.31.159,443,chacha20-ietf-poly1305,"oZIoA69Q8yhcQV8ka3Pa3A"
 🇳🇱 荷兰 阿姆斯特丹  82.38.31.162 = Shadowsocks,82.38.31.162,443,chacha20-ietf-poly1305,"oZIoA69Q8yhcQV8ka3Pa3A"
+🇳🇱 荷兰 阿姆斯特丹  82.38.31.169 = Shadowsocks,82.38.31.169,443,chacha20-ietf-poly1305,"oZIoA69Q8yhcQV8ka3Pa3A"
 🇳🇱 荷兰 阿姆斯特丹  82.38.31.170 = Shadowsocks,82.38.31.170,443,chacha20-ietf-poly1305,"oZIoA69Q8yhcQV8ka3Pa3A"
 🇳🇱 荷兰 阿姆斯特丹  82.38.31.171 = Shadowsocks,82.38.31.171,8080,chacha20-ietf-poly1305,"oZIoA69Q8yhcQV8ka3Pa3A"
 🇳🇱 荷兰 阿姆斯特丹  82.38.31.174¹ = Shadowsocks,82.38.31.174,443,chacha20-ietf-poly1305,"oZIoA69Q8yhcQV8ka3Pa3A"
@@ -813,7 +893,6 @@
 🇳🇱 荷兰 阿姆斯特丹  82.38.31.47 = Shadowsocks,82.38.31.47,8080,chacha20-ietf-poly1305,"oZIoA69Q8yhcQV8ka3Pa3A"
 🇳🇱 荷兰 阿姆斯特丹  82.38.31.48 = Shadowsocks,82.38.31.48,8080,chacha20-ietf-poly1305,"oZIoA69Q8yhcQV8ka3Pa3A"
 🇳🇱 荷兰 阿姆斯特丹  82.38.31.49 = Shadowsocks,82.38.31.49,8080,chacha20-ietf-poly1305,"oZIoA69Q8yhcQV8ka3Pa3A"
-🇳🇱 荷兰 阿姆斯特丹  82.38.31.54 = Shadowsocks,82.38.31.54,8080,chacha20-ietf-poly1305,"oZIoA69Q8yhcQV8ka3Pa3A"
 🇳🇱 荷兰 阿姆斯特丹  82.38.31.61 = Shadowsocks,82.38.31.61,8080,chacha20-ietf-poly1305,"oZIoA69Q8yhcQV8ka3Pa3A"
 🇳🇱 荷兰 阿姆斯特丹  82.38.31.62 = Shadowsocks,82.38.31.62,8080,chacha20-ietf-poly1305,"oZIoA69Q8yhcQV8ka3Pa3A"
 🇳🇱 荷兰 阿姆斯特丹  82.38.31.66 = Shadowsocks,82.38.31.66,8080,chacha20-ietf-poly1305,"oZIoA69Q8yhcQV8ka3Pa3A"
@@ -848,7 +927,6 @@
 🇵🇱 波兰 华沙  51.83.192.80¹ = Shadowsocks,51.83.192.80,8388,aes-256-gcm,"itzvpn@321"
 🇵🇱 波兰 华沙  51.83.192.80² = Shadowsocks,51.83.192.80,8388,aes-256-gcm,"itzvpn@321"
 🇵🇱 波兰 华沙  51.83.192.80³ = Shadowsocks,51.83.192.80,8388,aes-256-gcm,"itzvpn@321"
-🇵🇱 波兰 华沙  51.83.192.80⁴ = Shadowsocks,51.83.192.80,8388,aes-256-gcm,"itzvpn@321"
 🇵🇱 波兰 华沙  70.34.252.255¹ = Trojan,70.34.252.255,443,"0ab6c98dae3b48e8b9c4a776b6c9c19a",transport=tcp, sni=browseexecutivejobopeningsandenhanceleadershipcareer.com
 🇵🇱 波兰 华沙  70.34.252.255² = Trojan,70.34.252.255,443,"0ab6c98dae3b48e8b9c4a776b6c9c19a",transport=tcp, sni=browseexecutivejobopeningsandenhanceleadershipcareer.com
 🇵🇱 波兰 华沙  70.34.252.255³ = Trojan,70.34.252.255,443,"0ab6c98dae3b48e8b9c4a776b6c9c19a",transport=tcp, sni=browseexecutivejobopeningsandenhanceleadershipcareer.com
@@ -856,9 +934,9 @@
 🇵🇱 波兰 弗罗茨瓦夫  54.36.174.134¹ = Shadowsocks,54.36.174.134,443,chacha20-ietf-poly1305,"6heexyz"
 🇵🇱 波兰 弗罗茨瓦夫  54.36.174.134² = Shadowsocks,54.36.174.134,443,chacha20-ietf-poly1305,"6heexyz"
 🇵🇱 波兰 弗罗茨瓦夫  54.36.174.134³ = Shadowsocks,54.36.174.134,443,chacha20-ietf-poly1305,"6heexyz"
+🇵🇱 波兰 弗罗茨瓦夫  54.36.174.134⁴ = Shadowsocks,54.36.174.134,443,chacha20-ietf-poly1305,"6heexyz"
 🇵🇱 波兰 弗罗茨瓦夫  54.36.174.140¹ = Shadowsocks,54.36.174.140,443,chacha20-ietf-poly1305,"6heexyz"
 🇵🇱 波兰 弗罗茨瓦夫  54.36.174.140² = Shadowsocks,54.36.174.140,443,chacha20-ietf-poly1305,"6heexyz"
-🇵🇱 波兰 弗罗茨瓦夫  54.36.174.140³ = Shadowsocks,54.36.174.140,443,chacha20-ietf-poly1305,"6heexyz"
 🇵🇱 波兰 弗罗茨瓦夫  54.37.136.194 = VLESS,54.37.136.194,2053,"e8a432c8-5d84-49a5-b822-67ed761a58f9",transport=tcp, over-tls=true, sni=www.cloudflare.com
 🇵🇱 波兰 格但斯克  82.118.22.161 = VLESS,82.118.22.161,443,"05488656-d4bf-4634-8b2e-e4ff5a56c7e2",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=www.cloudflare.com, public-key="xY1KpNxaIGmi6jfeudYQ_aaLGQqWK_uHStnwUFd2_2E", short-id=fa3ea655619a3e78
 🇵🇱 波兰 維什庫夫  94.183.209.182¹ = VLESS,94.183.209.182,443,"d4001352-dc64-48b8-b786-5860b284ad3d",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=steamcommunity.com, public-key="HyVJj9KuPfDV5lOLEkMeVmYFZoFMQid6eiLC_6Yf1mQ", short-id=5c56a4cfea5866c0
@@ -898,6 +976,7 @@
 🇸🇪 瑞典 斯德哥尔摩  185.146.173.237 = VLESS,185.146.173.237,80,"8044d53d-2efb-4cc7-9587-4c95caa5ab56",transport=ws, path=/rxv2ray-rxv2ray-rxv2ray-rxv2ray?ed=2048, host=www.iran.ir.科斯涅過濾器.website., over-tls=false
 🇸🇪 瑞典 斯德哥尔摩  185.146.173.24 = VLESS,185.146.173.24,8880,"53ed61cd-8be2-46eb-b7c2-850a732ed849",transport=ws, path=/Tel:@Daily_ConfigsTel:@Daily_ConfigsTel:@Daily_ConfigsTel:@Daily_ConfigsTel:@Daily_Configs, host=Daily-ConfigsV2rayGmSix6.6.6.6.ir.Com.Site.xn--fhq0la447aac5504dea701axr1g.vigilantecollection.com., over-tls=false
 🇸🇪 瑞典 斯德哥尔摩  185.146.173.37 = VLESS,185.146.173.37,80,"1759dd49-3e82-4abb-a9ea-0b097037e09d",transport=ws, path=/telegram-ArV2ray,telegram-ArV2ray,telegram-ArV2ray,telegram-ArV2ray,telegram-ArV2ray,telegram-ArV2ray,telegram-ArV2ray,telegram-ArV2ray,telegram-ArV2ray,telegram-ArV2ray,telegram-ArV2ray,telegram-ArV2ray?ed=2048, host=1.v.v.V-_-_-V2ray-_-_-V.v.v.mv.speedtest.net.www.Zula.ir.check-host.net.2.cakesfoodapp.COM., over-tls=false
+🇸🇪 瑞典 斯德哥尔摩  185.146.173.58³ = VLESS,185.146.173.58,80,"737f891d-b01b-4628-9171-3340aa26ee01",transport=ws, path=/Telegram-free_v2rayyy-Telegram-free_v2rayyy-Telegram-free_v2rayyy-Telegram-free_v2rayyy?ed=2048, host=501.ftp.debian.org.www.speedtest.net.免费上网66.Site., over-tls=false
 🇸🇪 瑞典 斯德哥尔摩  185.146.173.58¹ = VLESS,185.146.173.58,8080,"d9c4d8a1-f6a6-4cb8-b0b5-31d218ec3bce",transport=ws, path=/telegram-@Sobi_Vpn,telegram-@Sobi_Vpn,telegram-@Sobi_Vpn,telegram-@Sobi_Vpn,telegram-@Sobi_Vpn,telegram-@Sobi_Vpn,telegram-@Sobi_Vpn,telegram-@Sobi_Vpn,telegram-@Sobi_Vpn,telegram-@Sobi_Vpn,telegram-@Sobi_Vpn,telegram-@Sobi_Vpn,telegram-@Sobi_Vpn,telegram-@Sobi_Vpn,telegram-@Sobi_Vpn,telegram-@Sobi_Vpn,telegram-@Sobi_Vpn,telegram-@Sobi_Vpn?ed=2048, host=15.v2ray.mihanyas.ir.mbj.farsroid.com.xn--fhq0la447aac5504dea701axr1g.online., over-tls=false
 🇸🇪 瑞典 斯德哥尔摩  185.146.173.58² = VLESS,185.146.173.58,8080,"fbc325f6-1d61-4c1e-8752-9e12b5463f82",transport=ws, path=/telegram-@Sobi_Vpn,telegram-@Sobi_Vpn,telegram-@Sobi_Vpn,telegram-@Sobi_Vpn,telegram-@Sobi_Vpn,telegram-@Sobi_Vpn,telegram-@Sobi_Vpn,telegram-@Sobi_Vpn,telegram-@Sobi_Vpn,telegram-@Sobi_Vpn,telegram-@Sobi_Vpn,telegram-@Sobi_Vpn,telegram-@Sobi_Vpn,telegram-@Sobi_Vpn,telegram-@Sobi_Vpn,telegram-@Sobi_Vpn,telegram-@Sobi_Vpn,telegram-@Sobi_Vpn?ed=2048, host=Kanal-polproxy.Vipnufilter.Online., over-tls=false
 🇸🇪 瑞典 斯德哥尔摩  185.146.173.59¹ = VLESS,185.146.173.59,80,"telegram-deli-servers",transport=ws, path=/tel : deli_servers tel : deli_servers tel : deli_servers tel : deli_servers tel : deli_servers tel : deli_servers?ed=2048, host=kia来自我们团队的爱01我爱熟食店lovedeli.speedtest.net.gOogle.com.Arvancloud.ir.realKiaa.ninjA., over-tls=false
@@ -916,6 +995,8 @@
 🇸🇪 瑞典 斯德哥尔摩  89.125.37.115 = VLESS,89.125.37.115,443,"b310e287-79fa-45e3-887f-9564c0e390f7",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=se.frgcdn.xyz, public-key="nF_kEdHan2dgl2tlQ_dtNaKZ4oORhuiFrXHbtEDcT2Q", short-id=2d6d073dc88f22a8
 🇸🇬 新加坡 新加坡  103.195.190.160¹ = VLESS,103.195.190.160,443,"26524cce-d514-4014-a426-365fb266a14d",transport=ws, path=/danfeng?ed=2560, host=xy1ej.stream-node-us.danfeng.qzz.io, over-tls=true, sni=xy1ej.stream-node-us.danfeng.qzz.io
 🇸🇬 新加坡 新加坡  103.195.190.160² = VLESS,103.195.190.160,443,"26524cce-d514-4014-a426-365fb266a14d",transport=ws, path=/, host=xy1ej.stream-node-us.danfeng.qzz.io, over-tls=true, sni=xy1ej.stream-node-us.danfeng.qzz.io
+🇸🇬 新加坡 新加坡  103.3.26.26¹ = Trojan,103.3.26.26,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me, skip-cert-verify=true
+🇸🇬 新加坡 新加坡  103.3.26.26² = Trojan,103.3.26.26,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me, skip-cert-verify=true
 🇸🇬 新加坡 新加坡  134.185.81.5¹ = VLESS,134.185.81.5,47881,"59b203b2-b1bc-4e9c-a9e5-ccb8f691bf72",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=www.tesla.com, public-key="6XmXX1QXGodmtqU37Zx9CDHnCnPtonRdq8ieLmt__g4", short-id=38d72071
 🇸🇬 新加坡 新加坡  134.185.81.5² = VLESS,134.185.81.5,47881,"59b203b2-b1bc-4e9c-a9e5-ccb8f691bf72",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=www.tesla.com
 🇸🇬 新加坡 新加坡  139.162.27.96¹ = VLESS,139.162.27.96,2096,"6e59d5c5-7aa3-4c36-a4c4-e3b899525ed2",transport=ws, path=/free-server.techsonic.dev, host=free-server.techsonic.dev, over-tls=true, sni=free-server.techsonic.dev
@@ -932,16 +1013,26 @@
 🇸🇬 新加坡 新加坡  149.28.130.108² = Trojan,149.28.130.108,443,"0ab6c98dae3b48e8b9c4a776b6c9c19a",transport=tcp, sni=searchcreativejobsandshowcaseyourartistictalents.com
 🇸🇬 新加坡 新加坡  149.28.130.108³ = Trojan,149.28.130.108,443,"0ab6c98dae3b48e8b9c4a776b6c9c19a",transport=tcp, sni=searchcreativejobsandshowcaseyourartistictalents.com
 🇸🇬 新加坡 新加坡  149.28.130.108⁴ = Trojan,149.28.130.108,443,"0ab6c98dae3b48e8b9c4a776b6c9c19a",transport=tcp, sni=searchcreativejobsandshowcaseyourartistictalents.com
-🇸🇬 新加坡 新加坡  172.104.161.198¹ = Trojan,172.104.161.198,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me
-🇸🇬 新加坡 新加坡  172.104.161.198² = Trojan,172.104.161.198,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me
-🇸🇬 新加坡 新加坡  172.236.139.181¹ = Trojan,172.236.139.181,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me
-🇸🇬 新加坡 新加坡  172.236.139.181² = Trojan,172.236.139.181,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me
+🇸🇬 新加坡 新加坡  172.104.161.198¹ = Trojan,172.104.161.198,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me, skip-cert-verify=true
+🇸🇬 新加坡 新加坡  172.104.161.198² = Trojan,172.104.161.198,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me, skip-cert-verify=true
+🇸🇬 新加坡 新加坡  172.104.161.198³ = Trojan,172.104.161.198,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me
+🇸🇬 新加坡 新加坡  172.104.161.198⁴ = Trojan,172.104.161.198,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me
+🇸🇬 新加坡 新加坡  172.104.57.237¹ = Trojan,172.104.57.237,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me, skip-cert-verify=true
+🇸🇬 新加坡 新加坡  172.104.57.237² = Trojan,172.104.57.237,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me, skip-cert-verify=true
+🇸🇬 新加坡 新加坡  172.236.139.181¹ = Trojan,172.236.139.181,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me, skip-cert-verify=true
+🇸🇬 新加坡 新加坡  172.236.139.181² = Trojan,172.236.139.181,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me, skip-cert-verify=true
+🇸🇬 新加坡 新加坡  172.236.139.181³ = Trojan,172.236.139.181,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me
+🇸🇬 新加坡 新加坡  172.236.139.181⁴ = Trojan,172.236.139.181,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me
+🇸🇬 新加坡 新加坡  172.237.90.144¹ = Trojan,172.237.90.144,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me, skip-cert-verify=true
+🇸🇬 新加坡 新加坡  172.237.90.144² = Trojan,172.237.90.144,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me, skip-cert-verify=true
 🇸🇬 新加坡 新加坡  175.41.179.37 = VLESS,175.41.179.37,51262,"6c6ea474-0cf5-4a3d-bc81-aa2eeb6516d6",transport=ws, path=/@Marisa_kristi, host=jln31qtswdkut5.60kohcognywybguuq3ouc818oofnxfvn35daott.workers.dev, over-tls=true, sni=jln31qtswdkut5.60kohcognywybguuq3ouc818oofnxfvn35daott.workers.dev
 🇸🇬 新加坡 新加坡  178.93.160.132 = Trojan,178.93.160.132,443,"humanity",transport=ws, path=/assignment, sni=www.cordweave.com
 🇸🇬 新加坡 新加坡  206.206.76.75¹ = VLESS,206.206.76.75,443,"32cf52f4-b8d2-4ed5-a37c-0d0a8e743309",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=www.cloudflare.com, public-key="gSHylaTvEzWj19Bk-zLHXKYUINGWVmo_ybCiD2CRinE", short-id=a775360a48ef5cfb
 🇸🇬 新加坡 新加坡  206.206.76.75² = VLESS,206.206.76.75,443,"32cf52f4-b8d2-4ed5-a37c-0d0a8e743309",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=www.cloudflare.com
 🇸🇬 新加坡 新加坡  3.0.111.82² = VLESS,3.0.111.82,10574,"814bd064-544d-4255-a070-5705c03f6da9",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=www.apple.com
 🇸🇬 新加坡 新加坡  3.0.111.82¹ = VLESS,3.0.111.82,17623,"814bd064-544d-4255-a070-5705c03f6da9",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=www.apple.com, public-key="k2hPp0tTW0Da-HK94wYpSCLbuK44LfGqC2MSJIM1Ti0", short-id=48050fab
+🇸🇬 新加坡 新加坡  45.127.34.109¹ = Trojan,45.127.34.109,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me, skip-cert-verify=true
+🇸🇬 新加坡 新加坡  45.127.34.109² = Trojan,45.127.34.109,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me, skip-cert-verify=true
 🇸🇬 新加坡 新加坡  45.132.75.213¹ = VLESS,45.132.75.213,2053,"f46182d1-e13b-47d3-97e2-fa5426a93e7c",transport=tcp, over-tls=true, sni=www.cloudflare.com, public-key="TpWeZocgNOygOhMo0l7oJawPu7STkn9D-SOa0UppcyY", short-id=cd7e85995ae2afc9
 🇸🇬 新加坡 新加坡  45.132.75.213² = VLESS,45.132.75.213,2053,"f46182d1-e13b-47d3-97e2-fa5426a93e7c",transport=tcp, over-tls=true, sni=www.cloudflare.com
 🇸🇬 新加坡 新加坡  45.77.243.143 = VLESS,45.77.243.143,443,"e9a8144e-5237-488a-afb1-9ca3d8d54c80",transport=tcp, over-tls=true, sni=sg003.zestapp778.com
@@ -951,8 +1042,9 @@
 🇸🇬 新加坡 新加坡  47.236.168.243 = socks5,47.236.168.243,1080,ODg4ODo4ODg4,""
 🇸🇬 新加坡 新加坡  47.82.155.79¹ = VLESS,47.82.155.79,8443,"3305c285-8d55-4f52-a3b0-2a582f5ffd59",transport=ws, path=/?ed=2048, host=sdwf-amq.pages.dev, over-tls=true, sni=sdwf-amq.pages.dev
 🇸🇬 新加坡 新加坡  47.82.155.79² = VLESS,47.82.155.79,8443,"3305c285-8d55-4f52-a3b0-2a582f5ffd59",transport=ws, path=/, host=sdwf-amq.pages.dev, over-tls=true, sni=sdwf-amq.pages.dev
-🇸🇬 新加坡 新加坡  52.221.223.188¹ = VLESS,52.221.223.188,2087,"bf5129f1-31f5-4edf-a07a-27ec31b26c1d",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=18.143.145.59.sslip.io
-🇸🇬 新加坡 新加坡  52.221.223.188² = Shadowsocks,52.221.223.188,2096,chacha20-ietf-poly1305,"bf5129f1-31f5-4edf-a07a-27ec31b26c1d"
+🇸🇬 新加坡 新加坡  52.221.223.188² = VLESS,52.221.223.188,2087,"bf5129f1-31f5-4edf-a07a-27ec31b26c1d",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=18.143.145.59.sslip.io
+🇸🇬 新加坡 新加坡  52.221.223.188¹ = Shadowsocks,52.221.223.188,2096,chacha20-ietf-poly1305,"bf5129f1-31f5-4edf-a07a-27ec31b26c1d"
+🇸🇬 新加坡 新加坡  52.221.223.188³ = Shadowsocks,52.221.223.188,2096,chacha20-ietf-poly1305,"bf5129f1-31f5-4edf-a07a-27ec31b26c1d"
 🇸🇬 新加坡 新加坡  54.169.200.246¹ = VLESS,54.169.200.246,41688,"49c0aac1-5e05-4f04-b624-248fc59e03c4",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=www.intel.com, public-key="srwIElIGTPs0kshpN1vvPsn4wixV_pLd56y_v9m0sTk", short-id=7f342137c20387
 🇸🇬 新加坡 新加坡  54.169.200.246² = VLESS,54.169.200.246,41688,"49c0aac1-5e05-4f04-b624-248fc59e03c4",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=www.intel.com
 🇸🇬 新加坡 新加坡  54.251.9.130¹ = VLESS,54.251.9.130,24146,"9d9a048b-3aea-4b3e-b106-1106bf301feb",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=www.intel.com, public-key="VeluC9A7XDurAWQNgXKShS2SJSgoK79QHFgiAMYrvGo", short-id=7205d9079521832c
@@ -960,6 +1052,8 @@
 🇸🇬 新加坡 新加坡  67.159.52.81¹ = VLESS,67.159.52.81,443,"a16bd0e2-ff2e-4e4c-a955-0c684255a065",transport=tcp, over-tls=true
 🇸🇬 新加坡 新加坡  67.159.52.81² = VLESS,67.159.52.81,443,"a16bd0e2-ff2e-4e4c-a955-0c684255a065",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=sg.fasti.win
 🇸🇬 新加坡 新加坡  68.183.227.4 = Shadowsocks,68.183.227.4,8080,rc4-md5,"14fFPrbezE3HDZzsMOr6"
+🇸🇬 新加坡 新加坡  69.8.133.223¹ = Trojan,69.8.133.223,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me, skip-cert-verify=true
+🇸🇬 新加坡 新加坡  69.8.133.223² = Trojan,69.8.133.223,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me, skip-cert-verify=true
 🇸🇬 新加坡 新加坡  85.137.51.53¹ = VLESS,85.137.51.53,443,"26524cce-d514-4014-a426-365fb266a14d",transport=ws, path=/danfeng?ed=2560, host=t5pmr.mail-node.gfw.kdns.fr, over-tls=true, sni=t5pmr.mail-node.gfw.kdns.fr
 🇸🇬 新加坡 新加坡  85.137.51.53² = VLESS,85.137.51.53,443,"26524cce-d514-4014-a426-365fb266a14d",transport=ws, path=/, host=t5pmr.mail-node.gfw.kdns.fr, over-tls=true, sni=t5pmr.mail-node.gfw.kdns.fr
 🇸🇮 斯洛文尼亚 马里博尔  92.42.201.65 = VLESS,92.42.201.65,4443,"e0134f1c-8b74-4733-9c34-50cb251480c2",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=node-slo03.rkitman.ru, public-key="CTiiN_SriTUj-eBv0047HpCWgLtAzWzq-gwvIWN9KUI", short-id=7f0275a4db6068fb
@@ -979,8 +1073,10 @@
 🇹🇷 土耳其 伊斯坦布尔  65.9.95.19 = VLESS,65.9.95.19,443,"dde64e50-7aad-4e66-ada9-40956bfeb668",transport=ws, path=/, host=d30f3bh55zqaoh.cloudfront.net, over-tls=true, sni=d30f3bh55zqaoh.cloudfront.net
 🇹🇷 土耳其 安卡拉  153.56.210.61 = VLESS,153.56.210.61,443,"0de1d303-d7de-0001-8679-c4cb67e2e2cc",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=amd.com, public-key="WWeAHWUVD-phmnjNJ823cer0c4CMIbEs08AhsuEZmDc", short-id=a696de84963656de
 🇹🇼 台湾 台北市  152.32.167.33 = VLESS,152.32.167.33,443,"91ad30e9-ab06-4b4c-9fb9-1c2aa97d8b3a",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=www.amazon.com, public-key="Q8QwBSGN6J-FqgDV1pYNm0VThS_xNRyQ3DPPa9YZ3j4", short-id=cff998a4
-🇹🇼 台湾 台北市  83.147.15.84¹ = Trojan,83.147.15.84,8443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me
-🇹🇼 台湾 台北市  83.147.15.84² = Trojan,83.147.15.84,8443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me
+🇹🇼 台湾 台北市  83.147.15.84¹ = Trojan,83.147.15.84,8443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me, skip-cert-verify=true
+🇹🇼 台湾 台北市  83.147.15.84² = Trojan,83.147.15.84,8443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me, skip-cert-verify=true
+🇹🇼 台湾 台北市  83.147.15.84³ = Trojan,83.147.15.84,8443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me
+🇹🇼 台湾 台北市  83.147.15.84⁴ = Trojan,83.147.15.84,8443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me
 🇹🇼 台湾 彰化  59.125.69.23¹ = VLESS,59.125.69.23,443,"c1c04450-bf71-4049-ad0c-9cf6d94d9f1f",transport=ws, path=/81574b6b-c9d7-44a0-b83d-dad56e8cb530, over-tls=true, sni=ty986gfazs.cainiaohub.xyz
 🇹🇼 台湾 彰化  59.125.69.23² = VLESS,59.125.69.23,443,"c1c04450-bf71-4049-ad0c-9cf6d94d9f1f",transport=ws, path=/81574b6b-c9d7-44a0-b83d-dad56e8cb530fp=chrome, over-tls=true, sni=ty986gfazs.cainiaohub.xyz
 🇹🇼 台湾 臺中市  60.248.219.53 = VLESS,60.248.219.53,443,"c1c04450-bf71-4049-ad0c-9cf6d94d9f1f",transport=ws, path=/81574b6b-c9d7-44a0-b83d-dad56e8cb530fp=chrome, host=ty986gfazs.cainiaohub.xyz, over-tls=true, sni=ty986gfazs.cainiaohub.xyz
@@ -1001,6 +1097,7 @@
 🇺🇸 美国 克利夫頓  138.197.89.234¹ = Shadowsocks,138.197.89.234,28960,chacha20-ietf-poly1305,"DZRy4Q3QH0jUGfKFl2jDCZ"
 🇺🇸 美国 克利夫頓  138.197.89.234² = Shadowsocks,138.197.89.234,28960,chacha20-ietf-poly1305,"DZRy4Q3QH0jUGfKFl2jDCZ"
 🇺🇸 美国 克利夫頓  138.197.89.234³ = Shadowsocks,138.197.89.234,28960,chacha20-ietf-poly1305,"DZRy4Q3QH0jUGfKFl2jDCZ"
+🇺🇸 美国 克利夫頓  138.197.89.234⁴ = Shadowsocks,138.197.89.234,28960,chacha20-ietf-poly1305,"DZRy4Q3QH0jUGfKFl2jDCZ"
 🇺🇸 美国 凤凰城  66.163.112.121 = Trojan,66.163.112.121,443,"0ab6c98dae3b48e8b9c4a776b6c9c19a",transport=tcp, sni=www.unlockyourfuturefindyourperfectcareer.com
 🇺🇸 美国 凤凰城  66.163.112.13 = Trojan,66.163.112.13,443,"0ab6c98dae3b48e8b9c4a776b6c9c19a",transport=tcp, sni=blog.unlockyourfuturefindyourperfectcareer.com
 🇺🇸 美国 凤凰城  95.215.201.18 = Shadowsocks,95.215.201.18,19999,aes-256-gcm,"ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4="
@@ -1021,10 +1118,8 @@
 🇺🇸 美国 圣克拉拉  167.88.61.198⁴ = Trojan,167.88.61.198,443,"0ab6c98dae3b48e8b9c4a776b6c9c19a",transport=tcp, sni=cdn.browseseniorrolesandenhanceyourcareertoday.com
 🇺🇸 美国 圣克拉拉  167.88.61.198⁵ = Trojan,167.88.61.198,443,"0ab6c98dae3b48e8b9c4a776b6c9c19a",transport=tcp, sni=cdn.browseseniorrolesandenhanceyourcareertoday.com
 🇺🇸 美国 圣克拉拉  167.88.61.198⁶ = Trojan,167.88.61.198,443,"0ab6c98dae3b48e8b9c4a776b6c9c19a",transport=tcp, sni=cdn.browseseniorrolesandenhanceyourcareertoday.com
-🇺🇸 美国 圣克拉拉  167.88.61.198⁷ = Trojan,167.88.61.198,443,"0ab6c98dae3b48e8b9c4a776b6c9c19a",transport=tcp, sni=cdn.browseseniorrolesandenhanceyourcareertoday.com
-🇺🇸 美国 圣克拉拉  167.88.61.52¹ = Trojan,167.88.61.52,443,"0ab6c98dae3b48e8b9c4a776b6c9c19a",transport=tcp, sni=courses.browseseniorrolesandenhanceyourcareertoday.com, skip-cert-verify=true
+🇺🇸 美国 圣克拉拉  167.88.61.52¹ = Trojan,167.88.61.52,443,"0ab6c98dae3b48e8b9c4a776b6c9c19a",transport=tcp, sni=courses.browseseniorrolesandenhanceyourcareertoday.com
 🇺🇸 美国 圣克拉拉  167.88.61.52² = Trojan,167.88.61.52,443,"0ab6c98dae3b48e8b9c4a776b6c9c19a",transport=tcp, sni=courses.browseseniorrolesandenhanceyourcareertoday.com
-🇺🇸 美国 圣克拉拉  167.88.61.52³ = Trojan,167.88.61.52,443,"0ab6c98dae3b48e8b9c4a776b6c9c19a",transport=tcp, sni=courses.browseseniorrolesandenhanceyourcareertoday.com
 🇺🇸 美国 圣克拉拉  43.153.90.117 = VLESS,43.153.90.117,443,"b9dd6833-9121-41fc-badc-ecbab952f606",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=www.apple.com, public-key="mvgWVqCFiqMKlst2NpfN71iKmD1dFd2iTBEP929UozE", short-id=b91971fe98d55eb9
 🇺🇸 美国 圣克拉拉  64.23.153.167¹ = VLESS,64.23.153.167,443,"26524cce-d514-4014-a426-365fb266a14d",transport=ws, path=/danfeng?ed=2560, host=xy1ej.stream-node-us.danfeng.qzz.io, over-tls=true, sni=xy1ej.stream-node-us.danfeng.qzz.io
 🇺🇸 美国 圣克拉拉  64.23.153.167² = VLESS,64.23.153.167,443,"26524cce-d514-4014-a426-365fb266a14d",transport=ws, path=/, host=xy1ej.stream-node-us.danfeng.qzz.io, over-tls=true, sni=xy1ej.stream-node-us.danfeng.qzz.io
@@ -1048,8 +1143,7 @@
 🇺🇸 美国 底特律  170.101.101.53² = Trojan,170.101.101.53,443,"0ab6c98dae3b48e8b9c4a776b6c9c19a",transport=tcp
 🇺🇸 美国 底特律  170.101.101.53³ = Trojan,170.101.101.53,443,"0ab6c98dae3b48e8b9c4a776b6c9c19a",transport=tcp
 🇺🇸 美国 底特律  170.101.101.53⁴ = Trojan,170.101.101.53,443,"0ab6c98dae3b48e8b9c4a776b6c9c19a",transport=tcp, sni=www.explorecreativejobsandenhanceyourcareerportfolio.com
-🇺🇸 美国 底特律  170.101.101.67¹ = Trojan,170.101.101.67,443,"0ab6c98dae3b48e8b9c4a776b6c9c19a",transport=tcp, sni=courses.explorecreativejobsandenhanceyourcareerportfolio.com
-🇺🇸 美国 底特律  170.101.101.67² = Trojan,170.101.101.67,443,"0ab6c98dae3b48e8b9c4a776b6c9c19a",transport=tcp, sni=courses.explorecreativejobsandenhanceyourcareerportfolio.com
+🇺🇸 美国 底特律  170.101.101.67 = Trojan,170.101.101.67,443,"0ab6c98dae3b48e8b9c4a776b6c9c19a",transport=tcp, sni=courses.explorecreativejobsandenhanceyourcareerportfolio.com
 🇺🇸 美国 旧金山  162.243.148.170¹ = VLESS,162.243.148.170,443,"26524cce-d514-4014-a426-365fb266a14d",transport=ws, path=/danfeng?ed=2560, host=t5pmr.mail-node.gfw.kdns.fr, over-tls=true, sni=t5pmr.mail-node.gfw.kdns.fr
 🇺🇸 美国 旧金山  162.243.148.170² = VLESS,162.243.148.170,443,"26524cce-d514-4014-a426-365fb266a14d",transport=ws, path=/, host=t5pmr.mail-node.gfw.kdns.fr, over-tls=true, sni=t5pmr.mail-node.gfw.kdns.fr
 🇺🇸 美国 旧金山  216.24.57.15¹ = VLESS,216.24.57.15,443,"2ee0d2aa-867e-a77e-9538-2edfc0b242aa",transport=ws, path=/ws/2ee0d2aa-867e-a77e-9538-2edfc0b242aafp=firefoxfp=chrome, host=four04-rd37.onrender.com, over-tls=true, sni=four04-rd37.onrender.com
@@ -1063,23 +1157,53 @@
 🇺🇸 美国 洛杉矶  128.121.31.249¹ = VLESS,128.121.31.249,587,"26524cce-d514-4014-a426-365fb266a14d",transport=ws, path=/danfeng?ed=2560, host=xy1ej.stream-node-us.danfeng.qzz.io, over-tls=true, sni=xy1ej.stream-node-us.danfeng.qzz.io
 🇺🇸 美国 洛杉矶  128.121.31.249² = VLESS,128.121.31.249,587,"26524cce-d514-4014-a426-365fb266a14d",transport=ws, path=/, host=xy1ej.stream-node-us.danfeng.qzz.io, over-tls=true, sni=xy1ej.stream-node-us.danfeng.qzz.io
 🇺🇸 美国 洛杉矶  143.246.62.134 = VLESS,143.246.62.134,443,"26524cce-d514-4014-a426-365fb266a14d",transport=ws, path=/danfeng?ed=2560fp=firefox, host=xy1ej.stream-node-us.danfeng.qzz.io, over-tls=true, sni=xy1ej.stream-node-us.danfeng.qzz.io
-🇺🇸 美国 洛杉矶  179.253.225.34¹ = Trojan,179.253.225.34,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me
-🇺🇸 美国 洛杉矶  179.253.225.34² = Trojan,179.253.225.34,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me
-🇺🇸 美国 洛杉矶  179.253.226.191¹ = Trojan,179.253.226.191,8443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me
-🇺🇸 美国 洛杉矶  179.253.226.191² = Trojan,179.253.226.191,8443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me
-🇺🇸 美国 洛杉矶  179.253.255.7¹ = Trojan,179.253.255.7,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me
-🇺🇸 美国 洛杉矶  179.253.255.7² = Trojan,179.253.255.7,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me
-🇺🇸 美国 洛杉矶  179.255.102.237¹ = Trojan,179.255.102.237,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me
-🇺🇸 美国 洛杉矶  179.255.102.237² = Trojan,179.255.102.237,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me
-🇺🇸 美国 洛杉矶  179.255.115.161¹ = Trojan,179.255.115.161,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me
-🇺🇸 美国 洛杉矶  179.255.115.161² = Trojan,179.255.115.161,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me
-🇺🇸 美国 洛杉矶  179.255.118.250¹ = Trojan,179.255.118.250,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me
-🇺🇸 美国 洛杉矶  179.255.118.250² = Trojan,179.255.118.250,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me
+🇺🇸 美国 洛杉矶  179.253.225.34¹ = Trojan,179.253.225.34,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me, skip-cert-verify=true
+🇺🇸 美国 洛杉矶  179.253.225.34² = Trojan,179.253.225.34,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me, skip-cert-verify=true
+🇺🇸 美国 洛杉矶  179.253.225.34³ = Trojan,179.253.225.34,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me
+🇺🇸 美国 洛杉矶  179.253.225.34⁴ = Trojan,179.253.225.34,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me
+🇺🇸 美国 洛杉矶  179.253.226.191¹ = Trojan,179.253.226.191,8443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me, skip-cert-verify=true
+🇺🇸 美国 洛杉矶  179.253.226.191² = Trojan,179.253.226.191,8443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me, skip-cert-verify=true
+🇺🇸 美国 洛杉矶  179.253.226.191³ = Trojan,179.253.226.191,8443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me
+🇺🇸 美国 洛杉矶  179.253.226.191⁴ = Trojan,179.253.226.191,8443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me
+🇺🇸 美国 洛杉矶  179.253.231.141¹ = Trojan,179.253.231.141,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me, skip-cert-verify=true
+🇺🇸 美国 洛杉矶  179.253.231.141² = Trojan,179.253.231.141,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me, skip-cert-verify=true
+🇺🇸 美国 洛杉矶  179.253.231.22¹ = Trojan,179.253.231.22,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me, skip-cert-verify=true
+🇺🇸 美国 洛杉矶  179.253.231.22² = Trojan,179.253.231.22,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me, skip-cert-verify=true
+🇺🇸 美国 洛杉矶  179.253.238.240¹ = Trojan,179.253.238.240,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me, skip-cert-verify=true
+🇺🇸 美国 洛杉矶  179.253.238.240² = Trojan,179.253.238.240,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me, skip-cert-verify=true
+🇺🇸 美国 洛杉矶  179.253.239.20¹ = Trojan,179.253.239.20,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me, skip-cert-verify=true
+🇺🇸 美国 洛杉矶  179.253.239.20² = Trojan,179.253.239.20,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me, skip-cert-verify=true
+🇺🇸 美国 洛杉矶  179.253.255.7¹ = Trojan,179.253.255.7,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me, skip-cert-verify=true
+🇺🇸 美国 洛杉矶  179.253.255.7² = Trojan,179.253.255.7,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me, skip-cert-verify=true
+🇺🇸 美国 洛杉矶  179.253.255.7³ = Trojan,179.253.255.7,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me
+🇺🇸 美国 洛杉矶  179.253.255.7⁴ = Trojan,179.253.255.7,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me
+🇺🇸 美国 洛杉矶  179.255.102.237¹ = Trojan,179.255.102.237,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me, skip-cert-verify=true
+🇺🇸 美国 洛杉矶  179.255.102.237² = Trojan,179.255.102.237,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me, skip-cert-verify=true
+🇺🇸 美国 洛杉矶  179.255.102.237³ = Trojan,179.255.102.237,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me
+🇺🇸 美国 洛杉矶  179.255.102.237⁴ = Trojan,179.255.102.237,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me
+🇺🇸 美国 洛杉矶  179.255.103.84¹ = Trojan,179.255.103.84,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me, skip-cert-verify=true
+🇺🇸 美国 洛杉矶  179.255.103.84² = Trojan,179.255.103.84,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me, skip-cert-verify=true
+🇺🇸 美国 洛杉矶  179.255.115.161¹ = Trojan,179.255.115.161,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me, skip-cert-verify=true
+🇺🇸 美国 洛杉矶  179.255.115.161² = Trojan,179.255.115.161,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me, skip-cert-verify=true
+🇺🇸 美国 洛杉矶  179.255.115.161³ = Trojan,179.255.115.161,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me
+🇺🇸 美国 洛杉矶  179.255.115.161⁴ = Trojan,179.255.115.161,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me
+🇺🇸 美国 洛杉矶  179.255.118.250¹ = Trojan,179.255.118.250,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me, skip-cert-verify=true
+🇺🇸 美国 洛杉矶  179.255.118.250² = Trojan,179.255.118.250,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me, skip-cert-verify=true
+🇺🇸 美国 洛杉矶  179.255.118.250³ = Trojan,179.255.118.250,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me
+🇺🇸 美国 洛杉矶  179.255.118.250⁴ = Trojan,179.255.118.250,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me
 🇺🇸 美国 洛杉矶  179.255.132.69 = VLESS,179.255.132.69,8443,"26524cce-d514-4014-a426-365fb266a14d",transport=ws, path=/danfeng?ed=2560, host=t5pmr.mail-node.gfw.kdns.fr, over-tls=true, sni=t5pmr.mail-node.gfw.kdns.fr
-🇺🇸 美国 洛杉矶  179.255.136.237¹ = Trojan,179.255.136.237,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me
-🇺🇸 美国 洛杉矶  179.255.136.237² = Trojan,179.255.136.237,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me
-🇺🇸 美国 洛杉矶  179.255.141.28¹ = Trojan,179.255.141.28,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me
-🇺🇸 美国 洛杉矶  179.255.141.28² = Trojan,179.255.141.28,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me
+🇺🇸 美国 洛杉矶  179.255.136.237¹ = Trojan,179.255.136.237,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me, skip-cert-verify=true
+🇺🇸 美国 洛杉矶  179.255.136.237² = Trojan,179.255.136.237,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me, skip-cert-verify=true
+🇺🇸 美国 洛杉矶  179.255.136.237³ = Trojan,179.255.136.237,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me
+🇺🇸 美国 洛杉矶  179.255.136.237⁴ = Trojan,179.255.136.237,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me
+🇺🇸 美国 洛杉矶  179.255.141.28¹ = Trojan,179.255.141.28,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me, skip-cert-verify=true
+🇺🇸 美国 洛杉矶  179.255.141.28² = Trojan,179.255.141.28,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me, skip-cert-verify=true
+🇺🇸 美国 洛杉矶  179.255.141.28³ = Trojan,179.255.141.28,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me
+🇺🇸 美国 洛杉矶  179.255.141.28⁴ = Trojan,179.255.141.28,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me
+🇺🇸 美国 洛杉矶  179.255.141.59¹ = Trojan,179.255.141.59,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me, skip-cert-verify=true
+🇺🇸 美国 洛杉矶  179.255.141.59² = Trojan,179.255.141.59,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me, skip-cert-verify=true
+🇺🇸 美国 洛杉矶  179.255.99.7¹ = Trojan,179.255.99.7,8443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me, skip-cert-verify=true
+🇺🇸 美国 洛杉矶  179.255.99.7² = Trojan,179.255.99.7,8443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me, skip-cert-verify=true
 🇺🇸 美国 洛杉矶  186.241.105.213 = Trojan,186.241.105.213,443,"va3E77I9fZCnCVcGKkxBCfz5",transport=tcp, sni=vpn.liumr.top
 🇺🇸 美国 洛杉矶  188.255.157.136¹ = VLESS,188.255.157.136,443,"26524cce-d514-4014-a426-365fb266a14d",transport=ws, path=/danfeng?ed=2560, host=xy1ej.stream-node-us.danfeng.qzz.io, over-tls=true, sni=xy1ej.stream-node-us.danfeng.qzz.io
 🇺🇸 美国 洛杉矶  188.255.157.136² = VLESS,188.255.157.136,443,"26524cce-d514-4014-a426-365fb266a14d",transport=ws, path=/danfeng?ed=2560, host=xy1ej.stream-node-us.danfeng.qzz.io, over-tls=true, sni=xy1ej.stream-node-us.danfeng.qzz.io
@@ -1094,6 +1218,8 @@
 🇺🇸 美国 洛杉矶  38.60.89.245² = VLESS,38.60.89.245,2053,"26524cce-d514-4014-a426-365fb266a14d",transport=ws, path=/, host=xy1ej.stream-node-us.danfeng.qzz.io, over-tls=true, sni=xy1ej.stream-node-us.danfeng.qzz.io
 🇺🇸 美国 洛杉矶  45.77.121.70¹ = VLESS,45.77.121.70,443,"26524cce-d514-4014-a426-365fb266a14d",transport=ws, path=/danfeng?ed=2560, host=xy1ej.stream-node-us.danfeng.qzz.io, over-tls=true, sni=xy1ej.stream-node-us.danfeng.qzz.io
 🇺🇸 美国 洛杉矶  45.77.121.70² = VLESS,45.77.121.70,443,"26524cce-d514-4014-a426-365fb266a14d",transport=ws, path=/, host=xy1ej.stream-node-us.danfeng.qzz.io, over-tls=true, sni=xy1ej.stream-node-us.danfeng.qzz.io
+🇺🇸 美国 洛杉矶  64.186.224.154¹ = Trojan,64.186.224.154,10962,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me, skip-cert-verify=true
+🇺🇸 美国 洛杉矶  64.186.224.154² = Trojan,64.186.224.154,10962,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me, skip-cert-verify=true
 🇺🇸 美国 洛杉矶  67.209.184.133¹ = VLESS,67.209.184.133,443,"96ebc166-565c-474f-9712-7990b55c368a",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=www.bing.com, public-key="Tp015Ga5LodBwKs4z7Wz4hTvqeh8-4q1EQPZqvZfWR0", short-id=ad09494d431b2b92
 🇺🇸 美国 洛杉矶  67.209.184.133² = VLESS,67.209.184.133,443,"96ebc166-565c-474f-9712-7990b55c368a",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=www.bing.com
 🇺🇸 美国 洛杉矶  69.8.129.152¹ = VLESS,69.8.129.152,443,"26524cce-d514-4014-a426-365fb266a14d",transport=ws, path=/danfeng?ed=2560, host=t5pmr.mail-node.gfw.kdns.fr, over-tls=true, sni=t5pmr.mail-node.gfw.kdns.fr
@@ -1112,10 +1238,14 @@
 🇺🇸 美国 纽约  198.98.53.130 = Shadowsocks,198.98.53.130,443,chacha20-ietf-poly1305,"eDfN7SODQceIOmIAbtJJtK"
 🇺🇸 美国 聖荷西  159.242.242.30 = VLESS,159.242.242.30,8880,"6202b230-417c-4d8e-b624-0f71afa9c75d",transport=ws, path=/, host=vms.lifetime58.workers.dev, over-tls=false
 🇺🇸 美国 聖荷西  170.114.46.6 = VLESS,170.114.46.6,8080,"990bf436-f1b9-4e7f-857d-14378acc4ae5",transport=ws, path=/, host=free.nadun.store, over-tls=false
-🇺🇸 美国 聖荷西  193.163.19.232¹ = Trojan,193.163.19.232,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me
-🇺🇸 美国 聖荷西  193.163.19.232² = Trojan,193.163.19.232,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me
-🇺🇸 美国 聖荷西  45.139.193.156¹ = Trojan,45.139.193.156,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me
-🇺🇸 美国 聖荷西  45.139.193.156² = Trojan,45.139.193.156,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me
+🇺🇸 美国 聖荷西  193.163.19.232¹ = Trojan,193.163.19.232,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me, skip-cert-verify=true
+🇺🇸 美国 聖荷西  193.163.19.232² = Trojan,193.163.19.232,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me, skip-cert-verify=true
+🇺🇸 美国 聖荷西  193.163.19.232³ = Trojan,193.163.19.232,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me
+🇺🇸 美国 聖荷西  193.163.19.232⁴ = Trojan,193.163.19.232,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me
+🇺🇸 美国 聖荷西  45.139.193.156¹ = Trojan,45.139.193.156,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me, skip-cert-verify=true
+🇺🇸 美国 聖荷西  45.139.193.156² = Trojan,45.139.193.156,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me, skip-cert-verify=true
+🇺🇸 美国 聖荷西  45.139.193.156³ = Trojan,45.139.193.156,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me
+🇺🇸 美国 聖荷西  45.139.193.156⁴ = Trojan,45.139.193.156,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me
 🇺🇸 美国 芝加哥  138.199.42.68 = Shadowsocks,138.199.42.68,8080,rc4-md5,"14fFPrbezE3HDZzsMOr6"
 🇺🇸 美国 芝加哥  146.75.57.120¹ = Trojan,146.75.57.120,443,"MiTiVPN",transport=ws, path=/?Telegram---PLANB_NET---PLANB_NET---PLANB_NET---PLANB_NET, host=mitivpn--mitivpn-mitivpn.ac.ir, alpn="http/1.1", sni=firefox.com
 🇺🇸 美国 芝加哥  146.75.57.120² = Trojan,146.75.57.120,443,"MiTiVPN",transport=ws, path=/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/NLSus---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN, host=mitivpn--mitivpn-mitivpn.ac.ir, sni=firefox.com
