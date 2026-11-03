@@ -45,181 +45,10 @@
 🇨🇦 加拿大 Beauharnois  51.79.85.185² = Shadowsocks,51.79.85.185,8118,aes-256-gcm,"cdBIDV42DCwnfIN"
 🇨🇦 加拿大 Beauharnois  51.79.85.185³ = Shadowsocks,51.79.85.185,8118,aes-256-gcm,"cdBIDV42DCwnfIN"
 🇨🇦 加拿大 Beauharnois  51.79.85.185⁴ = Shadowsocks,51.79.85.185,8118,aes-256-gcm,"cdBIDV42DCwnfIN"
-🇨🇦 加拿大 多伦多  104.16.10.185 = VLESS,104.16.10.185,443,"4e4f1f70-5e56-4a76-bb9d-db087f4690c4",transport=ws, path=/tyxyws, host=jp3.yohototo.top, over-tls=true, sni=jp3.yohototo.top
-🇨🇦 加拿大 多伦多  104.16.122.227 = VLESS,104.16.122.227,443,"d342d11e-d224-4463-b982-532309285094",transport=ws, path=/?TELEGRAM--MARAMBASHI--MARAMBASHI--MARAMBASHI--MARAMBASHI?ed=2560fp=chrome, host=ccc.010304.xyz, over-tls=true, sni=ccc.010304.xyz
-🇨🇦 加拿大 多伦多  104.16.53.11 = VLESS,104.16.53.11,8443,"7c9e3c1d-a360-4429-9189-e45a98de7fde",transport=ws, host=my.ski1plag.ir, over-tls=true, sni=my.ski1plag.ir
-🇨🇦 加拿大 多伦多  104.16.60.79 = VLESS,104.16.60.79,2052,"636b1684-b26c-4a9c-bc6e-8e1197a36d74",transport=ws, path=/?ed=2048, host=workerr.hashdiler.workers.dev, over-tls=false
-🇨🇦 加拿大 多伦多  104.16.60.8 = VMess,104.16.60.8,2086,auto,"76221bfb-e92f-4e80-81c5-6fe48f50ac0b",transport=ws, alterId=0, path=/glweidf.sbs/linkws, host=1c11-muddy-rice-1c11.vetanex501.workers.dev, over-tls=false
-🇨🇦 加拿大 多伦多  104.16.7.70¹ = VLESS,104.16.7.70,2095,"2b5f8588-87f6-40af-a785-322c8fa1df77",transport=ws, path=/XnXnXnXnXnXnXnXnXnXnXnXnXnXnXnXnXnXnXnXnXnXnXnXnXnXnXnXn?ed=2560, host=sni.111000.dynv6.azazilvpn.sbs, over-tls=false
-🇨🇦 加拿大 多伦多  104.16.7.70² = VLESS,104.16.7.70,2096,"6202b230-417c-4d8e-b624-0f71afa9c75d",transport=ws, path=/, host=sni.jpmj.dev, over-tls=true, sni=sni.jpmj.dev
-🇨🇦 加拿大 多伦多  104.17.0.3¹ = Trojan,104.17.0.3,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me, skip-cert-verify=true
-🇨🇦 加拿大 多伦多  104.17.0.3² = Trojan,104.17.0.3,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me, skip-cert-verify=true
-🇨🇦 加拿大 多伦多  104.17.11.191¹ = VLESS,104.17.11.191,443,"fc7d2cfe-f5ef-40c8-a848-a0bdc11f6349",transport=ws, path=/vlessws, host=vpn.cintaku.qzz.io, over-tls=true, sni=vpn.cintaku.qzz.io
-🇨🇦 加拿大 多伦多  104.17.11.191² = VLESS,104.17.11.191,443,"fc7d2cfe-f5ef-40c8-a848-a0bdc11f6349",transport=ws, path=/vlesswsfp=chrome, host=vpn.cintaku.qzz.io, over-tls=true, sni=vpn.cintaku.qzz.io
-🇨🇦 加拿大 多伦多  104.17.119.248 = VLESS,104.17.119.248,8080,"ff9307e6-f04a-4905-8cd4-7e690bd63eb8",transport=ws, path=/eyJqdW5rIjoiYUVJQnRNVEk1MlJKUiIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbXX0=?ed=2560, host=green-flower-361d.iamxenor.workers.dev, over-tls=false
-🇨🇦 加拿大 多伦多  104.17.72.206 = VLESS,104.17.72.206,443,"7d12caa2-43e0-45d2-8636-08b342615c7b",transport=ws, path=/, over-tls=true, sni=clod.pedramhost.shop
-🇨🇦 加拿大 多伦多  104.18.12.149 = VLESS,104.18.12.149,443,"0f705100-9799-4e7e-be81-cfcfc6835630",transport=ws, path=/, host=c1.iranesf031.ir, over-tls=true, sni=c1.iranesf031.ir
-🇨🇦 加拿大 多伦多  104.18.12.229¹ = Trojan,104.18.12.229,8443,"trojan",transport=ws, path=/, host=longwanghen.pages.dev, sni=longwanghen.pages.dev, skip-cert-verify=true
-🇨🇦 加拿大 多伦多  104.18.12.229² = Trojan,104.18.12.229,8443,"trojan",transport=tcp, sni=longwanghen.pages.dev, skip-cert-verify=true
-🇨🇦 加拿大 多伦多  104.18.12.229³ = Trojan,104.18.12.229,8443,"trojan",transport=ws, path=/, host=longwanghen.pages.dev, sni=longwanghen.pages.dev
-🇨🇦 加拿大 多伦多  104.18.12.229⁴ = Trojan,104.18.12.229,8443,"trojan",transport=tcp, sni=longwanghen.pages.dev
-🇨🇦 加拿大 多伦多  104.18.203.232 = VLESS,104.18.203.232,2095,"b4d2cb44-6eaf-48e7-adcb-5a7c49bddd8d",transport=ws, path=/, host=aaaaaaaaaaaaaaaaAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA.Iran-Check-Host-server-sitesssssssssssssssssssssss--sssssssssss.com, over-tls=false
-🇨🇦 加拿大 多伦多  104.18.218.118¹ = VLESS,104.18.218.118,443,"a94edb46-0734-4593-a8b5-9cd11ddc57f6",transport=ws, path=/Telegram-------V2rayi_net_-_-_-_-Telegram-------V2rayi_net/?ed=2560, host=5c53ca21.vpn-aryoo.pages.dev, over-tls=true, sni=5c53ca21.vpn-aryoo.pages.dev
-🇨🇦 加拿大 多伦多  104.18.218.118² = VLESS,104.18.218.118,443,"a94edb46-0734-4593-a8b5-9cd11ddc57f6",transport=ws, path=/Telegram-@Azarakhsh_Proxy/?ed=2560, host=5c53ca21.vpn-aryoo.pages.dev, over-tls=true, sni=5c53ca21.vpn-aryoo.pages.dev
-🇨🇦 加拿大 多伦多  104.18.35.86⁵ = VLESS,104.18.35.86,2083,"a1de0630-5786-48a0-84f6-dc6f2de10d6d",transport=ws, path=/fp=unsafefp=chrome, host=vlsovip.1d.mom, over-tls=true, sni=vlsovip.1d.mom
-🇨🇦 加拿大 多伦多  104.18.35.86² = Trojan,104.18.35.86,2096,"123456",transport=ws, path=/, host=321dfbc6.uir-9i6.pages.dev, sni=321dfbc6.uir-9i6.pages.dev, skip-cert-verify=true
-🇨🇦 加拿大 多伦多  104.18.35.86⁴ = Trojan,104.18.35.86,2096,"123456",transport=tcp, sni=321dfbc6.uir-9i6.pages.dev, skip-cert-verify=true
-🇨🇦 加拿大 多伦多  104.18.35.86⁶ = Trojan,104.18.35.86,2096,"123456",transport=ws, path=/, host=321dfbc6.uir-9i6.pages.dev, sni=321dfbc6.uir-9i6.pages.dev
-🇨🇦 加拿大 多伦多  104.18.35.86⁷ = Trojan,104.18.35.86,2096,"123456",transport=tcp, sni=321dfbc6.uir-9i6.pages.dev
-🇨🇦 加拿大 多伦多  104.18.35.86¹ = Trojan,104.18.35.86,8443,"trojan",transport=ws, path=/, host=longwanghen.pages.dev, sni=longwanghen.pages.dev, skip-cert-verify=true
-🇨🇦 加拿大 多伦多  104.18.35.86³ = Trojan,104.18.35.86,8443,"trojan",transport=tcp, sni=longwanghen.pages.dev, skip-cert-verify=true
-🇨🇦 加拿大 多伦多  104.18.4.130 = VLESS,104.18.4.130,8443,"83f03646-fb28-44cc-9d2c-8853f6c09285",transport=ws, path=/XIXVPN?ed, host=r4fnviw9jl4i4rx.zjde5.de5.net, over-tls=true, sni=r4fnviw9jl4i4rx.zjde5.de5.net
-🇨🇦 加拿大 多伦多  104.18.40.100 = VLESS,104.18.40.100,443,"d342d11e-d224-4463-b982-532309285094",transport=ws, path=/fp=chromefp=chrome, host=ccc.010304.xyz, over-tls=true, sni=ccc.010304.xyz
-🇨🇦 加拿大 多伦多  104.18.43.20¹ = Trojan,104.18.43.20,2087,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me, skip-cert-verify=true
-🇨🇦 加拿大 多伦多  104.18.43.20² = Trojan,104.18.43.20,2087,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me, skip-cert-verify=true
-🇨🇦 加拿大 多伦多  104.18.43.20³ = Trojan,104.18.43.20,2087,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me
-🇨🇦 加拿大 多伦多  104.18.43.20⁴ = Trojan,104.18.43.20,2087,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me
-🇨🇦 加拿大 多伦多  104.18.45.38 = VLESS,104.18.45.38,443,"d342d11e-d224-4463-b982-532309285094",transport=ws, path=/?TELEGRAM--MARAMBASHI--MARAMBASHI--MARAMBASHI--MARAMBASHI?ed=2560, host=ccc.010304.xyz, over-tls=true, sni=ccc.010304.xyz
-🇨🇦 加拿大 多伦多  104.18.5.250 = VLESS,104.18.5.250,443,"a64f0cea-ca89-40e6-b316-b3badff1eb90",transport=ws, path=/Telegram-------V2rayi_net_-_-_-_-Telegram-------V2rayi_net/?ed=2560, host=iSAA1.paGEs.DEV, over-tls=true, sni=iSaa1.PAGeS.DeV
-🇨🇦 加拿大 多伦多  104.18.59.70 = VLESS,104.18.59.70,2053,"89b3cbba-e6ac-485a-9481-976a0415eab9",transport=ws, path=/9wUhFMKgsGMqAUO6?ed=2560, host=mAHdIserveR-asL.paGES.dEv, over-tls=true, sni=MaHdisErVEr-asl.pAGEs.DEv
-🇨🇦 加拿大 多伦多  104.19.0.5¹ = Trojan,104.19.0.5,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me, skip-cert-verify=true
-🇨🇦 加拿大 多伦多  104.19.0.5² = Trojan,104.19.0.5,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me, skip-cert-verify=true
-🇨🇦 加拿大 多伦多  104.19.19.58 = VLESS,104.19.19.58,2096,"d342d11e-d424-4583-b36e-524ab1f0afa4",transport=ws, path=/?ed=2048, host=baipiao1.curly-train.pages.dev, over-tls=true, sni=baipiao1.curly-train.pages.dev
-🇨🇦 加拿大 多伦多  104.19.229.21¹ = Trojan,104.19.229.21,443,"humanity",transport=ws, path=/assignment, host=www.calmlunch.com, sni=www.calmlunch.com
-🇨🇦 加拿大 多伦多  104.19.229.21² = Trojan,104.19.229.21,443,"humanity",transport=ws, path=/assignment, host=www.calmlunch.com, sni=www.calmlunch.com
-🇨🇦 加拿大 多伦多  104.19.229.21³ = Trojan,104.19.229.21,443,"humanity",transport=ws, path=%2Fassignment, host=www.calmlunch.com, sni=www.calmlunch.com, skip-cert-verify=false
-🇨🇦 加拿大 多伦多  104.19.229.21⁴ = Trojan,104.19.229.21,443,"humanity",transport=ws, path=/assignment, host=www.calmlunch.com, sni=www.calmlunch.com
-🇨🇦 加拿大 多伦多  104.21.0.1¹ = Trojan,104.21.0.1,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me, skip-cert-verify=true
-🇨🇦 加拿大 多伦多  104.21.0.1² = Trojan,104.21.0.1,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me, skip-cert-verify=true
-🇨🇦 加拿大 多伦多  104.21.0.2¹ = Trojan,104.21.0.2,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me, skip-cert-verify=true
-🇨🇦 加拿大 多伦多  104.21.0.2² = Trojan,104.21.0.2,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me, skip-cert-verify=true
-🇨🇦 加拿大 多伦多  104.21.0.3¹ = Trojan,104.21.0.3,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me, skip-cert-verify=true
-🇨🇦 加拿大 多伦多  104.21.0.3² = Trojan,104.21.0.3,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me, skip-cert-verify=true
-🇨🇦 加拿大 多伦多  104.21.0.4¹ = Trojan,104.21.0.4,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me, skip-cert-verify=true
-🇨🇦 加拿大 多伦多  104.21.0.4² = Trojan,104.21.0.4,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me, skip-cert-verify=true
-🇨🇦 加拿大 多伦多  104.21.0.5¹ = Trojan,104.21.0.5,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me, skip-cert-verify=true
-🇨🇦 加拿大 多伦多  104.21.0.5² = Trojan,104.21.0.5,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me, skip-cert-verify=true
-🇨🇦 加拿大 多伦多  104.21.0.5³ = Trojan,104.21.0.5,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me
-🇨🇦 加拿大 多伦多  104.21.0.5⁴ = Trojan,104.21.0.5,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me
-🇨🇦 加拿大 多伦多  104.21.0.7¹ = Trojan,104.21.0.7,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me, skip-cert-verify=true
-🇨🇦 加拿大 多伦多  104.21.0.7² = Trojan,104.21.0.7,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me, skip-cert-verify=true
-🇨🇦 加拿大 多伦多  104.21.12.150 = VLESS,104.21.12.150,8443,"a2dadb95-3f15-4e1c-b517-0b54c336a5fd",transport=ws, path=/?ed=2048, host=nl57.vlessx.us, over-tls=true, sni=nl57.Vlessx.us
-🇨🇦 加拿大 多伦多  104.21.15.212 = VMess,104.21.15.212,443,auto,"76221bfb-e92f-4e80-81c5-6fe48f50ac0b",transport=ws, alterId=0, path=/linkws, host=glweidf.sbs, over-tls=true, sni=glweidf.sbs
-🇨🇦 加拿大 多伦多  104.21.221.158¹ = VLESS,104.21.221.158,443,"d342d11e-d224-4463-b982-532309285094",transport=ws, path=/fp=chrome, host=ccc.010304.xyz, over-tls=true, sni=ccc.010304.xyz
-🇨🇦 加拿大 多伦多  104.21.221.158² = VLESS,104.21.221.158,443,"d342d11e-d224-4463-b982-532309285094",transport=ws, path=/fp=unsafefp=unsafe, host=ccc.010304.xyz, over-tls=true, sni=ccc.010304.xyz
-🇨🇦 加拿大 多伦多  104.21.221.158³ = VLESS,104.21.221.158,443,"d342d11e-d224-4463-b982-532309285094",transport=ws, path=/fp=unsafe, host=ccc.010304.xyz, over-tls=true, sni=ccc.010304.xyz
-🇨🇦 加拿大 多伦多  104.21.221.158⁴ = VLESS,104.21.221.158,443,"d342d11e-d224-4463-b982-532309285094",transport=ws, path=/fp=chromefp=unsafe, host=ccc.010304.xyz, over-tls=true, sni=ccc.010304.xyz
-🇨🇦 加拿大 多伦多  104.21.221.158⁵ = VLESS,104.21.221.158,443,"d342d11e-d224-4463-b982-532309285094",transport=ws, path=/fp=unsafefp=unsafesecurity=tls, host=ccc.010304.xyz, over-tls=false, sni=ccc.010304.xyz
-🇨🇦 加拿大 多伦多  104.21.221.158⁶ = VLESS,104.21.221.158,443,"d342d11e-d224-4463-b982-532309285094",transport=ws, path=/fp=unsafefp=unsafe, host=ccc.010304.xyz, over-tls=true, sni=ccc.010304.xyz
-🇨🇦 加拿大 多伦多  104.21.28.62 = VLESS,104.21.28.62,443,"b9ad895b-12ac-40fc-a5ac-a5b2a1285001",transport=ws, path=/?ed=2048, host=3k.pureboy.eu.org, over-tls=true, sni=3k.pureboy.eu.org
-🇨🇦 加拿大 多伦多  104.21.4.6 = VMess,104.21.4.6,443,auto,"1052f24e-7b09-45eb-b0c5-d858eb124192",transport=ws, alterId=0, path=/linkws, host=glweidf.cfd, over-tls=true, sni=glweidf.cfd
-🇨🇦 加拿大 多伦多  104.21.60.171 = VLESS,104.21.60.171,443,"11e5b771-1d4d-4362-b4b5-e39e75981f01",transport=ws, path=/, host=3e8B07A5.PUb000bpB.PAGes.Dev, over-tls=true, sni=3e8B07A5.PUb000bpB.PAGes.Dev
-🇨🇦 加拿大 多伦多  104.21.65.150 = VLESS,104.21.65.150,443,"c854ace9-1dc7-4fc4-b87b-6b00db3cc4ed",transport=tcp, over-tls=true, sni=avval.pinocchio1.ir.
-🇨🇦 加拿大 多伦多  104.21.70.11 = VLESS,104.21.70.11,8080,"6e569c43-f7e6-4ab7-b3a7-f616a39ff6a1",transport=ws, path=/?ed=2048, host=dw.huondadalioshop.ir, over-tls=false
-🇨🇦 加拿大 多伦多  104.21.74.214 = VLESS,104.21.74.214,2096,"50414e45-4c5f-5a45-5553-6f51879c0594",transport=ws, path=/fp=chrome, host=levikoconfig.levikogjgfdd.ir, over-tls=true, sni=levikoconfig.levikogjgfdd.ir
-🇨🇦 加拿大 多伦多  104.21.94.161¹ = VLESS,104.21.94.161,443,"d342d11e-d224-4463-b982-532309285094",transport=ws, path=/, host=ccc.010304.xyz, over-tls=true, sni=ccc.010304.xyz
-🇨🇦 加拿大 多伦多  104.21.94.161² = VLESS,104.21.94.161,443,"d342d11e-d224-4463-b982-532309285094",transport=ws, path=/fp=chrome, host=ccc.010304.xyz, over-tls=true, sni=ccc.010304.xyz
-🇨🇦 加拿大 多伦多  104.24.0.4¹ = Trojan,104.24.0.4,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me, skip-cert-verify=true
-🇨🇦 加拿大 多伦多  104.24.0.4² = Trojan,104.24.0.4,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me, skip-cert-verify=true
-🇨🇦 加拿大 多伦多  104.24.0.4³ = Trojan,104.24.0.4,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me
-🇨🇦 加拿大 多伦多  104.24.0.4⁴ = Trojan,104.24.0.4,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me
-🇨🇦 加拿大 多伦多  104.25.0.2¹ = Trojan,104.25.0.2,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me, skip-cert-verify=true
-🇨🇦 加拿大 多伦多  104.25.0.2² = Trojan,104.25.0.2,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me, skip-cert-verify=true
-🇨🇦 加拿大 多伦多  104.25.0.6¹ = Trojan,104.25.0.6,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me, skip-cert-verify=true
-🇨🇦 加拿大 多伦多  104.25.0.6² = Trojan,104.25.0.6,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me, skip-cert-verify=true
-🇨🇦 加拿大 多伦多  104.25.0.6³ = Trojan,104.25.0.6,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me
-🇨🇦 加拿大 多伦多  104.25.0.6⁴ = Trojan,104.25.0.6,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me
-🇨🇦 加拿大 多伦多  104.25.0.8¹ = Trojan,104.25.0.8,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me, skip-cert-verify=true
-🇨🇦 加拿大 多伦多  104.25.0.8² = Trojan,104.25.0.8,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me, skip-cert-verify=true
-🇨🇦 加拿大 多伦多  104.25.0.8³ = Trojan,104.25.0.8,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me
-🇨🇦 加拿大 多伦多  104.25.0.8⁴ = Trojan,104.25.0.8,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me
-🇨🇦 加拿大 多伦多  104.25.95.31 = VLESS,104.25.95.31,443,"d342d11e-d224-4463-b982-532309285094",transport=ws, path=/fp=chromefp=chrome, host=ccc.010304.xyz, over-tls=true, sni=ccc.010304.xyz
-🇨🇦 加拿大 多伦多  104.26.0.3¹ = Trojan,104.26.0.3,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me, skip-cert-verify=true
-🇨🇦 加拿大 多伦多  104.26.0.3² = Trojan,104.26.0.3,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me, skip-cert-verify=true
-🇨🇦 加拿大 多伦多  104.26.0.3³ = Trojan,104.26.0.3,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me
-🇨🇦 加拿大 多伦多  104.26.0.3⁴ = Trojan,104.26.0.3,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me
-🇨🇦 加拿大 多伦多  104.26.0.6¹ = Trojan,104.26.0.6,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me, skip-cert-verify=true
-🇨🇦 加拿大 多伦多  104.26.0.6² = Trojan,104.26.0.6,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me, skip-cert-verify=true
-🇨🇦 加拿大 多伦多  104.27.0.2¹ = Trojan,104.27.0.2,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me, skip-cert-verify=true
-🇨🇦 加拿大 多伦多  104.27.0.2² = Trojan,104.27.0.2,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me, skip-cert-verify=true
-🇨🇦 加拿大 多伦多  104.27.0.2³ = Trojan,104.27.0.2,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me
-🇨🇦 加拿大 多伦多  104.27.0.2⁴ = Trojan,104.27.0.2,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me
-🇨🇦 加拿大 多伦多  104.27.0.3¹ = Trojan,104.27.0.3,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me, skip-cert-verify=true
-🇨🇦 加拿大 多伦多  104.27.0.3² = Trojan,104.27.0.3,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me, skip-cert-verify=true
-🇨🇦 加拿大 多伦多  104.27.0.3³ = Trojan,104.27.0.3,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me
-🇨🇦 加拿大 多伦多  104.27.0.3⁴ = Trojan,104.27.0.3,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me
-🇨🇦 加拿大 多伦多  104.27.207.92 = VLESS,104.27.207.92,443,"f06ac303-e626-451d-bcfc-ee825ee69398",transport=ws, path=/Telegram-------V2rayi_net_-_-_-_-Telegram-------V2rayi_net/?ed=2560, host=azADNet-seMEJ.pageS.DeV, over-tls=true, sni=AzAdnET-SemeJ.pAGES.dev
-🇨🇦 加拿大 多伦多  104.27.66.214 = VLESS,104.27.66.214,8443,"be5851ff-9af5-45ea-b874-a0a035714114",transport=ws, path=/admin.php, host=ratatouille.adaspoloandco.com, over-tls=true, sni=ratatouille.adaspoloandco.com
-🇨🇦 加拿大 多伦多  104.27.88.172¹ = VLESS,104.27.88.172,80,"50414e45-4c5f-5a45-5553-52108a2d5224",transport=ws, path=/api/ws, host=web-app-nr6wpa.app-tp57xz.workers.dev, over-tls=false, sni=web-app-nr6wpa.app-tp57xz.workers.dev
-🇨🇦 加拿大 多伦多  104.27.88.172² = VLESS,104.27.88.172,80,"50414e45-4c5f-5a45-5553-52108a2d5224",transport=ws, path=/api/ws, host=web-app-nr6wpa.app-tp57xz.workers.dev, over-tls=false, sni=web-app-nr6wpa.app-tp57xz.workers.dev
 🇨🇦 加拿大 多伦多  104.31.16.133 = VLESS,104.31.16.133,2096,"dd777f39-2996-4269-b88f-0b64436d0274",transport=ws, path=/, host=capitalnet.sameasyou.sbs, over-tls=true, sni=joinchannel.sameasyou.sbs
 🇨🇦 加拿大 多伦多  104.31.16.36 = VLESS,104.31.16.36,443,"376b9861-2fc6-4647-959c-18185cd9c95a",transport=ws, path=/fflsws, host=lmn1701789842450.lmn66.sbs, over-tls=true, sni=wrk1701790178919.lmn66.sbs
 🇨🇦 加拿大 多伦多  104.31.16.65¹ = VLESS,104.31.16.65,2095,"38ace213-5184-477b-ac3e-d800d0cf3cd9",transport=ws, path=/?ed=2048, host=de1.vlessx.xyz, over-tls=false
 🇨🇦 加拿大 多伦多  137.184.174.93 = Shadowsocks,137.184.174.93,8080,rc4-md5,"14fFPrbezE3HDZzsMOr6"
-🇨🇦 加拿大 多伦多  162.159.128.253¹ = Trojan,162.159.128.253,443,"humanity",transport=ws, path=/assignment, sni=www.cordweave.com
-🇨🇦 加拿大 多伦多  162.159.128.253² = Trojan,162.159.128.253,443,"humanity",transport=ws, path=/assignment, sni=www.cordweave.com
-🇨🇦 加拿大 多伦多  162.159.135.79² = VLESS,162.159.135.79,443,"d672ec4f-afba-4f61-af09-eec872f97e99",transport=ws, path=telegram-channel-proxy_mtm/?ed=2048, host=test38.pages.dev, over-tls=true, sni=test38.pages.dev
-🇨🇦 加拿大 多伦多  162.159.135.79¹ = VMess,162.159.135.79,443,auto,"03fcc618-b93d-6796-6aed-8a38c975d581",transport=ws, alterId=0, path=/linkvws, host=janett.click, over-tls=true, sni=janett.click
-🇨🇦 加拿大 多伦多  162.159.140.116² = Trojan,162.159.140.116,2053,"c24f41e2-45d3-4e73-8114-26f7a9e57af2",transport=ws, path=/videomuaawe, host=17934548052324.206355.xyz, sni=17934548052676.206355.xyz
-🇨🇦 加拿大 多伦多  162.159.140.116¹ = Trojan,162.159.140.116,2087,"c24f41e2-45d3-4e73-8114-26f7a9e57af2",transport=ws, path=/agraeabtegrrh, host=17934548057163.206352.xyz, sni=17934548057236.206352.xyz
-🇨🇦 加拿大 多伦多  162.159.149.157¹ = Trojan,162.159.149.157,443,"humanity",transport=ws, path=/assignment, sni=www.cordweave.com
-🇨🇦 加拿大 多伦多  162.159.149.157² = Trojan,162.159.149.157,443,"humanity",transport=ws, path=/assignment, sni=www.cordweave.com
-🇨🇦 加拿大 多伦多  162.159.150.241¹ = Trojan,162.159.150.241,443,"humanity",transport=ws, path=/assignment, sni=www.cordweave.com
-🇨🇦 加拿大 多伦多  162.159.150.241² = Trojan,162.159.150.241,443,"humanity",transport=ws, path=/assignment, sni=www.cordweave.com
-🇨🇦 加拿大 多伦多  172.64.146.116 = VLESS,172.64.146.116,443,"2bcfbfba-b446-4ad5-93ad-72af9e008f61",transport=ws, path=/44.209.52.7-443fp=chrome, host=support.zoom.us.blackshadow.dpdns.org, over-tls=true, sni=support.zoom.us.blackshadow.dpdns.org
-🇨🇦 加拿大 多伦多  172.64.149.54 = VLESS,172.64.149.54,443,"7d12caa2-43e0-45d2-8636-08b342615c7b",transport=ws, path=/, over-tls=true, sni=clod.pedramhost.shop
-🇨🇦 加拿大 多伦多  172.64.150.28 = VLESS,172.64.150.28,2082,"e5cc16a6-ea42-46b2-82ae-ad2157e1641b",transport=ws, host=hhlfy.twiladaphne.ndjp.net, over-tls=false
-🇨🇦 加拿大 多伦多  172.64.152.23¹ = VLESS,172.64.152.23,443,"396c904b-4b62-4334-b793-ee25fc0c61cc",transport=ws, path=/eyJqdW5rIjoiTHczMWlhREZIb0ljUDhoaCIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbXX0=?ed=2560, host=8vmU06cxdz59m931xnREgj8qpnoq1-06.pages.dev, over-tls=true, sni=pages.dev
-🇨🇦 加拿大 多伦多  172.64.152.23² = VLESS,172.64.152.23,443,"396c904b-4b62-4334-b793-ee25fc0c61cc",transport=ws, path=/eyJqdW5rIjoiTHczMWlhREZIb0ljUDhoaCIsInByb3RvY29sIjoidmwiLCJtb2RlIjoicHJveHlpcCIsInBhbmVsSVBzIjpbXX0=?ed=2560, host=8vmU06cxdz59m931xnREgj8qpnoq1-06.pages.dev, over-tls=true, sni=pages.dev
-🇨🇦 加拿大 多伦多  172.64.153.66 = VLESS,172.64.153.66,443,"d342d11e-d224-4463-b982-532309285094",transport=ws, path=/fp=chrome, host=ccc.010304.xyz, over-tls=true, sni=ccc.010304.xyz
-🇨🇦 加拿大 多伦多  172.64.155.209² = VLESS,172.64.155.209,443,"d342d11e-d224-4463-b982-532309285094",transport=ws, path=/fp=chrome, host=ccc.010304.xyz, over-tls=true, sni=ccc.010304.xyz
-🇨🇦 加拿大 多伦多  172.64.155.209¹ = VLESS,172.64.155.209,8443,"e8c61352-444f-4154-ba34-9d3141154a8d",transport=ws, path=/uploader.php, host=maple.adaspoloandco.com, over-tls=true, sni=maple.adaspoloandco.com
-🇨🇦 加拿大 多伦多  172.64.157.229 = VLESS,172.64.157.229,443,"d342d11e-d224-4463-b982-532309285094",transport=ws, path=/, host=ccc.010304.xyz, over-tls=true, sni=ccc.010304.xyz
-🇨🇦 加拿大 多伦多  172.64.229.135¹ = Trojan,172.64.229.135,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me, skip-cert-verify=true
-🇨🇦 加拿大 多伦多  172.64.229.135² = Trojan,172.64.229.135,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me, skip-cert-verify=true
-🇨🇦 加拿大 多伦多  172.64.229.135³ = Trojan,172.64.229.135,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me
-🇨🇦 加拿大 多伦多  172.64.229.135⁴ = Trojan,172.64.229.135,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me
-🇨🇦 加拿大 多伦多  172.64.229.21 = VMess,172.64.229.21,443,auto,"0cf6d970-3f1d-4aae-a989-92a8f76ae3db",transport=ws, alterId=0, path=/ws, host=vmess.lbw666.dpdns.org, over-tls=true, sni=vmess.lbw666.dpdns.org
-🇨🇦 加拿大 多伦多  172.64.229.7¹ = Trojan,172.64.229.7,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=ws, path=/, host=api.85s.me, sni=api.85s.me, skip-cert-verify=true
-🇨🇦 加拿大 多伦多  172.64.229.7² = Trojan,172.64.229.7,443,"8deb189a-3aed-4865-843b-b72dae954c46",transport=tcp, sni=api.85s.me, skip-cert-verify=true
-🇨🇦 加拿大 多伦多  172.66.0.1 = Trojan,172.66.0.1,443,"humanity",transport=ws, path=/assignment, host=www.calmlunch.com, alpn="http/1.1", sni=www.calmlunch.com
-🇨🇦 加拿大 多伦多  172.66.0.162 = VLESS,172.66.0.162,443,"d342d11e-d224-4463-b982-532309285094",transport=ws, path=/, host=ccc.010304.xyz, over-tls=true, sni=ccc.010304.xyz
-🇨🇦 加拿大 多伦多  172.66.44.254 = VLESS,172.66.44.254,2053,"89b3cbba-e6ac-485a-9481-976a0415eab9",transport=ws, path=/, host=cXrolvpn.pagEs.DEv, over-tls=true, sni=cXrOLvPn.PAgEs.dev
-🇨🇦 加拿大 多伦多  172.66.47.130 = VLESS,172.66.47.130,443,"e8b87dd9-cc8f-407c-a1f3-a564009fe6ee",transport=ws, path=/Telegram-------V2rayi_net_-_-_-_-Telegram-------V2rayi_net/?ed=2560, host=dc1bf227.vf-8co.pages.dev, over-tls=true, sni=dc1bf227.vf-8co.pages.dev
-🇨🇦 加拿大 多伦多  172.66.47.84 = VLESS,172.66.47.84,443,"884f9b2c-f0c5-44dd-a68e-3e39ce93bb39",transport=ws, path=/?ed=2048, host=cf-wkrs-pages-vless-aoy.pages.dev, over-tls=true, sni=cf-wkrs-pages-vless-aoy.pages.dev
-🇨🇦 加拿大 多伦多  172.67.118.45 = Trojan,172.67.118.45,2053,"gHQP0D7D15",transport=ws, path=/, sni=marvdasht.phonecomparisonblog.org
-🇨🇦 加拿大 多伦多  172.67.156.27 = VLESS,172.67.156.27,2053,"d342d11e-d424-4583-b36e-524ab1f0afa4",transport=ws, path=/?ed=2048, host=baipiao1.curly-train.pages.dev, over-tls=true, sni=baipiao1.curly-train.pages.dev
-🇨🇦 加拿大 多伦多  172.67.161.1 = VLESS,172.67.161.1,8080,"636b1684-b26c-4a9c-bc6e-8e1197a36d74",transport=ws, path=/?ed=2048, host=workerr.hashdiler.workers.dev, over-tls=false
-🇨🇦 加拿大 多伦多  172.67.183.230 = VLESS,172.67.183.230,443,"b9ad895b-12ac-40fc-a5ac-a5b2a1285001",transport=ws, path=path/TELEGRAM-PROXY_MTM?ed=2048, host=3k.pureboy.eu.org, over-tls=true, sni=3k.pureboy.eu.org
-🇨🇦 加拿大 多伦多  172.67.183.26 = VLESS,172.67.183.26,443,"b9ad895b-12ac-40fc-a5ac-a5b2a1285001",transport=ws, path=/?ed=2048, host=3k.pureboy.eu.org, over-tls=true, sni=3k.pureboy.eu.org
-🇨🇦 加拿大 多伦多  172.67.204.84 = VLESS,172.67.204.84,80,"e1a928be-e289-4aef-b92e-4106fabdf42f",transport=ws, path=/?ed=2048, host=mahi.kosnanatfilterchi.eu.org, over-tls=false
-🇨🇦 加拿大 多伦多  172.67.207.114 = VMess,172.67.207.114,443,auto,"03fcc618-b93d-6796-6aed-8a38c975d581",transport=ws, alterId=1, path=linkvws, host=ophelia.mom, over-tls=true, sni=ophelia.mom
-🇨🇦 加拿大 多伦多  172.67.71.160¹ = VMess,172.67.71.160,443,auto,"03fcc618-b93d-6796-6aed-8a38c975d581",transport=ws, alterId=0, path=/linkvws, host=nelly.homes, over-tls=true, sni=nelly.homes
-🇨🇦 加拿大 多伦多  172.67.71.160² = VMess,172.67.71.160,443,auto,"05641cf5-58d2-4ba4-a9f1-b3cda0b1fb1d",transport=ws, alterId=0, path=/linkws, host=obdii.cfd, over-tls=true, sni=obdii.cfd
-🇨🇦 加拿大 多伦多  173.245.58.31 = VLESS,173.245.58.31,2052,"9dfe4105-ee73-4586-9d53-f0889a3767e6",transport=ws, path=/, host=p1.abrarvan.xyz, over-tls=false
-🇨🇦 加拿大 多伦多  173.245.59.191 = VLESS,173.245.59.191,8443,"5acc4610-f2d7-44c9-bbe6-c0ee6a058aac",transport=ws, path=/uploader.php, host=maple.adaspoloandco.com, over-tls=true, sni=maple.adaspoloandco.com
-🇨🇦 加拿大 多伦多  188.114.96.1 = VLESS,188.114.96.1,443,"89b3cbba-e6ac-485a-9481-976a0415eab9",transport=ws, path=/nWsRPQbL6MuyT23J?ed=2560, host=2CBBb5dF.CXrOLvpn.pAGEs.DEV, over-tls=true, sni=2CBbb5df.CxRoLVpn.pages.dev
-🇨🇦 加拿大 多伦多  188.114.96.25¹ = VLESS,188.114.96.25,443,"b15f187e-9b34-437c-8243-8651a8ada76c",transport=ws, path=/stream/DEVCOP/8651a8ada76c/loc-0, host=tepar-k4j9.jounet.workers.dev, over-tls=true, sni=tepar-k4j9.jounet.workers.dev
-🇨🇦 加拿大 多伦多  188.114.96.25² = VLESS,188.114.96.25,443,"b15f187e-9b34-437c-8243-8651a8ada76c",transport=ws, path=/stream/DEVCOP/8651a8ada76c/loc-0security=tls, host=tepar-k4j9.jounet.workers.dev, over-tls=false, sni=tepar-k4j9.jounet.workers.dev
-🇨🇦 加拿大 多伦多  188.114.96.3 = VLESS,188.114.96.3,8080,"08c41e17-9d1c-4d4a-9edc-242d3d71c1ac",transport=ws, path=/z5lsHF5zQrd1rJDr, host=order.fortgift.ir, over-tls=false
-🇨🇦 加拿大 多伦多  188.114.97.0 = VLESS,188.114.97.0,443,"884f9b2c-f0c5-44dd-a68e-3e39ce93bb39",transport=ws, path=/?ed=2048, host=cf-wkrs-pages-vless-aoy.pages.dev, over-tls=true, sni=cf-wkrs-pages-vless-aoy.pages.dev
-🇨🇦 加拿大 多伦多  188.114.97.3² = VLESS,188.114.97.3,443,"08c41e17-9d1c-4d4a-9edc-242d3d71c1ac",transport=ws, path=/B7tnDeiaEFHTS0Li, host=order.fortgift.ir, over-tls=true, sni=oRdEr.fortGIFT.ir
-🇨🇦 加拿大 多伦多  188.114.97.3¹ = VMess,188.114.97.3,443,auto,"f584de15-2034-4170-a723-f48c2bae5e0f",transport=ws, alterId=0, path=/linkws, host=afrhms16v.bestxray.buzz, over-tls=true, sni=afrhms16v.bestxray.buzz
-🇨🇦 加拿大 多伦多  188.114.97.3³ = VLESS,188.114.97.3,8080,"08c41e17-9d1c-4d4a-9edc-242d3d71c1ac",transport=ws, path=/gfWh39Z4XwUXaqVY, host=order.fortgift.ir, over-tls=false
-🇨🇦 加拿大 多伦多  188.114.97.6² = VLESS,188.114.97.6,443,"44eae030-290b-4083-8102-6f8bab05701b",transport=ws, path=/, host=cfvvv-ev1.pages.dev, over-tls=true, sni=cfvvv-ev1.pages.dev
-🇨🇦 加拿大 多伦多  188.114.97.6³ = VLESS,188.114.97.6,443,"8102891d-7b37-4dc5-8261-9474b59b5c63",transport=ws, path=/proxyip=us.xiabibi.cf, host=vip.868068.xyz, over-tls=true, sni=vip.868068.xyz
-🇨🇦 加拿大 多伦多  188.114.97.6⁴ = VLESS,188.114.97.6,443,"44eae030-290b-4083-8102-6f8bab05701b",transport=ws, path=/?TELEGRAM--V2ray_confiig?ed=2560, host=cfvvv-ev1.pages.dev, over-tls=true, sni=cfvvv-ev1.pages.dev
-🇨🇦 加拿大 多伦多  188.114.97.6⁵ = VLESS,188.114.97.6,443,"44eae030-290b-4083-8102-6f8bab05701b",transport=ws, path=/mtmvpn, host=cfvvv-ev1.pages.dev, over-tls=true, sni=cfvvv-ev1.pages.dev
-🇨🇦 加拿大 多伦多  188.114.97.6⁶ = VLESS,188.114.97.6,443,"495c7195-85b8-498a-bf20-2ea9ce9175b5",transport=tcp, over-tls=true
-🇨🇦 加拿大 多伦多  188.114.97.6⁷ = VLESS,188.114.97.6,443,"1ce9392f-caf4-48f7-bbb9-475b101fbde0",transport=ws, path=/id-tksi, host=graph.instagram.com.cyylr.eu.cc, over-tls=true, sni=graph.instagram.com.cyylr.eu.cc
-🇨🇦 加拿大 多伦多  188.114.97.6¹ = VLESS,188.114.97.6,8080,"e5cc16a6-ea42-46b2-82ae-ad2157e1641b",transport=ws, path=/sg-melbi, host=hhlfy.twiladaphne.ndjp.net, over-tls=false, sni=hhlfy.twiladaphne.ndjp.net
-🇨🇦 加拿大 多伦多  188.114.97.6⁸ = VLESS,188.114.97.6,8080,"e5cc16a6-ea42-46b2-82ae-ad2157e1641b",transport=ws, path=/sg-melbi, host=hhlfy.twiladaphne.ndjp.net, over-tls=false, sni=hhlfy.twiladaphne.ndjp.net
-🇨🇦 加拿大 多伦多  188.114.98.0¹ = VLESS,188.114.98.0,443,"fef4a93d-eb4f-4657-b56b-32a0dc060045",transport=ws, path=/, over-tls=true, sni=dev.twistsparrow.xyz
-🇨🇦 加拿大 多伦多  188.114.98.0² = VLESS,188.114.98.0,443,"8a30cf48-9fa2-46c5-8815-2822b12852e0",transport=ws, path=/, host=xqkxw.ccwu.cc, over-tls=true, sni=xqkxw.ccwu.cc
-🇨🇦 加拿大 多伦多  188.114.98.0³ = VLESS,188.114.98.0,443,"4e4f1f70-5e56-4a76-bb9d-db087f4690c4",transport=ws, path=/tyxywsfp=unsafe, host=jp3.yohototo.top, over-tls=true, sni=jp3.yohototo.top
-🇨🇦 加拿大 多伦多  188.114.98.224¹ = VLESS,188.114.98.224,2095,"VPNCUSTOMIZE",transport=ws, path=/V2rayCUSTOMIZE?ed=1024, host=V2ray-_-_-_-_-_-VPNCUSTOMIZE.keLLekcoLLection.com., over-tls=false
-🇨🇦 加拿大 多伦多  188.114.98.224² = VLESS,188.114.98.224,8080,"TeL_VPNCUSTOMIZE",transport=ws, path=/Join--VPNCUSTOMIZE.V2ray.re?ed=8080, host=VPNCUSTOMIZE.V2ray.Community., over-tls=false
-🇨🇦 加拿大 多伦多  198.41.202.5¹ = VLESS,198.41.202.5,443,"b9ad895b-12ac-40fc-a5ac-a5b2a1285001",transport=ws, path=/?ed=2048, host=3k.pureboy.eu.org, over-tls=true, sni=3k.pureboy.eu.org
 🇨🇦 加拿大 多伦多  209.200.246.148¹ = VLESS,209.200.246.148,443,"ca52e2b6-fb9f-4dac-b6dc-49da9923f251",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=www.cloudflare.com, public-key="uTmb-ytXsx8p0fkBz7A76SHpWk7_oVutIA4LGTE8BQk", short-id=f98843107912e782
 🇨🇦 加拿大 多伦多  209.200.246.148² = VLESS,209.200.246.148,443,"ca52e2b6-fb9f-4dac-b6dc-49da9923f251",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=www.cloudflare.com
 🇨🇦 加拿大 多伦多  216.152.147.152¹ = Trojan,216.152.147.152,443,"0ab6c98dae3b48e8b9c4a776b6c9c19a",transport=tcp
@@ -311,8 +140,6 @@
 🇨🇴 哥伦比亚 波哥大  149.104.107.41² = Shadowsocks,149.104.107.41,8090,aes-256-gcm,"PCnnH6SQSnfoS27"
 🇨🇴 哥伦比亚 波哥大  149.104.107.41³ = Shadowsocks,149.104.107.41,8090,aes-256-gcm,"PCnnH6SQSnfoS27"
 🇨🇴 哥伦比亚 波哥大  149.104.107.41⁴ = Shadowsocks,149.104.107.41,8090,aes-256-gcm,"PCnnH6SQSnfoS27"
-🇨🇷 哥斯达黎加 Pozos  190.93.247.155¹ = VLESS,190.93.247.155,8880,"f54c1c56-d3b2-41b3-9974-78bdd8807939",transport=ws, path=/@LIGHTNING6, host=liV2raya.善良的闪电.monster, over-tls=false
-🇨🇷 哥斯达黎加 Pozos  190.93.247.155² = VLESS,190.93.247.155,8880,"8bc175f4-798e-49a7-ad13-ba258f0c6ffe",transport=ws, path=/@LIGHTNING6, @LIGHTNING6, host=liV2rayd.善良的闪电.monster, over-tls=false
 🇨🇾 塞浦路斯 Káto Lakatámeia  195.85.59.30 = VLESS,195.85.59.30,8880,"6202b230-417c-4d8e-b624-0f71afa9c75d",transport=ws, path=/, host=vms.lifetime58.workers.dev, over-tls=false
 🇨🇾 塞浦路斯 利马索尔  194.55.166.65 = VLESS,194.55.166.65,2087,"04c808e2-0b59-47b0-a54b-32fc7ef1c902",transport=ws, path=pyip=bpb.yousef.isegaro.comfp=randomsecurity=tls, host=free.cndyw.ggff.net, over-tls=false, sni=free.cndyw.ggff.net
 🇨🇾 塞浦路斯 利马索尔  213.111.177.107 = VLESS,213.111.177.107,443,"a1de0630-5786-48a0-84f6-dc6f2de10d6d",transport=ws, path=/socks5=888:888@hkip.1d.mom:1080fp=chromesecurity=tls, host=vlso5.1d.mom, over-tls=false, sni=vlso5.1d.mom
@@ -1103,11 +930,7 @@
 🇺🇸 美国 凤凰城  95.215.201.18 = Shadowsocks,95.215.201.18,19999,aes-256-gcm,"ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4="
 🇺🇸 美国 北伯根  69.55.49.177 = socks5,69.55.49.177,38182,Ok5vbmU=,""
 🇺🇸 美国 华盛顿特区  130.94.18.208 = VLESS,130.94.18.208,54857,"e9a8144e-5237-488a-afb1-9ca3d8d54c80",transport=tcp, over-tls=true, sni=us001.zestapp778.com
-🇺🇸 美国 华盛顿特区  141.101.115.71 = VLESS,141.101.115.71,8443,"e8c61352-444f-4154-ba34-9d3141154a8d",transport=ws, path=/uploader.php, host=maple.adaspoloandco.com, over-tls=true, sni=maple.adaspoloandco.com
 🇺🇸 美国 华盛顿特区  185.230.230.18 = Shadowsocks,185.230.230.18,19999,aes-256-gcm,"ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4="
-🇺🇸 美国 华盛顿特区  188.114.99.0¹ = VLESS,188.114.99.0,8080,"e5cc16a6-ea42-46b2-82ae-ad2157e1641b",transport=ws, path=/sg-melbi, host=hhlfy.twiladaphne.ndjp.net, over-tls=false, sni=hhlfy.twiladaphne.ndjp.net
-🇺🇸 美国 华盛顿特区  188.114.99.0² = VLESS,188.114.99.0,8080,"e5cc16a6-ea42-46b2-82ae-ad2157e1641b",transport=ws, path=/sg-melbi, host=hhlfy.twiladaphne.ndjp.net, over-tls=false, sni=hhlfy.twiladaphne.ndjp.net
-🇺🇸 美国 华盛顿特区  188.114.99.91 = VLESS,188.114.99.91,443,"4f9219f6-ba56-4e5a-a676-0978d8b613e4",transport=ws, path=/Telegram-------V2rayi_net_-_-_-_-Telegram-------V2rayi_net/?ed=2560, host=Noshteri.hooplnqpb.ir, over-tls=true, sni=Noshteri.hooplnqpb.ir
 🇺🇸 美国 哥伦布  13.58.13.137 = VLESS,13.58.13.137,443,"0715628e-fe11-49c6-b6dc-326719e9fc72",transport=tcp, over-tls=true, sni=www.yahoo.com, public-key="ONtm2Ue2yos1Fw3Jy-Fjh_9RLyqHBlw33aCVzRIB4is", short-id=dd0a9c
 🇺🇸 美国 圣克拉拉  167.88.61.193¹ = Trojan,167.88.61.193,443,"0ab6c98dae3b48e8b9c4a776b6c9c19a",transport=tcp
 🇺🇸 美国 圣克拉拉  167.88.61.193² = Trojan,167.88.61.193,443,"0ab6c98dae3b48e8b9c4a776b6c9c19a",transport=tcp
