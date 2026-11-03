@@ -849,25 +849,23 @@ def parse_content(text: str):
 
 
 def dedupe_key(node: dict):
-    ntype = node["type"]
-    cred = node.get("uuid") or node.get("password") or ""
-    if ntype == "ssr":
-        cred = "|".join([
-            node.get("password") or "", node.get("cipher") or "",
-            node.get("ssr_protocol") or "", node.get("ssr_obfs") or ""])
-    elif ntype == "tuic":
-        cred = f"{node.get('uuid') or ''}:{node.get('password') or ''}"
-    elif ntype in ("socks5", "http"):
-        cred = f"{node.get('username') or ''}:{node.get('password') or ''}"
-    elif ntype == "hysteria":
-        cred = node.get("hy1_auth") or node.get("password") or ""
-    if not cred:
-        canon = {k: v for k, v in sorted(node.items())
-                 if k not in ("name_orig", "yaml_dict")}
-        cred = hashlib.sha256(
-            json.dumps(canon, sort_keys=True, default=str).encode("utf-8")
-        ).hexdigest()[:16]
-    return (ntype, norm_server(node["server"]), node["port"], str(cred))
+    drop = {"name", "name_orig", "yaml_dict", "_geo",
+            "uuid", "password", "hy1_auth", "username", "hy2_obfs_password"}
+    cred_keys = {"uuid", "password", "passwd", "pwd", "auth", "auth_str",
+                 "token", "obfs-password", "obfs_password", "id", "key",
+                 "secret"}
+
+    def clean(value):
+        if isinstance(value, dict):
+            return {k: clean(v) for k, v in value.items()
+                    if str(k).lower() not in cred_keys}
+        if isinstance(value, list):
+            return [clean(v) for v in value]
+        return value
+
+    rest = {k: clean(v) for k, v in node.items() if k not in drop}
+    rest["server"] = norm_server(node["server"])
+    return json.dumps(rest, sort_keys=True, ensure_ascii=False, default=str)
 
 
 def dedupe(nodes):
