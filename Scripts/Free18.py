@@ -964,7 +964,7 @@ def _valid_reality_sid(sid) -> bool:
     sid = str(sid).strip()
     if not sid:
         return True
-    if len(sid) % 2:
+    if len(sid) % 2 or len(sid) > 16:
         return False
     return all(c in "0123456789abcdefABCDEF" for c in sid)
 
