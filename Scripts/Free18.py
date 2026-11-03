@@ -889,6 +889,42 @@ def _transport_opts(node: dict):
     return network, node.get("path"), node.get("host"), node.get("service_name")
 
 
+def _fix_mihomo_opts(data: dict) -> dict:
+    opts = data.get("http-opts")
+    if isinstance(opts, dict):
+        opts = dict(opts)
+        headers = opts.get("headers")
+        if isinstance(headers, dict):
+            opts["headers"] = {k: ([v] if isinstance(v, str) else v)
+                               for k, v in headers.items()}
+        if isinstance(opts.get("path"), str):
+            opts["path"] = [opts["path"]]
+        data["http-opts"] = opts
+    opts = data.get("ws-opts")
+    if isinstance(opts, dict):
+        opts = dict(opts)
+        headers = opts.get("headers")
+        if isinstance(headers, dict):
+            fixed = {}
+            for k, v in headers.items():
+                if isinstance(v, list):
+                    fixed[k] = v[0] if v else ""
+                else:
+                    fixed[k] = v
+            opts["headers"] = fixed
+        data["ws-opts"] = opts
+    opts = data.get("h2-opts")
+    if isinstance(opts, dict):
+        opts = dict(opts)
+        if isinstance(opts.get("host"), str):
+            opts["host"] = [opts["host"]]
+        path = opts.get("path")
+        if isinstance(path, list):
+            opts["path"] = path[0] if path else ""
+        data["h2-opts"] = opts
+    return data
+
+
 def to_mihomo_dict(node: dict, name: str):
     if node.get("type") == "vless":
         flow = node.get("flow")
@@ -899,6 +935,7 @@ def to_mihomo_dict(node: dict, name: str):
         data["name"] = name
         if node.get("type") == "vless" and data.get("flow"):
             data["flow"] = "xtls-rprx-vision"
+        data = _fix_mihomo_opts(data)
         return data
     ntype = node["type"]
     if ntype in ("ssr", "ss", "trojan", "vmess", "vless",
@@ -934,7 +971,8 @@ def to_mihomo_dict(node: dict, name: str):
             d["http-opts"] = _clean({
                 "method": node.get("http_method") or "GET",
                 "path": [ws_path] if ws_path else None,
-                "headers": ({"Host": ws_host} if ws_host else None)})
+                "headers": ({"Host": ([ws_host] if isinstance(ws_host, str)
+                                      else ws_host)} if ws_host else None)})
         elif network == "h2":
             d["network"] = "h2"
             d["h2-opts"] = _clean({"host": [ws_host] if ws_host else None,
@@ -982,7 +1020,9 @@ def to_mihomo_dict(node: dict, name: str):
                 d["http-opts"] = _clean({
                     "method": node.get("http_method") or "GET",
                     "path": [ws_path] if ws_path else None,
-                    "headers": ({"Host": ws_host} if ws_host else None)})
+                    "headers": ({"Host": ([ws_host] if isinstance(ws_host, str)
+                                          else ws_host)}
+                                if ws_host else None)})
         else:
             return None
         if node.get("pbk"):
