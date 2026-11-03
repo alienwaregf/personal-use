@@ -1,21 +1,5 @@
 #!/usr/bin/env python3
-"""Free18: merge 13 verified free subscription sources into 5 client files.
 
-Standalone script (no rule_converter import). Only stdlib + requests + pyyaml.
-Reads each source, sniffs its format (base64 blob / share-link lines /
-Clash-Mihomo YAML / sing-box JSON), parses nodes into a neutral dict,
-dedupes on (protocol, server, port, credential), renames from ip-api geo
-data, and writes proxy/Free18.yaml + Loon/QuantumultX/Shadowrocket/Surge
-files + proxy/README.md. A primary URL that 404s falls back to a branch
-swap (main <-> master) and then to a directory listing via the GitHub
-Contents/Gist API, matching only narrow filename patterns. Never embeds real credentials in code or logs:
-all fixtures in tests use TEST-NET addresses and fake secrets.
-
-Naming (user-specified, verbatim): "{flag} {country} {city}  {ip}"
-(flag, country, city joined by single spaces; TWO spaces before the IP).
-City falls back to regionName; no city -> country only. Domain servers
-keep their original name. Name collisions get superscript suffixes.
-"""
 
 from __future__ import annotations
 
@@ -35,11 +19,6 @@ from urllib.parse import parse_qsl, quote, unquote, urlencode, urlsplit
 import requests
 import yaml
 
-# ---------------------------------------------------------------- sources
-# (key, label, url). One entry per authoritative file; same-pool duplicates
-# (AutoMerge fork, ssrsub mirror, clashfree sister repo, TGParse per-protocol
-# files, NoMoreWalls list.yml, free18 c.yaml, Dafeide clash.yaml/sing-box)
-# are deliberately NOT listed. See proxy/README.md for the rationale.
 SOURCES = [
     ("ripaojiedian", "ripaojiedian/freenode",
      "https://raw.githubusercontent.com/ripaojiedian/freenode/main/clash"),
@@ -98,11 +77,6 @@ GEO_CACHE_NAME = "Free18_geo_cache.json"
 STATS_NAME = "Free18_stats.json"
 USER_AGENT = "Free18/1.0 (+https://github.com/alienwaregf/personal-use)"
 
-# Country-code -> Chinese name table, covering every two-letter code in
-# the CLDR zh territory list. The original short names are kept verbatim;
-# added entries use CLDR zh wording. Used in preference to the ip-api
-# country string so names stay deterministic Chinese. A code outside this
-# table falls back to the API string.
 COUNTRY_ZH = {
     "HK": "香港", "TW": "台湾", "MO": "澳门",
     "JP": "日本", "KR": "韩国", "SG": "新加坡", "MY": "马来西亚",
@@ -123,7 +97,6 @@ COUNTRY_ZH = {
     "KZ": "哈萨克斯坦", "UZ": "乌兹别克斯坦",
     "IS": "冰岛", "EE": "爱沙尼亚", "LV": "拉脱维亚", "LT": "立陶宛",
     "LU": "卢森堡", "MT": "马耳他", "CY": "塞浦路斯",
-    # Added 2026-11-03: remaining CLDR zh two-letter codes.
     "AC": "阿森松岛", "AD": "安道尔", "AF": "阿富汗", "AG": "安提瓜和巴布达",
     "AI": "安圭拉", "AL": "阿尔巴尼亚", "AM": "亚美尼亚", "AO": "安哥拉",
     "AQ": "南极洲", "AS": "美属萨摩亚", "AW": "阿鲁巴", "AX": "奥兰群岛",
@@ -187,11 +160,8 @@ LINK_SCHEMES = (
 )
 SUPERSCRIPTS = "¹²³⁴⁵⁶⁷⁸⁹"
 
-# ---------------------------------------------------------------- helpers
-
 
 def b64decode_loose(text):
-    """Decode standard or URL-safe base64 with missing padding tolerated."""
     s = re.sub(r"\s+", "", text.strip())
     s += "=" * (-len(s) % 4)
     try:
@@ -236,7 +206,6 @@ def parse_port(value) -> int | None:
 
 
 def split_hostport(netloc: str):
-    """Split 'host:port' (IPv6-aware) -> (host, port|None)."""
     if netloc.startswith("["):
         end = netloc.find("]")
         if end == -1:
@@ -307,11 +276,7 @@ def new_node(ntype: str) -> dict:
     }
 
 
-# ---------------------------------------------------------------- link parsing
-
-
 def _uri_parts(link: str):
-    """Split a scheme:// link into (userinfo, host, port, query dict, name)."""
     parts = urlsplit(link)
     raw_netloc = parts.netloc
     if "@" in raw_netloc:
@@ -412,7 +377,7 @@ def parse_trojan_link(link: str):
     node["sid"] = query.get("sid") or None
     alpn = query.get("alpn")
     node["alpn"] = [a.strip() for a in alpn.split(",") if a.strip()] if alpn else None
-    node["tls"] = True  # trojan is always TLS
+    node["tls"] = True
     return node
 
 
@@ -429,7 +394,7 @@ def _parse_ss_plugin(query: dict, node: dict):
             key, _, val = piece.partition("=")
             opts[key.strip()] = val.strip()
         elif piece.strip():
-            opts[piece.strip()] = True  # bare flag, e.g. v2ray-plugin "tls"
+            opts[piece.strip()] = True
     node["plugin_opts"] = opts
 
 
@@ -447,12 +412,10 @@ def parse_ss_link(link: str):
     node["name_orig"] = name
     node["ss_query"] = query
     _parse_ss_plugin(query, node)
-    # Form A: base64(method:password)@host:port ; Form B: base64(whole) ;
-    # Form C: plain method:password@host:port (password percent-encoded).
     userinfo_hostport = rest
     if "@" in rest:
         userinfo, _, hostport = rest.rpartition("@")
-        hostport = hostport.rstrip("/")  # ss links often end the authority with "/"
+        hostport = hostport.rstrip("/")
         host, port = split_hostport(hostport)
         try:
             decoded = b64decode_loose(userinfo).decode("utf-8")
@@ -595,7 +558,6 @@ def parse_http_link(link: str):
 
 
 def parse_link(line: str):
-    """Parse one share-link line -> neutral node dict or None."""
     line = line.strip()
     if not line:
         return None
@@ -632,9 +594,6 @@ def parse_link(line: str):
 
 def node_complete(node: dict) -> bool:
     return bool(node.get("server")) and bool(node.get("port"))
-
-
-# ---------------------------------------------------------------- YAML / JSON
 
 
 def _alpn_list(value):
@@ -681,7 +640,6 @@ def _transport_from_yaml(node: dict, data: dict):
 
 
 def yaml_to_neutral(data: dict):
-    """Convert one Clash/Mihomo proxy dict to a neutral node (passthrough kept)."""
     if not isinstance(data, dict):
         return None
     raw_type = str(data.get("type", "") or "").strip().lower()
@@ -757,7 +715,6 @@ def yaml_to_neutral(data: dict):
 
 
 def singbox_to_neutral(data: dict):
-    """Convert one sing-box outbound dict to a neutral node (best effort)."""
     if not isinstance(data, dict):
         return None
     raw_type = str(data.get("type", "") or "").strip().lower()
@@ -822,12 +779,10 @@ def singbox_to_neutral(data: dict):
 
 
 def parse_content(text: str):
-    """Sniff one fetched source body -> (nodes, kind). Never raises."""
     nodes = []
     stripped = text.strip().lstrip("\ufeff")
     if not stripped:
         return nodes, "empty"
-    # 1) Whole-blob base64 -> decode once, then re-sniff (max 2 levels).
     blob = re.sub(r"\s+", "", stripped)
     if len(blob) >= 40 and re.fullmatch(r"[A-Za-z0-9+/=_-]+", blob):
         try:
@@ -838,7 +793,6 @@ def parse_content(text: str):
                     return inner_nodes, "base64+" + inner_kind
         except Exception:
             pass
-    # 2) JSON (sing-box) or YAML (Clash/Mihomo) structured docs.
     if stripped.startswith("{"):
         try:
             doc = json.loads(stripped)
@@ -869,8 +823,6 @@ def parse_content(text: str):
                 nodes.append(node)
         if nodes:
             return nodes, "yaml-list"
-    # 3) Share-link lines (one per line). A bare-base64 line that decodes
-    # to a link is also accepted.
     for raw_line in stripped.splitlines():
         line = raw_line.strip()
         if not line or line.startswith("#"):
@@ -894,9 +846,6 @@ def parse_content(text: str):
         if node is not None:
             nodes.append(node)
     return nodes, "link-lines"
-
-
-# ---------------------------------------------------------------- dedupe
 
 
 def dedupe_key(node: dict):
@@ -933,27 +882,16 @@ def dedupe(nodes):
     return list(seen.values()), duplicates
 
 
-# ---------------------------------------------------------------- emitters
-# Each emitter renders the SAME neutral nodes into one client's native
-# subscribable form. A node a client cannot express is skipped and counted,
-# never written as a possibly-broken line. Evidence per client is recorded
-# in the parent report; Loon/Surge grammar follows the vendors' own docs,
-# QX follows the Surgio/V2Board builder mappings, Shadowrocket follows the
-# share-link subscription form, Mihomo follows the proxy-provider YAML form.
-
-
 def _clean(d: dict) -> dict:
     return {k: v for k, v in d.items() if v is not None}
 
 
 def _transport_opts(node: dict):
-    """Return (network, ws_path, ws_host, service_name) for link-sourced nodes."""
     network = (node.get("network") or "tcp").lower()
     return network, node.get("path"), node.get("host"), node.get("service_name")
 
 
 def to_mihomo_dict(node: dict, name: str):
-    """Build one Mihomo proxy dict, or None if it cannot be expressed."""
     if node.get("yaml_dict") is not None:
         data = dict(node["yaml_dict"])
         data["name"] = name
@@ -1091,7 +1029,7 @@ def to_mihomo_dict(node: dict, name: str):
             d["obfs-param"] = node["ssr_obfs_param"]
     elif ntype == "hysteria2":
         if node.get("mport"):
-            return None  # port hopping has no verified Mihomo field mapping
+            return None
         d["password"] = node["password"]
         if node.get("sni"):
             d["sni"] = node["sni"]
@@ -1213,10 +1151,6 @@ def render_mihomo(nodes, names):
               "# Generated by Scripts/Free18.py. Do not edit by hand.\n")
     return header + body, len(proxies), skipped
 
-
-# ------------------------------------------------------------------- Loon
-# Grammar: Loon official docs (nsloon.app/en/docs/Node): one node per line
-# under [Proxy] in a full config; remote node subscriptions are bare lines.
 
 LOON_SSR_PROTOCOLS = {"origin", "auth_chain_a", "auth_chain_b",
                       "auth_aes128_md5", "auth_aes128_sha1", "auth_sha1_v4",
@@ -1400,13 +1334,6 @@ def render_loon(nodes, names):
     return "\n".join(lines) + ("\n" if lines else ""), len(lines), skipped
 
 
-# ------------------------------------------------------- Quantumult X
-# Grammar: bare node lines (remote subscriptions are bare node lists).
-# ss/vmess/ssr/trojan/http mappings follow the Surgio + V2Board builders;
-# vless/hysteria2/tuic/socks are skipped: sources conflict or are silent
-# on whether QX can express them, so no line is guessed.
-
-
 def _qx_bad_value(value) -> bool:
     return value is not None and ("," in str(value) or "\n" in str(value))
 
@@ -1548,11 +1475,6 @@ def render_qx(nodes, names):
         else:
             lines.append(line)
     return "\n".join(lines) + ("\n" if lines else ""), len(lines), skipped
-
-
-# ------------------------------------------------------------------ Surge
-# Grammar: Surge manual (manual.nssurge.com): a config with a [Proxy]
-# section, one "Name = type, server, port, ..." line per node.
 
 
 def to_surge_line(node: dict, name: str):
@@ -1721,11 +1643,6 @@ def render_surge(nodes, names):
     return header + body + ("\n" if lines else ""), len(lines), skipped
 
 
-# ---------------------------------------------------------- Shadowrocket
-# Subscription body: one share link per line, whole body base64-encoded
-# (the generic subscription form Shadowrocket and v2ray clients read).
-
-
 def _hostport(node: dict) -> str:
     server = node["server"]
     if ":" in server and not server.startswith("["):
@@ -1876,9 +1793,6 @@ def render_shadowrocket(nodes, names):
     return blob + "\n", len(links), skipped
 
 
-# ---------------------------------------------------------------- geo / naming
-
-
 def _sup_num(n: int) -> str:
     digits = "⁰¹²³⁴⁵⁶⁷⁸⁹"
     return "".join(digits[int(ch)] for ch in str(n))
@@ -1895,12 +1809,7 @@ def load_geo_cache(path: Path) -> dict:
 
 
 def lookup_geo(ips, cache: dict, session, sleep_fn=time.sleep):
-    """Batch-lookup IPs via ip-api (free HTTP endpoint), honouring the cache.
 
-    Returns {ip: entry|None}. Cache entries: ok=True with geo fields, or
-    ok=False failures retried only after 7 days. 429/5xx: up to 3 retries
-    with Retry-After-aware backoff. A failed lookup never fails the run.
-    """
     entries = cache.setdefault("ips", {})
     now = datetime.now(timezone.utc)
     result = {}
@@ -1979,7 +1888,6 @@ def lookup_geo(ips, cache: dict, session, sleep_fn=time.sleep):
 
 
 def display_name(node: dict, geo):
-    """User-specified format: flag + country + city + TWO spaces + IP."""
     server = norm_server(node["server"])
     orig = (node.get("name_orig") or "").strip()
     fallback = orig or f"{node['type']} {server}:{node['port']}"
@@ -1997,7 +1905,6 @@ def display_name(node: dict, geo):
 
 
 def assign_names(nodes, geo_map):
-    """Name, de-collide with superscripts, and sort deterministically."""
     bases = []
     for node in nodes:
         geo = geo_map.get(norm_server(node["server"]))
@@ -2025,47 +1932,48 @@ def assign_names(nodes, geo_map):
     return [nodes[i] for i in order], [names[i] for i in order]
 
 
-# ------------------------------------------------------------------ README
-
-
 def render_readme(stats: dict, fingerprints: dict, counts: dict, updated: str) -> str:
-    lines = ["# Free18", "",
-             "各客户端文件仅含该客户端可表示的节点；无法表示的节点已跳过，计数见 Actions 运行日志。",
-             ""]
-
-    def section(heading, label, filename):
-        block = [heading, "", ""]
-        if label:
-            block += [label, ""]
-        block += ["```text", "", RAW_BASE + filename, "", "```", "", ""]
-        return block
-
-    lines += ['# <img src="https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/Picture/icon/OpenClash.png" width="25" height="25" alt="Clash" /> Clash',
-              "", "",
-              "Free18", "",
-              "```text", "", RAW_BASE + "Free18.yaml", "", "```", "", "",
-              "VPNgate", "",
-              "```text", "", RAW_BASE + "VPNgate.yaml", "", "```", "", ""]
-    lines += section(
+    lines = [
+        '# <img src="https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/Picture/icon/OpenClash.png" width="25" height="25" alt="Clash" /> Clash',
+        "",
+        "Free18",
+        "```text",
+        RAW_BASE + "Free18.yaml",
+        "```",
+        "",
+        "VPNgate",
+        "```text",
+        RAW_BASE + "VPNgate.yaml",
+        "```",
+        "",
         '# <img src="https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/02ProxySoftLogo/Loon(1).png" width="25" height="25" alt="Loon" /> Loon',
-        None, "Free18_Loon.list")
-    lines += section(
+        "",
+        "```text",
+        RAW_BASE + "Free18_Loon.list",
+        "```",
+        "",
         '# <img src="https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/Picture/icon/QX.png" width="25" height="25" alt="QuantumultX" /> QuantumultX',
-        None, "Free18_QuantumultX.list")
-    lines += section(
+        "",
+        "```text",
+        RAW_BASE + "Free18_QuantumultX.list",
+        "```",
+        "",
         '# <img src="https://raw.githubusercontent.com/alienwaregf/personal-use/refs/heads/main/Picture/icon/shadowrocket.png" width="25" height="25" alt="Shadowrocket" /> Shadowrocket',
-        None, "Free18_Shadowrocket.list")
-    lines += section(
+        "",
+        "```text",
+        RAW_BASE + "Free18_Shadowrocket.list",
+        "```",
+        "",
         '# <img src="https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/02ProxySoftLogo/Surge(8).png" width="25" height="25" alt="Surge" /> Surge',
-        None, "Free18_Surge.list")
+        "",
+        "```text",
+        RAW_BASE + "Free18_Surge.list",
+        "```",
+    ]
     return "\n".join(lines) + "\n"
 
 
-# ---------------------------------------------------------------- pipeline
-
-
 def fetch_url(session, url: str, timeout: int = 30):
-    """GET with retries on 429/5xx. Raises RuntimeError on failure."""
     last_error = None
     for attempt in range(4):
         try:
@@ -2093,18 +2001,6 @@ def fetch_url(session, url: str, timeout: int = 30):
     raise RuntimeError(last_error or "fetch failed")
 
 
-# ---------------------------------------------------------------- rename fallback
-# Source files are addressed by fixed raw URLs, but upstream authors rename
-# or move them (e.g. clashfree's dated clashYYYYMMDD.yml files). When the
-# primary URL 404s, fall back to a branch swap (main <-> master) and then
-# to listing the source's directory through the GitHub Contents API (or the
-# Gist API for the Dafeide Gist), fetching the first file matching one of
-# the patterns below, newest name first within a pattern. The API is only
-# touched on a 404, so a normal run makes zero API calls. Patterns are
-# deliberately narrow: the exact current filename first, then only dated
-# variants of the same stem that the source is already known to publish.
-# kind "contents": repo contents listing (array of entries).
-# kind "gist": Gist API response (files dict).
 DISCOVERY = {
     "ripaojiedian": ("https://api.github.com/repos/ripaojiedian/freenode/contents/",
                      "contents", [r"^clash$", r"^sub$"]),
@@ -2160,10 +2056,8 @@ DISCOVERY = {
 
 
 def branch_swap_url(url: str):
-    """Swap the branch segment (main <-> master) of a raw URL, else None."""
     parts = urlsplit(url)
     segs = parts.path.strip("/").split("/")
-    # raw.githubusercontent.com/{owner}/{repo}/{branch}/{path...}
     if len(segs) >= 4 and segs[2] in ("main", "master"):
         segs[2] = "master" if segs[2] == "main" else "main"
         return parts._replace(path="/" + "/".join(segs)).geturl()
@@ -2171,7 +2065,6 @@ def branch_swap_url(url: str):
 
 
 def discover_candidates(session, key: str):
-    """Candidate raw URLs for a source from its directory listing."""
     spec = DISCOVERY.get(key)
     if not spec:
         return []
@@ -2199,11 +2092,7 @@ def discover_candidates(session, key: str):
 
 
 def fetch_source(session, key: str, label: str, url: str):
-    """Fetch one source: primary URL, branch swap, then discovery.
 
-    Discovery runs only when the primary URL 404s/410s. Any other failure
-    (timeout, 5xx after retries, oversize) raises immediately.
-    """
     errors = []
     try:
         return fetch_url(session, url)
@@ -2246,7 +2135,6 @@ def write_if_changed(path: Path, text: str) -> bool:
 
 
 def run_pipeline(root: Path, sources, fetch_fn, geo_fn, now: datetime):
-    """Run one merge. Returns (stats dict, exit_code)."""
     root = Path(root)
     proxy_dir = root / "proxy"
     scripts_dir = root / "Scripts"
@@ -2267,7 +2155,7 @@ def run_pipeline(root: Path, sources, fetch_fn, geo_fn, now: datetime):
             continue
         try:
             nodes, kind = parse_content(text)
-        except Exception as exc:  # parse_content should not raise; be safe
+        except Exception as exc:
             failed_sources.append({"key": key, "label": label,
                                    "error": f"解析错误：{exc}"})
             per_source[key] = 0
@@ -2356,9 +2244,9 @@ def run_pipeline(root: Path, sources, fetch_fn, geo_fn, now: datetime):
     for fname, text in rendered.items():
         if write_if_changed(proxy_dir / fname, text):
             changed = True
-    if changed:
-        readme = render_readme(stats, fingerprints, counts, updated)
-        write_if_changed(proxy_dir / "README.md", readme)
+    readme = render_readme(stats, fingerprints, counts, updated)
+    if write_if_changed(proxy_dir / "README.md", readme):
+        changed = True
     if json.dumps(cache, sort_keys=True, ensure_ascii=False) != cache_before:
         cache_path.parent.mkdir(parents=True, exist_ok=True)
         cache_path.write_text(
