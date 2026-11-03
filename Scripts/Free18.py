@@ -127,7 +127,6 @@ COUNTRY_ZH = {
 GFW_COUNTRIES = frozenset({"CN", "KP", "IR", "TM", "RU", "BY", "CU", "VN", "MM"})
 
 COUNTRY_CAP = 10
-COUNTRY_CAP_EXEMPT = frozenset({"US"})
 COUNTRY_CAP_SEED = "Free18"
 
 CF_NETWORKS = tuple(ipaddress.ip_network(cidr) for cidr in (
@@ -2355,7 +2354,7 @@ def run_pipeline(root: Path, sources, fetch_fn, geo_fn, now: datetime):
     kept = []
     for code, group in groups.items():
         before = len(group)
-        if code not in COUNTRY_CAP_EXEMPT and before > COUNTRY_CAP:
+        if before > COUNTRY_CAP:
             rng = random.Random(COUNTRY_CAP_SEED + ":" + code)
             group = rng.sample(group, COUNTRY_CAP)
             cap_removed += before - COUNTRY_CAP
