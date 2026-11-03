@@ -925,6 +925,24 @@ def _fix_mihomo_opts(data: dict) -> dict:
     return data
 
 
+MIHOMO_SS_CIPHERS = frozenset({
+    "aes-128-gcm", "aes-192-gcm", "aes-256-gcm",
+    "chacha20-ietf-poly1305", "xchacha20-ietf-poly1305",
+    "2022-blake3-aes-128-gcm", "2022-blake3-aes-256-gcm",
+    "2022-blake3-chacha20-poly1305",
+    "aes-128-ctr", "aes-192-ctr", "aes-256-ctr",
+    "aes-128-cfb", "aes-192-cfb", "aes-256-cfb",
+    "chacha20-ietf", "chacha20", "xchacha20", "rc4-md5",
+})
+
+
+def _norm_ss_cipher(cipher):
+    if not isinstance(cipher, str):
+        return None
+    c = cipher.strip().lower()
+    return c if c in MIHOMO_SS_CIPHERS else None
+
+
 def _valid_reality_pubkey(key) -> bool:
     if not isinstance(key, str):
         return False
@@ -961,9 +979,16 @@ def to_mihomo_dict(node: dict, name: str):
             return None
         if not _valid_reality_sid(node.get("sid")):
             return None
+    ss_cipher = None
+    if node.get("type") == "ss":
+        ss_cipher = _norm_ss_cipher(node.get("cipher"))
+        if ss_cipher is None:
+            return None
     if node.get("yaml_dict") is not None:
         data = dict(node["yaml_dict"])
         data["name"] = name
+        if ss_cipher is not None:
+            data["cipher"] = ss_cipher
         if node.get("type") == "vless" and data.get("flow"):
             data["flow"] = "xtls-rprx-vision"
         data = _fix_mihomo_opts(data)
@@ -1084,7 +1109,7 @@ def to_mihomo_dict(node: dict, name: str):
             d["reality-opts"] = _clean({"public-key": node["pbk"],
                                         "short-id": node["sid"] or ""})
     elif ntype == "ss":
-        d["cipher"] = node["cipher"]
+        d["cipher"] = ss_cipher
         d["password"] = node["password"]
         if node.get("plugin"):
             d["plugin"] = node["plugin"]
