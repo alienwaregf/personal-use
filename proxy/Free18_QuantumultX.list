@@ -172,6 +172,20 @@ shadowsocks = 134.195.196.178:811, method=chacha20-ietf-poly1305, password=G!yBw
 vmess = 134.195.196.211:18000, method=chacha20-poly1305, password=f8c8dc3d-0d37-46b0-8b34-a7232882fcfe, aead=true, tag=🇨🇦 加拿大 多伦多  134.195.196.211¹
 vmess = 134.195.196.211:18000, method=chacha20-poly1305, password=f8c8dc3d-0d37-46b0-8b34-a7232882fcfe, aead=true, tls-host=134.195.196.211, tag=🇨🇦 加拿大 多伦多  134.195.196.211²
 shadowsocks = 137.184.174.93:8080, method=rc4-md5, password=14fFPrbezE3HDZzsMOr6, tag=🇨🇦 加拿大 多伦多  137.184.174.93
+trojan = 162.159.128.253:443, password=humanity, over-tls=true, tls-verification=true, tls-host=www.cordweave.com, obfs=wss, obfs-uri=/assignment, tag=🇨🇦 加拿大 多伦多  162.159.128.253³
+trojan = 162.159.128.253:443, password=humanity, over-tls=true, tls-verification=true, tls-host=www.cordweave.com, obfs=wss, obfs-uri=/assignment, tag=🇨🇦 加拿大 多伦多  162.159.128.253⁴
+trojan = 162.159.133.152:443, password=humanity, over-tls=true, tls-verification=true, tls-host=www.pleadcourt.org, obfs=wss, obfs-uri=/assignment, obfs-host=www.pleadcourt.org, tag=🇨🇦 加拿大 多伦多  162.159.133.152¹
+trojan = 162.159.133.152:443, password=humanity, over-tls=true, tls-verification=true, tls-host=www.pleadcourt.org, obfs=wss, obfs-uri=/assignment, tag=🇨🇦 加拿大 多伦多  162.159.133.152²
+vmess = 162.159.135.79:443, method=chacha20-poly1305, password=03fcc618-b93d-6796-6aed-8a38c975d581, aead=true, obfs=wss, obfs-uri=/linkvws, obfs-host=janett.click, tls-verification=true, tag=🇨🇦 加拿大 多伦多  162.159.135.79¹
+trojan = 162.159.140.116:2053, password=c24f41e2-45d3-4e73-8114-26f7a9e57af2, over-tls=true, tls-verification=true, tls-host=17934548052676.206355.xyz, obfs=wss, obfs-uri=/videomuaawe, obfs-host=17934548052324.206355.xyz, tag=🇨🇦 加拿大 多伦多  162.159.140.116⁵
+trojan = 162.159.140.116:2087, password=c24f41e2-45d3-4e73-8114-26f7a9e57af2, over-tls=true, tls-verification=true, tls-host=17934548057236.206352.xyz, obfs=wss, obfs-uri=/agraeabtegrrh, obfs-host=17934548057163.206352.xyz, tag=🇨🇦 加拿大 多伦多  162.159.140.116⁴
+trojan = 162.159.149.157:443, password=humanity, over-tls=true, tls-verification=true, tls-host=www.cordweave.com, obfs=wss, obfs-uri=/assignment, tag=🇨🇦 加拿大 多伦多  162.159.149.157¹
+trojan = 162.159.149.157:443, password=humanity, over-tls=true, tls-verification=true, tls-host=www.cordweave.com, obfs=wss, obfs-uri=/assignment, tag=🇨🇦 加拿大 多伦多  162.159.149.157²
+trojan = 162.159.150.241:443, password=humanity, over-tls=true, tls-verification=true, tls-host=www.cordweave.com, obfs=wss, obfs-uri=/assignment, tag=🇨🇦 加拿大 多伦多  162.159.150.241¹
+trojan = 162.159.150.241:443, password=humanity, over-tls=true, tls-verification=true, tls-host=www.cordweave.com, obfs=wss, obfs-uri=/assignment, tag=🇨🇦 加拿大 多伦多  162.159.150.241²
+trojan = 162.159.228.224:443, password=humanity, over-tls=true, tls-verification=true, tls-host=www.pleadcourt.org, obfs=wss, obfs-uri=/assignment, obfs-host=www.pleadcourt.org, tag=🇨🇦 加拿大 多伦多  162.159.228.224
+trojan = 162.159.84.189:443, password=humanity, over-tls=true, tls-verification=true, tls-host=www.trusteeforward.com, obfs=wss, obfs-uri=/assignment, obfs-host=www.trusteeforward.com, tag=🇨🇦 加拿大 多伦多  162.159.84.189
+trojan = 162.159.91.211:443, password=humanity, over-tls=true, tls-verification=true, tls-host=www.calmlunch.com, obfs=wss, obfs-uri=/assignment, obfs-host=www.calmlunch.com, tag=🇨🇦 加拿大 多伦多  162.159.91.211
 trojan = 172.105.5.158:443, password=027c71ac-026b-4755-9a33-26558ce6f6a2, over-tls=true, tls-verification=true, tls-host=ddragon.leagueoflegends.com, tag=🇨🇦 加拿大 多伦多  172.105.5.158
 trojan = 172.64.145.133:443, password=humanity, over-tls=true, tls-verification=true, tls-host=www.pleadcourt.org, obfs=wss, obfs-uri=/assignment, obfs-host=www.pleadcourt.org, tag=🇨🇦 加拿大 多伦多  172.64.145.133¹
 trojan = 172.64.145.133:443, password=humanity, over-tls=true, tls-verification=true, tls-host=www.pleadcourt.org, obfs=wss, obfs-uri=/assignment, obfs-host=www.pleadcourt.org, tag=🇨🇦 加拿大 多伦多  172.64.145.133²
@@ -714,11 +728,14 @@ trojan = 151.101.56.90:443, password=miTivpn, over-tls=true, tls-verification=tr
 shadowsocks = 149.102.149.207:80, method=aes-256-gcm, password=LXchLsIwtCeUAUgu, tag=🇬🇧 英国 朴次茅斯  149.102.149.207²
 shadowsocks = 149.102.149.207:443, method=aes-256-gcm, password=LXchLsIwtCeUAUgu, tag=🇬🇧 英国 朴次茅斯  149.102.149.207¹
 shadowsocks = 58.152.58.193:40006, method=chacha20-ietf-poly1305, password=28789988-887e-4e41-83cd-27bbfb7999ad, tag=🇭🇰 香港 中環  58.152.58.193
+vmess = 163.53.246.239:10065, method=chacha20-poly1305, password=1f308996-7fa6-46ac-8700-7d766eae084b, aead=true, tag=🇭🇰 香港 尖沙咀  163.53.246.239¹
+vmess = 163.53.246.239:10065, method=chacha20-poly1305, password=1f308996-7fa6-46ac-8700-7d766eae084b, aead=true, tag=🇭🇰 香港 尖沙咀  163.53.246.239²
 shadowsocks = 103.149.182.79:8388, method=chacha20-ietf, password=asd123456, tag=🇭🇰 香港 灣仔  103.149.182.79
 vmess = 115.126.50.111:16399, method=chacha20-poly1305, password=0a824660-8b17-4665-d2b4-a86c7f15d32a, aead=true, tag=🇭🇰 香港 火炭  115.126.50.111¹
 vmess = 115.126.50.111:16399, method=chacha20-poly1305, password=0a824660-8b17-4665-d2b4-a86c7f15d32a, aead=true, tag=🇭🇰 香港 火炭  115.126.50.111²
 vmess = 109.248.25.59:29064, method=chacha20-poly1305, password=8958440c-aa86-4ff1-8e88-5c7a052d5961, aead=true, obfs=ws, obfs-uri=/ss, tag=🇭🇰 香港 香港  109.248.25.59
 vmess = 156.245.232.239:35043, method=chacha20-poly1305, password=b15e481d-17e4-41a8-84c2-23d4f0514d9a, aead=true, obfs=ws, obfs-uri=/, tag=🇭🇰 香港 香港  156.245.232.239¹
+trojan = 16.163.102.116:52951, password=BxceQaOe, over-tls=true, tls-verification=true, tag=🇭🇰 香港 香港  16.163.102.116
 trojan = 193.134.209.165:443, password=humanity, over-tls=true, tls-verification=true, tls-host=www.cordweave.com, obfs=wss, obfs-uri=/assignment, tag=🇭🇰 香港 香港  193.134.209.165²
 vmess = 194.99.79.26:443, method=chacha20-poly1305, password=03fcc618-b93d-6796-6aed-8a38c975d581, aead=true, obfs=wss, obfs-uri=/linkvws, obfs-host=aksai.org, tls-verification=true, tag=🇭🇰 香港 香港  194.99.79.26
 trojan = 27.50.48.49:443, password=mitivpn, over-tls=true, tls-verification=true, tls-host=gamingdll.ir, obfs=wss, obfs-uri=/index.html/ed=mitivpn, obfs-host=gamingdll.ir, tag=🇭🇰 香港 香港  27.50.48.49¹
@@ -1414,6 +1431,7 @@ trojan = 15.235.184.127:443, password=0ab6c98dae3b48e8b9c4a776b6c9c19a, over-tls
 trojan = 154.81.141.42:443, password=humanity, over-tls=true, tls-verification=true, tls-host=www.pleadcourt.org, obfs=wss, obfs-uri=/assignment, obfs-host=www.pleadcourt.org, tag=🇸🇬 新加坡 新加坡  154.81.141.42
 vmess = 158.178.227.16:30839, method=chacha20-poly1305, password=19bf4866-54ce-4fc9-8903-db7e160c5b81, aead=true, tag=🇸🇬 新加坡 新加坡  158.178.227.16¹
 vmess = 158.178.227.16:30839, method=chacha20-poly1305, password=19bf4866-54ce-4fc9-8903-db7e160c5b81, aead=true, tag=🇸🇬 新加坡 新加坡  158.178.227.16²
+shadowsocks = 161.118.219.5:56927, method=2022-blake3-chacha20-poly1305, password=9PfRlIGvpMs8nD7s65B/3IxccQG+p631X9tCLZy+CRI=, tag=🇸🇬 新加坡 新加坡  161.118.219.5
 trojan = 172.104.161.198:443, password=8deb189a-3aed-4865-843b-b72dae954c46, over-tls=true, tls-verification=true, tls-host=api.85s.me, obfs=wss, obfs-uri=/, obfs-host=api.85s.me, tag=🇸🇬 新加坡 新加坡  172.104.161.198¹
 trojan = 172.104.161.198:443, password=8deb189a-3aed-4865-843b-b72dae954c46, over-tls=true, tls-verification=true, tls-host=api.85s.me, tag=🇸🇬 新加坡 新加坡  172.104.161.198²
 trojan = 172.236.139.181:443, password=8deb189a-3aed-4865-843b-b72dae954c46, over-tls=true, tls-verification=true, tls-host=api.85s.me, obfs=wss, obfs-uri=/, obfs-host=api.85s.me, tag=🇸🇬 新加坡 新加坡  172.236.139.181¹
@@ -1524,6 +1542,7 @@ trojan = 66.163.114.245:443, password=0ab6c98dae3b48e8b9c4a776b6c9c19a, over-tls
 trojan = 66.163.114.45:443, password=0ab6c98dae3b48e8b9c4a776b6c9c19a, over-tls=true, tls-verification=true, tls-host=cdn.findconnectwithemployersandbuildprofessionalnetwork.com, tag=🇺🇸 美国 丹佛  66.163.114.45¹
 trojan = 66.163.114.45:443, password=0ab6c98dae3b48e8b9c4a776b6c9c19a, over-tls=true, tls-verification=true, tls-host=cdn.findconnectwithemployersandbuildprofessionalnetwork.com, tag=🇺🇸 美国 丹佛  66.163.114.45²
 trojan = 66.163.114.45:443, password=0ab6c98dae3b48e8b9c4a776b6c9c19a, over-tls=true, tls-verification=true, tls-host=cdn.findconnectwithemployersandbuildprofessionalnetwork.com, tag=🇺🇸 美国 丹佛  66.163.114.45³
+shadowsocks = 162.247.153.108:28896, method=chacha20-ietf-poly1305, password=jFDpUoKUDZPEGTBJRiLZgo, tag=🇺🇸 美国 亚特兰大  162.247.153.108
 shadowsocks = 185.215.132.18:19999, method=aes-256-gcm, password=ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=, tag=🇺🇸 美国 亚特兰大  185.215.132.18¹
 shadowsocks = 185.215.132.18:19999, method=aes-256-gcm, password=ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=, tag=🇺🇸 美国 亚特兰大  185.215.132.18²
 shadowsocks = 185.215.132.18:19999, method=aes-256-gcm, password=ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=, tag=🇺🇸 美国 亚特兰大  185.215.132.18³
@@ -1608,6 +1627,7 @@ trojan = 3.133.72.219:22222, password=telegram-id-directvpn, over-tls=true, tls-
 shadowsocks = 6.9.8.0:7, method=aes-256-gcm, password=123456, tag=🇺🇸 美国 哥伦布  6.9.8.0
 vmess = 104.238.182.29:50706, method=chacha20-poly1305, password=74cc82ff-e398-4a0e-df94-e5e9d66abbb3, aead=true, tag=🇺🇸 美国 圣克拉拉  104.238.182.29¹
 vmess = 104.238.182.29:50706, method=chacha20-poly1305, password=74cc82ff-e398-4a0e-df94-e5e9d66abbb3, aead=true, tag=🇺🇸 美国 圣克拉拉  104.238.182.29²
+trojan = 159.223.207.182:34428, password=zIvR7ryOXv, over-tls=true, tls-verification=true, tag=🇺🇸 美国 圣克拉拉  159.223.207.182
 shadowsocks = 167.88.61.175:3306, method=aes-256-gcm, password=Y6R9pAtvxxzmGC, tag=🇺🇸 美国 圣克拉拉  167.88.61.175⁵
 shadowsocks = 167.88.61.175:5004, method=aes-256-gcm, password=g5MeD6Ft3CWlJId, tag=🇺🇸 美国 圣克拉拉  167.88.61.175⁶
 shadowsocks = 167.88.61.175:5500, method=aes-256-gcm, password=KixLvKzwjekG00rm, tag=🇺🇸 美国 圣克拉拉  167.88.61.175²
@@ -1975,6 +1995,8 @@ trojan = 216.106.186.82:443, password=0ab6c98dae3b48e8b9c4a776b6c9c19a, over-tls
 vmess = 84.17.41.2:18000, method=chacha20-poly1305, password=f8c8dc3d-0d37-46b0-8b34-a7232882fcfe, aead=true, tag=🇺🇸 美国 西雅圖  84.17.41.2¹
 vmess = 84.17.41.2:18000, method=chacha20-poly1305, password=f8c8dc3d-0d37-46b0-8b34-a7232882fcfe, aead=true, tls-host=bj1aa2zyjxyamyuk.v.3dns.vip, tag=🇺🇸 美国 西雅圖  84.17.41.2²
 vmess = 84.17.41.2:18000, method=chacha20-poly1305, password=f8c8dc3d-0d37-46b0-8b34-a7232882fcfe, aead=true, tls-host=bj1aa2zyjxyamyuk.v%3dns.vip, tag=🇺🇸 美国 西雅圖  84.17.41.2³
+vmess = 162.251.62.115:22324, method=chacha20-poly1305, password=04621bae-ab36-11ec-b909-0242ac120002, aead=true, tag=🇺🇸 美国 迈阿密  162.251.62.115¹
+vmess = 162.251.62.115:22324, method=chacha20-poly1305, password=04621bae-ab36-11ec-b909-0242ac120002, aead=true, tag=🇺🇸 美国 迈阿密  162.251.62.115²
 trojan = 169.197.140.169:443, password=0ab6c98dae3b48e8b9c4a776b6c9c19a, over-tls=true, tls-verification=true, tag=🇺🇸 美国 迈阿密  169.197.140.169¹
 trojan = 169.197.140.169:443, password=0ab6c98dae3b48e8b9c4a776b6c9c19a, over-tls=true, tls-verification=true, tls-host=api.discoverfreshgraduatejobsstartyourprofessionaljourney.com, tag=🇺🇸 美国 迈阿密  169.197.140.169²
 trojan = 169.197.140.169:443, password=0ab6c98dae3b48e8b9c4a776b6c9c19a, over-tls=true, tls-verification=true, tls-host=api.discoverfreshgraduatejobsstartyourprofessionaljourney.com, tag=🇺🇸 美国 迈阿密  169.197.140.169³
@@ -2032,6 +2054,7 @@ shadowsocks = 38.68.135.239:7307, method=aes-256-gcm, password=FoOiGlkAA9yPEGP, 
 trojan = 66.23.203.21:59689, password=ae7eb4dwyaz25pxwgq59, over-tls=true, tls-verification=true, tag=🇺🇸 美国 達拉斯  66.23.203.21
 shadowsocks = 8.5.9.6:1, method=aes-256-gcm, password=123456, tag=🇺🇸 美国 门罗  8.5.9.6
 shadowsocks = 8.8.5.2:3, method=aes-256-gcm, password=123456, tag=🇺🇸 美国 门罗  8.8.5.2
+trojan = 162.159.38.119:443, password=humanity, over-tls=true, tls-verification=true, tls-host=www.creationlong.org, obfs=wss, obfs-uri=/assignment, obfs-host=www.creationlong.org, tag=🇺🇸 美国 阿什本  162.159.38.119¹
 shadowsocks = 45.86.51.18:19999, method=aes-256-gcm, password=ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=, tag=🇺🇸 美国 阿什本  45.86.51.18¹
 shadowsocks = 45.86.51.18:19999, method=aes-256-gcm, password=ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=, tag=🇺🇸 美国 阿什本  45.86.51.18²
 shadowsocks = 45.86.51.18:19999, method=aes-256-gcm, password=ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=, tag=🇺🇸 美国 阿什本  45.86.51.18³
@@ -2088,3 +2111,4 @@ shadowsocks = 20.87.213.148:443, method=chacha20-ietf-poly1305, password=KpIjwx8
 shadowsocks = 4.168.234.190:443, method=chacha20-ietf-poly1305, password=SBw5b6E9noHolBdA, tag=🇿🇦 南非 约翰内斯堡  4.168.234.190
 shadowsocks = 4.168.234.5:443, method=chacha20-ietf-poly1305, password=LY94CL8HouUwEPF3, tag=🇿🇦 南非 约翰内斯堡  4.168.234.5
 shadowsocks = 4.221.224.246:443, method=chacha20-ietf-poly1305, password=3aN9XUwhvq1ujlsO, tag=🇿🇦 南非 约翰内斯堡  4.221.224.246
+trojan = 160.123.255.18:443, password=6884d714-d3c4-4b49-aa20-767ea92837d6, over-tls=true, tls-verification=true, tls-host=icecream.955850.xyz, obfs=wss, obfs-host=icecream.955850.xyz, tag=🇿🇦 南非 開普敦  160.123.255.18
