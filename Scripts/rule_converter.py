@@ -645,6 +645,7 @@ def gather_source_rules(
     sources: Dict[str, Tuple[str, str]],
     user_agent: str,
     timeout: int = 60,
+    exceptions: Optional[Dict[str, Set[str]]] = None,
 ) -> Tuple[
     List[Tuple[str, str]],
     Dict[str, Dict[str, int]],
@@ -678,6 +679,11 @@ def gather_source_rules(
 
         parser = SOURCE_PARSERS[kind]
 
+        excluded = {
+            domain.lower()
+            for domain in (exceptions or {}).get(name, ())
+        }
+
         hosts_domains: Set[str] = set()
 
         source_stats: Dict[str, int] = {
@@ -693,6 +699,13 @@ def gather_source_rules(
             )
 
             if rule:
+                if rule[1].lower() in excluded:
+                    source_stats["exception"] = (
+                        source_stats.get("exception", 0) + 1
+                    )
+
+                    continue
+
                 source_stats["ok"] += 1
 
                 if kind == "hosts":
