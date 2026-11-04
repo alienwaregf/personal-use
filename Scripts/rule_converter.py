@@ -14,7 +14,6 @@ import os
 import re
 import shutil
 import subprocess
-from collections import defaultdict
 from pathlib import Path
 from io import StringIO
 from typing import Dict, List, Optional, Sequence, Set, Tuple
@@ -351,8 +350,6 @@ def parse_rules(
         rules.append(parts)
 
     return rules
-
-DOMAIN_COMPRESSION_THRESHOLD = 2
 
 def fetch_text(
     url: str,
@@ -753,62 +750,6 @@ def gather_source_rules(
 
     return sorted(merged), stats, updated_times
 
-
-def parent_suffixes(host: str) -> List[str]:
-    labels = host.split(".")
-
-    if len(labels) < 3:
-        return []
-
-    return [
-        ".".join(labels[i:])
-        for i in range(0, len(labels) - 2)
-    ]
-
-def compress_domains(domains: Set[str]) -> Set[str]:
-    suffix_members: Dict[str, Set[str]] = defaultdict(set)
-
-    for domain in domains:
-        for suffix in parent_suffixes(domain):
-            suffix_members[suffix].add(domain)
-
-    candidates = [
-        (suffix, members)
-        for suffix, members in suffix_members.items()
-        if len(members) >= DOMAIN_COMPRESSION_THRESHOLD
-    ]
-
-    candidates.sort(
-        key=lambda item: len(item[0].split(".")),
-        reverse=True,
-    )
-
-    remaining = set(domains)
-    output: Set[str] = set()
-    compressed = 0
-
-    for suffix, _ in candidates:
-        members = {
-            domain
-            for domain in remaining
-            if domain == suffix or domain.endswith("." + suffix)
-        }
-
-        if len(members) < DOMAIN_COMPRESSION_THRESHOLD:
-            continue
-
-        output.add(f"+.{suffix}")
-        remaining.difference_update(members)
-        compressed += 1
-
-    output.update(remaining)
-
-    print(
-        f"域名压缩: {len(domains):,} → {len(output):,} "
-        f"（合并 {compressed:,} 个父域）"
-    )
-
-    return output
 
 def domains_to_rules(
     domains: Set[str],

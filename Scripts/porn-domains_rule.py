@@ -183,11 +183,7 @@ def prepare_domains(text: str) -> set[str]:
         domains
     )
 
-    compressed_domains = rule_converter.compress_domains(
-        remaining_domains
-    )
-
-    return major_rules | compressed_domains
+    return major_rules | remaining_domains
 
 def main() -> None:
     print(
