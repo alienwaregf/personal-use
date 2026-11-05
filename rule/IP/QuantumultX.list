@@ -15,7 +15,7 @@ HOST,wtfismyip.com,IP
 HOST,ip4.me,IP
 HOST,ip6.me,IP
 HOST,test-ipv6.com,IP
-HOST,ip.istatmenus.app,IP
+HOST,istatmenus.app,IP
 HOST,whois.pconline.com.cn,IP
 HOST,api.ipify.org,IP
 HOST,ip.skk.moe,IP
@@ -59,6 +59,7 @@ HOST,doileak.com,IP
 HOST,bash.ws,IP
 HOST,perfect-privacy.com,IP
 HOST,vpnmentor.com,IP
+HOST,iptest.us,IP
 HOST,abuseipdb.com,IP
 HOST,ipqualityscore.com,IP
 HOST,scamalytics.com,IP
