@@ -505,7 +505,7 @@ def merge_retained(fresh, path, now):
     sighting is within US_RETAIN_TTL. A node with no recorded sighting
     falls back to the previous file's header time, then to now.
     Seen times for fresh US nodes are now; retained ones keep their old
-    sighting time, so the 30-day clock keeps running from when they
+    sighting time, so the 3-day clock keeps running from when they
     were last actually upstream.
     """
     old_us, old_seen, file_time = load_retention(path)
