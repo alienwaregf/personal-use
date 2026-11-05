@@ -131,6 +131,10 @@ META_ALIASES: Dict[str, str] = {
     "AppleIntelligence": "apple-intelligence",
 }
 
+EXCLUDE_SUBSTRINGS: Dict[str, Set[str]] = {
+    "ChinaMax": {"istatmenus"},
+}
+
 
 CLIENT_TYPE_MAP: Dict[str, Dict[str, Optional[str]]] = {
     "DOMAIN": {
@@ -528,6 +532,27 @@ def prune_covered_domain_rules(
     return kept, removed
 
 
+def exclude_substring_rules(
+    folder_name: str,
+    rules: Sequence[RuleParts],
+) -> Tuple[List[RuleParts], int]:
+    substrings = EXCLUDE_SUBSTRINGS.get(folder_name)
+    if not substrings:
+        return [list(parts) for parts in rules], 0
+    lowered = {sub.lower() for sub in substrings}
+    kept: List[RuleParts] = []
+    removed = 0
+    for parts in rules:
+        kind = parts[0].upper() if parts else ""
+        value = parts[1].lower() if len(parts) >= 2 else ""
+        if kind in MRS_DOMAIN_TYPES | MRS_SKIP_DOMAIN_TYPES and any(
+                sub in value for sub in lowered):
+            removed += 1
+        else:
+            kept.append(list(parts))
+    return kept, removed
+
+
 def build_client_rule_line(parts: Sequence[str], client: str,
                            policy: Optional[str] = None) -> str:
     if len(parts) < 2:
@@ -860,6 +885,10 @@ def process_folder(folder_name: str) -> Optional[Dict[str, int]]:
     if pruned_count:
         print(f"去冗余：{folder_name} 移除 {pruned_count} 条"
               f"已被 DOMAIN-SUFFIX 覆盖的规则", flush=True)
+    merged, excluded_count = exclude_substring_rules(folder_name, merged)
+    if excluded_count:
+        print(f"排除子串：{folder_name} 移除 {excluded_count} 条"
+              f"含排除子串的规则", flush=True)
     merged = sorted(merged)
     dest_folder = DEST_RULE_DIR / folder_name
     fingerprint = compute_fingerprint(black_text, geosite_text, geoip_text)
@@ -873,6 +902,7 @@ def process_folder(folder_name: str) -> Optional[Dict[str, int]]:
             "meta_added": meta_added,
             "merged": len(merged),
             "pruned": pruned_count,
+            "excluded": excluded_count,
             "meta_skipped": meta_stats["skipped"],
             "skipped": 1,
         }
@@ -895,6 +925,7 @@ def process_folder(folder_name: str) -> Optional[Dict[str, int]]:
         "meta_added": meta_added,
         "merged": len(merged),
         "pruned": pruned_count,
+        "excluded": excluded_count,
         "meta_skipped": meta_stats["skipped"],
         "skipped": 0,
     }
