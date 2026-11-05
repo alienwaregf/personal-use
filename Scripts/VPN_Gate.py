@@ -18,7 +18,7 @@ OUTPUT_PATH = Path("proxy/VPNgate.yaml")
 EXCLUDE_HOST_PREFIX = "public-vpn"
 EXCLUDE_IP_PREFIX = "219.100.37."
 CONFIG_PREFIX_CHARS = 6000  # decode only the head of each config first
-VERSION_TAG = "v25-days-D"
+VERSION_TAG = "v26-days-d"
 
 BEIJING = timezone(timedelta(hours=8))
 
@@ -276,7 +276,7 @@ def flag_emoji(code):
 
 
 def display_name(node, dup_no=0, dup_total=1):
-    """Name format: "<flag> <country> <city> <N>D <X.XX> Mbps".
+    """Name format: "<flag> <country> <city> <N>d <X.XX> Mbps".
 
     Days/speed segments are omitted when unknown (e.g. a US node retained
     from a pre-v24 file, whose old name carried neither). When several
@@ -306,7 +306,7 @@ def display_name(node, dup_no=0, dup_total=1):
     if flag:
         parts.insert(0, flag)
     if node.get("uptime_days") is not None:
-        parts.append(f"{node['uptime_days']}D")
+        parts.append(f"{node['uptime_days']}d")
     if node.get("speed_mbps") is not None:
         parts.append(f"{node['speed_mbps']:.2f} Mbps")
     return " ".join(parts)
@@ -397,8 +397,8 @@ def node_from_old_proxy(proxy):
     """Rebuild a pipeline node dict from a parsed old-file US proxy.
 
     Accepts both the pre-v24 name ("<flag> <country> <city> 家宽 <server>",
-    no days/speed) and the v24/v25 name ("<flag> <country> <city> <N>D
-    <X> Mbps"; v24 wrote <N>天, v25 writes <N>D). Days/speed are carried forward when the old name has
+    no days/speed) and the v24/v25/v26 name ("<flag> <country> <city> <N>d
+    <X> Mbps"; v24 wrote <N>天, v25 wrote <N>D, v26 writes <N>d). Days/speed are carried forward when the old name has
     them, so a retained node keeps its exact name; pre-v24 names yield
     None for both and render without those segments. The superscript is
     stripped here; the pipeline recomputes suffixes for the merged set,
@@ -418,7 +418,7 @@ def node_from_old_proxy(proxy):
         head = name[2:].strip().split(" 家宽 ", 1)[0]
         geo = head.rstrip(SUPERSCRIPT_CHARS)
     else:
-        m = re.match(r"^.. (.+) (\d+)(?:天|D) ([\d.]+) Mbps$", name)
+        m = re.match(r"^.. (.+) (\d+)(?:天|[Dd]) ([\d.]+) Mbps$", name)
         if not m:
             return None
         geo = m.group(1).rstrip(SUPERSCRIPT_CHARS)
