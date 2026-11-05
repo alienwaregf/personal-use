@@ -2213,3 +2213,39 @@ def convert_custom_folder(
 
     return folder_name
 
+
+
+def main() -> None:
+    ensure_mihomo_available()
+    prepare_temp_dir()
+
+    cache = make_cache()
+
+    if not DEST_RULE_DIR.is_dir():
+        print("没有 rule 文件夹")
+        return
+
+    try:
+        folders = sorted(
+            folder
+            for folder in DEST_RULE_DIR.iterdir()
+            if is_custom_rule_folder(folder)
+        )
+
+        if not folders:
+            print("没有自定义规则文件夹")
+            return
+
+        for folder in folders:
+            convert_custom_folder(
+                folder,
+                cache,
+            )
+    finally:
+        cleanup_temp_dir()
+
+    save_cache(cache)
+
+
+if __name__ == "__main__":
+    main()
