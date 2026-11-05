@@ -1,7 +1,7 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-11-01 22:54:48
-# 条数：blackmatrix7 33 条 + MetaCubeX 43 条 (geosite 24 / geoip 19) → 去重合并 50 条
-# Hash：277a38c01fc25dd8e0be7eaad86e47ecf613454c8cc08fcd2263cf78c741162e
+# 上次更新时间：2026-11-05 11:23:03
+# 条数：blackmatrix7 33 条 + MetaCubeX 44 条 (geosite 24 / geoip 20) → 去重合并 51 条
+# Hash：68385c321a8e39590766983757bce2c025799c5dfec536e7a05b6772fdc99c3c
 payload:
   - DOMAIN-KEYWORD,twitter
   - DOMAIN-SUFFIX,ads-twitter.com
@@ -32,6 +32,7 @@ payload:
   - DOMAIN-SUFFIX,vine.co
   - DOMAIN-SUFFIX,x.com
   - IP-CIDR,103.252.112.0/22
+  - IP-CIDR,104.244.41.0/24
   - IP-CIDR,104.244.42.0/24
   - IP-CIDR,104.244.44.0/22
   - IP-CIDR,185.45.4.0/22

@@ -1,7 +1,7 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-11-04 16:53:32
+# 上次更新时间：2026-11-05 11:21:46
 # 条数：blackmatrix7 291159 条 + MetaCubeX 904 条 (geosite 904 / geoip 0) → 去重合并 291661 条，去冗 157 条，实存 291504 条
-# Hash：bb64a6c8b5a91700b435b7f39b18c0261d3a8e2024d7c60dd0bf234b22aca4df
+# Hash：81c633668df09caccc7d5dba96dc3ea16671538a17dd0a105716119c61ab2d16
 payload:
   - DOMAIN,0.code.cotsta.ru
   - DOMAIN,00-gov.cn
