@@ -59,7 +59,7 @@ OUTPUT_FILE = OUTPUT_DIR / "AD.yaml"
 
 USER_AGENT = "personal-use-ad-sync/1.0"
 
-# anti-AD 误杀例外（仅对 anti-AD 生效）：影响正常内容分发的域名，2026-11-05 核查
+# 内容分发域名例外（对所有上游生效）：名单源自 2026-11-05 anti-AD 误杀核查，但按域名性质排除，不论哪家上游收录
 ANTI_AD_EXCEPTIONS = frozenset(
     {
         "staticxx.facebook.com",
@@ -121,7 +121,9 @@ def main() -> None:
         rule_converter.gather_source_rules(
             SOURCES,
             USER_AGENT,
-            exceptions={"anti-ad": ANTI_AD_EXCEPTIONS},
+            exceptions={
+                name: ANTI_AD_EXCEPTIONS for name in SOURCES
+            },
         )
     )
 
