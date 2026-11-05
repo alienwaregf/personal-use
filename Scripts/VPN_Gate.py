@@ -18,7 +18,7 @@ OUTPUT_PATH = Path("proxy/VPNgate.yaml")
 EXCLUDE_HOST_PREFIX = "public-vpn"
 EXCLUDE_IP_PREFIX = "219.100.37."
 CONFIG_PREFIX_CHARS = 6000  # decode only the head of each config first
-VERSION_TAG = "v23-fail-visible"
+VERSION_TAG = "v24-name-days-speed"
 
 BEIJING = timezone(timedelta(hours=8))
 
@@ -112,12 +112,22 @@ def parse_list(raw):
             speed = int(fields[4])
         except (TypeError, ValueError):
             speed = 0
+        try:
+            uptime_ms = int(fields[8])
+        except (TypeError, ValueError):
+            uptime_ms = -1
         candidates.append(
             {
                 "country": (fields[6] or "").upper() or "XX",
                 "country_long": (fields[5] or "").strip(),
                 "server_ip": (fields[1] or "").strip(),
                 "speed": speed,
+                # CSV fields[8] is Uptime in milliseconds; the website's
+                # "N 天" is uptime_ms // 86400000. None when unparseable.
+                "uptime_days": (
+                    uptime_ms // 86400000 if uptime_ms >= 0 else None
+                ),
+                "speed_mbps": speed / 1000000,
                 "config64": config64,
             }
         )
@@ -167,6 +177,8 @@ def parse_list(raw):
                 "server_ip": item["server_ip"],
                 "server": remote[0],
                 "port": port,
+                "uptime_days": item["uptime_days"],
+                "speed_mbps": item["speed_mbps"],
                 "cipher": get_directive(text, "cipher") or "AES-128-CBC",
                 "auth": get_directive(text, "auth") or "SHA1",
             }
@@ -263,7 +275,14 @@ def flag_emoji(code):
     return ""
 
 
-def display_name(node):
+def display_name(node, dup_no=0, dup_total=1):
+    """Name format: "<flag> <country> <city> <N>天 <X.XX> Mbps".
+
+    Days/speed segments are omitted when unknown (e.g. a US node retained
+    from a pre-v24 file, whose old name carried neither). When several
+    nodes share one base name, a superscript count is appended to the
+    place name (city, else country), first one included, as before.
+    """
     country = (
         node.get("country_name")
         or COUNTRY_ZH.get(node["country"])
@@ -274,10 +293,23 @@ def display_name(node):
     if city == country:
         city = ""
     flag = flag_emoji(node["country"])
-    head = f"{country} {city} 家宽" if city else f"{country} 家宽"
+    if dup_total > 1:
+        sup = str(dup_no).translate(
+            str.maketrans("0123456789", SUPERSCRIPT_CHARS)
+        )
+        if city:
+            city = f"{city}{sup}"
+        else:
+            country = f"{country}{sup}"
+    place = f"{country} {city}" if city else country
+    parts = [place]
     if flag:
-        head = f"{flag} {head}"
-    return f"{head} {node['server']}"
+        parts.insert(0, flag)
+    if node.get("uptime_days") is not None:
+        parts.append(f"{node['uptime_days']}天")
+    if node.get("speed_mbps") is not None:
+        parts.append(f"{node['speed_mbps']:.2f} Mbps")
+    return " ".join(parts)
 
 
 def render_yaml(nodes, cert, fingerprint, us_seen=None):
@@ -290,11 +322,7 @@ def render_yaml(nodes, cert, fingerprint, us_seen=None):
         base = display_name(node)
         seen[base] = seen.get(base, 0) + 1
         count = seen[base]
-        if totals[base] == 1:
-            name = base
-        else:
-            head, ip = base.split(" 家宽 ", 1)
-            name = head + str(count).translate(str.maketrans("0123456789", "⁰¹²³⁴⁵⁶⁷⁸⁹")) + " 家宽 " + ip
+        name = display_name(node, count, totals[base])
         named.append((base, count, name, node))
     named.sort(key=lambda item: (item[0], item[1]))
     now = datetime.now(BEIJING).strftime("%Y-%m-%d %H:%M:%S")
@@ -368,21 +396,34 @@ def flag_to_code(flag):
 def node_from_old_proxy(proxy):
     """Rebuild a pipeline node dict from a parsed old-file US proxy.
 
-    The old display name already carries everything display_name needs:
-    flag, Chinese country, city (maybe with a duplicate superscript) and
-    server. The superscript is stripped here; the pipeline recomputes
-    suffixes for the merged set, so numbering stays contiguous.
-    Returns None when the old name does not follow our format.
+    Accepts both the pre-v24 name ("<flag> <country> <city> 家宽 <server>",
+    no days/speed) and the v24 name ("<flag> <country> <city> <N>天
+    <X> Mbps"). Days/speed are carried forward when the old name has
+    them, so a retained node keeps its exact name; pre-v24 names yield
+    None for both and render without those segments. The superscript is
+    stripped here; the pipeline recomputes suffixes for the merged set,
+    so numbering stays contiguous. Returns None when the old name
+    follows neither format.
     """
     name = proxy.get("name") or ""
     server = proxy.get("server") or ""
-    if not name or not server or " 家宽 " not in name:
+    if not name or not server:
         return None
     code = flag_to_code(name[:2])
     if not code:
         return None
-    head = name[2:].strip().split(" 家宽 ", 1)[0]
-    geo = head.rstrip(SUPERSCRIPT_CHARS)
+    uptime_days = None
+    speed_mbps = None
+    if " 家宽 " in name:
+        head = name[2:].strip().split(" 家宽 ", 1)[0]
+        geo = head.rstrip(SUPERSCRIPT_CHARS)
+    else:
+        m = re.match(r"^.. (.+) (\d+)天 ([\d.]+) Mbps$", name)
+        if not m:
+            return None
+        geo = m.group(1).rstrip(SUPERSCRIPT_CHARS)
+        uptime_days = int(m.group(2))
+        speed_mbps = float(m.group(3))
     parts = geo.split(" ", 1)
     country_name = parts[0]
     city = parts[1] if len(parts) > 1 else ""
@@ -400,6 +441,8 @@ def node_from_old_proxy(proxy):
         "port": port,
         "cipher": proxy.get("cipher") or "AES-128-CBC",
         "auth": proxy.get("auth") or "SHA1",
+        "uptime_days": uptime_days,
+        "speed_mbps": speed_mbps,
     }
 
 
