@@ -1,9 +1,9 @@
 # AD 聚合广告域名规则
 # 数据来源：EasyList + EasyPrivacy + EasyListChina + Dns-BlockLists Normal + StevenBlack + anti-AD
-# EasyList 43859条 + EasyPrivacy 40642条 + EasyListChina 5713条 + Dns-BlockLists Normal 195069条 + StevenBlack 77755条 + anti-AD 110037条
-# 合并去重后：域名 268651 个，IP 规则 118 条
-# 上次更新时间：2026-11-05 11:21:22
-# Hash：2666924802eb572cf8522c67bdef8d28813b127b6ac5578cb952d44ce00fbefd
+# EasyList 43868条 + EasyPrivacy 40642条 + EasyListChina 5713条 + Dns-BlockLists Normal 195069条 + StevenBlack 77755条 + anti-AD 110037条
+# 合并去重后：域名 268660 个，IP 规则 118 条
+# 上次更新时间：2026-11-05 13:00:26
+# Hash：3468cbc555f66c56f7aeb972bfab76ffc8de2c60185373c650d4d50f282dc5fb
 payload:
   - DOMAIN,000.gaysexe.free.fr
   - DOMAIN,00000.uno
@@ -92544,6 +92544,7 @@ payload:
   - DOMAIN-SUFFIX,bzdskf8trk.com
   - DOMAIN-SUFFIX,bzdsklou.firebaseapp.com
   - DOMAIN-SUFFIX,bzdsklou.web.app
+  - DOMAIN-SUFFIX,bzdtdagnyiven.space
   - DOMAIN-SUFFIX,bzdutznootnvg.website
   - DOMAIN-SUFFIX,bzehilwijjf.in
   - DOMAIN-SUFFIX,bzerklonfra.firebaseapp.com
@@ -122388,6 +122389,7 @@ payload:
   - DOMAIN-SUFFIX,eypvsxdxyswmu.online
   - DOMAIN-SUFFIX,eyqbvz.greysonclothiers.com
   - DOMAIN-SUFFIX,eyqkpep11zh3kqxqyr.cfd
+  - DOMAIN-SUFFIX,eyqsngpfiwxbi.online
   - DOMAIN-SUFFIX,eyqsrrwmvhavp.website
   - DOMAIN-SUFFIX,eyrewxoejzwer.website
   - DOMAIN-SUFFIX,eyrmhukohppgf.online
@@ -148996,6 +148998,7 @@ payload:
   - DOMAIN-SUFFIX,jewishcontentnetwork.com
   - DOMAIN-SUFFIX,jewongilum.com
   - DOMAIN-SUFFIX,jex8ofgof.com
+  - DOMAIN-SUFFIX,jexbndsybbpni.space
   - DOMAIN-SUFFIX,jexzbvkfnmmyw.store
   - DOMAIN-SUFFIX,jeycmzwemqzfr.com
   - DOMAIN-SUFFIX,jeyttn.snipes.com
@@ -181557,6 +181560,7 @@ payload:
   - DOMAIN-SUFFIX,nishars.care
   - DOMAIN-SUFFIX,nishiguchimokko.com
   - DOMAIN-SUFFIX,nishub1.10010.com
+  - DOMAIN-SUFFIX,nisjslzjxhyvl.site
   - DOMAIN-SUFFIX,nisprofit-system-com.pages.dev
   - DOMAIN-SUFFIX,nisputlkdilbu.space
   - DOMAIN-SUFFIX,nisrineshop.com
@@ -199288,6 +199292,7 @@ payload:
   - DOMAIN-SUFFIX,qe1zwooolvi6tozubf.cyou
   - DOMAIN-SUFFIX,qe2erv7n8krj2pljw5inc96ty.rest
   - DOMAIN-SUFFIX,qe9wckxig.com
+  - DOMAIN-SUFFIX,qebyweotemowl.online
   - DOMAIN-SUFFIX,qecmposqk.com
   - DOMAIN-SUFFIX,qecsasdafhtqr.online
   - DOMAIN-SUFFIX,qedgcxi.cn
@@ -232311,6 +232316,7 @@ payload:
   - DOMAIN-SUFFIX,suproderistrai.com
   - DOMAIN-SUFFIX,supuv3.com
   - DOMAIN-SUFFIX,supvka.colancolan.com
+  - DOMAIN-SUFFIX,suqkscfrmdywh.space
   - DOMAIN-SUFFIX,suqxuqcyyeyzb.space
   - DOMAIN-SUFFIX,sur.gorodkirov.ru
   - DOMAIN-SUFFIX,sur.laprovence.com
@@ -252759,6 +252765,7 @@ payload:
   - DOMAIN-SUFFIX,vhanxmtpkluuf.online
   - DOMAIN-SUFFIX,vhbbeareiglah.website
   - DOMAIN-SUFFIX,vhbbubfytrjht.space
+  - DOMAIN-SUFFIX,vhcnpglbmsuhn.online
   - DOMAIN-SUFFIX,vhdbqelbulsyv.site
   - DOMAIN-SUFFIX,vhdoxakztfwdp.website
   - DOMAIN-SUFFIX,vhdvjc.com
@@ -263212,6 +263219,7 @@ payload:
   - DOMAIN-SUFFIX,xscp03121xq.com
   - DOMAIN-SUFFIX,xscp03130xq.com
   - DOMAIN-SUFFIX,xscp03131xq.com
+  - DOMAIN-SUFFIX,xscueumaijhmk.website
   - DOMAIN-SUFFIX,xscwsgdmgnjfo.space
   - DOMAIN-SUFFIX,xsdsemgyxukwx.space
   - DOMAIN-SUFFIX,xsec.org
@@ -264876,6 +264884,7 @@ payload:
   - DOMAIN-SUFFIX,yllaris.com
   - DOMAIN-SUFFIX,ylligknjyhnpr.space
   - DOMAIN-SUFFIX,yllix.com
+  - DOMAIN-SUFFIX,ylmcxpmcknwxd.space
   - DOMAIN-SUFFIX,ylngawrywqhlt.site
   - DOMAIN-SUFFIX,ylodbhduliqpc.online
   - DOMAIN-SUFFIX,yloeyuprkiyrf.online
