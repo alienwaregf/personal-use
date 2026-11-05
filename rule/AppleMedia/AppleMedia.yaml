@@ -1,7 +1,7 @@
 # 数据来源：blackmatrix7
-# 上次更新时间：2026-11-01 22:54:02
+# 上次更新时间：2026-11-05 19:36:18
 # 条数：blackmatrix7 52 条 + MetaCubeX 0 条 (geosite 0 / geoip 0) → 去重合并 52 条
-# Hash：3c9eab8230d0117f606caa11bb88cb7d594f41c7f2f37f37c0259f67a259b100
+# Hash：b3f793972e2b8c31475996a61c557e34dcd37fbf6abf72d59906d18ffcf701d2
 payload:
   - DOMAIN-SUFFIX,aod.itunes.apple.com
   - DOMAIN-SUFFIX,apple.comscoreresearch.com

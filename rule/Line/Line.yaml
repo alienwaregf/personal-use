@@ -1,7 +1,7 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-11-01 22:54:35
+# 上次更新时间：2026-11-05 19:37:02
 # 条数：blackmatrix7 24 条 + MetaCubeX 20 条 (geosite 20 / geoip 0) → 去重合并 37 条，去冗 1 条，实存 36 条
-# Hash：c4c8dbac1e038fc7552cf2645096f166e4d58f3c24646ef463d053820ad1e4c3
+# Hash：caba49d047618d48878f6679f7890dc0b5a1760351ba4097c71b9029de9a2cfd
 payload:
   - DOMAIN-SUFFIX,gcld-line.com
   - DOMAIN-SUFFIX,lin.ee

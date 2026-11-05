@@ -1,7 +1,7 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-11-05 11:22:25
-# 条数：blackmatrix7 123062 条 + MetaCubeX 119824 条 (geosite 110177 / geoip 9647) → 去重合并 125279 条
-# Hash：0da94eb4d1446b464fb8904cc67a1b2ac92a4341008eb9fcb52005d8b35ecc4a
+# 上次更新时间：2026-11-05 19:36:34
+# 条数：blackmatrix7 123062 条 + MetaCubeX 119824 条 (geosite 110177 / geoip 9647) → 去重合并 125278 条
+# Hash：9a205f0231641ebbb2541a2c48e24d108e72fb4ae6ccc05f922cc1c1d6dc7b0b
 payload:
   - DOMAIN,1-fss24-s0.streamhoster.com
   - DOMAIN,14033.live.streamtheworld.com
@@ -102,7 +102,6 @@ payload:
   - DOMAIN,icecast-ruvr.cdnvideo.ru
   - DOMAIN,images-cn-8.ssl-images-amazon.com
   - DOMAIN,images-cn.ssl-images-amazon.com
-  - DOMAIN,ip.istatmenus.app
   - DOMAIN,izattime.qcomgeo2.com
   - DOMAIN,jpts.sinovision.net
   - DOMAIN,kcrw.streamguys1.com
