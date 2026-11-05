@@ -61,7 +61,6 @@ payload:
   # ==============================
   # DNS / WebRTC / VPN 泄露检测
   # ==============================
-  - DOMAIN,iptest.us
   - DOMAIN,ipleak.net
   - DOMAIN,ipleak.com
   - DOMAIN,browserleaks.com
@@ -76,6 +75,7 @@ payload:
   # ==============================
   # IP 风控 / 代理 / 黑名单 / 信誉查询
   # ==============================
+  - DOMAIN,iptest.us
   - DOMAIN,abuseipdb.com
   - DOMAIN,ipqualityscore.com
   - DOMAIN,scamalytics.com
