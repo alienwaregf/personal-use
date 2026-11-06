@@ -17,8 +17,14 @@ OUTPUT_PATH = Path("proxy/VPNgate.yaml")
 
 EXCLUDE_HOST_PREFIX = "public-vpn"
 EXCLUDE_IP_PREFIX = "219.100.37."
+# Country codes whose residential exits cannot use Google Search or
+# YouTube (blocked or throttled to unusable by local censorship):
+# CN blocks all Google services; RU has blocked YouTube outright since
+# 2026-02-12; IR blocks YouTube; TM blocks Google services and YouTube;
+# KP blocks everything. Such exits are dead weight for our use.
+EXCLUDE_COUNTRIES = {"CN", "IR", "KP", "RU", "TM"}
 CONFIG_PREFIX_CHARS = 6000  # decode only the head of each config first
-VERSION_TAG = "v26-days-d"
+VERSION_TAG = "v27-exclude-censored-countries"
 
 BEIJING = timezone(timedelta(hours=8))
 
@@ -92,6 +98,7 @@ def get_inline_block(text, tag):
 def parse_list(raw):
     candidates = []
     excluded_official = 0
+    excluded_censored = 0
     for raw_line in raw.split("\n"):
         line = raw_line.strip()
         if not line or line[0] in "*#":
@@ -104,6 +111,10 @@ def parse_list(raw):
             fields[1] or ""
         ).startswith(EXCLUDE_IP_PREFIX):
             excluded_official += 1
+            continue
+        # Exits in censored countries cannot reach Google/YouTube; skip.
+        if (fields[6] or "").upper() in EXCLUDE_COUNTRIES:
+            excluded_censored += 1
             continue
         config64 = fields[-1]
         if not config64 or len(config64) < 100:
@@ -184,8 +195,9 @@ def parse_list(raw):
             }
         )
     stats = {
-        "listed": len(candidates) + excluded_official,
+        "listed": len(candidates) + excluded_official + excluded_censored,
         "excluded_official": excluded_official,
+        "excluded_censored": excluded_censored,
         "skipped_not_tcp": skipped_not_tcp,
     }
     return nodes, cert, stats
@@ -328,7 +340,7 @@ def render_yaml(nodes, cert, fingerprint, us_seen=None):
     now = datetime.now(BEIJING).strftime("%Y-%m-%d %H:%M:%S")
     lines = [
         "# VPN Gate 家宽节点（OpenVPN）",
-        "# 数据来源：VPN Gate 官方清单，已剔除 public-vpn 官方机房节点、219.100.37. 网段及 IP 情报标记为机房的 IP",
+        "# 数据来源：VPN Gate 官方清单，已剔除 public-vpn 官方机房节点、219.100.37. 网段、IP 情报标记为机房的 IP 及 Google/YouTube 受限国家（CN/RU/IR/TM/KP）",
         f"# 上次更新时间：{now}",
         f"# 条数：{len(named)} 个节点",
         f"# Hash：{fingerprint}",
@@ -573,6 +585,7 @@ def main():
     print(
         f"VPNgate 已更新：清单 {stats['listed']} 个，"
         f"剔除官方机房 {stats['excluded_official']} 个，"
+        f"剔除受限国家 {stats['excluded_censored']} 个，"
         f"跳过非 TCP {stats['skipped_not_tcp']} 个，{ip_text}，"
         f"生成家宽节点 {count} 个（{by_country}）"
     )
