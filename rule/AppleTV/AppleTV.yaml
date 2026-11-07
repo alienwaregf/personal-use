@@ -1,7 +1,7 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-11-05 19:36:20
+# 上次更新时间：2026-11-07 18:00:56
 # 条数：blackmatrix7 8 条 + MetaCubeX 8 条 (geosite 8 / geoip 0) → 去重合并 9 条
-# Hash：3916d6a263e0f8b1c1512939f0c1b3873ff99fbf576aaed5224f46cca4032fbc
+# Hash：76b67a8622ba05c46c87a32b61cfaab4ffca39b0771e62ffb337b6d36f587310
 payload:
   - DOMAIN,apple-tv-plus-press.apple.com
   - DOMAIN,hls-amt.itunes.apple.com

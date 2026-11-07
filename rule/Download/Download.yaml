@@ -1,7 +1,7 @@
 # 数据来源：blackmatrix7
-# 上次更新时间：2026-11-05 19:36:52
+# 上次更新时间：2026-11-07 18:01:30
 # 条数：blackmatrix7 34 条 + MetaCubeX 0 条 (geosite 0 / geoip 0) → 去重合并 34 条
-# Hash：c9018eab5db051d5312db32c2d259aef1ee8edf9f82588879503b2fb6c7e5d30
+# Hash：0003ebc4f9d989eb73266383b251ba59645bd99cf7aedfbfe196b75f4e921f7c
 payload:
   - DOMAIN-KEYWORD,aria2
   - DOMAIN-KEYWORD,thunder

@@ -1,7 +1,7 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-11-05 19:37:10
+# 上次更新时间：2026-11-07 18:01:50
 # 条数：blackmatrix7 8 条 + MetaCubeX 20 条 (geosite 20 / geoip 0) → 去重合并 24 条
-# Hash：a6983aa380f28a20944fabca7facd64b2eedc6d57a9b2c21b73aa10a3383e4da
+# Hash：91db08b7890716728487e50c8e8161e6d89bd9f6b808841902e42ec24d4c5f91
 payload:
   - DOMAIN,www.speedtest.net.cdn.cloudflare.net
   - DOMAIN-KEYWORD,speedtest

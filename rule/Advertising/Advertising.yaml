@@ -1,7 +1,7 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-11-07 10:39:46
-# 条数：blackmatrix7 291159 条 + MetaCubeX 908 条 (geosite 908 / geoip 0) → 去重合并 291665 条，去冗 157 条，实存 291508 条
-# Hash：74b06f7c0d725ef03affe4f58f485c992a4ed4a9c0d47deb4e1129983a7ebcf0
+# 上次更新时间：2026-11-07 18:00:13
+# 条数：blackmatrix7 291159 条 + MetaCubeX 908 条 (geosite 908 / geoip 0) → 去重合并 291667 条，去冗 157 条，实存 291510 条
+# Hash：1c53cb44943cd5ade84d961494188c050bcb19a187fdff2dca0a98765e17107c
 payload:
   - DOMAIN,0.code.cotsta.ru
   - DOMAIN,00-gov.cn
@@ -913,6 +913,7 @@ payload:
   - DOMAIN,a.booksir.cn
   - DOMAIN,a.diaoyu.cn
   - DOMAIN,a.elodm.com
+  - DOMAIN,a.fxltsbl.com
   - DOMAIN,a.glcdn.co
   - DOMAIN,a.hsbianma.com
   - DOMAIN,a.ihref.com
@@ -4275,6 +4276,7 @@ payload:
   - DOMAIN,dm.cqdxun.cn
   - DOMAIN,dm.haojuzi.net
   - DOMAIN,dm.ishuo.cn
+  - DOMAIN,dm.wo.com.cn
   - DOMAIN,dm1.3199.cn
   - DOMAIN,dm1.3328.cn
   - DOMAIN,dm1.yongkao.com

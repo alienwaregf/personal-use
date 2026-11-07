@@ -1,10 +1,22 @@
 # 数据来源：MetaCubeX
-# 上次更新时间：2026-11-05 19:36:17
-# 条数：blackmatrix7 0 条 + MetaCubeX 5 条 (geosite 5 / geoip 0) → 去重合并 5 条
-# Hash：cc20c79d15b188dbe26bf1347f55b90e368b39df49495329dec3424c3c20b8a4
+# 上次更新时间：2026-11-07 18:00:53
+# 条数：blackmatrix7 0 条 + MetaCubeX 5 条 (geosite 5 / geoip 0) → 去重合并 17 条
+# Hash：7a5f23e0e5965dff77f369ae920144bb86581016d63021c2499b0dc2f23f603f
 payload:
   - DOMAIN,apple-relay.apple.com
   - DOMAIN,apple-relay.cloudflare.com
   - DOMAIN,apple-relay.fastly-edge.com
   - DOMAIN,apple-relay.mask.apple-dns.net
   - DOMAIN,gspe1-ssl.ls.apple.com
+  - DOMAIN,guzzoni.apple.com
+  - DOMAIN,mask-api.fe.apple-dns.net
+  - DOMAIN,mask-api.icloud.com
+  - DOMAIN,mask-t.apple-dns.net
+  - DOMAIN,mask.apple-dns.net
+  - DOMAIN-SUFFIX,apps.mzstatic.com
+  - DOMAIN-SUFFIX,cp4.cloudflare.com
+  - DOMAIN-SUFFIX,gateway.icloud.com
+  - DOMAIN-SUFFIX,ls.apple.com
+  - DOMAIN-SUFFIX,mask-h2.icloud.com
+  - DOMAIN-SUFFIX,mask.icloud.com
+  - DOMAIN-SUFFIX,smoot.apple.com

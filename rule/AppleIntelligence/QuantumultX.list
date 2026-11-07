@@ -3,3 +3,15 @@ HOST,apple-relay.cloudflare.com,AppleIntelligence
 HOST,apple-relay.fastly-edge.com,AppleIntelligence
 HOST,apple-relay.mask.apple-dns.net,AppleIntelligence
 HOST,gspe1-ssl.ls.apple.com,AppleIntelligence
+HOST,guzzoni.apple.com,AppleIntelligence
+HOST,mask-api.fe.apple-dns.net,AppleIntelligence
+HOST,mask-api.icloud.com,AppleIntelligence
+HOST,mask-t.apple-dns.net,AppleIntelligence
+HOST,mask.apple-dns.net,AppleIntelligence
+HOST-SUFFIX,apps.mzstatic.com,AppleIntelligence
+HOST-SUFFIX,cp4.cloudflare.com,AppleIntelligence
+HOST-SUFFIX,gateway.icloud.com,AppleIntelligence
+HOST-SUFFIX,ls.apple.com,AppleIntelligence
+HOST-SUFFIX,mask-h2.icloud.com,AppleIntelligence
+HOST-SUFFIX,mask.icloud.com,AppleIntelligence
+HOST-SUFFIX,smoot.apple.com,AppleIntelligence
