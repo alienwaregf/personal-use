@@ -68,6 +68,13 @@ ANTI_AD_EXCEPTIONS = frozenset(
     }
 )
 
+CUSTOM_ADDITIONS = frozenset(
+    {
+        ("DOMAIN", "dm.wo.com.cn"),
+        ("DOMAIN", "a.fxltsbl.com"),
+    }
+)
+
 
 def build_yaml_header(
     rules: List[Tuple[str, str]],
@@ -129,6 +136,8 @@ def main() -> None:
         raise RuntimeError(
             "所有上游均未解析出任何规则，拒绝写入空规则"
         )
+
+    rules = sorted(set(rules) | CUSTOM_ADDITIONS)
 
     fingerprint = (
         rule_converter.fingerprint_for_rules(

@@ -135,6 +135,13 @@ EXCLUDE_SUBSTRINGS: Dict[str, Set[str]] = {
     "ChinaMax": {"istatmenus"},
 }
 
+CUSTOM_RULES: Dict[str, Set[Tuple[str, str]]] = {
+    "Advertising": {
+        ("DOMAIN", "dm.wo.com.cn"),
+        ("DOMAIN", "a.fxltsbl.com"),
+    },
+}
+
 
 CLIENT_TYPE_MAP: Dict[str, Dict[str, Optional[str]]] = {
     "DOMAIN": {
@@ -889,6 +896,14 @@ def process_folder(folder_name: str) -> Optional[Dict[str, int]]:
     if excluded_count:
         print(f"排除子串：{folder_name} 移除 {excluded_count} 条"
               f"含排除子串的规则", flush=True)
+    custom_rules = CUSTOM_RULES.get(folder_name)
+    if custom_rules:
+        seen_keys = {dedup_key(parts) for parts in merged}
+        merged.extend(
+            [kind, value]
+            for kind, value in sorted(custom_rules)
+            if dedup_key([kind, value]) not in seen_keys
+        )
     merged = sorted(merged)
     dest_folder = DEST_RULE_DIR / folder_name
     fingerprint = compute_fingerprint(black_text, geosite_text, geoip_text)
