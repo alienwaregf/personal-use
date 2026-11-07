@@ -140,6 +140,20 @@ CUSTOM_RULES: Dict[str, Set[Tuple[str, str]]] = {
         ("DOMAIN", "dm.wo.com.cn"),
         ("DOMAIN", "a.fxltsbl.com"),
     },
+    "AppleIntelligence": {
+        ("DOMAIN", "guzzoni.apple.com"),
+        ("DOMAIN", "mask-api.fe.apple-dns.net"),
+        ("DOMAIN", "mask-api.icloud.com"),
+        ("DOMAIN", "mask-t.apple-dns.net"),
+        ("DOMAIN", "mask.apple-dns.net"),
+        ("DOMAIN-SUFFIX", "cp4.cloudflare.com"),
+        ("DOMAIN-SUFFIX", "gateway.icloud.com"),
+        ("DOMAIN-SUFFIX", "ls.apple.com"),
+        ("DOMAIN-SUFFIX", "mask-h2.icloud.com"),
+        ("DOMAIN-SUFFIX", "mask.icloud.com"),
+        ("DOMAIN-SUFFIX", "smoot.apple.com"),
+        ("DOMAIN-SUFFIX", "apps.mzstatic.com"),
+    },
 }
 
 
