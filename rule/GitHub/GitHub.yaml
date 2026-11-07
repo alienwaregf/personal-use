@@ -1,7 +1,7 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-11-06 17:09:24
+# 上次更新时间：2026-11-07 10:40:28
 # 条数：blackmatrix7 31 条 + MetaCubeX 65 条 (geosite 65 / geoip 0) → 去重合并 71 条，去冗 7 条，实存 64 条
-# Hash：5f7eb30f9e8a6cd9669168e5ce4b015925340e94b88cee9be79aa1d32dace702
+# Hash：2bd7eb1cdc7088f37bf39702c36cb064eab9c83531ab91fadb68263b1b527103
 payload:
   - DOMAIN,copilotprodattachments.blob.core.windows.net
   - DOMAIN,github-api.arkoselabs.com

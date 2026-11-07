@@ -1,7 +1,7 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-11-06 17:08:53
-# 条数：blackmatrix7 1592 条 + MetaCubeX 1793 条 (geosite 1793 / geoip 0) → 去重合并 1848 条，去冗 255 条，实存 1593 条
-# Hash：638fbd2b1b38ad98de8b5ae775ea667b1884564d4e513c638e831259f4b0c313
+# 上次更新时间：2026-11-07 10:40:04
+# 条数：blackmatrix7 1592 条 + MetaCubeX 1794 条 (geosite 1794 / geoip 0) → 去重合并 1849 条，去冗 256 条，实存 1593 条
+# Hash：6e21e837bf6a70eae83b7983e248e35b862e9298b16c9bdae7460be05987bb2f
 payload:
   - DOMAIN,apple-events.akamaized.net
   - DOMAIN,appleworldwidedeveloper.hb-api.omtrdc.net
