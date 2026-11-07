@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 
 from __future__ import annotations
 
@@ -999,9 +998,6 @@ def compile_parsed_rules(
         ip_rules
     )
 
-    # =========================================================
-    # Domain MRS
-    # =========================================================
 
     if has_domain:
 
@@ -1034,9 +1030,6 @@ def compile_parsed_rules(
             / f"{folder_name}.mrs"
         ).unlink()
 
-    # =========================================================
-    # IP MRS
-    # =========================================================
 
     if has_ip:
 
@@ -1283,9 +1276,6 @@ def build_client_section(
         client_heading(client)
     )
 
-    # =========================================================
-    # Clash
-    # =========================================================
 
     if client == "Clash":
 
@@ -1324,9 +1314,6 @@ def build_client_section(
 
         return "".join(parts)
 
-    # =========================================================
-    # Loon / QuantumultX / Shadowrocket / Surge
-    # =========================================================
 
     filename = list_filenames.get(
         client,
@@ -1388,8 +1375,6 @@ def replace_client_sections(
         keepends=True
     )
 
-    # =========================================================
-    # =========================================================
 
     first_client_index: Optional[int] = None
 
@@ -1437,8 +1422,6 @@ def replace_client_sections(
             preserve_index = idx
             break
 
-    # =========================================================
-    # =========================================================
 
     if first_client_index is None:
 
@@ -1502,8 +1485,6 @@ def replace_client_sections(
             lines[preserve_index:]
         ).lstrip()
 
-    # =========================================================
-    # =========================================================
 
     result_parts: List[str] = []
 
@@ -1762,8 +1743,6 @@ def make_cache() -> Optional[CompileCache]:
 def save_cache(
     cache: Optional[CompileCache],
 ) -> None:
-    # 指纹改存各文件夹自己的文件头 / README 注释，
-    # 不再写共享的 .compile_cache_custom.json
     return None
 
 STORED_HASH_RE = re.compile(
@@ -1939,8 +1918,6 @@ def emit_folder_outputs(
         )
     )
 
-    # =========================================================
-    # =========================================================
 
     write_client_lists(
         folder,
@@ -2160,8 +2137,6 @@ def convert_custom_folder(
     if not source_yaml:
         return None
 
-    # =========================================================
-    # =========================================================
 
     rules = parse_rules(
         source_yaml
@@ -2212,7 +2187,6 @@ def convert_custom_folder(
     )
 
     return folder_name
-
 
 
 def main() -> None:

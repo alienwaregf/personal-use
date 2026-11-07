@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 
 from __future__ import annotations
 
@@ -59,7 +58,6 @@ OUTPUT_FILE = OUTPUT_DIR / "AD.yaml"
 
 USER_AGENT = "personal-use-ad-sync/1.0"
 
-# 内容分发域名例外（对所有上游生效）：名单源自 2026-11-05 anti-AD 误杀核查，但按域名性质排除，不论哪家上游收录
 ANTI_AD_EXCEPTIONS = frozenset(
     {
         "staticxx.facebook.com",

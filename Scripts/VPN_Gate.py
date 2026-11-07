@@ -17,22 +17,17 @@ OUTPUT_PATH = Path("proxy/VPNgate.yaml")
 
 EXCLUDE_HOST_PREFIX = "public-vpn"
 EXCLUDE_IP_PREFIX = "219.100.37."
-# Country codes whose residential exits cannot use Google Search or
-# YouTube (blocked or throttled to unusable by local censorship):
-# CN blocks all Google services; RU has blocked YouTube outright since
-# 2026-02-12; IR blocks YouTube; TM blocks Google services and YouTube;
-# KP blocks everything. Such exits are dead weight for our use.
 EXCLUDE_COUNTRIES = {"CN", "IR", "KP", "RU", "TM"}
-CONFIG_PREFIX_CHARS = 6000  # decode only the head of each config first
+CONFIG_PREFIX_CHARS = 6000
 VERSION_TAG = "v27-exclude-censored-countries"
 
 BEIJING = timezone(timedelta(hours=8))
 
 
-FETCH_DEADLINE = 120  # seconds, per attempt, for the whole download
+FETCH_DEADLINE = 120
 FETCH_ATTEMPTS = 3
 
-US_RETAIN_TTL = 72 * 60 * 60  # seconds: a US node that disappears from the list stays in the file this long past its last sighting
+US_RETAIN_TTL = 72 * 60 * 60
 
 
 def fetch_once(url, deadline):
@@ -64,7 +59,7 @@ def fetch_text(urls):
     for attempt in range(FETCH_ATTEMPTS):
         try:
             return fetch_once(urls[attempt % len(urls)], FETCH_DEADLINE)
-        except Exception as e:  # noqa: BLE001 - retry on the next source
+        except Exception as e:
             last_error = e
             if attempt + 1 < FETCH_ATTEMPTS:
                 time.sleep(5)
@@ -106,13 +101,11 @@ def parse_list(raw):
         fields = line.split(",")
         if len(fields) < 15:
             continue
-        # Only residential: drop the operator-run datacenter servers.
         if (fields[0] or "").startswith(EXCLUDE_HOST_PREFIX) or (
             fields[1] or ""
         ).startswith(EXCLUDE_IP_PREFIX):
             excluded_official += 1
             continue
-        # Exits in censored countries cannot reach Google/YouTube; skip.
         if (fields[6] or "").upper() in EXCLUDE_COUNTRIES:
             excluded_censored += 1
             continue
@@ -133,8 +126,6 @@ def parse_list(raw):
                 "country_long": (fields[5] or "").strip(),
                 "server_ip": (fields[1] or "").strip(),
                 "speed": speed,
-                # CSV fields[8] is Uptime in milliseconds; the website's
-                # "N D" is uptime_ms // 86400000. None when unparseable.
                 "uptime_days": (
                     uptime_ms // 86400000 if uptime_ms >= 0 else None
                 ),
@@ -152,9 +143,8 @@ def parse_list(raw):
             text = decode_config(item["config64"])
             if not get_directive(text, "remote"):
                 text = decode_config(item["config64"], full=True)
-        except Exception:  # noqa: BLE001 - undecodable config, skip
+        except Exception:
             continue
-        # The dialer chain can only carry TCP; UDP nodes are dropped.
         if (get_directive(text, "proto") or "tcp").lower() != "tcp":
             skipped_not_tcp += 1
             continue
@@ -162,8 +152,6 @@ def parse_list(raw):
         if not remote:
             continue
         if cert is None:
-            # The client cert material is shared site-wide; take the first
-            # complete set. Nodes before it are skipped.
             try:
                 full_text = decode_config(item["config64"], full=True)
                 found = {
@@ -173,7 +161,7 @@ def parse_list(raw):
                 }
                 if found["ca"] and found["cert"] and found["key"]:
                     cert = found
-            except Exception:  # noqa: BLE001
+            except Exception:
                 pass
             if cert is None:
                 continue
@@ -219,7 +207,7 @@ def classify_ips(ips):
                 for entry in json.loads(resp.read().decode("utf-8")):
                     if entry.get("status") == "success":
                         result[entry["query"]] = entry
-        except Exception:  # noqa: BLE001 - screening aid, not fatal
+        except Exception:
             return {}
     return result
 
@@ -359,9 +347,6 @@ def render_yaml(nodes, cert, fingerprint, us_seen=None):
         "proxies:",
     ]
     for _, _, name, node in named:
-        # One node per line (flow style); every node only carries aliases.
-        # A single quote inside a single-quoted name must be doubled,
-        # otherwise it ends the string early and breaks the flow mapping.
         safe_name = name.replace("'", "''")
         lines.append(
             "  - { "
@@ -559,7 +544,6 @@ def main():
         return 0
     nodes, cert, stats = parse_list(raw)
     if not nodes or not cert:
-        # Never overwrite a good file with an empty one; fail loudly instead.
         print("解析不出可用节点，保留旧文件，退出", file=sys.stderr)
         return 1
     nodes, ip_stats = screen_datacenter_ips(nodes)
