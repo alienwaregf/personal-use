@@ -1,9 +1,9 @@
 # AD 聚合广告域名规则
 # 数据来源：EasyList + EasyPrivacy + EasyListChina + Dns-BlockLists Normal + StevenBlack + anti-AD
-# EasyList 44890条 + EasyPrivacy 40642条 + EasyListChina 5753条 + Dns-BlockLists Normal 206730条 + StevenBlack 78212条 + anti-AD 110665条
-# 合并去重后：域名 269856 个，IP 规则 118 条
-# 上次更新时间：2026-11-08 22:55:38
-# Hash：f70ce70da58acca56a9ad064d30a801e3188b489c438d857ac06097871fcc79b
+# EasyList 44893条 + EasyPrivacy 40642条 + EasyListChina 5753条 + Dns-BlockLists Normal 206730条 + StevenBlack 78212条 + anti-AD 110665条
+# 合并去重后：域名 269859 个，IP 规则 118 条
+# 上次更新时间：2026-11-08 23:16:20
+# Hash：e9fd20a936a229ef60211d6775c1e5a1dc9262300eeb2dbe3c2243e55c268dc2
 payload:
   - DOMAIN,000.gaysexe.free.fr
   - DOMAIN,00000.uno
@@ -191560,6 +191560,7 @@ payload:
   - DOMAIN-SUFFIX,pmd-vp-aka.canal-plus.com
   - DOMAIN-SUFFIX,pmddby.com
   - DOMAIN-SUFFIX,pmdipads-a.akamaihd.net
+  - DOMAIN-SUFFIX,pmdpqgjqkfbor.online
   - DOMAIN-SUFFIX,pmdrcbgdkueokx.com
   - DOMAIN-SUFFIX,pmdxwtmaxpfos.space
   - DOMAIN-SUFFIX,pmdzmdvbfiqep.website
@@ -222140,6 +222141,7 @@ payload:
   - DOMAIN-SUFFIX,soua.com
   - DOMAIN-SUFFIX,souacode.com
   - DOMAIN-SUFFIX,soubej.larebajavirtual.com
+  - DOMAIN-SUFFIX,soubltxbnwhkt.space
   - DOMAIN-SUFFIX,soucvnbylfpxu.online
   - DOMAIN-SUFFIX,soughstreek.com
   - DOMAIN-SUFFIX,sougoapha.com
@@ -253274,6 +253276,7 @@ payload:
   - DOMAIN-SUFFIX,veybl6f3o.com
   - DOMAIN-SUFFIX,veyra-ai-nl.com
   - DOMAIN-SUFFIX,veyszc.com
+  - DOMAIN-SUFFIX,vezdrabhdgbhj.website
   - DOMAIN-SUFFIX,vezetmne.ru
   - DOMAIN-SUFFIX,vezsyr.bxblue.com.br
   - DOMAIN-SUFFIX,vezwex.com
