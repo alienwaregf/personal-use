@@ -11,6 +11,9 @@ payload:
   - DOMAIN-SUFFIX,nijigem.by
   - DOMAIN-SUFFIX,cdn.bgp.yt
   
+  # > Aerial
+  - DOMAIN-SUFFIX,icanhazip.com
+  
   # 红果短剧
   - DOMAIN-SUFFIX,hongguo.com
   - DOMAIN-SUFFIX,hongguoduanju.com
