@@ -1,7 +1,7 @@
 # 数据来源：MetaCubeX
-# 上次更新时间：2026-11-07 18:01:58
-# 条数：blackmatrix7 0 条 + MetaCubeX 213 条 (geosite 213 / geoip 0) → 去重合并 213 条
-# Hash：cb4087214cd0c80f38ab79d1b615a963b2258a70a73e32bf981724d4079cab5c
+# 上次更新时间：2026-11-08 15:05:57
+# 条数：blackmatrix7 0 条 + MetaCubeX 217 条 (geosite 217 / geoip 0) → 去重合并 217 条
+# Hash：42966757451aa29c62bb400842bf4a0da6d0c7d6622e5e6ea6790e751df03a60
 payload:
   - DOMAIN,ai.google.dev
   - DOMAIN,alkalicore-pa.clients6.google.com
@@ -22,8 +22,10 @@ payload:
   - DOMAIN,daily-cloudcode-pa.googleapis.com
   - DOMAIN,geminiweb-pa.clients.google.com
   - DOMAIN,geminiweb-pa.clients6.google.com
+  - DOMAIN,http-intake.logs.us5.datadoghq.com
   - DOMAIN,notebooklm-pa.googleapis.com
   - DOMAIN,notebooklm.googleapis.com
+  - DOMAIN,o1158394.ingest.us.sentry.io
   - DOMAIN,o33249.ingest.sentry.io
   - DOMAIN,o33249.ingest.us.sentry.io
   - DOMAIN,openai.qualtrics.com
@@ -34,6 +36,7 @@ payload:
   - DOMAIN,openaicomproductionae4b.blob.core.windows.net
   - DOMAIN,ppl-ai-file-upload.s3.amazonaws.com
   - DOMAIN,pplx-res.cloudinary.com
+  - DOMAIN,production-copilot-host-westus.webpubsub.azure.com
   - DOMAIN,production-openaicom-storage.azureedge.net
   - DOMAIN,servd-anthropic-website.b-cdn.net
   - DOMAIN,webchannel-alkalimakersuite-pa.clients6.google.com
@@ -132,6 +135,7 @@ payload:
   - DOMAIN-SUFFIX,grazie.aws.intellij.net
   - DOMAIN-SUFFIX,grok.com
   - DOMAIN-SUFFIX,grok.x.com
+  - DOMAIN-SUFFIX,grokbot.com
   - DOMAIN-SUFFIX,grokipedia.com
   - DOMAIN-SUFFIX,groq.com
   - DOMAIN-SUFFIX,h2o.ai

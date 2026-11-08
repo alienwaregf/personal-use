@@ -16,6 +16,7 @@ HOST,location.microsoft.com,Copilot
 HOST,odc.officeapps.live.com,Copilot
 HOST,openai-api.arkoselabs.com,Copilot
 HOST,openaicomproductionae4b.blob.core.windows.net,Copilot
+HOST,production-copilot-host-westus.webpubsub.azure.com,Copilot
 HOST,production-openaicom-storage.azureedge.net,Copilot
 HOST,r.bing.com,Copilot
 HOST,self.events.data.microsoft.com,Copilot

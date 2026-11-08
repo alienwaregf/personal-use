@@ -1,4 +1,6 @@
 HOST,cdn.usefathom.com,Claude
+HOST,http-intake.logs.us5.datadoghq.com,Claude
+HOST,o1158394.ingest.us.sentry.io,Claude
 HOST,servd-anthropic-website.b-cdn.net,Claude
 HOST-SUFFIX,ant.dev,Claude
 HOST-SUFFIX,anthropic.com,Claude
