@@ -1,9 +1,9 @@
 # AD 聚合广告域名规则
 # 数据来源：EasyList + EasyPrivacy + EasyListChina + Dns-BlockLists Normal + StevenBlack + anti-AD
-# EasyList 44893条 + EasyPrivacy 40642条 + EasyListChina 5753条 + Dns-BlockLists Normal 206730条 + StevenBlack 78212条 + anti-AD 110665条
-# 合并去重后：域名 269859 个，IP 规则 118 条
-# 上次更新时间：2026-11-08 23:16:20
-# Hash：e9fd20a936a229ef60211d6775c1e5a1dc9262300eeb2dbe3c2243e55c268dc2
+# EasyList 44903条 + EasyPrivacy 40642条 + EasyListChina 5753条 + Dns-BlockLists Normal 206730条 + StevenBlack 78212条 + anti-AD 110665条
+# 合并去重后：域名 269869 个，IP 规则 118 条
+# 上次更新时间：2026-11-08 23:45:43
+# Hash：2c7b1269e086ef08284177e280e8da0b9d27f86caa32eb2e4f6840dada3f0302
 payload:
   - DOMAIN,000.gaysexe.free.fr
   - DOMAIN,00000.uno
@@ -47581,6 +47581,7 @@ payload:
   - DOMAIN-SUFFIX,9wee.com
   - DOMAIN-SUFFIX,9wjc.com
   - DOMAIN-SUFFIX,9wolf.pw
+  - DOMAIN-SUFFIX,9wqivit9xzx37qvejeqfw9u.rest
   - DOMAIN-SUFFIX,9wtxqqu3nwj3x7.rest
   - DOMAIN-SUFFIX,9wushuo.com
   - DOMAIN-SUFFIX,9xeqynu3gt7c.com
@@ -96577,6 +96578,7 @@ payload:
   - DOMAIN-SUFFIX,cwicybzyryttv.space
   - DOMAIN-SUFFIX,cwifabvze.com
   - DOMAIN-SUFFIX,cwimdusmizcma.site
+  - DOMAIN-SUFFIX,cwipnplaztyiv.space
   - DOMAIN-SUFFIX,cwjweb-whatsapp.com
   - DOMAIN-SUFFIX,cwkjw.com
   - DOMAIN-SUFFIX,cwl-experts.org
@@ -99106,6 +99108,7 @@ payload:
   - DOMAIN-SUFFIX,dancovershopo.shop
   - DOMAIN-SUFFIX,dandagondola.com
   - DOMAIN-SUFFIX,danddnailandspa.com
+  - DOMAIN-SUFFIX,dandieamobyr.cfd
   - DOMAIN-SUFFIX,dandiewealful.com
   - DOMAIN-SUFFIX,dandik.fun
   - DOMAIN-SUFFIX,dando.xyz
@@ -152917,6 +152920,7 @@ payload:
   - DOMAIN-SUFFIX,lixincxy.cn
   - DOMAIN-SUFFIX,lixko.com
   - DOMAIN-SUFFIX,lixstownrusisedpriv.org
+  - DOMAIN-SUFFIX,lixwczxdqqxzw.space
   - DOMAIN-SUFFIX,liyutn.shop
   - DOMAIN-SUFFIX,liyzeqeyezorg.online
   - DOMAIN-SUFFIX,lizabete.com
@@ -179105,6 +179109,7 @@ payload:
   - DOMAIN-SUFFIX,ntvpinp.com
   - DOMAIN-SUFFIX,ntvpwpush.com
   - DOMAIN-SUFFIX,ntvsw.com
+  - DOMAIN-SUFFIX,ntwjm27481xfj9ivutww.cfd
   - DOMAIN-SUFFIX,ntwkbc21.com
   - DOMAIN-SUFFIX,ntwkbc42.com
   - DOMAIN-SUFFIX,ntwufvfhovece.website
@@ -199002,6 +199007,7 @@ payload:
   - DOMAIN-SUFFIX,rashogrisy.com
   - DOMAIN-SUFFIX,raspconfirmationtroops.com
   - DOMAIN-SUFFIX,raspfact.com
+  - DOMAIN-SUFFIX,raspiteteachyargyria.cfd
   - DOMAIN-SUFFIX,raspiwares.com
   - DOMAIN-SUFFIX,raspnd.quadratec.com
   - DOMAIN-SUFFIX,rasqeemrfzdoq.website
@@ -207711,6 +207717,7 @@ payload:
   - DOMAIN-SUFFIX,scxerl.com
   - DOMAIN-SUFFIX,scxjzworwsxhn.online
   - DOMAIN-SUFFIX,scxmwvhc.net
+  - DOMAIN-SUFFIX,scxtnzdoeysvl.space
   - DOMAIN-SUFFIX,scyjupzqmyvwn.site
   - DOMAIN-SUFFIX,scyunztvkunuw.website
   - DOMAIN-SUFFIX,scywulanqfaq.in
@@ -214150,6 +214157,7 @@ payload:
   - DOMAIN-SUFFIX,sicher-weiterlesen.com
   - DOMAIN-SUFFIX,siciap.com
   - DOMAIN-SUFFIX,siciaz.com
+  - DOMAIN-SUFFIX,sicijuxixeqiu.site
   - DOMAIN-SUFFIX,sicilywring.com
   - DOMAIN-SUFFIX,sickbedjibboom.com
   - DOMAIN-SUFFIX,sicklerparidae.cfd
@@ -237450,6 +237458,7 @@ payload:
   - DOMAIN-SUFFIX,tfgfgtm.com
   - DOMAIN-SUFFIX,tfhfrwaiwjbrb.space
   - DOMAIN-SUFFIX,tfhpxv.icu
+  - DOMAIN-SUFFIX,tfhwtqlgesdry.site
   - DOMAIN-SUFFIX,tfhxonvkhgchm.online
   - DOMAIN-SUFFIX,tfipost.com
   - DOMAIN-SUFFIX,tfjaycmztwmdp.site
@@ -251518,6 +251527,7 @@ payload:
   - DOMAIN-SUFFIX,uucirqufdaer.net
   - DOMAIN-SUFFIX,uucm.cn
   - DOMAIN-SUFFIX,uucmclhuqdszr.site
+  - DOMAIN-SUFFIX,uudanzrcuonlv.site
   - DOMAIN-SUFFIX,uudbvq.skuola.net
   - DOMAIN-SUFFIX,uudzibtuheqtq.online
   - DOMAIN-SUFFIX,uue2.destinia.ir
