@@ -1,7 +1,7 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-11-08 15:05:36
+# 上次更新时间：2026-11-09 13:42:29
 # 条数：blackmatrix7 174 条 + MetaCubeX 224 条 (geosite 224 / geoip 0) → 去重合并 242 条，去冗 6 条，实存 236 条
-# Hash：33c1789ece5d08588a4883897bc671c6dbe70aa9415254c207f3af0082eefc0f
+# Hash：ce111201826aacddea2f7a59333257a3f5d025857b452d49216e255c0ac12a98
 payload:
   - DOMAIN-SUFFIX,112263.com
   - DOMAIN-SUFFIX,20thcenturystudios.com
