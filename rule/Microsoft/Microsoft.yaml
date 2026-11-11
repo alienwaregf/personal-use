@@ -1,7 +1,7 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-11-10 16:10:31
+# 上次更新时间：2026-11-11 10:40:34
 # 条数：blackmatrix7 670 条 + MetaCubeX 756 条 (geosite 756 / geoip 0) → 去重合并 895 条，去冗 127 条，实存 768 条
-# Hash：9ef78651630508ff0a1f3d4c2bbd34018703be1561abe1f8e1d0e7983d32b855
+# Hash：14c8e40e2cd2cd757a9e09b22d610c24b2fc89e175f430543e27f3db328250dd
 payload:
   - DOMAIN,github-api.arkoselabs.com
   - DOMAIN,github-cloud.s3.amazonaws.com
