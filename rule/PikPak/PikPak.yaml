@@ -1,7 +1,7 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-11-07 18:01:47
+# 上次更新时间：2026-11-11 18:36:54
 # 条数：blackmatrix7 7 条 + MetaCubeX 7 条 (geosite 7 / geoip 0) → 去重合并 14 条
-# Hash：b40115b5615fe30e7a0914b1ea3b0034db3280d936c397f176d52629b5bcefc5
+# Hash：5df56cc98a36795f6b52d20a49cc388c6b5b370156549674326ed5306afd93aa
 payload:
   - DOMAIN,o4504926511693824.ingest.sentry.io
   - DOMAIN-KEYWORD,mypikpak

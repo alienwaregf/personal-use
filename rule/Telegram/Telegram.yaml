@@ -1,7 +1,7 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-11-07 18:01:52
+# 上次更新时间：2026-11-11 18:36:59
 # 条数：blackmatrix7 46 条 + MetaCubeX 33 条 (geosite 21 / geoip 12) → 去重合并 57 条
-# Hash：763d568e4f38b4ac678e212966433445e8fca3334d8a835f1cb4d515cf3687bb
+# Hash：1122715fa7eff8d2599481b88b4d1c2e8e0ed065ae0b55dec3431a8e12864faf
 payload:
   - DOMAIN,api.imem.app
   - DOMAIN,api.swiftgram.app

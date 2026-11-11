@@ -1,7 +1,7 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-11-07 18:01:51
+# 上次更新时间：2026-11-11 18:36:58
 # 条数：blackmatrix7 69 条 + MetaCubeX 61 条 (geosite 61 / geoip 0) → 去重合并 97 条，去冗 16 条，实存 81 条
-# Hash：3603fb465e22c9edf7b9389d285b89892af6b1c9b4b054be489d9a93fc87d312
+# Hash：cd759b6474f8ce62abc9cfc0687cf4ad5fa7b83d473f04bcf9f36bd07304f86b
 payload:
   - DOMAIN,a4e8s8k3.map2.ssl.hwcdn.net
   - DOMAIN,lv.queniujq.cn

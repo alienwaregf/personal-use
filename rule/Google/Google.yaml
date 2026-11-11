@@ -1,7 +1,7 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-11-11 10:40:27
+# 上次更新时间：2026-11-11 18:36:43
 # 条数：blackmatrix7 701 条 + MetaCubeX 9504 条 (geosite 1078 / geoip 8426) → 去重合并 9588 条，去冗 272 条，实存 9316 条
-# Hash：c06582444699318a8d7c72c49cd017b14ddcac2cdcca7113c8c85c525449871f
+# Hash：7789457915f3116f687f8fafe4268901d91388fdd0c56827d0b4dfe4a7cb6000
 payload:
   - DOMAIN,google-ohttp-relay-safebrowsing.fastly-edge.com
   - DOMAIN-KEYWORD,appspot

@@ -1,7 +1,7 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-11-07 18:01:59
+# 上次更新时间：2026-11-11 18:37:06
 # 条数：blackmatrix7 6 条 + MetaCubeX 3 条 (geosite 3 / geoip 0) → 去重合并 7 条，去冗 1 条，实存 6 条
-# Hash：7bb47d76c4c69c6745e7b1ff5faaa77a9c74c7cbcf5fa031c404f59bf1fd36fd
+# Hash：85fb2b2c08e43f3eaa3d03e1bcefc6d2addf8211f73af8909569b1188d950771
 payload:
   - DOMAIN,mask-api.fe.apple-dns.net
   - DOMAIN,mask-t.apple-dns.net

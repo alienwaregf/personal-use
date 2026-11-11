@@ -1,7 +1,7 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-11-08 15:05:34
+# 上次更新时间：2026-11-11 18:36:35
 # 条数：blackmatrix7 3 条 + MetaCubeX 21 条 (geosite 21 / geoip 0) → 去重合并 22 条
-# Hash：a1cb608e4dd9758251095046db26ce36b7a011e38ce618fa1129624861f4cb17
+# Hash：ba6009c13e7a45df1358b437faf3d02c53ae55cb9aaa279cb7d5e967189b3f3d
 payload:
   - DOMAIN,cdn.usefathom.com
   - DOMAIN,http-intake.logs.us5.datadoghq.com
