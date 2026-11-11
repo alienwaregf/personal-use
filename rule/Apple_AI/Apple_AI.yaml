@@ -1,7 +1,7 @@
 # 数据来源：RocM301/Apple-Rule
-# 上次更新时间：2026-10-30 15:09:01
+# 上次更新时间：2026-11-11 20:22:50
 # 条数：RocM301/Apple-Rule 19 条 → 去重合并 19 条，去冗 1 条，实存 18 条
-# Hash：f3142cd1d076d271d66b7be2a35bcd71e6a4f5b7eca9d92d120baef31712adfa
+# Hash：a18f2a4e134de737144deabb365564a4c2f4b60fa2a7f6b98910dec6d81734b1
 payload:
   - DOMAIN,guzzoni.apple.com
   - DOMAIN,mask-api.fe.apple-dns.net
