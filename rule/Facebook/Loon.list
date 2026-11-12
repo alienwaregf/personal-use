@@ -679,8 +679,7 @@ IP-CIDR6,2a03:2887:ff5f::/48,extended-matching
 IP-CIDR6,2a03:2887:ff60::/48,extended-matching
 IP-CIDR6,2a03:2887:ff62::/47,extended-matching
 IP-CIDR6,2a03:2887:ff64::/46,extended-matching
-IP-CIDR6,2a03:2887:ff68::/47,extended-matching
-IP-CIDR6,2a03:2887:ff6a::/48,extended-matching
+IP-CIDR6,2a03:2887:ff68::/46,extended-matching
 IP-CIDR6,2a03:2887:ff6c::/48,extended-matching
 IP-CIDR6,2a03:2887:ff6f::/48,extended-matching
 IP-CIDR6,2a03:2887:ff70::/46,extended-matching
