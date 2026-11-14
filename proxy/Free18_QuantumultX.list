@@ -1,89 +1,115 @@
 shadowsocks = 130.49.189.158:43558, method=chacha20-ietf-poly1305, password=yZiPrr484OdSYcivDUv+UIygwvyW+HQYytKsIgTw9tU=, tag=🇦🇱 阿尔巴尼亚 地拉那¹  130.49.189.158
 shadowsocks = 130.49.189.158:43558, method=chacha20-ietf-poly1305, password=LNc9h/4NA9Q6ZHNeYHoT5X/fR9aoE9KQR1SWhVDHBog=, tag=🇦🇱 阿尔巴尼亚 地拉那²  130.49.189.158
-shadowsocks = 130.49.189.158:43558, method=chacha20-ietf-poly1305, password=LNc9h/4NA9Q6ZHNeYHoT5X/fR9aoE9KQR1SWhVDHBog=, tag=🇦🇱 阿尔巴尼亚 地拉那³  130.49.189.158
+shadowsocks = 130.49.189.158:43558, method=chacha20-ietf-poly1305, password=yZiPrr484OdSYcivDUv+UIygwvyW+HQYytKsIgTw9tU=, tag=🇦🇱 阿尔巴尼亚 地拉那³  130.49.189.158
+shadowsocks = 130.49.189.158:43558, method=chacha20-ietf-poly1305, password=yZiPrr484OdSYcivDUv+UIygwvyW+HQYytKsIgTw9tU=, tag=🇦🇱 阿尔巴尼亚 地拉那⁴  130.49.189.158
+http = 91.92.250.33:443, over-tls=true, tag=🇦🇱 阿尔巴尼亚 地拉那  91.92.250.33
+http = 146.70.244.2:443, over-tls=true, tag=🇦🇹 奥地利 維也納¹  146.70.244.2
+http = 146.70.244.2:443, over-tls=true, tag=🇦🇹 奥地利 維也納²  146.70.244.2
 shadowsocks = 152.53.1.57:8388, method=chacha20-ietf-poly1305, password=AdawffFMHymlasRb0VOP3HFf7sTG5sJx, tag=🇦🇹 奥地利 維也納¹  152.53.1.57
 shadowsocks = 152.53.1.57:8388, method=chacha20-ietf-poly1305, password=AdawffFMHymlasRb0VOP3HFf7sTG5sJx, tag=🇦🇹 奥地利 維也納²  152.53.1.57
 shadowsocks = 152.53.1.57:8388, method=chacha20-ietf-poly1305, password=AdawffFMHymlasRb0VOP3HFf7sTG5sJx, tag=🇦🇹 奥地利 維也納³  152.53.1.57
-shadowsocks = 152.53.1.57:8388, method=chacha20-ietf-poly1305, password=AdawffFMHymlasRb0VOP3HFf7sTG5sJx, tag=🇦🇹 奥地利 維也納⁴  152.53.1.57
 trojan = 45.63.30.142:443, password=0ab6c98dae3b48e8b9c4a776b6c9c19a, over-tls=true, tls-verification=true, tls-host=connectwithemployerstohireyouridealteam.com, tag=🇦🇺 澳大利亚 悉尼¹  45.63.30.142
 trojan = 45.63.30.142:443, password=0ab6c98dae3b48e8b9c4a776b6c9c19a, over-tls=true, tls-verification=true, tls-host=connectwithemployerstohireyouridealteam.com, tag=🇦🇺 澳大利亚 悉尼²  45.63.30.142
 trojan = 45.63.30.142:443, password=0ab6c98dae3b48e8b9c4a776b6c9c19a, over-tls=true, tls-verification=true, tls-host=connectwithemployerstohireyouridealteam.com, tag=🇦🇺 澳大利亚 悉尼³  45.63.30.142
 trojan = 45.63.30.142:443, password=0ab6c98dae3b48e8b9c4a776b6c9c19a, over-tls=true, tls-verification=true, tls-host=connectwithemployerstohireyouridealteam.com, tag=🇦🇺 澳大利亚 悉尼⁴  45.63.30.142
+http = 169.150.237.1:9443, over-tls=true, tag=🇧🇬 保加利亚 索菲亞  169.150.237.1
 trojan = 193.239.160.134:443, password=humanity, over-tls=true, tls-verification=true, tls-host=www.calmlunch.com, obfs=wss, obfs-uri=/assignment, tag=🇧🇬 保加利亚 索菲亞  193.239.160.134
 trojan = 216.238.104.154:443, password=0ab6c98dae3b48e8b9c4a776b6c9c19a, over-tls=true, tls-verification=true, tag=🇧🇷 巴西 Osasco¹  216.238.104.154
 trojan = 216.238.104.154:443, password=0ab6c98dae3b48e8b9c4a776b6c9c19a, over-tls=true, tls-verification=true, tag=🇧🇷 巴西 Osasco²  216.238.104.154
 trojan = 216.238.104.154:443, password=0ab6c98dae3b48e8b9c4a776b6c9c19a, over-tls=true, tls-verification=true, tls-host=findtemporaryworkandfreelancerprojectsonlineplatform.com, tag=🇧🇷 巴西 Osasco³  216.238.104.154
 trojan = 216.238.104.154:443, password=0ab6c98dae3b48e8b9c4a776b6c9c19a, over-tls=true, tls-verification=true, tag=🇧🇷 巴西 Osasco⁴  216.238.104.154
 trojan = 216.238.104.154:443, password=0ab6c98dae3b48e8b9c4a776b6c9c19a, over-tls=true, tls-verification=true, tls-host=findtemporaryworkandfreelancerprojectsonlineplatform.com, tag=🇧🇷 巴西 Osasco⁵  216.238.104.154
-shadowsocks = 51.222.155.113:5601, method=aes-256-gcm, password=Y6R9pAtvxxzmGC, tag=🇨🇦 加拿大 Beauharnois  51.222.155.113
-shadowsocks = 51.222.155.32:5003, method=aes-256-gcm, password=g5MeD6Ft3CWlJId, tag=🇨🇦 加拿大 Beauharnois  51.222.155.32
-trojan = 216.152.147.74:443, password=0ab6c98dae3b48e8b9c4a776b6c9c19a, over-tls=true, tls-verification=true, tag=🇨🇦 加拿大 多伦多  216.152.147.74
-trojan = 216.152.147.79:443, password=0ab6c98dae3b48e8b9c4a776b6c9c19a, over-tls=true, tls-verification=true, tls-host=blog.connectingpeoplewithgreatjobs.com, tag=🇨🇦 加拿大 多伦多  216.152.147.79
+shadowsocks = 51.222.200.165:5000, method=aes-256-gcm, password=Y6R9pAtvxxzmGC, tag=🇨🇦 加拿大 Beauharnois  51.222.200.165
+http = 206.223.183.13:443, password=None, over-tls=true, tag=🇨🇦 加拿大 多伦多  206.223.183.13
+trojan = 216.152.147.74:443, password=0ab6c98dae3b48e8b9c4a776b6c9c19a, over-tls=true, tls-verification=true, tag=🇨🇦 加拿大 多伦多¹  216.152.147.74
+trojan = 216.152.147.74:443, password=0ab6c98dae3b48e8b9c4a776b6c9c19a, over-tls=true, tls-verification=true, tls-host=api.connectingpeoplewithgreatjobs.com, tag=🇨🇦 加拿大 多伦多²  216.152.147.74
+trojan = 216.152.147.93:443, password=0ab6c98dae3b48e8b9c4a776b6c9c19a, over-tls=true, tls-verification=true, tag=🇨🇦 加拿大 多伦多¹  216.152.147.93
+trojan = 216.152.147.93:443, password=0ab6c98dae3b48e8b9c4a776b6c9c19a, over-tls=true, tls-verification=true, tls-host=connectingpeoplewithgreatjobs.com, tag=🇨🇦 加拿大 多伦多²  216.152.147.93
+trojan = 216.152.147.93:443, password=0ab6c98dae3b48e8b9c4a776b6c9c19a, over-tls=true, tls-verification=true, tag=🇨🇦 加拿大 多伦多³  216.152.147.93
+shadowsocks = 51.222.136.236:8882, method=aes-256-gcm, password=kDWvXYZoTBcGkC4, tag=🇨🇦 加拿大 蒙特利尔  51.222.136.236
 shadowsocks = 186.190.215.251:19999, method=aes-256-gcm, password=ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=, tag=🇨🇭 瑞士 苏黎世¹  186.190.215.251
 shadowsocks = 186.190.215.251:19999, method=aes-256-gcm, password=ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=, tag=🇨🇭 瑞士 苏黎世²  186.190.215.251
-trojan = 208.69.78.158:443, password=0ab6c98dae3b48e8b9c4a776b6c9c19a, over-tls=true, tls-verification=true, tag=🇨🇭 瑞士 苏黎世  208.69.78.158
-trojan = 208.69.78.33:443, password=0ab6c98dae3b48e8b9c4a776b6c9c19a, over-tls=true, tls-verification=true, tls-host=courses.yourultimateprofessionalcareerhub.com, tag=🇨🇭 瑞士 苏黎世  208.69.78.33
+shadowsocks = 186.190.215.251:19999, method=aes-256-gcm, password=ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=, tag=🇨🇭 瑞士 苏黎世³  186.190.215.251
 shadowsocks = 23.166.88.127:19999, method=aes-256-gcm, password=ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=, tag=🇨🇭 瑞士 苏黎世¹  23.166.88.127
 shadowsocks = 23.166.88.127:19999, method=aes-256-gcm, password=ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=, tag=🇨🇭 瑞士 苏黎世²  23.166.88.127
-shadowsocks = 79.127.184.104:19999, method=aes-256-gcm, password=ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=, tag=🇨🇭 瑞士 苏黎世¹  79.127.184.104
-shadowsocks = 79.127.184.104:19999, method=aes-256-gcm, password=ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=, tag=🇨🇭 瑞士 苏黎世²  79.127.184.104
-shadowsocks = 79.127.184.104:19999, method=aes-256-gcm, password=ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=, tag=🇨🇭 瑞士 苏黎世³  79.127.184.104
+shadowsocks = 23.166.88.127:19999, method=aes-256-gcm, password=ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=, tag=🇨🇭 瑞士 苏黎世³  23.166.88.127
+shadowsocks = 79.127.184.104:19999, method=aes-256-gcm, password=ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=, tag=🇨🇭 瑞士 苏黎世  79.127.184.104
 trojan = 64.176.7.205:443, password=0ab6c98dae3b48e8b9c4a776b6c9c19a, over-tls=true, tls-verification=true, tag=🇨🇱 智利 圣地亚哥¹  64.176.7.205
 trojan = 64.176.7.205:443, password=0ab6c98dae3b48e8b9c4a776b6c9c19a, over-tls=true, tls-verification=true, tag=🇨🇱 智利 圣地亚哥²  64.176.7.205
 trojan = 64.176.7.205:443, password=0ab6c98dae3b48e8b9c4a776b6c9c19a, over-tls=true, tls-verification=true, tls-host=advanceyouremploymentskillsandcareerdevelopmenthub.com, tag=🇨🇱 智利 圣地亚哥³  64.176.7.205
 trojan = 64.176.7.205:443, password=0ab6c98dae3b48e8b9c4a776b6c9c19a, over-tls=true, tls-verification=true, tag=🇨🇱 智利 圣地亚哥⁴  64.176.7.205
 trojan = 64.176.7.205:443, password=0ab6c98dae3b48e8b9c4a776b6c9c19a, over-tls=true, tls-verification=true, tls-host=advanceyouremploymentskillsandcareerdevelopmenthub.com, tag=🇨🇱 智利 圣地亚哥⁵  64.176.7.205
-trojan = 193.108.119.29:443, password=0ab6c98dae3b48e8b9c4a776b6c9c19a, over-tls=true, tls-verification=true, tls-host=blog.iloverussia2026.com, tag=🇩🇪 德国 法兰克福  193.108.119.29
-shadowsocks = 57.129.83.85:19999, method=aes-256-gcm, password=ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=, tag=🇩🇪 德国 法兰克福  57.129.83.85
+http = 185.216.35.130:443, password=None, over-tls=true, tag=🇨🇿 捷克 Žižkov¹  185.216.35.130
+http = 185.216.35.130:443, password=None, over-tls=true, tag=🇨🇿 捷克 Žižkov²  185.216.35.130
+http = 185.216.35.66:443, over-tls=true, tag=🇨🇿 捷克 Žižkov¹  185.216.35.66
+http = 185.216.35.66:443, over-tls=true, tag=🇨🇿 捷克 Žižkov²  185.216.35.66
+shadowsocks = 193.108.119.3:19999, method=aes-256-gcm, password=ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=, tag=🇩🇪 德国 法兰克福  193.108.119.3
+shadowsocks = 23.157.88.43:19999, method=aes-256-gcm, password=ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=, tag=🇩🇪 德国 法兰克福  23.157.88.43
+http = 37.203.35.27:443, over-tls=true, tag=🇩🇪 德国 法兰克福  37.203.35.27
+vmess = 13.140.28.46:443, method=chacha20-poly1305, password=db50a20e-7ff5-4e70-948f-17cc9ca7c154, aead=true, obfs=wss, obfs-uri=/api/v1/gpu-stream/socket, obfs-host=renderer-stream-2-62.mirra.now, tls-verification=true, tag=🇩🇪 德国 纽伦堡  13.140.28.46
+http = 185.245.84.50:443, over-tls=true, tag=🇩🇰 丹麦 克里斯蒂安港¹  185.245.84.50
+http = 185.245.84.50:9443, over-tls=true, tag=🇩🇰 丹麦 克里斯蒂安港²  185.245.84.50
+http = 95.153.31.66:9443, over-tls=true, tag=🇪🇪 爱沙尼亚 塔林  95.153.31.66
 shadowsocks = 167.17.71.167:19999, method=aes-256-gcm, password=ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=, tag=🇪🇸 西班牙 马德里¹  167.17.71.167
 shadowsocks = 167.17.71.167:19999, method=aes-256-gcm, password=ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=, tag=🇪🇸 西班牙 马德里²  167.17.71.167
-shadowsocks = 5.188.181.201:9031, method=aes-256-cfb, password=BwcAUZk8hUFAkDGN, tag=🇪🇸 西班牙 马德里  5.188.181.201
+shadowsocks = 5.188.181.201:9030, method=aes-256-cfb, password=GeregetR8cvQHzYr, tag=🇪🇸 西班牙 马德里  5.188.181.201
 shadowsocks = 66.163.118.103:19999, method=aes-256-gcm, password=ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=, tag=🇪🇸 西班牙 马德里¹  66.163.118.103
 shadowsocks = 66.163.118.103:19999, method=aes-256-gcm, password=ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=, tag=🇪🇸 西班牙 马德里²  66.163.118.103
 trojan = 66.163.118.203:443, password=0ab6c98dae3b48e8b9c4a776b6c9c19a, over-tls=true, tls-verification=true, tls-host=blog.discovergreatjobsandadvanceyourcareer.com, tag=🇪🇸 西班牙 马德里  66.163.118.203
-trojan = 66.163.118.40:443, password=0ab6c98dae3b48e8b9c4a776b6c9c19a, over-tls=true, tls-verification=true, tag=🇪🇸 西班牙 马德里  66.163.118.40
+trojan = 66.163.118.62:443, password=0ab6c98dae3b48e8b9c4a776b6c9c19a, over-tls=true, tls-verification=true, tag=🇪🇸 西班牙 马德里  66.163.118.62
 vmess = 185.212.149.7:52080, method=chacha20-poly1305, password=ec3c8b97-f308-4fee-aa16-95e2c7595acd, aead=true, tag=🇫🇮 芬兰 赫尔辛基  185.212.149.7
 shadowsocks = 213.176.92.148:40647, method=aes-256-gcm, password=DgMywXKqojHXeuXY8hOJaYGPFcjweCIJeD5cdg/cUUY=, tag=🇫🇮 芬兰 赫尔辛基¹  213.176.92.148
 shadowsocks = 213.176.92.148:40647, method=aes-256-gcm, password=DgMywXKqojHXeuXY8hOJaYGPFcjweCIJeD5cdg/cUUY=, tag=🇫🇮 芬兰 赫尔辛基²  213.176.92.148
-vmess = 65.108.240.210:39018, method=chacha20-poly1305, password=8ca123a8-720b-47c5-bd0c-637431418b09, aead=true, tag=🇫🇮 芬兰 赫尔辛基  65.108.240.210
+shadowsocks = 167.17.64.22:19999, method=aes-256-gcm, password=ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=, tag=🇫🇷 法国 巴黎  167.17.64.22
 shadowsocks = 172.99.189.142:19999, method=aes-256-gcm, password=ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=, tag=🇫🇷 法国 巴黎  172.99.189.142
-vmess = 2001:bc8:32d7:1a9::7:18901, method=chacha20-poly1305, password=3a966d20-7b9d-48cc-ba2c-8d38161b6d3a, aead=true, obfs=wss, obfs-uri=/github.com/Alvin9999-newpac/fanqiang, tls-verification=true, tag=🇫🇷 法国 巴黎  2001:bc8:32d7:1a9::7
-shadowsocks = 23.162.152.22:19999, method=aes-256-gcm, password=ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=, tag=🇫🇷 法国 巴黎  23.162.152.22
-shadowsocks = 51.77.144.182:8080, method=chacha20-ietf-poly1305, password=x19py0a8ipglqkbe, tag=🇫🇷 法国 鲁贝  51.77.144.182
-shadowsocks = 51.83.61.102:8080, method=chacha20-ietf-poly1305, password=29irqk0paakcx19v, tag=🇫🇷 法国 鲁贝  51.83.61.102
-shadowsocks = 198.244.201.129:19999, method=aes-256-gcm, password=ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=, tag=🇬🇧 英国 伦敦  198.244.201.129
-shadowsocks = 198.244.202.215:19999, method=aes-256-gcm, password=ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=, tag=🇬🇧 英国 伦敦  198.244.202.215
+shadowsocks = 38.109.228.110:19999, method=aes-256-gcm, password=ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=, tag=🇫🇷 法国 巴黎  38.109.228.110
+vmess = 57.129.132.223:80, method=chacha20-poly1305, password=a25cbf11-2908-4a1b-a3a8-9a571777dca3, aead=true, obfs=ws, obfs-uri=/vmess/, tag=🇬🇧 英国 Bexley  57.129.132.223
+shadowsocks = 141.98.101.178:443, method=aes-128-gcm, password=shadowsocks, tag=🇬🇧 英国 Stretford  141.98.101.178
+shadowsocks = 54.37.240.40:8080, method=chacha20-ietf-poly1305, password=8nrpt2il04ptci2j, tag=🇬🇧 英国 伦敦  54.37.240.40
+shadowsocks = 82.110.60.9:19999, method=aes-256-gcm, password=ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=, tag=🇬🇧 英国 伦敦  82.110.60.9
+shadowsocks = 16.60.30.137:443, method=aes-256-cfb, password=amazonskr05, tag=🇬🇧 英国 倫敦  16.60.30.137
 shadowsocks = 142.202.51.22:19999, method=aes-256-gcm, password=ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=, tag=🇬🇧 英国 倫敦金融城  142.202.51.22
-shadowsocks = 185.176.206.9:19999, method=aes-256-gcm, password=ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=, tag=🇬🇧 英国 倫敦金融城  185.176.206.9
-trojan = 151.101.56.7:443, password=MiTiVPN, over-tls=true, tls-verification=true, tls-host=ssl.fastly.com, obfs=wss, obfs-uri=/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/D-e2@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN, obfs-host=mitivpn---ss--s---mitivpn-2.global.ssl.fastly.net, tag=🇬🇧 英国 曼彻斯特  151.101.56.7
-http = 84.233.178.33:9443, over-tls=true, tag=🇬🇧 英国 曼彻斯特  84.233.178.33
+shadowsocks = 38.114.120.221:19999, method=aes-256-gcm, password=ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=, tag=🇬🇧 英国 倫敦金融城  38.114.120.221
+http = 195.54.178.210:443, password=None, over-tls=true, tag=🇬🇪 格鲁吉亚 第比利斯¹  195.54.178.210
+http = 195.54.178.210:443, password=None, over-tls=true, tag=🇬🇪 格鲁吉亚 第比利斯²  195.54.178.210
+http = 149.22.85.65:443, over-tls=true, tag=🇬🇷 希腊 雅典  149.22.85.65
+http = 149.22.85.78:443, over-tls=true, tag=🇬🇷 希腊 雅典  149.22.85.78
 shadowsocks = 209.248.57.105:8388, method=aes-256-gcm, password=AMok40FfaM+Ikwre16psBpVk6JHxsQZw, tag=🇭🇰 香港 香港¹  209.248.57.105
 shadowsocks = 209.248.57.105:8388, method=aes-256-gcm, password=AMok40FfaM+Ikwre16psBpVk6JHxsQZw, tag=🇭🇰 香港 香港²  209.248.57.105
-vmess = 47.242.81.94:52080, method=chacha20-poly1305, password=e47b9f77-60e4-4738-8d53-772b6002e146, aead=true, obfs=http, obfs-uri=['/QQqun-737805443'], obfs-host=['openai.com'], tag=🇭🇰 香港 香港  47.242.81.94
-vmess = 47.244.120.197:23026, method=chacha20-poly1305, password=b9de1bc9-baa7-41ac-86f7-ccd59695cb21, aead=true, obfs=ws, obfs-uri=/arki, tag=🇭🇰 香港 香港¹  47.244.120.197
+shadowsocks = 209.248.57.105:8388, method=aes-256-gcm, password=AMok40FfaM+Ikwre16psBpVk6JHxsQZw, tag=🇭🇰 香港 香港³  209.248.57.105
+vmess = 47.242.81.94:52080, method=chacha20-poly1305, password=e47b9f77-60e4-4738-8d53-772b6002e146, aead=true, obfs=http, obfs-uri=['/QQqun-737805443'], obfs-host=['openai.com'], tag=🇭🇰 香港 香港¹  47.242.81.94
+vmess = 47.242.81.94:52080, method=chacha20-poly1305, password=e47b9f77-60e4-4738-8d53-772b6002e146, aead=true, obfs=http, tag=🇭🇰 香港 香港²  47.242.81.94
+vmess = 47.244.120.197:23026, method=chacha20-poly1305, password=b9de1bc9-baa7-41ac-86f7-ccd59695cb21, aead=true, obfs=ws, obfs-uri=/arki, tag=🇭🇰 香港 香港²  47.244.120.197
+http = 154.47.29.161:443, password=None, over-tls=true, tag=🇭🇷 克罗地亚 萨格勒布  154.47.29.161
+http = 146.70.203.18:443, over-tls=true, tag=🇭🇺 匈牙利 布达佩斯  146.70.203.18
 shadowsocks = 146.70.90.198:17456, method=aes-128-gcm, password=881cf39affc5286799a585f1acd24d11, tag=🇮🇪 爱尔兰 都柏林  146.70.90.198
-http = 34.249.214.108:443, over-tls=true, tag=🇮🇪 爱尔兰 都柏林  34.249.214.108
+http = 34.249.214.108:443, over-tls=true, tag=🇮🇪 爱尔兰 都柏林¹  34.249.214.108
+http = 34.249.214.108:443, over-tls=true, tag=🇮🇪 爱尔兰 都柏林²  34.249.214.108
 vmess = 54.229.151.97:59236, method=chacha20-poly1305, password=2387bfbc-10a6-4bd7-dc55-7cba954ce6e8, aead=true, tag=🇮🇪 爱尔兰 都柏林  54.229.151.97
-shadowsocks = 64.177.66.60:8388, method=aes-256-gcm, password=jfWoSVCVYXRmNBfC, tag=🇮🇱 以色列 Rosh Ha‘Ayin¹  64.177.66.60
-shadowsocks = 64.177.66.60:8388, method=aes-256-gcm, password=jfWoSVCVYXRmNBfC, tag=🇮🇱 以色列 Rosh Ha‘Ayin²  64.177.66.60
+shadowsocks = 64.177.66.60:8388, method=aes-256-gcm, password=jfWoSVCVYXRmNBfC, tag=🇮🇱 以色列 Rosh Ha‘Ayin  64.177.66.60
+shadowsocks = 185.164.175.81:19999, method=aes-256-gcm, password=ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=, tag=🇮🇹 意大利 Milan¹  185.164.175.81
+shadowsocks = 185.164.175.81:19999, method=aes-256-gcm, password=ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=, tag=🇮🇹 意大利 Milan²  185.164.175.81
 shadowsocks = 202.50.253.18:19999, method=aes-256-gcm, password=ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=, tag=🇮🇹 意大利 Milan¹  202.50.253.18
 shadowsocks = 202.50.253.18:19999, method=aes-256-gcm, password=ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=, tag=🇮🇹 意大利 Milan²  202.50.253.18
-shadowsocks = 202.50.253.18:19999, method=aes-256-gcm, password=ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=, tag=🇮🇹 意大利 Milan³  202.50.253.18
-shadowsocks = 202.50.253.63:19999, method=aes-256-gcm, password=ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=, tag=🇮🇹 意大利 Milan¹  202.50.253.63
-shadowsocks = 202.50.253.63:19999, method=aes-256-gcm, password=ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=, tag=🇮🇹 意大利 Milan²  202.50.253.63
-shadowsocks = 202.50.253.99:19999, method=aes-256-gcm, password=ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=, tag=🇮🇹 意大利 Milan¹  202.50.253.99
-shadowsocks = 202.50.253.99:19999, method=aes-256-gcm, password=ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=, tag=🇮🇹 意大利 Milan²  202.50.253.99
-shadowsocks = 57.131.4.13:8080, method=chacha20-ietf-poly1305, password=mx81glqbtlwuhcjo, tag=🇮🇹 意大利 Milan  57.131.4.13
+shadowsocks = 202.50.253.27:19999, method=aes-256-gcm, password=ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=, tag=🇮🇹 意大利 Milan  202.50.253.27
+shadowsocks = 202.50.253.45:19999, method=aes-256-gcm, password=ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=, tag=🇮🇹 意大利 Milan  202.50.253.45
+shadowsocks = 202.50.253.54:19999, method=aes-256-gcm, password=ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=, tag=🇮🇹 意大利 Milan  202.50.253.54
+shadowsocks = 202.50.253.72:19999, method=aes-256-gcm, password=ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=, tag=🇮🇹 意大利 Milan¹  202.50.253.72
+shadowsocks = 202.50.253.72:19999, method=aes-256-gcm, password=ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=, tag=🇮🇹 意大利 Milan²  202.50.253.72
 trojan = 132.226.5.246:443, password=4f7dc540-d244-4e64-af21-4b5bb300add3, over-tls=true, tls-verification=true, tls-host=www.tokyo2023.ga, tag=🇯🇵 日本 东京  132.226.5.246
-shadowsocks = 149.22.87.240:443, method=aes-128-gcm, password=shadowsocks, tag=🇯🇵 日本 东京  149.22.87.240
+shadowsocks = 149.22.87.204:443, method=aes-128-gcm, password=shadowsocks, tag=🇯🇵 日本 东京  149.22.87.204
 shadowsocks = 154.36.158.197:8388, method=aes-256-gcm, password=BeaUf9c0AEWH40Pu, tag=🇯🇵 日本 东京¹  154.36.158.197
 shadowsocks = 154.36.158.197:8388, method=aes-256-gcm, password=BeaUf9c0AEWH40Pu, tag=🇯🇵 日本 东京²  154.36.158.197
-shadowsocks = 84.247.155.196:80, method=aes-256-gcm, password=3eOFeNssde7PYYMv, tag=🇯🇵 日本 东京  84.247.155.196
-shadowsocks = 211.178.105.134:6123, method=aes-256-cfb, password=qwerREWQ@@, tag=🇰🇷 韩国 安山市  211.178.105.134
+shadowsocks = 154.36.158.197:8388, method=aes-256-gcm, password=BeaUf9c0AEWH40Pu, tag=🇯🇵 日本 东京³  154.36.158.197
+shadowsocks = 115.161.136.145:10099, method=chacha20-ietf-poly1305, password=12242, tag=🇰🇷 韩国 Gwangjin-gu¹  115.161.136.145
+shadowsocks = 115.161.136.145:10099, method=chacha20-ietf-poly1305, password=12242, tag=🇰🇷 韩国 Gwangjin-gu²  115.161.136.145
 trojan = 158.247.253.243:443, password=0ab6c98dae3b48e8b9c4a776b6c9c19a, over-tls=true, tls-verification=true, tls-host=connectgraduateswithjobopeningsandgrowprofessionally.com, tag=🇰🇷 韩国 首尔特别市¹  158.247.253.243
 trojan = 158.247.253.243:443, password=0ab6c98dae3b48e8b9c4a776b6c9c19a, over-tls=true, tls-verification=true, tls-host=connectgraduateswithjobopeningsandgrowprofessionally.com, tag=🇰🇷 韩国 首尔特别市²  158.247.253.243
 vmess = 38.107.234.57:80, method=chacha20-poly1305, password=567f4be5-12ab-42e1-b8d9-db6fd1fdd31c, aead=true, obfs=ws, obfs-uri=/vmess/, tag=🇰🇿 哈萨克斯坦 阿拉木圖  38.107.234.57
-http = 185.219.159.15:443, over-tls=true, tag=🇱🇻 拉脱维亚 里加  185.219.159.15
+http = 89.124.11.9:443, over-tls=true, tag=🇱🇹 立陶宛 维尔纽斯  89.124.11.9
+http = 185.221.132.226:9443, password=None, over-tls=true, tag=🇱🇺 卢森堡 盧森堡市  185.221.132.226
+http = 185.219.159.15:443, over-tls=true, tag=🇱🇻 拉脱维亚 里加¹  185.219.159.15
+http = 185.219.159.15:443, over-tls=true, tag=🇱🇻 拉脱维亚 里加²  185.219.159.15
 http = 185.219.159.16:443, password=None, over-tls=true, tag=🇱🇻 拉脱维亚 里加  185.219.159.16
 shadowsocks = 64.177.90.30:8388, method=aes-256-gcm, password=BWyPPTusFKhGgzKh, tag=🇲🇽 墨西哥 克雷塔罗¹  64.177.90.30
 shadowsocks = 64.177.90.30:8388, method=aes-256-gcm, password=BWyPPTusFKhGgzKh, tag=🇲🇽 墨西哥 克雷塔罗²  64.177.90.30
@@ -94,37 +120,40 @@ vmess = 47.250.135.244:10000, method=chacha20-poly1305, password=aedc66b8-99d7-4
 trojan = 47.250.84.25:443, password=5931134d1cde66bf83a54acdfebe7ab2, over-tls=true, tls-verification=true, tag=🇲🇾 马来西亚 吉隆坡¹  47.250.84.25
 trojan = 47.250.84.25:443, password=5931134d1cde66bf83a54acdfebe7ab2, over-tls=true, tls-verification=true, tag=🇲🇾 马来西亚 吉隆坡²  47.250.84.25
 trojan = 47.250.84.25:443, password=5931134d1cde66bf83a54acdfebe7ab2, over-tls=true, tls-verification=true, tag=🇲🇾 马来西亚 吉隆坡³  47.250.84.25
-shadowsocks = 194.87.233.93:46190, method=chacha20-ietf-poly1305, password=2Ef8X21WALqK7H6N8A78j5WYtzZ999PP8rF8DaLsb5LLyDLQpf5dGVAjdA3mj1wudigKXTt5heYU9jmaBbfxXBJJAqhPHkxe, tag=🇳🇱 荷兰 阿姆斯特丹  194.87.233.93
-shadowsocks = 82.38.31.204:8080, method=chacha20-ietf-poly1305, password=k1dBOmOB4oqi7Ump37a1bQ, tag=🇳🇱 荷兰 阿姆斯特丹  82.38.31.204
+http = 51.159.225.196:23856, username=null, password=null, over-tls=true, tag=🇳🇱 荷兰 哈勒姆  51.159.225.196
+trojan = 66.163.127.154:443, password=0ab6c98dae3b48e8b9c4a776b6c9c19a, over-tls=true, tls-verification=true, tls-host=www.indyourperfectremotetechjobfromthecomfortofhome.com, tag=🇳🇱 荷兰 阿姆斯特丹  66.163.127.154
 shadowsocks = 82.38.31.207:8080, method=chacha20-ietf-poly1305, password=k1dBOmOB4oqi7Ump37a1bQ, tag=🇳🇱 荷兰 阿姆斯特丹  82.38.31.207
-shadowsocks = 82.38.31.219:8080, method=chacha20-ietf-poly1305, password=k1dBOmOB4oqi7Ump37a1bQ, tag=🇳🇱 荷兰 阿姆斯特丹  82.38.31.219
-shadowsocks = 82.38.31.35:8080, method=chacha20-ietf-poly1305, password=oZIoA69Q8yhcQV8ka3Pa3A, tag=🇳🇱 荷兰 阿姆斯特丹  82.38.31.35
+shadowsocks = 82.38.31.214:8080, method=chacha20-ietf-poly1305, password=k1dBOmOB4oqi7Ump37a1bQ, tag=🇳🇱 荷兰 阿姆斯特丹  82.38.31.214
 http = 84.17.47.124:9002, over-tls=true, tag=🇳🇱 荷兰 阿姆斯特丹  84.17.47.124
+http = 146.70.170.210:9443, password=None, over-tls=true, tag=🇳🇴 挪威 奥斯陆¹  146.70.170.210
+http = 146.70.170.210:9443, password=None, over-tls=true, tag=🇳🇴 挪威 奥斯陆²  146.70.170.210
 shadowsocks = 185.213.23.63:990, method=chacha20-ietf-poly1305, password=ARgvGZywA+gacgGV26Bvmu05+wZmRW/j+AdU+Z8Bt44=, tag=🇳🇴 挪威 奥斯陆¹  185.213.23.63
 shadowsocks = 185.213.23.63:990, method=chacha20-ietf-poly1305, password=ARgvGZywA+gacgGV26Bvmu05+wZmRW/j+AdU+Z8Bt44=, tag=🇳🇴 挪威 奥斯陆²  185.213.23.63
 shadowsocks = 185.213.23.63:990, method=chacha20-ietf-poly1305, password=ARgvGZywA+gacgGV26Bvmu05+wZmRW/j+AdU+Z8Bt44=, tag=🇳🇴 挪威 奥斯陆³  185.213.23.63
+shadowsocks = 185.213.23.63:990, method=chacha20-ietf-poly1305, password=ARgvGZywA+gacgGV26Bvmu05+wZmRW/j+AdU+Z8Bt44=, tag=🇳🇴 挪威 奥斯陆⁴  185.213.23.63
 http = 31.186.220.204:443, over-tls=true, tag=🇵🇱 波兰 华沙  31.186.220.204
-shadowsocks = 54.36.174.140:443, method=chacha20-ietf-poly1305, password=eetk7pw, tag=🇵🇱 波兰 弗罗茨瓦夫¹  54.36.174.140
-shadowsocks = 54.36.174.140:443, method=chacha20-ietf-poly1305, password=eetk7pw, tag=🇵🇱 波兰 弗罗茨瓦夫²  54.36.174.140
+vmess = 54.37.131.126:80, method=chacha20-poly1305, password=1e55beca-3c69-4fa7-fb1f-15c1b767435f, aead=true, obfs=ws, obfs-uri=/, obfs-host=google.whatsapp.snapp.torob.basalam.hesanid8.ir., tag=🇵🇱 波兰 弗罗茨瓦夫  54.37.131.126
+http = 37.120.156.34:443, over-tls=true, tag=🇵🇱 波兰 馬佐夫舍地區拉瓦¹  37.120.156.34
+http = 37.120.156.34:443, over-tls=true, tag=🇵🇱 波兰 馬佐夫舍地區拉瓦²  37.120.156.34
+http = 193.176.84.26:9002, over-tls=true, tag=🇷🇴 罗马尼亚 布加勒斯特  193.176.84.26
+http = 193.176.84.37:9002, over-tls=true, tag=🇷🇴 罗马尼亚 布加勒斯特  193.176.84.37
 shadowsocks = 194.68.44.42:64546, method=chacha20-ietf-poly1305, password=U83u9OGpvSatIUW7LsWffr, tag=🇷🇴 罗马尼亚 布加勒斯特¹  194.68.44.42
 shadowsocks = 194.68.44.42:64546, method=chacha20-ietf-poly1305, password=U83u9OGpvSatIUW7LsWffr, tag=🇷🇴 罗马尼亚 布加勒斯特²  194.68.44.42
 shadowsocks = 194.68.44.42:64546, method=chacha20-ietf-poly1305, password=U83u9OGpvSatIUW7LsWffr, tag=🇷🇴 罗马尼亚 布加勒斯特³  194.68.44.42
 shadowsocks = 138.199.55.243:19999, method=aes-256-gcm, password=ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=, tag=🇸🇪 瑞典 斯德哥尔摩  138.199.55.243
-trojan = 95.143.196.97:443, password=FkQH0Q5EFneySv20Qj3yoArD2GSb2XZF, over-tls=true, tls-verification=true, tag=🇸🇪 瑞典 胡迪克斯瓦尔  95.143.196.97
-trojan = 149.28.130.108:443, password=0ab6c98dae3b48e8b9c4a776b6c9c19a, over-tls=true, tls-verification=true, tls-host=searchcreativejobsandshowcaseyourartistictalents.com, tag=🇸🇬 新加坡 新加坡  149.28.130.108
-shadowsocks = 149.88.106.74:19999, method=aes-256-gcm, password=ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=, tag=🇸🇬 新加坡 新加坡  149.88.106.74
-shadowsocks = 149.88.107.47:19999, method=aes-256-gcm, password=ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=, tag=🇸🇬 新加坡 新加坡¹  149.88.107.47
-shadowsocks = 149.88.107.47:19999, method=aes-256-gcm, password=ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=, tag=🇸🇬 新加坡 新加坡²  149.88.107.47
-shadowsocks = 51.79.228.131:19999, method=aes-256-gcm, password=ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=, tag=🇸🇬 新加坡 新加坡  51.79.228.131
+shadowsocks = 149.88.106.74:19999, method=aes-256-gcm, password=ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=, tag=🇸🇬 新加坡 新加坡¹  149.88.106.74
+shadowsocks = 149.88.106.74:19999, method=aes-256-gcm, password=ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=, tag=🇸🇬 新加坡 新加坡²  149.88.106.74
+shadowsocks = 149.88.107.74:19999, method=aes-256-gcm, password=ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=, tag=🇸🇬 新加坡 新加坡  149.88.107.74
+shadowsocks = 15.235.164.133:19999, method=aes-256-gcm, password=ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=, tag=🇸🇬 新加坡 新加坡  15.235.164.133
+shadowsocks = 15.235.182.183:19999, method=aes-256-gcm, password=ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=, tag=🇸🇬 新加坡 新加坡  15.235.182.183
 shadowsocks = 185.194.191.35:1353, method=chacha20-ietf-poly1305, password=byX4-DV0C42PLFTWQhMTAQ63mZ8qrDRB, tag=🇺🇦 乌克兰 Kyiv¹  185.194.191.35
 shadowsocks = 185.194.191.35:1353, method=chacha20-ietf-poly1305, password=byX4-DV0C42PLFTWQhMTAQ63mZ8qrDRB, tag=🇺🇦 乌克兰 Kyiv²  185.194.191.35
 shadowsocks = 185.194.191.35:1353, method=chacha20-ietf-poly1305, password=byX4-DV0C42PLFTWQhMTAQ63mZ8qrDRB, tag=🇺🇦 乌克兰 Kyiv³  185.194.191.35
+shadowsocks = 38.121.43.18:19999, method=aes-256-gcm, password=ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=, tag=🇺🇸 美国 亚特兰大  38.121.43.18
 vmess = 169.197.142.22:18000, method=chacha20-poly1305, password=f8c8dc3d-0d37-46b0-8b34-a7232882fcfe, aead=true, tag=🇺🇸 美国 圣克拉拉  169.197.142.22
-shadowsocks = 169.197.142.68:19999, method=aes-256-gcm, password=ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=, tag=🇺🇸 美国 圣克拉拉  169.197.142.68
-trojan = 170.101.101.131:443, password=0ab6c98dae3b48e8b9c4a776b6c9c19a, over-tls=true, tls-verification=true, tls-host=blog.explorecreativejobsandenhanceyourcareerportfolio.com, tag=🇺🇸 美国 底特律  170.101.101.131
-vmess = 165.140.217.2:443, method=chacha20-poly1305, password=b65a2d69-5634-42a2-e4be-54e8a6176900, aead=true, obfs=over-tls, tls-verification=true, tag=🇺🇸 美国 旧金山  165.140.217.2
-trojan = 157.254.38.210:20123, password=d9064589-74af-432a-9390-5d8a9da281bf, over-tls=true, tls-verification=true, tls-host=hk.catxstar.com, tag=🇺🇸 美国 洛杉矶  157.254.38.210
-shadowsocks = 216.106.178.169:19999, method=aes-256-gcm, password=ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=, tag=🇺🇸 美国 芝加哥  216.106.178.169
+shadowsocks = 23.230.52.119:42878, method=chacha20-ietf-poly1305, password=ijoUwfdnkz7mX4pWdkSpmEixTZCt2TRm1JDr4BSaBAWkLxYGoXBHXadFKY5D5ZfoVTwqsx46jCmEUDnQUizJDYrM7B5anhnu, tag=🇺🇸 美国 圣克拉拉  23.230.52.119
+http = 138.199.35.198:9002, username=null, password=null, over-tls=true, tag=🇺🇸 美国 洛杉矶  138.199.35.198
+shadowsocks = 193.151.160.9:19999, method=aes-256-gcm, password=ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=, tag=🇺🇸 美国 迈阿密  193.151.160.9
 trojan = 139.84.231.142:443, password=0ab6c98dae3b48e8b9c4a776b6c9c19a, over-tls=true, tls-verification=true, tls-host=explorecareerpathsandunlockprofessionalsuccesstoday.com, tag=🇿🇦 南非 Isando  139.84.231.142
 shadowsocks = 102.133.165.160:16233, method=chacha20-ietf-poly1305, password=Xsy8Ox4yOV3xLlpxtjzs3X, tag=🇿🇦 南非 约翰内斯堡¹  102.133.165.160
 shadowsocks = 102.133.165.160:16233, method=chacha20-ietf-poly1305, password=Xsy8Ox4yOV3xLlpxtjzs3X, tag=🇿🇦 南非 约翰内斯堡²  102.133.165.160
