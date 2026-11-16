@@ -7,6 +7,7 @@ payload:
   - DOMAIN,sequoia.apple.com
 
   # > Emby
+  - DOMAIN-SUFFIX,drivemby.com
   - DOMAIN-SUFFIX,bangumi.ca
   - DOMAIN-SUFFIX,nijigem.by
   - DOMAIN-SUFFIX,cdn.bgp.yt
