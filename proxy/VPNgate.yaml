@@ -1,8 +1,8 @@
 # VPN Gate 家宽节点（OpenVPN）
 # 数据来源：VPN Gate 官方清单，已剔除 public-vpn 官方机房节点、219.100.37. 网段、IP 情报标记为机房的 IP 及 Google/YouTube 受限国家（CN/RU/IR/TM/KP）
-# 上次更新时间：2026-11-19 09:09:28
-# 条数：72 个节点
-# Hash：829cf354817c559b055053cdd3bce9abfb9da477d030b2f7ae05ccefc28be58b
+# 上次更新时间：2026-11-19 16:49:04
+# 条数：84 个节点
+# Hash：4ab8237dcda7a5fa0ef53ebc4ddfa404adb294e303c3c25e97f32870e52c1058
 # US seen 104.35.190.108:1779 2026-11-17T19:44:31+08:00
 # US seen 135.180.93.53:1919 2026-11-18T18:32:55+08:00
 # US seen 152.117.59.150:1359 2026-11-17T19:44:31+08:00
@@ -16,7 +16,7 @@
 # US seen 71.167.72.17:1364 2026-11-16T18:03:50+08:00
 # US seen 72.226.98.90:1271 2026-11-18T18:32:55+08:00
 # US seen 72.46.195.134:1280 2026-11-18T18:32:55+08:00
-# US seen 74.89.43.70:1541 2026-11-16T10:23:46+08:00
+# US seen 74.83.248.218:1382 2026-11-19T16:49:04+08:00
 # US seen 96.27.229.167:1285 2026-11-16T18:03:50+08:00
 # US seen 98.188.162.135:1254 2026-11-18T04:04:44+08:00
 x-certs:
@@ -24,60 +24,73 @@ x-certs:
   cert: &jkcert "-----BEGIN CERTIFICATE-----\nMIICxjCCAa4CAQAwDQYJKoZIhvcNAQEFBQAwKTEaMBgGA1UEAxMRVlBOR2F0ZUNs\naWVudENlcnQxCzAJBgNVBAYTAkpQMB4XDTEzMDIxMTAzNDk0OVoXDTM3MDExOTAz\nMTQwN1owKTEaMBgGA1UEAxMRVlBOR2F0ZUNsaWVudENlcnQxCzAJBgNVBAYTAkpQ\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA5h2lgQQYUjwoKYJbzVZA\n5VcIGd5otPc/qZRMt0KItCFA0s9RwReNVa9fDRFLRBhcITOlv3FBcW3E8h1Us7RD\n4W8GmJe8zapJnLsD39OSMRCzZJnczW4OCH1PZRZWKqDtjlNca9AF8a65jTmlDxCQ\nCjntLIWk5OLLVkFt9/tScc1GDtci55ofhaNAYMPiH7V8+1g66pGHXAoWK6AQVH67\nXCKJnGB5nlQ+HsMYPV/O49Ld91ZN/2tHkcaLLyNtywxVPRSsRh480jju0fcCsv6h\np/0yXnTB//mWutBGpdUlIbwiITbAmrsbYnjigRvnPqX1RNJUbi9Fp6C2c/HIFJGD\nywIDAQABMA0GCSqGSIb3DQEBBQUAA4IBAQChO5hgcw/4oWfoEFLu9kBa1B//kxH8\nhQkChVNn8BRC7Y0URQitPl3DKEed9URBDdg2KOAz77bb6ENPiliD+a38UJHIRMqe\nUBHhllOHIzvDhHFbaovALBQceeBzdkQxsKQESKmQmR832950UCovoyRB61UyAV7h\n+mZhYPGRKXKSJI6s0Egg/Cri+Cwk4bjJfrb5hVse11yh4D9MHhwSfCOH+0z4hPUT\nFku7dGavURO5SVxMn/sL6En5D+oSeXkadHpDs+Airym2YHh15h0+jPSOoR6yiVp/\n6zZeZkrN43kuS73KpKDFjfFPh8t4r1gOIjttkNcQqBccusnplQ7HJpsk\n-----END CERTIFICATE-----"
   key: &jkkey "-----BEGIN RSA PRIVATE KEY-----\nMIIEpAIBAAKCAQEA5h2lgQQYUjwoKYJbzVZA5VcIGd5otPc/qZRMt0KItCFA0s9R\nwReNVa9fDRFLRBhcITOlv3FBcW3E8h1Us7RD4W8GmJe8zapJnLsD39OSMRCzZJnc\nzW4OCH1PZRZWKqDtjlNca9AF8a65jTmlDxCQCjntLIWk5OLLVkFt9/tScc1GDtci\n55ofhaNAYMPiH7V8+1g66pGHXAoWK6AQVH67XCKJnGB5nlQ+HsMYPV/O49Ld91ZN\n/2tHkcaLLyNtywxVPRSsRh480jju0fcCsv6hp/0yXnTB//mWutBGpdUlIbwiITbA\nmrsbYnjigRvnPqX1RNJUbi9Fp6C2c/HIFJGDywIDAQABAoIBAERV7X5AvxA8uRiK\nk8SIpsD0dX1pJOMIwakUVyvc4EfN0DhKRNb4rYoSiEGTLyzLpyBc/A28Dlkm5eOY\nfjzXfYkGtYi/Ftxkg3O9vcrMQ4+6i+uGHaIL2rL+s4MrfO8v1xv6+Wky33EEGCou\nQiwVGRFQXnRoQ62NBCFbUNLhmXwdj1akZzLU4p5R4zA3QhdxwEIatVLt0+7owLQ3\nlP8sfXhppPOXjTqMD4QkYwzPAa8/zF7acn4kryrUP7Q6PAfd0zEVqNy9ZCZ9ffho\nzXedFj486IFoc5gnTp2N6jsnVj4LCGIhlVHlYGozKKFqJcQVGsHCqq1oz2zjW6LS\noRYIHgECgYEA8zZrkCwNYSXJuODJ3m/hOLVxcxgJuwXoiErWd0E42vPanjjVMhnt\nKY5l8qGMJ6FhK9LYx2qCrf/E0XtUAZ2wVq3ORTyGnsMWre9tLYs55X+ZN10Tc75z\n4hacbU0hqKN1HiDmsMRY3/2NaZHoy7MKnwJJBaG48l9CCTlVwMHocIECgYEA8jby\ndGjxTH+6XHWNizb5SRbZxAnyEeJeRwTMh0gGzwGPpH/sZYGzyu0SySXWCnZh3Rgq\n5uLlNxtrXrljZlyi2nQdQgsq2YrWUs0+zgU+22uQsZpSAftmhVrtvet6MjVjbByY\nDADciEVUdJYIXk+qnFUJyeroLIkTj7WYKZ6RjksCgYBoCFIwRDeg42oK89RFmnOr\nLymNAq4+2oMhsWlVb4ejWIWeAk9nc+GXUfrXszRhS01mUnU5r5ygUvRcarV/T3U7\nTnMZ+I7Y4DgWRIDd51znhxIBtYV5j/C/t85HjqOkH+8b6RTkbchaX3mau7fpUfds\nFq0nhIq42fhEO8srfYYwgQKBgQCyhi1N/8taRwpk+3/IDEzQwjbfdzUkWWSDk9Xs\nH/pkuRHWfTMP3flWqEYgW/LW40peW2HDq5imdV8+AgZxe/XMbaji9Lgwf1RY005n\nKxaZQz7yqHupWlLGF68DPHxkZVVSagDnV/sztWX6SFsCqFVnxIXifXGC4cW5Nm9g\nva8q4QKBgQCEhLVeUfdwKvkZ94g/GFz731Z2hrdVhgMZaU/u6t0V95+YezPNCQZB\nwmE9Mmlbq1emDeROivjCfoGhR3kZXW1pTKlLh6ZMUQUOpptdXva8XxfoqQwa3enA\nM7muBbF0XN7VO80iJPv+PmIZdEIAkpwKfi201YB+BafCIuGxIF50Vg==\n-----END RSA PRIVATE KEY-----"
 proxies:
-  - { name: '🇯🇵 日本 Adachi 89d 651.82 Mbps', type: openvpn, server: 59.138.139.69, port: 1242, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  - { name: '🇯🇵 日本 Chiyoda City 24d 30.35 Mbps', type: openvpn, server: 115.179.206.241, port: 443, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  - { name: '🇯🇵 日本 Harada 5d 17.11 Mbps', type: openvpn, server: 210.167.90.232, port: 1679, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  - { name: '🇯🇵 日本 Ichikawa 82d 342.25 Mbps', type: openvpn, server: 125.196.144.134, port: 1571, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  - { name: '🇯🇵 日本 Isogo Ku 3d 2323.99 Mbps', type: openvpn, server: 111.96.174.175, port: 1863, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  - { name: '🇯🇵 日本 Kochi 2d 444.82 Mbps', type: openvpn, server: 210.250.96.123, port: 1366, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  - { name: '🇯🇵 日本 Mejiro 0d 54.64 Mbps', type: openvpn, server: 180.36.142.19, port: 1759, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  - { name: '🇯🇵 日本 Mejiro 0d 683.58 Mbps', type: openvpn, server: 180.36.142.19, port: 1820, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  - { name: '🇯🇵 日本 Minamisumiyoshi 14d 874.75 Mbps', type: openvpn, server: 120.74.54.109, port: 1483, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  - { name: '🇯🇵 日本 Minato 0d 738.31 Mbps', type: openvpn, server: 218.131.41.95, port: 1545, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  - { name: '🇯🇵 日本 Minato 0d 91.64 Mbps', type: openvpn, server: 126.77.185.5, port: 1724, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  - { name: '🇯🇵 日本 Minato 0d 92.84 Mbps', type: openvpn, server: 126.218.26.174, port: 1284, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  - { name: '🇯🇵 日本 Minato 6d 667.84 Mbps', type: openvpn, server: 126.103.157.140, port: 1834, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  - { name: '🇯🇵 日本 Minato-ku 0d 317.85 Mbps', type: openvpn, server: 60.95.76.42, port: 1230, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  - { name: '🇯🇵 日本 Minato-ku 0d 428.77 Mbps', type: openvpn, server: 60.153.248.204, port: 1400, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  - { name: '🇯🇵 日本 Minato-ku 0d 592.52 Mbps', type: openvpn, server: 60.97.32.246, port: 1840, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  - { name: '🇯🇵 日本 Minato-ku 3d 414.84 Mbps', type: openvpn, server: 60.119.0.51, port: 1900, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  - { name: '🇯🇵 日本 Shinagawa 12d 264.30 Mbps', type: openvpn, server: 223.133.218.118, port: 1911, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  - { name: '🇯🇵 日本 东京 0d 81.55 Mbps', type: openvpn, server: 115.65.187.82, port: 1242, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  - { name: '🇯🇵 日本 北九州市 1d 119.42 Mbps', type: openvpn, server: 119.170.233.13, port: 1486, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  - { name: '🇯🇵 日本 多摩市 6d 815.28 Mbps', type: openvpn, server: 59.129.41.98, port: 1472, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  - { name: '🇯🇵 日本 大阪市 0d 352.11 Mbps', type: openvpn, server: 153.172.201.92, port: 1817, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  - { name: '🇯🇵 日本 大阪市 1d 121.36 Mbps', type: openvpn, server: 27.127.159.100, port: 1333, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  - { name: '🇯🇵 日本 川口市 0d 877.14 Mbps', type: openvpn, server: 59.138.1.219, port: 1387, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  - { name: '🇯🇵 日本 栃木市 15d 64.89 Mbps', type: openvpn, server: 119.83.242.105, port: 1285, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  - { name: '🇯🇵 日本 熊本市 2d 620.48 Mbps', type: openvpn, server: 58.3.164.56, port: 1541, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  - { name: '🇯🇵 日本 鈴鹿市 1d 665.29 Mbps', type: openvpn, server: 220.219.199.157, port: 1395, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  - { name: '🇰🇷 韩国 Anyang-si 10d 82.85 Mbps', type: openvpn, server: 121.139.53.139, port: 995, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  - { name: '🇰🇷 韩国 Dalseo-gu 3d 82.08 Mbps', type: openvpn, server: 210.113.225.149, port: 1468, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  - { name: '🇰🇷 韩国 Dobong-gu 0d 85.96 Mbps', type: openvpn, server: 221.145.88.114, port: 1909, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  - { name: '🇰🇷 韩国 Gwacheon 2d 96.26 Mbps', type: openvpn, server: 221.140.75.125, port: 1981, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  - { name: '🇰🇷 韩国 Haeundae-gu 0d 76.45 Mbps', type: openvpn, server: 14.42.230.125, port: 1915, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  - { name: '🇰🇷 韩国 Namdong-gu 0d 439.77 Mbps', type: openvpn, server: 114.203.5.161, port: 1662, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  - { name: '🇰🇷 韩国 Nowon-gu 11d 95.09 Mbps', type: openvpn, server: 58.233.2.51, port: 1868, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  - { name: '🇰🇷 韩国 Paju-si 0d 252.94 Mbps', type: openvpn, server: 220.88.141.137, port: 995, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  - { name: '🇰🇷 韩国 Seongdong-gu 3d 72.70 Mbps', type: openvpn, server: 211.46.59.46, port: 1414, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  - { name: '🇰🇷 韩国 Seongnam-si 2d 72.78 Mbps', type: openvpn, server: 183.99.11.29, port: 995, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  - { name: '🇰🇷 韩国 Siheung-si 0d 106.91 Mbps', type: openvpn, server: 125.176.88.60, port: 1485, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  - { name: '🇰🇷 韩国 Siheung-si 0d 34.05 Mbps', type: openvpn, server: 122.43.155.16, port: 995, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  - { name: '🇰🇷 韩国 Songpa-gu 2d 98.95 Mbps', type: openvpn, server: 119.64.168.108, port: 1849, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  - { name: '🇰🇷 韩国 Yongin-si 1d 341.95 Mbps', type: openvpn, server: 59.13.63.36, port: 995, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  - { name: '🇰🇷 韩国 Yuseong-gu 0d 261.07 Mbps', type: openvpn, server: 125.140.171.241, port: 1594, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  - { name: '🇰🇷 韩国 Yuseong-gu 0d 73.75 Mbps', type: openvpn, server: 59.26.52.201, port: 1406, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  - { name: '🇰🇷 韩国 仁川广域市 0d 364.25 Mbps', type: openvpn, server: 211.51.111.68, port: 1355, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  - { name: '🇰🇷 韩国 仁川广域市 74d 89.31 Mbps', type: openvpn, server: 121.142.148.62, port: 995, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  - { name: '🇰🇷 韩国 冠岳区 13d 387.23 Mbps', type: openvpn, server: 14.36.183.252, port: 995, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  - { name: '🇰🇷 韩国 天安市 0d 377.63 Mbps', type: openvpn, server: 49.173.24.52, port: 1937, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  - { name: '🇰🇷 韩国 梁山市 1d 86.95 Mbps', type: openvpn, server: 39.122.7.147, port: 995, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  - { name: '🇰🇷 韩国 水原市 0d 105.25 Mbps', type: openvpn, server: 210.113.66.118, port: 1569, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  - { name: '🇰🇷 韩国 水原市 0d 139.74 Mbps', type: openvpn, server: 183.99.213.108, port: 995, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  - { name: '🇰🇷 韩国 羅州市 11d 376.81 Mbps', type: openvpn, server: 221.144.30.91, port: 1545, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  - { name: '🇰🇷 韩国 首尔特别市 4d 68.00 Mbps', type: openvpn, server: 121.162.159.115, port: 1724, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  - { name: '🇰🇷 韩国 麗水市 0d 693.70 Mbps', type: openvpn, server: 218.156.245.58, port: 995, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  - { name: '🇲🇽 墨西哥 瓜达拉哈拉 0d 173.51 Mbps', type: openvpn, server: 189.143.199.233, port: 1950, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  - { name: '🇯🇵 日本 Adachi City 0d 97.97 Mbps', type: openvpn, server: 111.99.88.67, port: 1756, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  - { name: '🇯🇵 日本 Amagasaki 16d 297.73 Mbps', type: openvpn, server: 14.10.120.193, port: 7551, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  - { name: '🇯🇵 日本 Chiyoda City 0d 29.82 Mbps', type: openvpn, server: 58.98.206.102, port: 1546, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  - { name: '🇯🇵 日本 Daimyō 0d 231.68 Mbps', type: openvpn, server: 119.175.44.34, port: 1820, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  - { name: '🇯🇵 日本 Koishikawa 18d 316.08 Mbps', type: openvpn, server: 124.213.66.51, port: 1346, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  - { name: '🇯🇵 日本 Minato 0d 2378.43 Mbps', type: openvpn, server: 221.44.201.239, port: 1726, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  - { name: '🇯🇵 日本 Minato 0d 2418.74 Mbps', type: openvpn, server: 218.131.41.95, port: 1545, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  - { name: '🇯🇵 日本 Minato 0d 402.01 Mbps', type: openvpn, server: 126.216.249.148, port: 1627, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  - { name: '🇯🇵 日本 Minato 0d 535.37 Mbps', type: openvpn, server: 218.112.71.240, port: 1603, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  - { name: '🇯🇵 日本 Minato 3d 182.51 Mbps', type: openvpn, server: 126.220.224.22, port: 1641, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  - { name: '🇯🇵 日本 Minato-ku 0d 356.34 Mbps', type: openvpn, server: 60.135.165.23, port: 1688, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  - { name: '🇯🇵 日本 Minato-ku 4d 195.64 Mbps', type: openvpn, server: 60.137.146.81, port: 1437, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  - { name: '🇯🇵 日本 Minato-ku 8d 52.67 Mbps', type: openvpn, server: 60.138.10.206, port: 1239, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  - { name: '🇯🇵 日本 Motoyamaminamimachi 0d 48.52 Mbps', type: openvpn, server: 202.239.201.40, port: 1622, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  - { name: '🇯🇵 日本 Toyotamakita 0d 72.45 Mbps', type: openvpn, server: 118.241.179.243, port: 1839, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  - { name: '🇯🇵 日本 上越市 0d 79.98 Mbps', type: openvpn, server: 126.251.132.176, port: 1843, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  - { name: '🇯🇵 日本 东京 4d 76.33 Mbps', type: openvpn, server: 218.46.187.22, port: 1555, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  - { name: '🇯🇵 日本 大津市 0d 95.53 Mbps', type: openvpn, server: 112.136.1.215, port: 1514, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  - { name: '🇯🇵 日本 小山市 4d 363.63 Mbps', type: openvpn, server: 60.71.4.56, port: 1393, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  - { name: '🇯🇵 日本 所澤市 0d 897.64 Mbps', type: openvpn, server: 58.87.159.114, port: 1276, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  - { name: '🇯🇵 日本 新座市 3d 745.83 Mbps', type: openvpn, server: 106.177.117.146, port: 1531, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  - { name: '🇯🇵 日本 浦安市 0d 244.72 Mbps', type: openvpn, server: 110.163.142.88, port: 5555, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  - { name: '🇯🇵 日本 海老名市 0d 733.98 Mbps', type: openvpn, server: 143.189.192.65, port: 1837, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  - { name: '🇯🇵 日本 滨松市 0d 184.52 Mbps', type: openvpn, server: 182.21.249.148, port: 1377, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  - { name: '🇯🇵 日本 滨松市 89d 688.52 Mbps', type: openvpn, server: 123.48.124.169, port: 1558, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  - { name: '🇯🇵 日本 滨松市 89d 787.16 Mbps', type: openvpn, server: 123.48.124.169, port: 1534, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  - { name: '🇯🇵 日本 美濃加茂市 24d 172.91 Mbps', type: openvpn, server: 133.218.25.217, port: 1702, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  - { name: '🇯🇵 日本 船橋市 0d 174.13 Mbps', type: openvpn, server: 114.164.96.126, port: 1674, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  - { name: '🇰🇷 韩国 Anyang-si 0d 286.31 Mbps', type: openvpn, server: 112.220.133.62, port: 1948, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  - { name: '🇰🇷 韩国 Anyang-si 0d 37.57 Mbps', type: openvpn, server: 59.14.17.227, port: 1387, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  - { name: '🇰🇷 韩国 Bucheon-si 0d 29.11 Mbps', type: openvpn, server: 218.148.92.64, port: 1471, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  - { name: '🇰🇷 韩国 Bucheon-si 0d 95.96 Mbps', type: openvpn, server: 49.164.173.80, port: 995, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  - { name: '🇰🇷 韩国 Buk-gu 0d 123.80 Mbps', type: openvpn, server: 221.144.109.201, port: 995, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  - { name: '🇰🇷 韩国 Bupyeong-gu 8d 886.62 Mbps', type: openvpn, server: 110.15.34.238, port: 1930, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  - { name: '🇰🇷 韩国 Eunpyeong-gu 0d 635.19 Mbps', type: openvpn, server: 61.73.4.139, port: 1577, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  - { name: '🇰🇷 韩国 Gimje-si 0d 476.77 Mbps', type: openvpn, server: 121.186.248.35, port: 1248, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  - { name: '🇰🇷 韩国 Gunpo 36d 767.13 Mbps', type: openvpn, server: 49.165.136.156, port: 1828, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  - { name: '🇰🇷 韩国 Guri-si 2d 359.87 Mbps', type: openvpn, server: 118.32.42.183, port: 995, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  - { name: '🇰🇷 韩国 Hwangchi 0d 383.16 Mbps', type: openvpn, server: 14.48.19.5, port: 995, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  - { name: '🇰🇷 韩国 Mapo-gu 3d 79.00 Mbps', type: openvpn, server: 118.33.57.194, port: 1998, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  - { name: '🇰🇷 韩国 Mapo-gu 6d 265.53 Mbps', type: openvpn, server: 182.172.196.51, port: 1636, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  - { name: '🇰🇷 韩国 Nowon-gu 1d 159.00 Mbps', type: openvpn, server: 1.229.239.249, port: 995, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  - { name: '🇰🇷 韩国 Paju 0d 461.46 Mbps', type: openvpn, server: 175.213.72.230, port: 995, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  - { name: '🇰🇷 韩国 Sejong 10d 86.42 Mbps', type: openvpn, server: 211.245.102.129, port: 1672, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  - { name: '🇰🇷 韩国 Seongbuk-gu 0d 94.22 Mbps', type: openvpn, server: 121.128.125.38, port: 1862, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  - { name: '🇰🇷 韩国 Seongnam-si 0d 100.89 Mbps', type: openvpn, server: 211.193.231.219, port: 995, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  - { name: '🇰🇷 韩国 Seongnam-si 0d 465.91 Mbps', type: openvpn, server: 222.102.135.202, port: 995, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  - { name: '🇰🇷 韩国 Siheung-si 0d 70.99 Mbps', type: openvpn, server: 218.37.127.4, port: 1695, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  - { name: '🇰🇷 韩国 Songpa-gu 2d 92.84 Mbps', type: openvpn, server: 175.125.132.174, port: 1697, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  - { name: '🇰🇷 韩国 Uijeongbu-si 0d 489.65 Mbps', type: openvpn, server: 1.239.107.78, port: 1491, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  - { name: '🇰🇷 韩国 Wando-gun 2d 96.85 Mbps', type: openvpn, server: 121.149.3.72, port: 1460, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  - { name: '🇰🇷 韩国 Yecheon-gun 20d 43.89 Mbps', type: openvpn, server: 14.40.125.1, port: 995, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  - { name: '🇰🇷 韩国 冠岳区 13d 285.77 Mbps', type: openvpn, server: 14.36.183.252, port: 995, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  - { name: '🇰🇷 韩国 大田广域市 73d 83.53 Mbps', type: openvpn, server: 118.42.53.222, port: 995, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  - { name: '🇰🇷 韩国 安山市 1d 62.40 Mbps', type: openvpn, server: 221.168.230.18, port: 1896, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  - { name: '🇰🇷 韩国 廣州市 11d 58.07 Mbps', type: openvpn, server: 121.165.121.91, port: 995, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  - { name: '🇰🇷 韩国 忠州市 0d 62.72 Mbps', type: openvpn, server: 175.202.239.184, port: 1816, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  - { name: '🇰🇷 韩国 昌原市 21d 78.42 Mbps', type: openvpn, server: 121.146.152.111, port: 1743, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  - { name: '🇰🇷 韩国 羅州市 11d 105.72 Mbps', type: openvpn, server: 221.144.30.91, port: 1545, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  - { name: '🇰🇷 韩国 釜山广域市 23d 94.64 Mbps', type: openvpn, server: 211.184.148.95, port: 995, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  - { name: '🇰🇷 韩国 釜山广域市 37d 35.66 Mbps', type: openvpn, server: 211.104.214.78, port: 995, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  - { name: '🇰🇷 韩国 首尔特别市 0d 413.20 Mbps', type: openvpn, server: 114.206.116.129, port: 995, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  - { name: '🇰🇷 韩国 首尔特别市 0d 458.23 Mbps', type: openvpn, server: 222.110.68.208, port: 1697, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  - { name: '🇰🇷 韩国 首尔特别市 6d 18.31 Mbps', type: openvpn, server: 59.187.245.190, port: 995, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  - { name: '🇰🇷 韩国 龙仁市 2d 101.27 Mbps', type: openvpn, server: 211.198.63.122, port: 1805, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  - { name: '🇹🇭 泰国 佛统 2d 95.88 Mbps', type: openvpn, server: 27.130.208.137, port: 1540, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  - { name: '🇹🇭 泰国 曼谷 2d 499.67 Mbps', type: openvpn, server: 27.130.38.144, port: 1754, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
   - { name: '🇺🇸 美国 Avondale 0d 103.07 Mbps', type: openvpn, server: 50.5.72.58, port: 1511, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
   - { name: '🇺🇸 美国 Newburgh 0d 232.78 Mbps', type: openvpn, server: 72.226.98.90, port: 1271, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
   - { name: '🇺🇸 美国 刘易斯顿 0d 487.71 Mbps', type: openvpn, server: 159.118.93.245, port: 1258, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
@@ -87,12 +100,11 @@ proxies:
   - { name: '🇺🇸 美国 富兰克林 0d 137.41 Mbps', type: openvpn, server: 152.117.59.150, port: 1359, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
   - { name: '🇺🇸 美国 布雷亚 0d 115.43 Mbps', type: openvpn, server: 104.35.190.108, port: 1779, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
   - { name: '🇺🇸 美国 布鲁克林区 0d 0.00 Mbps', type: openvpn, server: 71.167.72.17, port: 1364, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  - { name: '🇺🇸 美国 布鲁克林区 0d 131.10 Mbps', type: openvpn, server: 74.89.43.70, port: 1541, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
   - { name: '🇺🇸 美国 希斯皮里亚 0d 109.22 Mbps', type: openvpn, server: 47.146.134.221, port: 1626, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
   - { name: '🇺🇸 美国 拉斯维加斯 2d 59.88 Mbps', type: openvpn, server: 98.188.162.135, port: 1254, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
   - { name: '🇺🇸 美国 沃特伯里 0d 107.11 Mbps', type: openvpn, server: 32.217.68.98, port: 1259, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  - { name: '🇺🇸 美国 漢密爾頓 0d 157.54 Mbps', type: openvpn, server: 74.83.248.218, port: 1382, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
   - { name: '🇺🇸 美国 聖利安卓 0d 780.11 Mbps', type: openvpn, server: 135.180.93.53, port: 1919, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
   - { name: '🇺🇸 美国 阿罕布拉 0d 56.90 Mbps', type: openvpn, server: 24.205.128.8, port: 1407, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
   - { name: '🇺🇸 美国 麦迪逊 0d 120.77 Mbps', type: openvpn, server: 64.233.229.158, port: 1502, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  - { name: '🇻🇳 越南 胡志明市 0d 137.20 Mbps', type: openvpn, server: 14.226.235.31, port: 1716, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
-  - { name: '🇻🇳 越南 胡志明市 1d 84.93 Mbps', type: openvpn, server: 171.227.33.54, port: 1432, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
+  - { name: '🇻🇳 越南 河內市 0d 123.33 Mbps', type: openvpn, server: 183.81.4.10, port: 1803, proto: tcp, username: vpn, password: vpn, cipher: AES-128-CBC, auth: SHA1, ca: *jkca, cert: *jkcert, key: *jkkey }
