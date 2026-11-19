@@ -1,7 +1,7 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-11-18 20:51:52
-# 条数：blackmatrix7 291159 条 + MetaCubeX 908 条 (geosite 908 / geoip 0) → 去重合并 291667 条，去冗 157 条，实存 291510 条
-# Hash：4bea6ec5efb8ec20ab2573cfdbd4444ed853ec4add5460b85de8c62d2aeb6e92
+# 上次更新时间：2026-11-19 20:42:32
+# 条数：blackmatrix7 291159 条 + MetaCubeX 909 条 (geosite 909 / geoip 0) → 去重合并 291668 条，去冗 157 条，实存 291511 条
+# Hash：7bcf6505c9303109f4fe04f9ce75b63411d943df2c9f8ee789b07d6a17190b92
 payload:
   - DOMAIN,0.code.cotsta.ru
   - DOMAIN,00-gov.cn
@@ -248354,6 +248354,7 @@ payload:
   - DOMAIN-SUFFIX,tenadfpgwocuw.website
   - DOMAIN-SUFFIX,tenantbaffle.life
   - DOMAIN-SUFFIX,tenantrip.com
+  - DOMAIN-SUFFIX,tencentads.com
   - DOMAIN-SUFFIX,tencentmind.com
   - DOMAIN-SUFFIX,tend-new.com
   - DOMAIN-SUFFIX,tend.io
