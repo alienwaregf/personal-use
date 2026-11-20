@@ -13,7 +13,7 @@ SOURCE_URLS = [
     "http://www.vpngate.net/api/iphone/",
 ]
 IP_API_BATCH = "http://ip-api.com/batch?fields=status,query,country,countryCode,regionName,city,isp,org,as,hosting,proxy&lang=zh-CN"
-OUTPUT_PATH = Path("proxy/VPNgate.yaml")
+OUTPUT_PATH = Path("proxy/ssr.yaml")
 
 EXCLUDE_HOST_PREFIX = "public-vpn"
 EXCLUDE_IP_PREFIX = "219.100.37."
