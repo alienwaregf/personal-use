@@ -1,4 +1,4 @@
-import base641
+import base64
 import hashlib
 import json
 import re
