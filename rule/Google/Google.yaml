@@ -1,7 +1,7 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-11-23 16:48:48
-# 条数：blackmatrix7 701 条 + MetaCubeX 8168 条 (geosite 1078 / geoip 7090) → 去重合并 8252 条，去冗 272 条，实存 7980 条
-# Hash：6b5390acec52b9249ab6f3ed2add8d6ac1066a62382e649604cbbf360f470899
+# 上次更新时间：2026-11-25 01:22:05
+# 条数：blackmatrix7 701 条 + MetaCubeX 8169 条 (geosite 1079 / geoip 7090) → 去重合并 8253 条，去冗 272 条，实存 7981 条
+# Hash：c0674b8a88f28f6b9661e3d2658ee4d8e133485028b193b2b0ed33ddf3f5b3c7
 payload:
   - DOMAIN,google-ohttp-relay-safebrowsing.fastly-edge.com
   - DOMAIN-KEYWORD,appspot
@@ -233,6 +233,7 @@ payload:
   - DOMAIN-SUFFIX,gateway.dev
   - DOMAIN-SUFFIX,gbiz
   - DOMAIN-SUFFIX,gcr.io
+  - DOMAIN-SUFFIX,gemma.ai
   - DOMAIN-SUFFIX,gerritcodereview.com
   - DOMAIN-SUFFIX,get.app
   - DOMAIN-SUFFIX,get.dev

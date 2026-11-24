@@ -1,7 +1,7 @@
 # 数据来源：MetaCubeX
-# 上次更新时间：2026-11-23 16:49:18
-# 条数：blackmatrix7 0 条 + MetaCubeX 218 条 (geosite 218 / geoip 0) → 去重合并 218 条
-# Hash：60f5d8b161c01b18a7e34a81d6d31c3789a13fd5945a5e80e301016c27ad4ba8
+# 上次更新时间：2026-11-25 01:22:35
+# 条数：blackmatrix7 0 条 + MetaCubeX 219 条 (geosite 219 / geoip 0) → 去重合并 219 条
+# Hash：81f316c89d74577105073af868d8259feee8b4c348942e85611f0766f9c63831
 payload:
   - DOMAIN,ai.google.dev
   - DOMAIN,alkalicore-pa.clients6.google.com
@@ -129,6 +129,7 @@ payload:
   - DOMAIN-SUFFIX,gemini.google
   - DOMAIN-SUFFIX,gemini.google.com
   - DOMAIN-SUFFIX,gemini.gstatic.com
+  - DOMAIN-SUFFIX,gemma.ai
   - DOMAIN-SUFFIX,generativeai.google
   - DOMAIN-SUFFIX,generativelanguage.googleapis.com
   - DOMAIN-SUFFIX,githubcopilot.com

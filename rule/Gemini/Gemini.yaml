@@ -1,7 +1,7 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-11-11 18:36:42
-# 条数：blackmatrix7 13 条 + MetaCubeX 49 条 (geosite 49 / geoip 0) → 去重合并 54 条，去冗 1 条，实存 53 条
-# Hash：a521fce86c30530db3993eac5a6b499360bd629e1cb6c83eb68f372b918ea329
+# 上次更新时间：2026-11-25 01:22:04
+# 条数：blackmatrix7 13 条 + MetaCubeX 50 条 (geosite 50 / geoip 0) → 去重合并 55 条，去冗 1 条，实存 54 条
+# Hash：61e4c90211389e13cc5e1b5e4269bb8d9108f22ea7723d8fe2e1c5d4a60b9a1f
 payload:
   - DOMAIN,ai.google.dev
   - DOMAIN,alkalicore-pa.clients6.google.com
@@ -39,6 +39,7 @@ payload:
   - DOMAIN-SUFFIX,gemini.google
   - DOMAIN-SUFFIX,gemini.google.com
   - DOMAIN-SUFFIX,gemini.gstatic.com
+  - DOMAIN-SUFFIX,gemma.ai
   - DOMAIN-SUFFIX,generativeai.google
   - DOMAIN-SUFFIX,generativelanguage.googleapis.com
   - DOMAIN-SUFFIX,jules.google
