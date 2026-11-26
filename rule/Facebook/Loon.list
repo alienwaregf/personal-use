@@ -652,7 +652,8 @@ IP-CIDR6,2620:10d:c090::/44,extended-matching
 IP-CIDR6,2a03:2880::/32,extended-matching
 IP-CIDR6,2a03:2887:ff00::/48,extended-matching
 IP-CIDR6,2a03:2887:ff03::/48,extended-matching
-IP-CIDR6,2a03:2887:ff04::/46,extended-matching
+IP-CIDR6,2a03:2887:ff05::/48,extended-matching
+IP-CIDR6,2a03:2887:ff06::/47,extended-matching
 IP-CIDR6,2a03:2887:ff09::/48,extended-matching
 IP-CIDR6,2a03:2887:ff0a::/48,extended-matching
 IP-CIDR6,2a03:2887:ff1b::/48,extended-matching
@@ -662,7 +663,6 @@ IP-CIDR6,2a03:2887:ff22::/47,extended-matching
 IP-CIDR6,2a03:2887:ff27::/48,extended-matching
 IP-CIDR6,2a03:2887:ff28::/46,extended-matching
 IP-CIDR6,2a03:2887:ff2e::/47,extended-matching
-IP-CIDR6,2a03:2887:ff30::/48,extended-matching
 IP-CIDR6,2a03:2887:ff33::/48,extended-matching
 IP-CIDR6,2a03:2887:ff37::/48,extended-matching
 IP-CIDR6,2a03:2887:ff38::/46,extended-matching

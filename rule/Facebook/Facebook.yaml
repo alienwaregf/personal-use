@@ -1,7 +1,7 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-11-12 17:36:58
+# 上次更新时间：2026-11-26 22:55:30
 # 条数：blackmatrix7 570 条 + MetaCubeX 519 条 (geosite 397 / geoip 122) → 去重合并 695 条，去冗 3 条，实存 692 条
-# Hash：f0ab2e8b94319c24ec27e2ba5b4afa703524def85bc8559c6c4c9bacba968a6d
+# Hash：94b480d1e43f395760ac8d3c05650eb54a777a0a44c82c053e14d2dfe0f2c7ca
 payload:
   - DOMAIN-KEYWORD,facebook
   - DOMAIN-KEYWORD,fbcdn
@@ -658,7 +658,8 @@ payload:
   - IP-CIDR6,2a03:2880::/32
   - IP-CIDR6,2a03:2887:ff00::/48
   - IP-CIDR6,2a03:2887:ff03::/48
-  - IP-CIDR6,2a03:2887:ff04::/46
+  - IP-CIDR6,2a03:2887:ff05::/48
+  - IP-CIDR6,2a03:2887:ff06::/47
   - IP-CIDR6,2a03:2887:ff09::/48
   - IP-CIDR6,2a03:2887:ff0a::/48
   - IP-CIDR6,2a03:2887:ff1b::/48
@@ -668,7 +669,6 @@ payload:
   - IP-CIDR6,2a03:2887:ff27::/48
   - IP-CIDR6,2a03:2887:ff28::/46
   - IP-CIDR6,2a03:2887:ff2e::/47
-  - IP-CIDR6,2a03:2887:ff30::/48
   - IP-CIDR6,2a03:2887:ff33::/48
   - IP-CIDR6,2a03:2887:ff37::/48
   - IP-CIDR6,2a03:2887:ff38::/46
