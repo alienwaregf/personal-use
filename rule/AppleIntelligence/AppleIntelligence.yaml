@@ -1,7 +1,7 @@
 # 数据来源：MetaCubeX
-# 上次更新时间：2026-11-11 18:36:16
+# 上次更新时间：2026-11-27 20:44:56
 # 条数：blackmatrix7 0 条 + MetaCubeX 5 条 (geosite 5 / geoip 0) → 去重合并 17 条
-# Hash：1247458e6ff33da2070c28439ef560e02033ac57b27fdae171e6a19c654a2556
+# Hash：11b2f8a0e16c7b934bf7f7b981ff91f58087f8e568ab4cb6d188ba241cb93f39
 payload:
   - DOMAIN,apple-relay.apple.com
   - DOMAIN,apple-relay.cloudflare.com

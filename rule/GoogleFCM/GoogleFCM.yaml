@@ -1,7 +1,7 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-11-11 18:36:45
+# 上次更新时间：2026-11-27 20:45:34
 # 条数：blackmatrix7 41 条 + MetaCubeX 12 条 (geosite 12 / geoip 0) → 去重合并 41 条
-# Hash：269039194935bd5383b47b576ec242c25a5d23f5888676247adf6f726031904d
+# Hash：dff3a0e6c4b97693d5dc88b8216fb5685cb54f97ccb51395a7a3568739e1712c
 payload:
   - DOMAIN,alt1-mtalk.google.com
   - DOMAIN,alt2-mtalk.google.com

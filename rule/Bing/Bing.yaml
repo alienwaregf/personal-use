@@ -1,7 +1,7 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-11-11 18:36:20
+# 上次更新时间：2026-11-27 20:44:59
 # 条数：blackmatrix7 9 条 + MetaCubeX 41 条 (geosite 41 / geoip 0) → 去重合并 41 条，去冗 6 条，实存 35 条
-# Hash：0ea0d30704171e9f4c5f7a049f7ee39f83f397999e4028c7825d6794b8f32f46
+# Hash：7e3248413c64be601a7e1db92c811d010b5de8f56b5e6052fab46a3413f5b69f
 payload:
   - DOMAIN,location.microsoft.com
   - DOMAIN-SUFFIX,bing

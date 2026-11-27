@@ -1,7 +1,7 @@
 # 数据来源：blackmatrix7
-# 上次更新时间：2026-11-11 18:36:44
+# 上次更新时间：2026-11-27 20:45:34
 # 条数：blackmatrix7 16 条 + MetaCubeX 0 条 (geosite 0 / geoip 0) → 去重合并 16 条
-# Hash：3ff5dcd184adbfafbf8ad5ff03e6c41ee3caf7dbf90d7411fb78f9011f9a220c
+# Hash：31c19375598a64afce9a42ff7a93eb5e22101e9fd5b230dd6e60a314d8d9693f
 payload:
   - DOMAIN-SUFFIX,earth-pa.clients6.google.com
   - DOMAIN-SUFFIX,earth.google.com

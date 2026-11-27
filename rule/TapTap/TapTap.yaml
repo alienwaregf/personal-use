@@ -1,7 +1,7 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-11-11 18:36:58
+# 上次更新时间：2026-11-27 20:45:42
 # 条数：blackmatrix7 2 条 + MetaCubeX 7 条 (geosite 7 / geoip 0) → 去重合并 9 条
-# Hash：d82b7faaa9a53738947e9acb5264718fdf78a6bdec6f9f5756485ea0f2c0e921
+# Hash：696d1b57d268dbf8cc362b50d93fa63920ccbe06609b2d06b97de553fbfa8cf4
 payload:
   - DOMAIN-SUFFIX,tap.io
   - DOMAIN-SUFFIX,tapapks.com
