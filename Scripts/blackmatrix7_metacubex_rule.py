@@ -98,6 +98,7 @@ UPSTREAM_INCLUDE_FOLDERS = {
     "PlayStation",
     "PrivateTracker",
     "Reddit",
+    "Roblox",
     "Riot",
     "Siri",
     "Speedtest",
