@@ -1,7 +1,7 @@
 # 数据来源：blackmatrix7 + MetaCubeX
-# 上次更新时间：2026-11-27 20:45:37
+# 上次更新时间：2026-11-28 18:02:42
 # 条数：blackmatrix7 670 条 + MetaCubeX 760 条 (geosite 760 / geoip 0) → 去重合并 899 条，去冗 130 条，实存 769 条
-# Hash：bcdbeaba8953d9742e97ea52fc4f3200c99d6c7651df19c091744f480cd9caf4
+# Hash：91af997ae63fd145ac9ee517f28dc9277a4683cd187d8b66ca7f351ff3f3983d
 payload:
   - DOMAIN,aurora-customization-usw2.lithium.com
   - DOMAIN,github-api.arkoselabs.com
