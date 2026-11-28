@@ -16,18 +16,17 @@
 🇦🇹 奥地利 維也納³  152.53.1.57 = Shadowsocks,152.53.1.57,8388,chacha20-ietf-poly1305,"AdawffFMHymlasRb0VOP3HFf7sTG5sJx"
 🇦🇹 奥地利 維也納⁴  152.53.1.57 = Shadowsocks,152.53.1.57,8388,chacha20-ietf-poly1305,"AdawffFMHymlasRb0VOP3HFf7sTG5sJx"
 🇦🇹 奥地利 維也納⁵  152.53.1.57 = Shadowsocks,152.53.1.57,8388,chacha20-ietf-poly1305,"AdawffFMHymlasRb0VOP3HFf7sTG5sJx"
-🇧🇪 比利时 Brussels  35.210.99.51 = VLESS,35.210.99.51,443,"92e8d9dc-8e3b-4f81-a278-d18c6bf1b962",transport=ws, path=/ws?ip=35.210.99.51:443fp=chrome, host=app-base-njw3ky.pages.dev, over-tls=true, sni=app-base-njw3ky.pages.dev
-🇧🇬 保加利亚 索菲亞  213.183.63.60 = Shadowsocks,213.183.63.60,9066,aes-256-cfb,"2KUaE2a8NWTvuCZ3"
+🇦🇹 奥地利 維也納  154.47.19.225 = VMess,154.47.19.225,1270,auto,"5c040f1d-45db-43bd-8d46-e4950e433735",transport=tcp, alterId=0, over-tls=true, sni=xmfhlpy.com
 🇧🇷 巴西 圣保罗  191.7.129.133 = socks5,191.7.129.133,62000,dXdyZ2Zrd2c6MG12cnQ1amI=,""
-🇨🇦 加拿大 Beauharnois  51.222.200.165 = Shadowsocks,51.222.200.165,5000,aes-256-gcm,"Y6R9pAtvxxzmGC"
 🇨🇦 加拿大 多伦多  104.31.16.65 = VLESS,104.31.16.65,2095,"38ace213-5184-477b-ac3e-d800d0cf3cd9",transport=ws, path=/?ed=2048, host=de1.vlessx.xyz, over-tls=false
-🇨🇦 加拿大 多伦多  209.200.246.148 = VLESS,209.200.246.148,443,"ca52e2b6-fb9f-4dac-b6dc-49da9923f251",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=www.cloudflare.com, public-key="uTmb-ytXsx8p0fkBz7A76SHpWk7_oVutIA4LGTE8BQk", short-id=f98843107912e782
-🇨🇦 加拿大 多伦多  216.152.147.79 = Trojan,216.152.147.79,443,"0ab6c98dae3b48e8b9c4a776b6c9c19a",transport=tcp, sni=blog.connectingpeoplewithgreatjobs.com
-🇨🇦 加拿大 渥太華  23.227.38.61 = Trojan,23.227.38.61,443,"531d9e93-53be-4f05-a9c1-33490d4da2f3",transport=ws, path=/images, host=44-ml-1.ccc4vortex.top, sni=44-ml-1.ccc4vortex.top
+🇨🇦 加拿大 渥太華  23.227.38.10 = Trojan,23.227.38.10,443,"531d9e93-53be-4f05-a9c1-33490d4da2f3",transport=ws, path=/images, host=hkk-1-8hhh.ccc3cosmo.top, sni=hkk-1-8hhh.ccc3cosmo.top
+🇨🇦 加拿大 渥太華  23.227.38.48 = VLESS,23.227.38.48,443,"531d9e93-53be-4f05-a9c1-33490d4da2f3",transport=ws, path=/imagessecurity=tls, host=uub01.gg9901.uk, over-tls=false, sni=uub01.gg9901.uk
+🇨🇦 加拿大 渥太華¹  23.227.38.76 = VLESS,23.227.38.76,443,"531d9e93-53be-4f05-a9c1-33490d4da2f3",transport=ws, path=/images, host=eeeccc.ttttlefjljl.xyz, over-tls=true, sni=eeeccc.ttttlefjljl.xyz
+🇨🇦 加拿大 渥太華²  23.227.38.76 = VLESS,23.227.38.76,443,"531d9e93-53be-4f05-a9c1-33490d4da2f3",transport=ws, path=/images, host=eeeccc.ttttlefjljl.xyz, over-tls=true, sni=eeeccc.ttttlefjljl.xyz
 🇨🇦 加拿大 蒙特利尔  151.101.64.155 = VLESS,151.101.64.155,80,"9c488e6e-932c-44cb-b488-0b27f591b034",transport=tcp, over-tls=false
 🇨🇦 加拿大 蒙特利尔  51.222.136.236 = Shadowsocks,51.222.136.236,8882,aes-256-gcm,"kDWvXYZoTBcGkC4"
-🇨🇦 加拿大 蒙特利尔  51.79.49.116 = Shadowsocks,51.79.49.116,8882,aes-256-gcm,"kDWvXYZoTBcGkC4"
-🇨🇦 加拿大 蒙特利尔  66.163.113.9 = VLESS,66.163.113.9,443,"03fcc618-b93d-6796-6aed-8a38c975d581",transport=tcp, over-tls=true, sni=kuruish.org
+🇨🇦 加拿大 蒙特利尔¹  51.79.49.116 = Shadowsocks,51.79.49.116,8882,aes-256-gcm,"kDWvXYZoTBcGkC4"
+🇨🇦 加拿大 蒙特利尔²  51.79.49.116 = Shadowsocks,51.79.49.116,8882,aes-256-gcm,"kDWvXYZoTBcGkC4"
 🇨🇭 瑞士 日内瓦¹  45.90.59.15 = VLESS,45.90.59.15,443,"3950b45e-740d-4dca-ac95-505ec8534592",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=www.cloudflare.com
 🇨🇭 瑞士 日内瓦²  45.90.59.15 = VLESS,45.90.59.15,443,"3950b45e-740d-4dca-ac95-505ec8534592",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=www.cloudflare.com, public-key="P7S4UPFlQbmiBr4txyy8NZIMTrmO3UdxyH16WBU-YzY", short-id=19253fae84102271
 🇨🇭 瑞士 苏黎世  208.69.78.158 = Trojan,208.69.78.158,443,"0ab6c98dae3b48e8b9c4a776b6c9c19a",transport=tcp
@@ -40,39 +39,39 @@
 🇨🇭 瑞士 苏黎世³  79.127.184.104 = Shadowsocks,79.127.184.104,19999,aes-256-gcm,"ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4="
 🇨🇾 塞浦路斯 利马索尔¹  213.111.177.107 = VLESS,213.111.177.107,443,"a1de0630-5786-48a0-84f6-dc6f2de10d6d",transport=ws, path=/socks5=888:888@hkip.1d.mom:1080, host=vlso5.1d.mom, over-tls=true, sni=vlso5.1d.mom
 🇨🇾 塞浦路斯 利马索尔²  213.111.177.107 = VLESS,213.111.177.107,443,"a1de0630-5786-48a0-84f6-dc6f2de10d6d",transport=ws, path=/, host=vlso5.1d.mom, over-tls=true, sni=vlso5.1d.mom
-🇨🇾 塞浦路斯 尼科西亚  45.86.74.193 = Hysteria2,45.86.74.193,443,"216c50f9-37dc-457d-b3f5-90732791d10d", sni=media.embrofree.org
+🇨🇾 塞浦路斯 尼科西亚¹  45.86.74.193 = Hysteria2,45.86.74.193,443,"216c50f9-37dc-457d-b3f5-90732791d10d", sni=media.embrofree.org, skip-cert-verify=true, alpn="h3"
+🇨🇾 塞浦路斯 尼科西亚²  45.86.74.193 = Hysteria2,45.86.74.193,443,"216c50f9-37dc-457d-b3f5-90732791d10d", sni=media.embrofree.org, skip-cert-verify=true
+🇨🇾 塞浦路斯 尼科西亚³  45.86.74.193 = Hysteria2,45.86.74.193,443,"216c50f9-37dc-457d-b3f5-90732791d10d", sni=media.embrofree.org
 🇨🇿 捷克 布拉格¹  195.123.245.241 = VLESS,195.123.245.241,443,"7c053ca8-38cc-45e2-930c-eda1fd66f903",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=gateway.icloud.com, public-key="hlY5ce1UsVIgE46y5PlEZhUsSaXUnCtoDLLaGrhInjw", short-id=23d0950d60bc0d5b
 🇨🇿 捷克 布拉格²  195.123.245.241 = VLESS,195.123.245.241,443,"7c053ca8-38cc-45e2-930c-eda1fd66f903",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=gateway.icloud.com
-🇨🇿 捷克 盧日尼采河畔韋塞利  193.124.56.100 = VLESS,193.124.56.100,443,"0b6a7fe0-206b-4071-9f96-cd397d1ec01a",transport=ws, path=/api/de7/streamfp=firefox, host=parchment.merlano.monster, over-tls=true, sni=parchment.merlano.monster
+🇩🇪 德国 埃斯滕费尔德  92.118.206.218 = VLESS,92.118.206.218,8443,"c53ea5e9-ed8b-4990-805d-7f1d6451426c",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=dur.sky-vault.top, public-key="fSVfR9NB-6J6smrZlavi0GWd8JfDh0aXuEkKbtuFzUI", short-id=3cbc3d737fb9c4af
 🇩🇪 德国 法兰克福  132.243.242.244 = VLESS,132.243.242.244,9543,"920b3cd9-4f82-4669-bbd2-d4a28b9052c6",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=storage.yandexcloud.net, public-key="M6Ck7wUfOLhQl4582CBnaXwscPEP6SCpdEkUDzoj4Fc", short-id=123abcdf
-🇩🇪 德国 法兰克福  153.52.85.198 = VLESS,153.52.85.198,443,"26843758-24de-4f76-b5d0-624038e353c4",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=15d7fft.nl11.h1clayd.click, public-key="xv6OUZcyzEHXFMTfumuJH-1Rd4NQ0cdmWikek4mm0m4", short-id=c71118d9399fb8c2
+🇩🇪 德国 法兰克福  152.233.35.228 = VLESS,152.233.35.228,8443,"394f6981-a782-4779-9a85-e6cf22935d93",transport=tcp, over-tls=true, sni=de1.fromblancwithlove.com
 🇩🇪 德国 法兰克福  179.61.132.96 = Hysteria2,179.61.132.96,8443,"KevinZakarian", sni=179.61.132.96, skip-cert-verify=true, salamander-password=KevinZakarian
 🇩🇪 德国 法兰克福¹  179.61.138.145 = Hysteria2,179.61.138.145,443,"Telegram", sni=de2.jey.cc.cd, skip-cert-verify=true, salamander-password=Telegram@vpnjey
 🇩🇪 德国 法兰克福²  179.61.138.145 = Hysteria2,179.61.138.145,36264,"Telegram-vpnjey", sni=de2.jey.cc.cd, skip-cert-verify=true, salamander-password=Telegram@vpnjey
 🇩🇪 德国 法兰克福  193.108.119.78 = Trojan,193.108.119.78,443,"0ab6c98dae3b48e8b9c4a776b6c9c19a",transport=tcp
-🇩🇪 德国 法兰克福  31.76.127.59 = VLESS,31.76.127.59,443,"bf14dc50-e9f2-49fd-8642-620446edeafb",transport=ws, path=/, over-tls=true, sni=v9-eim.pages.dev
-🇩🇪 德国 法兰克福  57.129.113.16 = Shadowsocks,57.129.113.16,8388,chacha20-ietf-poly1305,"NcAXc0UZI6yQJE1p8QmOv8"
-🇩🇪 德国 法兰克福  57.129.76.233 = Shadowsocks,57.129.76.233,19999,aes-256-gcm,"ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4="
-🇩🇪 德国 法兰克福  8.211.38.49 = Shadowsocks,8.211.38.49,443,2022-blake3-chacha20-poly1305,"8yO3ANWefuuGs1lRKXECQA1FEhxlWFV2ppQMcBaZo5Y="
+🇩🇪 德国 法兰克福  31.56.18.99 = VLESS,31.56.18.99,443,"0ef68b29-266e-4e0a-b935-eaa02975a439",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=play.cloudconsole.ru, public-key="RtoBkG8dr6pam2Z7bskxQxSlw17C1pDfzYeafDo2nG8", short-id=d16188300cd57a53
+🇩🇪 德国 法兰克福  57.129.41.216 = VLESS,57.129.41.216,80,"7d90f043-ed7f-40c9-ac2f-352987904958",transport=ws, path=/vless/, over-tls=false, sni=ov-germany1.09vpn.com
+🇩🇪 德国 法兰克福  8.211.57.86 = Shadowsocks,8.211.57.86,443,2022-blake3-chacha20-poly1305,"8yO3ANWefuuGs1lRKXECQA1FEhxlWFV2ppQMcBaZo5Y="
 🇩🇰 丹麦 巴勒魯普自治市  135.136.33.134 = VLESS,135.136.33.134,8443,"9a597d68-6688-4046-bf24-a5a541e115e0",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=www.apple.com, public-key="6FI4VM9WlQEGVjyCvLDQLz1jOkrzzhtfGl9eQTBn6HU", short-id=f8d0271b4b5f9efc
 🇩🇴 多米尼加共和国 聖多明哥  181.36.229.212 = VLESS,181.36.229.212,443,"4859c235-2530-4062-9a0b-ea859cbbf861",transport=ws, path=/?ed=2560, host=1.proxy2.us.ci., over-tls=true, sni=1.proxy2.us.ci.
-🇪🇪 爱沙尼亚 塔林¹  188.214.37.231 = VLESS,188.214.37.231,443,"83706ae4-be2f-4b2b-8079-c3eb4e0b2e3e",transport=ws, path=/api/de5/stream, host=lagoon.gerqix.online, over-tls=true, sni=lagoon.gerqix.online
-🇪🇪 爱沙尼亚 塔林²  188.214.37.231 = VLESS,188.214.37.231,443,"83706ae4-be2f-4b2b-8079-c3eb4e0b2e3e",transport=ws, path=/api/de5/streamfp=firefox, host=lagoon.gerqix.online, over-tls=true, sni=lagoon.gerqix.online
+🇪🇪 爱沙尼亚 塔林  188.214.37.231 = VLESS,188.214.37.231,443,"83706ae4-be2f-4b2b-8079-c3eb4e0b2e3e",transport=ws, path=/api/de5/streamfp=firefox, host=lagoon.gerqix.online, over-tls=true, sni=lagoon.gerqix.online
+🇪🇸 西班牙 巴倫西亞  196.245.52.187 = VLESS,196.245.52.187,443,"cda0862a-0f87-4be9-8ed8-1d0c9e382839",transport=tcp, over-tls=true, sni=04535dt.us8.h1clayd.click, public-key="UoS8qZ74hP_ECcncCz55lzvlcVss3R7VA0WYZE0YQCY", short-id=ba2a3dce62b99092
 🇪🇸 西班牙 巴塞罗那¹  108.181.121.170 = Shadowsocks,108.181.121.170,443,chacha20-ietf-poly1305,"qItG8SueYQcP"
 🇪🇸 西班牙 巴塞罗那²  108.181.121.170 = Shadowsocks,108.181.121.170,443,chacha20-ietf-poly1305,"qItG8SueYQcP"
-🇪🇸 西班牙 马德里⁴  5.188.181.201 = Shadowsocks,5.188.181.201,9001,aes-256-cfb,"UkXRsXvR6buDMG2Y"
-🇪🇸 西班牙 马德里¹  5.188.181.201 = Shadowsocks,5.188.181.201,9005,aes-256-cfb,"ZET59LF6DvCC8KVt"
-🇪🇸 西班牙 马德里²  5.188.181.201 = Shadowsocks,5.188.181.201,9011,aes-256-cfb,"M3t2ZEQcMGRWBjRa"
-🇪🇸 西班牙 马德里⁵  5.188.181.201 = Shadowsocks,5.188.181.201,9041,aes-256-cfb,"U6qnYRhfyDmn8sgn"
-🇪🇸 西班牙 马德里³  5.188.181.201 = Shadowsocks,5.188.181.201,9054,aes-256-cfb,"VcFuyXvND2yQWSFY"
+🇪🇸 西班牙 马德里¹  5.188.181.201 = Shadowsocks,5.188.181.201,9001,aes-256-cfb,"UkXRsXvR6buDMG2Y"
+🇪🇸 西班牙 马德里⁵  5.188.181.201 = Shadowsocks,5.188.181.201,9005,aes-256-cfb,"ZET59LF6DvCC8KVt"
+🇪🇸 西班牙 马德里²  5.188.181.201 = Shadowsocks,5.188.181.201,9014,aes-256-cfb,"KnJGad3FqTvjqbaX"
+🇪🇸 西班牙 马德里³  5.188.181.201 = Shadowsocks,5.188.181.201,9030,aes-256-cfb,"GeregetR8cvQHzYr"
+🇪🇸 西班牙 马德里⁴  5.188.181.201 = Shadowsocks,5.188.181.201,9054,aes-256-cfb,"VcFuyXvND2yQWSFY"
 🇪🇸 西班牙 马德里  66.163.118.244 = Trojan,66.163.118.244,443,"0ab6c98dae3b48e8b9c4a776b6c9c19a",transport=tcp
-🇪🇸 西班牙 马德里  79.127.139.242 = Shadowsocks,79.127.139.242,19999,aes-256-gcm,"ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4="
 🇫🇮 芬兰 赫尔辛基  13.140.92.21 = VLESS,13.140.92.21,80,"35eb914a-f7c2-4ffa-8503-1bf30df0f1a5",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=www.cloudflare.com, public-key="rtYs5r9380Y2zvtXBFfaBbnypJQ7_1x_uYu0cLpOXk4", short-id=d8fee47b2d3d94
-🇫🇮 芬兰 赫尔辛基  185.79.139.163 = VLESS,185.79.139.163,7443,"7a42d986-f0b8-46e7-82cf-9516e168a613",transport=tcp, over-tls=true, sni=mama120.baklajann.ru
 🇫🇮 芬兰 赫尔辛基  2.29.62.181 = VLESS,2.29.62.181,443,"b63bc3fe-8852-4ead-8d25-8d8d5bae79ae",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=api.steampowered.com, public-key="4hAezOnHPiz2LUH0NBpS7KmGVd7-AyOODfHWwyQ50kM", short-id=fdea6c48da968d75
 🇫🇮 芬兰 赫尔辛基¹  213.176.92.148 = Shadowsocks,213.176.92.148,40647,aes-256-gcm,"DgMywXKqojHXeuXY8hOJaYGPFcjweCIJeD5cdg/cUUY="
 🇫🇮 芬兰 赫尔辛基²  213.176.92.148 = Shadowsocks,213.176.92.148,40647,aes-256-gcm,"DgMywXKqojHXeuXY8hOJaYGPFcjweCIJeD5cdg/cUUY="
 🇫🇮 芬兰 赫尔辛基³  213.176.92.148 = Shadowsocks,213.176.92.148,40647,aes-256-gcm,"DgMywXKqojHXeuXY8hOJaYGPFcjweCIJeD5cdg/cUUY="
+🇫🇮 芬兰 赫尔辛基⁴  213.176.92.148 = Shadowsocks,213.176.92.148,40647,aes-256-gcm,"DgMywXKqojHXeuXY8hOJaYGPFcjweCIJeD5cdg/cUUY="
 🇫🇮 芬兰 赫尔辛基  31.76.80.69 = Hysteria2,31.76.80.69,443,"6aab8efdf13945829ae3699c342be406", sni=fiproxy1.lockdwn.com, skip-cert-verify=false, salamander-password=uw9b2qq5rx
 🇫🇮 芬兰 赫尔辛基  31.77.138.211 = VLESS,31.77.138.211,443,"55ba7b31-b0eb-4362-9c9b-fc53b0a53fab",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=fi3.setlocation.top, public-key="CfkGhr_sLpU9RJouAtTUnX1CpDTK6hRKEl01wMtN4Ro", short-id=ff67a6fea811a566
 🇫🇮 芬兰 赫尔辛基¹  91.192.158.104 = VLESS,91.192.158.104,443,"0444647e-6388-4c4b-9847-1fcd5bc101ea",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=az-fi-01-c8iyj203.farmerly.cc, public-key="97CMGywXeHWMpnvLx59xcg6Pqb4_ZN7aqPyeaek8D2U", short-id=0aeec6de7d3d1a15
@@ -87,29 +86,28 @@
 🇫🇷 法国 巴黎  199.232.169.135 = VLESS,199.232.169.135,443,"f408696c-cdbe-49a1-90e9-ab602003315c",transport=ws, path=/MinoVpnCh?ed=2048, host=googleb.net, over-tls=true, sni=speedtest.net
 🇫🇷 法国 巴黎  23.162.152.22 = Shadowsocks,23.162.152.22,19999,aes-256-gcm,"ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4="
 🇫🇷 法国 巴黎  38.109.228.110 = Shadowsocks,38.109.228.110,19999,aes-256-gcm,"ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4="
-🇬🇧 英国 Stretford  141.98.101.178 = Shadowsocks,141.98.101.178,443,aes-128-gcm,"shadowsocks"
+🇬🇧 英国 Stretford¹  141.98.101.178 = Shadowsocks,141.98.101.178,443,aes-128-gcm,"shadowsocks"
+🇬🇧 英国 Stretford²  141.98.101.178 = Shadowsocks,141.98.101.178,443,aes-128-gcm,"shadowsocks"
 🇬🇧 英国 Stretford  141.98.101.179 = Shadowsocks,141.98.101.179,443,aes-128-gcm,"shadowsocks"
-🇬🇧 英国 Stretford  141.98.101.182 = Shadowsocks,141.98.101.182,443,aes-128-gcm,"shadowsocks"
-🇬🇧 英国 伦敦  158.173.24.73 = Shadowsocks,158.173.24.73,443,aes-128-gcm,"shadowsocks"
-🇬🇧 英国 伦敦  195.206.235.232 = VLESS,195.206.235.232,443,"cda0862a-0f87-4be9-8ed8-1d0c9e382839",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=5d0319t.nl7.h1clayd.click, public-key="l-GzBDuNuhnjxoRlZqKvT7jAt_sbVAxhGFsAttO5kXs", short-id=361d0dd59c70516f
-🇬🇧 英国 伦敦¹  82.110.60.9 = Shadowsocks,82.110.60.9,19999,aes-256-gcm,"ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4="
-🇬🇧 英国 伦敦²  82.110.60.9 = Shadowsocks,82.110.60.9,19999,aes-256-gcm,"ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4="
+🇬🇧 英国 Stretford  141.98.101.181 = Shadowsocks,141.98.101.181,443,aes-128-gcm,"shadowsocks"
+🇬🇧 英国 伦敦¹  158.173.24.73 = Shadowsocks,158.173.24.73,443,aes-128-gcm,"shadowsocks"
+🇬🇧 英国 伦敦²  158.173.24.73 = Shadowsocks,158.173.24.73,443,aes-128-gcm,"shadowsocks"
+🇬🇧 英国 伦敦  195.206.235.202 = VLESS,195.206.235.202,443,"4201786b-d99b-4147-a5f0-20d47acddb81",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=4935e4t.de25.h1clayd.click, public-key="MzgB17ZFbKqs8pbC3EscTzHid_ENc-k_Cp6nXl-2knw", short-id=6976d670818644cc
+🇬🇧 英国 伦敦  82.110.60.9 = Shadowsocks,82.110.60.9,19999,aes-256-gcm,"ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4="
 🇬🇧 英国 伦敦  82.39.171.12 = VLESS,82.39.171.12,443,"d65cc14c-f53f-4fe2-b262-97856601319c",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=yahoo.com
-🇬🇧 英国 倫敦  18.171.191.130 = Shadowsocks,18.171.191.130,443,2022-blake3-chacha20-poly1305,"Cg2Dw4OhdBZhqbeO9ZTA3g/Gk/AvsrYZGhAJeGnQIx4="
-🇬🇧 英国 倫敦金融城  94.156.250.148 = Shadowsocks,94.156.250.148,7001,aes-256-gcm,"RexnBgU7EV5ADxG"
+🇬🇧 英国 倫敦金融城  142.202.51.22 = Shadowsocks,142.202.51.22,19999,aes-256-gcm,"ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4="
 🇬🇭 加纳 阿克拉  169.255.56.148 = socks5,169.255.56.148,1080,dGVzdDEyMzp0ZXN0MTIz,""
-🇬🇷 希腊 塞萨洛尼基  85.90.197.220 = VLESS,85.90.197.220,443,"8f704ed6-9a1a-4d04-94dd-1bff501716de",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=www.cloudflare.com
 🇭🇰 香港 下葵涌  216.236.51.44 = VLESS,216.236.51.44,1891,"e9923122-5d88-43f1-8548-5771d7750ef5",transport=ws, path=/, host=senflarelink-node-71i.pages.dev, over-tls=true, sni=senflarelink-node-71i.pages.dev, skip-cert-verify=true
-🇭🇰 香港 香港  156.226.168.221 = VLESS,156.226.168.221,35193,"35cbae61-ee10-4cb9-abb8-4950b35e9851",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=www.apple.com, public-key="d_pn_DMaIxhCkNh80h0Mc7nP94hrlN--I8liOIREDxE", short-id=e8daed2d
-🇭🇰 香港 香港¹  209.248.57.105 = Shadowsocks,209.248.57.105,8388,aes-256-gcm,"AMok40FfaM+Ikwre16psBpVk6JHxsQZw"
-🇭🇰 香港 香港²  209.248.57.105 = Shadowsocks,209.248.57.105,8388,aes-256-gcm,"AMok40FfaM+Ikwre16psBpVk6JHxsQZw"
+🇭🇰 香港 香港¹  143.20.71.68 = Shadowsocks,143.20.71.68,28014,chacha20-ietf-poly1305,"abc62f00-95a8-4c2e-a85d-36a2cdc977da"
+🇭🇰 香港 香港²  143.20.71.68 = Shadowsocks,143.20.71.68,28014,chacha20-ietf-poly1305,"abc62f00-95a8-4c2e-a85d-36a2cdc977da"
+🇭🇰 香港 香港³  143.20.71.68 = Shadowsocks,143.20.71.68,28014,chacha20-ietf-poly1305,"abc62f00-95a8-4c2e-a85d-36a2cdc977da"
+🇭🇰 香港 香港  209.248.57.105 = Shadowsocks,209.248.57.105,8388,aes-256-gcm,"AMok40FfaM+Ikwre16psBpVk6JHxsQZw"
+🇭🇰 香港 香港  23.141.172.229 = Hysteria2,23.141.172.229,50541,"ePPsH1bMFD", sni=is1-ssl.mzstatic.com, skip-cert-verify=true
 🇭🇰 香港 香港  27.50.48.6 = VLESS,27.50.48.6,443,"c98a16e4-0dc5-42f0-b3db-30f04525c123",transport=ws, path=/fp=chromesecurity=tls, host=vless2-8vx.pages.dev, over-tls=false, sni=vless2-8vx.pages.dev
-🇭🇰 香港 香港  38.207.172.59 = VLESS,38.207.172.59,28418,"e6552569-97ce-430c-a324-53ad1c546e05",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=op.gg
-🇭🇰 香港 香港  47.242.93.89 = Trojan,47.242.93.89,12012,"12012",transport=tcp, sni=ali-hk.b-gfw.cfd
-🇭🇰 香港 香港¹  47.244.120.197 = VMess,47.244.120.197,23026,auto,"b9de1bc9-baa7-41ac-86f7-ccd59695cb21",transport=ws, alterId=0, path=/arki, host=47.244.120.197, over-tls=false
+🇭🇰 香港 香港¹  47.244.120.197 = VMess,47.244.120.197,44867,auto,"845e6b08-2919-4290-ade0-5dc7dcea59ca",transport=ws, alterId=0, path=/arki, host=47.244.120.197, over-tls=false
 🇮🇩 印度尼西亚 Kelanabian  203.84.138.59 = socks5,203.84.138.59,62000,OXRjakxwMlc6UlJXdFg2WFA=,""
-🇮🇩 印度尼西亚 雅加达¹  202.155.99.212 = socks5,202.155.99.212,62000,gebHTLF6,"APJ7RmY9"
-🇮🇩 印度尼西亚 雅加达²  202.155.99.212 = socks5,202.155.99.212,62000,Z2ViSFRMRjY6QVBKN1JtWTk=,""
+🇮🇩 印度尼西亚 雅加达  130.94.95.126 = VLESS,130.94.95.126,443,"ed94398f-893f-40c6-b14c-bf02b5f6be16",transport=tcp, over-tls=true, sni=navi.bankrate.com
+🇮🇩 印度尼西亚 雅加达  202.155.99.212 = socks5,202.155.99.212,62000,Z2ViSFRMRjY6QVBKN1JtWTk=,""
 🇮🇩 印度尼西亚 雅加达  202.155.99.32 = socks5,202.155.99.32,62000,Z2ViSFRMRjY6QVBKN1JtWTk=,""
 🇮🇪 爱尔兰 都柏林  83.141.86.180 = VLESS,83.141.86.180,443,"0444647e-6388-4c4b-9847-1fcd5bc101ea",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=az-de-01-ut34t1ug.farmerly.cc, public-key="LPxxKvSEfGrfShtdNl4e9fDrjdwVfwceocYPfCHJix8", short-id=040175d0947db95a
 🇮🇪 爱尔兰 都柏林  83.141.92.168 = VLESS,83.141.92.168,443,"a7595994-695d-484e-bfcb-e9fbb73cfa39",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=sladovna.russianpiwo.fun, public-key="kpQWnVk3fEJXfPGFsMerUoPV_ZqUJUJFRnF1FvKyhRY", short-id=7a7d19880a9ee786
@@ -120,37 +118,38 @@
 🇮🇳 印度 孟买³  147.93.171.8 = VLESS,147.93.171.8,8443,"591e7de6-f2dd-4ff9-ae21-8e00d5affa2a",transport=ws, path=/vpn-livefp=firefox, host=147-93-171-8.sslip.io, over-tls=true, sni=147-93-171-8.sslip.io
 🇮🇳 印度 孟买⁴  147.93.171.8 = VLESS,147.93.171.8,8443,"591e7de6-f2dd-4ff9-ae21-8e00d5affa2a",transport=ws, path=/vpn-live, host=147-93-171-8.sslip.io, over-tls=true, sni=147-93-171-8.sslip.io
 🇮🇳 印度 孟买  152.67.8.205 = VMess,152.67.8.205,80,auto,"9db4c708-aef8-4359-821b-38e47990be0d",transport=ws, alterId=0, path=/, over-tls=false
+🇮🇹 意大利 Milan  202.50.253.18 = Shadowsocks,202.50.253.18,19999,aes-256-gcm,"ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4="
 🇮🇹 意大利 Milan  202.50.253.27 = Shadowsocks,202.50.253.27,19999,aes-256-gcm,"ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4="
 🇮🇹 意大利 Milan  202.50.253.45 = Shadowsocks,202.50.253.45,19999,aes-256-gcm,"ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4="
+🇮🇹 意大利 Milan  202.50.253.54 = Shadowsocks,202.50.253.54,19999,aes-256-gcm,"ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4="
 🇮🇹 意大利 Milan¹  202.50.253.63 = Shadowsocks,202.50.253.63,19999,aes-256-gcm,"ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4="
 🇮🇹 意大利 Milan²  202.50.253.63 = Shadowsocks,202.50.253.63,19999,aes-256-gcm,"ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4="
-🇮🇹 意大利 Milan¹  202.50.253.81 = Shadowsocks,202.50.253.81,19999,aes-256-gcm,"ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4="
-🇮🇹 意大利 Milan²  202.50.253.81 = Shadowsocks,202.50.253.81,19999,aes-256-gcm,"ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4="
+🇮🇹 意大利 Milan  202.50.253.81 = Shadowsocks,202.50.253.81,19999,aes-256-gcm,"ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4="
 🇮🇹 意大利 Milan  202.50.253.90 = Shadowsocks,202.50.253.90,19999,aes-256-gcm,"ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4="
 🇮🇹 意大利 Milan  202.50.253.99 = Shadowsocks,202.50.253.99,19999,aes-256-gcm,"ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4="
 🇮🇹 意大利 Milan  69.16.157.244 = socks5,69.16.157.244,1080,dWZDb2JoeWR6NFdkOkpkRmxyWmhxSFA=,""
-🇯🇵 日本 Minamishinagawa  45.32.31.89 = VLESS,45.32.31.89,443,"37c2e62d-4ca3-4cff-88ad-02af03727775",transport=ws, path=/ws, host=itunes.apple.com, over-tls=true, sni=itunes.apple.com, public-key="1nrvR1CH9bMLgc_6gpj4JL1TFfkSLoIlXhRAB-CjeTo", short-id=59a39fe8
-🇯🇵 日本 东京  139.162.101.74 = VLESS,139.162.101.74,443,"1e709d98-d4c3-45c1-bdcc-4268cf83eff8",transport=ws, path=/ws, host=itunes.apple.com, over-tls=true, sni=itunes.apple.com, public-key="jd8UNLpim43LVV-iEzIXlUgTVuvi9Pf7E0kgQb3o0CI", short-id=7e1e09f4
-🇯🇵 日本 东京  149.22.87.204 = Shadowsocks,149.22.87.204,443,aes-128-gcm,"shadowsocks"
-🇯🇵 日本 东京  149.22.87.241 = Shadowsocks,149.22.87.241,443,aes-128-gcm,"shadowsocks"
+🇯🇵 日本 Osaka  168.138.43.75 = VMess,168.138.43.75,80,auto,"11c3627f-31e8-4695-dfbd-34076e2f1f5d",transport=ws, alterId=0, path=/cctv13.m3u8, host=168.138.43.75, over-tls=false, sni=168.138.43.75
+🇯🇵 日本 东京¹  149.22.87.240 = Shadowsocks,149.22.87.240,443,aes-128-gcm,"shadowsocks"
+🇯🇵 日本 东京²  149.22.87.240 = Shadowsocks,149.22.87.240,443,aes-128-gcm,"shadowsocks"
 🇯🇵 日本 东京  168.138.205.100 = Shadowsocks,168.138.205.100,53758,aes-128-gcm,"Bwlqh7GcFB"
-🇯🇵 日本 东京  172.105.197.24 = VLESS,172.105.197.24,443,"81f4e114-5a60-41b5-9038-8d742380c84f",transport=ws, path=/wsflow=, host=itunes.apple.com, over-tls=true, sni=itunes.apple.com
-🇯🇵 日本 东京  47.245.40.193 = Shadowsocks,47.245.40.193,5555,aes-256-gcm,"123456"
-🇯🇵 日本 东京  50.7.159.242 = VLESS,50.7.159.242,443,"8840fac2-5361-4cb6-b887-cd1b95092394",transport=tcp, over-tls=true, sni=jp.reddotcorp.org
+🇯🇵 日本 东京  172.105.203.15 = VLESS,172.105.203.15,443,"c8c9b995-b4b9-4915-9c7d-dee94aa733ba",transport=ws, path=/ws, host=itunes.apple.com, over-tls=true, sni=itunes.apple.com, public-key="HyAx05nhCz5mXxVxWXU1TrWRKdpYE0MHF4-V-LtyhTA", short-id=0784b134
+🇯🇵 日本 东京¹  47.245.40.193 = Shadowsocks,47.245.40.193,5555,aes-256-gcm,"123456"
+🇯🇵 日本 东京²  47.245.40.193 = Shadowsocks,47.245.40.193,5555,aes-256-gcm,"123456"
 🇯🇵 日本 東京都  185.200.64.124 = VLESS,185.200.64.124,443,"aff1b196-478c-425a-9403-7ea15d9aafdf",transport=ws, path=/487e07e6-2930-4e71-99b3-6792e5909f16fp=chrome, host=hkg.kkp.us.ci, over-tls=true, sni=hkg.kkp.us.ci
 🇯🇵 日本 筑波市  103.248.150.238 = socks5,103.248.150.238,42000,dEI0dk43cVA6SjVyTTJ4TDk=,""
 🇰🇷 韩国 Gyeongju  183.106.215.208 = socks5,183.106.215.208,1080,Og==,""
-🇰🇷 韩国 Incheon  3.35.174.64 = Shadowsocks,3.35.174.64,8443,chacha20-ietf-poly1305,"7e68e32f-8015-4f37-9082-70e8b0b58043"
+🇰🇷 韩国 Incheon¹  54.180.146.22 = Hysteria2,54.180.146.22,443,"7e68e32f-8015-4f37-9082-70e8b0b58043", sni=www.bing.com, skip-cert-verify=true
+🇰🇷 韩国 Incheon²  54.180.146.22 = Shadowsocks,54.180.146.22,8443,chacha20-ietf-poly1305,"7e68e32f-8015-4f37-9082-70e8b0b58043"
 🇰🇷 韩国 光明市¹  211.233.33.228 = Shadowsocks,211.233.33.228,8388,aes-256-gcm,"qpowi_vip_tunnel_2026_secure"
 🇰🇷 韩国 光明市²  211.233.33.228 = Shadowsocks,211.233.33.228,8388,aes-256-gcm,"qpowi_vip_tunnel_2026_secure"
-🇰🇷 韩国 首尔特别市²  132.145.80.230 = VMess,132.145.80.230,80,auto,"5155860e-d07d-46c3-9128-3afbd84626c7",transport=ws, alterId=0, path=/cctv13.m3u8, over-tls=false
-🇰🇷 韩国 首尔特别市  217.142.138.61 = VMess,217.142.138.61,80,auto,"ac1b933d-afff-4487-93ef-f57130a55dff",transport=tcp, alterId=0, over-tls=false
-🇰🇷 韩国 龙仁市¹  59.11.209.162 = socks5,59.11.209.162,1080
-🇰🇷 韩国 龙仁市²  59.11.209.162 = socks5,59.11.209.162,1080,Og==,""
-🇰🇿 哈萨克斯坦 Karaganda¹  109.248.170.119 = VLESS,109.248.170.119,13447,"b573cefb-7bc7-4a42-b407-b8b534e66773",transport=tcp, over-tls=true, sni=yahoo.com, public-key="_0wM2ep44eAcrgf5PflKaBivknCWT6kMvQBQUoScCkE", short-id=83
-🇰🇿 哈萨克斯坦 Karaganda²  109.248.170.119 = VLESS,109.248.170.119,13447,"b573cefb-7bc7-4a42-b407-b8b534e66773",transport=tcp, over-tls=true, sni=yahoo.com
+🇰🇷 韩国 安山市  211.178.105.134 = Shadowsocks,211.178.105.134,6123,aes-256-cfb,"qwerREWQ@@"
+🇰🇷 韩国 春川市  152.69.226.63 = VLESS,152.69.226.63,25555,"27c5483f-17f4-48ae-9a04-def53d88440d",transport=ws, path=/, over-tls=false
+🇰🇷 韩国 江南区  121.78.213.3 = Trojan,121.78.213.3,443,"ZRYSly2IRuFlgpZCaep3Ey3DDXqTDczO04aeC8F36OjaYSCABnA573wN8xxK9S",transport=tcp, sni=httah.freetrade.link
+🇰🇷 韩国 龙仁市  59.11.209.162 = socks5,59.11.209.162,1080,Og==,""
+🇰🇿 哈萨克斯坦 Karaganda  109.248.170.119 = VLESS,109.248.170.119,13447,"b573cefb-7bc7-4a42-b407-b8b534e66773",transport=tcp, over-tls=true, sni=yahoo.com
 🇰🇿 哈萨克斯坦 阿拉木圖  38.107.234.57 = VMess,38.107.234.57,80,auto,"567f4be5-12ab-42e1-b8d9-db6fd1fdd31c",transport=ws, alterId=0, path=/vmess/, over-tls=false
-🇱🇹 立陶宛 希奥利艾  84.32.209.54 = VLESS,84.32.209.54,443,"f69e272f-e0e5-4e9d-b180-5be63930cde9",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=lt.memepn.com, public-key="drl7nndYdfzZY1aQ0eUAWmNV0nsHig2uDnu9siy9biQ", short-id=868419504747f6de
+🇰🇿 哈萨克斯坦 阿斯塔纳¹  196.198.111.166 = VLESS,196.198.111.166,8443,"f121ffc8-f6dc-4728-a871-a05e3f9cf8c5",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=usr-6b09ce88-api-v3.alcors.net
+🇰🇿 哈萨克斯坦 阿斯塔纳²  196.198.111.166 = VLESS,196.198.111.166,8443,"f121ffc8-f6dc-4728-a871-a05e3f9cf8c5",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=usr-6b09ce88-api-v3.alcors.net
 🇱🇹 立陶宛 维尔纽斯¹  195.238.126.20 = Shadowsocks,195.238.126.20,9001,aes-256-cfb,"UkXRsXvR6buDMG2Y"
 🇱🇹 立陶宛 维尔纽斯²  195.238.126.20 = Shadowsocks,195.238.126.20,9068,aes-256-cfb,"mwgRg9hRq3b4Qnwb"
 🇱🇻 拉脱维亚 Riga  195.135.252.28 = VLESS,195.135.252.28,443,"099dbf2d-a8e0-406e-a85f-eba0ac9a68aa",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=yahoo.com, public-key="hGGVm0PiHJwNL34pBG6NLtbFGYVdcWhDu5zHYDoct08", short-id=4360e536
@@ -166,10 +165,10 @@
 🇱🇾 利比亚 的黎波里³  196.199.122.2 = VLESS,196.199.122.2,443,"4201786b-d99b-4147-a5f0-20d47acddb81",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=7aa271t.es1.h1clayd.click, public-key="ZSmetD4e9QG5CiXhniHg5HJB68L4kwbgAkJmMHtVwEE", short-id=42426c882c5fcd41
 🇲🇩 摩尔多瓦 基希讷乌  185.153.198.86 = VLESS,185.153.198.86,443,"a1de0630-5786-48a0-84f6-dc6f2de10d6d",transport=ws, path=/socks5=888:888@hkip.1d.mom:1080, host=vlso5.1d.mom, over-tls=true, sni=vlso5.1d.mom
 🇲🇽 墨西哥 墨西哥城  144.225.47.106 = socks5,144.225.47.106,42000,REp5MVQwZHQ6c1puRDhHVHo=,""
-🇲🇽 墨西哥 墨西哥城  144.225.47.158 = socks5,144.225.47.158,42000,REp5MVQwZHQ6c1puRDhHVHo=,""
 🇲🇽 墨西哥 墨西哥城  144.225.47.161 = socks5,144.225.47.161,42000,VGVrMng2YXY6REp5MVQwZHQ=,""
 🇲🇽 墨西哥 墨西哥城  144.225.47.68 = socks5,144.225.47.68,42000,REp5MVQwZHQ6c1puRDhHVHo=,""
 🇲🇽 墨西哥 墨西哥城  144.225.47.8 = socks5,144.225.47.8,42000,VGVrMng2YXY6REp5MVQwZHQ=,""
+🇲🇽 墨西哥 墨西哥城  72.57.228.30 = socks5,72.57.228.30,62000,VUJYaWNoMEs6VnZVQUZpMkU=,""
 🇲🇽 墨西哥 墨西哥城  72.57.228.87 = socks5,72.57.228.87,62000,VUJYaWNoMEs6VnZVQUZpMkU=,""
 🇲🇽 墨西哥 墨西哥城  94.194.164.203 = socks5,94.194.164.203,62000,clZra3JhcVQ6Mmo3Q0NaUWI=,""
 🇲🇽 墨西哥 墨西哥城  94.194.165.131 = socks5,94.194.165.131,62000,UXlWZG81a3M6bGNGYThkVEg=,""
@@ -178,46 +177,49 @@
 🇲🇾 马来西亚 吉隆坡¹  47.250.84.25 = Trojan,47.250.84.25,443,"5931134d1cde66bf83a54acdfebe7ab2",transport=tcp
 🇲🇾 马来西亚 吉隆坡²  47.250.84.25 = Trojan,47.250.84.25,443,"5931134d1cde66bf83a54acdfebe7ab2",transport=tcp
 🇲🇾 马来西亚 吉隆坡³  47.250.84.25 = Trojan,47.250.84.25,443,"5931134d1cde66bf83a54acdfebe7ab2",transport=tcp
-🇳🇪 尼日尔 尼亞美  196.196.148.177 = VLESS,196.196.148.177,443,"4201786b-d99b-4147-a5f0-20d47acddb81",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=4935e4t.de25.h1clayd.click, public-key="MzgB17ZFbKqs8pbC3EscTzHid_ENc-k_Cp6nXl-2knw", short-id=6976d670818644cc
+🇳🇪 尼日尔 尼亞美¹  196.196.148.177 = VLESS,196.196.148.177,443,"4201786b-d99b-4147-a5f0-20d47acddb81",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=4935e4t.de25.h1clayd.click, public-key="MzgB17ZFbKqs8pbC3EscTzHid_ENc-k_Cp6nXl-2knw", short-id=6976d670818644cc
+🇳🇪 尼日尔 尼亞美²  196.196.148.177 = VLESS,196.196.148.177,443,"4201786b-d99b-4147-a5f0-20d47acddb81",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=4935e4t.de25.h1clayd.click, public-key="MzgB17ZFbKqs8pbC3EscTzHid_ENc-k_Cp6nXl-2knw", short-id=6976d670818644cc
 🇳🇪 尼日尔 尼亞美¹  196.196.148.76 = VLESS,196.196.148.76,443,"4201786b-d99b-4147-a5f0-20d47acddb81",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=8a2e72t.nl20.h1clayd.shop, public-key="VZS639V1i-35g7VXb9EoTYL-Srm7858sxcvFAunncmA", short-id=8d0d0679f42ffd98
-🇳🇪 尼日尔 尼亞美²  196.196.148.76 = VLESS,196.196.148.76,443,"4201786b-d99b-4147-a5f0-20d47acddb81",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=8a2e72t.nl20.h1clayd.shop
-🇳🇪 尼日尔 尼亞美³  196.196.148.76 = VLESS,196.196.148.76,443,"4201786b-d99b-4147-a5f0-20d47acddb81",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=8a2e72t.nl20.h1clayd.shop, public-key="VZS639V1i-35g7VXb9EoTYL-Srm7858sxcvFAunncmA", short-id=8d0d0679f42ffd98
+🇳🇪 尼日尔 尼亞美²  196.196.148.76 = VLESS,196.196.148.76,443,"4201786b-d99b-4147-a5f0-20d47acddb81",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=8a2e72t.nl20.h1clayd.shop, public-key="VZS639V1i-35g7VXb9EoTYL-Srm7858sxcvFAunncmA", short-id=8d0d0679f42ffd98
 🇳🇪 尼日尔 尼亞美¹  196.196.148.85 = VLESS,196.196.148.85,443,"cda0862a-0f87-4be9-8ed8-1d0c9e382839",transport=tcp, over-tls=true, sni=5d0319t.nl7.h1clayd.click, public-key="l-GzBDuNuhnjxoRlZqKvT7jAt_sbVAxhGFsAttO5kXs", short-id=361d0dd59c70516f
 🇳🇪 尼日尔 尼亞美²  196.196.148.85 = VLESS,196.196.148.85,443,"cda0862a-0f87-4be9-8ed8-1d0c9e382839",transport=tcp, over-tls=true, sni=5d0319t.nl7.h1clayd.click, public-key="l-GzBDuNuhnjxoRlZqKvT7jAt_sbVAxhGFsAttO5kXs", short-id=361d0dd59c70516f
 🇳🇪 尼日尔 尼亞美³  196.196.148.85 = VLESS,196.196.148.85,443,"cda0862a-0f87-4be9-8ed8-1d0c9e382839",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=5d0319t.nl7.h1clayd.click, public-key="l-GzBDuNuhnjxoRlZqKvT7jAt_sbVAxhGFsAttO5kXs", short-id=361d0dd59c70516f
-🇳🇪 尼日尔 尼亞美¹  196.196.148.90 = VLESS,196.196.148.90,443,"4201786b-d99b-4147-a5f0-20d47acddb81",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=7aa271t.es9.h1clayd.click
+🇳🇪 尼日尔 尼亞美⁴  196.196.148.85 = VLESS,196.196.148.85,443,"cda0862a-0f87-4be9-8ed8-1d0c9e382839",transport=tcp, over-tls=true, sni=5d0319t.nl7.h1clayd.click, public-key="l-GzBDuNuhnjxoRlZqKvT7jAt_sbVAxhGFsAttO5kXs", short-id=361d0dd59c70516f
+🇳🇪 尼日尔 尼亞美¹  196.196.148.90 = VLESS,196.196.148.90,443,"4201786b-d99b-4147-a5f0-20d47acddb81",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=7aa271t.es9.h1clayd.click, public-key="ZSmetD4e9QG5CiXhniHg5HJB68L4kwbgAkJmMHtVwEE", short-id=42426c882c5fcd41
 🇳🇪 尼日尔 尼亞美²  196.196.148.90 = VLESS,196.196.148.90,443,"4201786b-d99b-4147-a5f0-20d47acddb81",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=7aa271t.es9.h1clayd.click, public-key="ZSmetD4e9QG5CiXhniHg5HJB68L4kwbgAkJmMHtVwEE", short-id=42426c882c5fcd41
-🇳🇪 尼日尔 尼亞美³  196.196.148.90 = VLESS,196.196.148.90,443,"4201786b-d99b-4147-a5f0-20d47acddb81",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=7aa271t.es9.h1clayd.click, public-key="ZSmetD4e9QG5CiXhniHg5HJB68L4kwbgAkJmMHtVwEE", short-id=42426c882c5fcd41
 🇳🇬 尼日利亚 阿布贾¹  196.196.149.80 = VLESS,196.196.149.80,443,"4201786b-d99b-4147-a5f0-20d47acddb81",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=7aa271t.es1.h1clayd.click, public-key="ZSmetD4e9QG5CiXhniHg5HJB68L4kwbgAkJmMHtVwEE", short-id=42426c882c5fcd41
-🇳🇬 尼日利亚 阿布贾³  196.196.149.80 = VLESS,196.196.149.80,443,"4201786b-d99b-4147-a5f0-20d47acddb81",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=7aa271t.es1.h1clayd.click
 🇳🇬 尼日利亚 阿布贾⁴  196.196.149.80 = VLESS,196.196.149.80,443,"4201786b-d99b-4147-a5f0-20d47acddb81",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=7aa271t.es1.h1clayd.click, public-key="ZSmetD4e9QG5CiXhniHg5HJB68L4kwbgAkJmMHtVwEE", short-id=42426c882c5fcd41
 🇳🇬 尼日利亚 阿布贾⁶  196.196.149.80 = VLESS,196.196.149.80,443,"4201786b-d99b-4147-a5f0-20d47acddb81",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=7aa271t.es1.h1clayd.click, public-key="ZSmetD4e9QG5CiXhniHg5HJB68L4kwbgAkJmMHtVwEE", short-id=42426c882c5fcd41
 🇳🇬 尼日利亚 阿布贾⁷  196.196.149.80 = VLESS,196.196.149.80,443,"4201786b-d99b-4147-a5f0-20d47acddb81",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=7aa271t.es1.h1clayd.click, public-key="ZSmetD4e9QG5CiXhniHg5HJB68L4kwbgAkJmMHtVwEE", short-id=42426c882c5fcd41
 🇳🇬 尼日利亚 阿布贾¹  196.196.149.81 = VLESS,196.196.149.81,443,"4201786b-d99b-4147-a5f0-20d47acddb81",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=7aa271t.es1.h1clayd.click, public-key="ZSmetD4e9QG5CiXhniHg5HJB68L4kwbgAkJmMHtVwEE", short-id=42426c882c5fcd41
 🇳🇬 尼日利亚 阿布贾²  196.196.149.81 = VLESS,196.196.149.81,443,"4201786b-d99b-4147-a5f0-20d47acddb81",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=7aa271t.es1.h1clayd.click, public-key="ZSmetD4e9QG5CiXhniHg5HJB68L4kwbgAkJmMHtVwEE", short-id=42426c882c5fcd41
-🇳🇱 荷兰 阿姆斯特丹¹  151.241.19.36 = Shadowsocks,151.241.19.36,19999,aes-256-gcm,"ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4="
-🇳🇱 荷兰 阿姆斯特丹²  151.241.19.36 = Shadowsocks,151.241.19.36,19999,aes-256-gcm,"ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4="
-🇳🇱 荷兰 阿姆斯特丹  212.192.3.63 = VLESS,212.192.3.63,9543,"920b3cd9-4f82-4669-bbd2-d4a28b9052c6",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=storage.yandexcloud.net, public-key="M6Ck7wUfOLhQl4582CBnaXwscPEP6SCpdEkUDzoj4Fc", short-id=123abcdf
+🇳🇱 荷兰 阿姆斯特丹  156.67.120.205 = Shadowsocks,156.67.120.205,51628,chacha20-ietf-poly1305,"29ZZXVa34x7sC48w9FKQ54UKHiJJGTVgKFppBRgviLrVCAYVVyKZdD3obbpjCyk31V5b2G2d7xzqmaPBFdcheCVB9UQ4ZghF"
+🇳🇱 荷兰 阿姆斯特丹  66.163.127.225 = Trojan,66.163.127.225,443,"0ab6c98dae3b48e8b9c4a776b6c9c19a",transport=tcp, sni=cdn.indyourperfectremotetechjobfromthecomfortofhome.com
 🇳🇱 荷兰 阿姆斯特丹  82.38.31.162 = Shadowsocks,82.38.31.162,443,chacha20-ietf-poly1305,"oZIoA69Q8yhcQV8ka3Pa3A"
+🇳🇱 荷兰 阿姆斯特丹  82.38.31.190 = Shadowsocks,82.38.31.190,8080,chacha20-ietf-poly1305,"k1dBOmOB4oqi7Ump37a1bQ"
+🇳🇱 荷兰 阿姆斯特丹  82.38.31.203 = Shadowsocks,82.38.31.203,8080,chacha20-ietf-poly1305,"k1dBOmOB4oqi7Ump37a1bQ"
+🇳🇱 荷兰 阿姆斯特丹  82.38.31.214 = Shadowsocks,82.38.31.214,8080,chacha20-ietf-poly1305,"k1dBOmOB4oqi7Ump37a1bQ"
 🇳🇱 荷兰 阿姆斯特丹  82.38.31.216 = Shadowsocks,82.38.31.216,8080,chacha20-ietf-poly1305,"k1dBOmOB4oqi7Ump37a1bQ"
-🇳🇱 荷兰 阿姆斯特丹  82.38.31.46 = Shadowsocks,82.38.31.46,8080,chacha20-ietf-poly1305,"oZIoA69Q8yhcQV8ka3Pa3A"
-🇳🇱 荷兰 阿姆斯特丹  82.38.31.61 = Shadowsocks,82.38.31.61,8080,chacha20-ietf-poly1305,"oZIoA69Q8yhcQV8ka3Pa3A"
 🇳🇴 挪威 奥斯陆¹  185.213.23.63 = Shadowsocks,185.213.23.63,990,chacha20-ietf-poly1305,"ARgvGZywA+gacgGV26Bvmu05+wZmRW/j+AdU+Z8Bt44="
 🇳🇴 挪威 奥斯陆²  185.213.23.63 = Shadowsocks,185.213.23.63,990,chacha20-ietf-poly1305,"ARgvGZywA+gacgGV26Bvmu05+wZmRW/j+AdU+Z8Bt44="
 🇳🇴 挪威 奥斯陆³  185.213.23.63 = Shadowsocks,185.213.23.63,990,chacha20-ietf-poly1305,"ARgvGZywA+gacgGV26Bvmu05+wZmRW/j+AdU+Z8Bt44="
 🇳🇴 挪威 奥斯陆⁴  185.213.23.63 = Shadowsocks,185.213.23.63,990,chacha20-ietf-poly1305,"ARgvGZywA+gacgGV26Bvmu05+wZmRW/j+AdU+Z8Bt44="
-🇵🇱 波兰 华沙¹  150.251.113.34 = VLESS,150.251.113.34,443,"d7d724b5-17ce-4f3c-877d-dfbf0f07afa1",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=www.cloudflare.com, public-key="8yMLSTbkpJFfbgTjNzotzz7U8OT6AERrclgKdKrXXW8", short-id=150a627d15154cf2
-🇵🇱 波兰 华沙²  150.251.113.34 = VLESS,150.251.113.34,443,"d7d724b5-17ce-4f3c-877d-dfbf0f07afa1",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=www.cloudflare.com
+🇵🇱 波兰 华沙  150.251.113.34 = VLESS,150.251.113.34,443,"d7d724b5-17ce-4f3c-877d-dfbf0f07afa1",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=www.cloudflare.com
 🇵🇱 波兰 华沙  201.58.178.197 = VLESS,201.58.178.197,443,"e894c08a-fecc-46f5-bf03-c95d0274c79d",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=lesson4.schoolpizorbz.xyz, public-key="EUuZAVtneL8O7MgjETmHvOyInaxqJu2RD6hiFQdDPwk", short-id=0df067145606c0b0
 🇵🇱 波兰 华沙  217.30.10.44 = Shadowsocks,217.30.10.44,9095,aes-256-cfb,"N7j3pdTYkKmsy8CR"
+🇵🇱 波兰 华沙  31.76.22.210 = Hysteria2,31.76.22.210,443,"8674df07-56b3-43ea-b687-aef2b1a20137", sni=crt.ultimagamest.com, skip-cert-verify=true
 🇵🇱 波兰 华沙¹  94.183.167.172 = VLESS,94.183.167.172,443,"d7121b33-e335-4921-bb00-4c0b157e7fc1",transport=tcp, over-tls=true, sni=s8k4.scan-cdn.com
 🇵🇱 波兰 华沙²  94.183.167.172 = VLESS,94.183.167.172,443,"d7121b33-e335-4921-bb00-4c0b157e7fc1",transport=tcp, over-tls=true, sni=s8k4.scan-cdn.com
 🇵🇱 波兰 日拉爾杜夫  45.142.212.191 = VLESS,45.142.212.191,443,"148917bd-0b37-42b8-98f4-aa94ca73e75a",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=travel.yandex.ru, public-key="tp7awfnKLbhIDkdYlT7Avf-SfUwt7ncX5oyWS5wQmR0", short-id=24c4
 🇵🇱 波兰 格但斯克¹  82.118.22.161 = VLESS,82.118.22.161,443,"05488656-d4bf-4634-8b2e-e4ff5a56c7e2",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=www.cloudflare.com, public-key="xY1KpNxaIGmi6jfeudYQ_aaLGQqWK_uHStnwUFd2_2E", short-id=fa3ea655619a3e78
 🇵🇱 波兰 格但斯克²  82.118.22.161 = VLESS,82.118.22.161,443,"05488656-d4bf-4634-8b2e-e4ff5a56c7e2",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=www.cloudflare.com
-🇷🇴 罗马尼亚 布加勒斯特  13.141.36.63 = VLESS,13.141.36.63,443,"4201786b-d99b-4147-a5f0-20d47acddb81",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=4935e4t.de25.h1clayd.click, public-key="MzgB17ZFbKqs8pbC3EscTzHid_ENc-k_Cp6nXl-2knw", short-id=6976d670818644cc
-🇷🇴 罗马尼亚 布加勒斯特¹  185.247.224.206 = VLESS,185.247.224.206,443,"58e22afd-bf74-4736-984d-63a8ca03d7f0",transport=ws, path=/media/ws/, host=accessfooter.cleanfoodshop.org, over-tls=true, sni=accessfooter.cleanfoodshop.org
-🇷🇴 罗马尼亚 布加勒斯特²  185.247.224.206 = VLESS,185.247.224.206,443,"58e22afd-bf74-4736-984d-63a8ca03d7f0",transport=ws, path=/media/ws/fp=firefox, host=accessfooter.cleanfoodshop.org, over-tls=true, sni=accessfooter.cleanfoodshop.org
+🇷🇴 罗马尼亚 布加勒斯特²  13.141.36.10 = VLESS,13.141.36.10,443,"cda0862a-0f87-4be9-8ed8-1d0c9e382839",transport=tcp, over-tls=true, sni=5d0319t.nl7.h1clayd.click, public-key="l-GzBDuNuhnjxoRlZqKvT7jAt_sbVAxhGFsAttO5kXs", short-id=361d0dd59c70516f
+🇷🇴 罗马尼亚 布加勒斯特³  13.141.36.10 = VLESS,13.141.36.10,443,"cda0862a-0f87-4be9-8ed8-1d0c9e382839",transport=tcp, over-tls=true, sni=5d0319t.nl7.h1clayd.click, public-key="l-GzBDuNuhnjxoRlZqKvT7jAt_sbVAxhGFsAttO5kXs", short-id=361d0dd59c70516f
+🇷🇴 罗马尼亚 布加勒斯特  13.141.36.43 = VLESS,13.141.36.43,443,"e894c08a-fecc-46f5-bf03-c95d0274c79d",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=6bf329t.nl18.h1clayd.click, public-key="p35RUaaaItuoyNiCrLpGeStBUpEJMSiZ2AajdfhhmiM", short-id=92aee92130b46fe2
+🇷🇴 罗马尼亚 布加勒斯特¹  13.141.36.63 = VLESS,13.141.36.63,443,"4201786b-d99b-4147-a5f0-20d47acddb81",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=4935e4t.de25.h1clayd.click, public-key="MzgB17ZFbKqs8pbC3EscTzHid_ENc-k_Cp6nXl-2knw", short-id=6976d670818644cc
+🇷🇴 罗马尼亚 布加勒斯特²  13.141.36.63 = VLESS,13.141.36.63,443,"4201786b-d99b-4147-a5f0-20d47acddb81",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=4935e4t.de25.h1clayd.click, public-key="MzgB17ZFbKqs8pbC3EscTzHid_ENc-k_Cp6nXl-2knw", short-id=6976d670818644cc
+🇷🇴 罗马尼亚 布加勒斯特³  13.141.36.63 = VLESS,13.141.36.63,443,"4201786b-d99b-4147-a5f0-20d47acddb81",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=4935e4t.de25.h1clayd.click, public-key="MzgB17ZFbKqs8pbC3EscTzHid_ENc-k_Cp6nXl-2knw", short-id=6976d670818644cc
+🇷🇴 罗马尼亚 布加勒斯特  185.247.224.206 = VLESS,185.247.224.206,443,"58e22afd-bf74-4736-984d-63a8ca03d7f0",transport=ws, path=/media/ws/fp=firefox, host=accessfooter.cleanfoodshop.org, over-tls=true, sni=accessfooter.cleanfoodshop.org
 🇷🇴 罗马尼亚 布加勒斯特  46.28.67.55 = VLESS,46.28.67.55,443,"d1a6a033-fdbd-46a6-a177-3370ba042b9f",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=www.cloudflare.com, public-key="i2dJ1_XGDpp50qpEclh6SWSWkxt4B0t2hi2qOVQbeSU", short-id=d06d78e974491b6e
 🇷🇸 塞尔维亚 贝尔格莱德  178.208.86.182 = Trojan,178.208.86.182,443,"f426d3c9-fb43-43c0-868b-898dfa451a74",transport=ws, path=/, sni=likejennie.pages.dev
 🇸🇪 瑞典 斯德哥尔摩¹  138.199.55.243 = Shadowsocks,138.199.55.243,19999,aes-256-gcm,"ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4="
@@ -229,16 +231,16 @@
 🇸🇪 瑞典 斯德哥尔摩  185.146.173.59 = VLESS,185.146.173.59,80,"SVNTEAM",transport=ws, path=/SvnTeam-TeleGram-ChaNnel-VIP?ed=2048, host=SvnTeamV2rayGm7.7.7.7.ir.Com.Site.xn--fhq0laa256bac7403eea044azr5g.CoM., over-tls=false
 🇸🇪 瑞典 斯德哥尔摩  185.146.173.68 = VLESS,185.146.173.68,2095,"-DIGIV2RAY-",transport=ws, path=/DigiconnecT?ed=1024, host=QUENTIN--_--DiG.radiotehran.org., over-tls=false
 🇸🇪 瑞典 斯德哥尔摩  5.178.109.174 = VLESS,5.178.109.174,14430,"80de563a-cac8-40ea-8cb0-4cb082dd92f9",transport=ws, path=/vless, host=5.178.109.174, over-tls=false
-🇸🇬 新加坡 新加坡¹  149.88.106.74 = Shadowsocks,149.88.106.74,19999,aes-256-gcm,"ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4="
-🇸🇬 新加坡 新加坡²  149.88.106.74 = Shadowsocks,149.88.106.74,19999,aes-256-gcm,"ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4="
-🇸🇬 新加坡 新加坡³  149.88.106.74 = Shadowsocks,149.88.106.74,19999,aes-256-gcm,"ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4="
+🇸🇬 新加坡 新加坡  13.212.90.94 = Shadowsocks,13.212.90.94,8443,chacha20-ietf-poly1305,"7e68e32f-8015-4f37-9082-70e8b0b58043"
+🇸🇬 新加坡 新加坡  147.93.173.45 = VLESS,147.93.173.45,10444,"75c5f51b-d548-4eab-a26e-aa10fc3dbc7b",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=video.yandex.ru
+🇸🇬 新加坡 新加坡  149.88.106.74 = Shadowsocks,149.88.106.74,19999,aes-256-gcm,"ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4="
 🇸🇬 新加坡 新加坡  149.88.107.47 = Shadowsocks,149.88.107.47,19999,aes-256-gcm,"ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4="
-🇸🇬 新加坡 新加坡  15.235.164.133 = Shadowsocks,15.235.164.133,19999,aes-256-gcm,"ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4="
+🇸🇬 新加坡 新加坡  149.88.107.74 = Shadowsocks,149.88.107.74,19999,aes-256-gcm,"ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4="
+🇸🇬 新加坡 新加坡  15.235.182.183 = Shadowsocks,15.235.182.183,19999,aes-256-gcm,"ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4="
 🇸🇬 新加坡 新加坡  172.104.48.162 = VLESS,172.104.48.162,443,"0dbe84f8-74fd-4bd1-99fe-e67eb7eaff85",transport=ws, path=/wsflow=, host=itunes.apple.com, over-tls=true, sni=itunes.apple.com
-🇸🇬 新加坡 新加坡  172.104.48.194 = VLESS,172.104.48.194,443,"a28d0884-193d-4591-aa64-8638ba1481ce",transport=ws, path=/wsflow=, host=itunes.apple.com, over-tls=true, sni=itunes.apple.com
-🇸🇬 新加坡 新加坡  207.148.124.12 = VLESS,207.148.124.12,8443,"bcdb425f-80bc-4ec8-92a5-8edf53639c01",transport=tcp, over-tls=true, sni=www.bing.com
+🇸🇬 新加坡 新加坡  5.34.177.164 = VLESS,5.34.177.164,443,"ca678d26-5435-4d13-b378-06c4c3b070ff",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=gateway.icloud.com, public-key="cwWhNuekusD1iPZZ--7G891dU9PCacxyCYwsZxOApHA", short-id=b2efed6d157e7bb0
 🇸🇬 新加坡 新加坡  66.80.2.252 = socks5,66.80.2.252,62000,dXNlcmViN2Q6YzBhMzRh,""
-🇸🇬 新加坡 新加坡  8.222.193.153 = VLESS,8.222.193.153,443,"92e8d9dc-8e3b-4f81-a278-d18c6bf1b962",transport=ws, path=/ws?ip=8.222.193.153:443fp=chrome, host=app-base-njw3ky.pages.dev, over-tls=true, sni=app-base-njw3ky.pages.dev
+🇸🇬 新加坡 新加坡  77.93.89.197 = Hysteria2,77.93.89.197,443,"57beeeb0-03fc-4fc9-94da-7604488a7134", sni=bgsg2.hikigo.com, skip-cert-verify=false, salamander-password=sj1awrdwnn5lbuno
 🇹🇭 泰国 Ban Khok  151.246.109.86 = socks5,151.246.109.86,42000,QUozZDlnSnc6MXBCN0hWNnU=,""
 🇹🇭 泰国 曼谷  104.234.70.136 = socks5,104.234.70.136,42000,cm50Mkw0WE86S1Q1aGlVOG8=,""
 🇹🇭 泰国 曼谷  109.66.136.234 = socks5,109.66.136.234,62000,cjNaelA4V1c6emRuaXZCYUk=,""
@@ -252,15 +254,16 @@
 🇹🇷 土耳其 伊斯坦布尔  153.56.229.207 = VLESS,153.56.229.207,443,"4201786b-d99b-4147-a5f0-20d47acddb81",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=4935e4t.de25.h1clayd.click, public-key="MzgB17ZFbKqs8pbC3EscTzHid_ENc-k_Cp6nXl-2knw", short-id=6976d670818644cc
 🇹🇷 土耳其 伊斯坦布尔  153.56.229.218 = VLESS,153.56.229.218,443,"ba0dbd83-3569-46dc-bc3d-ef6e58ffc97b",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=71b840t.de7.h1clayd.click, public-key="3wFF83gtIA0sXj-6GGCAa--oQbSr0MVUj0FBc-0QmiE", short-id=e572b6579ea525d4
 🇹🇼 台湾 台北市  154.40.61.186 = VLESS,154.40.61.186,8443,"b69cf773-da16-486e-afce-a45b94f998b3",transport=ws, path=/flow=fp=chrome, host=senflarelink-node-wj1gsa.pages.dev, over-tls=true, sni=senflarelink-node-wj1gsa.pages.dev
-🇺🇸 美国 华盛顿特区  48.102.139.88 = Hysteria2,48.102.139.88,443,"247802ca-0fbb-428a-b807-91a6e571b5c7", sni=static-se2.snobvpn.online, skip-cert-verify=false, salamander-password=a7rK-GlWiXFjHnfCYQeiNGqPgqj7sfRr
-🇺🇸 美国 洛杉矶  172.235.51.71 = VLESS,172.235.51.71,443,"3c17ead6-201a-4fba-8246-6327b911a1be",transport=ws, path=/ws, host=itunes.apple.com, over-tls=true, sni=itunes.apple.com, public-key="rzeXNEmuocvPVMnmettRsJbHQGjQGaZoH7jNw_3GUD8", short-id=4bf84b30
-🇺🇸 美国 洛杉矶  172.235.53.103 = VLESS,172.235.53.103,443,"38ae2bc6-577c-4e0a-b49c-81c44a0b4383",transport=ws, path=/ws, host=itunes.apple.com, over-tls=true, sni=itunes.apple.com, public-key="YS1T3hKkZSWZBej5I1O2s3QQ-jf5JOAY24EZbp9faX8", short-id=60e39a7e
-🇺🇸 美国 紐約  37.19.198.244 = Shadowsocks,37.19.198.244,443,aes-128-gcm,"shadowsocks"
-🇺🇸 美国 纽约  198.98.53.130 = Shadowsocks,198.98.53.130,443,chacha20-ietf-poly1305,"eDfN7SODQceIOmIAbtJJtK"
-🇺🇸 美国 費利蒙  89.18.60.230 = VLESS,89.18.60.230,443,"bc93a03d-13b5-0006-8ee7-d50c11459dab",transport=tcp, flow=xtls-rprx-vision, over-tls=true, sni=diffoscope.com, public-key="6VMgXXhZdJCiOG05EyK_zTHh00kpFGrZJeZIEPgqhjY", short-id=1c3e8241a8743df9
-🇺🇸 美国 迈阿密  193.151.160.18 = Shadowsocks,193.151.160.18,19999,aes-256-gcm,"ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4="
-🇺🇸 美国 阿什本  45.86.51.18 = Shadowsocks,45.86.51.18,19999,aes-256-gcm,"ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4="
-🇺🇸 美国 馬納薩斯  209.50.255.91 = socks5,209.50.255.91,1080,Og==,""
+🇹🇼 台湾 台北市  166.0.198.22 = VLESS,166.0.198.22,443,"ed94398f-893f-40c6-b14c-bf02b5f6be16",transport=tcp, over-tls=true, sni=navi.bankrate.com
+🇺🇸 美国 Boardman  54.213.89.22 = Hysteria2,54.213.89.22,443,"qQe1z5kU8kN6SlKnDt9Ru3Qp", sni=vk.com, skip-cert-verify=true
+🇺🇸 美国 亚特兰大  172.111.36.123 = Shadowsocks,172.111.36.123,19999,aes-256-gcm,"ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4="
+🇺🇸 美国 亚特兰大  185.215.132.18 = Shadowsocks,185.215.132.18,19999,aes-256-gcm,"ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4="
+🇺🇸 美国 洛杉矶  172.233.139.212 = VLESS,172.233.139.212,443,"b21a60ef-9042-42c8-bb13-160528ea19c6",transport=ws, path=/ws, host=itunes.apple.com, over-tls=true, sni=itunes.apple.com, public-key="bRB-Z_UOQ_sk8UFczAjrpkgKIg6cVdTNGnsyC7vAoyg", short-id=7a87386b
+🇺🇸 美国 洛杉矶  172.236.241.130 = VLESS,172.236.241.130,443,"21117a67-21c2-4e2a-ba8f-bc49e23b0ae8",transport=ws, path=/ws, host=itunes.apple.com, over-tls=true, sni=itunes.apple.com, public-key="ibi0jOH5SfYhh7ycxdBrqq5oN4ajN3-dNiHKWC2VYWs", short-id=51ecfe9e
+🇺🇸 美国 達拉斯  108.181.88.2 = Shadowsocks,108.181.88.2,443,chacha20-ietf-poly1305,"6yzcGxLalx0T"
+🇺🇸 美国 達拉斯  156.146.38.169 = Shadowsocks,156.146.38.169,443,aes-128-gcm,"shadowsocks"
+🇺🇸 美国 達拉斯  156.146.38.170 = Shadowsocks,156.146.38.170,443,aes-128-gcm,"shadowsocks"
+🇺🇸 美国 鳳凰城  173.244.56.6 = Shadowsocks,173.244.56.6,443,aes-128-gcm,"shadowsocks"
 🇿🇦 南非 Isando¹  139.84.242.103 = VLESS,139.84.242.103,443,"a1de0630-5786-48a0-84f6-dc6f2de10d6d",transport=ws, path=/, host=vlso5.1d.mom, over-tls=true, sni=vlso5.1d.mom
 🇿🇦 南非 Isando²  139.84.242.103 = VLESS,139.84.242.103,443,"a1de0630-5786-48a0-84f6-dc6f2de10d6d",transport=ws, path=/socks5=888:888@hkip.1d.mom:1080, host=vlso5.1d.mom, over-tls=true, sni=vlso5.1d.mom
 🇿🇦 南非 约翰内斯堡¹  102.133.165.160 = Shadowsocks,102.133.165.160,16233,chacha20-ietf-poly1305,"Xsy8Ox4yOV3xLlpxtjzs3X"
